@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2017/5/12 10:19:38-->
+<Methods>
+  <Method Code="form_stockBoard_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>GetEntityRowCount("bo_akl_MM_productionPlanSub")&gt;0</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <foreach isEnabled="True" isDebug="False" code="ForeachCode1">
+        <define>
+          <varCode>pps</varCode>
+          <entityType>window</entityType>
+          <entityCode>bo_akl_MM_productionPlanSub</entityCode>
+          <remark></remark>
+        </define>
+        <sequence>
+          <if isEnabled="True" isDebug="False" code="IfCode3">
+            <define>
+              <expression>LV.pps.materialType=="原材料"</expression>
+              <remark></remark>
+            </define>
+            <sequence>
+              <evaluateRule code="BR_DataBaseDataToInterfaceEntity2" />
+              <if isEnabled="True" isDebug="False" code="IfCode2">
+                <define>
+                  <expression>GetEntityRowCount("BR_VAR_PARENT.stockInfo_sum")&gt;0</expression>
+                  <remark></remark>
+                </define>
+                <sequence>
+                  <evaluateRule code="BR_SetLoopVariant1" />
+                  <evaluateRule code="BR_DeleteListSelectRow1" />
+                </sequence>
+              </if>
+            </sequence>
+          </if>
+          <if isEnabled="True" isDebug="False" code="IfCode5">
+            <define>
+              <expression>!(IsNullOrEmpty(LV.pps.useNum,0)==0)</expression>
+              <remark></remark>
+            </define>
+            <sequence>
+              <evaluateRule code="BR_SetLoopVariant2" />
+              <evaluateRule code="BR_SetLoopVariant3" />
+            </sequence>
+          </if>
+          <else isEnabled="True" isDebug="False">
+            <define>
+              <remark></remark>
+            </define>
+            <sequence>
+              <evaluateRule code="BR_SetLoopVariant5" />
+            </sequence>
+          </else>
+          <if isEnabled="True" isDebug="False" code="IfCode4">
+            <define>
+              <expression>!IsEmpty(LV.pps.PID)</expression>
+              <remark></remark>
+            </define>
+            <sequence>
+              <evaluateRule code="BR_SetLoopVariant4" />
+            </sequence>
+          </if>
+        </sequence>
+      </foreach>
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-01-21 10:50:50">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Query","dsWhere":[{"columnType":"1","field":"getStockBoard.startProTime","fieldType":"date","leftBracket":"(","logicOperation":null,"operation":"<=","rightBracket":")","value":"DateAdd(ShortDateNow(),1,\"d\")","valueType":"9"}],"entityType":"window","entityName":"bo_akl_MM_productionPlanSub","itemqueryparam":null,"items":[{"destName":"bo_akl_MM_productionPlanSub.addMaterial","sourceName":"getStockBoard.addMaterial","type":"entityField"},{"destName":"bo_akl_MM_productionPlanSub.alreadySend","sourceName":"getStockBoard.alreadySend","type":"entityField"},{"destName":"bo_akl_MM_productionPlanSub.confirmSend","sourceName":"getStockBoard.confirmSend","type":"entityField"},{"destName":"bo_akl_MM_productionPlanSub.id","sourceName":"getStockBoard.id","type":"entityField"},{"destName":"bo_akl_MM_productionPlanSub.InnerCode","sourceName":"getStockBoard.InnerCode","type":"entityField"},{"destName":"bo_akl_MM_productionPlanSub.IsLeaf","sourceName":"getStockBoard.IsLeaf","type":"entityField"},{"destName":"bo_akl_MM_productionPlanSub.materialName","sourceName":"getStockBoard.materialName","type":"entityField"},{"destName":"bo_akl_MM_productionPlanSub.materialNo","sourceName":"getStockBoard.materialNo","type":"entityField"},{"destName":"bo_akl_MM_productionPlanSub.materialType","sourceName":"getStockBoard.materialType","type":"entityField"},{"destName":"bo_akl_MM_productionPlanSub.maxSendNum","sourceName":"getStockBoard.maxSendNum","type":"entityField"},{"destName":"bo_akl_MM_productionPlanSub.nextSendTime","sourceName":"getStockBoard.nextSendTime","type":"entityField"},{"destName":"bo_akl_MM_productionPlanSub.OrderNo","sourceName":"getStockBoard.OrderNo","type":"entityField"},{"destName":"bo_akl_MM_productionPlanSub.PID","sourceName":"getStockBoard.PID","type":"entityField"},{"destName":"bo_akl_MM_productionPlanSub.placePosition","sourceName":"getStockBoard.placePosition","type":"entityField"},{"destName":"bo_akl_MM_productionPlanSub.planId","sourceName":"getStockBoard.planId","type":"entityField"},{"destName":"bo_akl_MM_productionPlanSub.pNo","sourceName":"getStockBoard.pNo","type":"entityField"},{"destName":"bo_akl_MM_productionPlanSub.proDeadline","sourceName":"getStockBoard.proDeadline","type":"entityField"},{"destName":"bo_akl_MM_productionPlanSub.proNum","sourceName":"getStockBoard.proNum","type":"entityField"},{"destName":"bo_akl_MM_productionPlanSub.proPlanNo","sourceName":"getStockBoard.proPlanNo","type":"entityField"},{"destName":"bo_akl_MM_productionPlanSub.remark","sourceName":"getStockBoard.remark","type":"entityField"},{"destName":"bo_akl_MM_productionPlanSub.startProTime","sourceName":"getStockBoard.startProTime","type":"entityField"},{"destName":"bo_akl_MM_productionPlanSub.useNum","sourceName":"getStockBoard.useNum","type":"entityField"}],"orderBy":null,"sourceName":"getStockBoard","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_MM_productionPlanSub</EntityName><SourceType>Query</SourceType><SourceName>getStockBoard</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>getStockBoard.startProTime</field><fieldType>date</fieldType><leftBracket>(</leftBracket><operation>&lt;=</operation><rightBracket>)</rightBracket><value>DateAdd(ShortDateNow(),1,"d")</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><dsQueryParam><![CDATA[<dsQueryParam />]]]]><![CDATA[></dsQueryParam><ID>cb27be52e3e040e5895ff564b3946ec9</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>cb27be52e3e040e5895ff564b3946ec9</MasterID><DestName>bo_akl_MM_productionPlanSub.addMaterial</DestName><SourceType>entityField</SourceType><SourceName>getStockBoard.addMaterial</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>cb27be52e3e040e5895ff564b3946ec9</MasterID><DestName>bo_akl_MM_productionPlanSub.alreadySend</DestName><SourceType>entityField</SourceType><SourceName>getStockBoard.alreadySend</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>cb27be52e3e040e5895ff564b3946ec9</MasterID><DestName>bo_akl_MM_productionPlanSub.confirmSend</DestName><SourceType>entityField</SourceType><SourceName>getStockBoard.confirmSend</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>cb27be52e3e040e5895ff564b3946ec9</MasterID><DestName>bo_akl_MM_productionPlanSub.id</DestName><SourceType>entityField</SourceType><SourceName>getStockBoard.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>cb27be52e3e040e5895ff564b3946ec9</MasterID><DestName>bo_akl_MM_productionPlanSub.InnerCode</DestName><SourceType>entityField</SourceType><SourceName>getStockBoard.InnerCode</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>cb27be52e3e040e5895ff564b3946ec9</MasterID><DestName>bo_akl_MM_productionPlanSub.IsLeaf</DestName><SourceType>entityField</SourceType><SourceName>getStockBoard.IsLeaf</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>cb27be52e3e040e5895ff564b3946ec9</MasterID><DestName>bo_akl_MM_productionPlanSub.materialName</DestName><SourceType>entityField</SourceType><SourceName>getStockBoard.materialName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>cb27be52e3e040e5895ff564b3946ec9</MasterID><DestName>bo_akl_MM_productionPlanSub.materialNo</DestName><SourceType>entityField</SourceType><SourceName>getStockBoard.materialNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>cb27be52e3e040e5895ff564b3946ec9</MasterID><DestName>bo_akl_MM_productionPlanSub.materialType</DestName><SourceType>entityField</SourceType><SourceName>getStockBoard.materialType</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>cb27be52e3e040e5895ff564b3946ec9</MasterID><DestName>bo_akl_MM_productionPlanSub.maxSendNum</DestName><SourceType>entityField</SourceType><SourceName>getStockBoard.maxSendNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>cb27be52e3e040e5895ff564b3946ec9</MasterID><DestName>bo_akl_MM_productionPlanSub.nextSendTime</DestName><SourceType>entityField</SourceType><SourceName>getStockBoard.nextSendTime</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>cb27be52e3e040e5895ff564b3946ec9</MasterID><DestName>bo_akl_MM_productionPlanSub.OrderNo</DestName><SourceType>entityField</SourceType><SourceName>getStockBoard.OrderNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>cb27be52e3e040e5895ff564b3946ec9</MasterID><DestName>bo_akl_MM_productionPlanSub.PID</DestName><SourceType>entityField</SourceType><SourceName>getStockBoard.PID</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>cb27be52e3e040e5895ff564b3946ec9</MasterID><DestName>bo_akl_MM_productionPlanSub.placePosition</DestName><SourceType>entityField</SourceType><SourceName>getStockBoard.placePosition</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>cb27be52e3e040e5895ff564b3946ec9</MasterID><DestName>bo_akl_MM_productionPlanSub.planId</DestName><SourceType>entityField</SourceType><SourceName>getStockBoard.planId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>cb27be52e3e040e5895ff564b3946ec9</MasterID><DestName>bo_akl_MM_productionPlanSub.pNo</DestName><SourceType>entityField</SourceType><SourceName>getStockBoard.pNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>cb27be52e3e040e5895ff564b3946ec9</MasterID><DestName>bo_akl_MM_productionPlanSub.proDeadline</DestName><SourceType>entityField</SourceType><SourceName>getStockBoard.proDeadline</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>cb27be52e3e040e5895ff564b3946ec9</MasterID><DestName>bo_akl_MM_productionPlanSub.proNum</DestName><SourceType>entityField</SourceType><SourceName>getStockBoard.proNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>cb27be52e3e040e5895ff564b3946ec9</MasterID><DestName>bo_akl_MM_productionPlanSub.proPlanNo</DestName><SourceType>entityField</SourceType><SourceName>getStockBoard.proPlanNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>cb27be52e3e040e5895ff564b3946ec9</MasterID><DestName>bo_akl_MM_productionPlanSub.remark</DestName><SourceType>entityField</SourceType><SourceName>getStockBoard.remark</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>cb27be52e3e040e5895ff564b3946ec9</MasterID><DestName>bo_akl_MM_productionPlanSub.startProTime</DestName><SourceType>entityField</SourceType><SourceName>getStockBoard.startProTime</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>cb27be52e3e040e5895ff564b3946ec9</MasterID><DestName>bo_akl_MM_productionPlanSub.useNum</DestName><SourceType>entityField</SourceType><SourceName>getStockBoard.useNum</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>cb27be52e3e040e5895ff564b3946ec9</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>cb27be52e3e040e5895ff564b3946ec9</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetLoopVariant" ruleName="给循环变量赋值" instanceCode="BR_SetLoopVariant5" instanceName="给循环变量赋值_清空已发料量" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Fields":[{"Source":"Null()","SourceType":"expression","LoopVarField":"alreadySend"}],"LoopVar":"pps","LoopEntity":"bo_akl_MM_productionPlanSub","LoopEntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtLoopVar><LoopVar>pps</LoopVar><LoopEntity>bo_akl_MM_productionPlanSub</LoopEntity><LoopEntityType>window</LoopEntityType></dtLoopVar><dtField><LoopVarField>alreadySend</LoopVarField><SourceType>expression</SourceType><Source>Null()</Source></dtField></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetLoopVariant" ruleName="给循环变量赋值" instanceCode="BR_SetLoopVariant1" instanceName="给循环变量赋值_尾料" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Fields":[{"Source":"BR_VAR_PARENT.[stockInfo_sum].[total]","SourceType":"expression","LoopVarField":"proTailing"}],"LoopVar":"pps","LoopEntity":"bo_akl_MM_productionPlanSub","LoopEntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtLoopVar><LoopVar>pps</LoopVar><LoopEntity>bo_akl_MM_productionPlanSub</LoopEntity><LoopEntityType>window</LoopEntityType></dtLoopVar><dtField><LoopVarField>proTailing</LoopVarField><SourceType>expression</SourceType><Source>BR_VAR_PARENT.[stockInfo_sum].[total]</Source></dtField></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow1" instanceName="删除实体记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"True","deleteType":"1","TableName":"stockInfo_sum","EntityType":"ruleSetVar"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition>True</Condition><DeleteType>1</DeleteType><TableName>stockInfo_sum</TableName><EntityType>ruleSetVar</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity2" instanceName="从数据库获取数据到实体_尾料" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Query","dsWhere":[{"columnType":"1","field":"stockInfo_sum.materialNo","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"LV.pps.materialNo","valueType":"9"},{"columnType":"1","field":"stockInfo_sum.stockType","fieldType":"char","leftBracket":"(","logicOperation":"and","operation":"=","rightBracket":")","value":"\"尾料仓\"","valueType":"9"}],"entityType":"ruleSetVar","entityName":"stockInfo_sum","itemqueryparam":null,"items":[{"destName":"stockInfo_sum.materialNo","sourceName":"stockInfo_sum.materialNo","type":"entityField"},{"destName":"stockInfo_sum.unit","sourceName":"stockInfo_sum.unit","type":"entityField"},{"destName":"stockInfo_sum.materialName","sourceName":"stockInfo_sum.materialName","type":"entityField"},{"destName":"stockInfo_sum.materialType","sourceName":"stockInfo_sum.materialType","type":"entityField"},{"destName":"stockInfo_sum.stockType","sourceName":"stockInfo_sum.stockType","type":"entityField"},{"destName":"stockInfo_sum.materialId","sourceName":"stockInfo_sum.materialId","type":"entityField"},{"destName":"stockInfo_sum.stockTypeId","sourceName":"stockInfo_sum.stockTypeId","type":"entityField"},{"destName":"stockInfo_sum.total","sourceName":"stockInfo_sum.total","type":"entityField"}],"orderBy":null,"sourceName":"stockInfo_sum","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>ruleSetVar</EntityType><EntityName>stockInfo_sum</EntityName><SourceType>Query</SourceType><SourceName>stockInfo_sum</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>stockInfo_sum.materialNo</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>LV.pps.materialNo</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>stockInfo_sum.stockType</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>and</logicOperation><operation>=</operation><rightBracket>)</rightBracket><value>"尾料仓"</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsQueryParam><![CDATA[<dsQueryParam />]]]]><![CDATA[></dsQueryParam><ID>35189f0872f14a6790a07466d4b31863</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>35189f0872f14a6790a07466d4b31863</MasterID><DestName>stockInfo_sum.materialNo</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.materialNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>35189f0872f14a6790a07466d4b31863</MasterID><DestName>stockInfo_sum.unit</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.unit</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>35189f0872f14a6790a07466d4b31863</MasterID><DestName>stockInfo_sum.materialName</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.materialName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>35189f0872f14a6790a07466d4b31863</MasterID><DestName>stockInfo_sum.materialType</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.materialType</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>35189f0872f14a6790a07466d4b31863</MasterID><DestName>stockInfo_sum.stockType</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.stockType</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>35189f0872f14a6790a07466d4b31863</MasterID><DestName>stockInfo_sum.materialId</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.materialId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>35189f0872f14a6790a07466d4b31863</MasterID><DestName>stockInfo_sum.stockTypeId</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.stockTypeId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>35189f0872f14a6790a07466d4b31863</MasterID><DestName>stockInfo_sum.total</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.total</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>35189f0872f14a6790a07466d4b31863</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>35189f0872f14a6790a07466d4b31863</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetLoopVariant" ruleName="给循环变量赋值" instanceCode="BR_SetLoopVariant4" instanceName="给循环变量赋值_清空不符合的数据" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Fields":[{"Source":"\"\"","SourceType":"expression","LoopVarField":"placePosition"},{"Source":"\"\"","SourceType":"expression","LoopVarField":"pNo"},{"Source":"Null()","SourceType":"expression","LoopVarField":"proNum"},{"Source":"\"\"","SourceType":"expression","LoopVarField":"proPlanNo"},{"Source":"\"\"","SourceType":"expression","LoopVarField":"startProTime"}],"LoopVar":"pps","LoopEntity":"bo_akl_MM_productionPlanSub","LoopEntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtLoopVar><LoopVar>pps</LoopVar><LoopEntity>bo_akl_MM_productionPlanSub</LoopEntity><LoopEntityType>window</LoopEntityType></dtLoopVar><dtField><LoopVarField>placePosition</LoopVarField><SourceType>expression</SourceType><Source>""</Source></dtField><dtField><LoopVarField>pNo</LoopVarField><SourceType>expression</SourceType><Source>""</Source></dtField><dtField><LoopVarField>proNum</LoopVarField><SourceType>expression</SourceType><Source>Null()</Source></dtField><dtField><LoopVarField>proPlanNo</LoopVarField><SourceType>expression</SourceType><Source>""</Source></dtField><dtField><LoopVarField>startProTime</LoopVarField><SourceType>expression</SourceType><Source>""</Source></dtField></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetLoopVariant" ruleName="给循环变量赋值" instanceCode="BR_SetLoopVariant2" instanceName="给循环变量赋值_需发料量" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Fields":[{"Source":"LV.pps.proNum*LV.pps.useNum+LV.pps.addMaterial","SourceType":"expression","LoopVarField":"needSendNum"}],"LoopVar":"pps","LoopEntity":"bo_akl_MM_productionPlanSub","LoopEntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtLoopVar><LoopVar>pps</LoopVar><LoopEntity>bo_akl_MM_productionPlanSub</LoopEntity><LoopEntityType>window</LoopEntityType></dtLoopVar><dtField><LoopVarField>needSendNum</LoopVarField><SourceType>expression</SourceType><Source>LV.pps.proNum*LV.pps.useNum+LV.pps.addMaterial</Source></dtField></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetLoopVariant" ruleName="给循环变量赋值" instanceCode="BR_SetLoopVariant3" instanceName="给循环变量赋值_需求日期" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Fields":[{"Source":"DateSub(LV.pps.startProTime,1,\"d\")","SourceType":"expression","LoopVarField":"needTime"}],"LoopVar":"pps","LoopEntity":"bo_akl_MM_productionPlanSub","LoopEntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtLoopVar><LoopVar>pps</LoopVar><LoopEntity>bo_akl_MM_productionPlanSub</LoopEntity><LoopEntityType>window</LoopEntityType></dtLoopVar><dtField><LoopVarField>needTime</LoopVarField><SourceType>expression</SourceType><Source>DateSub(LV.pps.startProTime,1,"d")</Source></dtField></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Variables>
+      <Variable code="stockInfo_sum" name="库存信息_总" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="materialNo" name="" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="unit" name="" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="materialName" name="" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="materialType" name="" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="stockType" name="" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="materialId" name="" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="stockTypeId" name="" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="total" name="" fieldType="number" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+    </Variables>
+  </Method>
+  <Method Code="JGButton1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>IsNullOrEmpty([bo_akl_MM_productionPlanSub].[needSendNum],False)==False</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage1" />
+      <evaluateRule code="BR_AbortRule1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_OpenComponentReturnData1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-01-19 16:18:36">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"form_add_sendMaterial","windowName":"登记发料数量","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"","widthExp":"","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":[{"paramName":"id","paramType":"expression","paramValue":"[bo_akl_MM_productionPlanSub].[id]","paramEntityType":"","entityFieldMapping":null},{"paramName":"materilaNo","paramType":"expression","paramValue":"[bo_akl_MM_productionPlanSub].[materialNo]","paramEntityType":"","entityFieldMapping":null}],"returnMapping":[{"destType":"entity","dest":"bo_akl_MM_productionPlanSub","srcType":"returnValue","src":"sendNum","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":false,"destFieldMapping":[{"destField":"bo_akl_MM_productionPlanSub.alreadySend","srcValueType":"field","srcValue":"alreadySendNum"},{"destField":"bo_akl_MM_productionPlanSub.id","srcValueType":"field","srcValue":"id"},{"destField":"bo_akl_MM_productionPlanSub.nextSendTime","srcValueType":"field","srcValue":"nextSendTime"}]}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>form_add_sendMaterial</WindowCode><WindowName>登记发料数量</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp /><WidthExp /><IsAsyn>False</IsAsyn></dtMaster><dtReturnValue><TargetType>entity</TargetType><Target>bo_akl_MM_productionPlanSub</Target><SourceType>returnValue</SourceType><Source>sendNum</Source><UpdateWay>insertOrUpdateBySameId</UpdateWay><IsClearData>False</IsClearData><SourceMapping><![CDATA[<dsSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_productionPlanSub.alreadySend</TargetField><SourceType>field</SourceType><Source>alreadySendNum</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_productionPlanSub.id</TargetField><SourceType>field</SourceType><Source>id</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_productionPlanSub.nextSendTime</TargetField><SourceType>field</SourceType><Source>nextSendTime</Source></dtSourceMapping></dsSourceMapping>]]]]><![CDATA[></SourceMapping></dtReturnValue><dtParam><WindowVariant>id</WindowVariant><SourceType>expression</SourceType><SourceTypeDisplayText>表达式</SourceTypeDisplayText><SourceValue>[bo_akl_MM_productionPlanSub].[id]</SourceValue></dtParam><dtParam><WindowVariant>materilaNo</WindowVariant><SourceType>expression</SourceType><SourceTypeDisplayText>表达式</SourceTypeDisplayText><SourceValue>[bo_akl_MM_productionPlanSub].[materialNo]</SourceValue></dtParam></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请选择需要发料的物料!\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请选择需要发料的物料!"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AbortRule" ruleName="中断规则" instanceCode="BR_AbortRule1" instanceName="中断规则" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"abortType":"CURRENT","msgnote":""}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>CURRENT</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton2_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>(!IsEmpty([bo_akl_MM_productionPlanSub].[id]))&amp;&amp;(IsEmpty([bo_akl_MM_productionPlanSub].[PID]))</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage2" />
+      <if isEnabled="True" isDebug="False" code="IfCode2">
+        <define>
+          <expression>BR_OUT.BR_ShowMessage2.confirm</expression>
+          <remark />
+        </define>
+        <sequence>
+          <evaluateRule code="BR_ModifyDataBaseRecord1" />
+          <evaluateRule code="BR_ExecuteRuleSet1" />
+        </sequence>
+      </if>
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ModifyDataBaseRecord" ruleName="修改数据库中的记录" instanceCode="BR_ModifyDataBaseRecord1" instanceName="修改数据库中的记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourcesMapping":[{"condition":[{"columnType":"1","field":"bo_akl_MM_productionPlanSub.planId","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"[bo_akl_MM_productionPlanSub].[planId]","valueType":"9"}],"dataMap":[{"colName":"bo_akl_MM_productionPlanSub.confirmSend","colValue":"True","valueType":"expression"}],"dataSource":"bo_akl_MM_productionPlanSub","opperType":"update"}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><orderNo>1</orderNo><destTableName>bo_akl_MM_productionPlanSub</destTableName><opperType>update</opperType><condition><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_MM_productionPlanSub.planId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>[bo_akl_MM_productionPlanSub].[planId]</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></condition><dtField><![CDATA[<NewDataSet><dtField><destField>bo_akl_MM_productionPlanSub.confirmSend</destField><sourceType>expression</sourceType><sourceField>True</sourceField></dtField></NewDataSet>]]]]><![CDATA[></dtField></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_form_stockBoard_FormLoadAction(form_stockBoard_窗体加载事件)" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"form_stockBoard_FormLoadAction","isParallelism":"False"},"invokeParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>form_stockBoard_FormLoadAction</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage2" instanceName="显示设置的提示信息_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-01-21 09:33:08">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"3","time":null,"simpleChinesePrompt":{"msgnote":"\"确认整个计划均已发料完毕了吗？\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>3</MsgType><SimpleChinese>"确认整个计划均已发料完毕了吗？"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请选择一个计划!(最顶级物料)\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请选择一个计划!(最顶级物料)"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGTimer1_TimerEvent" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_ExecuteRuleSet1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_form_stockBoard_FormLoadAction(form_stockBoard_窗体加载事件)" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-01-19 16:28:28">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"form_stockBoard_FormLoadAction","isParallelism":"False"},"invokeParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>form_stockBoard_FormLoadAction</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

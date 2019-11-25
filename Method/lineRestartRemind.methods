@@ -1,0 +1,996 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Methods>
+  <Method Code="lineRestartRemind" Type="Server" InterfaceType="Local" RestrictType="Private" TransactionType="transaction">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+  <if isEnabled="True" isDebug="False" code="IfCode15">
+    <define>
+      <expression>GetEntityRowCountFunc("BR_VAR_PARENT.startLine") &gt;0</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <foreach isEnabled="True" isDebug="False" code="ForeachCode1">
+        <define>
+          <varCode>sl</varCode>
+          <entityType>ruleSetVar</entityType>
+          <entityCode>startLine</entityCode>
+          <remark></remark>
+        </define>
+        <sequence>
+          <if isEnabled="True" isDebug="False" code="IfCode1">
+            <define>
+              <expression>!IsEmpty(LV.sl.proTimeId)</expression>
+              <remark></remark>
+            </define>
+            <sequence>
+              <evaluateRule code="BR_DataBaseDataToInterfaceEntity2" />
+              <if isEnabled="True" isDebug="False" code="IfCode2">
+                <define>
+                  <expression>GetEntityRowCountFunc("BR_VAR_PARENT.proTime") &gt;0</expression>
+                  <remark></remark>
+                </define>
+                <sequence>
+                  <if isEnabled="True" isDebug="False" code="IfCode3">
+                    <define>
+                      <expression>LV.sl.classes=="白班"</expression>
+                      <remark></remark>
+                    </define>
+                    <sequence>
+                      <if isEnabled="True" isDebug="False" code="IfCode4">
+                        <define>
+                          <expression>(IsNull(BR_VAR_PARENT.[proTime].[dayTime1H_1],False)&lt;&gt;False)&amp;&amp;(IsNull(BR_VAR_PARENT.[proTime].[dayTime1M_1],False)&lt;&gt;False)</expression>
+                          <remark></remark>
+                        </define>
+                        <sequence>
+                          <evaluateRule code="BR_SetEntityVarControlValue1" />
+                          <if isEnabled="True" isDebug="False" code="IfCode16">
+                            <define>
+                              <expression>BR_VAR_PARENT.[proTime].[dayTime1H_1]&lt;10</expression>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2" />
+                            </sequence>
+                          </if>
+                          <else isEnabled="True" isDebug="False">
+                            <define>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_1" />
+                            </sequence>
+                          </else>
+                          <if isEnabled="True" isDebug="False" code="IfCode17">
+                            <define>
+                              <expression>BR_VAR_PARENT.[proTime].[dayTime1M_1]&lt;10</expression>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_2" />
+                            </sequence>
+                          </if>
+                          <else isEnabled="True" isDebug="False">
+                            <define>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_1_1" />
+                            </sequence>
+                          </else>
+                          <evaluateRule code="BR_AddTableRecord1" />
+                        </sequence>
+                      </if>
+                      <if isEnabled="True" isDebug="False" code="IfCode5">
+                        <define>
+                          <expression>(IsNull(BR_VAR_PARENT.[proTime].[dayTime2H_1],False)&lt;&gt;False)&amp;&amp;(IsNull(BR_VAR_PARENT.[proTime].[dayTime2M_1],False)&lt;&gt;False)</expression>
+                          <remark></remark>
+                        </define>
+                        <sequence>
+                          <evaluateRule code="BR_SetEntityVarControlValue1_1" />
+                          <if isEnabled="True" isDebug="False" code="IfCode18">
+                            <define>
+                              <expression>BR_VAR_PARENT.[proTime].[dayTime2H_1]&lt;10</expression>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_3" />
+                            </sequence>
+                          </if>
+                          <else isEnabled="True" isDebug="False">
+                            <define>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_1_2" />
+                            </sequence>
+                          </else>
+                          <if isEnabled="True" isDebug="False" code="IfCode19">
+                            <define>
+                              <expression>BR_VAR_PARENT.[proTime].[dayTime2M_1]&lt;10</expression>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_2_1" />
+                            </sequence>
+                          </if>
+                          <else isEnabled="True" isDebug="False">
+                            <define>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_1_1_1" />
+                            </sequence>
+                          </else>
+                          <evaluateRule code="BR_AddTableRecord1_1" />
+                        </sequence>
+                      </if>
+                      <if isEnabled="True" isDebug="False" code="IfCode6">
+                        <define>
+                          <expression>(IsNull(BR_VAR_PARENT.[proTime].[dayTime3H_1],False)&lt;&gt;False)&amp;&amp;(IsNull(BR_VAR_PARENT.[proTime].[dayTime3M_1],False)&lt;&gt;False)</expression>
+                          <remark></remark>
+                        </define>
+                        <sequence>
+                          <evaluateRule code="BR_SetEntityVarControlValue1_2" />
+                          <if isEnabled="True" isDebug="False" code="IfCode20">
+                            <define>
+                              <expression>BR_VAR_PARENT.[proTime].[dayTime3H_1]&lt;10</expression>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_4" />
+                            </sequence>
+                          </if>
+                          <else isEnabled="True" isDebug="False">
+                            <define>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_1_3" />
+                            </sequence>
+                          </else>
+                          <if isEnabled="True" isDebug="False" code="IfCode21">
+                            <define>
+                              <expression>BR_VAR_PARENT.[proTime].[dayTime3M_1]&lt;10</expression>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_2_2" />
+                            </sequence>
+                          </if>
+                          <else isEnabled="True" isDebug="False">
+                            <define>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_1_1_2" />
+                            </sequence>
+                          </else>
+                          <evaluateRule code="BR_AddTableRecord1_2" />
+                        </sequence>
+                      </if>
+                      <if isEnabled="True" isDebug="False" code="IfCode7">
+                        <define>
+                          <expression>(IsNull(BR_VAR_PARENT.[proTime].[dayTime4H_1],False)&lt;&gt;False)&amp;&amp;(IsNull(BR_VAR_PARENT.[proTime].[dayTime4M_1],False)&lt;&gt;False)</expression>
+                          <remark></remark>
+                        </define>
+                        <sequence>
+                          <evaluateRule code="BR_SetEntityVarControlValue1_3" />
+                          <if isEnabled="True" isDebug="False" code="IfCode22">
+                            <define>
+                              <expression>BR_VAR_PARENT.[proTime].[dayTime4H_1]&lt;10</expression>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_5" />
+                            </sequence>
+                          </if>
+                          <else isEnabled="True" isDebug="False">
+                            <define>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_1_4" />
+                            </sequence>
+                          </else>
+                          <if isEnabled="True" isDebug="False" code="IfCode23">
+                            <define>
+                              <expression>BR_VAR_PARENT.[proTime].[dayTime4M_1]&lt;10</expression>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_2_3" />
+                            </sequence>
+                          </if>
+                          <else isEnabled="True" isDebug="False">
+                            <define>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_1_1_3" />
+                            </sequence>
+                          </else>
+                          <evaluateRule code="BR_AddTableRecord1_3" />
+                        </sequence>
+                      </if>
+                    </sequence>
+                  </if>
+                  <if isEnabled="True" isDebug="False" code="IfCode8">
+                    <define>
+                      <expression>LV.sl.classes=="晚班"</expression>
+                      <remark></remark>
+                    </define>
+                    <sequence>
+                      <if isEnabled="True" isDebug="False" code="IfCode9">
+                        <define>
+                          <expression>(IsNull(BR_VAR_PARENT.[proTime].[nightTime1H_1],False)&lt;&gt;False)&amp;&amp;(IsNull(BR_VAR_PARENT.[proTime].[nightTime1M_1],False)&lt;&gt;False)</expression>
+                          <remark></remark>
+                        </define>
+                        <sequence>
+                          <evaluateRule code="BR_SetEntityVarControlValue1_4" />
+                          <if isEnabled="True" isDebug="False" code="IfCode24">
+                            <define>
+                              <expression>BR_VAR_PARENT.[proTime].[nightTime1H_1]&lt;10</expression>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_6" />
+                            </sequence>
+                          </if>
+                          <else isEnabled="True" isDebug="False">
+                            <define>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_1_5" />
+                            </sequence>
+                          </else>
+                          <if isEnabled="True" isDebug="False" code="IfCode25">
+                            <define>
+                              <expression>BR_VAR_PARENT.[proTime].[nightTime1M_1]&lt;10</expression>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_2_4" />
+                            </sequence>
+                          </if>
+                          <else isEnabled="True" isDebug="False">
+                            <define>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_1_1_4" />
+                            </sequence>
+                          </else>
+                          <evaluateRule code="BR_AddTableRecord1_4" />
+                        </sequence>
+                      </if>
+                      <if isEnabled="True" isDebug="False" code="IfCode10">
+                        <define>
+                          <expression>(IsNull(BR_VAR_PARENT.[proTime].[nightTime2H_1],False)&lt;&gt;False)&amp;&amp;(IsNull(BR_VAR_PARENT.[proTime].[nightTime2M_1],False)&lt;&gt;False)</expression>
+                          <remark></remark>
+                        </define>
+                        <sequence>
+                          <evaluateRule code="BR_SetEntityVarControlValue1_4_1" />
+                          <if isEnabled="True" isDebug="False" code="IfCode26">
+                            <define>
+                              <expression>BR_VAR_PARENT.[proTime].[nightTime2H_1]&lt;10</expression>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_6_1" />
+                            </sequence>
+                          </if>
+                          <else isEnabled="True" isDebug="False">
+                            <define>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_1_5_1" />
+                            </sequence>
+                          </else>
+                          <if isEnabled="True" isDebug="False" code="IfCode27">
+                            <define>
+                              <expression>BR_VAR_PARENT.[proTime].[nightTime2M_1]&lt;10</expression>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_2_4_1" />
+                            </sequence>
+                          </if>
+                          <else isEnabled="True" isDebug="False">
+                            <define>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_1_1_4_1" />
+                            </sequence>
+                          </else>
+                          <evaluateRule code="BR_AddTableRecord1_4_1" />
+                        </sequence>
+                      </if>
+                      <if isEnabled="True" isDebug="False" code="IfCode11">
+                        <define>
+                          <expression>(IsNull(BR_VAR_PARENT.[proTime].[nightTime3H_1],False)&lt;&gt;False)&amp;&amp;(IsNull(BR_VAR_PARENT.[proTime].[nightTime3M_1],False)&lt;&gt;False)</expression>
+                          <remark></remark>
+                        </define>
+                        <sequence>
+                          <evaluateRule code="BR_SetEntityVarControlValue1_4_1_1" />
+                          <if isEnabled="True" isDebug="False" code="IfCode28">
+                            <define>
+                              <expression>BR_VAR_PARENT.[proTime].[nightTime3H_1]&lt;10</expression>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_6_1_1" />
+                            </sequence>
+                          </if>
+                          <else isEnabled="True" isDebug="False">
+                            <define>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_1_5_1_1" />
+                            </sequence>
+                          </else>
+                          <if isEnabled="True" isDebug="False" code="IfCode29">
+                            <define>
+                              <expression>BR_VAR_PARENT.[proTime].[nightTime3M_1]&lt;10</expression>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_2_4_1_1" />
+                            </sequence>
+                          </if>
+                          <else isEnabled="True" isDebug="False">
+                            <define>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_1_1_4_1_1" />
+                            </sequence>
+                          </else>
+                          <evaluateRule code="BR_AddTableRecord1_4_1_1" />
+                        </sequence>
+                      </if>
+                      <if isEnabled="True" isDebug="False" code="IfCode12">
+                        <define>
+                          <expression>(IsNull(BR_VAR_PARENT.[proTime].[nightTime4H_1],False)&lt;&gt;False)&amp;&amp;(IsNull(BR_VAR_PARENT.[proTime].[nightTime4M_1],False)&lt;&gt;False)</expression>
+                          <remark></remark>
+                        </define>
+                        <sequence>
+                          <evaluateRule code="BR_SetEntityVarControlValue1_4_2" />
+                          <if isEnabled="True" isDebug="False" code="IfCode30">
+                            <define>
+                              <expression>BR_VAR_PARENT.[proTime].[nightTime4H_1]&lt;10</expression>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_6_2" />
+                            </sequence>
+                          </if>
+                          <else isEnabled="True" isDebug="False">
+                            <define>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_1_5_2" />
+                            </sequence>
+                          </else>
+                          <if isEnabled="True" isDebug="False" code="IfCode31">
+                            <define>
+                              <expression>BR_VAR_PARENT.[proTime].[nightTime4M_1]&lt;10</expression>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_2_4_2" />
+                            </sequence>
+                          </if>
+                          <else isEnabled="True" isDebug="False">
+                            <define>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_SetEntityVarControlValue2_1_1_4_2" />
+                            </sequence>
+                          </else>
+                          <evaluateRule code="BR_AddTableRecord1_4_2" />
+                        </sequence>
+                      </if>
+                    </sequence>
+                  </if>
+                </sequence>
+              </if>
+              <if isEnabled="True" isDebug="False" code="IfCode13">
+                <define>
+                  <expression>GetEntityRowCountFunc("BR_VAR_PARENT.timePoint") &gt;0</expression>
+                  <remark></remark>
+                </define>
+                <sequence>
+                  <foreach isEnabled="True" isDebug="False" code="ForeachCode2">
+                    <define>
+                      <varCode>tp</varCode>
+                      <entityType>ruleSetVar</entityType>
+                      <entityCode>timePoint</entityCode>
+                      <remark></remark>
+                    </define>
+                    <sequence>
+                      <if isEnabled="True" isDebug="False" code="IfCode14">
+                        <define>
+                          <expression>LV.tp.timeP==ShortTimeNow()</expression>
+                          <remark></remark>
+                        </define>
+                        <sequence>
+                          <evaluateRule code="BR_ExecuteRuleSet1_1_2_1" />
+                          <evaluateRule code="BR_ExecuteRuleSet3_1_1_1" />
+                          <evaluateRule code="BR_ExecuteRuleSet1_1_1_2_1" />
+                          <evaluateRule code="BR_AbortLoop1" />
+                        </sequence>
+                      </if>
+                    </sequence>
+                  </foreach>
+                </sequence>
+              </if>
+            </sequence>
+          </if>
+          <evaluateRule code="BR_ClearEntityData1" />
+        </sequence>
+      </foreach>
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取开线暂停数据到实体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_line_start.state","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"\"暂停\"","valueType":"9"}],"entityType":"ruleSetVar","entityName":"startLine","itemqueryparam":null,"items":[{"destName":"startLine.id","sourceName":"bo_akl_line_start.id","type":"entityField"},{"destName":"startLine.prolineUserName","sourceName":"bo_akl_line_start.prolineUserName","type":"entityField"},{"destName":"startLine.prolineUserCode","sourceName":"bo_akl_line_start.prolineUserCode","type":"entityField"},{"destName":"startLine.proTimeId","sourceName":"bo_akl_line_start.proTimeId","type":"entityField"},{"destName":"startLine.proTimeTitle","sourceName":"bo_akl_line_start.proTimeTitle","type":"entityField"},{"destName":"startLine.classes","sourceName":"bo_akl_line_start.classes","type":"entityField"},{"destName":"startLine.prolineName","sourceName":"bo_akl_line_start.prolineName","type":"entityField"},{"destName":"startLine.prolineId","sourceName":"bo_akl_line_start.prolineId","type":"entityField"},{"destName":"startLine.state","sourceName":"bo_akl_line_start.state","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_line_start","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>ruleSetVar</EntityType><EntityName>startLine</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_line_start</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_line_start.state</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>"暂停"</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>f89905878db941a7b080f25227412092</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>f89905878db941a7b080f25227412092</MasterID><DestName>startLine.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f89905878db941a7b080f25227412092</MasterID><DestName>startLine.prolineUserName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.prolineUserName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f89905878db941a7b080f25227412092</MasterID><DestName>startLine.prolineUserCode</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.prolineUserCode</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f89905878db941a7b080f25227412092</MasterID><DestName>startLine.proTimeId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.proTimeId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f89905878db941a7b080f25227412092</MasterID><DestName>startLine.proTimeTitle</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.proTimeTitle</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f89905878db941a7b080f25227412092</MasterID><DestName>startLine.classes</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.classes</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f89905878db941a7b080f25227412092</MasterID><DestName>startLine.prolineName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.prolineName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f89905878db941a7b080f25227412092</MasterID><DestName>startLine.prolineId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.prolineId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f89905878db941a7b080f25227412092</MasterID><DestName>startLine.state</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.state</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>f89905878db941a7b080f25227412092</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>f89905878db941a7b080f25227412092</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_2_2" instanceName="给界面实体/控件/变量赋值_1_2_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:16:40">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"ConcatStr(\"0\",ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime3M_1],2))","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConcatStr("0",ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime3M_1],2))</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_1_1_4" instanceName="给界面实体/控件/变量赋值_1_1_1_4" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:23:06">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime1M_1],2)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime1M_1],2)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1_4_1" instanceName="给界面实体/控件/变量赋值_5_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:03:16">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"\"\"","entityFieldMapping":null},{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"\"\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>""</Source></dtFieldMap><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>""</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1_4_1" instanceName="新增晚班时间点实体记录_4_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:23:39">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"timePoint.timeP","fieldtype":"expression","srcField":"ConcatStr(BR_VAR_PARENT.time1,\":\",BR_VAR_PARENT.time2)"}],"TableType":"ruleSetVar","TableName":"timePoint","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>timePoint</EntityName></dtMaster><dtEntityColumns><DestName>timePoint.timeP</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(BR_VAR_PARENT.time1,":",BR_VAR_PARENT.time2)</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_1_4" instanceName="给界面实体/控件/变量赋值_1_1_4" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:18:14">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime4H_1],2)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime4H_1],2)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_2_4_1_1" instanceName="给界面实体/控件/变量赋值_1_2_4_1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:26:40">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"ConcatStr(\"0\",ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime3M_1],2))","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConcatStr("0",ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime3M_1],2))</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_2_4_2" instanceName="给界面实体/控件/变量赋值_1_2_4_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:28:19">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"ConcatStr(\"0\",ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime4M_1],2))","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConcatStr("0",ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime4M_1],2))</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_1_1_4_1_1" instanceName="给界面实体/控件/变量赋值_1_1_1_4_1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:26:47">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime3M_1],2)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime3M_1],2)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1_1" instanceName="给界面实体/控件/变量赋值_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:03:16">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"\"\"","entityFieldMapping":null},{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"\"\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>""</Source></dtFieldMap><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>""</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1_1" instanceName="新增白班时间点实体记录_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:09:33">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"timePoint.timeP","fieldtype":"expression","srcField":"ConcatStr(BR_VAR_PARENT.time1,\":\",BR_VAR_PARENT.time2)"}],"TableType":"ruleSetVar","TableName":"timePoint","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>timePoint</EntityName></dtMaster><dtEntityColumns><DestName>timePoint.timeP</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(BR_VAR_PARENT.time1,":",BR_VAR_PARENT.time2)</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_1_5_1" instanceName="给界面实体/控件/变量赋值_1_1_5_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:24:53">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime2H_1],2)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime2H_1],2)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ClearEntityData" ruleName="清除实体记录" instanceCode="BR_ClearEntityData1" instanceName="清除实体记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dtMaster":[{"entityName":"proTime","entityType":"ruleSetVar","dsWhere":null},{"entityName":"timePoint","entityType":"ruleSetVar","dsWhere":null},{"entityName":"userAccount","entityType":"ruleSetVar","dsWhere":null},{"entityName":"userid","entityType":"ruleSetVar","dsWhere":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><EntityName>proTime</EntityName><EntityType>ruleSetVar</EntityType><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition></dtMaster><dtMaster><EntityName>timePoint</EntityName><EntityType>ruleSetVar</EntityType><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition></dtMaster><dtMaster><EntityName>userAccount</EntityName><EntityType>ruleSetVar</EntityType><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition></dtMaster><dtMaster><EntityName>userid</EntityName><EntityType>ruleSetVar</EntityType><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_2_4_1" instanceName="给界面实体/控件/变量赋值_1_2_4_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:25:10">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"ConcatStr(\"0\",ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime2M_1],2))","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConcatStr("0",ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime2M_1],2))</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_1_1_4_1" instanceName="给界面实体/控件/变量赋值_1_1_1_4_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:25:20">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime2M_1],2)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime2M_1],2)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity2" instanceName="从数据库获取生产时间段数据到实体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_base_productiontime.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"LV.sl.proTimeId","valueType":"9"}],"entityType":"ruleSetVar","entityName":"proTime","itemqueryparam":null,"items":[{"destName":"proTime.id","sourceName":"bo_akl_base_productiontime.id","type":"entityField"},{"destName":"proTime.title","sourceName":"bo_akl_base_productiontime.title","type":"entityField"},{"destName":"proTime.dayTime1H","sourceName":"bo_akl_base_productiontime.dayTime1H","type":"entityField"},{"destName":"proTime.dayTime1M","sourceName":"bo_akl_base_productiontime.dayTime1M","type":"entityField"},{"destName":"proTime.dayTime2H","sourceName":"bo_akl_base_productiontime.dayTime2H","type":"entityField"},{"destName":"proTime.dayTime2M","sourceName":"bo_akl_base_productiontime.dayTime2M","type":"entityField"},{"destName":"proTime.dayTime3H","sourceName":"bo_akl_base_productiontime.dayTime3H","type":"entityField"},{"destName":"proTime.dayTime3M","sourceName":"bo_akl_base_productiontime.dayTime3M","type":"entityField"},{"destName":"proTime.dayTime4H","sourceName":"bo_akl_base_productiontime.dayTime4H","type":"entityField"},{"destName":"proTime.dayTime4M","sourceName":"bo_akl_base_productiontime.dayTime4M","type":"entityField"},{"destName":"proTime.nightTime1H","sourceName":"bo_akl_base_productiontime.nightTime1H","type":"entityField"},{"destName":"proTime.nightTime1M","sourceName":"bo_akl_base_productiontime.nightTime1M","type":"entityField"},{"destName":"proTime.nightTime2H","sourceName":"bo_akl_base_productiontime.nightTime2H","type":"entityField"},{"destName":"proTime.nightTime2M","sourceName":"bo_akl_base_productiontime.nightTime2M","type":"entityField"},{"destName":"proTime.nightTime3H","sourceName":"bo_akl_base_productiontime.nightTime3H","type":"entityField"},{"destName":"proTime.nightTime3M","sourceName":"bo_akl_base_productiontime.nightTime3M","type":"entityField"},{"destName":"proTime.nightTime4H","sourceName":"bo_akl_base_productiontime.nightTime4H","type":"entityField"},{"destName":"proTime.nightTime4M","sourceName":"bo_akl_base_productiontime.nightTime4M","type":"entityField"},{"destName":"proTime.dayTime1H_1","sourceName":"bo_akl_base_productiontime.dayTime1H_1","type":"entityField"},{"destName":"proTime.dayTime1M_1","sourceName":"bo_akl_base_productiontime.dayTime1M_1","type":"entityField"},{"destName":"proTime.dayTime2H_1","sourceName":"bo_akl_base_productiontime.dayTime2H_1","type":"entityField"},{"destName":"proTime.dayTime2M_1","sourceName":"bo_akl_base_productiontime.dayTime2M_1","type":"entityField"},{"destName":"proTime.dayTime3H_1","sourceName":"bo_akl_base_productiontime.dayTime3H_1","type":"entityField"},{"destName":"proTime.dayTime3M_1","sourceName":"bo_akl_base_productiontime.dayTime3M_1","type":"entityField"},{"destName":"proTime.dayTime4H_1","sourceName":"bo_akl_base_productiontime.dayTime4H_1","type":"entityField"},{"destName":"proTime.dayTime4M_1","sourceName":"bo_akl_base_productiontime.dayTime4M_1","type":"entityField"},{"destName":"proTime.nightTime1H_1","sourceName":"bo_akl_base_productiontime.nightTime1H_1","type":"entityField"},{"destName":"proTime.nightTime1M_1","sourceName":"bo_akl_base_productiontime.nightTime1M_1","type":"entityField"},{"destName":"proTime.nightTime2H_1","sourceName":"bo_akl_base_productiontime.nightTime2H_1","type":"entityField"},{"destName":"proTime.nightTime2M_1","sourceName":"bo_akl_base_productiontime.nightTime2M_1","type":"entityField"},{"destName":"proTime.nightTime3H_1","sourceName":"bo_akl_base_productiontime.nightTime3H_1","type":"entityField"},{"destName":"proTime.nightTime3M_1","sourceName":"bo_akl_base_productiontime.nightTime3M_1","type":"entityField"},{"destName":"proTime.nightTime4H_1","sourceName":"bo_akl_base_productiontime.nightTime4H_1","type":"entityField"},{"destName":"proTime.nightTime4M_1","sourceName":"bo_akl_base_productiontime.nightTime4M_1","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_base_productiontime","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>ruleSetVar</EntityType><EntityName>proTime</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_base_productiontime</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_base_productiontime.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>LV.sl.proTimeId</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>d3dc0007db6e4a07a1eff886d0a6a321</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.title</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.title</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.dayTime1H</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.dayTime1H</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.dayTime1M</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.dayTime1M</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.dayTime2H</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.dayTime2H</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.dayTime2M</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.dayTime2M</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.dayTime3H</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.dayTime3H</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.dayTime3M</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.dayTime3M</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.dayTime4H</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.dayTime4H</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.dayTime4M</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.dayTime4M</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.nightTime1H</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.nightTime1H</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.nightTime1M</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.nightTime1M</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.nightTime2H</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.nightTime2H</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.nightTime2M</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.nightTime2M</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.nightTime3H</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.nightTime3H</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.nightTime3M</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.nightTime3M</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.nightTime4H</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.nightTime4H</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.nightTime4M</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.nightTime4M</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.dayTime1H_1</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.dayTime1H_1</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.dayTime1M_1</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.dayTime1M_1</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.dayTime2H_1</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.dayTime2H_1</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.dayTime2M_1</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.dayTime2M_1</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.dayTime3H_1</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.dayTime3H_1</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.dayTime3M_1</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.dayTime3M_1</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.dayTime4H_1</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.dayTime4H_1</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.dayTime4M_1</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.dayTime4M_1</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.nightTime1H_1</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.nightTime1H_1</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.nightTime1M_1</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.nightTime1M_1</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.nightTime2H_1</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.nightTime2H_1</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.nightTime2M_1</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.nightTime2M_1</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.nightTime3H_1</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.nightTime3H_1</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.nightTime3M_1</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.nightTime3M_1</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.nightTime4H_1</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.nightTime4H_1</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d3dc0007db6e4a07a1eff886d0a6a321</MasterID><DestName>proTime.nightTime4M_1</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productiontime.nightTime4M_1</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>d3dc0007db6e4a07a1eff886d0a6a321</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>d3dc0007db6e4a07a1eff886d0a6a321</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_4" instanceName="给界面实体/控件/变量赋值_1_4" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:16:06">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"ConcatStr(\"0\",ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime3H_1],2))","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConcatStr("0",ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime3H_1],2))</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_1_1" instanceName="给界面实体/控件/变量赋值_1_1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:08:41">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime1M_1],2)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime1M_1],2)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_2_3" instanceName="给界面实体/控件/变量赋值_1_2_3" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:18:30">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"ConcatStr(\"0\",ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime4M_1],2))","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConcatStr("0",ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime4M_1],2))</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_1_1_1" instanceName="给界面实体/控件/变量赋值_1_1_1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:13:20">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime2M_1],2)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime2M_1],2)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_1_1_3" instanceName="给界面实体/控件/变量赋值_1_1_1_3" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:18:42">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime4M_1],2)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime4M_1],2)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_2_1" instanceName="给界面实体/控件/变量赋值_1_2_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:13:08">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"ConcatStr(\"0\",ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime2M_1],2))","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConcatStr("0",ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime2M_1],2))</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_1_2" instanceName="给界面实体/控件/变量赋值_1_1_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:12:52">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime2H_1],2)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime2H_1],2)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_6_1" instanceName="给界面实体/控件/变量赋值_1_6_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:24:46">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"ConcatStr(\"0\",ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime2H_1],2))","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConcatStr("0",ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime2H_1],2))</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_2" instanceName="给界面实体/控件/变量赋值_1_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:08:29">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"ConcatStr(\"0\",ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime1M_1],2))","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConcatStr("0",ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime1M_1],2))</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_3" instanceName="给界面实体/控件/变量赋值_1_3" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:12:11">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"ConcatStr(\"0\",ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime2H_1],2))","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConcatStr("0",ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime2H_1],2))</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_6" instanceName="给界面实体/控件/变量赋值_1_6" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:22:19">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"ConcatStr(\"0\",ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime1H_1],2))","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConcatStr("0",ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime1H_1],2))</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1_2" instanceName="给界面实体/控件/变量赋值_3" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:03:16">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"\"\"","entityFieldMapping":null},{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"\"\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>""</Source></dtFieldMap><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>""</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1_2" instanceName="新增白班时间点实体记录_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:09:33">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"timePoint.timeP","fieldtype":"expression","srcField":"ConcatStr(BR_VAR_PARENT.time1,\":\",BR_VAR_PARENT.time2)"}],"TableType":"ruleSetVar","TableName":"timePoint","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>timePoint</EntityName></dtMaster><dtEntityColumns><DestName>timePoint.timeP</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(BR_VAR_PARENT.time1,":",BR_VAR_PARENT.time2)</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_1_5" instanceName="给界面实体/控件/变量赋值_1_1_5" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:22:30">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime1H_1],2)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime1H_1],2)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_1" instanceName="给界面实体/控件/变量赋值_1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:06:20">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime1H_1],2)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime1H_1],2)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:03:16">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"\"\"","entityFieldMapping":null},{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"\"\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>""</Source></dtFieldMap><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>""</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1" instanceName="新增白班时间点实体记录" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:09:33">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"timePoint.timeP","fieldtype":"expression","srcField":"ConcatStr(BR_VAR_PARENT.time1,\":\",BR_VAR_PARENT.time2)"}],"TableType":"ruleSetVar","TableName":"timePoint","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>timePoint</EntityName></dtMaster><dtEntityColumns><DestName>timePoint.timeP</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(BR_VAR_PARENT.time1,":",BR_VAR_PARENT.time2)</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_1_1_4_2" instanceName="给界面实体/控件/变量赋值_1_1_1_4_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:28:26">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime4M_1],2)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime4M_1],2)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1_4_1_1" instanceName="给界面实体/控件/变量赋值_5_1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:03:16">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"\"\"","entityFieldMapping":null},{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"\"\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>""</Source></dtFieldMap><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>""</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1_4_1_1" instanceName="新增晚班时间点实体记录_4_1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:23:39">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"timePoint.timeP","fieldtype":"expression","srcField":"ConcatStr(BR_VAR_PARENT.time1,\":\",BR_VAR_PARENT.time2)"}],"TableType":"ruleSetVar","TableName":"timePoint","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>timePoint</EntityName></dtMaster><dtEntityColumns><DestName>timePoint.timeP</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(BR_VAR_PARENT.time1,":",BR_VAR_PARENT.time2)</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1_1_2_1" instanceName="执行方法_OrgQueryUser(用户单表数据查询)_1_1_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_organization","windowCode":"","ruleSetCode":"OrgQueryUser","isParallelism":"False","executeType":"confirm"},"invokeParams":[{"paramCode":"userNo","paramType":"expression","paramValue":"LV.sl.prolineUserCode","paramSource":"","dataFilterType":"","paramFieldMapping":null}],"returnMapping":[{"destType":"ruleSetVariant","dest":"userid","srcType":"returnValue","src":"userEntity","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":false,"destFieldMapping":[{"destField":"id","destType":"char","srcValueType":"field","srcValue":"id"}],"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><windowCode /><executeType>confirm</executeType><componentCode>vbase_organization</componentCode><ruleSetCode>OrgQueryUser</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>userNo</paramCode><paramType>expression</paramType><paramValue>LV.sl.prolineUserCode</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtReturnMapping><destType>ruleSetVariant</destType><dest>userid</dest><srcType>returnValue</srcType><src>userEntity</src><updateDestEntityMethod>insertOrUpdateBySameId</updateDestEntityMethod><isCleanDestEntityData>False</isCleanDestEntityData><destFieldMapping><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>id</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>id</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></destFieldMapping><dsFilterCondition><![CDATA[<NewDataSet />]]]]><![CDATA[></dsFilterCondition><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet3_1_1_1" instanceName="执行方法_API_MailQueryUserIdNames(根据Userid获取人员的详细信息)_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_org_mail","windowCode":"","ruleSetCode":"API_MailQueryUserIdNames","isParallelism":"False","executeType":"confirm"},"invokeParams":[{"paramCode":"userIdEntity","paramType":"entity","paramValue":"userid","paramSource":"ruleSetVar","dataFilterType":"all","paramFieldMapping":[{"paramEntityField":"userId","fieldValueType":"field","fieldValue":"id"}]}],"returnMapping":[{"destType":"ruleSetVariant","dest":"userAccount","srcType":"returnValue","src":"accountEntity","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":false,"destFieldMapping":[{"destField":"id","destType":"char","srcValueType":"field","srcValue":"id"},{"destField":"account","destType":"char","srcValueType":"field","srcValue":"account"}],"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><windowCode /><executeType>confirm</executeType><componentCode>vbase_org_mail</componentCode><ruleSetCode>API_MailQueryUserIdNames</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>userIdEntity</paramCode><paramType>entity</paramType><paramValue>userid</paramValue><paramSource>ruleSetVar</paramSource><paramSourceDisplayText>方法变量实体</paramSourceDisplayText><dataFilterType>all</dataFilterType><paramFieldMapping><![CDATA[<NewDataSet><dtParamFieldMapping><paramEntityField>userId</paramEntityField><paramEntityType>ruleSetVar</paramEntityType><fieldValueType>field</fieldValueType><fieldValue>id</fieldValue></dtParamFieldMapping></NewDataSet>]]]]><![CDATA[></paramFieldMapping></dtInvokeParams><dtReturnMapping><destType>ruleSetVariant</destType><dest>userAccount</dest><srcType>returnValue</srcType><src>accountEntity</src><updateDestEntityMethod>insertOrUpdateBySameId</updateDestEntityMethod><isCleanDestEntityData>False</isCleanDestEntityData><destFieldMapping><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>id</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>id</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>account</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>account</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></destFieldMapping><dsFilterCondition><![CDATA[<NewDataSet />]]]]><![CDATA[></dsFilterCondition><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1_1_1_2_1" instanceName="执行方法_API_MailSendMessage(发送消息)_1_2_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_mail","windowCode":"","ruleSetCode":"API_MailSendMessage","isParallelism":"False","executeType":"confirm"},"invokeParams":[{"paramCode":"mailEntity","paramType":"entity","paramValue":"userAccount","paramSource":"ruleSetVar","dataFilterType":"all","paramFieldMapping":[{"paramEntityField":"title","fieldValueType":"expression","fieldValue":"ConcatStr(\"休息重启提醒,\",\"产线:\",LV.sl.prolineName,\",休息时间已结束\")"},{"paramEntityField":"message","fieldValueType":"expression","fieldValue":"ConcatStr(\"休息重启提醒,\",\"产线:\",LV.sl.prolineName,\",休息时间已结束\")"},{"paramEntityField":"sendAccountId","fieldValueType":"expression","fieldValue":"\"0\""},{"paramEntityField":"sendAccountName","fieldValueType":"expression","fieldValue":"\"系统\""},{"paramEntityField":"receiveAccountId","fieldValueType":"field","fieldValue":"id"},{"paramEntityField":"receiveAccountName","fieldValueType":"field","fieldValue":"account"},{"paramEntityField":"receiveType","fieldValueType":"expression","fieldValue":"\"user\""}]}],"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><windowCode /><executeType>confirm</executeType><componentCode>vbase_mail</componentCode><ruleSetCode>API_MailSendMessage</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>mailEntity</paramCode><paramType>entity</paramType><paramValue>userAccount</paramValue><paramSource>ruleSetVar</paramSource><paramSourceDisplayText>方法变量实体</paramSourceDisplayText><dataFilterType>all</dataFilterType><paramFieldMapping><![CDATA[<NewDataSet><dtParamFieldMapping><paramEntityField>title</paramEntityField><paramEntityType>window</paramEntityType><fieldValueType>expression</fieldValueType><fieldValue>ConcatStr("休息重启提醒,","产线:",LV.sl.prolineName,",休息时间已结束")</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>message</paramEntityField><paramEntityType>window</paramEntityType><fieldValueType>expression</fieldValueType><fieldValue>ConcatStr("休息重启提醒,","产线:",LV.sl.prolineName,",休息时间已结束")</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>sendAccountId</paramEntityField><paramEntityType>window</paramEntityType><fieldValueType>expression</fieldValueType><fieldValue>"0"</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>sendAccountName</paramEntityField><paramEntityType>window</paramEntityType><fieldValueType>expression</fieldValueType><fieldValue>"系统"</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>receiveAccountId</paramEntityField><paramEntityType>ruleSetVar</paramEntityType><fieldValueType>field</fieldValueType><fieldValue>id</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>receiveAccountName</paramEntityField><paramEntityType>ruleSetVar</paramEntityType><fieldValueType>field</fieldValueType><fieldValue>account</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>receiveType</paramEntityField><fieldValueType>expression</fieldValueType><fieldValue>"user"</fieldValue></dtParamFieldMapping></NewDataSet>]]]]><![CDATA[></paramFieldMapping></dtInvokeParams></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop1" instanceName="中断循环" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"abortType":"break"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>break</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1_3" instanceName="给界面实体/控件/变量赋值_4" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:03:16">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"\"\"","entityFieldMapping":null},{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"\"\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>""</Source></dtFieldMap><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>""</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1_3" instanceName="新增白班时间点实体记录_3" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:09:33">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"timePoint.timeP","fieldtype":"expression","srcField":"ConcatStr(BR_VAR_PARENT.time1,\":\",BR_VAR_PARENT.time2)"}],"TableType":"ruleSetVar","TableName":"timePoint","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>timePoint</EntityName></dtMaster><dtEntityColumns><DestName>timePoint.timeP</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(BR_VAR_PARENT.time1,":",BR_VAR_PARENT.time2)</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_5" instanceName="给界面实体/控件/变量赋值_1_5" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:18:06">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"ConcatStr(\"0\",ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime4H_1],2))","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConcatStr("0",ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime4H_1],2))</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_2_4" instanceName="给界面实体/控件/变量赋值_1_2_4" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:22:57">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"ConcatStr(\"0\",ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime1M_1],2))","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConcatStr("0",ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime1M_1],2))</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_6_1_1" instanceName="给界面实体/控件/变量赋值_1_6_1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:26:14">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"ConcatStr(\"0\",ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime3H_1],2))","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConcatStr("0",ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime3H_1],2))</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1_4" instanceName="给界面实体/控件/变量赋值_5" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:03:16">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"\"\"","entityFieldMapping":null},{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"\"\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>""</Source></dtFieldMap><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>""</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1_4" instanceName="新增晚班时间点实体记录_4" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:23:39">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"timePoint.timeP","fieldtype":"expression","srcField":"ConcatStr(BR_VAR_PARENT.time1,\":\",BR_VAR_PARENT.time2)"}],"TableType":"ruleSetVar","TableName":"timePoint","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>timePoint</EntityName></dtMaster><dtEntityColumns><DestName>timePoint.timeP</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(BR_VAR_PARENT.time1,":",BR_VAR_PARENT.time2)</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_1_1_2" instanceName="给界面实体/控件/变量赋值_1_1_1_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:16:48">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime3M_1],2)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime3M_1],2)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2" instanceName="给界面实体/控件/变量赋值_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:05:44">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"ConcatStr(\"0\",ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime1H_1],2))","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConcatStr("0",ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime1H_1],2))</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_1_5_1_1" instanceName="给界面实体/控件/变量赋值_1_1_5_1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:26:23">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime3H_1],2)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime3H_1],2)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_1_3" instanceName="给界面实体/控件/变量赋值_1_1_3" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:16:12">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime3H_1],2)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConvertFunc(BR_VAR_PARENT.[proTime].[dayTime3H_1],2)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_1_5_2" instanceName="给界面实体/控件/变量赋值_1_1_5_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:28:03">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime4H_1],2)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime4H_1],2)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2_6_2" instanceName="给界面实体/控件/变量赋值_1_6_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:27:56">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"ConcatStr(\"0\",ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime4H_1],2))","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConcatStr("0",ConvertFunc(BR_VAR_PARENT.[proTime].[nightTime4H_1],2))</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1_4_2" instanceName="给界面实体/控件/变量赋值_5_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:03:16">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"time1","SourceType":"expression","SourceEntityType":"","Source":"\"\"","entityFieldMapping":null},{"TargetType":"4","Target":"time2","SourceType":"expression","SourceEntityType":"","Source":"\"\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>time1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>""</Source></dtFieldMap><dtFieldMap><TargetType>4</TargetType><Target>time2</Target><SourceType>expression</SourceType><SourceEntityType /><Source>""</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1_4_2" instanceName="新增晚班时间点实体记录_4_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 11:23:39">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"timePoint.timeP","fieldtype":"expression","srcField":"ConcatStr(BR_VAR_PARENT.time1,\":\",BR_VAR_PARENT.time2)"}],"TableType":"ruleSetVar","TableName":"timePoint","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>timePoint</EntityName></dtMaster><dtEntityColumns><DestName>timePoint.timeP</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(BR_VAR_PARENT.time1,":",BR_VAR_PARENT.time2)</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Variables>
+      <Variable code="startLine" name="开线" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="prolineUserName" name="线长姓名" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="prolineUserCode" name="线长员工编号" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="proTimeId" name="生产时间Id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="proTimeTitle" name="生产时间标题" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="classes" name="确认班次" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="prolineName" name="产线名称" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="prolineId" name="产线id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="state" name="开线状态" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[开线准备、员工点检、样品/拉力测试、已完成]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="proTime" name="生产时间段" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="title" name="生产时间标题" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="dayTime1H" name="白班开始时间段1(时)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="dayTime1M" name="白班开始时间段1(分)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="dayTime2H" name="白班开始时间段2(时)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="dayTime2M" name="白班开始时间段2(分)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="dayTime3H" name="白班开始时间段3(时)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="dayTime3M" name="白班开始时间段3(分)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="dayTime4H" name="白班开始时间段4(时)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="dayTime4M" name="白班开始时间段4(分)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="nightTime1H" name="晚班开始时间段1(时)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="nightTime1M" name="晚班开始时间段1(分)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="nightTime2H" name="晚班开始时间段2(时)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="nightTime2M" name="晚班开始时间段2(分)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="nightTime3H" name="晚班开始时间段3(时)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="nightTime3M" name="晚班开始时间段3(分)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="nightTime4H" name="晚班开始时间段4(时)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="nightTime4M" name="晚班开始时间段4(分)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="dayTime1H_1" name="白班结束时间段1(时)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="dayTime1M_1" name="白班结束时间段1(分)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="dayTime2H_1" name="白班结束时间段2(时)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="dayTime2M_1" name="白班结束时间段2(分)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="dayTime3H_1" name="白班结束时间段3(时)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="dayTime3M_1" name="白班结束时间段3(分)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="dayTime4H_1" name="白班结束时间段4(时)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="dayTime4M_1" name="白班结束时间段4(分)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="nightTime1H_1" name="晚班结束时间段1(时)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="nightTime1M_1" name="晚班结束时间段1(分)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="nightTime2H_1" name="晚班结束时间段2(时)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="nightTime2M_1" name="晚班结束时间段2(分)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="nightTime3H_1" name="晚班结束时间段3(时)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="nightTime3M_1" name="晚班结束时间段3(分)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="nightTime4H_1" name="晚班结束时间段4(时)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="nightTime4M_1" name="晚班结束时间段4(分)" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="timePoint" name="时间点" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="timeP" name="时间" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="userid" name="" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="userAccount" name="" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="account" name="" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="time1" name="" fieldType="char" initValue="" isMust="false" desc="" />
+      <Variable code="time2" name="" fieldType="char" initValue="" isMust="false" desc="" />
+    </Variables>
+  </Method>
+</Methods>

@@ -1,0 +1,159 @@
+﻿<Query id="f3bb17cc1e7248078df851d362728701" code="getBadProduct" name="获取各产线的不良数" type="VSql">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20180828002]]></Creator>
+  <CreationTime><![CDATA[2018-12-16 19:25:10]]></CreationTime>
+  <Modifier><![CDATA[user_20180828002]]></Modifier>
+  <ModificationTime><![CDATA[2018-12-17 16:02:47]]></ModificationTime>
+  <VSql><![CDATA[select
+(SELECT SUM(Value) 
+FROM Exchange
+WHERE NAME IN (
+		'ABS9.ST10_Alarm_count',
+		'ABS9.ST11_Alarm_count',
+		'ABS9.ST12_Alarm_count',
+		'ABS9.ST13_Alarm_count',
+		'ABS9.ST14_Alarm_count',
+		'ABS9.ST15_Alarm_count',
+		'ABS9.ST16_Alarm_count',
+		'ABS9.ST17_Alarm_count',
+		'ABS9.ST18_Alarm_count',
+		'ABS9.ST19_Alarm_count',
+		'ABS9.ST20_Alarm_count',
+		'ABS9.ST21_Alarm_count',
+		'ABS9.ST23_Alarm_count',
+		'ABS9.ST3_Alarm_count',
+		'ABS9.ST4_Alarm_count',
+		'ABS9.ST5_Alarm_count',
+		'ABS9.ST6_Alarm_count',
+		'ABS9.ST7_Alarm_count',
+		'ABS9.ST8_Alarm_count',
+		'ABS9.ST9_Alarm_count'
+		)) AS ABS9W1BP, --不良数
+(SELECT SUM(Value) 
+FROM Exchange
+WHERE NAME IN (
+		'ABS92.ST10_Alarm_count',
+		'ABS92.ST11_Alarm_count',
+		'ABS92.ST12_Alarm_count',
+		'ABS92.ST13_Alarm_count',
+		'ABS92.ST14_Alarm_count',
+		'ABS92.ST15_Alarm_count',
+		'ABS92.ST16_Alarm_count',
+		'ABS92.ST17_Alarm_count',
+		'ABS92.ST18_Alarm_count',
+		'ABS92.ST19_Alarm_count',
+		'ABS92.ST20_Alarm_count',
+		'ABS92.ST21_Alarm_count',
+		'ABS92.ST22_Alarm_count',
+		'ABS92.ST23_Alarm_count',
+		'ABS92.ST24_Alarm_count',
+		'ABS92.ST3_Alarm_count',
+		'ABS92.ST4_Alarm_count',
+		'ABS92.ST5_Alarm_count',
+		'ABS92.ST6_Alarm_count',
+		'ABS92.ST7_Alarm_count',
+		'ABS92.ST8_Alarm_count',
+		'ABS92.ST9_Alarm_count'
+		)) AS ABS9W2BP, --不良数
+(SELECT SUM(Value) 
+FROM Exchange
+WHERE NAME IN (
+		'WSM3.ST10_Alarm_count',
+		'WSM3.ST11_Alarm_count',
+		'WSM3.ST12_Alarm_count',
+		'WSM3.ST13_Alarm_count',
+		'WSM3.ST14_Alarm_count',
+		'WSM3.ST15_Alarm_count',
+		'WSM3.ST16_Alarm_count',
+		'WSM3.ST17_Alarm_count',
+		'WSM3.ST18_Alarm_count',
+		'WSM3.ST19_Alarm_count',
+		'WSM3.ST20_Alarm_count',
+		'WSM3.ST21_Alarm_count',
+		'WSM3.ST22_Alarm_count',
+		'WSM3.ST23_Alarm_count',
+		'WSM3.ST24_Alarm_count',
+		'WSM3.ST3_Alarm_count',
+		'WSM3.ST4_Alarm_count',
+		'WSM3.ST5_Alarm_count',
+		'WSM3.ST6_Alarm_count',
+		'WSM3.ST7_Alarm_count',
+		'WSM3.ST8_Alarm_count',
+		'WSM3.ST9_Alarm_count'
+		)) AS WSM3W1BP, --不良数
+(SELECT SUM(Value) 
+FROM Exchange
+WHERE NAME IN (
+		'AHC.ST10_Alarm_count',
+		'AHC.ST11_Alarm_count',
+		'AHC.ST12_Alarm_count',
+		'AHC.ST13_Alarm_count',
+		'AHC.ST14_Alarm_count',
+		'AHC.ST15_Alarm_count',
+		'AHC.ST16_Alarm_count',
+		'AHC.ST17_Alarm_count',
+		'AHC.ST18_Alarm_count',
+		'AHC.ST19_Alarm_count',
+		'AHC.ST20_Alarm_count',
+		'AHC.ST21_Alarm_count',
+		'AHC.ST22_Alarm_count',
+		'AHC.ST23_Alarm_count',
+		'AHC.ST24_Alarm_count',
+		'AHC.ST3_Alarm_count',
+		'AHC.ST4_Alarm_count',
+		'AHC.ST5_Alarm_count',
+		'AHC.ST6_Alarm_count',
+		'AHC.ST7_Alarm_count',
+		'AHC.ST8_Alarm_count',
+		'AHC.ST9_Alarm_count'
+		)) AS AHCW1BP, --不良数
+(SELECT SUM(Value) 
+FROM Exchange
+WHERE NAME IN (
+		'NSA2.ST10_Alarm_count',
+		'NSA2.ST11_Alarm_count',
+		'NSA2.ST12_Alarm_count',
+		'NSA2.ST13_Alarm_count',
+		'NSA2.ST14_Alarm_count',
+		'NSA2.ST15_Alarm_count',
+		'NSA2.ST16_Alarm_count',
+		'NSA2.ST17_Alarm_count',
+		'NSA2.ST18_Alarm_count',
+		'NSA2.ST19_Alarm_count',
+		'NSA2.ST20_Alarm_count',
+		'NSA2.ST21_Alarm_count',
+		'NSA2.ST22_Alarm_count',
+		'NSA2.ST23_Alarm_count',
+		'NSA2.ST24_Alarm_count',
+		'NSA2.ST3_Alarm_count',
+		'NSA2.ST4_Alarm_count',
+		'NSA2.ST5_Alarm_count',
+		'NSA2.ST6_Alarm_count',
+		'NSA2.ST7_Alarm_count',
+		'NSA2.ST8_Alarm_count',
+		'NSA2.ST9_Alarm_count'
+		)) AS NSAW2BP --不良数
+from Exchange LIMIT 1
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="ABS9W1BP" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="ABS9W2BP" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="WSM3W1BP" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="AHCW1BP" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="NSAW2BP" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="Exchange" tokenIndexes="12,100,194,288,382,467" />
+  </DataItems>
+</Query>

@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component code="vbase_email" name="vbase_Email" desc="" matchVersion="0">
+  <windows />
+  <resourcePackages />
+  <metaInfos>
+    <metaInfo type="model">
+      <modelMetas />
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_MailQueryMailTemplate" desc="" name="查询邮件模板">
+          <inputs>
+            <variables>
+              <variable code="templateCode" name="模板编码" type="char" desc="" initValue="" enumValue="" />
+              <variable code="templateTitle" name="模板主题(模糊查询)" type="char" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes />
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="MailTemplate" name="邮件模板" type="entity" desc="" initValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="MailTemplate">
+                <element code="templateCode" name="模板编码" type="char" length="255" precision="0" desc="" />
+                <element code="templateTitle" name="模板主题" type="char" length="255" precision="0" desc="" />
+                <element code="templateContent" name="模本内容" type="text" length="10000" precision="0" desc="" />
+                <element code="remark" name="模板备注" type="text" length="10000" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_MailDeleteMailTemplate" desc="" name="删除邮件模板">
+          <inputs>
+            <variables>
+              <variable code="MailTemplate" name="邮件模板" type="entity" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="MailTemplate">
+                <element code="templateCode" name="模板编码" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="" type="boolean" desc="" initValue="" />
+              <variable code="errorMsg" name="" type="text" desc="" initValue="" />
+            </variables>
+            <dataTypes />
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_MailSaveMailTemplate" desc="" name="保存邮件模板">
+          <inputs>
+            <variables>
+              <variable code="MailTemplate" name="邮件模板" type="entity" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="MailTemplate">
+                <element code="templateCode" name="模板编码" type="char" length="255" precision="0" desc="" />
+                <element code="templateTitle" name="模板主题" type="char" length="255" precision="0" desc="" />
+                <element code="templateContent" name="模本内容" type="text" length="10000" precision="0" desc="" />
+                <element code="remark" name="模板备注" type="text" length="10000" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="" type="boolean" desc="" initValue="" />
+              <variable code="errorMsg" name="" type="text" desc="" initValue="" />
+            </variables>
+            <dataTypes />
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_Delete_v_sys_MailServerInfo" desc="" name="删除邮件服务器登陆信息">
+          <inputs>
+            <variables>
+              <variable code="id" name="id" type="char" desc="" initValue="" enumValue="" />
+              <variable code="businessCode" name="业务编码" type="char" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes />
+          </inputs>
+          <outputs>
+            <variables />
+            <dataTypes />
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_Query_v_sys_MailServerInfo" desc="" name="查询邮件服务器登陆信息">
+          <inputs>
+            <variables>
+              <variable code="id" name="" type="char" desc="" initValue="" enumValue="" />
+              <variable code="enable" name="是否启用" type="boolean" desc="" initValue="" enumValue="" />
+              <variable code="businessCode" name="业务编码" type="char" desc="" initValue="" enumValue="" />
+              <variable code="businessName" name="业务名称" type="char" desc="" initValue="" enumValue="" />
+              <variable code="recordStart" name="开始记录数" type="integer" desc="" initValue="" enumValue="" />
+              <variable code="recordCount" name="每页显示行数" type="integer" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes />
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="v_sys_MailServerInfo" name="邮件服务器登陆信息" type="entity" desc="" initValue="" />
+              <variable code="outRecordTotal" name="记录总数" type="integer" desc="" initValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="v_sys_MailServerInfo">
+                <element code="id" name="" type="char" length="64" precision="0" desc="" />
+                <element code="showname" name="显示的发送人名称" type="char" length="255" precision="0" desc="" />
+                <element code="showadress" name="显示的发送人地址" type="char" length="255" precision="0" desc="" />
+                <element code="smtpadress" name="smtp服务器地址" type="char" length="255" precision="0" desc="" />
+                <element code="smtpport" name="smtp端口" type="integer" length="50" precision="0" desc="" />
+                <element code="smtpauth" name="SMTP服务器是否需要身份验证" type="boolean" length="0" precision="0" desc="" />
+                <element code="smtpsuer" name="smtp登录账号" type="char" length="255" precision="0" desc="" />
+                <element code="smtppwd" name="smtp登录密码" type="char" length="255" precision="0" desc="" />
+                <element code="enable" name="是否启用" type="boolean" length="0" precision="0" desc="" />
+                <element code="businessCode" name="业务编码" type="char" length="255" precision="0" desc="" />
+                <element code="businessName" name="业务名称" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_Save_v_sys_MailServerInfo" desc="" name="保存邮件服务器登陆信息">
+          <inputs>
+            <variables>
+              <variable code="v_sys_MailServerInfo" name="邮件服务器登陆信息" type="entity" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="v_sys_MailServerInfo">
+                <element code="id" name="" type="char" length="64" precision="0" desc="" />
+                <element code="showname" name="显示的发送人名称" type="char" length="255" precision="0" desc="" />
+                <element code="showadress" name="显示的发送人地址" type="char" length="255" precision="0" desc="" />
+                <element code="smtpadress" name="smtp服务器地址" type="char" length="255" precision="0" desc="" />
+                <element code="smtpport" name="smtp端口" type="integer" length="50" precision="0" desc="" />
+                <element code="smtpauth" name="SMTP服务器是否需要身份验证" type="boolean" length="0" precision="0" desc="" />
+                <element code="smtpsuer" name="smtp登录账号" type="char" length="255" precision="0" desc="" />
+                <element code="smtppwd" name="smtp登录密码" type="char" length="255" precision="0" desc="" />
+                <element code="enable" name="是否启用" type="boolean" length="0" precision="0" desc="" />
+                <element code="businessCode" name="业务编码" type="char" length="255" precision="0" desc="" />
+                <element code="businessName" name="业务名称" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables />
+            <dataTypes />
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_SendMail" desc="" name="发送邮件">
+          <inputs>
+            <variables>
+              <variable code="recipients" name="收件人邮箱地址，多个用英文分号隔开" type="text" desc="" initValue="" isMust="true" enumValue="" />
+              <variable code="copyTo" name="抄送，多个用英文分号隔开" type="text" desc="" initValue="" enumValue="" />
+              <variable code="secretTo" name="暗送，多个用英文分号隔开" type="text" desc="" initValue="" enumValue="" />
+              <variable code="subject" name="邮件标题" type="char" desc="" initValue="" enumValue="" />
+              <variable code="content" name="邮件正文，可以是html" type="text" desc="" initValue="" isMust="true" enumValue="" />
+              <variable code="attchFileInfo" name="附件列表" type="entity" desc="" initValue="" enumValue="" />
+              <variable code="businessCode" name="业务编码" type="char" desc="" initValue="" isMust="true" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="attchFileInfo">
+                <element code="id" name="" type="char" length="255" precision="0" desc="" />
+                <element code="fileId" name="" type="char" length="255" precision="0" desc="" />
+                <element code="fileName" name="" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="" type="boolean" desc="" initValue="" />
+              <variable code="errorMsg" name="" type="text" desc="" initValue="" />
+            </variables>
+            <dataTypes />
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+  </metaInfos>
+  <manifest>
+    <bundle-info>
+      <symbolic-name><![CDATA[vbase_email]]></symbolic-name>
+      <bundle-name><![CDATA[vbase_Email]]></bundle-name>
+      <bundle-version><![CDATA[3.8.0]]></bundle-version>
+      <bundle-type><![CDATA[DesignSchemaSDK]]></bundle-type>
+      <provider><![CDATA[huangsq]]></provider>
+      <description><![CDATA[]]></description>
+      <lastModified>1538096584000</lastModified>
+      <outTableInitDatas>false</outTableInitDatas>
+    </bundle-info>
+    <interface>
+      <apis>
+        <api>
+          <metaReference windowCode="" metaCode="API_MailQueryMailTemplate" metaType="server-ruleSet" metaName="查询邮件模板" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_MailDeleteMailTemplate" metaType="server-ruleSet" metaName="删除邮件模板" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_MailSaveMailTemplate" metaType="server-ruleSet" metaName="保存邮件模板" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_Delete_v_sys_MailServerInfo" metaType="server-ruleSet" metaName="删除邮件服务器登陆信息" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_Query_v_sys_MailServerInfo" metaType="server-ruleSet" metaName="查询邮件服务器登陆信息" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_Save_v_sys_MailServerInfo" metaType="server-ruleSet" metaName="保存邮件服务器登陆信息" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_SendMail" metaType="server-ruleSet" metaName="发送邮件" />
+        </api>
+      </apis>
+      <spis />
+    </interface>
+    <dependencies />
+    <imports>
+      <import componentCode="com.toone.v3.platform-widget-smartclient-JGTextBox" componentName="文本" />
+      <import componentCode="com.toone.v3.platform-widget-smartclient-JGPanel" componentName="面板" />
+      <import componentCode="com.toone.v3.platform-widget-smartclient-JGButton" componentName="按钮" />
+      <import componentCode="com.toone.v3.platform-widget-smartclient-JGCheckBox" componentName="布尔" />
+      <import componentCode="com.toone.v3.platform-widget-smartclient-JGIntegerBox" componentName="整数" />
+      <import componentCode="com.toone.v3.platform-widget-smartclient-JGLabel" componentName="标签" />
+      <import componentCode="com.toone.v3.platform-widget-smartclient-JGDataGrid" componentName="列表" />
+      <import componentCode="com.toone.v3.platform-widget-smartclient-JGLocateBox" componentName="检索" />
+      <import componentCode="com.toone.v3.platform-Webrule_ExecuteRuleSet" componentName="执行方法" />
+      <import componentCode="com.toone.v3.platform-Webrule_AbortRule" componentName="中断规则" />
+      <import componentCode="com.toone.v3.platform-Webrule_SetEntityVarControlValue" componentName="给界面实体/控件/变量赋值" />
+      <import componentCode="com.toone.v3.platform-Webrule_ClearInterfaceEntityData" componentName="清除界面实体中的数据" />
+      <import componentCode="com.toone.v3.platform-Webrule_DataBaseDataToInterfaceEntity" componentName="从数据库获取数据到界面实体" />
+      <import componentCode="com.toone.v3.platform-Webrule_ShowMessage" componentName="显示设置的提示信息" />
+      <import componentCode="com.toone.v3.platform-Webrule_OpenComponentReturnData" componentName="打开窗体并返回数据" />
+      <import componentCode="com.toone.v3.platform-Webrule_DeleteConditionRelationData" componentName="删除数据库中的记录" />
+      <import componentCode="com.toone.v3.platform-Webrule_SelectionConfirm" componentName="退出窗体" />
+      <import componentCode="com.toone.v3.platform-Webrule_SetControlPropertys" componentName="控件属性设置" />
+      <import componentCode="com.toone.v3.platform-Webrule_UpdateRecord" componentName="保存界面实体到数据库" />
+      <import componentCode="com.toone.v3.platform-Webrule_AddTableRecord" componentName="新增界面实体记录" />
+      <import componentCode="com.toone.v3.platform-Webrule_CheckRequired" componentName="必填项检查" />
+      <import componentCode="com.toone.v3.platform-Webrule_CopyRecordBetweenEntity" componentName="实体间复制记录(后台规则)" />
+      <import componentCode="com.toone.v3.platform-Webrule_EntityRecordRecycling" componentName="实体记录循环处理(后台规则)" />
+      <import componentCode="com.toone.v3.platform-Webrule_MakeControlRVE" componentName="控制控件的只读、使能、显示" />
+      <import componentCode="com.toone.v3.platform-Webfunc_IsEmpty" componentName="检查是否为空值" />
+      <import componentCode="com.toone.v3.platform-Serverfunc_Null" componentName="产生null值" />
+      <import componentCode="com.toone.v3.platform-Webfunc_V3If" componentName="三元运算函数" />
+      <import componentCode="com.toone.v3.platform-Webfunc_GetEntityRowCount" componentName="从指定的界面实体获取记录数" />
+      <import componentCode="com.toone.v3.platform-Webfunc_GenerateUUID" componentName="生成uuid" />
+    </imports>
+    <consistencies>
+      <consistency matchCode="ClientRules.ExecuteRuleSet" matchVersion="2" />
+      <consistency matchCode="ClientRules.ClearInterfaceEntityData" matchVersion="1" />
+      <consistency matchCode="ClientRules.MakeControlRVE" matchVersion="1" />
+      <consistency matchCode="ClientRules.AddTableRecord" matchVersion="1" />
+      <consistency matchCode="ClientRules.SelectionConfirm" matchVersion="1" />
+      <consistency matchCode="ClientRules.OpenComponentReturnData" matchVersion="4" />
+      <consistency matchCode="ClientRules.CheckRequired" matchVersion="1" />
+      <consistency matchCode="ClientRules.ShowMessage" matchVersion="1" />
+      <consistency matchCode="ClientRules.AbortRule" matchVersion="1" />
+      <consistency matchCode="ClientRules.SetControlPropertys" matchVersion="1" />
+      <consistency matchCode="ServerRules.DataBaseDataToInterfaceEntity" matchVersion="1" />
+      <consistency matchCode="ServerRules.DeleteConditionRelationData" matchVersion="1" />
+      <consistency matchCode="ServerRules.AbortRule" matchVersion="1" />
+      <consistency matchCode="ServerRules.SetEntityVarControlValue" matchVersion="2" />
+      <consistency matchCode="ServerRules.CopyRecordBetweenEntity" matchVersion="1" />
+      <consistency matchCode="ServerRules.EntityRecordRecycling" matchVersion="1" />
+      <consistency matchCode="ServerRules.UpdateRecord" matchVersion="1" />
+      <consistency matchCode="ServerRules.ExecuteRuleSet" matchVersion="2" />
+      <consistency matchCode="ServerFunctions.IsEmpty" matchVersion="1" />
+      <consistency matchCode="ServerFunctions.GetEntityRowCountFunc" matchVersion="1" />
+      <consistency matchCode="ServerFunctions.V3If" matchVersion="1" />
+      <consistency matchCode="ServerFunctions.Null" matchVersion="1" />
+      <consistency matchCode="ServerFunctions.ListToStringFunc" matchVersion="1" />
+      <consistency matchCode="ServerFunctions.GenerateUUID" matchVersion="1" />
+      <consistency matchCode="ClientFunctions.GetEntityRowCount" matchVersion="1" />
+      <consistency matchCode="ClientFunctions.GenerateUUID" matchVersion="1" />
+      <consistency matchCode="ComponentControls.JGPanel" matchVersion="1" />
+      <consistency matchCode="ComponentControls.JGLabel" matchVersion="1" />
+      <consistency matchCode="ComponentControls.JGIntegerBox" matchVersion="1" />
+      <consistency matchCode="ComponentControls.JGTextBox" matchVersion="1" />
+      <consistency matchCode="ComponentControls.JGCheckBox" matchVersion="1" />
+      <consistency matchCode="ComponentControls.JGButton" matchVersion="1" />
+      <consistency matchCode="ComponentControls.JGDataGrid" matchVersion="3" />
+      <consistency matchCode="ComponentControls.JGLocateBox" matchVersion="1" />
+    </consistencies>
+  </manifest>
+  <extendableWindows />
+  <partLibType>
+    <partLibTypeCode><![CDATA[release]]></partLibTypeCode>
+    <partLibTypeName><![CDATA[稳定版 (release)]]></partLibTypeName>
+  </partLibType>
+</component>

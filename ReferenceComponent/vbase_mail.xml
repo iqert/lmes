@@ -1,0 +1,1095 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component code="vbase_mail" name="vbase_站内信" desc="" matchVersion="0">
+  <resourcePackages />
+  <metaInfos>
+    <metaInfo type="model">
+      <modelMetas />
+    </metaInfo>
+    <metaInfo type="file-resource">
+      <fileResourceMetas />
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_MailDeleteCollectionBox" desc="收藏箱信息转移到垃圾箱dustbinOutBox" name="删除收藏箱信息">
+          <inputs>
+            <variables>
+              <variable code="collectionBoxIds" name="收藏箱ID" type="entity" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="collectionBoxIds">
+                <element code="collectionBoxId" name="收藏箱ID" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="errorCode" name="异常编码" type="char" desc="" initValue="" />
+              <variable code="errorDetail" name="异常明细" type="char" desc="" initValue="" />
+            </variables>
+            <dataTypes />
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_MailDeleteDustbinBox" desc="" name="删除垃圾箱信息">
+          <inputs>
+            <variables>
+              <variable code="dustbinBoxIds" name="垃圾箱ID" type="entity" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="dustbinBoxIds">
+                <element code="dustbinBoxId" name="垃圾箱ID" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="errorCode" name="异常编码" type="char" desc="" initValue="" />
+              <variable code="errorDetail" name="异常明细" type="char" desc="" initValue="" />
+            </variables>
+            <dataTypes />
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_MailDeleteInBox" desc="收件箱信息转移到垃圾箱dustbinInBox" name="删除收件箱信息">
+          <inputs>
+            <variables>
+              <variable code="inBoxIds" name="收件箱ID" type="entity" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="inBoxIds">
+                <element code="inBoxId" name="收件箱ID" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="errorCode" name="异常编码" type="char" desc="" initValue="" />
+              <variable code="errorDetail" name="异常明细" type="char" desc="" initValue="" />
+            </variables>
+            <dataTypes />
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_MailDeleteOutBox" desc="发件箱信息转移到垃圾箱dustbinOutBox" name="删除发件箱信息">
+          <inputs>
+            <variables>
+              <variable code="outBoxIds" name="发件箱ID" type="entity" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="outBoxIds">
+                <element code="outBoxId" name="发件箱ID" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="errorCode" name="异常编码" type="char" desc="" initValue="" />
+              <variable code="errorDetail" name="异常明细" type="char" desc="" initValue="" />
+            </variables>
+            <dataTypes />
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_MailDustbinToCollectionBox" desc="" name="垃圾箱信息恢复到收藏箱">
+          <inputs>
+            <variables>
+              <variable code="dustbinBoxIds" name="垃圾箱ID" type="entity" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="dustbinBoxIds">
+                <element code="dustbinBoxId" name="垃圾箱ID" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="errorCode" name="异常编码" type="char" desc="" initValue="" />
+              <variable code="errorDetail" name="异常明细" type="char" desc="" initValue="" />
+            </variables>
+            <dataTypes />
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_MailInBoxToColectionBox" desc="" name="收件箱信息收藏">
+          <inputs>
+            <variables>
+              <variable code="inBoxIds" name="收件箱ID" type="entity" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="inBoxIds">
+                <element code="inBoxId" name="收件箱ID" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="errorCode" name="异常编码" type="char" desc="" initValue="" />
+              <variable code="errorDetail" name="异常明细" type="char" desc="" initValue="" />
+            </variables>
+            <dataTypes />
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_MailOutBoxToColectionBox" desc="" name="发件箱信息收藏">
+          <inputs>
+            <variables>
+              <variable code="outBoxIds" name="发件箱ID" type="entity" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="outBoxIds">
+                <element code="outBoxId" name="发件箱ID" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="errorCode" name="异常编码" type="char" desc="" initValue="" />
+              <variable code="errorDetail" name="异常明细" type="char" desc="" initValue="" />
+            </variables>
+            <dataTypes />
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_MailQueryAllCollectionBox" desc="" name="查询所有用户收藏箱信息">
+          <inputs>
+            <variables>
+              <variable code="collectionBoxTitle" name="收藏箱标题" type="char" desc="" initValue="" enumValue="" />
+              <variable code="collectionBoxTitleLike" name="收藏箱标题(模糊查询)" type="char" desc="" initValue="" enumValue="" />
+              <variable code="collectionBoxIds" name="收藏箱ID" type="entity" desc="" initValue="" enumValue="" />
+              <variable code="recordStart" name="开始记录数" type="integer" desc="" initValue="" enumValue="" />
+              <variable code="recordCount" name="每页显示行数" type="integer" desc="" initValue="" enumValue="" />
+              <variable code="ownerIds" name="拥有人ID" type="entity" desc="" initValue="" enumValue="" />
+              <variable code="startTime" name="开始时间" type="char" desc="" initValue="" enumValue="" />
+              <variable code="endTime" name="结束时间" type="char" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="collectionBoxIds">
+                <element code="collectionBoxId" name="收藏箱ID" type="char" length="255" precision="0" desc="" />
+              </dataType>
+              <dataType code="ownerIds">
+                <element code="ownerId" name="拥有人ID" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="errorCode" name="异常编码" type="char" desc="" initValue="" />
+              <variable code="errorDetail" name="异常明细" type="char" desc="" initValue="" />
+              <variable code="outRecordTotal" name="记录总数" type="integer" desc="" initValue="" />
+              <variable code="collectionBoxEntity" name="收藏箱" type="entity" desc="" initValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="collectionBoxEntity">
+                <element code="id" name="" type="char" length="255" precision="0" desc="" />
+                <element code="title" name="标题" type="char" length="255" precision="0" desc="" />
+                <element code="message" name="正文" type="text" length="10000" precision="0" desc="" />
+                <element code="sendAccountId" name="发送人账号ID" type="char" length="255" precision="0" desc="" />
+                <element code="sendAccountName" name="发送人账号名" type="char" length="255" precision="0" desc="" />
+                <element code="receiveAccountId" name="接收人账号ID" type="text" length="1000" precision="0" desc="多个使用逗号隔开" />
+                <element code="receiveAccountName" name="接收人账号名" type="text" length="1000" precision="0" desc="多个使用逗号隔开" />
+                <element code="sendTime" name="发送时间" type="char" length="255" precision="0" desc="" />
+                <element code="isRead" name="是否已读" type="boolean" length="0" precision="0" desc="" />
+                <element code="ownerId" name="拥有者" type="char" length="255" precision="0" desc="" />
+                <element code="receiveTime" name="接收时间" type="char" length="255" precision="0" desc="" />
+                <element code="sourceType" name="来源类型" type="char" length="255" precision="0" desc="" />
+                <element code="receiveType" name="接收人类型" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_MailQueryAllDustbinBox" desc="" name="查询所有用户垃圾箱信息">
+          <inputs>
+            <variables>
+              <variable code="dustbinBoxTitle" name="垃圾箱标题" type="char" desc="" initValue="" enumValue="" />
+              <variable code="dustbinBoxTitleLike" name="垃圾箱标题(模糊查询)" type="char" desc="" initValue="" enumValue="" />
+              <variable code="dustbinBoxIds" name="垃圾箱ID" type="entity" desc="" initValue="" enumValue="" />
+              <variable code="recordStart" name="开始记录数" type="integer" desc="" initValue="" enumValue="" />
+              <variable code="recordCount" name="每页显示行数" type="integer" desc="" initValue="" enumValue="" />
+              <variable code="ownerIds" name="拥有人ID" type="entity" desc="" initValue="" enumValue="" />
+              <variable code="startTime" name="开始时间" type="char" desc="" initValue="" enumValue="" />
+              <variable code="endTime" name="结束时间" type="char" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="dustbinBoxIds">
+                <element code="dustbinBoxId" name="垃圾箱ID" type="char" length="255" precision="0" desc="" />
+              </dataType>
+              <dataType code="ownerIds">
+                <element code="ownerId" name="拥有人ID" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="errorCode" name="异常编码" type="char" desc="" initValue="" />
+              <variable code="errorDetail" name="异常明细" type="char" desc="" initValue="" />
+              <variable code="outRecordTotal" name="记录总数" type="integer" desc="" initValue="" />
+              <variable code="dustbinBoxEntity" name="垃圾箱" type="entity" desc="" initValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="dustbinBoxEntity">
+                <element code="id" name="" type="char" length="255" precision="0" desc="" />
+                <element code="title" name="标题" type="char" length="255" precision="0" desc="" />
+                <element code="message" name="正文" type="text" length="10000" precision="0" desc="" />
+                <element code="sendAccountId" name="发送人账号ID" type="char" length="255" precision="0" desc="" />
+                <element code="sendAccountName" name="发送人账号名" type="char" length="255" precision="0" desc="" />
+                <element code="receiveAccountId" name="接收人账号ID" type="text" length="1000" precision="0" desc="多个使用逗号隔开" />
+                <element code="receiveAccountName" name="接收人账号名" type="text" length="1000" precision="0" desc="多个使用逗号隔开" />
+                <element code="sendTime" name="发送时间" type="char" length="255" precision="0" desc="" />
+                <element code="isRead" name="是否已读" type="boolean" length="0" precision="0" desc="" />
+                <element code="ownerId" name="拥有者" type="char" length="255" precision="0" desc="" />
+                <element code="receiveTime" name="接收时间" type="char" length="255" precision="0" desc="" />
+                <element code="sourceType" name="来源类型" type="char" length="255" precision="0" desc="" />
+                <element code="receiveType" name="接收人类型" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_MailQueryAllInBox" desc="" name="查询所有用户收件箱信息">
+          <inputs>
+            <variables>
+              <variable code="inBoxTitle" name="收件箱标题" type="char" desc="" initValue="" enumValue="" />
+              <variable code="inBoxTitleLike" name="收件箱标题(模糊查询)" type="char" desc="" initValue="" enumValue="" />
+              <variable code="inBoxIds" name="收件箱ID" type="entity" desc="" initValue="" enumValue="" />
+              <variable code="recordStart" name="开始记录数" type="integer" desc="" initValue="" enumValue="" />
+              <variable code="recordCount" name="每页显示行数" type="integer" desc="" initValue="" enumValue="" />
+              <variable code="startTime" name="开始时间" type="char" desc="" initValue="" enumValue="" />
+              <variable code="endTime" name="结束时间" type="char" desc="" initValue="" enumValue="" />
+              <variable code="receiveAccountIds" name="接收人id" type="entity" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="inBoxIds">
+                <element code="inBoxId" name="收件箱ID" type="char" length="255" precision="0" desc="" />
+              </dataType>
+              <dataType code="receiveAccountIds">
+                <element code="receiveAccountId" name="接收人id" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="errorCode" name="异常编码" type="char" desc="" initValue="" />
+              <variable code="errorDetail" name="异常明细" type="char" desc="" initValue="" />
+              <variable code="outRecordTotal" name="记录总数" type="integer" desc="" initValue="" />
+              <variable code="inBoxEntity" name="收件箱" type="entity" desc="" initValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="inBoxEntity">
+                <element code="id" name="" type="char" length="255" precision="0" desc="" />
+                <element code="title" name="标题" type="char" length="255" precision="0" desc="" />
+                <element code="message" name="正文" type="text" length="10000" precision="0" desc="" />
+                <element code="sendAccountId" name="发送人账号ID" type="char" length="255" precision="0" desc="" />
+                <element code="sendAccountName" name="发送人账号名" type="char" length="255" precision="0" desc="" />
+                <element code="receiveAccountId" name="接收人账号ID" type="char" length="255" precision="0" desc="" />
+                <element code="receiveAccountName" name="接收人账号名" type="char" length="255" precision="0" desc="" />
+                <element code="receiveTime" name="接收时间" type="char" length="255" precision="0" desc="" />
+                <element code="isRead" name="是否已读" type="boolean" length="0" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_MailQueryAllOutBox" desc="" name="查询所有用户发件箱信息">
+          <inputs>
+            <variables>
+              <variable code="outBoxTitle" name="发件箱标题" type="char" desc="" initValue="" enumValue="" />
+              <variable code="outBoxTitleLike" name="发件箱标题(模糊查询)" type="char" desc="" initValue="" enumValue="" />
+              <variable code="outBoxIds" name="发件箱ID" type="entity" desc="" initValue="" enumValue="" />
+              <variable code="recordStart" name="开始记录数" type="integer" desc="" initValue="" enumValue="" />
+              <variable code="recordCount" name="每页显示行数" type="integer" desc="" initValue="" enumValue="" />
+              <variable code="startTime" name="开始时间" type="char" desc="" initValue="" enumValue="" />
+              <variable code="endTime" name="结束时间" type="char" desc="" initValue="" enumValue="" />
+              <variable code="sendAccountIds" name="发送人id" type="entity" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="outBoxIds">
+                <element code="outBoxId" name="发件箱ID" type="char" length="255" precision="0" desc="" />
+              </dataType>
+              <dataType code="sendAccountIds">
+                <element code="sendAccountId" name="发送人id" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="errorCode" name="异常编码" type="char" desc="" initValue="" />
+              <variable code="errorDetail" name="异常明细" type="char" desc="" initValue="" />
+              <variable code="outRecordTotal" name="记录总数" type="integer" desc="" initValue="" />
+              <variable code="outBoxEntity" name="发件箱" type="entity" desc="" initValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="outBoxEntity">
+                <element code="id" name="" type="char" length="255" precision="0" desc="" />
+                <element code="title" name="标题" type="char" length="255" precision="0" desc="" />
+                <element code="message" name="正文" type="text" length="10000" precision="0" desc="" />
+                <element code="sendAccountId" name="发送人账号ID" type="char" length="255" precision="0" desc="" />
+                <element code="sendAccountName" name="发送人账号名" type="char" length="255" precision="0" desc="" />
+                <element code="receiveAccountId" name="接收人账号ID" type="text" length="1000" precision="0" desc="多个使用逗号隔开" />
+                <element code="receiveAccountName" name="接收人账号名" type="text" length="1000" precision="0" desc="多个使用逗号隔开" />
+                <element code="sendTime" name="发送时间" type="char" length="255" precision="0" desc="" />
+                <element code="receiveType" name="接收人类型" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_MailQueryCollectionBoxs" desc="" name="查询当前用户收藏箱信息">
+          <inputs>
+            <variables>
+              <variable code="collectionBoxTitle" name="收藏箱标题" type="char" desc="" initValue="" enumValue="" />
+              <variable code="collectionBoxTitleLike" name="收藏箱标题(模糊查询)" type="char" desc="" initValue="" enumValue="" />
+              <variable code="collectionBoxIds" name="收藏箱ID" type="entity" desc="" initValue="" enumValue="" />
+              <variable code="recordStart" name="开始记录数" type="integer" desc="" initValue="" enumValue="" />
+              <variable code="recordCount" name="每页显示行数" type="integer" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="collectionBoxIds">
+                <element code="collectionBoxId" name="收藏箱ID" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="errorCode" name="异常编码" type="char" desc="" initValue="" />
+              <variable code="errorDetail" name="异常明细" type="char" desc="" initValue="" />
+              <variable code="outRecordTotal" name="记录总数" type="integer" desc="" initValue="" />
+              <variable code="collectionBoxEntity" name="收藏箱" type="entity" desc="" initValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="collectionBoxEntity">
+                <element code="id" name="" type="char" length="255" precision="0" desc="" />
+                <element code="title" name="标题" type="char" length="255" precision="0" desc="" />
+                <element code="message" name="正文" type="text" length="10000" precision="0" desc="" />
+                <element code="sendAccountId" name="发送人账号ID" type="char" length="255" precision="0" desc="" />
+                <element code="sendAccountName" name="发送人账号名" type="char" length="255" precision="0" desc="" />
+                <element code="receiveAccountId" name="接收人账号ID" type="text" length="1000" precision="0" desc="多个使用逗号隔开" />
+                <element code="receiveAccountName" name="接收人账号名" type="text" length="1000" precision="0" desc="多个使用逗号隔开" />
+                <element code="sendTime" name="发送时间" type="char" length="255" precision="0" desc="" />
+                <element code="isRead" name="是否已读" type="boolean" length="0" precision="0" desc="" />
+                <element code="ownerId" name="拥有者" type="char" length="255" precision="0" desc="" />
+                <element code="receiveTime" name="接收时间" type="char" length="255" precision="0" desc="" />
+                <element code="sourceType" name="来源类型" type="char" length="255" precision="0" desc="" />
+                <element code="receiveType" name="接收人类型" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_MailQueryDustbinBoxs" desc="" name="查询当前用户垃圾箱信息">
+          <inputs>
+            <variables>
+              <variable code="dustbinBoxTitle" name="垃圾箱标题" type="char" desc="" initValue="" enumValue="" />
+              <variable code="dustbinBoxTitleLike" name="垃圾箱标题(模糊查询)" type="char" desc="" initValue="" enumValue="" />
+              <variable code="dustbinBoxIds" name="垃圾箱ID" type="entity" desc="" initValue="" enumValue="" />
+              <variable code="recordStart" name="开始记录数" type="integer" desc="" initValue="" enumValue="" />
+              <variable code="recordCount" name="每页显示行数" type="integer" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="dustbinBoxIds">
+                <element code="dustbinBoxId" name="垃圾箱ID" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="errorCode" name="异常编码" type="char" desc="" initValue="" />
+              <variable code="errorDetail" name="异常明细" type="char" desc="" initValue="" />
+              <variable code="outRecordTotal" name="记录总数" type="integer" desc="" initValue="" />
+              <variable code="dustbinBoxEntity" name="垃圾箱" type="entity" desc="" initValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="dustbinBoxEntity">
+                <element code="id" name="" type="char" length="255" precision="0" desc="" />
+                <element code="title" name="标题" type="char" length="255" precision="0" desc="" />
+                <element code="message" name="正文" type="text" length="10000" precision="0" desc="" />
+                <element code="sendAccountId" name="发送人账号ID" type="char" length="255" precision="0" desc="" />
+                <element code="sendAccountName" name="发送人账号名" type="char" length="255" precision="0" desc="" />
+                <element code="receiveAccountId" name="接收人账号ID" type="text" length="1000" precision="0" desc="多个使用逗号隔开" />
+                <element code="receiveAccountName" name="接收人账号名" type="text" length="1000" precision="0" desc="多个使用逗号隔开" />
+                <element code="sendTime" name="发送时间" type="char" length="255" precision="0" desc="" />
+                <element code="isRead" name="是否已读" type="boolean" length="0" precision="0" desc="" />
+                <element code="ownerId" name="拥有者" type="char" length="255" precision="0" desc="" />
+                <element code="receiveTime" name="接收时间" type="char" length="255" precision="0" desc="" />
+                <element code="sourceType" name="来源类型" type="char" length="255" precision="0" desc="" />
+                <element code="receiveType" name="接收人类型" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_MailQueryInBoxs" desc="" name="查询当前用户收件箱信息">
+          <inputs>
+            <variables>
+              <variable code="inBoxTitle" name="收件箱标题" type="char" desc="" initValue="" enumValue="" />
+              <variable code="inBoxTitleLike" name="收件箱标题(模糊查询)" type="char" desc="" initValue="" enumValue="" />
+              <variable code="inBoxIds" name="收件箱ID" type="entity" desc="" initValue="" enumValue="" />
+              <variable code="recordStart" name="开始记录数" type="integer" desc="" initValue="" enumValue="" />
+              <variable code="recordCount" name="每页显示行数" type="integer" desc="" initValue="" enumValue="" />
+              <variable code="isLoadNoRead" name="是否只查询未读的信息" type="boolean" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="inBoxIds">
+                <element code="inBoxId" name="收件箱ID" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="errorCode" name="异常编码" type="char" desc="" initValue="" />
+              <variable code="errorDetail" name="异常明细" type="char" desc="" initValue="" />
+              <variable code="outRecordTotal" name="记录总数" type="integer" desc="" initValue="" />
+              <variable code="inBoxEntity" name="收件箱" type="entity" desc="" initValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="inBoxEntity">
+                <element code="id" name="" type="char" length="255" precision="0" desc="" />
+                <element code="title" name="标题" type="char" length="255" precision="0" desc="" />
+                <element code="message" name="正文" type="text" length="10000" precision="0" desc="" />
+                <element code="sendAccountId" name="发送人账号ID" type="char" length="255" precision="0" desc="" />
+                <element code="sendAccountName" name="发送人账号名" type="char" length="255" precision="0" desc="" />
+                <element code="receiveAccountId" name="接收人账号ID" type="char" length="255" precision="0" desc="" />
+                <element code="receiveAccountName" name="接收人账号名" type="char" length="255" precision="0" desc="" />
+                <element code="receiveTime" name="接收时间" type="char" length="255" precision="0" desc="" />
+                <element code="isRead" name="是否已读" type="boolean" length="0" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_MailQueryOutBoxs" desc="" name="查询当前用户发件箱信息">
+          <inputs>
+            <variables>
+              <variable code="outBoxTitle" name="发件箱标题" type="char" desc="" initValue="" enumValue="" />
+              <variable code="outBoxTitleLike" name="发件箱标题(模糊查询)" type="char" desc="" initValue="" enumValue="" />
+              <variable code="outBoxIds" name="发件箱ID" type="entity" desc="" initValue="" enumValue="" />
+              <variable code="recordStart" name="开始记录数" type="integer" desc="" initValue="" enumValue="" />
+              <variable code="recordCount" name="每页显示行数" type="integer" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="outBoxIds">
+                <element code="outBoxId" name="发件箱ID" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="errorCode" name="异常编码" type="char" desc="" initValue="" />
+              <variable code="errorDetail" name="异常明细" type="char" desc="" initValue="" />
+              <variable code="outRecordTotal" name="记录总数" type="integer" desc="" initValue="" />
+              <variable code="outBoxEntity" name="发件箱" type="entity" desc="" initValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="outBoxEntity">
+                <element code="id" name="" type="char" length="255" precision="0" desc="" />
+                <element code="title" name="标题" type="char" length="255" precision="0" desc="" />
+                <element code="message" name="正文" type="text" length="10000" precision="0" desc="" />
+                <element code="sendAccountId" name="发送人账号ID" type="char" length="255" precision="0" desc="" />
+                <element code="sendAccountName" name="发送人账号名" type="char" length="255" precision="0" desc="" />
+                <element code="receiveAccountId" name="接收人账号ID" type="text" length="1000" precision="0" desc="多个使用逗号隔开" />
+                <element code="receiveAccountName" name="接收人账号名" type="text" length="1000" precision="0" desc="多个使用逗号隔开" />
+                <element code="sendTime" name="发送时间" type="char" length="255" precision="0" desc="" />
+                <element code="receiveType" name="接收人类型" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_MailSendMessage" desc="1.发送消息给接收人；2.存储消息到发件箱" name="发送消息">
+          <inputs>
+            <variables>
+              <variable code="mailEntity" name="发件箱" type="entity" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="mailEntity">
+                <element code="id" name="" type="char" length="255" precision="0" desc="" />
+                <element code="title" name="标题" type="char" length="255" precision="0" desc="" />
+                <element code="message" name="正文" type="text" length="10000" precision="0" desc="" />
+                <element code="sendAccountId" name="发送人账号ID" type="char" length="255" precision="0" desc="" />
+                <element code="sendAccountName" name="发送人账号名" type="char" length="255" precision="0" desc="" />
+                <element code="receiveAccountId" name="接收人账号ID" type="text" length="1000" precision="0" desc="多个使用逗号隔开" />
+                <element code="receiveAccountName" name="接收人账号名" type="text" length="1000" precision="0" desc="多个使用逗号隔开" />
+                <element code="receiveType" name="接收人类型" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="errorCode" name="异常编码" type="char" desc="" initValue="" />
+              <variable code="errorDetail" name="异常明细" type="char" desc="" initValue="" />
+              <variable code="outBoxIds" name="发件箱id" type="entity" desc="" initValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="outBoxIds">
+                <element code="outBoxId" name="发件箱id" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_SetInBoxMessageRead" desc="" name="收件箱信息设为已读">
+          <inputs>
+            <variables>
+              <variable code="inBoxIds" name="收件箱ID" type="entity" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="inBoxIds">
+                <element code="inBoxId" name="收件箱ID" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="errorCode" name="异常编码" type="char" desc="" initValue="" />
+              <variable code="errorDetail" name="异常明细" type="char" desc="" initValue="" />
+            </variables>
+            <dataTypes />
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="QueryCollectionBoxs" desc="" name="查询当前用户的收藏箱信息">
+          <inputs>
+            <variables>
+              <variable code="recordStart" name="开始记录数" type="integer" desc="" initValue="" enumValue="" />
+              <variable code="recordCount" name="每页显示行数" type="integer" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes />
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="errorCode" name="异常编码" type="char" desc="" initValue="" />
+              <variable code="errorDetail" name="异常明细" type="char" desc="" initValue="" />
+              <variable code="outRecordTotal" name="记录总数" type="integer" desc="" initValue="" />
+              <variable code="collectionBoxEntity" name="收藏箱" type="entity" desc="" initValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="collectionBoxEntity">
+                <element code="id" name="" type="char" length="255" precision="0" desc="" />
+                <element code="title" name="标题" type="char" length="255" precision="0" desc="" />
+                <element code="message" name="正文" type="text" length="1000" precision="0" desc="" />
+                <element code="sendAccountId" name="发送人账号ID" type="char" length="255" precision="0" desc="" />
+                <element code="sendAccountName" name="发送人账号名" type="char" length="255" precision="0" desc="" />
+                <element code="receiveAccountId" name="接收人账号ID" type="text" length="1000" precision="0" desc="多个使用逗号隔开" />
+                <element code="receiveAccountName" name="接收人账号名" type="text" length="1000" precision="0" desc="多个使用逗号隔开" />
+                <element code="sendTime" name="发送时间" type="char" length="255" precision="0" desc="" />
+                <element code="isRead" name="是否已读" type="boolean" length="0" precision="0" desc="" />
+                <element code="ownerId" name="拥有者" type="char" length="255" precision="0" desc="" />
+                <element code="receiveTime" name="接收时间" type="char" length="255" precision="0" desc="" />
+                <element code="sourceType" name="来源类型" type="char" length="255" precision="0" desc="" />
+                <element code="sendUserId" name="发送人UserId" type="char" length="255" precision="0" desc="" />
+                <element code="sendUserName" name="发送人UserName" type="char" length="255" precision="0" desc="" />
+                <element code="receiveUserId" name="接收人UserId" type="text" length="1000" precision="0" desc="" />
+                <element code="receiveUserName" name="接收人UserName" type="text" length="1000" precision="0" desc="" />
+                <element code="receiveType" name="接收人类型" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="QueryOutBoxs" desc="" name="查询当前用户的发件箱信息">
+          <inputs>
+            <variables>
+              <variable code="recordStart" name="开始记录数" type="integer" desc="" initValue="" enumValue="" />
+              <variable code="recordCount" name="每页显示行数" type="integer" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes />
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="outBoxEntity" name="发件箱" type="entity" desc="" initValue="" />
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="errorCode" name="异常编码" type="char" desc="" initValue="" />
+              <variable code="errorDetail" name="异常明细" type="char" desc="" initValue="" />
+              <variable code="outRecordTotal" name="记录总数" type="integer" desc="" initValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="outBoxEntity">
+                <element code="id" name="" type="char" length="255" precision="0" desc="" />
+                <element code="title" name="标题" type="char" length="255" precision="0" desc="" />
+                <element code="message" name="正文" type="text" length="1000" precision="0" desc="" />
+                <element code="sendAccountId" name="发送人账号ID" type="char" length="255" precision="0" desc="" />
+                <element code="sendAccountName" name="发送人账号名" type="char" length="255" precision="0" desc="" />
+                <element code="receiveAccountId" name="接收人账号ID" type="text" length="1000" precision="0" desc="多个使用逗号隔开" />
+                <element code="receiveAccountName" name="接收人账号名" type="text" length="1000" precision="0" desc="多个使用逗号隔开" />
+                <element code="sendTime" name="发送时间" type="char" length="255" precision="0" desc="" />
+                <element code="sendUserId" name="发送人UserId" type="char" length="255" precision="0" desc="" />
+                <element code="sendUserName" name="发送人UserName" type="char" length="255" precision="0" desc="" />
+                <element code="receiveUserId" name="接收人UserId" type="text" length="1000" precision="0" desc="" />
+                <element code="receiveUserName" name="接收人UserName" type="text" length="1000" precision="0" desc="" />
+                <element code="receiveType" name="接收人类型" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="VMailAccountQueryUserInfo" desc="" name="根据账号id查询人员的简单信息">
+          <inputs>
+            <variables>
+              <variable code="accountIdEntity" name="账号实体" type="entity" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="accountIdEntity">
+                <element code="id" name="" type="char" length="255" precision="0" desc="" />
+                <element code="accountId" name="accountId" type="text" length="1000" precision="0" desc="" />
+                <element code="accountName" name="accountName" type="char" length="255" precision="0" desc="" />
+                <element code="type" name="类型：人员：user；机构：org；岗位：post；用户组：userGroup" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="errorCode" name="异常编码" type="char" desc="" initValue="" />
+              <variable code="errorMsg" name="异常明细" type="char" desc="" initValue="" />
+              <variable code="resultEntity" name="关联查询返回实体" type="entity" desc="" initValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="resultEntity">
+                <element code="id" name="记录唯一ID；与方法输入的一致" type="char" length="255" precision="0" desc="" />
+                <element code="u_id" name="人员id；机构，岗位，用户组共用" type="text" length="1000" precision="0" desc="" />
+                <element code="u_userName" name="人员姓名；机构，岗位，用户组共用" type="text" length="1000" precision="0" desc="" />
+                <element code="a_id" name="账号id；机构，岗位，用户组共用" type="text" length="1000" precision="0" desc="" />
+                <element code="a_account" name="账号名称；机构，岗位，用户组共用" type="text" length="1000" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="client-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_OpenUnreadInBoxs" desc="" name="打开未读的收件箱信息">
+          <inputs>
+            <variables />
+            <dataTypes />
+          </inputs>
+          <outputs>
+            <variables />
+            <dataTypes />
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="client-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="SPI_ChoiceOrgPost" desc="" name="选择机构岗位">
+          <inputs>
+            <variables>
+              <variable code="receiveType" name="接收人类型" type="char" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes />
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="resultEntity" name="返回数据" type="entity" desc="" initValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="resultEntity">
+                <element code="id" name="ID" type="char" length="255" precision="0" desc="" />
+                <element code="name" name="名称" type="char" length="255" precision="0" desc="" />
+                <element code="code" name="编码" type="char" length="255" precision="0" desc="" />
+                <element code="type" name="数据类型" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="client-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="SPI_ChoiceUser" desc="" name="选择人员">
+          <inputs>
+            <variables>
+              <variable code="selectedUser" name="选中人员回显实体" type="entity" desc="" initValue="" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="selectedUser">
+                <element code="userId" name="用户ID" type="char" length="255" precision="0" desc="" />
+                <element code="orgName" name="机构名" type="char" length="255" precision="0" desc="" />
+                <element code="orgId" name="机构ID" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="resultEntity" name="返回结果" type="entity" desc="" initValue="" />
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="resultEntity">
+                <element code="userId" name="用户ID" type="char" length="255" precision="0" desc="" />
+                <element code="userName" name="用户名" type="char" length="255" precision="0" desc="" />
+                <element code="userNo" name="工号" type="char" length="255" precision="0" desc="" />
+                <element code="orgName" name="机构名" type="char" length="255" precision="0" desc="" />
+                <element code="orgId" name="机构ID" type="char" length="255" precision="0" desc="" />
+                <element code="address" name="地址" type="char" length="255" precision="0" desc="" />
+                <element code="birthday" name="生日" type="date" length="0" precision="0" desc="" />
+                <element code="bloodType" name="血型" type="char" length="255" precision="0" desc="" />
+                <element code="duties" name="职务" type="char" length="255" precision="0" desc="" />
+                <element code="email" name="邮箱地址" type="char" length="255" precision="0" desc="" />
+                <element code="enableFlag" name="是否启用" type="boolean" length="0" precision="0" desc="" />
+                <element code="face" name="头像" type="char" length="255" precision="0" desc="" />
+                <element code="fax" name="传真号码" type="char" length="255" precision="0" desc="" />
+                <element code="isFire" name="是否已离职" type="boolean" length="0" precision="0" desc="" />
+                <element code="mobile" name="手机号码" type="char" length="255" precision="0" desc="" />
+                <element code="postCode" name="邮编号码" type="char" length="255" precision="0" desc="" />
+                <element code="qq" name="QQ号码" type="char" length="255" precision="0" desc="" />
+                <element code="remark" name="备注" type="text" length="1000" precision="0" desc="" />
+                <element code="sex" name="性别" type="char" length="255" precision="0" desc="" />
+                <element code="telephone" name="办公电话" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="client-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="SPI_ChoiceUserGroup" desc="" name="选择用户组">
+          <inputs>
+            <variables />
+            <dataTypes />
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="resultEntity" name="返回数据" type="entity" desc="" initValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="resultEntity">
+                <element code="id" name="ID" type="char" length="255" precision="0" desc="" />
+                <element code="name" name="名称" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="window">
+      <windowMetas>
+        <windowMeta metaCode="vbase_mail_admin" metaType="1002" desc="" name="管理员系统消息">
+          <windowVariants>
+            <variables />
+            <dataTypes />
+          </windowVariants>
+          <windowOutputs>
+            <variables />
+            <dataTypes />
+          </windowOutputs>
+        </windowMeta>
+        <windowMeta metaCode="vbase_mail" metaType="1002" desc="" name="系统消息">
+          <windowVariants>
+            <variables />
+            <dataTypes />
+          </windowVariants>
+          <windowOutputs>
+            <variables />
+            <dataTypes />
+          </windowOutputs>
+        </windowMeta>
+        <windowMeta metaCode="UnreadInboxMail" metaType="1002" desc="" name="未读消息">
+          <windowVariants>
+            <variables />
+            <dataTypes />
+          </windowVariants>
+          <windowOutputs>
+            <variables />
+            <dataTypes />
+          </windowOutputs>
+        </windowMeta>
+      </windowMetas>
+    </metaInfo>
+  </metaInfos>
+  <manifest>
+    <bundle-info>
+      <symbolic-name><![CDATA[vbase_mail]]></symbolic-name>
+      <bundle-name><![CDATA[vbase_站内信]]></bundle-name>
+      <bundle-version><![CDATA[3.7.1]]></bundle-version>
+      <bundle-type><![CDATA[DesignSchemaSDK]]></bundle-type>
+      <provider><![CDATA[huangsq]]></provider>
+      <description><![CDATA[]]></description>
+      <lastModified>1530500936000</lastModified>
+      <outTableInitDatas>false</outTableInitDatas>
+    </bundle-info>
+    <interface>
+      <apis>
+        <api>
+          <metaReference metaCode="vbase_mail_admin" metaType="window" />
+        </api>
+        <api>
+          <metaReference metaCode="vbase_mail" metaType="window" />
+        </api>
+        <api>
+          <metaReference metaCode="UnreadInboxMail" metaType="window" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_MailDeleteCollectionBox" metaType="server-ruleSet" metaName="删除收藏箱信息" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_MailDeleteDustbinBox" metaType="server-ruleSet" metaName="删除垃圾箱信息" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_MailDeleteInBox" metaType="server-ruleSet" metaName="删除收件箱信息" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_MailDeleteOutBox" metaType="server-ruleSet" metaName="删除发件箱信息" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_MailDustbinToCollectionBox" metaType="server-ruleSet" metaName="垃圾箱信息恢复到收藏箱" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_MailInBoxToColectionBox" metaType="server-ruleSet" metaName="收件箱信息收藏" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_MailOutBoxToColectionBox" metaType="server-ruleSet" metaName="发件箱信息收藏" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_MailQueryAllCollectionBox" metaType="server-ruleSet" metaName="查询所有用户收藏箱信息" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_MailQueryAllDustbinBox" metaType="server-ruleSet" metaName="查询所有用户垃圾箱信息" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_MailQueryAllInBox" metaType="server-ruleSet" metaName="查询所有用户收件箱信息" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_MailQueryAllOutBox" metaType="server-ruleSet" metaName="查询所有用户发件箱信息" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_MailQueryCollectionBoxs" metaType="server-ruleSet" metaName="查询当前用户收藏箱信息" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_MailQueryDustbinBoxs" metaType="server-ruleSet" metaName="查询当前用户垃圾箱信息" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_MailQueryInBoxs" metaType="server-ruleSet" metaName="查询当前用户收件箱信息" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_MailQueryOutBoxs" metaType="server-ruleSet" metaName="查询当前用户发件箱信息" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_MailSendMessage" metaType="server-ruleSet" metaName="发送消息" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_SetInBoxMessageRead" metaType="server-ruleSet" metaName="收件箱信息设为已读" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="QueryCollectionBoxs" metaType="server-ruleSet" metaName="查询当前用户的收藏箱信息" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="QueryOutBoxs" metaType="server-ruleSet" metaName="查询当前用户的发件箱信息" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="VMailAccountQueryUserInfo" metaType="server-ruleSet" metaName="根据账号id查询人员的简单信息" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_OpenUnreadInBoxs" metaType="client-ruleSet" metaName="打开未读的收件箱信息" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="SPI_ChoiceOrgPost" metaType="client-ruleSet" metaName="选择机构岗位" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="SPI_ChoiceUser" metaType="client-ruleSet" metaName="选择人员" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="SPI_ChoiceUserGroup" metaType="client-ruleSet" metaName="选择用户组" />
+        </api>
+      </apis>
+      <spis />
+    </interface>
+    <dependencies>
+      <dependency componentCode="vbase_org_mail" version="3.4.1" type="api" metaCode="API_MailQueryUserIdNames" metaType="server-ruleSet">
+        <IsEnabled xmlns:q1="http://www.w3.org/2001/XMLSchema" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" p6:type="q1:boolean">true</IsEnabled>
+      </dependency>
+      <dependency componentCode="LoginComp" version="3.4.12" type="api" metaCode="API_QueryLoginInfo" metaType="server-ruleSet">
+        <IsEnabled xmlns:q2="http://www.w3.org/2001/XMLSchema" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" p6:type="q2:boolean">true</IsEnabled>
+      </dependency>
+      <dependency componentCode="" windowCode="vbase_mail" version="" type="extensionPoint" metaCode="EP_RefreshOutBoxAfterSend" metaType="client-ruleSet">
+        <extensions>
+          <extension>
+            <metaReference windowCode="OutBoxs_user" metaCode="EP_RefreshOutBoxAfterSend" metaType="client-ruleSet" />
+          </extension>
+        </extensions>
+        <IsEnabled xmlns:q3="http://www.w3.org/2001/XMLSchema" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" p6:type="q3:boolean">true</IsEnabled>
+      </dependency>
+      <dependency componentCode="vbase_organization" windowCode="org_post_user_choose" version="3.4.29" type="api" metaCode="org_post_user_choose" metaType="window">
+        <IsEnabled xmlns:q4="http://www.w3.org/2001/XMLSchema" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" p6:type="q4:boolean">true</IsEnabled>
+      </dependency>
+      <dependency componentCode="vbase_organization" windowCode="chooseUserByOrg" version="3.4.29" type="api" metaCode="chooseUserByOrg" metaType="window">
+        <IsEnabled xmlns:q5="http://www.w3.org/2001/XMLSchema" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" p6:type="q5:boolean">true</IsEnabled>
+      </dependency>
+    </dependencies>
+    <imports>
+      <import componentCode="com.toone.v3.platform-widget-smartclient-JGPanel" componentName="面板" />
+      <import componentCode="com.toone.v3.platform-widget-smartclient-JGButton" componentName="按钮" />
+      <import componentCode="com.toone.v3.platform-widget-smartclient-JGTextBox" componentName="文本" />
+      <import componentCode="com.toone.v3.platform-widget-smartclient-JGDataGrid" componentName="列表" />
+      <import componentCode="com.toone.v3.platform-widget-smartclient-JGDateTimePicker" componentName="日期" />
+      <import componentCode="com.toone.v3.platform-widget-smartclient-JGLabel" componentName="标签" />
+      <import componentCode="com.toone.v3.platform-widget-smartclient-JGLongDateTimePicker" componentName="长日期" />
+      <import componentCode="com.toone.v3.platform-widget-smartclient-JGRichTextEditor" componentName="富文本" />
+      <import componentCode="com.toone.v3.platform-widget-smartclient-JGComponentContainer" componentName="组件容器" />
+      <import componentCode="com.toone.v3.platform-widget-smartclient-JGLongTextBox" componentName="长文本" />
+      <import componentCode="com.toone.v3.platform-widget-smartclient-JGTabControl" componentName="页签" />
+      <import componentCode="com.toone.v3.platform-widget-smartclient-JGCheckBox" componentName="布尔" />
+      <import componentCode="com.toone.v3.platform-widget-smartclient-JGComboBox" componentName="下拉选择" />
+      <import componentCode="com.toone.v3.platform-widget-smartclient-JGTreeGrid" componentName="树表" />
+      <import componentCode="com.toone.v3.platform-Webrule_ExecuteRuleSet" componentName="执行方法" />
+      <import componentCode="com.toone.v3.platform-Webrule_ShowMessage" componentName="显示设置的提示信息" />
+      <import componentCode="com.toone.v3.platform-Webrule_AbortRule" componentName="中断规则" />
+      <import componentCode="com.toone.v3.platform-Webrule_CopyEntityRecord" componentName="实体间复制记录" />
+      <import componentCode="com.toone.v3.platform-Webrule_SetEntityVarControlValue" componentName="给界面实体/控件/变量赋值" />
+      <import componentCode="com.toone.v3.platform-Webrule_ClearInterfaceEntityData" componentName="清除界面实体中的数据" />
+      <import componentCode="com.toone.v3.platform-Webrule_SetControlPropertys" componentName="控件属性设置" />
+      <import componentCode="com.toone.v3.platform-Webrule_OpenComponentReturnData" componentName="打开窗体并返回数据" />
+      <import componentCode="com.toone.v3.platform-Webrule_Progress" componentName="进度条显示/隐藏" />
+      <import componentCode="com.toone.v3.platform-Webrule_CopyRecordBetweenEntity" componentName="实体间复制记录(后台规则)" />
+      <import componentCode="com.toone.v3.platform-Webrule_MakeControlRVE" componentName="控制控件的只读、使能、显示" />
+      <import componentCode="com.toone.v3.platform-Webrule_AddTableRecord" componentName="新增界面实体记录" />
+      <import componentCode="com.toone.v3.platform-Webrule_InterfaceEntityRecordRecycling" componentName="界面实体记录循环处理" />
+      <import componentCode="com.toone.v3.platform-Webrule_SelectionConfirm" componentName="退出窗体" />
+      <import componentCode="com.toone.v3.platform-Webrule_CheckRequired" componentName="必填项检查" />
+      <import componentCode="com.toone.v3.platform-Webfunc_GetEntityRowCount" componentName="从指定的界面实体获取记录数" />
+      <import componentCode="com.toone.v3.platform-Webfunc_IsEmpty" componentName="检查是否为空值" />
+      <import componentCode="com.toone.v3.platform-Webfunc_ConcatStr" componentName="字符串合并" />
+      <import componentCode="com.toone.v3.platform-Webfunc_ListToString" componentName="将列表拼成字符串" />
+      <import componentCode="com.toone.v3.platform-Webfunc_GenerateUUID" componentName="生成uuid" />
+      <import componentCode="com.toone.v3.platform-Webfunc_Convert" componentName="转换" />
+      <import componentCode="vbase_org_mail" componentName="vbase_机构与站内信关联构件" />
+      <import componentCode="LoginComp" componentName="登录构件" />
+      <import componentCode="vbase_organization" componentName="VBase_组织机构" />
+    </imports>
+    <serviceRegistration>
+      <serviceMapping>
+        <extensionPoint componentCode="vbase_mail">
+          <metaReference windowCode="vbase_mail" metaCode="EP_RefreshOutBoxAfterSend" metaType="client-ruleSet" />
+        </extensionPoint>
+        <extensions>
+          <extension componentCode="vbase_mail">
+            <metaReference windowCode="OutBoxs_user" metaCode="EP_RefreshOutBoxAfterSend" metaType="client-ruleSet" />
+          </extension>
+        </extensions>
+      </serviceMapping>
+    </serviceRegistration>
+    <consistencies>
+      <consistency matchCode="ClientRules.ExecuteRuleSet" matchVersion="2" />
+      <consistency matchCode="ClientRules.AddTableRecord" matchVersion="1" />
+      <consistency matchCode="ClientRules.AbortRule" matchVersion="1" />
+      <consistency matchCode="ClientRules.ClearInterfaceEntityData" matchVersion="1" />
+      <consistency matchCode="ClientRules.CopyEntityRecord" matchVersion="1" />
+      <consistency matchCode="ClientRules.SetEntityVarControlValue" matchVersion="1" />
+      <consistency matchCode="ClientRules.ShowMessage" matchVersion="1" />
+      <consistency matchCode="ClientRules.SelectionConfirm" matchVersion="1" />
+      <consistency matchCode="ClientRules.CheckRequired" matchVersion="1" />
+      <consistency matchCode="ClientRules.InterfaceEntityRecordRecycling" matchVersion="1" />
+      <consistency matchCode="ClientRules.MakeControlRVE" matchVersion="1" />
+      <consistency matchCode="ClientRules.SetControlPropertys" matchVersion="1" />
+      <consistency matchCode="ClientRules.OpenComponentReturnData" matchVersion="3" />
+      <consistency matchCode="ClientRules.Progress" matchVersion="1" />
+      <consistency matchCode="ServerRules.ExecuteRuleSet" matchVersion="2" />
+      <consistency matchCode="ServerRules.SetEntityVarControlValue" matchVersion="2" />
+      <consistency matchCode="ServerRules.AbortRule" matchVersion="1" />
+      <consistency matchCode="ServerRules.CopyRecordBetweenEntity" matchVersion="1" />
+      <consistency matchCode="ClientFunctions.GetEntityRowCount" matchVersion="1" />
+      <consistency matchCode="ClientFunctions.GenerateUUID" matchVersion="1" />
+      <consistency matchCode="ClientFunctions.IsEmpty" matchVersion="1" />
+      <consistency matchCode="ClientFunctions.ListToString" matchVersion="1" />
+      <consistency matchCode="ClientFunctions.ConcatStr" matchVersion="1" />
+      <consistency matchCode="ClientFunctions.Convert" matchVersion="1" />
+      <consistency matchCode="ComponentControls.JGPanel" matchVersion="1" />
+      <consistency matchCode="ComponentControls.JGRichTextEditor" matchVersion="1" />
+      <consistency matchCode="ComponentControls.JGLabel" matchVersion="1" />
+      <consistency matchCode="ComponentControls.JGTextBox" matchVersion="1" />
+      <consistency matchCode="ComponentControls.JGComboBox" matchVersion="1" />
+      <consistency matchCode="ComponentControls.JGButton" matchVersion="1" />
+      <consistency matchCode="ComponentControls.JGLongDateTimePicker" matchVersion="1" />
+      <consistency matchCode="ComponentControls.JGDataGrid" matchVersion="2" />
+      <consistency matchCode="ComponentControls.JGTabControl" matchVersion="1" />
+      <consistency matchCode="ComponentControls.JGTreeGrid" matchVersion="4" />
+      <consistency matchCode="ComponentControls.JGComponentContainer" matchVersion="2" />
+      <consistency matchCode="ComponentControls.JGCheckBox" matchVersion="1" />
+      <consistency matchCode="ComponentControls.JGLongTextBox" matchVersion="1" />
+      <consistency matchCode="ComponentControls.JGDateTimePicker" matchVersion="1" />
+    </consistencies>
+  </manifest>
+  <partLibType>
+    <partLibTypeCode><![CDATA[release]]></partLibTypeCode>
+    <partLibTypeName><![CDATA[稳定版 (release)]]></partLibTypeName>
+  </partLibType>
+</component>

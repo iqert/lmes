@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Methods>
+  <Method Code="import_BOM" Type="Server" InterfaceType="Local" RestrictType="Private" TransactionType="transaction">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_ImportExcelToDBOrEntity1" />
+  <evaluateRule code="BR_EntityRecordRecycling1" />
+  <evaluateRule code="BR_CopyRecordBetweenEntity1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ImportExcelToDBOrEntity" ruleName="Excel导入到数据库表或实体" instanceCode="BR_ImportExcelToDBOrEntity1" instanceName="Excel导入到数据库表或实体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"fileSource":"BR_IN_PARENT.fileid","items":[{"target":"BOM","targetType":"ruleSetVar","sheetNum":"0","dataStartRow":"3","repeatOperation":"replace","checkItems":null,"importNodeId":"","mapping":[{"fieldCode":"useNum","fieldName":"用量","sourceType":"excelColName","sourceValue":""},{"fieldCode":"remark","fieldName":"备注","sourceType":"excelColName","sourceValue":""},{"fieldCode":"materialNo","fieldName":"物料型号","sourceType":"excelColName","sourceValue":""},{"fieldCode":"parentChild","fieldName":"父子关系","sourceType":"excelColName","sourceValue":"上下级关系"}],"treeStruct":[{"tableName":"BOM","type":"1","pidField":"PID","treeCodeField":"InnerCode","orderField":"OrderNo","isLeafField":"IsLeaf","leftField":"","rightField":"","filiationField":"","filiationFormat":"","busiFilterField":"","filiationConfig":""}],"importBy":"filiation","filiationField":"parentChild","filiationFormat":"haveSeparativeSign","filiationConfig":"\".\""}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFileSource><FileSource>BR_IN_PARENT.fileid</FileSource></dtFileSource><dtSheetMapping><ID>feb377e9d23a45ecaf79906027b16a12</ID><TargetEntityCode>BOM</TargetEntityCode><TargetEntityType>ruleSetVar</TargetEntityType><SheetNum>0</SheetNum><DataStartRow>3</DataStartRow><ImportNodeId /><ImportBy>filiation</ImportBy><FiliationField>parentChild</FiliationField><FiliationFormat>haveSeparativeSign</FiliationFormat><FiliationConfig>"."</FiliationConfig><RepeatOperation>replace</RepeatOperation></dtSheetMapping><dtFieldMapping><PID>feb377e9d23a45ecaf79906027b16a12</PID><EntityCode>BOM</EntityCode><EntityType>ruleSetVar</EntityType><FieldCode>useNum</FieldCode><FieldName>用量</FieldName><SourceType>excelColName</SourceType></dtFieldMapping><dtFieldMapping><PID>feb377e9d23a45ecaf79906027b16a12</PID><EntityCode>BOM</EntityCode><EntityType>ruleSetVar</EntityType><FieldCode>remark</FieldCode><FieldName>备注</FieldName><SourceType>excelColName</SourceType></dtFieldMapping><dtFieldMapping><PID>feb377e9d23a45ecaf79906027b16a12</PID><EntityCode>BOM</EntityCode><EntityType>ruleSetVar</EntityType><FieldCode>materialNo</FieldCode><FieldName>物料型号</FieldName><SourceType>excelColName</SourceType></dtFieldMapping><dtFieldMapping><PID>feb377e9d23a45ecaf79906027b16a12</PID><EntityCode>BOM</EntityCode><EntityType>ruleSetVar</EntityType><FieldCode>parentChild</FieldCode><FieldName>父子关系</FieldName><SourceType>excelColName</SourceType><SourceValue>上下级关系</SourceValue></dtFieldMapping><dtTreeStruct><TableName>BOM</TableName><Type>1</Type><PIDField>PID</PIDField><TreeCodeField>InnerCode</TreeCodeField><OrderField>OrderNo</OrderField><IsLeafField>IsLeaf</IsLeafField><LeftField /><RightField /><BusiFilterField /><PID>feb377e9d23a45ecaf79906027b16a12</PID><EntityType>ruleSetVar</EntityType></dtTreeStruct></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="EntityRecordRecycling" ruleName="实体记录循环处理" instanceCode="BR_EntityRecordRecycling1" instanceName="实体记录循环处理" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"TargetEntity":"BOM","TargetEntityType":"ruleSetVar","Condition":[{"columnType":"1","field":"BOM.materialNo","fieldType":"char","leftBracket":"(","logicOperation":"","operation":"!=","rightBracket":")","value":"\" \"","valueType":"9"}],"TargetFields":[{"FieldValue":"GetTableData(\"id\",\"bo_akl_MM_materialInfo\",ConcatStr(\"materialNo=\",\"'\",BR_VAR_PARENT.[BOM].[materialNo],\"'\"))","SourceType":"expression","TargetField":"materialId"}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><TargetEntity>BOM</TargetEntity><TargetEntityType>ruleSetVar</TargetEntityType><Condition><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>BOM.materialNo</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>!=</operation><rightBracket>)</rightBracket><value>" "</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></Condition></dtMaster><dtField><TargetField>materialId</TargetField><SourceType>expression</SourceType><FieldValue>GetTableData("id","bo_akl_MM_materialInfo",ConcatStr("materialNo=","'",BR_VAR_PARENT.[BOM].[materialNo],"'"))</FieldValue></dtField></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="CopyRecordBetweenEntity" ruleName="实体间复制记录" instanceCode="BR_CopyRecordBetweenEntity1" instanceName="实体间复制记录" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-15 11:36:59">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"sourceName":"BOM","sourceType":"ruleSetVar","destName":"BOM_Out","destType":"ruleSetOutput","copyType":"2","operType":"1","isAddRecord":true,"condition":null,"items":[{"destName":"BOM_Out.id","sourceName":"BOM.id","sourceType":"entityField"},{"destName":"BOM_Out.materialNo","sourceName":"BOM.materialNo","sourceType":"entityField"},{"destName":"BOM_Out.useNum","sourceName":"BOM.useNum","sourceType":"entityField"},{"destName":"BOM_Out.remark","sourceName":"BOM.remark","sourceType":"entityField"},{"destName":"BOM_Out.PID","sourceName":"BOM.PID","sourceType":"entityField"},{"destName":"BOM_Out.OrderNo","sourceName":"BOM.OrderNo","sourceType":"entityField"},{"destName":"BOM_Out.InnerCode","sourceName":"BOM.InnerCode","sourceType":"entityField"},{"destName":"BOM_Out.IsLeaf","sourceName":"BOM.IsLeaf","sourceType":"entityField"}],"checkitems":null,"mergeitems":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtInfo><destName>BOM_Out</destName><destType>ruleSetOutput</destType><sourceName>BOM</sourceName><sourceType>ruleSetVar</sourceType><type>1</type><isAddRecord>True</isAddRecord><copyType>2</copyType><condition><![CDATA[<NewDataSet />]]]]><![CDATA[></condition></dtInfo><dtMaster><DestName>BOM_Out.id</DestName><SourceType>entityField</SourceType><SourceName>BOM.id</SourceName></dtMaster><dtMaster><DestName>BOM_Out.materialNo</DestName><SourceType>entityField</SourceType><SourceName>BOM.materialNo</SourceName></dtMaster><dtMaster><DestName>BOM_Out.useNum</DestName><SourceType>entityField</SourceType><SourceName>BOM.useNum</SourceName></dtMaster><dtMaster><DestName>BOM_Out.remark</DestName><SourceType>entityField</SourceType><SourceName>BOM.remark</SourceName></dtMaster><dtMaster><DestName>BOM_Out.PID</DestName><SourceType>entityField</SourceType><SourceName>BOM.PID</SourceName></dtMaster><dtMaster><DestName>BOM_Out.OrderNo</DestName><SourceType>entityField</SourceType><SourceName>BOM.OrderNo</SourceName></dtMaster><dtMaster><DestName>BOM_Out.InnerCode</DestName><SourceType>entityField</SourceType><SourceName>BOM.InnerCode</SourceName></dtMaster><dtMaster><DestName>BOM_Out.IsLeaf</DestName><SourceType>entityField</SourceType><SourceName>BOM.IsLeaf</SourceName></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Inputs>
+      <Variable code="fileid" name="文件标识" fieldType="char" initValue="" isMust="false" desc="" />
+    </Inputs>
+    <Outputs>
+      <Variable code="BOM_Out" name="" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="materialNo" name="物料型号" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="useNum" name="用量" fieldType="number" length="50" accuracy="4">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="remark" name="备注" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="PID" name="父记录字段" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="OrderNo" name="排序字段" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="InnerCode" name="层级码字段" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="IsLeaf" name="叶子节点字段" fieldType="boolean" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+    </Outputs>
+    <Variables>
+      <Variable code="BOM" name="" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="materialNo" name="物料型号" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="useNum" name="用量" fieldType="number" length="50" accuracy="4">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="remark" name="备注" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="PID" name="父记录字段" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="OrderNo" name="排序字段" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="InnerCode" name="层级码字段" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="IsLeaf" name="叶子节点字段" fieldType="boolean" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="parentChild" name="父子关系" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+    </Variables>
+  </Method>
+</Methods>

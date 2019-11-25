@@ -1,0 +1,43 @@
+﻿<Query id="bb896d97c192430182f0cd3936588d3b" code="getAssessUser" name="未考核培训人员" type="VSql">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[liub]]></Creator>
+  <CreationTime><![CDATA[2018-07-11 11:29:49]]></CreationTime>
+  <Modifier><![CDATA[liub]]></Modifier>
+  <ModificationTime><![CDATA[2018-07-11 14:07:48]]></ModificationTime>
+  <VSql><![CDATA[SELECT a.teId, c.sNo, c.sName, b.id
+FROM bo_akl_base_trainEmployee a
+LEFT JOIN bo_akl_base_examEmployee b ON a.teId = b.teId
+LEFT JOIN bo_akl_base_staffInfo AS c ON a.teId = c.id
+WHERE b.id IS NULL
+
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="teId" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="sNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="sName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="id" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_base_trainEmployee" tokenIndexes="23" />
+    <DataItem type="Table" key="bo_akl_base_examEmployee" tokenIndexes="31" />
+    <DataItem type="Table" key="bo_akl_base_staffInfo" tokenIndexes="51" />
+    <DataItem type="Query" key="a" tokenIndexes="2,25,37,59" />
+    <DataItem type="Query" key="c" tokenIndexes="7,12,55,65" />
+    <DataItem type="Query" key="b" tokenIndexes="17,33,43,71" />
+    <DataItem type="QueryField" key="a.teId" tokenIndexes="4,39,61" />
+    <DataItem type="QueryField" key="c.sNo" tokenIndexes="9" />
+    <DataItem type="QueryField" key="c.sName" tokenIndexes="14" />
+    <DataItem type="QueryField" key="b.id" tokenIndexes="19,73" />
+    <DataItem type="QueryField" key="b.teId" tokenIndexes="45" />
+    <DataItem type="QueryField" key="c.id" tokenIndexes="67" />
+  </DataItems>
+</Query>

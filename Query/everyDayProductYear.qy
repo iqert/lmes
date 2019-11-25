@@ -1,0 +1,69 @@
+﻿<Query id="ae7e9348fbac4c2f800b4a662126d99b" code="everyDayProductYear" name="每日产量累计产量年度" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-10-21 15:45:02]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-11-20 23:20:44]]></ModificationTime>
+  <VSql><![CDATA[	select md.tyear,edp.cpc from baseYear as md
+	left join(
+		SELECT 
+	YEAR(sto.operateTime) as optime,
+	sum(sto.inStockNum)  AS cpc,
+	mat.materialNo
+	FROM bo_akl_MM_inStockInfo AS sto
+	LEFT JOIN bo_akl_MM_stockType AS st ON st.id = sto.stockTypeId
+	LEFT join bo_akl_MM_materialInfo AS mat ON sto.materialId = mat.id
+	Left join bo_akl_EM_productInfo as pinfo on pinfo.prNo=mat.materialNo
+	left join bo_akl_base_productlines as plines on plines.id=pinfo.pid --产线
+	left join bo_akl_base_projectInfo as pjinfo on pjinfo.id=plines.belongProject
+	where 
+	plines.pNo=:prLineNo AND --产线编号
+	pjinfo.pName=:projectName and --产品编号
+	st.stockType = '成品仓'  and mat.materialNo = :pNo 
+	group by YEAR(sto.operateTime)) as edp
+	on edp.optime=md.tyear
+	
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="tyear" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="cpc" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="pNo" name="物料编号" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="prLineNo" name="产线编号" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="projectName" name="项目名称" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="baseYear" tokenIndexes="13" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="110" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="130" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="152" />
+    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="56" />
+    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="66" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="88" />
+    <DataItem type="TableField" key="baseYear.tyear" tokenIndexes="5,235" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="120" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="140" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.pid" tokenIndexes="144" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="162" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="166" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="172" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.pName" tokenIndexes="183" />
+    <DataItem type="QueryParam" key="prLineNo" tokenIndexes="175" />
+    <DataItem type="QueryParam" key="projectName" tokenIndexes="186" />
+    <DataItem type="QueryParam" key="pNo" tokenIndexes="209" />
+  </DataItems>
+</Query>

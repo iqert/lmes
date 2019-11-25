@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2018/7/6 8:40:45-->
+<Methods>
+  <Method Code="hardware_data_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+  <evaluateRule code="BR_DeleteConditionRelationData1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":null,"entityType":"window","entityName":"Exchange","itemqueryparam":null,"items":[{"destName":"Exchange.Name","sourceName":"Exchange.Name","type":"entityField"},{"destName":"Exchange.Timepoint","sourceName":"Exchange.Timepoint","type":"entityField"},{"destName":"Exchange.Value","sourceName":"Exchange.Value","type":"entityField"}],"orderBy":null,"sourceName":"Exchange","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>Exchange</EntityName><SourceType>Table</SourceType><SourceName>Exchange</SourceName><dsWhere><![CDATA[<NewDataSet />]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>9ac97e77962743ddbd34d55d54cb95d0</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>9ac97e77962743ddbd34d55d54cb95d0</MasterID><DestName>Exchange.Name</DestName><SourceType>entityField</SourceType><SourceName>Exchange.Name</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>9ac97e77962743ddbd34d55d54cb95d0</MasterID><DestName>Exchange.Timepoint</DestName><SourceType>entityField</SourceType><SourceName>Exchange.Timepoint</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>9ac97e77962743ddbd34d55d54cb95d0</MasterID><DestName>Exchange.Value</DestName><SourceType>entityField</SourceType><SourceName>Exchange.Value</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>9ac97e77962743ddbd34d55d54cb95d0</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>9ac97e77962743ddbd34d55d54cb95d0</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteConditionRelationData" ruleName="删除数据库中的记录" instanceCode="BR_DeleteConditionRelationData1" instanceName="删除数据库中的记录" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dtChileMaps":[{"orderNo":"1","tableName":"MyExchange_old","dsWhere":null},{"orderNo":"2","tableName":"MyExchange_Journal","dsWhere":null},{"orderNo":"3","tableName":"MyExchange","dsWhere":null}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtConditionMaster><TableName>MyExchange_old</TableName><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition><OrderNo>1</OrderNo></dtConditionMaster><dtConditionMaster><TableName>MyExchange_Journal</TableName><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition><OrderNo>2</OrderNo></dtConditionMaster><dtConditionMaster><TableName>MyExchange</TableName><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition><OrderNo>3</OrderNo></dtConditionMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton1_OnClick_2" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_UpdateRecord1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="liub" lastModifiedTime="2018-07-10 13:58:24">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"Exchange.Name","colValue":"Exchange.Name","valueType":"entityField"},{"colName":"Exchange.Timepoint","colValue":"Exchange.Timepoint","valueType":"entityField"},{"colName":"Exchange.Value","colValue":"Exchange.Value","valueType":"entityField"}],"dataSource":"Exchange","dataSourceType":"window","destTab":"Exchange","isSaveAll":false}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>74b1a176a0e24c0d936d5f929044438f</ID><SourceName>Exchange</SourceName><SourceType>window</SourceType><SourceNameType>Exchange(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>Exchange</TableName></dtMaster><dtDetails><PID>74b1a176a0e24c0d936d5f929044438f</PID><SourceField>Exchange.Name</SourceField><DataFrom>entityField</DataFrom><Value>Exchange.Name</Value></dtDetails><dtDetails><PID>74b1a176a0e24c0d936d5f929044438f</PID><SourceField>Exchange.Timepoint</SourceField><DataFrom>entityField</DataFrom><Value>Exchange.Timepoint</Value></dtDetails><dtDetails><PID>74b1a176a0e24c0d936d5f929044438f</PID><SourceField>Exchange.Value</SourceField><DataFrom>entityField</DataFrom><Value>Exchange.Value</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton2_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_ImportExcelToDB1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ImportExcelToDB" ruleName="Excel导入到数据库表" instanceCode="BR_ImportExcelToDB1" instanceName="Excel导入到数据库表" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="liub" lastModifiedTime="2018-07-10 14:06:47">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"fileSource":"JGAttachment1","items":[{"targetTable":"Exchange","sheetNum":"0","dataStartRow":"2","importNodeId":"","mapping":[{"fieldCode":"Name","fieldName":"","sourceType":"excelColNum","sourceValue":"A"},{"fieldCode":"Timepoint","fieldName":"","sourceType":"excelColNum","sourceValue":"C"},{"fieldCode":"Value","fieldName":"","sourceType":"excelColNum","sourceValue":"B"}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFileSource><FileSource>JGAttachment1</FileSource></dtFileSource><dtSheetMapping><ID>959cd038d7894b77a429f9c688ab8589</ID><TargetTable>Exchange</TargetTable><SheetNum>0</SheetNum><DataStartRow>2</DataStartRow><ImportNodeId /></dtSheetMapping><dtFieldMapping><PID>959cd038d7894b77a429f9c688ab8589</PID><TableCode>Exchange</TableCode><FieldCode>Name</FieldCode><FieldName /><SourceType>excelColNum</SourceType><SourceValue>A</SourceValue></dtFieldMapping><dtFieldMapping><PID>959cd038d7894b77a429f9c688ab8589</PID><TableCode>Exchange</TableCode><FieldCode>Timepoint</FieldCode><FieldName /><SourceType>excelColNum</SourceType><SourceValue>C</SourceValue></dtFieldMapping><dtFieldMapping><PID>959cd038d7894b77a429f9c688ab8589</PID><TableCode>Exchange</TableCode><FieldCode>Value</FieldCode><FieldName /><SourceType>excelColNum</SourceType><SourceValue>B</SourceValue></dtFieldMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton3_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DeleteConditionRelationData1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DeleteConditionRelationData" ruleName="删除数据库中的记录" instanceCode="BR_DeleteConditionRelationData1" instanceName="删除数据库中的记录" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="liub" lastModifiedTime="2018-07-10 14:07:50">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dtChileMaps":[{"orderNo":"1","tableName":"Exchange","dsWhere":null}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtConditionMaster><TableName>Exchange</TableName><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition><OrderNo>1</OrderNo></dtConditionMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton4_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_ExecuteRuleSet1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_hardware_data_FormLoadAction(hardware_data_窗体加载事件)" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="liub" lastModifiedTime="2018-07-10 14:28:55">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"hardware_data_FormLoadAction","isParallelism":"False"},"invokeParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>hardware_data_FormLoadAction</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2019/11/23 23:53:41-->
+<Methods>
+  <Method Code="JGBaseDictBox1_OpenModuleAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_OpenComponentReturnData1" />
+  <evaluateRule code="BR_SetEntityVarControlValue1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-24 00:18:13">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"form121","windowName":"选择产品","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","isDynamicContainer":false,"windowContainer":"","heightExp":"","widthExp":"","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":null,"returnMapping":[{"destType":"ruleSetVariant","dest":"product","srcType":"returnValue","src":"product","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":false,"destFieldMapping":[{"destField":"product_no","srcValueType":"field","srcValue":"product_no"}]}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>form121</WindowCode><WindowName>选择产品</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsDynamicContainer>False</IsDynamicContainer><IsChooseLanguage>False</IsChooseLanguage><HeightExp /><WidthExp /><IsAsyn>False</IsAsyn></dtMaster><dtReturnValue><TargetType>ruleSetVariant</TargetType><Target>product</Target><SourceType>returnValue</SourceType><Source>product</Source><UpdateWay>insertOrUpdateBySameId</UpdateWay><IsClearData>False</IsClearData><SourceMapping><![CDATA[<dsSourceMapping><dtSourceMapping><TargetField>product_no</TargetField><SourceType>field</SourceType><Source>product_no</Source></dtSourceMapping></dsSourceMapping>]]]]><![CDATA[></SourceMapping></dtReturnValue></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-24 00:18:39">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_base_processtime.pNo","SourceType":"expression","SourceEntityType":"","Source":"BR_VAR_PARENT.[product].[product_no]","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_base_processtime.pNo</Target><SourceType>expression</SourceType><SourceEntityType /><Source>BR_VAR_PARENT.[product].[product_no]</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Variables>
+      <Variable code="product" name="" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="product_no" name="产品编号" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+    </Variables>
+  </Method>
+  <Method Code="JGButton1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_SetEntityVarControlValue1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>[bo_akl_base_processtime].[bzgsMin]&gt;0</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_SetEntityVarControlValue1_1" />
+    </sequence>
+  </if>
+  <if isEnabled="True" isDebug="False" code="IfCode2">
+    <define>
+      <expression>[bo_akl_base_processtime].[bzjjNun]&gt;0 &amp;&amp; [bo_akl_base_processtime].[bzTimehour]&gt;0</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_SetEntityVarControlValue1_1_1" />
+    </sequence>
+  </if>
+  <if isEnabled="True" isDebug="False" code="IfCode3">
+    <define>
+      <expression>[bo_akl_base_processtime].[bzgsMin]&gt;0</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_SetEntityVarControlValue1_1_1_1" />
+    </sequence>
+  </if>
+  <evaluateRule code="BR_SetEntityVarControlValue2" />
+  <if isEnabled="True" isDebug="False" code="IfCode4">
+    <define>
+      <expression>[bo_akl_base_processtime].[newBzgsMin]&gt;0</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_SetEntityVarControlValue1_1_2" />
+    </sequence>
+  </if>
+  <if isEnabled="True" isDebug="False" code="IfCode5">
+    <define>
+      <expression>[bo_akl_base_processtime].[newBzjjNum]&gt;0 &amp;&amp; [bo_akl_base_processtime].[newBzTimehour]&gt;0</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_SetEntityVarControlValue1_1_1_2" />
+    </sequence>
+  </if>
+  <if isEnabled="True" isDebug="False" code="IfCode6">
+    <define>
+      <expression>[bo_akl_base_processtime].[newBzgsMin]&gt;0</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_SetEntityVarControlValue1_1_1_1_1" />
+    </sequence>
+  </if>
+  <if isEnabled="True" isDebug="False" code="IfCode7">
+    <define>
+      <expression>[bo_akl_base_processtime].[bzscl]&gt;0</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_SetEntityVarControlValue3" />
+    </sequence>
+  </if>
+  <if isEnabled="True" isDebug="False" code="IfCode8">
+    <define>
+      <expression>[bo_akl_base_processtime].[bzjjCh]&gt;0</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_SetEntityVarControlValue4" />
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值_标准工时/秒*件" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-24 00:24:29">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_base_processtime.bzgsSs","SourceType":"expression","SourceEntityType":"","Source":"[bo_akl_base_processtime].[bzgsMin]*60/100","entityFieldMapping":null},{"TargetType":"3","Target":"bo_akl_base_processtime.bzjjCh","SourceType":"expression","SourceEntityType":"","Source":"[bo_akl_base_processtime].[bzTimehour]*60*100*[bo_akl_base_processtime].[bzjjNun]/[bo_akl_base_processtime].[bzgsMin]","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_base_processtime.bzgsSs</Target><SourceType>expression</SourceType><SourceEntityType /><Source>[bo_akl_base_processtime].[bzgsMin]*60/100</Source></dtFieldMap><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_base_processtime.bzjjCh</Target><SourceType>expression</SourceType><SourceEntityType /><Source>[bo_akl_base_processtime].[bzTimehour]*60*100*[bo_akl_base_processtime].[bzjjNun]/[bo_akl_base_processtime].[bzgsMin]</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2" instanceName="给界面实体/控件/变量赋值_新标准工时/秒*件" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-24 00:38:50">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_base_processtime.newBzgsSs","SourceType":"expression","SourceEntityType":"","Source":"[bo_akl_base_processtime].[bzgsMin]*60/100","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_base_processtime.newBzgsSs</Target><SourceType>expression</SourceType><SourceEntityType /><Source>[bo_akl_base_processtime].[bzgsMin]*60/100</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1_1_1" instanceName="给界面实体/控件/变量赋值_标准生产力_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-24 00:43:31">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_base_processtime.bzscl","SourceType":"expression","SourceEntityType":"","Source":"[bo_akl_base_processtime].[bzjjCh]/[bo_akl_base_processtime].[bzTimehour]/[bo_akl_base_processtime].[bzjjNun]","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_base_processtime.bzscl</Target><SourceType>expression</SourceType><SourceEntityType /><Source>[bo_akl_base_processtime].[bzjjCh]/[bo_akl_base_processtime].[bzTimehour]/[bo_akl_base_processtime].[bzjjNun]</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1_1_2" instanceName="给界面实体/控件/变量赋值_当前标准计件产出/pcs_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-24 00:41:55">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_base_processtime.newBzjjCh","SourceType":"expression","SourceEntityType":"","Source":"[bo_akl_base_processtime].[newBzTimehour]*60*100*[bo_akl_base_processtime].[newBzjjNum]/[bo_akl_base_processtime].[newBzgsMin]","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_base_processtime.newBzjjCh</Target><SourceType>expression</SourceType><SourceEntityType /><Source>[bo_akl_base_processtime].[newBzTimehour]*60*100*[bo_akl_base_processtime].[newBzjjNum]/[bo_akl_base_processtime].[newBzgsMin]</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1_1" instanceName="给界面实体/控件/变量赋值_当前标准计件产出/pcs" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-24 00:43:10">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_base_processtime.bzjjCh","SourceType":"expression","SourceEntityType":"","Source":"[bo_akl_base_processtime].[bzTimehour]*60*100*[bo_akl_base_processtime].[bzjjNun]/[bo_akl_base_processtime].[bzgsMin]","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_base_processtime.bzjjCh</Target><SourceType>expression</SourceType><SourceEntityType /><Source>[bo_akl_base_processtime].[bzTimehour]*60*100*[bo_akl_base_processtime].[bzjjNun]/[bo_akl_base_processtime].[bzgsMin]</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1_1_1_1" instanceName="给界面实体/控件/变量赋值_产品单价" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-24 00:43:51">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_base_processtime.proprice","SourceType":"expression","SourceEntityType":"","Source":"Round(([bo_akl_base_processtime].[price]/21.75/8/(3600/([bo_akl_base_processtime].[bzgsMin]*60/100))),5)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_base_processtime.proprice</Target><SourceType>expression</SourceType><SourceEntityType /><Source>Round(([bo_akl_base_processtime].[price]/21.75/8/(3600/([bo_akl_base_processtime].[bzgsMin]*60/100))),5)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1_1_1_1_1" instanceName="给界面实体/控件/变量赋值_产品单价_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-24 00:44:59">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_base_processtime.newProprice","SourceType":"expression","SourceEntityType":"","Source":"Round(([bo_akl_base_processtime].[newPrice]/21.75/8/(3600/([bo_akl_base_processtime].[newBzgsMin]*60/100))),5)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_base_processtime.newProprice</Target><SourceType>expression</SourceType><SourceEntityType /><Source>Round(([bo_akl_base_processtime].[newPrice]/21.75/8/(3600/([bo_akl_base_processtime].[newBzgsMin]*60/100))),5)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4" instanceName="给界面实体/控件/变量赋值_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-24 00:48:45">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_base_processtime.upCcNum","SourceType":"expression","SourceEntityType":"","Source":"([bo_akl_base_processtime].[newBzjjCh]-[bo_akl_base_processtime].[bzjjCh])/[bo_akl_base_processtime].[bzjjCh]","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_base_processtime.upCcNum</Target><SourceType>expression</SourceType><SourceEntityType /><Source>([bo_akl_base_processtime].[newBzjjCh]-[bo_akl_base_processtime].[bzjjCh])/[bo_akl_base_processtime].[bzjjCh]</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-24 00:47:15">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_base_processtime.upBzscl","SourceType":"expression","SourceEntityType":"","Source":"([bo_akl_base_processtime].[newBzscl]-[bo_akl_base_processtime].[bzscl])/[bo_akl_base_processtime].[bzscl]","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_base_processtime.upBzscl</Target><SourceType>expression</SourceType><SourceEntityType /><Source>([bo_akl_base_processtime].[newBzscl]-[bo_akl_base_processtime].[bzscl])/[bo_akl_base_processtime].[bzscl]</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1_1_1_2" instanceName="给界面实体/控件/变量赋值_新标准生产力" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-24 00:44:30">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_base_processtime.newBzscl","SourceType":"expression","SourceEntityType":"","Source":"[bo_akl_base_processtime].[newBzjjCh]/[bo_akl_base_processtime].[newBzTimehour]/[bo_akl_base_processtime].[newBzjjNum]","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_base_processtime.newBzscl</Target><SourceType>expression</SourceType><SourceEntityType /><Source>[bo_akl_base_processtime].[newBzjjCh]/[bo_akl_base_processtime].[newBzTimehour]/[bo_akl_base_processtime].[newBzjjNum]</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton2_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>[bo_akl_base_processtime].[yjMbTimeHour]&gt;0 &amp;&amp; [bo_akl_base_processtime].[yjMbjj]&gt;0</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_SetEntityVarControlValue1" />
+      <evaluateRule code="BR_SetEntityVarControlValue2" />
+    </sequence>
+  </if>
+  <if isEnabled="True" isDebug="False" code="IfCode2">
+    <define>
+      <expression>[bo_akl_base_processtime].[yjMbjj]&gt;0</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_SetEntityVarControlValue3" />
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3" instanceName="给界面实体/控件/变量赋值_预计月度人均超产奖" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-24 01:00:37">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_base_processtime.yjMonmoney","SourceType":"expression","SourceEntityType":"","Source":"([bo_akl_base_processtime].[yjMbProNum]-[bo_akl_base_processtime].[newBzjjCh])*[bo_akl_base_processtime].[newProprice]/[bo_akl_base_processtime].[yjMbjj]*[bo_akl_base_processtime].[yjMbTimeDay]","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_base_processtime.yjMonmoney</Target><SourceType>expression</SourceType><SourceEntityType /><Source>([bo_akl_base_processtime].[yjMbProNum]-[bo_akl_base_processtime].[newBzjjCh])*[bo_akl_base_processtime].[newProprice]/[bo_akl_base_processtime].[yjMbjj]*[bo_akl_base_processtime].[yjMbTimeDay]</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-24 00:52:43">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_base_processtime.yjMbscl","SourceType":"expression","SourceEntityType":"","Source":"[bo_akl_base_processtime].[yjMbProNum]/[bo_akl_base_processtime].[yjMbTimeHour]/[bo_akl_base_processtime].[yjMbjj]","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_base_processtime.yjMbscl</Target><SourceType>expression</SourceType><SourceEntityType /><Source>[bo_akl_base_processtime].[yjMbProNum]/[bo_akl_base_processtime].[yjMbTimeHour]/[bo_akl_base_processtime].[yjMbjj]</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2" instanceName="给界面实体/控件/变量赋值_预期每班生产效率" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-24 00:56:13">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_base_processtime.yjMbxl","SourceType":"expression","SourceEntityType":"","Source":"[bo_akl_base_processtime].[yjMbProNum]*[bo_akl_base_processtime].[newBzgsMin]/100/([bo_akl_base_processtime].[yjMbTimeHour]*[bo_akl_base_processtime].[yjMbjj]*60)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_base_processtime.yjMbxl</Target><SourceType>expression</SourceType><SourceEntityType /><Source>[bo_akl_base_processtime].[yjMbProNum]*[bo_akl_base_processtime].[newBzgsMin]/100/([bo_akl_base_processtime].[yjMbTimeHour]*[bo_akl_base_processtime].[yjMbjj]*60)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton31_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>IsEmpty(@id)</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_UpdateRecord1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_UpdateRecord1_1" />
+    </sequence>
+  </else>
+  <evaluateRule code="BR_SelectionConfirm1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-25 09:06:21">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_base_processtime.bzgsMin","colValue":"bo_akl_base_processtime.bzgsMin","valueType":"entityField"},{"colName":"bo_akl_base_processtime.bzgsSs","colValue":"bo_akl_base_processtime.bzgsSs","valueType":"entityField"},{"colName":"bo_akl_base_processtime.bzjjCh","colValue":"bo_akl_base_processtime.bzjjCh","valueType":"entityField"},{"colName":"bo_akl_base_processtime.bzjjNun","colValue":"bo_akl_base_processtime.bzjjNun","valueType":"entityField"},{"colName":"bo_akl_base_processtime.bzscl","colValue":"bo_akl_base_processtime.bzscl","valueType":"entityField"},{"colName":"bo_akl_base_processtime.bzTimehour","colValue":"bo_akl_base_processtime.bzTimehour","valueType":"entityField"},{"colName":"bo_akl_base_processtime.descripttion","colValue":"bo_akl_base_processtime.descripttion","valueType":"entityField"},{"colName":"bo_akl_base_processtime.id","colValue":"bo_akl_base_processtime.id","valueType":"entityField"},{"colName":"bo_akl_base_processtime.isCheck","colValue":"\"未审核\"","valueType":"expression"},{"colName":"bo_akl_base_processtime.isPass","colValue":"bo_akl_base_processtime.isPass","valueType":"entityField"},{"colName":"bo_akl_base_processtime.newBzgsMin","colValue":"bo_akl_base_processtime.newBzgsMin","valueType":"entityField"},{"colName":"bo_akl_base_processtime.newBzgsSs","colValue":"bo_akl_base_processtime.newBzgsSs","valueType":"entityField"},{"colName":"bo_akl_base_processtime.newBzjjCh","colValue":"bo_akl_base_processtime.newBzjjCh","valueType":"entityField"},{"colName":"bo_akl_base_processtime.newBzjjNum","colValue":"bo_akl_base_processtime.newBzjjNum","valueType":"entityField"},{"colName":"bo_akl_base_processtime.newBzscl","colValue":"bo_akl_base_processtime.newBzscl","valueType":"entityField"},{"colName":"bo_akl_base_processtime.newBzTimehour","colValue":"bo_akl_base_processtime.newBzTimehour","valueType":"entityField"},{"colName":"bo_akl_base_processtime.newPrice","colValue":"bo_akl_base_processtime.newPrice","valueType":"entityField"},{"colName":"bo_akl_base_processtime.newProprice","colValue":"bo_akl_base_processtime.newProprice","valueType":"entityField"},{"colName":"bo_akl_base_processtime.pNo","colValue":"bo_akl_base_processtime.pNo","valueType":"entityField"},{"colName":"bo_akl_base_processtime.price","colValue":"bo_akl_base_processtime.price","valueType":"entityField"},{"colName":"bo_akl_base_processtime.proprice","colValue":"bo_akl_base_processtime.proprice","valueType":"entityField"},{"colName":"bo_akl_base_processtime.upBzscl","colValue":"bo_akl_base_processtime.upBzscl","valueType":"entityField"},{"colName":"bo_akl_base_processtime.upCcNum","colValue":"bo_akl_base_processtime.upCcNum","valueType":"entityField"},{"colName":"bo_akl_base_processtime.yjMbjj","colValue":"bo_akl_base_processtime.yjMbjj","valueType":"entityField"},{"colName":"bo_akl_base_processtime.yjMbProNum","colValue":"bo_akl_base_processtime.yjMbProNum","valueType":"entityField"},{"colName":"bo_akl_base_processtime.yjMbscl","colValue":"bo_akl_base_processtime.yjMbscl","valueType":"entityField"},{"colName":"bo_akl_base_processtime.yjMbTimeDay","colValue":"bo_akl_base_processtime.yjMbTimeDay","valueType":"entityField"},{"colName":"bo_akl_base_processtime.yjMbTimeHour","colValue":"bo_akl_base_processtime.yjMbTimeHour","valueType":"entityField"},{"colName":"bo_akl_base_processtime.yjMbxl","colValue":"bo_akl_base_processtime.yjMbxl","valueType":"entityField"},{"colName":"bo_akl_base_processtime.yjMonmoney","colValue":"bo_akl_base_processtime.yjMonmoney","valueType":"entityField"}],"dataSource":"bo_akl_base_processtime","dataSourceType":"window","destTab":"bo_akl_base_processtime","isSaveAll":false,"isFieldAutoMapping":false}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>930c4ec25bd143a884385d2e53f8c0d5</ID><SourceName>bo_akl_base_processtime</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_base_processtime(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_base_processtime</TableName><IsFieldAutoMapping>False</IsFieldAutoMapping></dtMaster><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.bzgsMin</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.bzgsMin</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.bzgsSs</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.bzgsSs</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.bzjjCh</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.bzjjCh</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.bzjjNun</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.bzjjNun</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.bzscl</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.bzscl</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.bzTimehour</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.bzTimehour</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.descripttion</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.descripttion</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.id</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.isCheck</SourceField><DataFrom>expression</DataFrom><Value>"未审核"</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.isPass</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.isPass</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.newBzgsMin</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.newBzgsMin</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.newBzgsSs</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.newBzgsSs</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.newBzjjCh</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.newBzjjCh</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.newBzjjNum</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.newBzjjNum</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.newBzscl</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.newBzscl</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.newBzTimehour</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.newBzTimehour</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.newPrice</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.newPrice</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.newProprice</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.newProprice</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.pNo</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.pNo</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.price</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.price</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.proprice</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.proprice</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.upBzscl</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.upBzscl</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.upCcNum</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.upCcNum</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.yjMbjj</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.yjMbjj</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.yjMbProNum</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.yjMbProNum</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.yjMbscl</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.yjMbscl</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.yjMbTimeDay</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.yjMbTimeDay</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.yjMbTimeHour</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.yjMbTimeHour</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.yjMbxl</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.yjMbxl</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.yjMonmoney</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.yjMonmoney</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1_1" instanceName="保存实体到数据库_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_base_processtime.bzgsMin","colValue":"bo_akl_base_processtime.bzgsMin","valueType":"entityField"},{"colName":"bo_akl_base_processtime.bzgsSs","colValue":"bo_akl_base_processtime.bzgsSs","valueType":"entityField"},{"colName":"bo_akl_base_processtime.bzjjCh","colValue":"bo_akl_base_processtime.bzjjCh","valueType":"entityField"},{"colName":"bo_akl_base_processtime.bzjjNun","colValue":"bo_akl_base_processtime.bzjjNun","valueType":"entityField"},{"colName":"bo_akl_base_processtime.bzscl","colValue":"bo_akl_base_processtime.bzscl","valueType":"entityField"},{"colName":"bo_akl_base_processtime.bzTimehour","colValue":"bo_akl_base_processtime.bzTimehour","valueType":"entityField"},{"colName":"bo_akl_base_processtime.descripttion","colValue":"bo_akl_base_processtime.descripttion","valueType":"entityField"},{"colName":"bo_akl_base_processtime.id","colValue":"bo_akl_base_processtime.id","valueType":"entityField"},{"colName":"bo_akl_base_processtime.isCheck","colValue":"bo_akl_base_processtime.isCheck","valueType":"entityField"},{"colName":"bo_akl_base_processtime.isPass","colValue":"bo_akl_base_processtime.isPass","valueType":"entityField"},{"colName":"bo_akl_base_processtime.newBzgsMin","colValue":"bo_akl_base_processtime.newBzgsMin","valueType":"entityField"},{"colName":"bo_akl_base_processtime.newBzgsSs","colValue":"bo_akl_base_processtime.newBzgsSs","valueType":"entityField"},{"colName":"bo_akl_base_processtime.newBzjjCh","colValue":"bo_akl_base_processtime.newBzjjCh","valueType":"entityField"},{"colName":"bo_akl_base_processtime.newBzjjNum","colValue":"bo_akl_base_processtime.newBzjjNum","valueType":"entityField"},{"colName":"bo_akl_base_processtime.newBzscl","colValue":"bo_akl_base_processtime.newBzscl","valueType":"entityField"},{"colName":"bo_akl_base_processtime.newBzTimehour","colValue":"bo_akl_base_processtime.newBzTimehour","valueType":"entityField"},{"colName":"bo_akl_base_processtime.newPrice","colValue":"bo_akl_base_processtime.newPrice","valueType":"entityField"},{"colName":"bo_akl_base_processtime.newProprice","colValue":"bo_akl_base_processtime.newProprice","valueType":"entityField"},{"colName":"bo_akl_base_processtime.pNo","colValue":"bo_akl_base_processtime.pNo","valueType":"entityField"},{"colName":"bo_akl_base_processtime.price","colValue":"bo_akl_base_processtime.price","valueType":"entityField"},{"colName":"bo_akl_base_processtime.proprice","colValue":"bo_akl_base_processtime.proprice","valueType":"entityField"},{"colName":"bo_akl_base_processtime.upBzscl","colValue":"bo_akl_base_processtime.upBzscl","valueType":"entityField"},{"colName":"bo_akl_base_processtime.upCcNum","colValue":"bo_akl_base_processtime.upCcNum","valueType":"entityField"},{"colName":"bo_akl_base_processtime.yjMbjj","colValue":"bo_akl_base_processtime.yjMbjj","valueType":"entityField"},{"colName":"bo_akl_base_processtime.yjMbProNum","colValue":"bo_akl_base_processtime.yjMbProNum","valueType":"entityField"},{"colName":"bo_akl_base_processtime.yjMbscl","colValue":"bo_akl_base_processtime.yjMbscl","valueType":"entityField"},{"colName":"bo_akl_base_processtime.yjMbTimeDay","colValue":"bo_akl_base_processtime.yjMbTimeDay","valueType":"entityField"},{"colName":"bo_akl_base_processtime.yjMbTimeHour","colValue":"bo_akl_base_processtime.yjMbTimeHour","valueType":"entityField"},{"colName":"bo_akl_base_processtime.yjMbxl","colValue":"bo_akl_base_processtime.yjMbxl","valueType":"entityField"},{"colName":"bo_akl_base_processtime.yjMonmoney","colValue":"bo_akl_base_processtime.yjMonmoney","valueType":"entityField"}],"dataSource":"bo_akl_base_processtime","dataSourceType":"window","destTab":"bo_akl_base_processtime","isSaveAll":false,"isFieldAutoMapping":false}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>930c4ec25bd143a884385d2e53f8c0d5</ID><SourceName>bo_akl_base_processtime</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_base_processtime(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_base_processtime</TableName><IsFieldAutoMapping>False</IsFieldAutoMapping></dtMaster><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.bzgsMin</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.bzgsMin</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.bzgsSs</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.bzgsSs</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.bzjjCh</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.bzjjCh</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.bzjjNun</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.bzjjNun</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.bzscl</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.bzscl</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.bzTimehour</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.bzTimehour</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.descripttion</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.descripttion</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.id</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.isCheck</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.isCheck</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.isPass</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.isPass</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.newBzgsMin</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.newBzgsMin</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.newBzgsSs</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.newBzgsSs</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.newBzjjCh</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.newBzjjCh</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.newBzjjNum</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.newBzjjNum</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.newBzscl</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.newBzscl</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.newBzTimehour</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.newBzTimehour</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.newPrice</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.newPrice</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.newProprice</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.newProprice</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.pNo</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.pNo</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.price</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.price</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.proprice</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.proprice</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.upBzscl</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.upBzscl</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.upCcNum</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.upCcNum</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.yjMbjj</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.yjMbjj</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.yjMbProNum</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.yjMbProNum</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.yjMbscl</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.yjMbscl</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.yjMbTimeDay</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.yjMbTimeDay</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.yjMbTimeHour</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.yjMbTimeHour</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.yjMbxl</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.yjMbxl</Value></dtDetails><dtDetails><PID>930c4ec25bd143a884385d2e53f8c0d5</PID><SourceField>bo_akl_base_processtime.yjMonmoney</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_processtime.yjMonmoney</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="form82_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>!IsEmpty(@id)</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_AddTableRecord1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1" instanceName="新增实体记录" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-24 09:41:43">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"3","Mappings":null,"TableType":"window","TableName":"bo_akl_base_processtime","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><Location>3</Location><EntityType>window</EntityType><EntityName>bo_akl_base_processtime</EntityName></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-24 09:41:35">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_base_processtime.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"@id","valueType":"9"}],"entityType":"window","entityName":"bo_akl_base_processtime","isFieldAutoMapping":false,"itemqueryparam":null,"items":[{"destName":"bo_akl_base_processtime.bzgsMin","sourceName":"bo_akl_base_processtime.bzgsMin","type":"entityField"},{"destName":"bo_akl_base_processtime.bzgsSs","sourceName":"bo_akl_base_processtime.bzgsSs","type":"entityField"},{"destName":"bo_akl_base_processtime.bzjjCh","sourceName":"bo_akl_base_processtime.bzjjCh","type":"entityField"},{"destName":"bo_akl_base_processtime.bzjjNun","sourceName":"bo_akl_base_processtime.bzjjNun","type":"entityField"},{"destName":"bo_akl_base_processtime.bzscl","sourceName":"bo_akl_base_processtime.bzscl","type":"entityField"},{"destName":"bo_akl_base_processtime.bzTimehour","sourceName":"bo_akl_base_processtime.bzTimehour","type":"entityField"},{"destName":"bo_akl_base_processtime.descripttion","sourceName":"bo_akl_base_processtime.descripttion","type":"entityField"},{"destName":"bo_akl_base_processtime.id","sourceName":"bo_akl_base_processtime.id","type":"entityField"},{"destName":"bo_akl_base_processtime.isCheck","sourceName":"bo_akl_base_processtime.isCheck","type":"entityField"},{"destName":"bo_akl_base_processtime.isPass","sourceName":"bo_akl_base_processtime.isPass","type":"entityField"},{"destName":"bo_akl_base_processtime.newBzgsMin","sourceName":"bo_akl_base_processtime.newBzgsMin","type":"entityField"},{"destName":"bo_akl_base_processtime.newBzgsSs","sourceName":"bo_akl_base_processtime.newBzgsSs","type":"entityField"},{"destName":"bo_akl_base_processtime.newBzjjCh","sourceName":"bo_akl_base_processtime.newBzjjCh","type":"entityField"},{"destName":"bo_akl_base_processtime.newBzjjNum","sourceName":"bo_akl_base_processtime.newBzjjNum","type":"entityField"},{"destName":"bo_akl_base_processtime.newBzscl","sourceName":"bo_akl_base_processtime.newBzscl","type":"entityField"},{"destName":"bo_akl_base_processtime.newBzTimehour","sourceName":"bo_akl_base_processtime.newBzTimehour","type":"entityField"},{"destName":"bo_akl_base_processtime.newPrice","sourceName":"bo_akl_base_processtime.newPrice","type":"entityField"},{"destName":"bo_akl_base_processtime.newProprice","sourceName":"bo_akl_base_processtime.newProprice","type":"entityField"},{"destName":"bo_akl_base_processtime.pNo","sourceName":"bo_akl_base_processtime.pNo","type":"entityField"},{"destName":"bo_akl_base_processtime.price","sourceName":"bo_akl_base_processtime.price","type":"entityField"},{"destName":"bo_akl_base_processtime.proprice","sourceName":"bo_akl_base_processtime.proprice","type":"entityField"},{"destName":"bo_akl_base_processtime.upBzscl","sourceName":"bo_akl_base_processtime.upBzscl","type":"entityField"},{"destName":"bo_akl_base_processtime.upCcNum","sourceName":"bo_akl_base_processtime.upCcNum","type":"entityField"},{"destName":"bo_akl_base_processtime.yjMbjj","sourceName":"bo_akl_base_processtime.yjMbjj","type":"entityField"},{"destName":"bo_akl_base_processtime.yjMbProNum","sourceName":"bo_akl_base_processtime.yjMbProNum","type":"entityField"},{"destName":"bo_akl_base_processtime.yjMbscl","sourceName":"bo_akl_base_processtime.yjMbscl","type":"entityField"},{"destName":"bo_akl_base_processtime.yjMbTimeDay","sourceName":"bo_akl_base_processtime.yjMbTimeDay","type":"entityField"},{"destName":"bo_akl_base_processtime.yjMbTimeHour","sourceName":"bo_akl_base_processtime.yjMbTimeHour","type":"entityField"},{"destName":"bo_akl_base_processtime.yjMbxl","sourceName":"bo_akl_base_processtime.yjMbxl","type":"entityField"},{"destName":"bo_akl_base_processtime.yjMonmoney","sourceName":"bo_akl_base_processtime.yjMonmoney","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_base_processtime","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_base_processtime</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_base_processtime</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_base_processtime.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>@id</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>410fbfc0a0a44e649ad1e6c44362781b</ID><DataLoad /><IsFieldAutoMapping>False</IsFieldAutoMapping></dtEntityRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.bzgsMin</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.bzgsMin</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.bzgsSs</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.bzgsSs</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.bzjjCh</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.bzjjCh</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.bzjjNun</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.bzjjNun</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.bzscl</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.bzscl</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.bzTimehour</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.bzTimehour</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.descripttion</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.descripttion</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.isCheck</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.isCheck</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.isPass</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.isPass</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.newBzgsMin</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.newBzgsMin</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.newBzgsSs</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.newBzgsSs</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.newBzjjCh</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.newBzjjCh</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.newBzjjNum</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.newBzjjNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.newBzscl</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.newBzscl</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.newBzTimehour</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.newBzTimehour</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.newPrice</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.newPrice</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.newProprice</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.newProprice</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.pNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.pNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.price</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.price</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.proprice</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.proprice</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.upBzscl</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.upBzscl</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.upCcNum</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.upCcNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.yjMbjj</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.yjMbjj</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.yjMbProNum</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.yjMbProNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.yjMbscl</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.yjMbscl</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.yjMbTimeDay</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.yjMbTimeDay</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.yjMbTimeHour</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.yjMbTimeHour</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.yjMbxl</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.yjMbxl</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>410fbfc0a0a44e649ad1e6c44362781b</MasterID><DestName>bo_akl_base_processtime.yjMonmoney</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_processtime.yjMonmoney</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>410fbfc0a0a44e649ad1e6c44362781b</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>410fbfc0a0a44e649ad1e6c44362781b</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Methods>
+  <Method Code="testAPI" Type="Server" InterfaceType="Local" RestrictType="Private" TransactionType="transaction">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_AddTableRecord1" />
+  <evaluateRule code="BR_UpdateRecord1" />
+  <evaluateRule code="BR_SetEntityVarControlValue1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1" instanceName="新增实体记录" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"MyExchange_Journal.Name1","fieldtype":"expression","srcField":"BR_IN_PARENT.name"},{"destField":"MyExchange_Journal.NewValue","fieldtype":"expression","srcField":"BR_IN_PARENT.value"},{"destField":"MyExchange_Journal.Timepoint","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"MyExchange_Journal.Record","fieldtype":"expression","srcField":"\"api test!!\""},{"destField":"MyExchange_Journal.ts","fieldtype":"expression","srcField":"DateTimeNow()"}],"TableType":"ruleSetVar","TableName":"MyExchange_Journal","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>MyExchange_Journal</EntityName></dtMaster><dtEntityColumns><DestName>MyExchange_Journal.Name1</DestName><SourceType>expression</SourceType><SourceName>BR_IN_PARENT.name</SourceName></dtEntityColumns><dtEntityColumns><DestName>MyExchange_Journal.NewValue</DestName><SourceType>expression</SourceType><SourceName>BR_IN_PARENT.value</SourceName></dtEntityColumns><dtEntityColumns><DestName>MyExchange_Journal.Timepoint</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>MyExchange_Journal.Record</DestName><SourceType>expression</SourceType><SourceName>"api test!!"</SourceName></dtEntityColumns><dtEntityColumns><DestName>MyExchange_Journal.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"MyExchange_Journal.id","colValue":"MyExchange_Journal.id","valueType":"entityField"},{"colName":"MyExchange_Journal.Name1","colValue":"MyExchange_Journal.Name1","valueType":"entityField"},{"colName":"MyExchange_Journal.Name2","colValue":"MyExchange_Journal.Name2","valueType":"entityField"},{"colName":"MyExchange_Journal.NewValue","colValue":"MyExchange_Journal.NewValue","valueType":"entityField"},{"colName":"MyExchange_Journal.OldValue","colValue":"MyExchange_Journal.OldValue","valueType":"entityField"},{"colName":"MyExchange_Journal.Record","colValue":"MyExchange_Journal.Record","valueType":"entityField"},{"colName":"MyExchange_Journal.Timepoint","colValue":"MyExchange_Journal.Timepoint","valueType":"entityField"},{"colName":"MyExchange_Journal.ts","colValue":"MyExchange_Journal.ts","valueType":"entityField"}],"dataSource":"MyExchange_Journal","dataSourceType":"ruleSetVar","destTab":"MyExchange_Journal","isSaveAll":true}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>1cb9ba53e40143649620645288cd384c</ID><SourceName>MyExchange_Journal</SourceName><SourceType>ruleSetVar</SourceType><SourceNameType>MyExchange_Journal(方法变量)</SourceNameType><IsSaveAll>True</IsSaveAll><TableName>MyExchange_Journal</TableName></dtMaster><dtDetails><PID>1cb9ba53e40143649620645288cd384c</PID><SourceField>MyExchange_Journal.id</SourceField><DataFrom>entityField</DataFrom><Value>MyExchange_Journal.id</Value></dtDetails><dtDetails><PID>1cb9ba53e40143649620645288cd384c</PID><SourceField>MyExchange_Journal.Name1</SourceField><DataFrom>entityField</DataFrom><Value>MyExchange_Journal.Name1</Value></dtDetails><dtDetails><PID>1cb9ba53e40143649620645288cd384c</PID><SourceField>MyExchange_Journal.Name2</SourceField><DataFrom>entityField</DataFrom><Value>MyExchange_Journal.Name2</Value></dtDetails><dtDetails><PID>1cb9ba53e40143649620645288cd384c</PID><SourceField>MyExchange_Journal.NewValue</SourceField><DataFrom>entityField</DataFrom><Value>MyExchange_Journal.NewValue</Value></dtDetails><dtDetails><PID>1cb9ba53e40143649620645288cd384c</PID><SourceField>MyExchange_Journal.OldValue</SourceField><DataFrom>entityField</DataFrom><Value>MyExchange_Journal.OldValue</Value></dtDetails><dtDetails><PID>1cb9ba53e40143649620645288cd384c</PID><SourceField>MyExchange_Journal.Record</SourceField><DataFrom>entityField</DataFrom><Value>MyExchange_Journal.Record</Value></dtDetails><dtDetails><PID>1cb9ba53e40143649620645288cd384c</PID><SourceField>MyExchange_Journal.Timepoint</SourceField><DataFrom>entityField</DataFrom><Value>MyExchange_Journal.Timepoint</Value></dtDetails><dtDetails><PID>1cb9ba53e40143649620645288cd384c</PID><SourceField>MyExchange_Journal.ts</SourceField><DataFrom>entityField</DataFrom><Value>MyExchange_Journal.ts</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-01-17 19:36:13">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"5","Target":"outputValue","SourceType":"expression","SourceEntityType":"","Source":"ConcatStr(\"你输入的工站名为：\",BR_IN_PARENT.name,\" ,信号值为：\",ConvertFunc(BR_IN_PARENT.value,2))","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>5</TargetType><Target>outputValue</Target><SourceType>expression</SourceType><SourceEntityType /><Source>ConcatStr("你输入的工站名为：",BR_IN_PARENT.name," ,信号值为：",ConvertFunc(BR_IN_PARENT.value,2))</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Inputs>
+      <Variable code="name" name="工站名" fieldType="char" initValue="" isMust="false" desc="" />
+      <Variable code="value" name="工站信号值" fieldType="integer" initValue="" isMust="false" desc="" />
+    </Inputs>
+    <Outputs>
+      <Variable code="outputValue" name="输出值" fieldType="char" initValue="" isMust="false" desc="" />
+    </Outputs>
+    <Variables>
+      <Variable code="MyExchange_Journal" name="产线设备数据变更日志" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="Name1" name="Name1" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="Name2" name="Name2" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="OldValue" name="旧Value" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="NewValue" name="新Value" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="Timepoint" name="Timepoint" fieldType="longDate" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="Record" name="记录" fieldType="char" length="1000" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="ts" name="记录时间" fieldType="longDate" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+    </Variables>
+  </Method>
+</Methods>

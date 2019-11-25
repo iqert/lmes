@@ -1,0 +1,56 @@
+﻿<Query id="c522e9df47ad4d93969dbf41e1092869" code="changeoverTimeMonth" name="换型时间(月)" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-10-23 11:08:14]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-10-23 14:02:19]]></ModificationTime>
+  <VSql><![CDATA[select md.tmonth, --维修时间(分钟/天)
+ROUND(cha.opdiff*60/31,2) as opdiff --换型时间(分钟/天)
+from baseMonth as md
+left join (							
+			select opema.tmonth, --日期
+			case when SUM(opema.hours)-SUM(opema.diffhour)<0 then 0 else SUM(opema.hours)-SUM(opema.diffhour) end as opdiff --换型时间/h
+			from (
+					select 
+					ROUND(CAST(DATEDIFF(MIN(opert.opTime),
+					MAX(opert.opTime),'minute'),'DECIMAL',10,2)/60,2) as diffhour,
+					opert.lid,MONTH(MIN(opert.opTime))as tmonth,
+					24 as hours
+					from bo_akl_line_operation as opert 
+					right join bo_akl_line_start as lineSt on lineSt.id=opert.lid
+					where 
+					YEAR(opert.opTime)=:inputYear and 
+					lineSt.prolineName=:prNo
+					group by opert.lid
+			)as opema group by opema.tmonth) as cha on md.tmonth=cha.tmonth]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="tmonth" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="opdiff" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="prNo" name="产线编号" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="inputYear" name="" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="baseMonth" tokenIndexes="28" />
+    <DataItem type="Table" key="bo_akl_line_operation" tokenIndexes="170" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="180" />
+    <DataItem type="TableField" key="baseMonth.tmonth" tokenIndexes="4,247" />
+    <DataItem type="TableField" key="bo_akl_line_operation.opTime" tokenIndexes="113,121,154,202" />
+    <DataItem type="TableField" key="bo_akl_line_operation.lid" tokenIndexes="146,194,223" />
+    <DataItem type="TableField" key="bo_akl_line_start.id" tokenIndexes="190" />
+    <DataItem type="TableField" key="bo_akl_line_start.prolineName" tokenIndexes="212" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="206" />
+    <DataItem type="QueryParam" key="prNo" tokenIndexes="215" />
+  </DataItems>
+</Query>

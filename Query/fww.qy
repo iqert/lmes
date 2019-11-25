@@ -1,0 +1,96 @@
+﻿<Query id="7d979573a7f14356a73e3490ca7c0f08" code="fww" name="sss" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-10-19 11:35:34]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-10-24 20:34:26]]></ModificationTime>
+  <VSql><![CDATA[	select
+	md.tday,
+	std.blps,
+	std.cpcs from monthDay md 
+	left join (
+		select stt.tday,
+
+		SUM(stt.blpc) as blps, --不良品数量
+		SUM(stt.cpc) as cpcs --成品数量
+		from (
+				select case 
+				when st.stockType='不良品仓'  THEN sto.inStockNum 
+				else 0 end as blpc,
+				case 
+				when st.stockType='成品仓'  THEN sto.inStockNum 
+				else 0 end as cpc,
+				case 
+				when st.stockType='隔离仓'  THEN sto.inStockNum 
+				else 0 end as glc,
+				sto.materialId,
+				DAYOFMONTH(sto.operateTime) as tday
+				from bo_akl_MM_inStockInfo as sto 
+				left join bo_akl_MM_stockType st on st.id=sto.stockTypeId
+				--where 
+				--year(sto.operateTime)=:inputYear and MONTH(sto.operateTime)=:inputMonth
+			) as stt
+			left join bo_akl_MM_materialInfo as mat on stt.materialId=mat.id
+			left join bo_akl_EM_productInfo as ep on mat.materialNo=ep.prNo
+			left join bo_akl_base_productlines as pli on pli.pNo=ep.prLine
+			left join bo_akl_base_projectInfo as pj on pj.id=pli.belongProject
+			where
+			ep.prLine='cx_001' 
+			--pj.pName='小项目'
+			--where YEAR(sto.operateTime)=:inputYear and week(sto.operateTime)=:inputWeek
+			group by stt.tday
+		) as std on std.tday=md.tday]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="tday" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="blps" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="cpcs" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="rmk" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="pNo" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="inputYear" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="inputMonth" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="prlineNo" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="168" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="206" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="226" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="246" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="266" />
+    <DataItem type="Table" key="monthDay" tokenIndexes="19" />
+    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="178" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.inStockNum" tokenIndexes="83,110,137" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.materialId" tokenIndexes="152" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.operateTime" tokenIndexes="159" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.stockTypeId" tokenIndexes="190" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="220" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="236" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="240" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="256" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prLine" tokenIndexes="260,286" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="276" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="280" />
+  </DataItems>
+</Query>

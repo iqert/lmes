@@ -1,0 +1,62 @@
+﻿<Query id="42ed7f25171a40a99f96dce39c6218fc" code="L" name="查看工人工作记录" type="VSql">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[100466]]></Creator>
+  <CreationTime><![CDATA[2018-07-12 16:13:09]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-07-30 16:52:58]]></ModificationTime>
+  <VSql><![CDATA[SELECT a.id, a.lid, a.workStationId, a.workStation, a.workerId, a.workerName, a.workerAssistName, b.prolineName, b.equName, b.startTime
+FROM bo_akl_line_start_user AS a
+LEFT JOIN bo_akl_line_start AS b ON a.lid = b.id
+WHERE b.state='正常停机']]></VSql>
+  <Columns>
+    <Column id="Column_0" code="id" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="lid" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="workStationId" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="workStation" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="workerId" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="workerName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="workerAssistName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="prolineName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_8" code="equName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_9" code="startTime" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_line_start_user" tokenIndexes="53" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="63" />
+    <DataItem type="Query" key="a" tokenIndexes="2,7,12,17,22,27,32,57,71" />
+    <DataItem type="Query" key="b" tokenIndexes="37,42,47,67,77,83" />
+    <DataItem type="QueryField" key="a.id" tokenIndexes="4" />
+    <DataItem type="QueryField" key="a.lid" tokenIndexes="9,73" />
+    <DataItem type="QueryField" key="a.workStationId" tokenIndexes="14" />
+    <DataItem type="QueryField" key="a.workStation" tokenIndexes="19" />
+    <DataItem type="QueryField" key="a.workerId" tokenIndexes="24" />
+    <DataItem type="QueryField" key="a.workerName" tokenIndexes="29" />
+    <DataItem type="QueryField" key="a.workerAssistName" tokenIndexes="34" />
+    <DataItem type="QueryField" key="b.prolineName" tokenIndexes="39" />
+    <DataItem type="QueryField" key="b.equName" tokenIndexes="44" />
+    <DataItem type="QueryField" key="b.startTime" tokenIndexes="49" />
+    <DataItem type="QueryField" key="b.id" tokenIndexes="79" />
+    <DataItem type="QueryField" key="b.state" tokenIndexes="85" />
+  </DataItems>
+</Query>

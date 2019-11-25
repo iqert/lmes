@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2017/5/12 10:19:38-->
+<Methods>
+  <Method Code="Btn_Delete_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_ShowMessage1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>BR_OUT.BR_ShowMessage1.confirm</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_CopyEntityRecord1" />
+      <foreach isEnabled="True" isDebug="False" code="ForeachCode1">
+        <define>
+          <varCode>uk</varCode>
+          <entityType>ruleSetVar</entityType>
+          <entityCode>upkeepRec</entityCode>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_DeleteConditionRelationData1" />
+        </sequence>
+      </foreach>
+      <evaluateRule code="BR_DeleteListSelectRow1" />
+      <evaluateRule code="BR_UpdateRecord1" />
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="是否确认删除" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-22 10:09:09">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"3","time":null,"simpleChinesePrompt":{"msgnote":"\"是否确定删除?\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>3</MsgType><SimpleChinese>"是否确定删除?"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteConditionRelationData" ruleName="删除数据库中的记录" instanceCode="BR_DeleteConditionRelationData1" instanceName="删除数据库中的记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dtChileMaps":[{"orderNo":"1","tableName":"bo_akl_EM_mouldDayUpkeepSub","dsWhere":[{"columnType":"1","field":"bo_akl_EM_mouldDayUpkeepSub.upkeepId","fieldType":"char","leftBracket":"(","logicOperation":"","operation":"=","rightBracket":")","value":"LV.uk.id","valueType":"9"}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtConditionMaster><TableName>bo_akl_EM_mouldDayUpkeepSub</TableName><Condition><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_EM_mouldDayUpkeepSub.upkeepId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>LV.uk.id</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></Condition><OrderNo>1</OrderNo></dtConditionMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="CopyEntityRecord" ruleName="实体间复制记录" instanceCode="BR_CopyEntityRecord1" instanceName="实体间复制记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"checkitems":null,"condition":"","copyType":"1","destName":"upkeepRec","items":[{"destName":"upkeepRec.id","sourceName":"bo_akl_EM_mouldDayUpkeepRec.id","type":"entityField"}],"mageitems":null,"sourceName":"bo_akl_EM_mouldDayUpkeepRec","type":"1","isAddRecord":true,"jsonVersion":"1.0","destType":"ruleSetVar","sourceType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtInfo><destName>upkeepRec</destName><destType>ruleSetVar</destType><sourceName>bo_akl_EM_mouldDayUpkeepRec</sourceName><sourceType>window</sourceType><type>1</type><isAddRecord>True</isAddRecord><copyType>1</copyType><condition /><jsonVersion>1.0</jsonVersion></dtInfo><dtMaster><DestName>upkeepRec.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_mouldDayUpkeepRec.id</SourceName></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow1" instanceName="删除实体记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"","deleteType":"0","TableName":"bo_akl_EM_mouldDayUpkeepRec","EntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition /><DeleteType>0</DeleteType><TableName>bo_akl_EM_mouldDayUpkeepRec</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_EM_mouldDayUpkeepRec.classes","colValue":"bo_akl_EM_mouldDayUpkeepRec.classes","valueType":"entityField"},{"colName":"bo_akl_EM_mouldDayUpkeepRec.equipId","colValue":"bo_akl_EM_mouldDayUpkeepRec.equipId","valueType":"entityField"},{"colName":"bo_akl_EM_mouldDayUpkeepRec.id","colValue":"bo_akl_EM_mouldDayUpkeepRec.id","valueType":"entityField"},{"colName":"bo_akl_EM_mouldDayUpkeepRec.isOp","colValue":"bo_akl_EM_mouldDayUpkeepRec.isOp","valueType":"entityField"},{"colName":"bo_akl_EM_mouldDayUpkeepRec.operatorId","colValue":"bo_akl_EM_mouldDayUpkeepRec.operatorId","valueType":"entityField"},{"colName":"bo_akl_EM_mouldDayUpkeepRec.operatorName","colValue":"bo_akl_EM_mouldDayUpkeepRec.operatorName","valueType":"entityField"},{"colName":"bo_akl_EM_mouldDayUpkeepRec.upkeepDate","colValue":"bo_akl_EM_mouldDayUpkeepRec.upkeepDate","valueType":"entityField"}],"dataSource":"bo_akl_EM_mouldDayUpkeepRec","dataSourceType":"window","destTab":"bo_akl_EM_mouldDayUpkeepRec","isSaveAll":false}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>3e73b1cecac24702804234835b75adff</ID><SourceName>bo_akl_EM_mouldDayUpkeepRec</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_EM_mouldDayUpkeepRec(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_EM_mouldDayUpkeepRec</TableName></dtMaster><dtDetails><PID>3e73b1cecac24702804234835b75adff</PID><SourceField>bo_akl_EM_mouldDayUpkeepRec.classes</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_mouldDayUpkeepRec.classes</Value></dtDetails><dtDetails><PID>3e73b1cecac24702804234835b75adff</PID><SourceField>bo_akl_EM_mouldDayUpkeepRec.equipId</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_mouldDayUpkeepRec.equipId</Value></dtDetails><dtDetails><PID>3e73b1cecac24702804234835b75adff</PID><SourceField>bo_akl_EM_mouldDayUpkeepRec.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_mouldDayUpkeepRec.id</Value></dtDetails><dtDetails><PID>3e73b1cecac24702804234835b75adff</PID><SourceField>bo_akl_EM_mouldDayUpkeepRec.isOp</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_mouldDayUpkeepRec.isOp</Value></dtDetails><dtDetails><PID>3e73b1cecac24702804234835b75adff</PID><SourceField>bo_akl_EM_mouldDayUpkeepRec.operatorId</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_mouldDayUpkeepRec.operatorId</Value></dtDetails><dtDetails><PID>3e73b1cecac24702804234835b75adff</PID><SourceField>bo_akl_EM_mouldDayUpkeepRec.operatorName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_mouldDayUpkeepRec.operatorName</Value></dtDetails><dtDetails><PID>3e73b1cecac24702804234835b75adff</PID><SourceField>bo_akl_EM_mouldDayUpkeepRec.upkeepDate</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_mouldDayUpkeepRec.upkeepDate</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Variables>
+      <Variable code="upkeepRec" name="保养记录" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+    </Variables>
+  </Method>
+  <Method Code="Btn_Add_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_OpenComponentReturnData1" />
+  <evaluateRule code="BR_ExecuteRuleSet1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"form_add_mouldDayUpkeepRec","windowName":"新增模具日常保养记录","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"","widthExp":"","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>form_add_mouldDayUpkeepRec</WindowCode><WindowName>新增模具日常保养记录</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp /><WidthExp /><IsAsyn>False</IsAsyn></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_form_mouldDayUpkeepRec_FormLoadAction(form_mouldDayUpkeepRec_窗体加载事件)" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-05 10:43:38">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"form_mouldDayUpkeepRec_FormLoadAction","isParallelism":"False"},"invokeParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>form_mouldDayUpkeepRec_FormLoadAction</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="Btn_Modify_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_OpenComponentReturnData1" />
+  <evaluateRule code="BR_ExecuteRuleSet1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"form_add_mouldDayUpkeepRec","windowName":"新增模具日常保养记录","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"","widthExp":"","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":[{"paramName":"equName","paramType":"expression","paramValue":"[bo_akl_EM_mouldDayUpkeepRec].[equipName]","paramEntityType":"","entityFieldMapping":null},{"paramName":"equNo","paramType":"expression","paramValue":"[bo_akl_EM_mouldDayUpkeepRec].[equipNo]","paramEntityType":"","entityFieldMapping":null},{"paramName":"upkeepId","paramType":"expression","paramValue":"[bo_akl_EM_mouldDayUpkeepRec].[id]","paramEntityType":"","entityFieldMapping":null}],"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>form_add_mouldDayUpkeepRec</WindowCode><WindowName>新增模具日常保养记录</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp /><WidthExp /><IsAsyn>False</IsAsyn></dtMaster><dtParam><WindowVariant>equName</WindowVariant><SourceType>expression</SourceType><SourceTypeDisplayText>表达式</SourceTypeDisplayText><SourceValue>[bo_akl_EM_mouldDayUpkeepRec].[equipName]</SourceValue></dtParam><dtParam><WindowVariant>equNo</WindowVariant><SourceType>expression</SourceType><SourceTypeDisplayText>表达式</SourceTypeDisplayText><SourceValue>[bo_akl_EM_mouldDayUpkeepRec].[equipNo]</SourceValue></dtParam><dtParam><WindowVariant>upkeepId</WindowVariant><SourceType>expression</SourceType><SourceTypeDisplayText>表达式</SourceTypeDisplayText><SourceValue>[bo_akl_EM_mouldDayUpkeepRec].[id]</SourceValue></dtParam></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_form_mouldDayUpkeepRec_FormLoadAction(form_mouldDayUpkeepRec_窗体加载事件)" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"form_mouldDayUpkeepRec_FormLoadAction","isParallelism":"False"},"invokeParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>form_mouldDayUpkeepRec_FormLoadAction</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="form_mouldDayUpkeepRec_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-05 10:43:15">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Query","dsWhere":null,"entityType":"window","entityName":"bo_akl_EM_mouldDayUpkeepRec","itemqueryparam":null,"items":[{"destName":"bo_akl_EM_mouldDayUpkeepRec.classes","sourceName":"mouldDayUpkeepRec.classes","type":"entityField"},{"destName":"bo_akl_EM_mouldDayUpkeepRec.equipId","sourceName":"mouldDayUpkeepRec.equipId","type":"entityField"},{"destName":"bo_akl_EM_mouldDayUpkeepRec.equipName","sourceName":"mouldDayUpkeepRec.equipName","type":"entityField"},{"destName":"bo_akl_EM_mouldDayUpkeepRec.equipNo","sourceName":"mouldDayUpkeepRec.equipNo","type":"entityField"},{"destName":"bo_akl_EM_mouldDayUpkeepRec.id","sourceName":"mouldDayUpkeepRec.id","type":"entityField"},{"destName":"bo_akl_EM_mouldDayUpkeepRec.isOp","sourceName":"mouldDayUpkeepRec.isOp","type":"entityField"},{"destName":"bo_akl_EM_mouldDayUpkeepRec.operatorId","sourceName":"mouldDayUpkeepRec.operatorId","type":"entityField"},{"destName":"bo_akl_EM_mouldDayUpkeepRec.operatorName","sourceName":"mouldDayUpkeepRec.operatorName","type":"entityField"},{"destName":"bo_akl_EM_mouldDayUpkeepRec.upkeepDate","sourceName":"mouldDayUpkeepRec.upkeepDate","type":"entityField"}],"orderBy":null,"sourceName":"mouldDayUpkeepRec","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_EM_mouldDayUpkeepRec</EntityName><SourceType>Query</SourceType><SourceName>mouldDayUpkeepRec</SourceName><dsWhere><![CDATA[<NewDataSet />]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><dsQueryParam><![CDATA[<dsQueryParam />]]]]><![CDATA[></dsQueryParam><ID>42735100de6b492382b3113998de5b52</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>42735100de6b492382b3113998de5b52</MasterID><DestName>bo_akl_EM_mouldDayUpkeepRec.classes</DestName><SourceType>entityField</SourceType><SourceName>mouldDayUpkeepRec.classes</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>42735100de6b492382b3113998de5b52</MasterID><DestName>bo_akl_EM_mouldDayUpkeepRec.equipId</DestName><SourceType>entityField</SourceType><SourceName>mouldDayUpkeepRec.equipId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>42735100de6b492382b3113998de5b52</MasterID><DestName>bo_akl_EM_mouldDayUpkeepRec.equipName</DestName><SourceType>entityField</SourceType><SourceName>mouldDayUpkeepRec.equipName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>42735100de6b492382b3113998de5b52</MasterID><DestName>bo_akl_EM_mouldDayUpkeepRec.equipNo</DestName><SourceType>entityField</SourceType><SourceName>mouldDayUpkeepRec.equipNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>42735100de6b492382b3113998de5b52</MasterID><DestName>bo_akl_EM_mouldDayUpkeepRec.id</DestName><SourceType>entityField</SourceType><SourceName>mouldDayUpkeepRec.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>42735100de6b492382b3113998de5b52</MasterID><DestName>bo_akl_EM_mouldDayUpkeepRec.isOp</DestName><SourceType>entityField</SourceType><SourceName>mouldDayUpkeepRec.isOp</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>42735100de6b492382b3113998de5b52</MasterID><DestName>bo_akl_EM_mouldDayUpkeepRec.operatorId</DestName><SourceType>entityField</SourceType><SourceName>mouldDayUpkeepRec.operatorId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>42735100de6b492382b3113998de5b52</MasterID><DestName>bo_akl_EM_mouldDayUpkeepRec.operatorName</DestName><SourceType>entityField</SourceType><SourceName>mouldDayUpkeepRec.operatorName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>42735100de6b492382b3113998de5b52</MasterID><DestName>bo_akl_EM_mouldDayUpkeepRec.upkeepDate</DestName><SourceType>entityField</SourceType><SourceName>mouldDayUpkeepRec.upkeepDate</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>42735100de6b492382b3113998de5b52</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>42735100de6b492382b3113998de5b52</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGLocateBox1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-05 14:04:16">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Query","dsWhere":[{"columnType":"1","field":"mouldDayUpkeepRec.classes","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"},{"columnType":"1","field":"mouldDayUpkeepRec.equipName","fieldType":"char","leftBracket":"(","logicOperation":"or","operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"},{"columnType":"1","field":"mouldDayUpkeepRec.equipNo","fieldType":"char","leftBracket":"(","logicOperation":"or","operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"},{"columnType":"1","field":"mouldDayUpkeepRec.operatorName","fieldType":"char","leftBracket":"(","logicOperation":"or","operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"},{"columnType":"1","field":"mouldDayUpkeepRec.upkeepDate","fieldType":"date","leftBracket":"(","logicOperation":"or","operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"}],"entityType":"window","entityName":"bo_akl_EM_mouldDayUpkeepRec","itemqueryparam":null,"items":[{"destName":"bo_akl_EM_mouldDayUpkeepRec.classes","sourceName":"mouldDayUpkeepRec.classes","type":"entityField"},{"destName":"bo_akl_EM_mouldDayUpkeepRec.equipId","sourceName":"mouldDayUpkeepRec.equipId","type":"entityField"},{"destName":"bo_akl_EM_mouldDayUpkeepRec.equipName","sourceName":"mouldDayUpkeepRec.equipName","type":"entityField"},{"destName":"bo_akl_EM_mouldDayUpkeepRec.equipNo","sourceName":"mouldDayUpkeepRec.equipNo","type":"entityField"},{"destName":"bo_akl_EM_mouldDayUpkeepRec.id","sourceName":"mouldDayUpkeepRec.id","type":"entityField"},{"destName":"bo_akl_EM_mouldDayUpkeepRec.isOp","sourceName":"mouldDayUpkeepRec.isOp","type":"entityField"},{"destName":"bo_akl_EM_mouldDayUpkeepRec.operatorId","sourceName":"mouldDayUpkeepRec.operatorId","type":"entityField"},{"destName":"bo_akl_EM_mouldDayUpkeepRec.operatorName","sourceName":"mouldDayUpkeepRec.operatorName","type":"entityField"},{"destName":"bo_akl_EM_mouldDayUpkeepRec.upkeepDate","sourceName":"mouldDayUpkeepRec.upkeepDate","type":"entityField"}],"orderBy":null,"sourceName":"mouldDayUpkeepRec","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_EM_mouldDayUpkeepRec</EntityName><SourceType>Query</SourceType><SourceName>mouldDayUpkeepRec</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>mouldDayUpkeepRec.classes</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>mouldDayUpkeepRec.equipName</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>mouldDayUpkeepRec.equipNo</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>mouldDayUpkeepRec.operatorName</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>mouldDayUpkeepRec.upkeepDate</field><fieldType>date</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><dsQueryParam><![CDATA[<dsQueryParam />]]]]><![CDATA[></dsQueryParam><ID>42735100de6b492382b3113998de5b52</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>42735100de6b492382b3113998de5b52</MasterID><DestName>bo_akl_EM_mouldDayUpkeepRec.classes</DestName><SourceType>entityField</SourceType><SourceName>mouldDayUpkeepRec.classes</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>42735100de6b492382b3113998de5b52</MasterID><DestName>bo_akl_EM_mouldDayUpkeepRec.equipId</DestName><SourceType>entityField</SourceType><SourceName>mouldDayUpkeepRec.equipId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>42735100de6b492382b3113998de5b52</MasterID><DestName>bo_akl_EM_mouldDayUpkeepRec.equipName</DestName><SourceType>entityField</SourceType><SourceName>mouldDayUpkeepRec.equipName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>42735100de6b492382b3113998de5b52</MasterID><DestName>bo_akl_EM_mouldDayUpkeepRec.equipNo</DestName><SourceType>entityField</SourceType><SourceName>mouldDayUpkeepRec.equipNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>42735100de6b492382b3113998de5b52</MasterID><DestName>bo_akl_EM_mouldDayUpkeepRec.id</DestName><SourceType>entityField</SourceType><SourceName>mouldDayUpkeepRec.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>42735100de6b492382b3113998de5b52</MasterID><DestName>bo_akl_EM_mouldDayUpkeepRec.isOp</DestName><SourceType>entityField</SourceType><SourceName>mouldDayUpkeepRec.isOp</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>42735100de6b492382b3113998de5b52</MasterID><DestName>bo_akl_EM_mouldDayUpkeepRec.operatorId</DestName><SourceType>entityField</SourceType><SourceName>mouldDayUpkeepRec.operatorId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>42735100de6b492382b3113998de5b52</MasterID><DestName>bo_akl_EM_mouldDayUpkeepRec.operatorName</DestName><SourceType>entityField</SourceType><SourceName>mouldDayUpkeepRec.operatorName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>42735100de6b492382b3113998de5b52</MasterID><DestName>bo_akl_EM_mouldDayUpkeepRec.upkeepDate</DestName><SourceType>entityField</SourceType><SourceName>mouldDayUpkeepRec.upkeepDate</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>42735100de6b492382b3113998de5b52</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>42735100de6b492382b3113998de5b52</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGDataGrid1_OnSelectionChanged" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>GetEntitySelectedRowCount("bo_akl_EM_mouldDayUpkeepRec")&lt;&gt;0</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_MakeControlRVE1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_MakeControlRVE2" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="MakeControlRVE" ruleName="控制控件的只读、使能、显示" instanceCode="BR_MakeControlRVE1" instanceName="控制控件的只读、使能、显示" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-05 16:50:34">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"mapping":[{"componentControlCode":"Btn_Delete","control":"True"}],"type":"3"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OperType>3</OperType></dtMaster><dtControlColumns><ControlCode>Btn_Delete</ControlCode><IsCheck>True</IsCheck></dtControlColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="MakeControlRVE" ruleName="控制控件的只读、使能、显示" instanceCode="BR_MakeControlRVE2" instanceName="控制控件的只读、使能、显示_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-05 16:50:42">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"mapping":[{"componentControlCode":"Btn_Delete","control":"False"}],"type":"3"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OperType>3</OperType></dtMaster><dtControlColumns><ControlCode>Btn_Delete</ControlCode><IsCheck>False</IsCheck></dtControlColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

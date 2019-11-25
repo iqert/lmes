@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2019/7/10 19:09:34-->
+<Methods>
+  <Method Code="form13_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-07-11 14:07:03">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":null,"entityType":"window","entityName":"bo_akl_base_customer","itemqueryparam":null,"items":[{"destName":"bo_akl_base_customer.address","sourceName":"bo_akl_base_customer.address","type":"entityField"},{"destName":"bo_akl_base_customer.cus_Name","sourceName":"bo_akl_base_customer.cus_Name","type":"entityField"},{"destName":"bo_akl_base_customer.cus_No","sourceName":"bo_akl_base_customer.cus_No","type":"entityField"},{"destName":"bo_akl_base_customer.fullName","sourceName":"bo_akl_base_customer.fullName","type":"entityField"},{"destName":"bo_akl_base_customer.id","sourceName":"bo_akl_base_customer.id","type":"entityField"},{"destName":"bo_akl_base_customer.platform","sourceName":"bo_akl_base_customer.platform","type":"entityField"},{"destName":"bo_akl_base_customer.supNo","sourceName":"bo_akl_base_customer.supNo","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_base_customer","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_base_customer</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_base_customer</SourceName><dsWhere><![CDATA[<NewDataSet />]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>805b5da4232347da8a21c597037151ae</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>805b5da4232347da8a21c597037151ae</MasterID><DestName>bo_akl_base_customer.address</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_customer.address</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>805b5da4232347da8a21c597037151ae</MasterID><DestName>bo_akl_base_customer.cus_Name</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_customer.cus_Name</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>805b5da4232347da8a21c597037151ae</MasterID><DestName>bo_akl_base_customer.cus_No</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_customer.cus_No</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>805b5da4232347da8a21c597037151ae</MasterID><DestName>bo_akl_base_customer.fullName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_customer.fullName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>805b5da4232347da8a21c597037151ae</MasterID><DestName>bo_akl_base_customer.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_customer.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>805b5da4232347da8a21c597037151ae</MasterID><DestName>bo_akl_base_customer.platform</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_customer.platform</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>805b5da4232347da8a21c597037151ae</MasterID><DestName>bo_akl_base_customer.supNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_customer.supNo</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>805b5da4232347da8a21c597037151ae</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>805b5da4232347da8a21c597037151ae</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>GetSelectedRecordNum("bo_akl_base_customer")==1</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_CopyEntityRecord1" />
+      <evaluateRule code="BR_SelectionConfirm1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="CopyEntityRecord" ruleName="实体间复制记录" instanceCode="BR_CopyEntityRecord1" instanceName="实体间复制记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"checkitems":null,"condition":"","copyType":"1","destName":"cus","items":[{"destName":"cus.cus_No","sourceName":"bo_akl_base_customer.cus_No","type":"entityField"},{"destName":"cus.cus_Name","sourceName":"bo_akl_base_customer.cus_Name","type":"entityField"}],"mageitems":null,"sourceName":"bo_akl_base_customer","type":"1","isAddRecord":true,"jsonVersion":"1.0","destType":"windowOutput","sourceType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtInfo><destName>cus</destName><destType>windowOutput</destType><sourceName>bo_akl_base_customer</sourceName><sourceType>window</sourceType><type>1</type><isAddRecord>True</isAddRecord><copyType>1</copyType><condition /><jsonVersion>1.0</jsonVersion></dtInfo><dtMaster><DestName>cus.cus_No</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_customer.cus_No</SourceName></dtMaster><dtMaster><DestName>cus.cus_Name</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_customer.cus_Name</SourceName></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-07-11 09:26:40">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请选择一个客户\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请选择一个客户"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGLocateBox1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-07-10 19:29:43">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_base_customer.cus_Name","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"}],"entityType":"window","entityName":"bo_akl_base_customer","itemqueryparam":null,"items":[{"destName":"bo_akl_base_customer.address","sourceName":"bo_akl_base_customer.address","type":"entityField"},{"destName":"bo_akl_base_customer.cus_Name","sourceName":"bo_akl_base_customer.cus_Name","type":"entityField"},{"destName":"bo_akl_base_customer.cus_No","sourceName":"bo_akl_base_customer.cus_No","type":"entityField"},{"destName":"bo_akl_base_customer.fullName","sourceName":"bo_akl_base_customer.fullName","type":"entityField"},{"destName":"bo_akl_base_customer.id","sourceName":"bo_akl_base_customer.id","type":"entityField"},{"destName":"bo_akl_base_customer.platform","sourceName":"bo_akl_base_customer.platform","type":"entityField"},{"destName":"bo_akl_base_customer.supNo","sourceName":"bo_akl_base_customer.supNo","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_base_customer","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_base_customer</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_base_customer</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_base_customer.cus_Name</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>deb8284931ee421b81ae29c6de7894df</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>deb8284931ee421b81ae29c6de7894df</MasterID><DestName>bo_akl_base_customer.address</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_customer.address</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>deb8284931ee421b81ae29c6de7894df</MasterID><DestName>bo_akl_base_customer.cus_Name</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_customer.cus_Name</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>deb8284931ee421b81ae29c6de7894df</MasterID><DestName>bo_akl_base_customer.cus_No</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_customer.cus_No</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>deb8284931ee421b81ae29c6de7894df</MasterID><DestName>bo_akl_base_customer.fullName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_customer.fullName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>deb8284931ee421b81ae29c6de7894df</MasterID><DestName>bo_akl_base_customer.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_customer.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>deb8284931ee421b81ae29c6de7894df</MasterID><DestName>bo_akl_base_customer.platform</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_customer.platform</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>deb8284931ee421b81ae29c6de7894df</MasterID><DestName>bo_akl_base_customer.supNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_customer.supNo</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>deb8284931ee421b81ae29c6de7894df</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>deb8284931ee421b81ae29c6de7894df</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

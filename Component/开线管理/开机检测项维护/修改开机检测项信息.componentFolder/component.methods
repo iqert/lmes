@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2018/7/2 13:50:16-->
+<Methods>
+  <Method Code="startTypeBaseDictBox_OpenModuleAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_OpenComponentReturnData1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>@startTypeId &lt;&gt; "0"</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+      <evaluateRule code="BR_SetEntityVarControlValue1" />
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"chooseStartType1","windowName":"选择启动类型","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"405","widthExp":"691","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":null,"returnMapping":[{"destType":"windowVariant","dest":"startTypeId","srcType":"returnValue","src":"startTypeId","updateDestEntityMethod":"","isCleanDestEntityData":false,"destFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>chooseStartType1</WindowCode><WindowName>选择启动类型</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp>405</HeightExp><WidthExp>691</WidthExp><IsAsyn>False</IsAsyn></dtMaster><dtReturnValue><TargetType>windowVariant</TargetType><Target>startTypeId</Target><SourceType>returnValue</SourceType><Source>startTypeId</Source></dtReturnValue></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_line_start_startType.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"@startTypeId","valueType":"9"}],"entityType":"window","entityName":"bo_akl_line_start_startType","itemqueryparam":null,"items":[{"destName":"bo_akl_line_start_startType.id","sourceName":"bo_akl_line_start_startType.id","type":"entityField"},{"destName":"bo_akl_line_start_startType.startType","sourceName":"bo_akl_line_start_startType.startType","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_line_start_startType","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_line_start_startType</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_line_start_startType</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_line_start_startType.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>@startTypeId</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>52f80d958e844391a82ba7c5099b0cce</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>52f80d958e844391a82ba7c5099b0cce</MasterID><DestName>bo_akl_line_start_startType.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start_startType.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>52f80d958e844391a82ba7c5099b0cce</MasterID><DestName>bo_akl_line_start_startType.startType</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start_startType.startType</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>52f80d958e844391a82ba7c5099b0cce</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>52f80d958e844391a82ba7c5099b0cce</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100469" lastModifiedTime="2018-07-02 16:09:39">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_line_checkInfo.startTypeId","SourceType":"expression","SourceEntityType":"","Source":"[bo_akl_line_start_startType].[id]","entityFieldMapping":null},{"TargetType":"3","Target":"bo_akl_line_checkInfo.startType","SourceType":"expression","SourceEntityType":"","Source":"[bo_akl_line_start_startType].[startType]","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_line_checkInfo.startTypeId</Target><SourceType>expression</SourceType><SourceEntityType /><Source>[bo_akl_line_start_startType].[id]</Source></dtFieldMap><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_line_checkInfo.startType</Target><SourceType>expression</SourceType><SourceEntityType /><Source>[bo_akl_line_start_startType].[startType]</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="changeCheckInfo_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>@checkInfoId &lt;&gt; "0"</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_AddTableRecord1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100469" lastModifiedTime="2018-07-02 14:09:51">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_line_checkInfo.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"@checkInfoId","valueType":"9"}],"entityType":"window","entityName":"bo_akl_line_checkInfo","itemqueryparam":null,"items":[{"destName":"bo_akl_line_checkInfo.checkName","sourceName":"bo_akl_line_checkInfo.checkName","type":"entityField"},{"destName":"bo_akl_line_checkInfo.id","sourceName":"bo_akl_line_checkInfo.id","type":"entityField"},{"destName":"bo_akl_line_checkInfo.startType","sourceName":"bo_akl_line_checkInfo.startType","type":"entityField"},{"destName":"bo_akl_line_checkInfo.startTypeId","sourceName":"bo_akl_line_checkInfo.startTypeId","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_line_checkInfo","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_line_checkInfo</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_line_checkInfo</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_line_checkInfo.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>@checkInfoId</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>c029eb82f75943b2acb8c9877a5dbadd</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>c029eb82f75943b2acb8c9877a5dbadd</MasterID><DestName>bo_akl_line_checkInfo.checkName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_checkInfo.checkName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>c029eb82f75943b2acb8c9877a5dbadd</MasterID><DestName>bo_akl_line_checkInfo.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_checkInfo.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>c029eb82f75943b2acb8c9877a5dbadd</MasterID><DestName>bo_akl_line_checkInfo.startType</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_checkInfo.startType</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>c029eb82f75943b2acb8c9877a5dbadd</MasterID><DestName>bo_akl_line_checkInfo.startTypeId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_checkInfo.startTypeId</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>c029eb82f75943b2acb8c9877a5dbadd</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>c029eb82f75943b2acb8c9877a5dbadd</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1" instanceName="新增实体记录" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100469" lastModifiedTime="2018-07-02 14:10:46">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"3","Mappings":null,"TableType":"window","TableName":"bo_akl_line_checkInfo","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><Location>3</Location><EntityType>window</EntityType><EntityName>bo_akl_line_checkInfo</EntityName></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="saveButton_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_UpdateRecord1" />
+  <evaluateRule code="BR_SetEntityVarControlValue1" />
+  <evaluateRule code="BR_SelectionConfirm1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_line_checkInfo.checkName","colValue":"bo_akl_line_checkInfo.checkName","valueType":"entityField"},{"colName":"bo_akl_line_checkInfo.id","colValue":"bo_akl_line_checkInfo.id","valueType":"entityField"},{"colName":"bo_akl_line_checkInfo.startType","colValue":"bo_akl_line_checkInfo.startType","valueType":"entityField"},{"colName":"bo_akl_line_checkInfo.startTypeId","colValue":"bo_akl_line_checkInfo.startTypeId","valueType":"entityField"}],"dataSource":"bo_akl_line_checkInfo","dataSourceType":"window","destTab":"bo_akl_line_checkInfo","isSaveAll":false}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>0ded6218149642a58e0a74c380da3c62</ID><SourceName>bo_akl_line_checkInfo</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_line_checkInfo(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_line_checkInfo</TableName></dtMaster><dtDetails><PID>0ded6218149642a58e0a74c380da3c62</PID><SourceField>bo_akl_line_checkInfo.checkName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_checkInfo.checkName</Value></dtDetails><dtDetails><PID>0ded6218149642a58e0a74c380da3c62</PID><SourceField>bo_akl_line_checkInfo.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_checkInfo.id</Value></dtDetails><dtDetails><PID>0ded6218149642a58e0a74c380da3c62</PID><SourceField>bo_akl_line_checkInfo.startType</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_checkInfo.startType</Value></dtDetails><dtDetails><PID>0ded6218149642a58e0a74c380da3c62</PID><SourceField>bo_akl_line_checkInfo.startTypeId</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_checkInfo.startTypeId</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-28 15:11:33">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"6","Target":"kjjcx","SourceType":"entityField","SourceEntityType":"window","Source":"bo_akl_line_checkInfo","entityFieldMapping":[{"destFieldName":"id","srcValueType":"entityField","srcValue":"bo_akl_line_checkInfo.id"},{"destFieldName":"startType","srcValueType":"entityField","srcValue":"bo_akl_line_checkInfo.startType"},{"destFieldName":"startTypeId","srcValueType":"entityField","srcValue":"bo_akl_line_checkInfo.startTypeId"},{"destFieldName":"checkName","srcValueType":"entityField","srcValue":"bo_akl_line_checkInfo.checkName"}]}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>6</TargetType><Target>kjjcx</Target><SourceType>entityField</SourceType><SourceEntityType>window</SourceEntityType><Source>bo_akl_line_checkInfo</Source><SourceEntityXml><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>id</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_checkInfo.id</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>startType</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_checkInfo.startType</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>startTypeId</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_checkInfo.startTypeId</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>checkName</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_checkInfo.checkName</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></SourceEntityXml></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

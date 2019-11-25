@@ -1,0 +1,60 @@
+﻿<form type="1002" code="changeSampleInfo" IsLocked="False">
+  <propertys>
+    <property name="Width"><![CDATA[348]]></property>
+    <property name="Height"><![CDATA[349]]></property>
+    <property name="HeightSet"><![CDATA[StaticHeight]]></property>
+    <property name="LayoutType"><![CDATA[None]]></property>
+    <property name="TableName"><![CDATA[]]></property>
+    <property name="FormLoadAction"><![CDATA[changeSampleInfo_FormLoadAction]]></property>
+    <property name="FormCloseAction"><![CDATA[]]></property>
+    <property name="FormClosingAction"><![CDATA[]]></property>
+    <property name="BackColor"><![CDATA[]]></property>
+    <property name="Padding"><![CDATA[0, 0, 0, 0]]></property>
+    <property name="Name"><![CDATA[修改样品点检信息]]></property>
+    <property name="FormBorderStyle"><![CDATA[FixedSingle]]></property>
+    <property name="WindowState"><![CDATA[Normal]]></property>
+    <property name="MaximizeBox"><![CDATA[True]]></property>
+    <property name="RefResources"><![CDATA[]]></property>
+  </propertys>
+  <controls>
+    <JGTextBox Code="JGTextBox1" ColumnName="testStation" IsMust="True" LabelText="检测工站" Left="17" PercentHeight="7.4%" PercentWidth="89.4%" TabIndex="7" TableName="bo_akl_line_sampleInfo" Top="260" Width="311" />
+    <JGComboBox Code="JGComboBox1" ColumnName="isUsedCheckSpots" DropDownSource="{&quot;DataSourceSetting&quot;:{&quot;DataConfig&quot;:{&quot;DefaultSaveColumn&quot;:null,&quot;DefaultShowColumn&quot;:null,&quot;SourceType&quot;:null,&quot;SourceID&quot;:null,&quot;SourceName&quot;:null,&quot;MapTable&quot;:null,&quot;SaveColumn&quot;:null,&quot;ShowColumn&quot;:null,&quot;SortField&quot;:null,&quot;SortType&quot;:null,&quot;MaxRecCount&quot;:0,&quot;QueryField&quot;:null,&quot;QueryMethod&quot;:null,&quot;IsPickListFields&quot;:false,&quot;ConstData&quot;:[{&quot;id&quot;:&quot;是&quot;,&quot;text&quot;:&quot;是&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;否&quot;,&quot;text&quot;:&quot;否&quot;,&quot;selected&quot;:&quot;True&quot;}],&quot;SqlQueryConstData&quot;:null,&quot;EntityConstData&quot;:null,&quot;Condition&quot;:null,&quot;QueryParam&quot;:null,&quot;PickListFields&quot;:null},&quot;DataSourceType&quot;:&quot;CustomConst&quot;}}" IDColumnName="isUsedCheckSpots" LabelText="是否用于点检数" Left="17" PercentHeight="7.4%" PercentWidth="89.4%" TabIndex="6" TableName="bo_akl_line_sampleInfo" Top="217" Width="311" />
+    <JGBaseDictBox Code="JGBaseDictBox1" ColumnName="equName" IDColumnName="equName" IsMust="True" LabelText="产品型号" Left="17" OpenModuleAction="productBaseDictBox_OpenModuleAction" PercentHeight="7.4%" PercentWidth="89.4%" TabIndex="3" TableName="bo_akl_line_sampleInfo" Top="87" Width="311" />
+    <JGBaseDictBox Code="productBaseDictBox" ColumnName="productName" IDColumnName="productName" IsMust="True" LabelText="产品名称" Left="17" OpenModuleAction="productBaseDictBox_OpenModuleAction" PercentHeight="7.4%" PercentWidth="89.4%" TabIndex="4" TableName="bo_akl_line_sampleInfo" Top="130" Width="311" />
+    <JGButton Code="saveButton" LabelText="保存" Left="124" OnClick="saveButton_OnClick" PercentHeight="7.4%" PercentWidth="26.4%" TabIndex="7" Top="307" Width="92" />
+    <JGTextBox Code="sampleNameTextBox" ColumnName="ampleName" IsMust="True" LabelText="样品名称" Left="17" PercentHeight="7.4%" PercentWidth="89.4%" TabIndex="5" TableName="bo_akl_line_sampleInfo" Top="174" Width="311" />
+    <JGBaseDictBox Code="productlingIddBaseDictBox" ColumnName="prolineNo" IDColumnName="prolineNo" IsMust="True" LabelText="产线编号" Left="17" OpenModuleAction="productlingIddBaseDictBox_OpenModuleAction" PercentHeight="7.4%" PercentWidth="89.4%" TabIndex="2" TableName="bo_akl_line_sampleInfo" Top="44" Width="311" />
+    <JGLabel Code="JGLabel1" FontStyle="微软雅黑, 15pt, style=Bold" Height="26" LabelText="样品点检维护" Left="124" PercentHeight="7.4%" PercentWidth="26.4%" TabIndex="1" Top="12" Width="92" />
+  </controls>
+  <outputs>
+    <variable code="productlingId" name="产线Id" fieldType="char" defaultValue="" description="" isRestore="false" />
+    <variable code="ypdj" name="" fieldType="entity" defaultValue="" description="" isRestore="false">
+      <entity>
+        <field code="id" name="" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="prolineNo" name="产线编号" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="prolineId" name="产线id" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="equName" name="型号名称" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="equId" name="型号id" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="ampleName" name="样品名称" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="productName" name="成品名称" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="isUsedCheckSpots" name="是否用于点检数" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="testStation" name="检测工站" fieldType="char" defaultValue="" isRestore="false" />
+      </entity>
+    </variable>
+  </outputs>
+  <inputs>
+    <variable code="isSave" name="" fieldType="boolean" defaultValue="false" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+    <variable code="sampleInfoId" name="样品点检Id" fieldType="char" defaultValue="0" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+    <variable code="productlingId" name="产线Id" fieldType="char" defaultValue="0" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+    <variable code="productId" name="成品Id" fieldType="char" defaultValue="0" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+  </inputs>
+  <remark><![CDATA[]]></remark>
+</form>

@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2017/5/12 10:19:38-->
+<Methods>
+  <Method Code="Btn_Delete_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_ShowMessage1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>BR_OUT.BR_ShowMessage1.confirm</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_CopyEntityRecord1" />
+      <foreach isEnabled="True" isDebug="False" code="ForeachCode1">
+        <define>
+          <varCode>uk</varCode>
+          <entityType>ruleSetVar</entityType>
+          <entityCode>upkeepRec</entityCode>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_DeleteConditionRelationData1" />
+        </sequence>
+      </foreach>
+      <evaluateRule code="BR_DeleteListSelectRow1" />
+      <evaluateRule code="BR_UpdateRecord1" />
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="是否确认删除" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"3","time":null,"simpleChinesePrompt":{"msgnote":"\"是否确定删除?\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>3</MsgType><SimpleChinese>"是否确定删除?"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteConditionRelationData" ruleName="删除数据库中的记录" instanceCode="BR_DeleteConditionRelationData1" instanceName="删除数据库中的记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dtChileMaps":[{"orderNo":"1","tableName":"bo_akl_EM_publicEquUpkeepSub","dsWhere":[{"columnType":"1","field":"bo_akl_EM_publicEquUpkeepSub.upkeepId","fieldType":"char","leftBracket":"(","logicOperation":"","operation":"=","rightBracket":")","value":"LV.uk.id","valueType":"9"}]},{"orderNo":"2","tableName":"bo_akl_EM_toolcEquUpkeepSub","dsWhere":[{"columnType":"1","field":"bo_akl_EM_toolcEquUpkeepSub.upkeepId","fieldType":"char","leftBracket":"(","logicOperation":"","operation":"=","rightBracket":")","value":"LV.uk.id","valueType":"9"}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtConditionMaster><TableName>bo_akl_EM_publicEquUpkeepSub</TableName><Condition><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_EM_publicEquUpkeepSub.upkeepId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>LV.uk.id</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></Condition><OrderNo>1</OrderNo></dtConditionMaster><dtConditionMaster><TableName>bo_akl_EM_toolcEquUpkeepSub</TableName><Condition><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_EM_toolcEquUpkeepSub.upkeepId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>LV.uk.id</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></Condition><OrderNo>2</OrderNo></dtConditionMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="CopyEntityRecord" ruleName="实体间复制记录" instanceCode="BR_CopyEntityRecord1" instanceName="实体间复制记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"checkitems":null,"condition":"","copyType":"1","destName":"upkeepRec","items":[{"destName":"upkeepRec.id","sourceName":"toolEquUpkeepRec.id","type":"entityField"}],"mageitems":null,"sourceName":"toolEquUpkeepRec","type":"1","isAddRecord":true,"jsonVersion":"1.0","destType":"ruleSetVar","sourceType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtInfo><destName>upkeepRec</destName><destType>ruleSetVar</destType><sourceName>toolEquUpkeepRec</sourceName><sourceType>window</sourceType><type>1</type><isAddRecord>True</isAddRecord><copyType>1</copyType><condition /><jsonVersion>1.0</jsonVersion></dtInfo><dtMaster><DestName>upkeepRec.id</DestName><SourceType>entityField</SourceType><SourceName>toolEquUpkeepRec.id</SourceName></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow1" instanceName="删除实体记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"","deleteType":"0","TableName":"toolEquUpkeepRec","EntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition /><DeleteType>0</DeleteType><TableName>toolEquUpkeepRec</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_EM_toolequUpkeepRec.cycle","colValue":"toolEquUpkeepRec.cycle","valueType":"entityField"},{"colName":"bo_akl_EM_toolequUpkeepRec.equipId","colValue":"toolEquUpkeepRec.equipId","valueType":"entityField"},{"colName":"bo_akl_EM_toolequUpkeepRec.id","colValue":"toolEquUpkeepRec.id","valueType":"entityField"},{"colName":"bo_akl_EM_toolequUpkeepRec.isOp","colValue":"toolEquUpkeepRec.isOp","valueType":"entityField"},{"colName":"bo_akl_EM_toolequUpkeepRec.operatorId","colValue":"toolEquUpkeepRec.operatorId","valueType":"entityField"},{"colName":"bo_akl_EM_toolequUpkeepRec.operatorName","colValue":"toolEquUpkeepRec.operatorName","valueType":"entityField"},{"colName":"bo_akl_EM_toolequUpkeepRec.upkeepDate","colValue":"toolEquUpkeepRec.upkeepDate","valueType":"entityField"}],"dataSource":"toolEquUpkeepRec","dataSourceType":"window","destTab":"bo_akl_EM_toolequUpkeepRec","isSaveAll":false}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>596371047f4846e19545dac54419378d</ID><SourceName>toolEquUpkeepRec</SourceName><SourceType>window</SourceType><SourceNameType>toolEquUpkeepRec(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_EM_toolequUpkeepRec</TableName></dtMaster><dtDetails><PID>596371047f4846e19545dac54419378d</PID><SourceField>bo_akl_EM_toolequUpkeepRec.cycle</SourceField><DataFrom>entityField</DataFrom><Value>toolEquUpkeepRec.cycle</Value></dtDetails><dtDetails><PID>596371047f4846e19545dac54419378d</PID><SourceField>bo_akl_EM_toolequUpkeepRec.equipId</SourceField><DataFrom>entityField</DataFrom><Value>toolEquUpkeepRec.equipId</Value></dtDetails><dtDetails><PID>596371047f4846e19545dac54419378d</PID><SourceField>bo_akl_EM_toolequUpkeepRec.id</SourceField><DataFrom>entityField</DataFrom><Value>toolEquUpkeepRec.id</Value></dtDetails><dtDetails><PID>596371047f4846e19545dac54419378d</PID><SourceField>bo_akl_EM_toolequUpkeepRec.isOp</SourceField><DataFrom>entityField</DataFrom><Value>toolEquUpkeepRec.isOp</Value></dtDetails><dtDetails><PID>596371047f4846e19545dac54419378d</PID><SourceField>bo_akl_EM_toolequUpkeepRec.operatorId</SourceField><DataFrom>entityField</DataFrom><Value>toolEquUpkeepRec.operatorId</Value></dtDetails><dtDetails><PID>596371047f4846e19545dac54419378d</PID><SourceField>bo_akl_EM_toolequUpkeepRec.operatorName</SourceField><DataFrom>entityField</DataFrom><Value>toolEquUpkeepRec.operatorName</Value></dtDetails><dtDetails><PID>596371047f4846e19545dac54419378d</PID><SourceField>bo_akl_EM_toolequUpkeepRec.upkeepDate</SourceField><DataFrom>entityField</DataFrom><Value>toolEquUpkeepRec.upkeepDate</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Variables>
+      <Variable code="upkeepRec" name="保养记录" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+    </Variables>
+  </Method>
+  <Method Code="Btn_Add_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_OpenComponentReturnData1" />
+  <evaluateRule code="BR_ExecuteRuleSet1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-17 14:00:34">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"form_add_toolEquUpkeepRec","windowName":"新增载具设备保养记录","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"","widthExp":"","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>form_add_toolEquUpkeepRec</WindowCode><WindowName>新增载具设备保养记录</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp /><WidthExp /><IsAsyn>False</IsAsyn></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_form_publicEquUpkeepRec_FormLoadAction(form_publicEquUpkeepRec_窗体加载事件)_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-17 14:01:03">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"form_publicEquUpkeepRec_FormLoadAction","isParallelism":"False"},"invokeParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>form_publicEquUpkeepRec_FormLoadAction</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="Btn_Modify_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_OpenComponentReturnData1" />
+  <evaluateRule code="BR_ExecuteRuleSet1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-17 14:02:06">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"form_add_toolEquUpkeepRec","windowName":"新增载具设备保养记录","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"","widthExp":"","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":[{"paramName":"equName","paramType":"expression","paramValue":"[toolEquUpkeepRec].[equipName]","paramEntityType":"","entityFieldMapping":null},{"paramName":"equNo","paramType":"expression","paramValue":"[toolEquUpkeepRec].[equipNo]","paramEntityType":"","entityFieldMapping":null},{"paramName":"upkeepId","paramType":"expression","paramValue":"[toolEquUpkeepRec].[id]","paramEntityType":"","entityFieldMapping":null}],"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>form_add_toolEquUpkeepRec</WindowCode><WindowName>新增载具设备保养记录</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp /><WidthExp /><IsAsyn>False</IsAsyn></dtMaster><dtParam><WindowVariant>equName</WindowVariant><SourceType>expression</SourceType><SourceTypeDisplayText>表达式</SourceTypeDisplayText><SourceValue>[toolEquUpkeepRec].[equipName]</SourceValue></dtParam><dtParam><WindowVariant>equNo</WindowVariant><SourceType>expression</SourceType><SourceTypeDisplayText>表达式</SourceTypeDisplayText><SourceValue>[toolEquUpkeepRec].[equipNo]</SourceValue></dtParam><dtParam><WindowVariant>upkeepId</WindowVariant><SourceType>expression</SourceType><SourceTypeDisplayText>表达式</SourceTypeDisplayText><SourceValue>[toolEquUpkeepRec].[id]</SourceValue></dtParam></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_form_publicEquUpkeepRec_FormLoadAction(form_publicEquUpkeepRec_窗体加载事件)" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"form_publicEquUpkeepRec_FormLoadAction","isParallelism":"False"},"invokeParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>form_publicEquUpkeepRec_FormLoadAction</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGLocateBox1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-17 14:48:38">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Query","dsWhere":[{"columnType":"1","field":"toolEquUpkeepRec.equipName","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"},{"columnType":"1","field":"toolEquUpkeepRec.equipNo","fieldType":"char","leftBracket":"(","logicOperation":"or","operation":"=","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"},{"columnType":"1","field":"toolEquUpkeepRec.operatorName","fieldType":"char","leftBracket":"(","logicOperation":"or","operation":"=","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"},{"columnType":"1","field":"toolEquUpkeepRec.upkeepDate","fieldType":"date","leftBracket":"(","logicOperation":"or","operation":"=","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"}],"entityType":"window","entityName":"toolEquUpkeepRec","itemqueryparam":null,"items":[{"destName":"toolEquUpkeepRec.cycle","sourceName":"toolEquUpkeepRec.cycle","type":"entityField"},{"destName":"toolEquUpkeepRec.equipId","sourceName":"toolEquUpkeepRec.equipId","type":"entityField"},{"destName":"toolEquUpkeepRec.equipName","sourceName":"toolEquUpkeepRec.equipName","type":"entityField"},{"destName":"toolEquUpkeepRec.equipNo","sourceName":"toolEquUpkeepRec.equipNo","type":"entityField"},{"destName":"toolEquUpkeepRec.id","sourceName":"toolEquUpkeepRec.id","type":"entityField"},{"destName":"toolEquUpkeepRec.isOp","sourceName":"toolEquUpkeepRec.isOp","type":"entityField"},{"destName":"toolEquUpkeepRec.operatorId","sourceName":"toolEquUpkeepRec.operatorId","type":"entityField"},{"destName":"toolEquUpkeepRec.operatorName","sourceName":"toolEquUpkeepRec.operatorName","type":"entityField"},{"destName":"toolEquUpkeepRec.upkeepDate","sourceName":"toolEquUpkeepRec.upkeepDate","type":"entityField"}],"orderBy":null,"sourceName":"toolEquUpkeepRec","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>toolEquUpkeepRec</EntityName><SourceType>Query</SourceType><SourceName>toolEquUpkeepRec</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>toolEquUpkeepRec.equipName</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>toolEquUpkeepRec.equipNo</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>=</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>toolEquUpkeepRec.operatorName</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>=</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>toolEquUpkeepRec.upkeepDate</field><fieldType>date</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>=</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsQueryParam><![CDATA[<dsQueryParam />]]]]><![CDATA[></dsQueryParam><ID>f3eea76ad8e1495c9419f258319c4432</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>f3eea76ad8e1495c9419f258319c4432</MasterID><DestName>toolEquUpkeepRec.cycle</DestName><SourceType>entityField</SourceType><SourceName>toolEquUpkeepRec.cycle</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f3eea76ad8e1495c9419f258319c4432</MasterID><DestName>toolEquUpkeepRec.equipId</DestName><SourceType>entityField</SourceType><SourceName>toolEquUpkeepRec.equipId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f3eea76ad8e1495c9419f258319c4432</MasterID><DestName>toolEquUpkeepRec.equipName</DestName><SourceType>entityField</SourceType><SourceName>toolEquUpkeepRec.equipName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f3eea76ad8e1495c9419f258319c4432</MasterID><DestName>toolEquUpkeepRec.equipNo</DestName><SourceType>entityField</SourceType><SourceName>toolEquUpkeepRec.equipNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f3eea76ad8e1495c9419f258319c4432</MasterID><DestName>toolEquUpkeepRec.id</DestName><SourceType>entityField</SourceType><SourceName>toolEquUpkeepRec.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f3eea76ad8e1495c9419f258319c4432</MasterID><DestName>toolEquUpkeepRec.isOp</DestName><SourceType>entityField</SourceType><SourceName>toolEquUpkeepRec.isOp</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f3eea76ad8e1495c9419f258319c4432</MasterID><DestName>toolEquUpkeepRec.operatorId</DestName><SourceType>entityField</SourceType><SourceName>toolEquUpkeepRec.operatorId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f3eea76ad8e1495c9419f258319c4432</MasterID><DestName>toolEquUpkeepRec.operatorName</DestName><SourceType>entityField</SourceType><SourceName>toolEquUpkeepRec.operatorName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f3eea76ad8e1495c9419f258319c4432</MasterID><DestName>toolEquUpkeepRec.upkeepDate</DestName><SourceType>entityField</SourceType><SourceName>toolEquUpkeepRec.upkeepDate</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>f3eea76ad8e1495c9419f258319c4432</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>f3eea76ad8e1495c9419f258319c4432</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGDataGrid1_OnSelectionChanged" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>GetEntitySelectedRowCount("toolEquUpkeepRec")&lt;&gt;0</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_MakeControlRVE1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_MakeControlRVE2" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="MakeControlRVE" ruleName="控制控件的只读、使能、显示" instanceCode="BR_MakeControlRVE1" instanceName="控制控件的只读、使能、显示" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"mapping":[{"componentControlCode":"Btn_Delete","control":"True"}],"type":"3"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OperType>3</OperType></dtMaster><dtControlColumns><ControlCode>Btn_Delete</ControlCode><IsCheck>True</IsCheck></dtControlColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="MakeControlRVE" ruleName="控制控件的只读、使能、显示" instanceCode="BR_MakeControlRVE2" instanceName="控制控件的只读、使能、显示_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"mapping":[{"componentControlCode":"Btn_Delete","control":"False"}],"type":"3"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OperType>3</OperType></dtMaster><dtControlColumns><ControlCode>Btn_Delete</ControlCode><IsCheck>False</IsCheck></dtControlColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="form_publicEquUpkeepRec_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-17 13:59:28">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Query","dsWhere":null,"entityType":"window","entityName":"toolEquUpkeepRec","itemqueryparam":null,"items":[{"destName":"toolEquUpkeepRec.cycle","sourceName":"toolEquUpkeepRec.cycle","type":"entityField"},{"destName":"toolEquUpkeepRec.equipId","sourceName":"toolEquUpkeepRec.equipId","type":"entityField"},{"destName":"toolEquUpkeepRec.equipName","sourceName":"toolEquUpkeepRec.equipName","type":"entityField"},{"destName":"toolEquUpkeepRec.equipNo","sourceName":"toolEquUpkeepRec.equipNo","type":"entityField"},{"destName":"toolEquUpkeepRec.id","sourceName":"toolEquUpkeepRec.id","type":"entityField"},{"destName":"toolEquUpkeepRec.isOp","sourceName":"toolEquUpkeepRec.isOp","type":"entityField"},{"destName":"toolEquUpkeepRec.operatorId","sourceName":"toolEquUpkeepRec.operatorId","type":"entityField"},{"destName":"toolEquUpkeepRec.operatorName","sourceName":"toolEquUpkeepRec.operatorName","type":"entityField"},{"destName":"toolEquUpkeepRec.upkeepDate","sourceName":"toolEquUpkeepRec.upkeepDate","type":"entityField"}],"orderBy":null,"sourceName":"toolEquUpkeepRec","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>toolEquUpkeepRec</EntityName><SourceType>Query</SourceType><SourceName>toolEquUpkeepRec</SourceName><dsWhere><![CDATA[<NewDataSet />]]]]><![CDATA[></dsWhere><dsQueryParam><![CDATA[<dsQueryParam />]]]]><![CDATA[></dsQueryParam><ID>f3eea76ad8e1495c9419f258319c4432</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>f3eea76ad8e1495c9419f258319c4432</MasterID><DestName>toolEquUpkeepRec.cycle</DestName><SourceType>entityField</SourceType><SourceName>toolEquUpkeepRec.cycle</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f3eea76ad8e1495c9419f258319c4432</MasterID><DestName>toolEquUpkeepRec.equipId</DestName><SourceType>entityField</SourceType><SourceName>toolEquUpkeepRec.equipId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f3eea76ad8e1495c9419f258319c4432</MasterID><DestName>toolEquUpkeepRec.equipName</DestName><SourceType>entityField</SourceType><SourceName>toolEquUpkeepRec.equipName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f3eea76ad8e1495c9419f258319c4432</MasterID><DestName>toolEquUpkeepRec.equipNo</DestName><SourceType>entityField</SourceType><SourceName>toolEquUpkeepRec.equipNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f3eea76ad8e1495c9419f258319c4432</MasterID><DestName>toolEquUpkeepRec.id</DestName><SourceType>entityField</SourceType><SourceName>toolEquUpkeepRec.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f3eea76ad8e1495c9419f258319c4432</MasterID><DestName>toolEquUpkeepRec.isOp</DestName><SourceType>entityField</SourceType><SourceName>toolEquUpkeepRec.isOp</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f3eea76ad8e1495c9419f258319c4432</MasterID><DestName>toolEquUpkeepRec.operatorId</DestName><SourceType>entityField</SourceType><SourceName>toolEquUpkeepRec.operatorId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f3eea76ad8e1495c9419f258319c4432</MasterID><DestName>toolEquUpkeepRec.operatorName</DestName><SourceType>entityField</SourceType><SourceName>toolEquUpkeepRec.operatorName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f3eea76ad8e1495c9419f258319c4432</MasterID><DestName>toolEquUpkeepRec.upkeepDate</DestName><SourceType>entityField</SourceType><SourceName>toolEquUpkeepRec.upkeepDate</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>f3eea76ad8e1495c9419f258319c4432</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>f3eea76ad8e1495c9419f258319c4432</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

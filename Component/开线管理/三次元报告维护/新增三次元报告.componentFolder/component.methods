@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2019/8/3 14:46:26-->
+<Methods>
+  <Method Code="JGBaseDictBox1_OpenModuleAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_OpenComponentReturnData1" />
+  <evaluateRule code="BR_SetEntityVarControlValue1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-03 15:40:11">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"form40","windowName":"选择已开线主表","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"","widthExp":"","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":null,"returnMapping":[{"destType":"ruleSetVariant","dest":"startClass","srcType":"returnValue","src":"lineClass","updateDestEntityMethod":"","isCleanDestEntityData":false,"destFieldMapping":null},{"destType":"ruleSetVariant","dest":"lineId","srcType":"returnValue","src":"lineId","updateDestEntityMethod":"","isCleanDestEntityData":false,"destFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>form40</WindowCode><WindowName>选择已开线主表</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp /><WidthExp /><IsAsyn>False</IsAsyn></dtMaster><dtReturnValue><TargetType>ruleSetVariant</TargetType><Target>startClass</Target><SourceType>returnValue</SourceType><Source>lineClass</Source></dtReturnValue><dtReturnValue><TargetType>ruleSetVariant</TargetType><Target>lineId</Target><SourceType>returnValue</SourceType><Source>lineId</Source></dtReturnValue></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-03 15:37:00">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_line_threeReport.startClasses","SourceType":"expression","SourceEntityType":"","Source":"BR_VAR_PARENT.startClass","entityFieldMapping":null},{"TargetType":"3","Target":"bo_akl_line_threeReport.lineId","SourceType":"expression","SourceEntityType":"","Source":"BR_VAR_PARENT.lineId","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_line_threeReport.startClasses</Target><SourceType>expression</SourceType><SourceEntityType /><Source>BR_VAR_PARENT.startClass</Source></dtFieldMap><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_line_threeReport.lineId</Target><SourceType>expression</SourceType><SourceEntityType /><Source>BR_VAR_PARENT.lineId</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Variables>
+      <Variable code="startClass" name="开线班次" fieldType="char" initValue="" isMust="false" desc="" />
+      <Variable code="lineId" name="开线主表id" fieldType="char" initValue="" isMust="false" desc="" />
+    </Variables>
+  </Method>
+  <Method Code="JGButton1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_UpdateRecord1" />
+  <evaluateRule code="BR_SelectionConfirm1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-03 15:28:23">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_line_threeReport.createDate","colValue":"DateTimeNow()","valueType":"expression"},{"colName":"bo_akl_line_threeReport.id","colValue":"bo_akl_line_threeReport.id","valueType":"entityField"},{"colName":"bo_akl_line_threeReport.lineId","colValue":"bo_akl_line_threeReport.lineId","valueType":"entityField"},{"colName":"bo_akl_line_threeReport.pullName","colValue":"bo_akl_line_threeReport.pullName","valueType":"entityField"},{"colName":"bo_akl_line_threeReport.startClasses","colValue":"bo_akl_line_threeReport.startClasses","valueType":"entityField"},{"colName":"bo_akl_line_threeReport.threeFileReport","colValue":"bo_akl_line_threeReport.threeFileReport","valueType":"entityField"},{"colName":"bo_akl_line_threeReport.threeFileReportName","colValue":"bo_akl_line_threeReport.threeFileReportName","valueType":"entityField"}],"dataSource":"bo_akl_line_threeReport","dataSourceType":"window","destTab":"bo_akl_line_threeReport","isSaveAll":false}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>69a74088cce64a45a6eefcd121cb9d51</ID><SourceName>bo_akl_line_threeReport</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_line_threeReport(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_line_threeReport</TableName></dtMaster><dtDetails><PID>69a74088cce64a45a6eefcd121cb9d51</PID><SourceField>bo_akl_line_threeReport.createDate</SourceField><DataFrom>expression</DataFrom><Value>DateTimeNow()</Value></dtDetails><dtDetails><PID>69a74088cce64a45a6eefcd121cb9d51</PID><SourceField>bo_akl_line_threeReport.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_threeReport.id</Value></dtDetails><dtDetails><PID>69a74088cce64a45a6eefcd121cb9d51</PID><SourceField>bo_akl_line_threeReport.lineId</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_threeReport.lineId</Value></dtDetails><dtDetails><PID>69a74088cce64a45a6eefcd121cb9d51</PID><SourceField>bo_akl_line_threeReport.pullName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_threeReport.pullName</Value></dtDetails><dtDetails><PID>69a74088cce64a45a6eefcd121cb9d51</PID><SourceField>bo_akl_line_threeReport.startClasses</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_threeReport.startClasses</Value></dtDetails><dtDetails><PID>69a74088cce64a45a6eefcd121cb9d51</PID><SourceField>bo_akl_line_threeReport.threeFileReport</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_threeReport.threeFileReport</Value></dtDetails><dtDetails><PID>69a74088cce64a45a6eefcd121cb9d51</PID><SourceField>bo_akl_line_threeReport.threeFileReportName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_threeReport.threeFileReportName</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-03 15:28:34">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGAttachment1_OnFileSelected" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_Attachmentoperation1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="Attachmentoperation" ruleName="附件操作" instanceCode="BR_Attachmentoperation1" instanceName="附件操作" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-03 15:41:36">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"componentControlCode":[{"componentControlCode":"JGAttachment1"}],"dataProcess":null,"fileName":null,"function":"1","fileType":"","componentCode":"","reviewScheme":"","watermarkEnable":false,"previewTargetType":"","isPreviewInModalWindow":false,"previewWindowSize":"","watermarkSet":null,"picWatermarkStyle":null,"docProtectSet":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><operate>1</operate><documentColumn /><watermarkEnable>False</watermarkEnable></dtMaster><dtlbSelected><SaveName>JGAttachment1</SaveName><DisplayName>JGAttachment1(文件)</DisplayName></dtlbSelected></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

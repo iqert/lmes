@@ -1,0 +1,60 @@
+﻿<form type="1002" code="changeGZJJCheckaHistoryForm" IsLocked="False">
+  <propertys>
+    <property name="Width"><![CDATA[927]]></property>
+    <property name="Height"><![CDATA[488]]></property>
+    <property name="HeightSet"><![CDATA[StaticHeight]]></property>
+    <property name="LayoutType"><![CDATA[None]]></property>
+    <property name="TableName"><![CDATA[]]></property>
+    <property name="FormLoadAction"><![CDATA[newGZJJCheckaHistoryForm_FormLoadAction]]></property>
+    <property name="FormCloseAction"><![CDATA[]]></property>
+    <property name="FormClosingAction"><![CDATA[]]></property>
+    <property name="BackColor"><![CDATA[]]></property>
+    <property name="Padding"><![CDATA[0, 0, 0, 0]]></property>
+    <property name="Name"><![CDATA[修改载具检测记录]]></property>
+    <property name="FormBorderStyle"><![CDATA[FixedSingle]]></property>
+    <property name="WindowState"><![CDATA[Normal]]></property>
+    <property name="MaximizeBox"><![CDATA[True]]></property>
+    <property name="RefResources"><![CDATA[]]></property>
+  </propertys>
+  <controls>
+    <JGTextBox Code="JGTextBox1" ColumnName="checkReportName" LabelText="检测报告" Left="20" OnEnter="reportTextBox_OnEnter" PercentHeight="5.3%" PercentWidth="82.8%" ReadOnly="True" TabIndex="8" TableName="bo_akl_EM_recordOfTooling" Top="355" Width="768" />
+    <JGAttachment Code="checkReportAttachment" ColumnName="checkReport" FileNameColumn="checkReportName" LabelText="" LabelVisible="False" Left="805" OnFileSelected="checkReportAttachment_OnFileSelected" PercentHeight="5.3%" PercentWidth="11.2%" TabIndex="9" TableName="bo_akl_EM_recordOfTooling" Top="354" Width="104" />
+    <JGIntegerBox Code="spaceIntegerBox" ColumnName="space" IsMust="True" LabelText="检测间隔" Left="20" OnValueChanged="JGDateTimePicker2_OnValueChanged" PercentHeight="5.3%" PercentWidth="95.9%" TabIndex="5" TableName="bo_akl_EM_recordOfTooling" Top="206" Value="0" Width="889" />
+    <JGButton Code="saveButton" LabelText="保存" Left="407" OnClick="saveButton_OnClick" PercentHeight="5.3%" PercentWidth="15.6%" TabIndex="11" Top="447" Width="145" />
+    <JGTextBox Code="resultTextBox" ColumnName="resultDetermination" LabelText="结果判定" Left="20" PercentHeight="5.3%" PercentWidth="95.9%" TabIndex="7" TableName="bo_akl_EM_recordOfTooling" Top="307" Width="889" />
+    <JGDateTimePicker Code="nowDateTimePicker" ColumnName="dateOfCalibration" IsMust="True" LabelText="本次检测日期" Left="20" OnValueChanged="nowDateTimePicker_OnValueChanged" PercentHeight="5.3%" PercentWidth="95.9%" TabIndex="6" TableName="bo_akl_EM_recordOfTooling" Top="257" Width="889" />
+    <JGDateTimePicker Code="fromDateTimePicker" ColumnName="lastCalibrationDate" IsMust="True" LabelText="上次检测日期" Left="20" OnValueChanged="JGDateTimePicker2_OnValueChanged" PercentHeight="5.3%" PercentWidth="95.9%" TabIndex="4" TableName="bo_akl_EM_recordOfTooling" Top="161" Width="889" />
+    <JGLabel Code="JGLabel1" FontStyle="微软雅黑, 15pt, style=Bold" Height="38" LabelText="载具检测记录" Left="407" PercentHeight="7.8%" PercentWidth="15.6%" TabIndex="1" TextAlign="Center" Top="9" Width="145" />
+    <JGBaseDictBox Code="equipNameBaseDictBox" ColumnName="equipInfoName" IDColumnName="equipInfoName" IsMust="True" LabelText="设备名称" Left="20" OpenModuleAction="equipNoBaseDictBox_OpenModuleAction" PercentHeight="5.3%" PercentWidth="95.9%" TabIndex="3" TableName="bo_akl_EM_recordOfTooling" Top="113" Width="889" />
+    <JGBaseDictBox Code="equipNoBaseDictBox" ColumnName="equipInfoNo" IDColumnName="equipInfoNo" IsMust="True" LabelText="设备编号" Left="20" OpenModuleAction="equipNoBaseDictBox_OpenModuleAction" PercentHeight="5.3%" PercentWidth="95.9%" TabIndex="2" TableName="bo_akl_EM_recordOfTooling" Top="67" Width="889" />
+    <JGTextBox Code="JGTextBox2" ColumnName="operator" IsMust="True" LabelText="操作人" Left="20" PercentHeight="5.3%" PercentWidth="95.9%" ReadOnly="True" TabIndex="10" TableName="bo_akl_EM_recordOfTooling" Top="404" Width="889" />
+  </controls>
+  <outputs>
+    <variable code="zjjcjl" name="" fieldType="entity" defaultValue="" description="" isRestore="false">
+      <entity>
+        <field code="id" name="" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="equipId" name="设备信息Id" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="equipInfoNo" name="设备编号" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="equipInfoName" name="设备名称" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="lastCalibrationDate" name="上次检测日期" fieldType="date" defaultValue="" isRestore="false" />
+        <field code="space" name="检测间隔" fieldType="integer" defaultValue="" isRestore="false" />
+        <field code="dateOfCalibration" name="本次检测日期" fieldType="date" defaultValue="" isRestore="false" />
+        <field code="resultDetermination" name="结果判定" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="checkReport" name="检测报告" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="checkReportName" name="检测报告名称" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="operatorCode" name="操作人编号" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="operator" name="操作人" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="isOp" name="是否操作过" fieldType="integer" defaultValue="" isRestore="false" />
+      </entity>
+    </variable>
+  </outputs>
+  <inputs>
+    <variable code="equipId" name="设备信息Id" fieldType="char" defaultValue="0" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+    <variable code="toolingId" name="载具记录Id" fieldType="char" defaultValue="" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+  </inputs>
+  <remark><![CDATA[]]></remark>
+</form>

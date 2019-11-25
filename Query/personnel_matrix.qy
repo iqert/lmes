@@ -1,0 +1,54 @@
+﻿<Query id="c47b97f1250844cd8d69806f447eb08f" code="personnel_matrix" name="人员能力矩阵图" type="VSql">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[liub]]></Creator>
+  <CreationTime><![CDATA[2018-06-29 09:34:43]]></CreationTime>
+  <Modifier><![CDATA[liub]]></Modifier>
+  <ModificationTime><![CDATA[2018-07-27 10:50:39]]></ModificationTime>
+  <VSql><![CDATA[select sa.pNo,sa.sNo,sa.sName,sa.workKey,sa.workPower,sa.sortNum from
+(
+select pNo,sNo,sName,workKey,workPower,sortNum from (
+select 'ty' as pNo,1 as sortNum,sNo,sName,trainNature as workKey,CASE WHEN assResult='合格' THEN '○'  ELSE ''  END as workPower from bo_akl_base_examRecordLA where sNo!=''
+union all
+select pa.pNo,pp.sortNum,pp.sNo,pp.sName,pp.workKey,pp.workPower from (
+select 2 as sortNum,eb.sNo,eb.sName,es.wsNo||'('||es.workCName||')' as workKey,es.pNo,
+CASE
+  WHEN assResult='合格' and userPower='员工在监督下上岗' THEN '○'
+  WHEN assResult='合格' and userPower='员工具备独立上岗资格' THEN '●'
+  WHEN assResult='合格' and userPower='员工具备独立上岗资格并可带新员工' THEN '★'
+  ELSE ''  END as workPower from bo_akl_base_examRecordLB eb left join bo_akl_base_productling_ws es on CHARINDEX(es.wsNo,eb.tLine,1)>0  where eb.sNo!=''
+)pp left join bo_akl_base_productlines pa on pp.pNo=pa.id
+)cc order by sortNum
+)sa  order by sortNum desc]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="pNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="sNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="sName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="workKey" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="workPower" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="sortNum" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="es" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_base_examRecordLA" tokenIndexes="96" />
+    <DataItem type="Table" key="bo_akl_base_examRecordLB" tokenIndexes="237" />
+    <DataItem type="Table" key="bo_akl_base_productling_ws" tokenIndexes="245" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="281" />
+  </DataItems>
+</Query>

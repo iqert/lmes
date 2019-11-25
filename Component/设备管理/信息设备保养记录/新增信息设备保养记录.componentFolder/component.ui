@@ -1,0 +1,61 @@
+﻿<form type="1002" code="form_add_infoEquUpkeepRec" IsLocked="False">
+  <propertys>
+    <property name="Width"><![CDATA[824]]></property>
+    <property name="Height"><![CDATA[473]]></property>
+    <property name="HeightSet"><![CDATA[StaticHeight]]></property>
+    <property name="LayoutType"><![CDATA[BorderLayout]]></property>
+    <property name="TableName"><![CDATA[]]></property>
+    <property name="FormLoadAction"><![CDATA[form_add_infoEquUpkeepRec_FormLoadAction]]></property>
+    <property name="FormCloseAction"><![CDATA[]]></property>
+    <property name="FormClosingAction"><![CDATA[]]></property>
+    <property name="BackColor"><![CDATA[]]></property>
+    <property name="Padding"><![CDATA[0, 0, 0, 0]]></property>
+    <property name="Name"><![CDATA[新增信息设备保养记录]]></property>
+    <property name="FormBorderStyle"><![CDATA[FixedSingle]]></property>
+    <property name="WindowState"><![CDATA[Normal]]></property>
+    <property name="MaximizeBox"><![CDATA[True]]></property>
+    <property name="RefResources"><![CDATA[]]></property>
+  </propertys>
+  <controls>
+    <JGPanel BorderStyle="None" Code="Pnl_Fill" Dock="Fill" Height="473" LayoutType="BorderLayout" Left="10" PercentHeight="100%" PercentWidth="97.1%" TabIndex="1" Width="800">
+      <JGPanel BorderStyle="None" Code="Pnl_Center" Dock="Fill" Height="449" LayoutType="BorderLayout" PercentHeight="94.9%" PercentWidth="100%" TabIndex="5" Top="12" Width="800">
+        <JGComboBox Code="JGComboBox1" DropDownSource="{&quot;DataSourceSetting&quot;:{&quot;DataConfig&quot;:{&quot;DefaultSaveColumn&quot;:null,&quot;DefaultShowColumn&quot;:null,&quot;SourceType&quot;:null,&quot;SourceID&quot;:null,&quot;SourceName&quot;:null,&quot;MapTable&quot;:null,&quot;SaveColumn&quot;:null,&quot;ShowColumn&quot;:null,&quot;SortField&quot;:null,&quot;SortType&quot;:null,&quot;MaxRecCount&quot;:0,&quot;QueryField&quot;:null,&quot;QueryMethod&quot;:null,&quot;IsPickListFields&quot;:false,&quot;ConstData&quot;:[{&quot;id&quot;:&quot;每月&quot;,&quot;text&quot;:&quot;每月&quot;,&quot;selected&quot;:&quot;True&quot;},{&quot;id&quot;:&quot;每季度&quot;,&quot;text&quot;:&quot;每季度&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;每半年&quot;,&quot;text&quot;:&quot;每半年&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;每年&quot;,&quot;text&quot;:&quot;每年&quot;,&quot;selected&quot;:&quot;False&quot;}],&quot;SqlQueryConstData&quot;:null,&quot;EntityConstData&quot;:null,&quot;Condition&quot;:null,&quot;QueryParam&quot;:null,&quot;PickListFields&quot;:null},&quot;DataSourceType&quot;:&quot;CustomConst&quot;}}" IDColumnName="cycle" IsMust="True" LabelText="周期" Left="284" OnValueChanged="JGBaseDictBox1_OnValueChanged" PercentHeight="5.8%" PercentWidth="29.4%" TabIndex="20" TableName="bo_akl_EM_infoEquUpkeepRec" Top="87" />
+        <JGBaseDictBox Code="JGBaseDictBox1" ColumnName="equipNo" IDColumnName="equipNo" IsMust="True" LabelText="信息设备编号" Left="6" OnValueChanged="JGBaseDictBox1_OnValueChanged" OpenModuleAction="JGBaseDictBox1_OpenModuleAction" PercentHeight="5.8%" PercentWidth="29.4%" TabIndex="16" TableName="bo_akl_EM_infoEquUpkeepRec" Top="55" />
+        <JGDataGrid Code="JGDataGrid1" EditTrigger="click" Height="247" LabelText="列表" Left="6" PercentHeight="55%" PercentWidth="98.5%" TabIndex="14" TableName="bo_akl_EM_infoEquUpkeepSub" Top="135" Width="788">
+          <JGTextBoxColumn Code="JGTextBoxColumn6" ColumnName="checkItem" LabelText="检查项目" ReadOnly="True" TableName="bo_akl_EM_infoEquUpkeepSub" />
+          <JGTextBoxColumn Code="JGTextBoxColumn8" ColumnName="tContent" LabelText="维护保养内容" ReadOnly="True" TableName="bo_akl_EM_infoEquUpkeepSub" Width="116" />
+          <JGTextBoxColumn Code="JGTextBoxColumn9" ColumnName="tRecord" LabelText="维护保养记录" TableName="bo_akl_EM_infoEquUpkeepSub" Width="127" />
+          <JGTextBoxColumn Code="JGTextBoxColumn10" ColumnName="tStatus" LabelText="运行状态" TableName="bo_akl_EM_infoEquUpkeepSub" Width="98" />
+          <JGTextBoxColumn Code="JGTextBoxColumn5" ColumnName="remark" LabelText="备注" TableName="bo_akl_EM_infoEquUpkeepSub" Width="126" />
+          <JGTextBoxColumn Code="JGTextBoxColumn7" ColumnName="picture" LabelText="图片" OnClick="form_add_infoEquUpkeepRec_OnClick" ReadOnly="True" TableName="bo_akl_EM_infoEquUpkeepSub" />
+          <JGTextBoxColumn Code="JGTextBoxColumn11" ColumnName="upload" LabelText="操作" OnClick="JGTextBoxColumn4_OnClick" ReadOnly="True" TableName="bo_akl_EM_infoEquUpkeepSub" />
+        </JGDataGrid>
+        <JGButton Code="JGButton1" LabelText="保存" Left="364" OnClick="JGButton1_OnClick" PercentHeight="5.8%" PercentWidth="6.5%" TabIndex="16" Top="401" />
+        <JGLabel Code="JGLabel1" FontStyle="微软雅黑, 15.75pt, style=Bold" Height="43" LabelText="信息设备保养记录" Left="296" PercentHeight="9.6%" PercentWidth="22.8%" TabIndex="15" Top="6" Width="182" />
+        <JGDateTimePicker Code="JGDateTimePicker1" ColumnName="upkeepDate" DefaultValue="DateTimeNow()" IsMust="True" LabelText="保养时间" Left="6" PercentHeight="5.8%" PercentWidth="29.4%" TabIndex="0" TableName="bo_akl_EM_infoEquUpkeepRec" Top="87" />
+        <JGTextBox Code="JGTextBox1" ColumnName="operatorName" LabelText="操作人" Left="559" PercentHeight="5.8%" PercentWidth="29.4%" ReadOnly="True" TabIndex="0" TableName="bo_akl_EM_infoEquUpkeepRec" Top="55" />
+        <JGTextBox Code="JGTextBox4" ColumnName="equipName" LabelText="信息设备名称" Left="284" PercentHeight="5.8%" PercentWidth="29.4%" ReadOnly="True" TabIndex="0" TableName="bo_akl_EM_infoEquUpkeepRec" Top="55" />
+      </JGPanel>
+      <JGPanel BorderStyle="None" Code="Pnl_Top" Dock="Top" Height="12" LayoutType="BorderLayout" PercentHeight="2.5%" PercentWidth="100%" TabIndex="1" Width="800" />
+      <JGPanel BorderStyle="None" Code="Pnl_Bottom" Dock="Bottom" Height="12" LayoutType="BorderLayout" PercentHeight="2.5%" PercentWidth="100%" TabIndex="1" Top="438" Width="800" />
+    </JGPanel>
+    <JGPanel BorderStyle="None" Code="Pnl_Left" Dock="Left" Height="473" LayoutType="BorderLayout" PercentHeight="100%" PercentWidth="1.5%" TabIndex="1" Width="12" />
+    <JGPanel BorderStyle="None" Code="Pnl_Right" Dock="Right" Height="473" LayoutType="BorderLayout" Left="948" PercentHeight="100%" PercentWidth="1.5%" TabIndex="1" Width="12">
+      <JGLabel Code="Lab_Help" Dock="Top" FontStyle="微软雅黑, 6.75pt" LabelText="" PercentHeight="5.1%" PercentWidth="100%" TabIndex="7" ToolTip="&quot;帮助&quot;" Width="12" />
+      <JGLabel Code="Lab_Info" Dock="Bottom" FontStyle="微软雅黑, 6.75pt" LabelText="" PercentHeight="5.1%" PercentWidth="100%" TabIndex="6" ToolTip="&quot;获取当前窗口信息&quot;" Top="330" Width="12" />
+    </JGPanel>
+  </controls>
+  <outputs />
+  <inputs>
+    <variable code="equName" name="设备名称" fieldType="char" defaultValue="" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+    <variable code="equNo" name="设备编码" fieldType="char" defaultValue="" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+    <variable code="upkeepId" name="保养记录Id" fieldType="char" defaultValue="" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+  </inputs>
+  <remark><![CDATA[]]></remark>
+</form>

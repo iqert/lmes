@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Methods>
+  <Method Code="updateNextPullTestTime" Type="Server" InterfaceType="Local" RestrictType="Private" TransactionType="transaction">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>!IsEmpty(DateToString("yyyy-MM-dd HH:mm:ss",BR_IN_PARENT.[timeV].[stopTime]))</expression>
+      <remark />
+    </define>
+    <sequence>
+      <if isEnabled="True" isDebug="False" code="IfCode2">
+        <define>
+          <expression>Datediff(BR_IN_PARENT.[timeV].[stopTime],DateAddFunc(BR_IN_PARENT.[timeV].[testTime],BR_IN_PARENT.[timeV].[testInterval],"H"),"m")&lt;=90</expression>
+          <remark />
+        </define>
+        <sequence>
+          <evaluateRule code="BR_SetEntityVarControlValue1" />
+        </sequence>
+      </if>
+      <else isEnabled="True" isDebug="False">
+        <define>
+          <remark />
+        </define>
+        <sequence>
+          <evaluateRule code="BR_SetEntityVarControlValue1_1" />
+        </sequence>
+      </else>
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1_1" instanceName="给界面实体/控件/变量赋值_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-19 10:25:31">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"5","Target":"nextTestTime","SourceType":"entityField","SourceEntityType":"ruleSetInput","Source":"timeV","entityFieldMapping":[{"destFieldName":"nextTestTime","srcValueType":"expression","srcValue":"DateAddFunc(BR_IN_PARENT.[timeV].[testTime],BR_IN_PARENT.[timeV].[testInterval],\"H\")"}]}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>5</TargetType><Target>nextTestTime</Target><SourceType>entityField</SourceType><SourceEntityType>ruleSetInput</SourceEntityType><Source>timeV</Source><SourceEntityXml><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>nextTestTime</destField><srcValueType>expression</srcValueType><srcValue>DateAddFunc(BR_IN_PARENT.[timeV].[testTime],BR_IN_PARENT.[timeV].[testInterval],"H")</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></SourceEntityXml></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-19 10:21:50">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"5","Target":"nextTestTime","SourceType":"entityField","SourceEntityType":"ruleSetInput","Source":"timeV","entityFieldMapping":[{"destFieldName":"nextTestTime","srcValueType":"entityField","srcValue":"timeV.stopTime"}]}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>5</TargetType><Target>nextTestTime</Target><SourceType>entityField</SourceType><SourceEntityType>ruleSetInput</SourceEntityType><Source>timeV</Source><SourceEntityXml><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>nextTestTime</destField><srcValueType>entityField</srcValueType><srcValue>timeV.stopTime</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></SourceEntityXml></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Inputs>
+      <Variable code="timeV" name="时间实体" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="testInterval" name="测试间隔" fieldType="number" length="50" accuracy="4">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="testTime" name="上次测试时间" fieldType="longDate" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="stopTime" name="预停机时间" fieldType="longDate" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+    </Inputs>
+    <Outputs>
+      <Variable code="nextTestTime" name="下次测试时间" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="nextTestTime" name="下次测试时间" fieldType="longDate" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+    </Outputs>
+  </Method>
+</Methods>

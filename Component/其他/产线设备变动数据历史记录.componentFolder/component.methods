@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2018/7/6 9:26:53-->
+<Methods>
+  <Method Code="proline_data_history_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+  <evaluateRule code="BR_SetEntityVarControlValue1" />
+  <foreach isEnabled="False" isDebug="False" code="ForeachCode1">
+    <define>
+      <varCode>A</varCode>
+      <entityType>window</entityType>
+      <entityCode>MyExchange_Journal</entityCode>
+      <remark></remark>
+    </define>
+    <sequence>
+      <if isEnabled="False" isDebug="False" code="IfCode1">
+        <define>
+          <expression>LV.A.Name1 == "ABS9"</expression>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_SetLoopVariant1" />
+        </sequence>
+      </if>
+    </sequence>
+  </foreach>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"MyExchange_Journal.ts","fieldType":"longDate","leftBracket":"(","logicOperation":null,"operation":"like","rightBracket":")","value":"DateToString(\"yyyy-MM-dd\",DateTimeNow())","valueType":"9"}],"entityType":"window","entityName":"MyExchange_Journal","itemqueryparam":null,"items":[{"destName":"MyExchange_Journal.id","sourceName":"MyExchange_Journal.id","type":"entityField"},{"destName":"MyExchange_Journal.Name1","sourceName":"MyExchange_Journal.Name1","type":"entityField"},{"destName":"MyExchange_Journal.Name2","sourceName":"MyExchange_Journal.Name2","type":"entityField"},{"destName":"MyExchange_Journal.NewValue","sourceName":"MyExchange_Journal.NewValue","type":"entityField"},{"destName":"MyExchange_Journal.OldValue","sourceName":"MyExchange_Journal.OldValue","type":"entityField"},{"destName":"MyExchange_Journal.Record","sourceName":"MyExchange_Journal.Record","type":"entityField"},{"destName":"MyExchange_Journal.Timepoint","sourceName":"MyExchange_Journal.Timepoint","type":"entityField"},{"destName":"MyExchange_Journal.ts","sourceName":"MyExchange_Journal.ts","type":"entityField"}],"orderBy":[{"field":"MyExchange_Journal.ts","type":"DESC"}],"sourceName":"MyExchange_Journal","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>MyExchange_Journal</EntityName><SourceType>Table</SourceType><SourceName>MyExchange_Journal</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>MyExchange_Journal.ts</field><fieldType>longDate</fieldType><leftBracket>(</leftBracket><operation>like</operation><rightBracket>)</rightBracket><value>DateToString("yyyy-MM-dd",DateTimeNow())</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort><dtSort><SortField>MyExchange_Journal.ts</SortField><SortWay>DESC</SortWay></dtSort></dsSort>]]]]><![CDATA[></dsSort><ID>74af1d30943647a284b4cf156a577395</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>74af1d30943647a284b4cf156a577395</MasterID><DestName>MyExchange_Journal.id</DestName><SourceType>entityField</SourceType><SourceName>MyExchange_Journal.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>74af1d30943647a284b4cf156a577395</MasterID><DestName>MyExchange_Journal.Name1</DestName><SourceType>entityField</SourceType><SourceName>MyExchange_Journal.Name1</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>74af1d30943647a284b4cf156a577395</MasterID><DestName>MyExchange_Journal.Name2</DestName><SourceType>entityField</SourceType><SourceName>MyExchange_Journal.Name2</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>74af1d30943647a284b4cf156a577395</MasterID><DestName>MyExchange_Journal.NewValue</DestName><SourceType>entityField</SourceType><SourceName>MyExchange_Journal.NewValue</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>74af1d30943647a284b4cf156a577395</MasterID><DestName>MyExchange_Journal.OldValue</DestName><SourceType>entityField</SourceType><SourceName>MyExchange_Journal.OldValue</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>74af1d30943647a284b4cf156a577395</MasterID><DestName>MyExchange_Journal.Record</DestName><SourceType>entityField</SourceType><SourceName>MyExchange_Journal.Record</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>74af1d30943647a284b4cf156a577395</MasterID><DestName>MyExchange_Journal.Timepoint</DestName><SourceType>entityField</SourceType><SourceName>MyExchange_Journal.Timepoint</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>74af1d30943647a284b4cf156a577395</MasterID><DestName>MyExchange_Journal.ts</DestName><SourceType>entityField</SourceType><SourceName>MyExchange_Journal.ts</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>74af1d30943647a284b4cf156a577395</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>74af1d30943647a284b4cf156a577395</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"1","Target":"JGDateTimePicker1","SourceType":"expression","SourceEntityType":"","Source":"DateTimeNow()","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>1</TargetType><Target>JGDateTimePicker1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>DateTimeNow()</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetLoopVariant" ruleName="给循环变量赋值" instanceCode="BR_SetLoopVariant1" instanceName="给循环变量赋值" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Fields":[{"Source":"ConcatStr(LV.A.Name1,\"W1\")","SourceType":"expression","LoopVarField":"Name1"}],"LoopVar":"A","LoopEntity":"MyExchange_Journal","LoopEntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtLoopVar><LoopVar>A</LoopVar><LoopEntity>MyExchange_Journal</LoopEntity><LoopEntityType>window</LoopEntityType></dtLoopVar><dtField><LoopVarField>Name1</LoopVarField><SourceType>expression</SourceType><Source>ConcatStr(LV.A.Name1,"W1")</Source></dtField></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGDateTimePicker1_OnValueChanged" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+  <foreach isEnabled="False" isDebug="False" code="ForeachCode1">
+    <define>
+      <varCode>A</varCode>
+      <entityType>window</entityType>
+      <entityCode>MyExchange_Journal</entityCode>
+      <remark></remark>
+    </define>
+    <sequence>
+      <if isEnabled="False" isDebug="False" code="IfCode1">
+        <define>
+          <expression>LV.A.Name1 == "ABS9"</expression>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_SetLoopVariant1" />
+        </sequence>
+      </if>
+    </sequence>
+  </foreach>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-10 19:32:47">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"MyExchange_Journal.ts","fieldType":"longDate","leftBracket":"(","logicOperation":null,"operation":"like","rightBracket":")","value":"DateToString(\"yyyy-MM-dd\",CC.JGDateTimePicker1.Value)","valueType":"9"},{"columnType":"1","field":"MyExchange_Journal.Name1","fieldType":"char","leftBracket":"(","logicOperation":"and","operation":"=","rightBracket":")","value":"CC.JGComboBox1.Value","valueType":"9"}],"entityType":"window","entityName":"MyExchange_Journal","itemqueryparam":null,"items":[{"destName":"MyExchange_Journal.id","sourceName":"MyExchange_Journal.id","type":"entityField"},{"destName":"MyExchange_Journal.Name1","sourceName":"MyExchange_Journal.Name1","type":"entityField"},{"destName":"MyExchange_Journal.Name2","sourceName":"MyExchange_Journal.Name2","type":"entityField"},{"destName":"MyExchange_Journal.NewValue","sourceName":"MyExchange_Journal.NewValue","type":"entityField"},{"destName":"MyExchange_Journal.OldValue","sourceName":"MyExchange_Journal.OldValue","type":"entityField"},{"destName":"MyExchange_Journal.Record","sourceName":"MyExchange_Journal.Record","type":"entityField"},{"destName":"MyExchange_Journal.Timepoint","sourceName":"MyExchange_Journal.Timepoint","type":"entityField"},{"destName":"MyExchange_Journal.ts","sourceName":"MyExchange_Journal.ts","type":"entityField"}],"orderBy":[{"field":"MyExchange_Journal.ts","type":"DESC"}],"sourceName":"MyExchange_Journal","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>MyExchange_Journal</EntityName><SourceType>Table</SourceType><SourceName>MyExchange_Journal</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>MyExchange_Journal.ts</field><fieldType>longDate</fieldType><leftBracket>(</leftBracket><operation>like</operation><rightBracket>)</rightBracket><value>DateToString("yyyy-MM-dd",CC.JGDateTimePicker1.Value)</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>MyExchange_Journal.Name1</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>and</logicOperation><operation>=</operation><rightBracket>)</rightBracket><value>CC.JGComboBox1.Value</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort><dtSort><SortField>MyExchange_Journal.ts</SortField><SortWay>DESC</SortWay></dtSort></dsSort>]]]]><![CDATA[></dsSort><ID>74af1d30943647a284b4cf156a577395</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>74af1d30943647a284b4cf156a577395</MasterID><DestName>MyExchange_Journal.id</DestName><SourceType>entityField</SourceType><SourceName>MyExchange_Journal.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>74af1d30943647a284b4cf156a577395</MasterID><DestName>MyExchange_Journal.Name1</DestName><SourceType>entityField</SourceType><SourceName>MyExchange_Journal.Name1</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>74af1d30943647a284b4cf156a577395</MasterID><DestName>MyExchange_Journal.Name2</DestName><SourceType>entityField</SourceType><SourceName>MyExchange_Journal.Name2</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>74af1d30943647a284b4cf156a577395</MasterID><DestName>MyExchange_Journal.NewValue</DestName><SourceType>entityField</SourceType><SourceName>MyExchange_Journal.NewValue</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>74af1d30943647a284b4cf156a577395</MasterID><DestName>MyExchange_Journal.OldValue</DestName><SourceType>entityField</SourceType><SourceName>MyExchange_Journal.OldValue</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>74af1d30943647a284b4cf156a577395</MasterID><DestName>MyExchange_Journal.Record</DestName><SourceType>entityField</SourceType><SourceName>MyExchange_Journal.Record</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>74af1d30943647a284b4cf156a577395</MasterID><DestName>MyExchange_Journal.Timepoint</DestName><SourceType>entityField</SourceType><SourceName>MyExchange_Journal.Timepoint</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>74af1d30943647a284b4cf156a577395</MasterID><DestName>MyExchange_Journal.ts</DestName><SourceType>entityField</SourceType><SourceName>MyExchange_Journal.ts</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>74af1d30943647a284b4cf156a577395</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>74af1d30943647a284b4cf156a577395</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetLoopVariant" ruleName="给循环变量赋值" instanceCode="BR_SetLoopVariant1" instanceName="给循环变量赋值" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Fields":[{"Source":"ConcatStr(LV.A.Name1,\"W1\")","SourceType":"expression","LoopVarField":"Name1"}],"LoopVar":"A","LoopEntity":"MyExchange_Journal","LoopEntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtLoopVar><LoopVar>A</LoopVar><LoopEntity>MyExchange_Journal</LoopEntity><LoopEntityType>window</LoopEntityType></dtLoopVar><dtField><LoopVarField>Name1</LoopVarField><SourceType>expression</SourceType><Source>ConcatStr(LV.A.Name1,"W1")</Source></dtField></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGDataGrid1_OnValueLoaded" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <foreach isEnabled="False" isDebug="False" code="ForeachCode1">
+    <define>
+      <varCode>A</varCode>
+      <entityType>window</entityType>
+      <entityCode>MyExchange_Journal</entityCode>
+      <remark></remark>
+    </define>
+    <sequence>
+      <if isEnabled="False" isDebug="False" code="IfCode1">
+        <define>
+          <expression>LV.A.Name1 == "ABS9"</expression>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_SetLoopVariant1" />
+        </sequence>
+      </if>
+    </sequence>
+  </foreach>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="SetLoopVariant" ruleName="给循环变量赋值" instanceCode="BR_SetLoopVariant1" instanceName="给循环变量赋值" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Fields":[{"Source":"ConcatStr(LV.A.Name1,\"W1\")","SourceType":"expression","LoopVarField":"Name1"}],"LoopVar":"A","LoopEntity":"MyExchange_Journal","LoopEntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtLoopVar><LoopVar>A</LoopVar><LoopEntity>MyExchange_Journal</LoopEntity><LoopEntityType>window</LoopEntityType></dtLoopVar><dtField><LoopVarField>Name1</LoopVarField><SourceType>expression</SourceType><Source>ConcatStr(LV.A.Name1,"W1")</Source></dtField></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton2_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_ExportDataToExcel1" />
+  <evaluateRule code="BR_ExportDataToExcel1_1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ExportDataToExcel" ruleName="导出数据库数据到Excel" instanceCode="BR_ExportDataToExcel1" instanceName="导出数据库数据到Excel" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-09-05 17:24:05">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"defaultFileName":"\"产线设备变动数据记录\"","fileType":"xlsx","items":[{"sheetName":"\"产线设备变动数据记录\"","dataSource":"MyExchange_Journal","dataSourceType":"Table","filterCondition":[{"columnType":"1","field":"MyExchange_Journal.Name1","fieldType":"char","leftBracket":"(","logicOperation":"","operation":"=","rightBracket":")","value":"CC.JGComboBox1.Value","valueType":"9"},{"columnType":"1","field":"MyExchange_Journal.ts","fieldType":"longDate","leftBracket":"(","logicOperation":"and","operation":"like","rightBracket":")","value":"DateToString(\"yyyy-MM-dd\",CC.JGDateTimePicker1.Value)","valueType":"9"}],"queryParam":null,"mapping":[{"fieldCode":"Name1","excelColName":"产线","exportData":true,"orderType":""},{"fieldCode":"OldValue","excelColName":"旧值","exportData":true,"orderType":""},{"fieldCode":"NewValue","excelColName":"新值","exportData":true,"orderType":""},{"fieldCode":"Record","excelColName":"记录","exportData":true,"orderType":""},{"fieldCode":"ts","excelColName":"记录时间","exportData":true,"orderType":"desc"}]}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><DefaultFileName>"产线设备变动数据记录"</DefaultFileName><FileType>xlsx</FileType></dtMaster><dtItems><ID>68efd7a4f05b4f1a993fe6ff772a792f</ID><SheetName>"产线设备变动数据记录"</SheetName><DataSource>MyExchange_Journal</DataSource><DataSourceType>Table</DataSourceType><dsFilterCondition><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>MyExchange_Journal.Name1</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>CC.JGComboBox1.Value</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>MyExchange_Journal.ts</field><fieldType>longDate</fieldType><leftBracket>(</leftBracket><logicOperation>and</logicOperation><operation>like</operation><rightBracket>)</rightBracket><value>DateToString("yyyy-MM-dd",CC.JGDateTimePicker1.Value)</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsFilterCondition></dtItems><dtMapping><FieldCode>Name1</FieldCode><ExcelColName>产线</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>68efd7a4f05b4f1a993fe6ff772a792f</ItemID></dtMapping><dtMapping><FieldCode>OldValue</FieldCode><ExcelColName>旧值</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>68efd7a4f05b4f1a993fe6ff772a792f</ItemID></dtMapping><dtMapping><FieldCode>NewValue</FieldCode><ExcelColName>新值</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>68efd7a4f05b4f1a993fe6ff772a792f</ItemID></dtMapping><dtMapping><FieldCode>Record</FieldCode><ExcelColName>记录</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>68efd7a4f05b4f1a993fe6ff772a792f</ItemID></dtMapping><dtMapping><FieldCode>ts</FieldCode><ExcelColName>记录时间</ExcelColName><ExportData>True</ExportData><OrderType>desc</OrderType><ItemID>68efd7a4f05b4f1a993fe6ff772a792f</ItemID></dtMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExportDataToExcel" ruleName="导出数据库数据到Excel" instanceCode="BR_ExportDataToExcel1_1" instanceName="导出数据库数据到Excel_1" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"defaultFileName":"\"产线设备变动数据记录\"","fileType":"xls","items":[{"sheetName":"\"产线设备变动数据记录\"","dataSource":"MyExchange_Journal","dataSourceType":"Table","filterCondition":[{"columnType":"1","field":"MyExchange_Journal.Name1","fieldType":"char","leftBracket":"(","logicOperation":"","operation":"=","rightBracket":")","value":"CC.JGComboBox1.Value","valueType":"9"}],"queryParam":null,"mapping":[{"fieldCode":"Name1","excelColName":"产线","exportData":true,"orderType":""},{"fieldCode":"OldValue","excelColName":"旧值","exportData":true,"orderType":""},{"fieldCode":"NewValue","excelColName":"新值","exportData":true,"orderType":""},{"fieldCode":"Record","excelColName":"记录","exportData":true,"orderType":""},{"fieldCode":"ts","excelColName":"记录时间","exportData":true,"orderType":""}]}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><DefaultFileName>"产线设备变动数据记录"</DefaultFileName><FileType>xls</FileType></dtMaster><dtItems><ID>c24a0c52a4cc4533a5d768c5708fb56d</ID><SheetName>"产线设备变动数据记录"</SheetName><DataSource>MyExchange_Journal</DataSource><DataSourceType>Table</DataSourceType><dsFilterCondition><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>MyExchange_Journal.Name1</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>CC.JGComboBox1.Value</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsFilterCondition></dtItems><dtMapping><FieldCode>Name1</FieldCode><ExcelColName>产线</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>c24a0c52a4cc4533a5d768c5708fb56d</ItemID></dtMapping><dtMapping><FieldCode>OldValue</FieldCode><ExcelColName>旧值</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>c24a0c52a4cc4533a5d768c5708fb56d</ItemID></dtMapping><dtMapping><FieldCode>NewValue</FieldCode><ExcelColName>新值</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>c24a0c52a4cc4533a5d768c5708fb56d</ItemID></dtMapping><dtMapping><FieldCode>Record</FieldCode><ExcelColName>记录</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>c24a0c52a4cc4533a5d768c5708fb56d</ItemID></dtMapping><dtMapping><FieldCode>ts</FieldCode><ExcelColName>记录时间</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>c24a0c52a4cc4533a5d768c5708fb56d</ItemID></dtMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

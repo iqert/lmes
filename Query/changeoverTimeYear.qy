@@ -1,0 +1,52 @@
+﻿<Query id="94f7c8bb272c430a98b72297531f2e3f" code="changeoverTimeYear" name="换型时间(年)" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-10-23 11:44:30]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-10-23 14:02:29]]></ModificationTime>
+  <VSql><![CDATA[
+select md.tyear, --年份
+ROUND(cha.opdiff*60/31/12,2) as opdiff --换型时间(分钟/天)
+from baseYear as md
+left join (							
+			select opema.tyear, --年份
+			case when SUM(opema.hours)-SUM(opema.diffhour)<0 then 0 else SUM(opema.hours)-SUM(opema.diffhour) end as opdiff --换型时间/h
+			from (
+					select 
+					ROUND(CAST(DATEDIFF(MIN(opert.opTime),
+					MAX(opert.opTime),'minute'),'DECIMAL',10,2)/60,2) as diffhour, --维修时长/h
+					opert.lid,
+					YEAR(MIN(opert.opTime))as tyear,
+					24 as hours
+					from bo_akl_line_operation as opert 
+					right join bo_akl_line_start as lineSt on lineSt.id=opert.lid
+					where 
+					lineSt.prolineName=:prNo
+					group by opert.lid
+			)as opema group by opema.tyear) as cha on md.tyear=cha.tyear]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="tyear" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="opdiff" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="prNo" name="产线编号" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="baseYear" tokenIndexes="31" />
+    <DataItem type="Table" key="bo_akl_line_operation" tokenIndexes="176" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="186" />
+    <DataItem type="TableField" key="baseYear.tyear" tokenIndexes="5,241" />
+    <DataItem type="TableField" key="bo_akl_line_operation.opTime" tokenIndexes="116,124,160" />
+    <DataItem type="TableField" key="bo_akl_line_operation.lid" tokenIndexes="151,200,217" />
+    <DataItem type="TableField" key="bo_akl_line_start.id" tokenIndexes="196" />
+    <DataItem type="TableField" key="bo_akl_line_start.prolineName" tokenIndexes="206" />
+    <DataItem type="QueryParam" key="prNo" tokenIndexes="209" />
+  </DataItems>
+</Query>

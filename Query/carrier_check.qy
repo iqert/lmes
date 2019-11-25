@@ -1,0 +1,53 @@
+﻿<Query id="6f0a1a174fd74279b7300ddb90292268" code="carrier_check" name="载具设备信息" type="VSql">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20180828002]]></Creator>
+  <CreationTime><![CDATA[2018-09-30 15:39:23]]></CreationTime>
+  <Modifier><![CDATA[user_20180828002]]></Modifier>
+  <ModificationTime><![CDATA[2019-01-22 16:20:44]]></ModificationTime>
+  <VSql><![CDATA[SELECT eqi.id, eqi.equipNo, eqi.type, eqi.formCheckDate, eqi.howLongTocheck, eqi.equipName,  equ.userName, equ.userNo
+FROM  bo_akl_EM_EquipmentInformation as eqi
+LEFT JOIN  bo_akl_base_equmainuser as equ ON eqi.productionLineEquipmentId = equ.equId
+where eqi.type = '载具' and (eqi.isScrap <> '是' or eqi.isScrap is null)]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="id" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="equipNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="type" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="formCheckDate" name="" dataType="date" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="howLongTocheck" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="equipName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="userName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="userNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_EM_EquipmentInformation" tokenIndexes="43" />
+    <DataItem type="Table" key="bo_akl_base_equmainuser" tokenIndexes="53" />
+    <DataItem type="TableField" key="bo_akl_EM_EquipmentInformation.id" tokenIndexes="4" />
+    <DataItem type="TableField" key="bo_akl_EM_EquipmentInformation.equipNo" tokenIndexes="9" />
+    <DataItem type="TableField" key="bo_akl_EM_EquipmentInformation.type" tokenIndexes="14,75" />
+    <DataItem type="TableField" key="bo_akl_EM_EquipmentInformation.formCheckDate" tokenIndexes="19" />
+    <DataItem type="TableField" key="bo_akl_EM_EquipmentInformation.howLongTocheck" tokenIndexes="24" />
+    <DataItem type="TableField" key="bo_akl_EM_EquipmentInformation.equipName" tokenIndexes="29" />
+    <DataItem type="TableField" key="bo_akl_base_equmainuser.userName" tokenIndexes="34" />
+    <DataItem type="TableField" key="bo_akl_base_equmainuser.userNo" tokenIndexes="39" />
+    <DataItem type="TableField" key="bo_akl_EM_EquipmentInformation.productionLineEquipmentId" tokenIndexes="63" />
+    <DataItem type="TableField" key="bo_akl_base_equmainuser.equId" tokenIndexes="69" />
+    <DataItem type="TableField" key="bo_akl_EM_EquipmentInformation.isScrap" tokenIndexes="86,96" />
+  </DataItems>
+</Query>

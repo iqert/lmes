@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2018/7/2 11:18:02-->
+<Methods>
+  <Method Code="checkInfo_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100469" lastModifiedTime="2018-07-02 11:29:10">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":null,"entityType":"window","entityName":"bo_akl_line_checkInfo","itemqueryparam":null,"items":[{"destName":"bo_akl_line_checkInfo.checkName","sourceName":"bo_akl_line_checkInfo.checkName","type":"entityField"},{"destName":"bo_akl_line_checkInfo.id","sourceName":"bo_akl_line_checkInfo.id","type":"entityField"},{"destName":"bo_akl_line_checkInfo.startType","sourceName":"bo_akl_line_checkInfo.startType","type":"entityField"},{"destName":"bo_akl_line_checkInfo.startTypeId","sourceName":"bo_akl_line_checkInfo.startTypeId","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_line_checkInfo","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_line_checkInfo</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_line_checkInfo</SourceName><dsWhere><![CDATA[<NewDataSet />]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>acfa8e7a703046219daf59bc41cdc3ef</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>acfa8e7a703046219daf59bc41cdc3ef</MasterID><DestName>bo_akl_line_checkInfo.checkName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_checkInfo.checkName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>acfa8e7a703046219daf59bc41cdc3ef</MasterID><DestName>bo_akl_line_checkInfo.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_checkInfo.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>acfa8e7a703046219daf59bc41cdc3ef</MasterID><DestName>bo_akl_line_checkInfo.startType</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_checkInfo.startType</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>acfa8e7a703046219daf59bc41cdc3ef</MasterID><DestName>bo_akl_line_checkInfo.startTypeId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_checkInfo.startTypeId</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>acfa8e7a703046219daf59bc41cdc3ef</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>acfa8e7a703046219daf59bc41cdc3ef</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGDataGrid1_OnSelectionChanged" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>GetEntitySelectedRowCount("bo_akl_line_checkInfo") == 0</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_SetControlPropertys1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_SetControlPropertys2" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="SetControlPropertys" ruleName="控件属性设置" instanceCode="BR_SetControlPropertys1" instanceName="控件属性设置" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100469" lastModifiedTime="2018-07-02 11:30:40">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"condition":[{"items":[{"controlCode":"deleteButton","propertyCode":"Visible","values":"False","valuetype":"1"}],"name":"True"}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ConditionID>f3d3811ab4604c33b65a085a64eae657</ConditionID><ControlCode>deleteButton</ControlCode><PropertyName>Visible(显示)</PropertyName><PropertyCode>Visible</PropertyCode><PropertyValue>False</PropertyValue><valuetype>1</valuetype></dtMaster><dtCondition><ID>f3d3811ab4604c33b65a085a64eae657</ID><Name>True</Name></dtCondition></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetControlPropertys" ruleName="控件属性设置" instanceCode="BR_SetControlPropertys2" instanceName="控件属性设置_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100469" lastModifiedTime="2018-07-02 11:33:02">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"condition":[{"items":[{"controlCode":"deleteButton","propertyCode":"Visible","values":"True","valuetype":"1"}],"name":"True"}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ConditionID>bbd48ea821454631a04bf7d5e3482b46</ConditionID><ControlCode>deleteButton</ControlCode><PropertyName>Visible(显示)</PropertyName><PropertyCode>Visible</PropertyCode><PropertyValue>True</PropertyValue><valuetype>1</valuetype></dtMaster><dtCondition><ID>bbd48ea821454631a04bf7d5e3482b46</ID><Name>True</Name></dtCondition></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGLocateBox1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100469" lastModifiedTime="2018-07-02 13:48:02">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_line_checkInfo.checkName","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"},{"columnType":"1","field":"bo_akl_line_checkInfo.startType","fieldType":"char","leftBracket":"(","logicOperation":"or","operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"}],"entityType":"window","entityName":"bo_akl_line_checkInfo","itemqueryparam":null,"items":[{"destName":"bo_akl_line_checkInfo.checkName","sourceName":"bo_akl_line_checkInfo.checkName","type":"entityField"},{"destName":"bo_akl_line_checkInfo.id","sourceName":"bo_akl_line_checkInfo.id","type":"entityField"},{"destName":"bo_akl_line_checkInfo.startType","sourceName":"bo_akl_line_checkInfo.startType","type":"entityField"},{"destName":"bo_akl_line_checkInfo.startTypeId","sourceName":"bo_akl_line_checkInfo.startTypeId","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_line_checkInfo","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_line_checkInfo</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_line_checkInfo</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_line_checkInfo.checkName</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_line_checkInfo.startType</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>1cf36999ebd9410fb51e2d9a2bc92ecd</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>1cf36999ebd9410fb51e2d9a2bc92ecd</MasterID><DestName>bo_akl_line_checkInfo.checkName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_checkInfo.checkName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>1cf36999ebd9410fb51e2d9a2bc92ecd</MasterID><DestName>bo_akl_line_checkInfo.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_checkInfo.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>1cf36999ebd9410fb51e2d9a2bc92ecd</MasterID><DestName>bo_akl_line_checkInfo.startType</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_checkInfo.startType</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>1cf36999ebd9410fb51e2d9a2bc92ecd</MasterID><DestName>bo_akl_line_checkInfo.startTypeId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_checkInfo.startTypeId</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>1cf36999ebd9410fb51e2d9a2bc92ecd</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>1cf36999ebd9410fb51e2d9a2bc92ecd</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="refreshButton_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_SetControlPropertys1" />
+  <evaluateRule code="BR_ExecuteRuleSet1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="SetControlPropertys" ruleName="控件属性设置" instanceCode="BR_SetControlPropertys1" instanceName="控件属性设置" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100469" lastModifiedTime="2018-07-02 13:49:13">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"condition":[{"items":[{"controlCode":"JGLocateBox1","propertyCode":"Value","values":"Null()","valuetype":"1"},{"controlCode":"deleteButton","propertyCode":"Visible","values":"False","valuetype":"1"}],"name":"True"}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ConditionID>4e92aee2df914da1aec944fcc89d75cf</ConditionID><ControlCode>JGLocateBox1</ControlCode><PropertyName>Value(值)</PropertyName><PropertyCode>Value</PropertyCode><PropertyValue>Null()</PropertyValue><valuetype>1</valuetype></dtMaster><dtMaster><ConditionID>4e92aee2df914da1aec944fcc89d75cf</ConditionID><ControlCode>deleteButton</ControlCode><PropertyName>Visible(显示)</PropertyName><PropertyCode>Visible</PropertyCode><PropertyValue>False</PropertyValue><valuetype>1</valuetype></dtMaster><dtCondition><ID>4e92aee2df914da1aec944fcc89d75cf</ID><Name>True</Name></dtCondition></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_checkInfo_FormLoadAction(页面加载)" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100469" lastModifiedTime="2018-07-02 13:49:36">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"checkInfo_FormLoadAction","isParallelism":"False"},"invokeParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>checkInfo_FormLoadAction</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="newButton_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_OpenComponentReturnData1" />
+  <evaluateRule code="BR_ExecuteRuleSet1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-28 15:12:18">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"changeCheckInfo","windowName":"修改开机检测项信息","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"","widthExp":"","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":null,"returnMapping":[{"destType":"entity","dest":"bo_akl_line_checkInfo","srcType":"returnValue","src":"kjjcx","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":false,"destFieldMapping":[{"destField":"bo_akl_line_checkInfo.checkName","srcValueType":"field","srcValue":"checkName"},{"destField":"bo_akl_line_checkInfo.id","srcValueType":"field","srcValue":"id"},{"destField":"bo_akl_line_checkInfo.startType","srcValueType":"field","srcValue":"startType"},{"destField":"bo_akl_line_checkInfo.startTypeId","srcValueType":"field","srcValue":"startTypeId"}]}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>changeCheckInfo</WindowCode><WindowName>修改开机检测项信息</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp /><WidthExp /><IsAsyn>False</IsAsyn></dtMaster><dtReturnValue><TargetType>entity</TargetType><Target>bo_akl_line_checkInfo</Target><SourceType>returnValue</SourceType><Source>kjjcx</Source><UpdateWay>insertOrUpdateBySameId</UpdateWay><IsClearData>False</IsClearData><SourceMapping><![CDATA[<dsSourceMapping><dtSourceMapping><TargetField>bo_akl_line_checkInfo.checkName</TargetField><SourceType>field</SourceType><Source>checkName</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_line_checkInfo.id</TargetField><SourceType>field</SourceType><Source>id</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_line_checkInfo.startType</TargetField><SourceType>field</SourceType><Source>startType</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_line_checkInfo.startTypeId</TargetField><SourceType>field</SourceType><Source>startTypeId</Source></dtSourceMapping></dsSourceMapping>]]]]><![CDATA[></SourceMapping></dtReturnValue></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_checkInfo_FormLoadAction(页面加载)" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"checkInfo_FormLoadAction","isParallelism":"False"},"invokeParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>checkInfo_FormLoadAction</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="changeButton_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_OpenComponentReturnData1" />
+  <evaluateRule code="BR_ExecuteRuleSet1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-28 15:12:37">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"changeCheckInfo","windowName":"修改开机检测项信息","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"","widthExp":"","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":[{"paramName":"checkInfoId","paramType":"expression","paramValue":"[bo_akl_line_checkInfo].[id]","paramEntityType":"","entityFieldMapping":null}],"returnMapping":[{"destType":"entity","dest":"bo_akl_line_checkInfo","srcType":"returnValue","src":"kjjcx","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":false,"destFieldMapping":[{"destField":"bo_akl_line_checkInfo.checkName","srcValueType":"field","srcValue":"checkName"},{"destField":"bo_akl_line_checkInfo.id","srcValueType":"field","srcValue":"id"},{"destField":"bo_akl_line_checkInfo.startType","srcValueType":"field","srcValue":"startType"},{"destField":"bo_akl_line_checkInfo.startTypeId","srcValueType":"field","srcValue":"startTypeId"}]}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>changeCheckInfo</WindowCode><WindowName>修改开机检测项信息</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp /><WidthExp /><IsAsyn>False</IsAsyn></dtMaster><dtReturnValue><TargetType>entity</TargetType><Target>bo_akl_line_checkInfo</Target><SourceType>returnValue</SourceType><Source>kjjcx</Source><UpdateWay>insertOrUpdateBySameId</UpdateWay><IsClearData>False</IsClearData><SourceMapping><![CDATA[<dsSourceMapping><dtSourceMapping><TargetField>bo_akl_line_checkInfo.checkName</TargetField><SourceType>field</SourceType><Source>checkName</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_line_checkInfo.id</TargetField><SourceType>field</SourceType><Source>id</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_line_checkInfo.startType</TargetField><SourceType>field</SourceType><Source>startType</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_line_checkInfo.startTypeId</TargetField><SourceType>field</SourceType><Source>startTypeId</Source></dtSourceMapping></dsSourceMapping>]]]]><![CDATA[></SourceMapping></dtReturnValue><dtParam><WindowVariant>checkInfoId</WindowVariant><SourceType>expression</SourceType><SourceTypeDisplayText>表达式</SourceTypeDisplayText><SourceValue>[bo_akl_line_checkInfo].[id]</SourceValue></dtParam></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_checkInfo_FormLoadAction(页面加载)" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"checkInfo_FormLoadAction","isParallelism":"False"},"invokeParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>checkInfo_FormLoadAction</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="deleteButton_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_ShowMessage1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>BR_OUT.BR_ShowMessage1.confirm</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_DeleteListSelectRow1" />
+      <evaluateRule code="BR_SetControlPropertys1" />
+      <evaluateRule code="BR_UpdateRecord1" />
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"3","time":null,"simpleChinesePrompt":{"msgnote":"\"是否删除选中数据\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>3</MsgType><SimpleChinese>"是否删除选中数据"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow1" instanceName="删除实体记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"","deleteType":"0","TableName":"bo_akl_line_checkInfo","EntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition /><DeleteType>0</DeleteType><TableName>bo_akl_line_checkInfo</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetControlPropertys" ruleName="控件属性设置" instanceCode="BR_SetControlPropertys1" instanceName="控件属性设置" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"condition":[{"items":[{"controlCode":"deleteButton","propertyCode":"Visible","values":"False","valuetype":"1"}],"name":"True"}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ConditionID>706712d51c754f8682d36b63bb9970bc</ConditionID><ControlCode>deleteButton</ControlCode><PropertyName>Visible(显示)</PropertyName><PropertyCode>Visible</PropertyCode><PropertyValue>False</PropertyValue><valuetype>1</valuetype></dtMaster><dtCondition><ID>706712d51c754f8682d36b63bb9970bc</ID><Name>True</Name></dtCondition></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_line_checkInfo.checkName","colValue":"bo_akl_line_checkInfo.checkName","valueType":"entityField"},{"colName":"bo_akl_line_checkInfo.id","colValue":"bo_akl_line_checkInfo.id","valueType":"entityField"},{"colName":"bo_akl_line_checkInfo.startType","colValue":"bo_akl_line_checkInfo.startType","valueType":"entityField"},{"colName":"bo_akl_line_checkInfo.startTypeId","colValue":"bo_akl_line_checkInfo.startTypeId","valueType":"entityField"}],"dataSource":"bo_akl_line_checkInfo","dataSourceType":"window","destTab":"bo_akl_line_checkInfo","isSaveAll":false}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>bf20201e27b844af877a3aa74ece22b1</ID><SourceName>bo_akl_line_checkInfo</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_line_checkInfo(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_line_checkInfo</TableName></dtMaster><dtDetails><PID>bf20201e27b844af877a3aa74ece22b1</PID><SourceField>bo_akl_line_checkInfo.checkName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_checkInfo.checkName</Value></dtDetails><dtDetails><PID>bf20201e27b844af877a3aa74ece22b1</PID><SourceField>bo_akl_line_checkInfo.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_checkInfo.id</Value></dtDetails><dtDetails><PID>bf20201e27b844af877a3aa74ece22b1</PID><SourceField>bo_akl_line_checkInfo.startType</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_checkInfo.startType</Value></dtDetails><dtDetails><PID>bf20201e27b844af877a3aa74ece22b1</PID><SourceField>bo_akl_line_checkInfo.startTypeId</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_checkInfo.startTypeId</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_ExportDataToExcel1" />
+  <evaluateRule code="BR_Attachmentoperation1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ExportDataToExcel" ruleName="导出数据库数据到Excel" instanceCode="BR_ExportDataToExcel1" instanceName="导出数据库数据到Excel" isNeedLog="False" isEnabled="False" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-12 10:09:10">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"defaultFileName":"\"开机检测项信息\"","fileType":"xlsx","items":[{"sheetName":"\"开机检测项信息\"","dataSource":"bo_akl_line_checkInfo","dataSourceType":"Table","filterCondition":null,"queryParam":null,"mapping":[{"fieldCode":"startType","excelColName":"启动类型","exportData":true,"orderType":""},{"fieldCode":"checkName","excelColName":"检查项","exportData":true,"orderType":""}]}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><DefaultFileName>"开机检测项信息"</DefaultFileName><FileType>xlsx</FileType></dtMaster><dtItems><ID>284a516bdbce4b5787cb290387049be0</ID><SheetName>"开机检测项信息"</SheetName><DataSource>bo_akl_line_checkInfo</DataSource><DataSourceType>Table</DataSourceType><dsFilterCondition><![CDATA[<NewDataSet />]]]]><![CDATA[></dsFilterCondition></dtItems><dtMapping><FieldCode>startType</FieldCode><ExcelColName>启动类型</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>284a516bdbce4b5787cb290387049be0</ItemID></dtMapping><dtMapping><FieldCode>checkName</FieldCode><ExcelColName>检查项</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>284a516bdbce4b5787cb290387049be0</ItemID></dtMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="Attachmentoperation" ruleName="附件操作" instanceCode="BR_Attachmentoperation1" instanceName="附件操作" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-12 10:22:24">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"componentControlCode":null,"dataProcess":"Fileno_6.xlsx","fileName":"开机检测项信息","function":"2","fileType":"static","componentCode":"lmes","reviewScheme":"","watermarkEnable":false,"previewTargetType":"","isPreviewInModalWindow":false,"previewWindowSize":"","watermarkSet":null,"picWatermarkStyle":null,"docProtectSet":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><operate>2</operate><documentColumn>Fileno_6.xlsx</documentColumn><fileType>static</fileType><componentCode>lmes</componentCode><fileCode>Fileno_6</fileCode><fileName>开机检测项信息</fileName><watermarkEnable>False</watermarkEnable></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton2_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_ImportExcelToDB1" />
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+  <foreach isEnabled="True" isDebug="False" code="ForeachCode1">
+    <define>
+      <varCode>i</varCode>
+      <entityType>window</entityType>
+      <entityCode>bo_akl_line_checkInfo_clone</entityCode>
+      <remark></remark>
+    </define>
+    <sequence>
+      <foreach isEnabled="True" isDebug="False" code="ForeachCode2">
+        <define>
+          <varCode>j</varCode>
+          <entityType>window</entityType>
+          <entityCode>bo_akl_line_start_startType</entityCode>
+          <remark></remark>
+        </define>
+        <sequence>
+          <if isEnabled="True" isDebug="False" code="IfCode1">
+            <define>
+              <expression>LV.i.startType==LV.j.startType</expression>
+              <remark></remark>
+            </define>
+            <sequence>
+              <evaluateRule code="BR_ModifyDataBaseRecord1" />
+            </sequence>
+          </if>
+        </sequence>
+      </foreach>
+    </sequence>
+  </foreach>
+  <evaluateRule code="BR_DeleteConditionRelationData1" />
+  <evaluateRule code="BR_CopyDataBetweenTables1" />
+  <evaluateRule code="BR_DeleteConditionRelationData1_1" />
+  <evaluateRule code="BR_ExecuteRuleSet1" />
+  <evaluateRule code="BR_ShowMessage1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ImportExcelToDB" ruleName="Excel导入到数据库表" instanceCode="BR_ImportExcelToDB1" instanceName="Excel导入到数据库表_导入到备用表" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 20:46:59">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"fileSource":"JGAttachment1","items":[{"targetTable":"bo_akl_line_checkInfo_clone","sheetNum":"0","dataStartRow":"3","importNodeId":"","mapping":[{"fieldCode":"checkName","fieldName":"检查项","sourceType":"excelColName","sourceValue":"检查项"},{"fieldCode":"startType","fieldName":"启动类型","sourceType":"excelColName","sourceValue":"启动类型(如果启动类型不存在系统将自动过滤)"}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFileSource><FileSource>JGAttachment1</FileSource></dtFileSource><dtSheetMapping><ID>62a27bdba0d847b7a3950b9f3404e67e</ID><TargetTable>bo_akl_line_checkInfo_clone</TargetTable><SheetNum>0</SheetNum><DataStartRow>3</DataStartRow><ImportNodeId /></dtSheetMapping><dtFieldMapping><PID>62a27bdba0d847b7a3950b9f3404e67e</PID><TableCode>bo_akl_line_checkInfo_clone</TableCode><FieldCode>checkName</FieldCode><FieldName>检查项</FieldName><SourceType>excelColName</SourceType><SourceValue>检查项</SourceValue></dtFieldMapping><dtFieldMapping><PID>62a27bdba0d847b7a3950b9f3404e67e</PID><TableCode>bo_akl_line_checkInfo_clone</TableCode><FieldCode>startType</FieldCode><FieldName>启动类型</FieldName><SourceType>excelColName</SourceType><SourceValue>启动类型(如果启动类型不存在系统将自动过滤)</SourceValue></dtFieldMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体_获取备用表数据和启动类型" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 20:47:30">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":null,"entityType":"window","entityName":"bo_akl_line_checkInfo_clone","itemqueryparam":null,"items":[{"destName":"bo_akl_line_checkInfo_clone.checkName","sourceName":"bo_akl_line_checkInfo_clone.checkName","type":"entityField"},{"destName":"bo_akl_line_checkInfo_clone.id","sourceName":"bo_akl_line_checkInfo_clone.id","type":"entityField"},{"destName":"bo_akl_line_checkInfo_clone.startType","sourceName":"bo_akl_line_checkInfo_clone.startType","type":"entityField"},{"destName":"bo_akl_line_checkInfo_clone.startTypeId","sourceName":"bo_akl_line_checkInfo_clone.startTypeId","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_line_checkInfo_clone","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]},{"Istype":"Table","dsWhere":null,"entityType":"window","entityName":"bo_akl_line_start_startType","itemqueryparam":null,"items":[{"destName":"bo_akl_line_start_startType.id","sourceName":"bo_akl_line_start_startType.id","type":"entityField"},{"destName":"bo_akl_line_start_startType.startType","sourceName":"bo_akl_line_start_startType.startType","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_line_start_startType","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_line_checkInfo_clone</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_line_checkInfo_clone</SourceName><dsWhere><![CDATA[<NewDataSet />]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>4390753975c44dbeba289a0f646388c1</ID><DataLoad /></dtEntityRelation><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_line_start_startType</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_line_start_startType</SourceName><dsWhere><![CDATA[<NewDataSet />]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>98b7500ca7864289b72d9386b1843e44</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>4390753975c44dbeba289a0f646388c1</MasterID><DestName>bo_akl_line_checkInfo_clone.checkName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_checkInfo_clone.checkName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>4390753975c44dbeba289a0f646388c1</MasterID><DestName>bo_akl_line_checkInfo_clone.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_checkInfo_clone.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>4390753975c44dbeba289a0f646388c1</MasterID><DestName>bo_akl_line_checkInfo_clone.startType</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_checkInfo_clone.startType</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>4390753975c44dbeba289a0f646388c1</MasterID><DestName>bo_akl_line_checkInfo_clone.startTypeId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_checkInfo_clone.startTypeId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>98b7500ca7864289b72d9386b1843e44</MasterID><DestName>bo_akl_line_start_startType.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start_startType.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>98b7500ca7864289b72d9386b1843e44</MasterID><DestName>bo_akl_line_start_startType.startType</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start_startType.startType</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>4390753975c44dbeba289a0f646388c1</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtPager><PagerMasterID>98b7500ca7864289b72d9386b1843e44</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>4390753975c44dbeba289a0f646388c1</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave><dtTotalRecordSave><TotalRecordSaveMasterID>98b7500ca7864289b72d9386b1843e44</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteConditionRelationData" ruleName="删除数据库中的记录" instanceCode="BR_DeleteConditionRelationData1" instanceName="删除数据库中的记录_删除备用表中找不到启动项Id的数据" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 20:48:31">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dtChileMaps":[{"orderNo":"1","tableName":"bo_akl_line_checkInfo_clone","dsWhere":[{"columnType":"1","field":"bo_akl_line_checkInfo_clone.startTypeId","fieldType":"char","leftBracket":"(","logicOperation":"","operation":"is","rightBracket":")","value":"null","valueType":"9"}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtConditionMaster><TableName>bo_akl_line_checkInfo_clone</TableName><Condition><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_line_checkInfo_clone.startTypeId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>is</operation><rightBracket>)</rightBracket><value>null</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></Condition><OrderNo>1</OrderNo></dtConditionMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="CopyDataBetweenTables" ruleName="表间数据复制" instanceCode="BR_CopyDataBetweenTables1" instanceName="表间数据复制" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"condition":null,"destTableName":"bo_akl_line_checkInfo","equalFields":[{"checkRepeat":"True","destField":"bo_akl_line_checkInfo.checkName","sourceField":"bo_akl_line_checkInfo_clone.checkName","sourcetype":"tableField","treatRepeattype":"3"},{"checkRepeat":"False","destField":"bo_akl_line_checkInfo.id","sourceField":"bo_akl_line_checkInfo_clone.id","sourcetype":"tableField","treatRepeattype":"3"},{"checkRepeat":"True","destField":"bo_akl_line_checkInfo.startType","sourceField":"bo_akl_line_checkInfo_clone.startType","sourcetype":"tableField","treatRepeattype":"3"},{"checkRepeat":"False","destField":"bo_akl_line_checkInfo.startTypeId","sourceField":"bo_akl_line_checkInfo_clone.startTypeId","sourcetype":"tableField","treatRepeattype":"2"}],"repeatType":"3","sourceTableName":"bo_akl_line_checkInfo_clone","sourceType":"Table","queryParam":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><destTableName>bo_akl_line_checkInfo</destTableName><sourceTableName>bo_akl_line_checkInfo_clone</sourceTableName><sourceType>Table</sourceType><repeatType>3</repeatType><condition><![CDATA[<NewDataSet />]]]]><![CDATA[></condition></dtMaster><dtField><destField>bo_akl_line_checkInfo.checkName</destField><sourcetype>tableField</sourcetype><sourceField>bo_akl_line_checkInfo_clone.checkName</sourceField><checkeRepeat>True</checkeRepeat><TreatRepeattype>3</TreatRepeattype></dtField><dtField><destField>bo_akl_line_checkInfo.id</destField><sourcetype>tableField</sourcetype><sourceField>bo_akl_line_checkInfo_clone.id</sourceField><checkeRepeat>False</checkeRepeat><TreatRepeattype>3</TreatRepeattype></dtField><dtField><destField>bo_akl_line_checkInfo.startType</destField><sourcetype>tableField</sourcetype><sourceField>bo_akl_line_checkInfo_clone.startType</sourceField><checkeRepeat>True</checkeRepeat><TreatRepeattype>3</TreatRepeattype></dtField><dtField><destField>bo_akl_line_checkInfo.startTypeId</destField><sourcetype>tableField</sourcetype><sourceField>bo_akl_line_checkInfo_clone.startTypeId</sourceField><checkeRepeat>False</checkeRepeat><TreatRepeattype>2</TreatRepeattype></dtField></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteConditionRelationData" ruleName="删除数据库中的记录" instanceCode="BR_DeleteConditionRelationData1_1" instanceName="删除数据库中的记录_清空备用表" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 20:48:46">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dtChileMaps":[{"orderNo":"1","tableName":"bo_akl_line_checkInfo_clone","dsWhere":null}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtConditionMaster><TableName>bo_akl_line_checkInfo_clone</TableName><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition><OrderNo>1</OrderNo></dtConditionMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_执行页面加载" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 20:49:00">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"checkInfo_FormLoadAction","isParallelism":"False"},"invokeParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>checkInfo_FormLoadAction</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"导入成功\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"导入成功"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ModifyDataBaseRecord" ruleName="修改数据库中的记录" instanceCode="BR_ModifyDataBaseRecord1" instanceName="修改数据库中的记录_赋值备用表检查项启动类型Id" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 20:48:03">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourcesMapping":[{"condition":[{"columnType":"1","field":"bo_akl_line_checkInfo_clone.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"LV.i.id","valueType":"9"}],"dataMap":[{"colName":"bo_akl_line_checkInfo_clone.startTypeId","colValue":"LV.j.id","valueType":"expression"}],"dataSource":"bo_akl_line_checkInfo_clone","opperType":"update"}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><orderNo>1</orderNo><destTableName>bo_akl_line_checkInfo_clone</destTableName><opperType>update</opperType><condition><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_line_checkInfo_clone.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>LV.i.id</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></condition><dtField><![CDATA[<NewDataSet><dtField><destField>bo_akl_line_checkInfo_clone.startTypeId</destField><sourceType>expression</sourceType><sourceField>LV.j.id</sourceField></dtField></NewDataSet>]]]]><![CDATA[></dtField></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton3_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_ExportDataToExcel1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ExportDataToExcel" ruleName="导出数据库数据到Excel" instanceCode="BR_ExportDataToExcel1" instanceName="导出数据库数据到Excel" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="liub" lastModifiedTime="2018-08-08 14:26:59">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"defaultFileName":"\"开机检测项维护\"","fileType":"xlsx","items":[{"sheetName":"\"开机检测项维护\"","dataSource":"bo_akl_line_checkInfo","dataSourceType":"Table","filterCondition":null,"queryParam":null,"mapping":[{"fieldCode":"startType","excelColName":"启动类型","exportData":true,"orderType":""},{"fieldCode":"checkName","excelColName":"检查项","exportData":true,"orderType":""}]}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><DefaultFileName>"开机检测项维护"</DefaultFileName><FileType>xlsx</FileType></dtMaster><dtItems><ID>ad334c60786f4e7d9f8d27d3ecd741dd</ID><SheetName>"开机检测项维护"</SheetName><DataSource>bo_akl_line_checkInfo</DataSource><DataSourceType>Table</DataSourceType><dsFilterCondition><![CDATA[<NewDataSet />]]]]><![CDATA[></dsFilterCondition></dtItems><dtMapping><FieldCode>startType</FieldCode><ExcelColName>启动类型</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>ad334c60786f4e7d9f8d27d3ecd741dd</ItemID></dtMapping><dtMapping><FieldCode>checkName</FieldCode><ExcelColName>检查项</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>ad334c60786f4e7d9f8d27d3ecd741dd</ItemID></dtMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

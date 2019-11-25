@@ -1,0 +1,29 @@
+﻿<Query id="31aa65160df44c0fa2aaca22792edf16" code="taskWaitRecode" name="代办任务分组信息" type="VSql">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-08-08 14:40:34]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-08-12 09:59:34]]></ModificationTime>
+  <VSql><![CDATA[select t.taskCode, t.taskName,COUNT(t.id) as sums from bo_akl_taskPushRecode as t
+where t.isFinish!=1 or t.isFinish is null 
+group by t.taskCode,t.taskName]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="taskCode" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="taskName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="sums" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_taskPushRecode" tokenIndexes="24" />
+    <DataItem type="TableField" key="bo_akl_taskPushRecode.taskCode" tokenIndexes="4,54" />
+    <DataItem type="TableField" key="bo_akl_taskPushRecode.taskName" tokenIndexes="9,58" />
+    <DataItem type="TableField" key="bo_akl_taskPushRecode.id" tokenIndexes="15" />
+    <DataItem type="TableField" key="bo_akl_taskPushRecode.isFinish" tokenIndexes="34,42" />
+  </DataItems>
+</Query>

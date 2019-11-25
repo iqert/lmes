@@ -1,0 +1,83 @@
+﻿<Query id="e4b21c43bcd447d6bb130c95eea516a2" code="everyDayProduct" name="每日产量累计产量日常" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-10-19 15:54:44]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-11-20 23:20:31]]></ModificationTime>
+  <VSql><![CDATA[	select md.tday,edp.cpc from monthDay as md
+	left join(
+		SELECT 
+	DAYOFMONTH(sto.operateTime) as optime,
+	sum(sto.inStockNum)  AS cpc,
+	mat.materialNo
+	FROM bo_akl_MM_inStockInfo AS sto
+	LEFT JOIN bo_akl_MM_stockType AS st ON st.id = sto.stockTypeId
+	LEFT join bo_akl_MM_materialInfo AS mat ON sto.materialId = mat.id
+	Left join bo_akl_EM_productInfo as pinfo on pinfo.prNo=mat.materialNo
+	left join bo_akl_base_productlines as plines on plines.id=pinfo.pid --产线
+	left join bo_akl_base_projectInfo as pjinfo on pjinfo.id=plines.belongProject
+	where 
+	plines.pNo=:prLineNo AND --产线编号
+	pjinfo.pName=:projectName and --产品编号
+	st.stockType = '成品仓' 
+	and mat.materialNo=:pNo 
+	and YEAR(sto.operateTime)=:inputYear 
+	and MONTH(sto.operateTime)=:inputMonth
+	group by DAYOFMONTH(sto.operateTime)
+	) as edp
+	on edp.optime=md.tday
+	
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="tday" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="cpc" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="pNo" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="inputYear" name="" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="inputMonth" name="" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="prLineNo" name="产线编号" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="projectName" name="项目名称" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="monthDay" tokenIndexes="13" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="110" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="130" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="152" />
+    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="56" />
+    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="66" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="88" />
+    <DataItem type="TableField" key="monthDay.tday" tokenIndexes="5,258" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="120" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="140" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.pid" tokenIndexes="144" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="162" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="166" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="172" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.pName" tokenIndexes="183" />
+    <DataItem type="QueryParam" key="prLineNo" tokenIndexes="175" />
+    <DataItem type="QueryParam" key="projectName" tokenIndexes="186" />
+    <DataItem type="QueryParam" key="pNo" tokenIndexes="207" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="219" />
+    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="231" />
+  </DataItems>
+</Query>

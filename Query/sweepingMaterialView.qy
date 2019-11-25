@@ -1,0 +1,96 @@
+﻿<Query id="89f6903f627b45cd9f887605ea5881bc" code="sweepingMaterialView" name="扫码物料" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-10-10 17:34:59]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-10-11 11:29:23]]></ModificationTime>
+  <VSql><![CDATA[
+select bs.materialNo,bs.materialName,bs.num,bs.batchNo,bs.operateTime,bs.materialType,bs.orderNo(
+SELECT '' as materialNo,'' as materialName,A.num,A.batchNo,A.operateTime,'' as materialType,B.materialNo as orderNo
+FROM bo_akl_line_materialConfirm A
+LEFT JOIN bo_akl_MM_materialInfo B ON A.materialId = b.id
+LEFT JOIN bo_akl_line_start st ON st.id=A.startId --连开线记录
+LEFT JOIN bo_akl_base_productlines pd ON st.prolineId=pd.id --连产线信息
+LEFT JOIN bo_akl_base_projectInfo pj ON pj.id=pd.belongProject --连项目
+WHERE pj.pName=:projectName  and pd.pNo=:productLine and A.operateTime>=:startTime and A.operateTime<=:endTime
+union all
+select ew.materialNo,ew.materialName,SUM(ew.num) as num,'' as batchNo,'' as operateTime,ew.materialType,ew.materialNo as orderNo
+from (SELECT B.materialNo,B.materialName,A.num,A.batchNo,A.operateTime,B.materialType
+FROM bo_akl_line_materialConfirm A
+LEFT JOIN bo_akl_MM_materialInfo B ON A.materialId = b.id
+LEFT JOIN bo_akl_line_start st ON st.id=A.startId --连开线记录
+LEFT JOIN bo_akl_base_productlines pd ON st.prolineId=pd.id --连产线信息
+LEFT JOIN bo_akl_base_projectInfo pj ON pj.id=pd.belongProject --连项目
+WHERE pj.pName=:projectName  and pd.pNo=:productLine and A.operateTime>=:startTime and A.operateTime<=:endTime) as ew group by ew.materialNo,ew.materialName,ew.materialType) as bs order by bs.orderNo ASC,bs.num DESC,bs.operateTime ASC
+
+
+
+
+
+
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="materialNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="materialName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="num" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="batchNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="operateTime" name="" dataType="longDate" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="materialType" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="orderNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="projectName" name="项目名称" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="productLine" name="产线编号" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="startTime" name="开始时间" dataType="date">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="endTime" name="结束时间" dataType="date">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_line_materialConfirm" tokenIndexes="74,271" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="82,279" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="102,299" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="121,318" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="140,337" />
+    <DataItem type="Query" key="A" tokenIndexes="46,50,54,76,88,112,175,184,253,257,261,273,285,309,372,381" />
+    <DataItem type="Query" key="B" tokenIndexes="64,84,245,249,265,281" />
+    <DataItem type="Query" key="b" tokenIndexes="94,291" />
+    <DataItem type="QueryField" key="A.num" tokenIndexes="48,255" />
+    <DataItem type="QueryField" key="A.batchNo" tokenIndexes="52,259" />
+    <DataItem type="QueryField" key="A.operateTime" tokenIndexes="56,177,186,263,374,383" />
+    <DataItem type="QueryField" key="B.materialNo" tokenIndexes="66,247" />
+    <DataItem type="QueryField" key="A.materialId" tokenIndexes="90,287" />
+    <DataItem type="QueryField" key="b.id" tokenIndexes="96,293" />
+    <DataItem type="QueryField" key="A.startId" tokenIndexes="114,311" />
+    <DataItem type="QueryField" key="B.materialName" tokenIndexes="251" />
+    <DataItem type="QueryField" key="B.materialType" tokenIndexes="267" />
+    <DataItem type="QueryParam" key="projectName" tokenIndexes="162,359" />
+    <DataItem type="QueryParam" key="productLine" tokenIndexes="171,368" />
+    <DataItem type="QueryParam" key="startTime" tokenIndexes="180,377" />
+    <DataItem type="QueryParam" key="endTime" tokenIndexes="189,386" />
+  </DataItems>
+</Query>

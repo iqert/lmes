@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2018/6/23 10:20:46-->
+<Methods>
+  <Method Code="JGButton1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>GetSelectedRecordNum("bo_akl_EM_EIMaintenancePlan") == 1</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_SetEntityVarControlValue1" />
+    </sequence>
+  </if>
+  <evaluateRule code="BR_SelectionConfirm1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100469" lastModifiedTime="2018-06-23 10:27:43">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100469" lastModifiedTime="2018-06-23 10:27:32">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"6","Target":"tendencePlanId","SourceType":"expression","SourceEntityType":"","Source":"GetCurrentRecordIndex(\"bo_akl_EM_EIMaintenancePlan\")","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>6</TargetType><Target>tendencePlanId</Target><SourceType>expression</SourceType><SourceEntityType /><Source>GetCurrentRecordIndex("bo_akl_EM_EIMaintenancePlan")</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="chooseTencePlan_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100469" lastModifiedTime="2018-06-23 14:28:00">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_EM_EIMaintenancePlan.equipInfoId","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"@equipId","valueType":"9"}],"entityType":"window","entityName":"bo_akl_EM_EIMaintenancePlan","itemqueryparam":null,"items":[{"destName":"bo_akl_EM_EIMaintenancePlan.cycle","sourceName":"bo_akl_EM_EIMaintenancePlan.cycle","type":"entityField"},{"destName":"bo_akl_EM_EIMaintenancePlan.equipInfoId","sourceName":"bo_akl_EM_EIMaintenancePlan.equipInfoId","type":"entityField"},{"destName":"bo_akl_EM_EIMaintenancePlan.id","sourceName":"bo_akl_EM_EIMaintenancePlan.id","type":"entityField"},{"destName":"bo_akl_EM_EIMaintenancePlan.inspectionProject","sourceName":"bo_akl_EM_EIMaintenancePlan.inspectionProject","type":"entityField"},{"destName":"bo_akl_EM_EIMaintenancePlan.maintenanceContent","sourceName":"bo_akl_EM_EIMaintenancePlan.maintenanceContent","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_EM_EIMaintenancePlan","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_EM_EIMaintenancePlan</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_EM_EIMaintenancePlan</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_EM_EIMaintenancePlan.equipInfoId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>@equipId</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>bcc18fab5e3045aba5aa653689b1918b</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>bcc18fab5e3045aba5aa653689b1918b</MasterID><DestName>bo_akl_EM_EIMaintenancePlan.cycle</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EIMaintenancePlan.cycle</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>bcc18fab5e3045aba5aa653689b1918b</MasterID><DestName>bo_akl_EM_EIMaintenancePlan.equipInfoId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EIMaintenancePlan.equipInfoId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>bcc18fab5e3045aba5aa653689b1918b</MasterID><DestName>bo_akl_EM_EIMaintenancePlan.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EIMaintenancePlan.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>bcc18fab5e3045aba5aa653689b1918b</MasterID><DestName>bo_akl_EM_EIMaintenancePlan.inspectionProject</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EIMaintenancePlan.inspectionProject</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>bcc18fab5e3045aba5aa653689b1918b</MasterID><DestName>bo_akl_EM_EIMaintenancePlan.maintenanceContent</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EIMaintenancePlan.maintenanceContent</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>bcc18fab5e3045aba5aa653689b1918b</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>bcc18fab5e3045aba5aa653689b1918b</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

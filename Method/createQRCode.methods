@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Methods>
+  <Method Code="createQRCode" Type="Server" InterfaceType="Local" RestrictType="Private" TransactionType="transaction">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>!IsEmpty(BR_IN_PARENT.qrCodeInfo)</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_GenerateQrCode1" />
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="GenerateQrCode" ruleName="二维码生成" instanceCode="BR_GenerateQrCode1" instanceName="二维码生成" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-05 20:14:18">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{    "QrCodeUrl":"BR_IN_PARENT.qrCodeInfo",     "QrCodeWidth":150,     "QrCodeHeight":150,     "returnValue":"BR_OUT_PARENT.qrCodeSign",     "QrMargin":1,     "QrErrorLeve":7}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[%7B%22QrcodeInfo%22:%7B%22metadata%22:%7B%22model%22:%5B%7B%22datasourceName%22:%22QrcodeInfo%22,%22fields%22:%5B%7B%22code%22:%22content%22,%22name%22:%22content%22,%22length%22:255,%22type%22:%22char%22,%22precision%22:0,%22defaultValue%22:null,%22expression%22:%22%22%7D,%7B%22code%22:%22width%22,%22name%22:%22width%22,%22length%22:50,%22type%22:%22integer%22,%22precision%22:0,%22defaultValue%22:null,%22expression%22:%22%22%7D,%7B%22code%22:%22height%22,%22name%22:%22height%22,%22length%22:50,%22type%22:%22integer%22,%22precision%22:0,%22defaultValue%22:null,%22expression%22:%22%22%7D,%7B%22code%22:%22returnValue%22,%22name%22:%22returnValue%22,%22length%22:255,%22type%22:%22char%22,%22precision%22:0,%22defaultValue%22:null,%22expression%22:%22%22%7D,%7B%22code%22:%22margin%22,%22name%22:%22margin%22,%22length%22:50,%22type%22:%22integer%22,%22precision%22:0,%22defaultValue%22:null,%22expression%22:%22%22%7D,%7B%22code%22:%22errorLeve%22,%22name%22:%22errorLeve%22,%22length%22:50,%22type%22:%22integer%22,%22precision%22:0,%22defaultValue%22:null,%22expression%22:%22%22%7D,%7B%22code%22:%22errorDispaly%22,%22name%22:%22errorDispaly%22,%22length%22:255,%22type%22:%22char%22,%22precision%22:0,%22defaultValue%22:null,%22expression%22:%22%22%7D,%7B%22code%22:%22id%22,%22name%22:%22id%22,%22length%22:64,%22type%22:%22char%22,%22precision%22:0,%22defaultValue%22:null%7D%5D%7D%5D%7D,%22datas%22:%7B%22values%22:%5B%7B%22content%22:%22BR_IN_PARENT.qrCodeInfo%22,%22width%22:150,%22height%22:150,%22returnValue%22:%22BR_OUT_PARENT.qrCodeSign%22,%22margin%22:1,%22errorLeve%22:7,%22errorDispaly%22:%227%25%22,%22id%22:%228439d45cc843cfd6ef486055462e7592%22%7D%5D,%22recordCount%22:0%7D%7D,%22window%22:%7B%22metadata%22:%7B%22model%22:%5B%7B%22datasourceName%22:%22window%22,%22fields%22:%5B%7B%22code%22:%22windowCode%22,%22name%22:%22windowCode%22,%22length%22:255,%22type%22:%22char%22,%22precision%22:0,%22defaultValue%22:null,%22expression%22:%22%22%7D,%7B%22code%22:%22id%22,%22name%22:%22id%22,%22length%22:64,%22type%22:%22char%22,%22precision%22:0,%22defaultValue%22:null%7D%5D%7D%5D%7D,%22datas%22:%7B%22values%22:%5B%7B%22windowCode%22:%22%22,%22id%22:%2254f0db4d1c1c312b95f181fecf1649ef%22%7D,%7B%22windowCode%22:%22%22,%22id%22:%225f5a2e0d32870da7aea245d7fde50290%22%7D%5D,%22recordCount%22:0%7D%7D,%22methodvar%22:%7B%22metadata%22:%7B%22model%22:%5B%7B%22datasourceName%22:%22methodvar%22,%22fields%22:%5B%7B%22code%22:%22code%22,%22name%22:%22code%22,%22length%22:255,%22type%22:%22char%22,%22precision%22:0,%22defaultValue%22:null,%22expression%22:%22%22%7D,%7B%22code%22:%22id%22,%22name%22:%22id%22,%22length%22:64,%22type%22:%22char%22,%22precision%22:0,%22defaultValue%22:null%7D%5D%7D%5D%7D,%22datas%22:%7B%22values%22:%5B%7B%22code%22:%22qrCodeSign%22,%22id%22:%22f1717d55b14ddc7e6298152d43170048%22%7D%5D,%22recordCount%22:0%7D%7D,%22component%22:%7B%22metadata%22:%7B%22model%22:%5B%7B%22datasourceName%22:%22component%22,%22fields%22:%5B%7B%22code%22:%22componentCode%22,%22name%22:%22componentCode%22,%22length%22:255,%22type%22:%22char%22,%22precision%22:0,%22defaultValue%22:null,%22expression%22:%22%22%7D,%7B%22code%22:%22id%22,%22name%22:%22id%22,%22length%22:64,%22type%22:%22char%22,%22precision%22:0,%22defaultValue%22:null%7D%5D%7D%5D%7D,%22datas%22:%7B%22values%22:%5B%7B%22componentCode%22:%22lmes%22,%22id%22:%22c1c73efd76fcae39574842f07cf6955f%22%7D,%7B%22componentCode%22:%22lmes%22,%22id%22:%22acab563c18e674a3794725413b740aea%22%7D%5D,%22recordCount%22:0%7D%7D,%22method%22:%7B%22metadata%22:%7B%22model%22:%5B%7B%22datasourceName%22:%22method%22,%22fields%22:%5B%7B%22code%22:%22methodCode%22,%22name%22:%22methodCode%22,%22length%22:255,%22type%22:%22char%22,%22precision%22:0,%22defaultValue%22:null,%22expression%22:%22%22%7D,%7B%22code%22:%22id%22,%22name%22:%22id%22,%22length%22:64,%22type%22:%22char%22,%22precision%22:0,%22defaultValue%22:null%7D%5D%7D%5D%7D,%22datas%22:%7B%22values%22:%5B%7B%22methodCode%22:%22createQRCode%22,%22id%22:%2221a2bb04d00aeef1752f6e31a6661fd2%22%7D,%7B%22methodCode%22:%22createQRCode%22,%22id%22:%22ec20d51cbc262ec6beba761f1c500146%22%7D%5D,%22recordCount%22:0%7D%7D,%22methodvar_temp%22:%7B%22metadata%22:%7B%22model%22:%5B%7B%22datasourceName%22:%22methodvar_temp%22,%22fields%22:%5B%7B%22code%22:%22code%22,%22name%22:%22code%22,%22length%22:255,%22type%22:%22char%22,%22precision%22:0,%22defaultValue%22:null,%22expression%22:%22%22%7D,%7B%22code%22:%22type%22,%22name%22:%22type%22,%22length%22:255,%22type%22:%22char%22,%22precision%22:0,%22defaultValue%22:null,%22expression%22:%22%22%7D,%7B%22code%22:%22id%22,%22name%22:%22id%22,%22length%22:64,%22type%22:%22char%22,%22precision%22:0,%22defaultValue%22:null%7D%5D%7D%5D%7D,%22datas%22:%7B%22values%22:%5B%7B%22code%22:%22qrCodeSign%22,%22type%22:%22char%22,%22id%22:%226ce8b00bce3920ab0a83b078c049dd1b%22%7D%5D,%22recordCount%22:0%7D%7D%7D]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Inputs>
+      <Variable code="qrCodeInfo" name="二维码信息" fieldType="char" initValue="" isMust="false" desc="" />
+    </Inputs>
+    <Outputs>
+      <Variable code="qrCodeSign" name="二维码标识" fieldType="char" initValue="" isMust="false" desc="" />
+    </Outputs>
+  </Method>
+</Methods>

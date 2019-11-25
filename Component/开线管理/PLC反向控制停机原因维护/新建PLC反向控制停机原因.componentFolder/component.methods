@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2018/7/13 11:36:39-->
+<Methods>
+  <Method Code="JGButton1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_CheckRequired1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>BR_OUT.BR_CheckRequired1.isCheckRequiredOK</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_CheckUnique1" />
+      <if isEnabled="True" isDebug="False" code="IfCode2">
+        <define>
+          <expression>BR_OUT.BR_CheckUnique1.isUnique</expression>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_UpdateRecord1" />
+          <evaluateRule code="BR_SetEntityVarControlValue1" />
+          <evaluateRule code="BR_SelectionConfirm1" />
+        </sequence>
+      </if>
+      <else isEnabled="True" isDebug="False">
+        <define>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_ShowMessage2" />
+        </sequence>
+      </else>
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="CheckRequired" ruleName="必填项检查" instanceCode="BR_CheckRequired1" instanceName="必填项检查" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"fieldList":[{"field":"bo_akl_line_PLCControlCause.value","fieldName":"bo_akl_line_PLCControlCause.value"},{"field":"bo_akl_line_PLCControlCause.cause","fieldName":"bo_akl_line_PLCControlCause.cause"}],"type":"0"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtColumn><Code>bo_akl_line_PLCControlCause.value</Code><Name>bo_akl_line_PLCControlCause.value</Name></dtColumn><dtColumn><Code>bo_akl_line_PLCControlCause.cause</Code><Name>bo_akl_line_PLCControlCause.cause</Name></dtColumn><dtType><Type>0</Type></dtType></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage2" instanceName="显示设置的提示信息_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"已存在相同的停机代码值\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"已存在相同的停机代码值"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_line_PLCControlCause.cause","colValue":"bo_akl_line_PLCControlCause.cause","valueType":"entityField"},{"colName":"bo_akl_line_PLCControlCause.id","colValue":"bo_akl_line_PLCControlCause.id","valueType":"entityField"},{"colName":"bo_akl_line_PLCControlCause.other","colValue":"bo_akl_line_PLCControlCause.other","valueType":"entityField"},{"colName":"bo_akl_line_PLCControlCause.remarks","colValue":"bo_akl_line_PLCControlCause.remarks","valueType":"entityField"},{"colName":"bo_akl_line_PLCControlCause.value","colValue":"bo_akl_line_PLCControlCause.value","valueType":"entityField"}],"dataSource":"bo_akl_line_PLCControlCause","dataSourceType":"window","destTab":"bo_akl_line_PLCControlCause","isSaveAll":false}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>e3bac102469b489298287c0ffc8846a5</ID><SourceName>bo_akl_line_PLCControlCause</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_line_PLCControlCause(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_line_PLCControlCause</TableName></dtMaster><dtDetails><PID>e3bac102469b489298287c0ffc8846a5</PID><SourceField>bo_akl_line_PLCControlCause.cause</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_PLCControlCause.cause</Value></dtDetails><dtDetails><PID>e3bac102469b489298287c0ffc8846a5</PID><SourceField>bo_akl_line_PLCControlCause.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_PLCControlCause.id</Value></dtDetails><dtDetails><PID>e3bac102469b489298287c0ffc8846a5</PID><SourceField>bo_akl_line_PLCControlCause.other</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_PLCControlCause.other</Value></dtDetails><dtDetails><PID>e3bac102469b489298287c0ffc8846a5</PID><SourceField>bo_akl_line_PLCControlCause.remarks</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_PLCControlCause.remarks</Value></dtDetails><dtDetails><PID>e3bac102469b489298287c0ffc8846a5</PID><SourceField>bo_akl_line_PLCControlCause.value</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_PLCControlCause.value</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"6","Target":"PLCfxkztjyy","SourceType":"entityField","SourceEntityType":"window","Source":"bo_akl_line_PLCControlCause","entityFieldMapping":[{"destFieldName":"id","srcValueType":"entityField","srcValue":"bo_akl_line_PLCControlCause.id"},{"destFieldName":"value","srcValueType":"entityField","srcValue":"bo_akl_line_PLCControlCause.value"},{"destFieldName":"cause","srcValueType":"entityField","srcValue":"bo_akl_line_PLCControlCause.cause"},{"destFieldName":"remarks","srcValueType":"entityField","srcValue":"bo_akl_line_PLCControlCause.remarks"},{"destFieldName":"other","srcValueType":"entityField","srcValue":"bo_akl_line_PLCControlCause.other"}]}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>6</TargetType><Target>PLCfxkztjyy</Target><SourceType>entityField</SourceType><SourceEntityType>window</SourceEntityType><Source>bo_akl_line_PLCControlCause</Source><SourceEntityXml><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>id</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_PLCControlCause.id</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>value</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_PLCControlCause.value</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>cause</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_PLCControlCause.cause</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>remarks</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_PLCControlCause.remarks</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>other</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_PLCControlCause.other</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></SourceEntityXml></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="CheckUnique" ruleName="前后台唯一性检查" instanceCode="BR_CheckUnique1" instanceName="前后台唯一性检查" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isBackgroudCheck":true,"entityName":"bo_akl_line_PLCControlCause","tableName":"bo_akl_line_PLCControlCause","isAutoSelectRepeatRow":false,"checkFields":[{"entityFiled":"bo_akl_line_PLCControlCause.value","tableField":"bo_akl_line_PLCControlCause.value"}],"dsWhere":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><IsBackgroudCheck>true</IsBackgroudCheck><EntityName>bo_akl_line_PLCControlCause</EntityName><TableName>bo_akl_line_PLCControlCause</TableName><IsAutoSelectRepeatRow>false</IsAutoSelectRepeatRow><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition></dtMaster><dtCheckFields><EntityField>bo_akl_line_PLCControlCause.value</EntityField><TableField>bo_akl_line_PLCControlCause.value</TableField></dtCheckFields></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="NewCauseOfPLCReverseControlShutdown_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>IsEmpty(@id)</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_AddTableRecord1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-13 11:44:23">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_line_PLCControlCause.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"@id","valueType":"9"}],"entityType":"window","entityName":"bo_akl_line_PLCControlCause","itemqueryparam":null,"items":[{"destName":"bo_akl_line_PLCControlCause.cause","sourceName":"bo_akl_line_PLCControlCause.cause","type":"entityField"},{"destName":"bo_akl_line_PLCControlCause.id","sourceName":"bo_akl_line_PLCControlCause.id","type":"entityField"},{"destName":"bo_akl_line_PLCControlCause.other","sourceName":"bo_akl_line_PLCControlCause.other","type":"entityField"},{"destName":"bo_akl_line_PLCControlCause.remarks","sourceName":"bo_akl_line_PLCControlCause.remarks","type":"entityField"},{"destName":"bo_akl_line_PLCControlCause.value","sourceName":"bo_akl_line_PLCControlCause.value","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_line_PLCControlCause","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_line_PLCControlCause</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_line_PLCControlCause</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_line_PLCControlCause.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>@id</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>776e483826ee4ae6b71afcc986edef69</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>776e483826ee4ae6b71afcc986edef69</MasterID><DestName>bo_akl_line_PLCControlCause.cause</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_PLCControlCause.cause</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>776e483826ee4ae6b71afcc986edef69</MasterID><DestName>bo_akl_line_PLCControlCause.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_PLCControlCause.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>776e483826ee4ae6b71afcc986edef69</MasterID><DestName>bo_akl_line_PLCControlCause.other</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_PLCControlCause.other</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>776e483826ee4ae6b71afcc986edef69</MasterID><DestName>bo_akl_line_PLCControlCause.remarks</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_PLCControlCause.remarks</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>776e483826ee4ae6b71afcc986edef69</MasterID><DestName>bo_akl_line_PLCControlCause.value</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_PLCControlCause.value</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>776e483826ee4ae6b71afcc986edef69</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>776e483826ee4ae6b71afcc986edef69</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1" instanceName="新增实体记录" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-13 11:44:00">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"3","Mappings":null,"TableType":"window","TableName":"bo_akl_line_PLCControlCause","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><Location>3</Location><EntityType>window</EntityType><EntityName>bo_akl_line_PLCControlCause</EntityName></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

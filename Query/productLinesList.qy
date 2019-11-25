@@ -1,0 +1,67 @@
+﻿<Query id="083483882afa4e9a8fd3b789c4ab889c" code="productLinesList" name="产线列表数据" type="VSql">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[liub]]></Creator>
+  <CreationTime><![CDATA[2018-07-11 15:10:38]]></CreationTime>
+  <Modifier><![CDATA[user_20180828002]]></Modifier>
+  <ModificationTime><![CDATA[2019-01-21 15:56:35]]></ModificationTime>
+  <VSql><![CDATA[SELECT a.*,b.equipName
+--a.id, a.pNo, a.belongProject, a.pEName, a.pCName, a.pNote, a.equNo, a.startTime, b.equipName, a.productionId, a.productionName
+FROM bo_akl_base_productlines AS a
+LEFT JOIN bo_akl_EM_EquipmentInformation AS b ON a.equno = b.equipNo
+order by a.pNo]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="equipName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="qrCodeSign" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="resetPassword" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="placePosition" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="id" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="pNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="belongProject" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="pEName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_8" code="pCName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_9" code="pNote" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_10" code="equNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_11" code="startTime" name="" dataType="date" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_12" code="productionId" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_13" code="productionName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="13" />
+    <DataItem type="Table" key="bo_akl_EM_EquipmentInformation" tokenIndexes="23" />
+    <DataItem type="Query" key="b" tokenIndexes="6,27,37" />
+    <DataItem type="Query" key="a" tokenIndexes="17,31,45" />
+    <DataItem type="QueryField" key="b.equipName" tokenIndexes="8" />
+    <DataItem type="QueryField" key="a.equno" tokenIndexes="33" />
+    <DataItem type="QueryField" key="b.equipNo" tokenIndexes="39" />
+    <DataItem type="QueryField" key="a.pNo" tokenIndexes="47" />
+  </DataItems>
+</Query>

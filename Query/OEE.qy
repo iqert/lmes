@@ -1,0 +1,178 @@
+﻿<Query id="9b3dffdb3b7a49348f95f48eafb228d1" code="OEE" name="设备整体利用率" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-10-24 14:32:48]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-10-25 23:51:18]]></ModificationTime>
+  <VSql><![CDATA[select 
+	md.tday, --天数
+	oees.OEE, --oee
+	oees.standardWorkingHours, --节拍
+	oees.pot, --开线时长POT
+	oees.lostTime,  --计划性的组织停机  OST-POT
+	oees.useRate, ----利用率损失/h
+	case when oees.pot-oees.useRate >0 then oees.pot-oees.useRate else 0 end as runTime,--运行时间RT
+	ROUND(oees.standardWorkingHours*pros.blps/3600,2) as blpTime,--不良品数的消耗时间 /h
+	case when oees.pot-oees.useRate >0 then oees.pot-oees.useRate else 0 end 
+	- ROUND(oees.standardWorkingHours*pros.blps/3600,2) as outputTime,--零不良产出时间/h
+	pros.blps, --不良品数
+	pros.cpcs, --成品数
+	ROUND(case when oees.pot>0 and (oees.pot-oees.useRate)>0 then 
+	 ((oees.pot-oees.useRate-ROUND(oees.standardWorkingHours*pros.blps/3600,2))/(oees.pot-oees.useRate))
+	 *1*(oees.pot-oees.useRate)/oees.pot else 0 end,2)as oeenew --oee
+from monthDay as md 
+	left join (
+	select opema.tday, --天数
+	opema.OEE,--oee
+	opema.standardWorkingHours, --节拍
+	SUM(opema.diffhour) as pot,--开线时长POT
+	case when 24-SUM(opema.diffhour)<0 then 0 else 24-SUM(opema.diffhour) end as lostTime, --计划性的组织停机  OST-POT
+	case when SUM(opema.repairTime)>0 then SUM(opema.repairTime) else 0 end+
+	case when SUM(opema.clearElectrode)>0 then SUM(opema.clearElectrode) else 0 end+
+	case when SUM(opema.powerOff)>0 then SUM(opema.powerOff) else 0 end as useRate --利用率损失/h
+	from (
+		select 
+		ROUND(CAST(DATEDIFF(MIN(opert.opTime),MAX(opert.opTime),'minute'),'DECIMAL',10,2)/60,2) as diffhour,
+		opert.lid,
+		DAYOFMONTH(MIN(opert.opTime))as tday,-- 天数
+		sls.repairTime,  --维修时间
+		sls.clearElectrode, --清洁电极时间
+		sls.powerOff, --停电时间
+		prod.OEE,
+		prod.standardWorkingHours
+		from bo_akl_line_operation as opert 
+		right join bo_akl_line_start as lineSt on lineSt.id=opert.lid
+		left join stopLineStartInput as sls on sls.lineStartId=lineSt.id
+		left join bo_akl_EM_productInfo as prod on lineSt.equName=prod.prNo
+		where 
+		--YEAR(opert.opTime)=:inputYear and 
+		--MONTH(opert.opTime)=:inputMonth and
+		lineSt.prolineName=:prlineNo
+		group by opert.lid,prod.OEE,prod.standardWorkingHours,sls.powerOff,sls.clearElectrode,sls.repairTime
+		)as opema group by opema.tday,opema.OEE,opema.standardWorkingHours
+	) as oees on oees.tday=md.tday
+	left join (	select
+	md.tday,
+	std.blps,
+	std.cpcs from monthDay md 
+	left join (
+		select stt.tday,
+
+		SUM(stt.blpc) as blps, --不良品数量
+		SUM(stt.cpc) as cpcs --成品数量
+		from (
+				select case 
+				when st.stockType='不良品仓'  THEN sto.inStockNum 
+				else 0 end as blpc,
+				case 
+				when st.stockType='成品仓'  THEN sto.inStockNum 
+				else 0 end as cpc,
+				case 
+				when st.stockType='隔离仓'  THEN sto.inStockNum 
+				else 0 end as glc,
+				sto.materialId,
+				DAYOFMONTH(sto.operateTime) as tday
+				from bo_akl_MM_inStockInfo as sto 
+				left join bo_akl_MM_stockType st on st.id=sto.stockTypeId
+				--where 
+				--year(sto.operateTime)=:inputYear and MONTH(sto.operateTime)=:inputMonth
+			) as stt
+			left join bo_akl_MM_materialInfo as mat on stt.materialId=mat.id
+			left join bo_akl_EM_productInfo as ep on mat.materialNo=ep.prNo
+			left join bo_akl_base_productlines as pli on pli.pNo=ep.prLine
+			left join bo_akl_base_projectInfo as pj on pj.id=pli.belongProject
+			where
+			ep.prLine=:prlineNo
+			--pj.pName='小项目'
+			--where YEAR(sto.operateTime)=:inputYear and week(sto.operateTime)=:inputWeek
+			group by stt.tday
+		) as std on std.tday=md.tday) as pros on pros.tday=md.tday]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="tday" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="OEE" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="standardWorkingHours" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="pot" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="lostTime" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="useRate" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="runTime" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="blpTime" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_8" code="outputTime" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_9" code="blps" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_10" code="cpcs" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_11" code="oeenew" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="inputYear" name="年" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="prlineNo" name="产线名称" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="inputMonth" name="月" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="monthDay" tokenIndexes="267,711" />
+    <DataItem type="Table" key="bo_akl_line_operation" tokenIndexes="543" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="553" />
+    <DataItem type="Table" key="stopLineStartInput" tokenIndexes="573" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="593,918" />
+    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="860" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="898" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="938" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="958" />
+    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="870" />
+    <DataItem type="TableField" key="monthDay.tday" tokenIndexes="4,685,697,1009,1024" />
+    <DataItem type="TableField" key="bo_akl_line_operation.opTime" tokenIndexes="461,468,502" />
+    <DataItem type="TableField" key="bo_akl_line_operation.lid" tokenIndexes="493,567,628" />
+    <DataItem type="TableField" key="stopLineStartInput.repairTime" tokenIndexes="513,648" />
+    <DataItem type="TableField" key="stopLineStartInput.clearElectrode" tokenIndexes="520,644" />
+    <DataItem type="TableField" key="stopLineStartInput.powerOff" tokenIndexes="527,640" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.OEE" tokenIndexes="534,632" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.standardWorkingHours" tokenIndexes="539,636" />
+    <DataItem type="TableField" key="bo_akl_line_start.id" tokenIndexes="563,587" />
+    <DataItem type="TableField" key="stopLineStartInput.lineStartId" tokenIndexes="583" />
+    <DataItem type="TableField" key="bo_akl_line_start.equName" tokenIndexes="603" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="607,932" />
+    <DataItem type="TableField" key="bo_akl_line_start.prolineName" tokenIndexes="617" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.inStockNum" tokenIndexes="775,802,829" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.materialId" tokenIndexes="844" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.operateTime" tokenIndexes="851" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.stockTypeId" tokenIndexes="882" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="912" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="928" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="948" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prLine" tokenIndexes="952,978" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="968" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="972" />
+    <DataItem type="QueryParam" key="prlineNo" tokenIndexes="620,981" />
+  </DataItems>
+</Query>

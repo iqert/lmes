@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2018/6/19 2:54:45-->
+<Methods>
+  <Method Code="chooseEquipInfo_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-03 11:28:00">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_EM_EquipmentInformation.type","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"\"注塑模具\"","valueType":"9"}],"entityType":"window","entityName":"bo_akl_EM_EquipmentInformation","itemqueryparam":null,"items":[{"destName":"bo_akl_EM_EquipmentInformation.equipName","sourceName":"bo_akl_EM_EquipmentInformation.equipName","type":"entityField"},{"destName":"bo_akl_EM_EquipmentInformation.equipNo","sourceName":"bo_akl_EM_EquipmentInformation.equipNo","type":"entityField"},{"destName":"bo_akl_EM_EquipmentInformation.id","sourceName":"bo_akl_EM_EquipmentInformation.id","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_EM_EquipmentInformation","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_EM_EquipmentInformation</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_EM_EquipmentInformation</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_EM_EquipmentInformation.type</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>"注塑模具"</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>8804d6cd911f47f5bf58d1c844ffa0d5</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>8804d6cd911f47f5bf58d1c844ffa0d5</MasterID><DestName>bo_akl_EM_EquipmentInformation.equipName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EquipmentInformation.equipName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>8804d6cd911f47f5bf58d1c844ffa0d5</MasterID><DestName>bo_akl_EM_EquipmentInformation.equipNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EquipmentInformation.equipNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>8804d6cd911f47f5bf58d1c844ffa0d5</MasterID><DestName>bo_akl_EM_EquipmentInformation.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EquipmentInformation.id</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>8804d6cd911f47f5bf58d1c844ffa0d5</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>8804d6cd911f47f5bf58d1c844ffa0d5</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="sureButton_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>GetSelectedRecordNum("bo_akl_EM_EquipmentInformation") == 1</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_CopyEntityRecord1" />
+      <evaluateRule code="BR_SelectionConfirm1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-27 15:23:46">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请点击一个模具信息!\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请点击一个模具信息!"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="CopyEntityRecord" ruleName="实体间复制记录" instanceCode="BR_CopyEntityRecord1" instanceName="实体间复制记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"checkitems":null,"condition":"","copyType":"1","destName":"equ","items":[{"destName":"equ.id","sourceName":"bo_akl_EM_EquipmentInformation.id","type":"entityField"},{"destName":"equ.equipNo","sourceName":"bo_akl_EM_EquipmentInformation.equipNo","type":"entityField"},{"destName":"equ.equipName","sourceName":"bo_akl_EM_EquipmentInformation.equipName","type":"entityField"}],"mageitems":null,"sourceName":"bo_akl_EM_EquipmentInformation","type":"1","isAddRecord":true,"jsonVersion":"1.0","destType":"windowOutput","sourceType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtInfo><destName>equ</destName><destType>windowOutput</destType><sourceName>bo_akl_EM_EquipmentInformation</sourceName><sourceType>window</sourceType><type>1</type><isAddRecord>True</isAddRecord><copyType>1</copyType><condition /><jsonVersion>1.0</jsonVersion></dtInfo><dtMaster><DestName>equ.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EquipmentInformation.id</SourceName></dtMaster><dtMaster><DestName>equ.equipNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EquipmentInformation.equipNo</SourceName></dtMaster><dtMaster><DestName>equ.equipName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EquipmentInformation.equipName</SourceName></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGLocateBox1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-03 11:28:37">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_EM_EquipmentInformation.type","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"\"注塑模具\"","valueType":"9"},{"columnType":"1","field":"bo_akl_EM_EquipmentInformation.equipNo","fieldType":"char","leftBracket":"((","logicOperation":"and","operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"},{"columnType":"1","field":"bo_akl_EM_EquipmentInformation.equipName","fieldType":"char","leftBracket":"(","logicOperation":"or","operation":"like","rightBracket":"))","value":"CC.JGLocateBox1.Value","valueType":"9"}],"entityType":"window","entityName":"bo_akl_EM_EquipmentInformation","itemqueryparam":null,"items":[{"destName":"bo_akl_EM_EquipmentInformation.equipName","sourceName":"bo_akl_EM_EquipmentInformation.equipName","type":"entityField"},{"destName":"bo_akl_EM_EquipmentInformation.equipNo","sourceName":"bo_akl_EM_EquipmentInformation.equipNo","type":"entityField"},{"destName":"bo_akl_EM_EquipmentInformation.id","sourceName":"bo_akl_EM_EquipmentInformation.id","type":"entityField"},{"destName":"bo_akl_EM_EquipmentInformation.type","sourceName":"bo_akl_EM_EquipmentInformation.type","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_EM_EquipmentInformation","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_EM_EquipmentInformation</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_EM_EquipmentInformation</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_EM_EquipmentInformation.type</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation /><operation>=</operation><rightBracket>)</rightBracket><value>"注塑模具"</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_EM_EquipmentInformation.equipNo</field><fieldType>char</fieldType><leftBracket>((</leftBracket><logicOperation>and</logicOperation><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_EM_EquipmentInformation.equipName</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>like</operation><rightBracket>))</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>8719de8fa82f4727a6944e2108255268</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>8719de8fa82f4727a6944e2108255268</MasterID><DestName>bo_akl_EM_EquipmentInformation.equipName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EquipmentInformation.equipName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>8719de8fa82f4727a6944e2108255268</MasterID><DestName>bo_akl_EM_EquipmentInformation.equipNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EquipmentInformation.equipNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>8719de8fa82f4727a6944e2108255268</MasterID><DestName>bo_akl_EM_EquipmentInformation.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EquipmentInformation.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>8719de8fa82f4727a6944e2108255268</MasterID><DestName>bo_akl_EM_EquipmentInformation.type</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EquipmentInformation.type</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>8719de8fa82f4727a6944e2108255268</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>8719de8fa82f4727a6944e2108255268</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_SetControlPropertys1" />
+  <evaluateRule code="BR_ExecuteRuleSet1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="SetControlPropertys" ruleName="控件属性设置" instanceCode="BR_SetControlPropertys1" instanceName="控件属性设置" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"condition":[{"items":[{"controlCode":"JGLocateBox1","propertyCode":"Value","values":"Null()","valuetype":"1"}],"name":"True"}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ConditionID>175cafdb385b4819be95d1f0be06c87b</ConditionID><ControlCode>JGLocateBox1</ControlCode><PropertyName>Value(值)</PropertyName><PropertyCode>Value</PropertyCode><PropertyValue>Null()</PropertyValue><valuetype>1</valuetype></dtMaster><dtCondition><ID>175cafdb385b4819be95d1f0be06c87b</ID><Name>True</Name></dtCondition></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_chooseEquipInfo_FormLoadAction(页面加载)" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"chooseEquipInfo_FormLoadAction","isParallelism":"False"},"invokeParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>chooseEquipInfo_FormLoadAction</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

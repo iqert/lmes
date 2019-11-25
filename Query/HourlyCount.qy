@@ -1,0 +1,96 @@
+﻿<Query id="9576bfc6e9464da69343931eefd0ecd5" code="HourlyCount" name="每小时产量" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-10-19 10:37:56]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-10-21 15:42:19]]></ModificationTime>
+  <VSql><![CDATA[SELECT lpl.materialNo, --产品名称
+	ep.standardWorkingHours, --节拍时间(秒)
+	case when ep.OEE>0 and ep.OEE<=100  then ROUND(lpl.csps*100/ep.OEE,0) else 0 end as oeeP, --计划产量oee为100
+	case when ep.OEE>0 and ep.OEE<=100 then ROUND(cassum.allcsps*100/ep.OEE,0) else 0 end as oecaAp,
+	--ROUND(lpl.csps*100/ep.OEE,0) as oeeP, --计划产量oee为100
+	--ROUND(cassum.allcsps*100/ep.OEE,0) as oecaAp, --计划产量oee为100
+	lpl.csps, --产量
+	cassum.allcsps --
+FROM (
+	select hc.materialNo,hc.cpc as csps from baseHour as bh
+	left join 
+	(
+	SELECT  SUM(sto.inStockNum) AS cpc,
+			mat.materialNo,
+			HOUR(sto.operateTime) as thour
+			FROM bo_akl_MM_inStockInfo AS sto
+			LEFT JOIN bo_akl_MM_stockType AS st ON st.id = sto.stockTypeId
+			left JOIN bo_akl_MM_materialInfo AS mat ON sto.materialId = mat.id
+			where st.stockType = '成品仓' 
+			and mat.materialNo = :pNo
+			and YEAR(sto.operateTime)=:inputyear 
+			and MONTH(sto.operateTime)=:inputmonth 
+			and DAYOFMONTH(sto.operateTime)=:inputday
+			GROUP BY mat.materialNo,HOUR(sto.operateTime)
+			) as hc on hc.thour=bh.thour
+) AS lpl
+LEFT JOIN bo_akl_EM_productInfo AS ep ON lpl.materialNo = ep.prNo
+LEFT JOIN (
+	SELECT SUM(stoo.cpc) AS allcsps
+	FROM (
+		SELECT CASE WHEN st.stockType = '成品仓' THEN sto.inStockNum ELSE 0 END AS cpc, sto.materialId
+		FROM bo_akl_MM_inStockInfo AS sto
+		LEFT JOIN bo_akl_MM_stockType AS st ON st.id = sto.stockTypeId
+		) AS stoo
+	RIGHT JOIN bo_akl_MM_materialInfo AS mat ON stoo.materialId = mat.id
+	WHERE mat.materialNo = :pNo
+	GROUP BY mat.materialNo
+	) AS cassum ON 1 = 1
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="materialNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="standardWorkingHours" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="oeeP" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="oecaAp" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="csps" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="allcsps" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="inputyear" name="年" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="inputmonth" name="月" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="inputday" name="日" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="pNo" name="产品名称" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="baseHour" tokenIndexes="146" />
+    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="190,416" />
+    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="200,426" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="222,454" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="338" />
+    <DataItem type="TableField" key="baseHour.thour" tokenIndexes="326" />
+    <DataItem type="QueryParam" key="pNo" tokenIndexes="259,481" />
+    <DataItem type="QueryParam" key="inputyear" tokenIndexes="271" />
+    <DataItem type="QueryParam" key="inputmonth" tokenIndexes="283" />
+    <DataItem type="QueryParam" key="inputday" tokenIndexes="295" />
+  </DataItems>
+</Query>

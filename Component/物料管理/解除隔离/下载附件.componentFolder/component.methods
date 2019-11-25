@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2017/5/12 10:19:38-->
+<Methods>
+  <Method Code="JGButton1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>!IsEmpty([bo_akl_MM_applyAttachment].[id])</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_Attachmentoperation1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-19 13:51:47">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请选择一个附件进行下载！\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请选择一个附件进行下载！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="Attachmentoperation" ruleName="附件操作" instanceCode="BR_Attachmentoperation1" instanceName="附件操作" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-19 13:41:36">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"componentControlCode":null,"dataProcess":"bo_akl_MM_applyAttachment.attachmentSign","fileName":null,"function":"2","fileType":"dynamic","componentCode":"lmes","reviewScheme":"","watermarkEnable":false,"previewTargetType":"","isPreviewInModalWindow":false,"previewWindowSize":"","watermarkSet":null,"picWatermarkStyle":null,"docProtectSet":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><operate>2</operate><documentColumn>bo_akl_MM_applyAttachment.attachmentSign</documentColumn><fileType>dynamic</fileType><componentCode>lmes</componentCode><fileName /><watermarkEnable>False</watermarkEnable></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="form_downloadAttachments_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-19 13:40:50">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_MM_applyAttachment.applyId","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"@applyId","valueType":"9"}],"entityType":"window","entityName":"bo_akl_MM_applyAttachment","itemqueryparam":null,"items":[{"destName":"bo_akl_MM_applyAttachment.applyId","sourceName":"bo_akl_MM_applyAttachment.applyId","type":"entityField"},{"destName":"bo_akl_MM_applyAttachment.attachmentName","sourceName":"bo_akl_MM_applyAttachment.attachmentName","type":"entityField"},{"destName":"bo_akl_MM_applyAttachment.attachmentSign","sourceName":"bo_akl_MM_applyAttachment.attachmentSign","type":"entityField"},{"destName":"bo_akl_MM_applyAttachment.id","sourceName":"bo_akl_MM_applyAttachment.id","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_MM_applyAttachment","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_MM_applyAttachment</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_MM_applyAttachment</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_MM_applyAttachment.applyId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>@applyId</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>858ab111c1464f5ea04a48cf0aa664ce</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>858ab111c1464f5ea04a48cf0aa664ce</MasterID><DestName>bo_akl_MM_applyAttachment.applyId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_applyAttachment.applyId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>858ab111c1464f5ea04a48cf0aa664ce</MasterID><DestName>bo_akl_MM_applyAttachment.attachmentName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_applyAttachment.attachmentName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>858ab111c1464f5ea04a48cf0aa664ce</MasterID><DestName>bo_akl_MM_applyAttachment.attachmentSign</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_applyAttachment.attachmentSign</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>858ab111c1464f5ea04a48cf0aa664ce</MasterID><DestName>bo_akl_MM_applyAttachment.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_applyAttachment.id</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>858ab111c1464f5ea04a48cf0aa664ce</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>858ab111c1464f5ea04a48cf0aa664ce</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

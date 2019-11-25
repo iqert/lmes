@@ -1,0 +1,45 @@
+﻿<Query id="87637c4cdfed4b718b8a5dd7a65fc172" code="getBomWithMaterials" name="关联物料查询Bom" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-07-19 10:44:42]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-10-17 19:39:08]]></ModificationTime>
+  <VSql><![CDATA[SELECT b.*,m.materialType from bo_akl_MM_bomInfo AS b left join bo_akl_MM_materialInfo AS m 
+ON b.materialNo=m.materialNo order by materialNo asc]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="materialType" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="id" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="materialNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="useNum" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="remark" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="PID" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="OrderNo" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="InnerCode" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_8" code="IsLeaf" name="" dataType="boolean" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_MM_bomInfo" tokenIndexes="12" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="22" />
+    <DataItem type="Query" key="b" tokenIndexes="16,30" />
+    <DataItem type="QueryField" key="b.materialNo" tokenIndexes="32" />
+  </DataItems>
+</Query>

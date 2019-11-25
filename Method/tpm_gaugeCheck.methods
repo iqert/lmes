@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Methods>
+  <Method Code="tpm_gaugeCheck" Type="Server" InterfaceType="Local" RestrictType="Private" TransactionType="transaction">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>GetEntityRowCountFunc("BR_VAR_PARENT.equInfo") &lt;&gt; 0</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ExecuteRuleSet1" />
+      <foreach isEnabled="True" isDebug="False" code="ForeachCode1">
+        <define>
+          <varCode>equ</varCode>
+          <entityType>ruleSetVar</entityType>
+          <entityCode>equInfo</entityCode>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_DataBaseDataToInterfaceEntity1_1" />
+          <if isEnabled="True" isDebug="False" code="IfCode2">
+            <define>
+              <expression>GetEntityRowCountFunc("BR_VAR_PARENT.gaugeCheck") == 0</expression>
+              <remark></remark>
+            </define>
+            <sequence>
+              <evaluateRule code="BR_AddTableRecord1" />
+              <evaluateRule code="BR_UpdateRecord1" />
+              <evaluateRule code="BR_ModifyDataBaseRecord1" />
+              <evaluateRule code="BR_ExecuteRuleSet1_1_1" />
+              <evaluateRule code="BR_AddTableRecord5" />
+              <evaluateRule code="BR_UpdateRecord2" />
+              <evaluateRule code="BR_ClearEntityData2" />
+            </sequence>
+          </if>
+          <evaluateRule code="BR_ClearEntityData1" />
+        </sequence>
+      </foreach>
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取设信息数据到实体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_EM_EquipmentInformation.type","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"\"量检具\"","valueType":"9"}],"entityType":"ruleSetVar","entityName":"equInfo","itemqueryparam":null,"items":[{"destName":"equInfo.id","sourceName":"bo_akl_EM_EquipmentInformation.id","type":"entityField"},{"destName":"equInfo.equipNo","sourceName":"bo_akl_EM_EquipmentInformation.equipNo","type":"entityField"},{"destName":"equInfo.equipName","sourceName":"bo_akl_EM_EquipmentInformation.equipName","type":"entityField"},{"destName":"equInfo.type","sourceName":"bo_akl_EM_EquipmentInformation.type","type":"entityField"},{"destName":"equInfo.howLongTocheck","sourceName":"bo_akl_EM_EquipmentInformation.howLongTocheck","type":"entityField"},{"destName":"equInfo.formCheckDate","sourceName":"bo_akl_EM_EquipmentInformation.formCheckDate","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_EM_EquipmentInformation","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>ruleSetVar</EntityType><EntityName>equInfo</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_EM_EquipmentInformation</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_EM_EquipmentInformation.type</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>"量检具"</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>57839b19f28640fcbed30726a9587a89</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>57839b19f28640fcbed30726a9587a89</MasterID><DestName>equInfo.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EquipmentInformation.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>57839b19f28640fcbed30726a9587a89</MasterID><DestName>equInfo.equipNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EquipmentInformation.equipNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>57839b19f28640fcbed30726a9587a89</MasterID><DestName>equInfo.equipName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EquipmentInformation.equipName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>57839b19f28640fcbed30726a9587a89</MasterID><DestName>equInfo.type</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EquipmentInformation.type</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>57839b19f28640fcbed30726a9587a89</MasterID><DestName>equInfo.howLongTocheck</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EquipmentInformation.howLongTocheck</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>57839b19f28640fcbed30726a9587a89</MasterID><DestName>equInfo.formCheckDate</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EquipmentInformation.formCheckDate</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>57839b19f28640fcbed30726a9587a89</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>57839b19f28640fcbed30726a9587a89</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_OrgQueryPost(岗位单表数据查询)" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_organization","windowCode":"","ruleSetCode":"OrgQueryPost","isParallelism":"False","executeType":"confirm"},"invokeParams":[{"paramCode":"postName","paramType":"expression","paramValue":"\"质量工程师\"","paramSource":"","dataFilterType":"","paramFieldMapping":null}],"returnMapping":[{"destType":"ruleSetVariant","dest":"postInfo","srcType":"returnValue","src":"postEntity","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":false,"destFieldMapping":[{"destField":"postId","destType":"char","srcValueType":"field","srcValue":"id"},{"destField":"postName","destType":"char","srcValueType":"field","srcValue":"postName"}],"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><windowCode /><executeType>confirm</executeType><componentCode>vbase_organization</componentCode><ruleSetCode>OrgQueryPost</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>postName</paramCode><paramType>expression</paramType><paramValue>"质量工程师"</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtReturnMapping><destType>ruleSetVariant</destType><dest>postInfo</dest><srcType>returnValue</srcType><src>postEntity</src><updateDestEntityMethod>insertOrUpdateBySameId</updateDestEntityMethod><isCleanDestEntityData>False</isCleanDestEntityData><destFieldMapping><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>postId</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>id</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>postName</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>postName</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></destFieldMapping><dsFilterCondition><![CDATA[<NewDataSet />]]]]><![CDATA[></dsFilterCondition><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1" instanceName="新增量检具校对实体记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"gaugeCheck.instrumentNo","fieldtype":"expression","srcField":"LV.equ.equipNo"},{"destField":"gaugeCheck.instrumentName","fieldtype":"expression","srcField":"LV.equ.equipName"},{"destField":"gaugeCheck.dateOfCalibration","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"gaugeCheck.equipid","fieldtype":"expression","srcField":"LV.equ.id"},{"destField":"gaugeCheck.lastCalibrationDate","fieldtype":"expression","srcField":"LV.equ.formCheckDate"},{"destField":"gaugeCheck.howLongTocheck","fieldtype":"expression","srcField":"LV.equ.howLongTocheck"}],"TableType":"ruleSetVar","TableName":"gaugeCheck","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>gaugeCheck</EntityName></dtMaster><dtEntityColumns><DestName>gaugeCheck.instrumentNo</DestName><SourceType>expression</SourceType><SourceName>LV.equ.equipNo</SourceName></dtEntityColumns><dtEntityColumns><DestName>gaugeCheck.instrumentName</DestName><SourceType>expression</SourceType><SourceName>LV.equ.equipName</SourceName></dtEntityColumns><dtEntityColumns><DestName>gaugeCheck.dateOfCalibration</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>gaugeCheck.equipid</DestName><SourceType>expression</SourceType><SourceName>LV.equ.id</SourceName></dtEntityColumns><dtEntityColumns><DestName>gaugeCheck.lastCalibrationDate</DestName><SourceType>expression</SourceType><SourceName>LV.equ.formCheckDate</SourceName></dtEntityColumns><dtEntityColumns><DestName>gaugeCheck.howLongTocheck</DestName><SourceType>expression</SourceType><SourceName>LV.equ.howLongTocheck</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_EM_calibrationRecords.dateOfCalibration","colValue":"gaugeCheck.dateOfCalibration","valueType":"entityField"},{"colName":"bo_akl_EM_calibrationRecords.equipid","colValue":"gaugeCheck.equipid","valueType":"entityField"},{"colName":"bo_akl_EM_calibrationRecords.id","colValue":"gaugeCheck.id","valueType":"entityField"},{"colName":"bo_akl_EM_calibrationRecords.instrumentName","colValue":"gaugeCheck.instrumentName","valueType":"entityField"},{"colName":"bo_akl_EM_calibrationRecords.instrumentNo","colValue":"gaugeCheck.instrumentNo","valueType":"entityField"},{"colName":"bo_akl_EM_calibrationRecords.lastCalibrationDate","colValue":"gaugeCheck.lastCalibrationDate","valueType":"entityField"},{"colName":"bo_akl_EM_calibrationRecords.isOp","colValue":"0","valueType":"expression"}],"dataSource":"gaugeCheck","dataSourceType":"ruleSetVar","destTab":"bo_akl_EM_calibrationRecords","isSaveAll":true}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>cb9a825e40ff4bd48144de9a3e314fa3</ID><SourceName>gaugeCheck</SourceName><SourceType>ruleSetVar</SourceType><SourceNameType>gaugeCheck(方法变量)</SourceNameType><IsSaveAll>True</IsSaveAll><TableName>bo_akl_EM_calibrationRecords</TableName></dtMaster><dtDetails><PID>cb9a825e40ff4bd48144de9a3e314fa3</PID><SourceField>bo_akl_EM_calibrationRecords.dateOfCalibration</SourceField><DataFrom>entityField</DataFrom><Value>gaugeCheck.dateOfCalibration</Value></dtDetails><dtDetails><PID>cb9a825e40ff4bd48144de9a3e314fa3</PID><SourceField>bo_akl_EM_calibrationRecords.equipid</SourceField><DataFrom>entityField</DataFrom><Value>gaugeCheck.equipid</Value></dtDetails><dtDetails><PID>cb9a825e40ff4bd48144de9a3e314fa3</PID><SourceField>bo_akl_EM_calibrationRecords.id</SourceField><DataFrom>entityField</DataFrom><Value>gaugeCheck.id</Value></dtDetails><dtDetails><PID>cb9a825e40ff4bd48144de9a3e314fa3</PID><SourceField>bo_akl_EM_calibrationRecords.instrumentName</SourceField><DataFrom>entityField</DataFrom><Value>gaugeCheck.instrumentName</Value></dtDetails><dtDetails><PID>cb9a825e40ff4bd48144de9a3e314fa3</PID><SourceField>bo_akl_EM_calibrationRecords.instrumentNo</SourceField><DataFrom>entityField</DataFrom><Value>gaugeCheck.instrumentNo</Value></dtDetails><dtDetails><PID>cb9a825e40ff4bd48144de9a3e314fa3</PID><SourceField>bo_akl_EM_calibrationRecords.lastCalibrationDate</SourceField><DataFrom>entityField</DataFrom><Value>gaugeCheck.lastCalibrationDate</Value></dtDetails><dtDetails><PID>cb9a825e40ff4bd48144de9a3e314fa3</PID><SourceField>bo_akl_EM_calibrationRecords.isOp</SourceField><DataFrom>expression</DataFrom><Value>0</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ModifyDataBaseRecord" ruleName="修改数据库中的记录" instanceCode="BR_ModifyDataBaseRecord1" instanceName="修改设备信息的上次检测时间" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourcesMapping":[{"condition":[{"columnType":"1","field":"bo_akl_EM_EquipmentInformation.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"LV.equ.id","valueType":"9"}],"dataMap":[{"colName":"bo_akl_EM_EquipmentInformation.formCheckDate","colValue":"DateTimeNow()","valueType":"expression"},{"colName":"bo_akl_EM_EquipmentInformation.nextCheckDate","colValue":"DateAddFunc(DateTimeNow(),LV.equ.howLongTocheck,\"d\")","valueType":"expression"}],"dataSource":"bo_akl_EM_EquipmentInformation","opperType":"update"}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><orderNo>1</orderNo><destTableName>bo_akl_EM_EquipmentInformation</destTableName><opperType>update</opperType><condition><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_EM_EquipmentInformation.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>LV.equ.id</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></condition><dtField><![CDATA[<NewDataSet><dtField><destField>bo_akl_EM_EquipmentInformation.formCheckDate</destField><sourceType>expression</sourceType><sourceField>DateTimeNow()</sourceField></dtField><dtField><destField>bo_akl_EM_EquipmentInformation.nextCheckDate</destField><sourceType>expression</sourceType><sourceField>DateAddFunc(DateTimeNow(),LV.equ.howLongTocheck,"d")</sourceField></dtField></NewDataSet>]]]]><![CDATA[></dtField></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1_1_1" instanceName="执行方法_API_MailSendMessage(发送消息)_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_mail","windowCode":"","ruleSetCode":"API_MailSendMessage","isParallelism":"False","executeType":"confirm"},"invokeParams":[{"paramCode":"mailEntity","paramType":"entity","paramValue":"postInfo","paramSource":"ruleSetVar","dataFilterType":"all","paramFieldMapping":[{"paramEntityField":"title","fieldValueType":"expression","fieldValue":"ConcatStr(\"量检具校准任务提醒,\",\"量检具编号:\",LV.equ.equipNo)"},{"paramEntityField":"message","fieldValueType":"expression","fieldValue":"ConcatStr(\"量检具校准任务提醒,\",\"量检具编号:\",LV.equ.equipNo)"},{"paramEntityField":"sendAccountId","fieldValueType":"expression","fieldValue":"\"0\""},{"paramEntityField":"sendAccountName","fieldValueType":"expression","fieldValue":"\"系统\""},{"paramEntityField":"receiveAccountId","fieldValueType":"field","fieldValue":"postId"},{"paramEntityField":"receiveAccountName","fieldValueType":"field","fieldValue":"postName"},{"paramEntityField":"receiveType","fieldValueType":"expression","fieldValue":"\"post\""}]}],"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><windowCode /><executeType>confirm</executeType><componentCode>vbase_mail</componentCode><ruleSetCode>API_MailSendMessage</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>mailEntity</paramCode><paramType>entity</paramType><paramValue>postInfo</paramValue><paramSource>ruleSetVar</paramSource><paramSourceDisplayText>方法变量实体</paramSourceDisplayText><dataFilterType>all</dataFilterType><paramFieldMapping><![CDATA[<NewDataSet><dtParamFieldMapping><paramEntityField>title</paramEntityField><paramEntityType>window</paramEntityType><fieldValueType>expression</fieldValueType><fieldValue>ConcatStr("量检具校准任务提醒,","量检具编号:",LV.equ.equipNo)</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>message</paramEntityField><paramEntityType>window</paramEntityType><fieldValueType>expression</fieldValueType><fieldValue>ConcatStr("量检具校准任务提醒,","量检具编号:",LV.equ.equipNo)</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>sendAccountId</paramEntityField><paramEntityType>window</paramEntityType><fieldValueType>expression</fieldValueType><fieldValue>"0"</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>sendAccountName</paramEntityField><paramEntityType>window</paramEntityType><fieldValueType>expression</fieldValueType><fieldValue>"系统"</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>receiveAccountId</paramEntityField><paramEntityType>ruleSetVar</paramEntityType><fieldValueType>field</fieldValueType><fieldValue>postId</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>receiveAccountName</paramEntityField><paramEntityType>ruleSetVar</paramEntityType><fieldValueType>field</fieldValueType><fieldValue>postName</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>receiveType</paramEntityField><fieldValueType>expression</fieldValueType><fieldValue>"post"</fieldValue></dtParamFieldMapping></NewDataSet>]]]]><![CDATA[></paramFieldMapping></dtInvokeParams></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord5" instanceName="新增实体记录_推送记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"taskPushRecode.taskName","fieldtype":"expression","srcField":"\"量检具校准\""},{"destField":"taskPushRecode.taskCode","fieldtype":"expression","srcField":"\"gaugeCheck\""},{"destField":"taskPushRecode.pushTime","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"taskPushRecode.tabelName","fieldtype":"expression","srcField":"\"bo_akl_EM_calibrationRecords\""},{"destField":"taskPushRecode.crux","fieldtype":"expression","srcField":"LV.equ.id"}],"TableType":"ruleSetVar","TableName":"taskPushRecode","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>taskPushRecode</EntityName></dtMaster><dtEntityColumns><DestName>taskPushRecode.taskName</DestName><SourceType>expression</SourceType><SourceName>"量检具校准"</SourceName></dtEntityColumns><dtEntityColumns><DestName>taskPushRecode.taskCode</DestName><SourceType>expression</SourceType><SourceName>"gaugeCheck"</SourceName></dtEntityColumns><dtEntityColumns><DestName>taskPushRecode.pushTime</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>taskPushRecode.tabelName</DestName><SourceType>expression</SourceType><SourceName>"bo_akl_EM_calibrationRecords"</SourceName></dtEntityColumns><dtEntityColumns><DestName>taskPushRecode.crux</DestName><SourceType>expression</SourceType><SourceName>LV.equ.id</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord2" instanceName="保存实体到数据库_推送记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_taskPushRecode.crux","colValue":"taskPushRecode.crux","valueType":"entityField"},{"colName":"bo_akl_taskPushRecode.id","colValue":"taskPushRecode.id","valueType":"entityField"},{"colName":"bo_akl_taskPushRecode.isFinish","colValue":"taskPushRecode.isFinish","valueType":"entityField"},{"colName":"bo_akl_taskPushRecode.pushTime","colValue":"taskPushRecode.pushTime","valueType":"entityField"},{"colName":"bo_akl_taskPushRecode.tabelName","colValue":"taskPushRecode.tabelName","valueType":"entityField"},{"colName":"bo_akl_taskPushRecode.taskCode","colValue":"taskPushRecode.taskCode","valueType":"entityField"},{"colName":"bo_akl_taskPushRecode.taskName","colValue":"taskPushRecode.taskName","valueType":"entityField"}],"dataSource":"taskPushRecode","dataSourceType":"ruleSetVar","destTab":"bo_akl_taskPushRecode","isSaveAll":true}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>c1819d8173ac400890f2072ee754de20</ID><SourceName>taskPushRecode</SourceName><SourceType>ruleSetVar</SourceType><SourceNameType>taskPushRecode(方法变量)</SourceNameType><IsSaveAll>True</IsSaveAll><TableName>bo_akl_taskPushRecode</TableName></dtMaster><dtDetails><PID>c1819d8173ac400890f2072ee754de20</PID><SourceField>bo_akl_taskPushRecode.crux</SourceField><DataFrom>entityField</DataFrom><Value>taskPushRecode.crux</Value></dtDetails><dtDetails><PID>c1819d8173ac400890f2072ee754de20</PID><SourceField>bo_akl_taskPushRecode.id</SourceField><DataFrom>entityField</DataFrom><Value>taskPushRecode.id</Value></dtDetails><dtDetails><PID>c1819d8173ac400890f2072ee754de20</PID><SourceField>bo_akl_taskPushRecode.isFinish</SourceField><DataFrom>entityField</DataFrom><Value>taskPushRecode.isFinish</Value></dtDetails><dtDetails><PID>c1819d8173ac400890f2072ee754de20</PID><SourceField>bo_akl_taskPushRecode.pushTime</SourceField><DataFrom>entityField</DataFrom><Value>taskPushRecode.pushTime</Value></dtDetails><dtDetails><PID>c1819d8173ac400890f2072ee754de20</PID><SourceField>bo_akl_taskPushRecode.tabelName</SourceField><DataFrom>entityField</DataFrom><Value>taskPushRecode.tabelName</Value></dtDetails><dtDetails><PID>c1819d8173ac400890f2072ee754de20</PID><SourceField>bo_akl_taskPushRecode.taskCode</SourceField><DataFrom>entityField</DataFrom><Value>taskPushRecode.taskCode</Value></dtDetails><dtDetails><PID>c1819d8173ac400890f2072ee754de20</PID><SourceField>bo_akl_taskPushRecode.taskName</SourceField><DataFrom>entityField</DataFrom><Value>taskPushRecode.taskName</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ClearEntityData" ruleName="清除实体记录" instanceCode="BR_ClearEntityData2" instanceName="清除实体记录_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-10 14:44:04">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dtMaster":[{"entityName":"taskPushRecode","entityType":"ruleSetVar","dsWhere":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><EntityName>taskPushRecode</EntityName><EntityType>ruleSetVar</EntityType><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1_1" instanceName="获取量检具校准记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_EM_calibrationRecords.equipid","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"LV.equ.id","valueType":"9"},{"columnType":"1","field":"bo_akl_EM_calibrationRecords.dateOfCalibration","fieldType":"date","leftBracket":"(","logicOperation":"and","operation":">","rightBracket":")","value":"DateSub(DateTimeNow(),LV.equ.howLongTocheck,\"d\")","valueType":"9"}],"entityType":"ruleSetVar","entityName":"gaugeCheck","itemqueryparam":null,"items":[{"destName":"gaugeCheck.instrumentNo","sourceName":"bo_akl_EM_calibrationRecords.instrumentNo","type":"entityField"},{"destName":"gaugeCheck.instrumentName","sourceName":"bo_akl_EM_calibrationRecords.instrumentName","type":"entityField"},{"destName":"gaugeCheck.dateOfCalibration","sourceName":"bo_akl_EM_calibrationRecords.dateOfCalibration","type":"entityField"},{"destName":"gaugeCheck.id","sourceName":"bo_akl_EM_calibrationRecords.id","type":"entityField"},{"destName":"gaugeCheck.equipid","sourceName":"bo_akl_EM_calibrationRecords.equipid","type":"entityField"},{"destName":"gaugeCheck.lastCalibrationDate","sourceName":"bo_akl_EM_calibrationRecords.lastCalibrationDate","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_EM_calibrationRecords","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>ruleSetVar</EntityType><EntityName>gaugeCheck</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_EM_calibrationRecords</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_EM_calibrationRecords.equipid</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>LV.equ.id</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_EM_calibrationRecords.dateOfCalibration</field><fieldType>date</fieldType><leftBracket>(</leftBracket><logicOperation>and</logicOperation><operation>&gt;</operation><rightBracket>)</rightBracket><value>DateSub(DateTimeNow(),LV.equ.howLongTocheck,"d")</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>d2864208c61f405bb5a7e0dc18a01a08</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>d2864208c61f405bb5a7e0dc18a01a08</MasterID><DestName>gaugeCheck.instrumentNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_calibrationRecords.instrumentNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d2864208c61f405bb5a7e0dc18a01a08</MasterID><DestName>gaugeCheck.instrumentName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_calibrationRecords.instrumentName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d2864208c61f405bb5a7e0dc18a01a08</MasterID><DestName>gaugeCheck.dateOfCalibration</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_calibrationRecords.dateOfCalibration</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d2864208c61f405bb5a7e0dc18a01a08</MasterID><DestName>gaugeCheck.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_calibrationRecords.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d2864208c61f405bb5a7e0dc18a01a08</MasterID><DestName>gaugeCheck.equipid</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_calibrationRecords.equipid</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d2864208c61f405bb5a7e0dc18a01a08</MasterID><DestName>gaugeCheck.lastCalibrationDate</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_calibrationRecords.lastCalibrationDate</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>d2864208c61f405bb5a7e0dc18a01a08</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>d2864208c61f405bb5a7e0dc18a01a08</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ClearEntityData" ruleName="清除实体记录" instanceCode="BR_ClearEntityData1" instanceName="清除实体记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dtMaster":[{"entityName":"gaugeCheck","entityType":"ruleSetVar","dsWhere":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><EntityName>gaugeCheck</EntityName><EntityType>ruleSetVar</EntityType><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Variables>
+      <Variable code="postInfo" name="岗位信息" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="postId" name="岗位Id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="postName" name="岗位名" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="gaugeCheck" name="量检具校准记录" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="instrumentNo" name="量检具编号" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="instrumentName" name="量检具名称" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="dateOfCalibration" name="本次校准日期" fieldType="date" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="id" name="" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="equipid" name="设备信息id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="lastCalibrationDate" name="上次校准日期" fieldType="date" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="howLongTocheck" name="校准间隔" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="equInfo" name="设备信息" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="设备id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="equipNo" name="设备编号" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="equipName" name="设备名称" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="type" name="设备类型" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="howLongTocheck" name="校准间隔" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="formCheckDate" name="上次校准时间" fieldType="date" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="taskPushRecode" name="任务推送记录" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="taskName" name="任务名称" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="taskCode" name="任务编号" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="isFinish" name="是否已经完成" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[1.完成 ]]></description>
+          </Field>
+          <Field code="pushTime" name="任务推送时间" fieldType="date" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="crux" name="关键查询数据" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="tabelName" name="相关表名" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+    </Variables>
+  </Method>
+</Methods>

@@ -1,0 +1,72 @@
+﻿<form type="1002" code="changeCheckHistory" IsLocked="False">
+  <propertys>
+    <property name="Width"><![CDATA[930]]></property>
+    <property name="Height"><![CDATA[659]]></property>
+    <property name="HeightSet"><![CDATA[StaticHeight]]></property>
+    <property name="LayoutType"><![CDATA[None]]></property>
+    <property name="TableName"><![CDATA[]]></property>
+    <property name="FormLoadAction"><![CDATA[newCheckHistory_FormLoadAction]]></property>
+    <property name="FormCloseAction"><![CDATA[]]></property>
+    <property name="FormClosingAction"><![CDATA[]]></property>
+    <property name="BackColor"><![CDATA[]]></property>
+    <property name="Padding"><![CDATA[0, 0, 0, 0]]></property>
+    <property name="Name"><![CDATA[修改点检记录表]]></property>
+    <property name="FormBorderStyle"><![CDATA[FixedSingle]]></property>
+    <property name="WindowState"><![CDATA[Normal]]></property>
+    <property name="MaximizeBox"><![CDATA[True]]></property>
+    <property name="RefResources"><![CDATA[]]></property>
+  </propertys>
+  <controls>
+    <JGRadioGroup Code="JGRadioGroup1" DropDownSource="{&quot;DataSourceSetting&quot;:{&quot;DataConfig&quot;:{&quot;DefaultSaveColumn&quot;:null,&quot;DefaultShowColumn&quot;:null,&quot;SourceType&quot;:null,&quot;SourceID&quot;:null,&quot;SourceName&quot;:null,&quot;MapTable&quot;:null,&quot;SaveColumn&quot;:null,&quot;ShowColumn&quot;:null,&quot;SortField&quot;:null,&quot;SortType&quot;:null,&quot;MaxRecCount&quot;:0,&quot;QueryField&quot;:null,&quot;QueryMethod&quot;:null,&quot;IsPickListFields&quot;:false,&quot;ConstData&quot;:[{&quot;id&quot;:&quot;符合&quot;,&quot;text&quot;:&quot;全部符合&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;不符合&quot;,&quot;text&quot;:&quot;全部不符合&quot;,&quot;selected&quot;:&quot;False&quot;}],&quot;SqlQueryConstData&quot;:null,&quot;EntityConstData&quot;:null,&quot;Condition&quot;:null,&quot;QueryParam&quot;:null,&quot;PickListFields&quot;:null},&quot;DataSourceType&quot;:&quot;CustomConst&quot;}}" LabelText="点检结果" Left="14" OnValueChanged="JGRadioGroup1_OnValueChanged" PercentHeight="3.9%" PercentWidth="32.8%" TabIndex="18" Top="261" Width="305" />
+    <JGTextBox Code="JGTextBox2" ColumnName="position" LabelText="点检位置" Left="14" PercentHeight="3.9%" PercentWidth="48.4%" TabIndex="17" TableName="bo_akl_base_checkInfo" Top="209" Width="450" />
+    <JGDataGrid Code="JGDataGrid1" EditTrigger="click" FetchMode="paged" Height="214" LabelText="列表" Left="14" OnSelectionChanged="JGDataGrid1_OnSelectionChanged" PageInfo="{&quot;PageList&quot;:[10,20,30,40,50,5],&quot;DefaultPageSize&quot;:5}" PercentHeight="32.5%" PercentWidth="97%" TabIndex="9" TableName="bo_akl_base_checkInfoList" Top="345" Width="902">
+      <JGTextBoxColumn AllowSort="True" Code="JGTextBoxColumn1" ColumnName="checkContent" LabelText="点检内容" ReadOnly="True" TableName="bo_akl_base_checkInfoList" TextLength="128" Width="130" />
+      <JGTextBoxColumn Code="JGTextBoxColumn2" ColumnName="checkMethod" LabelText="点检方法" ReadOnly="True" TableName="bo_akl_base_checkInfoList" TextLength="128" Width="133" />
+      <JGTextBoxColumn Code="JGTextBoxColumn3" ColumnName="checkStandard" LabelText="点检标准" ReadOnly="True" TableName="bo_akl_base_checkInfoList" TextLength="128" Width="140" />
+      <JGComboBoxColumn Code="JGComboBoxColumn1" ColumnName="result" DropDownSource="{&quot;DataSourceSetting&quot;:{&quot;DataConfig&quot;:{&quot;DefaultSaveColumn&quot;:null,&quot;DefaultShowColumn&quot;:null,&quot;SourceType&quot;:null,&quot;SourceID&quot;:null,&quot;SourceName&quot;:null,&quot;MapTable&quot;:null,&quot;SaveColumn&quot;:null,&quot;ShowColumn&quot;:null,&quot;SortField&quot;:null,&quot;SortType&quot;:null,&quot;MaxRecCount&quot;:0,&quot;QueryField&quot;:null,&quot;QueryMethod&quot;:null,&quot;IsPickListFields&quot;:false,&quot;ConstData&quot;:[{&quot;id&quot;:&quot;符合&quot;,&quot;text&quot;:&quot;符合&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;不符合&quot;,&quot;text&quot;:&quot;不符合&quot;,&quot;selected&quot;:&quot;False&quot;}],&quot;SqlQueryConstData&quot;:null,&quot;EntityConstData&quot;:null,&quot;Condition&quot;:null,&quot;QueryParam&quot;:null,&quot;PickListFields&quot;:null},&quot;DataSourceType&quot;:&quot;CustomConst&quot;}}" IDColumnName="result" LabelText="点检结果" TableName="bo_akl_base_checkInfoList" Width="100" />
+      <JGTextBoxColumn Code="JGTextBoxColumn4" ColumnName="note" LabelText="点检备注" TableName="bo_akl_base_checkInfoList" Width="126" />
+      <JGTextBoxColumn Code="JGTextBoxColumn5" ColumnName="repair" LabelText="维修结果" TableName="bo_akl_base_checkInfoList" TextLength="128" Width="103" />
+      <JGTextBoxColumn Code="JGTextBoxColumn7" ColumnName="repairman" LabelText="维修员" TableName="bo_akl_base_checkInfoList" />
+    </JGDataGrid>
+    <JGButton BackColor="255, 0, 0" Code="JGButton1" LabelText="删除" Left="14" OnClick="deletePointCheckFButton_OnClick" PercentHeight="3.9%" PercentWidth="5.6%" TabIndex="8" Top="303" Visible="False" />
+    <JGLongDateTimePicker Code="JGLongDateTimePicker1" ColumnName="checkDate" LabelText="点检时间" Left="512" PercentHeight="3.9%" PercentWidth="43.4%" TabIndex="5" TableName="bo_akl_base_checkInfo" Top="113" Width="404" />
+    <JGComboBox Code="pointCheckComboBox" ColumnName="cycle" DropDownSource="{&quot;DataSourceSetting&quot;:{&quot;DataConfig&quot;:{&quot;DefaultSaveColumn&quot;:null,&quot;DefaultShowColumn&quot;:null,&quot;SourceType&quot;:null,&quot;SourceID&quot;:null,&quot;SourceName&quot;:null,&quot;MapTable&quot;:null,&quot;SaveColumn&quot;:null,&quot;ShowColumn&quot;:null,&quot;SortField&quot;:null,&quot;SortType&quot;:null,&quot;MaxRecCount&quot;:0,&quot;QueryField&quot;:null,&quot;QueryMethod&quot;:null,&quot;IsPickListFields&quot;:false,&quot;ConstData&quot;:[{&quot;id&quot;:&quot;每天&quot;,&quot;text&quot;:&quot;每天&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;每周&quot;,&quot;text&quot;:&quot;每周&quot;,&quot;selected&quot;:&quot;False&quot;}],&quot;SqlQueryConstData&quot;:null,&quot;EntityConstData&quot;:null,&quot;Condition&quot;:null,&quot;QueryParam&quot;:null,&quot;PickListFields&quot;:null},&quot;DataSourceType&quot;:&quot;CustomConst&quot;}}" IDColumnName="cycle" LabelText="点检周期" Left="14" OnValueChanged="equipNoBaseDictBox_OpenModuleAction_1" PercentHeight="3.9%" PercentWidth="48.4%" TabIndex="4" TableName="bo_akl_base_checkInfo" Top="113" Width="450" />
+    <JGBaseDictBox Code="equipNameBaseDictBox" ColumnName="equ_Name" IDColumnName="equ_Name" IsMust="True" LabelText="设备名称" Left="512" OpenModuleAction="equipNoBaseDictBox_OpenModuleAction" PercentHeight="3.9%" PercentWidth="43.4%" TabIndex="3" TableName="bo_akl_base_checkInfo" Top="67" Width="404" />
+    <JGBaseDictBox Code="equipNoBaseDictBox" ColumnName="equ_No" IDColumnName="equ_No" IsMust="True" LabelText="设备编号" Left="14" OpenModuleAction="equipNoBaseDictBox_OpenModuleAction" PercentHeight="3.9%" PercentWidth="48.4%" TabIndex="2" TableName="bo_akl_base_checkInfo" Top="67" Width="450" />
+    <JGButton Code="saveCheckHistoryButton" LabelText="保存" Left="418" OnClick="saveCheckHistoryButton_OnClick" PercentHeight="3.9%" PercentWidth="12.2%" TabIndex="10" Top="574" Width="113" />
+    <JGRadioGroup Code="classesRadioGroup" DropDownSource="{&quot;DataSourceSetting&quot;:{&quot;DataConfig&quot;:{&quot;DefaultSaveColumn&quot;:null,&quot;DefaultShowColumn&quot;:null,&quot;SourceType&quot;:null,&quot;SourceID&quot;:null,&quot;SourceName&quot;:null,&quot;MapTable&quot;:null,&quot;SaveColumn&quot;:null,&quot;ShowColumn&quot;:null,&quot;SortField&quot;:null,&quot;SortType&quot;:null,&quot;MaxRecCount&quot;:0,&quot;QueryField&quot;:null,&quot;QueryMethod&quot;:null,&quot;IsPickListFields&quot;:false,&quot;ConstData&quot;:[{&quot;id&quot;:&quot;白班&quot;,&quot;text&quot;:&quot;白班&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;晚班&quot;,&quot;text&quot;:&quot;晚班&quot;,&quot;selected&quot;:&quot;False&quot;}],&quot;SqlQueryConstData&quot;:null,&quot;EntityConstData&quot;:null,&quot;Condition&quot;:null,&quot;QueryParam&quot;:null,&quot;PickListFields&quot;:null},&quot;DataSourceType&quot;:&quot;CustomConst&quot;}}" IDColumnName="classes" LabelText="白/晚班" Left="14" PercentHeight="3.9%" PercentWidth="48.4%" TabIndex="6" TableName="bo_akl_base_checkInfo" Top="163" Width="450" />
+    <JGLabel Code="checkHistoryLabel" FontStyle="微软雅黑, 15pt, style=Bold" Height="36" LabelText="点检记录表" Left="418" PercentHeight="5.5%" PercentWidth="12.2%" TabIndex="1" Top="15" Width="113" />
+    <JGTextBox Code="JGTextBox1" ColumnName="operator" IsMust="True" LabelText="操作人" Left="512" PercentHeight="3.9%" PercentWidth="43.4%" ReadOnly="True" TabIndex="7" TableName="bo_akl_base_checkInfo" Top="163" Width="404" />
+  </controls>
+  <outputs>
+    <variable code="djjlb" name="" fieldType="entity" defaultValue="" description="" isRestore="false">
+      <entity>
+        <field code="id" name="" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="equipId" name="设备信息Id" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="equ_No" name="设备编号" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="equ_Name" name="设备名称" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="cycle" name="点检周期" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="checkDate" name="点检时间" fieldType="longDate" defaultValue="" isRestore="false" />
+        <field code="classes" name="白/晚班" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="operatorCode" name="操作人编号" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="operator" name="操作人" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="isop" name="" fieldType="char" defaultValue="" isRestore="false" />
+      </entity>
+    </variable>
+  </outputs>
+  <inputs>
+    <variable code="checkInfoId" name="点检表Id" fieldType="char" defaultValue="" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+    <variable code="equipIdMain" name="设备信息Id" fieldType="char" defaultValue="0" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+    <variable code="employee" name="员工信息Id" fieldType="char" defaultValue="0" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+    <variable code="equid" name="" fieldType="char" defaultValue="" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+  </inputs>
+  <remark><![CDATA[]]></remark>
+</form>

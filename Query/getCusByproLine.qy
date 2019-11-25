@@ -1,0 +1,56 @@
+﻿<Query id="38b260cb55e548e08256da62d4c5fc84" code="getCusByproLine" name="根据产线获取客户信息" type="VSql">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[liub]]></Creator>
+  <CreationTime><![CDATA[2019-05-05 15:14:21]]></CreationTime>
+  <Modifier><![CDATA[liub]]></Modifier>
+  <ModificationTime><![CDATA[2019-05-06 11:15:05]]></ModificationTime>
+  <VSql><![CDATA[select  
+A.id,A.pNo,B.pName,C.fullName,C.address,C.platform,C.supNo
+FROM bo_akl_base_productlines A 
+left join bo_akl_base_projectInfo B on A.belongProject = B.id
+left join bo_akl_base_customer C on B.cId = c.id]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="id" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="pNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="pName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="fullName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="address" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="platform" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="supNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="32" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="40" />
+    <DataItem type="Table" key="bo_akl_base_customer" tokenIndexes="60" />
+    <DataItem type="Query" key="A" tokenIndexes="2,6,34,46" />
+    <DataItem type="Query" key="B" tokenIndexes="10,42,52,66" />
+    <DataItem type="Query" key="C" tokenIndexes="14,18,22,26,62" />
+    <DataItem type="Query" key="c" tokenIndexes="72" />
+    <DataItem type="QueryField" key="A.id" tokenIndexes="4" />
+    <DataItem type="QueryField" key="A.pNo" tokenIndexes="8" />
+    <DataItem type="QueryField" key="B.pName" tokenIndexes="12" />
+    <DataItem type="QueryField" key="C.fullName" tokenIndexes="16" />
+    <DataItem type="QueryField" key="C.address" tokenIndexes="20" />
+    <DataItem type="QueryField" key="C.platform" tokenIndexes="24" />
+    <DataItem type="QueryField" key="C.supNo" tokenIndexes="28" />
+    <DataItem type="QueryField" key="A.belongProject" tokenIndexes="48" />
+    <DataItem type="QueryField" key="B.id" tokenIndexes="54" />
+    <DataItem type="QueryField" key="B.cId" tokenIndexes="68" />
+    <DataItem type="QueryField" key="c.id" tokenIndexes="74" />
+  </DataItems>
+</Query>

@@ -1,0 +1,135 @@
+﻿<Query id="7804181897014397805b7c09c16d573f" code="eqq" name="12" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-08-29 19:58:14]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-09-03 14:46:26]]></ModificationTime>
+  <VSql><![CDATA[select ROUND(cs.blpcbadNum/(count(pl.materialNo)*cs.boxPartsNum),2) as rate,cs.badGoal,count(pl.materialNo)as pcount,cs.weekPriceSum,cs.monthPriceSum,cs.materialNo,cs.blpcbadNum,cs.price,cs.prName,(cs.price*cs.blpcbadNum) as priceSum,cs.glcbadNum,cs.materialType,1 as pullTest
+from(
+	select bn.badGoal,bn.boxPartsNum,bn.materialNo,bn.blpcbadNum,bn.price,bn.prName,(bn.price*bn.blpcbadNum) as priceSum,(bn.price*bn.weekInput) as weekPriceSum,(bn.price*bn.monthInput) as monthPriceSum,bn.glcbadNum,bn.materialType
+	from
+		(select mat.materialNo,SUM(ins.blpc) as blpcbadNum,SUM(ins.wsc) as glcbadNum,SUM(ins.weekInput) as weekInput,SUM(ins.monthInput) as monthInput,
+				ep.price as price,ep.prName as prName,ep.boxPartsNum as boxPartsNum,ep.badGoal as badGoal,
+				mat.materialType as materialType
+				from (select case 
+						when st.stockType='不良品仓'  THEN sto.inStockNum 
+						else 0 end as blpc,
+						case 
+						when st.stockType='隔离仓'  THEN sto.inStockNum 
+						else 0 end as wsc,
+						case 
+						when WEEK(sto.operateTime)=WEEK(NOW()) and st.stockType='不良品仓' THEN 1
+						else 0 end as weekInput,
+						case 
+						when MONTH(sto.operateTime)=MONTH(NOW()) and st.stockType='不良品仓' THEN 1
+						else 0 end as monthInput,
+						sto.*
+						from bo_akl_MM_inStockInfo as sto 
+						left join bo_akl_MM_stockType st on st.id=sto.stockTypeId
+					)
+				    as ins 
+				    left join bo_akl_MM_materialInfo as mat on ins.materialId=mat.id
+				    left join bo_akl_EM_productInfo as ep on mat.materialNo=ep.prNo
+					left join bo_akl_base_productlines as pdl on ep.prLine=pdl.pNo 
+					left join bo_akl_base_projectInfo as pro on pro.id=pdl.belongProject
+					where MONTH(ins.operateTime)=:inputMonth and YEAR(ins.operateTime)=:inputYear
+					and DAYOFMONTH(ins.operateTime)=:inputDay and pro.pNo=:pNo and mat.materialType='成品'
+				    group by mat.materialNo
+		)as bn
+	where  bn.materialNo is not null) cs 
+left join bo_akl_LM_printProductLabel as pl on cs.materialNo=pl.materialNo group by pl.materialNo
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="rate" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="badGoal" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="pcount" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="weekPriceSum" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="monthPriceSum" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="materialNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="blpcbadNum" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="price" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_8" code="prName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_9" code="priceSum" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_10" code="glcbadNum" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_11" code="materialType" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_12" code="pullTest" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="inputMonth" name="" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="inputYear" name="" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="inputDay" name="" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="prNo" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="pNo" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="415" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="449" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="469" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="489" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="509" />
+    <DataItem type="Table" key="bo_akl_LM_printProductLabel" tokenIndexes="610" />
+    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="425" />
+    <DataItem type="TableField" key="bo_akl_LM_printProductLabel.materialNo" tokenIndexes="13,36,624,632" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="180,479,584" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.price" tokenIndexes="229" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prName" tokenIndexes="237" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.boxPartsNum" tokenIndexes="245" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.badGoal" tokenIndexes="253" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialType" tokenIndexes="262,574" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.inStockNum" tokenIndexes="287,314" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.operateTime" tokenIndexes="335,376" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.stockTypeId" tokenIndexes="437" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="463" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="483" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prLine" tokenIndexes="499" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="503" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="519" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="523" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.pNo" tokenIndexes="565" />
+    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="535" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="547" />
+    <DataItem type="QueryParam" key="inputDay" tokenIndexes="559" />
+    <DataItem type="QueryParam" key="pNo" tokenIndexes="568" />
+  </DataItems>
+</Query>

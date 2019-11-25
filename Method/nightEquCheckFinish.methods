@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Methods>
+  <Method Code="nightEquCheckFinish" Type="Server" InterfaceType="Local" RestrictType="Private" TransactionType="transaction">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>GetEntityRowCountFunc("BR_VAR_PARENT.dayCheck") &lt;&gt; 0</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ExecuteRuleSet1" />
+      <foreach isEnabled="True" isDebug="False" code="ForeachCode1">
+        <define>
+          <varCode>dc</varCode>
+          <entityType>ruleSetVar</entityType>
+          <entityCode>dayCheck</entityCode>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_ExecuteRuleSet1_1" />
+          <evaluateRule code="BR_AddTableRecord5" />
+          <evaluateRule code="BR_UpdateRecord2" />
+          <evaluateRule code="BR_ClearEntityData2" />
+        </sequence>
+      </foreach>
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取未完成点检数据到实体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_base_checkInfo.checkDate","fieldType":"longDate","leftBracket":"(","logicOperation":null,"operation":"like","rightBracket":")","value":"DateToString(\"yyyy-MM-dd\",DateSub(DateTimeNow(),1,\"d\"))","valueType":"9"},{"columnType":"1","field":"bo_akl_base_checkInfo.classes","fieldType":"char","leftBracket":"(","logicOperation":"and","operation":"=","rightBracket":")","value":"\"晚班\"","valueType":"9"},{"columnType":"1","field":"bo_akl_base_checkInfo.cycle","fieldType":"char","leftBracket":"(","logicOperation":"and","operation":"=","rightBracket":")","value":"\"每天\"","valueType":"9"},{"columnType":"1","field":"bo_akl_base_checkInfo.isop","fieldType":"char","leftBracket":"(","logicOperation":"and","operation":"=","rightBracket":")","value":"\"0\"","valueType":"9"}],"entityType":"ruleSetVar","entityName":"dayCheck","itemqueryparam":null,"items":[{"destName":"dayCheck.id","sourceName":"bo_akl_base_checkInfo.id","type":"entityField"},{"destName":"dayCheck.equipId","sourceName":"bo_akl_base_checkInfo.equipId","type":"entityField"},{"destName":"dayCheck.equ_No","sourceName":"bo_akl_base_checkInfo.equ_No","type":"entityField"},{"destName":"dayCheck.equ_Name","sourceName":"bo_akl_base_checkInfo.equ_Name","type":"entityField"},{"destName":"dayCheck.cycle","sourceName":"bo_akl_base_checkInfo.cycle","type":"entityField"},{"destName":"dayCheck.checkDate","sourceName":"bo_akl_base_checkInfo.checkDate","type":"entityField"},{"destName":"dayCheck.classes","sourceName":"bo_akl_base_checkInfo.classes","type":"entityField"},{"destName":"dayCheck.operatorCode","sourceName":"bo_akl_base_checkInfo.operatorCode","type":"entityField"},{"destName":"dayCheck.operator","sourceName":"bo_akl_base_checkInfo.operator","type":"entityField"},{"destName":"dayCheck.isop","sourceName":"bo_akl_base_checkInfo.isop","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_base_checkInfo","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>ruleSetVar</EntityType><EntityName>dayCheck</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_base_checkInfo</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_base_checkInfo.checkDate</field><fieldType>longDate</fieldType><leftBracket>(</leftBracket><operation>like</operation><rightBracket>)</rightBracket><value>DateToString("yyyy-MM-dd",DateSub(DateTimeNow(),1,"d"))</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_base_checkInfo.classes</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>and</logicOperation><operation>=</operation><rightBracket>)</rightBracket><value>"晚班"</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_base_checkInfo.cycle</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>and</logicOperation><operation>=</operation><rightBracket>)</rightBracket><value>"每天"</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_base_checkInfo.isop</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>and</logicOperation><operation>=</operation><rightBracket>)</rightBracket><value>"0"</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>d7430b5187a14101895014ec3e38f089</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>d7430b5187a14101895014ec3e38f089</MasterID><DestName>dayCheck.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_checkInfo.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d7430b5187a14101895014ec3e38f089</MasterID><DestName>dayCheck.equipId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_checkInfo.equipId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d7430b5187a14101895014ec3e38f089</MasterID><DestName>dayCheck.equ_No</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_checkInfo.equ_No</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d7430b5187a14101895014ec3e38f089</MasterID><DestName>dayCheck.equ_Name</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_checkInfo.equ_Name</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d7430b5187a14101895014ec3e38f089</MasterID><DestName>dayCheck.cycle</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_checkInfo.cycle</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d7430b5187a14101895014ec3e38f089</MasterID><DestName>dayCheck.checkDate</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_checkInfo.checkDate</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d7430b5187a14101895014ec3e38f089</MasterID><DestName>dayCheck.classes</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_checkInfo.classes</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d7430b5187a14101895014ec3e38f089</MasterID><DestName>dayCheck.operatorCode</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_checkInfo.operatorCode</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d7430b5187a14101895014ec3e38f089</MasterID><DestName>dayCheck.operator</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_checkInfo.operator</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d7430b5187a14101895014ec3e38f089</MasterID><DestName>dayCheck.isop</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_checkInfo.isop</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>d7430b5187a14101895014ec3e38f089</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>d7430b5187a14101895014ec3e38f089</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1_1" instanceName="执行方法_API_MailSendMessage(发送消息)" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_mail","windowCode":"","ruleSetCode":"API_MailSendMessage","isParallelism":"False","executeType":"confirm"},"invokeParams":[{"paramCode":"mailEntity","paramType":"entity","paramValue":"postInfo","paramSource":"ruleSetVar","dataFilterType":"all","paramFieldMapping":[{"paramEntityField":"title","fieldValueType":"expression","fieldValue":"ConcatStr(\"警告：\",LV.dc.classes,\",设备编号：\",LV.dc.equ_No,\",没完成每天点检！\")"},{"paramEntityField":"message","fieldValueType":"expression","fieldValue":"ConcatStr(\"警告：\",LV.dc.classes,\",设备编号：\",LV.dc.equ_No,\",没完成每天点检！\")"},{"paramEntityField":"sendAccountId","fieldValueType":"expression","fieldValue":"\"0\""},{"paramEntityField":"sendAccountName","fieldValueType":"expression","fieldValue":"\"系统\""},{"paramEntityField":"receiveAccountId","fieldValueType":"field","fieldValue":"postId"},{"paramEntityField":"receiveAccountName","fieldValueType":"field","fieldValue":"postName"},{"paramEntityField":"receiveType","fieldValueType":"expression","fieldValue":"\"post\""}]}],"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><windowCode /><executeType>confirm</executeType><componentCode>vbase_mail</componentCode><ruleSetCode>API_MailSendMessage</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>mailEntity</paramCode><paramType>entity</paramType><paramValue>postInfo</paramValue><paramSource>ruleSetVar</paramSource><paramSourceDisplayText>方法变量实体</paramSourceDisplayText><dataFilterType>all</dataFilterType><paramFieldMapping><![CDATA[<NewDataSet><dtParamFieldMapping><paramEntityField>title</paramEntityField><paramEntityType>window</paramEntityType><fieldValueType>expression</fieldValueType><fieldValue>ConcatStr("警告：",LV.dc.classes,",设备编号：",LV.dc.equ_No,",没完成每天点检！")</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>message</paramEntityField><paramEntityType>window</paramEntityType><fieldValueType>expression</fieldValueType><fieldValue>ConcatStr("警告：",LV.dc.classes,",设备编号：",LV.dc.equ_No,",没完成每天点检！")</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>sendAccountId</paramEntityField><paramEntityType>window</paramEntityType><fieldValueType>expression</fieldValueType><fieldValue>"0"</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>sendAccountName</paramEntityField><paramEntityType>window</paramEntityType><fieldValueType>expression</fieldValueType><fieldValue>"系统"</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>receiveAccountId</paramEntityField><paramEntityType>ruleSetVar</paramEntityType><fieldValueType>field</fieldValueType><fieldValue>postId</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>receiveAccountName</paramEntityField><paramEntityType>ruleSetVar</paramEntityType><fieldValueType>field</fieldValueType><fieldValue>postName</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>receiveType</paramEntityField><fieldValueType>expression</fieldValueType><fieldValue>"post"</fieldValue></dtParamFieldMapping></NewDataSet>]]]]><![CDATA[></paramFieldMapping></dtInvokeParams></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord5" instanceName="新增实体记录_推送记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"taskPushRecode.taskName","fieldtype":"expression","srcField":"\"晚班每日点检\""},{"destField":"taskPushRecode.taskCode","fieldtype":"expression","srcField":"\"nightDaycheck\""},{"destField":"taskPushRecode.pushTime","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"taskPushRecode.tabelName","fieldtype":"expression","srcField":"\"bo_akl_base_checkInfo\""}],"TableType":"ruleSetVar","TableName":"taskPushRecode","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>taskPushRecode</EntityName></dtMaster><dtEntityColumns><DestName>taskPushRecode.taskName</DestName><SourceType>expression</SourceType><SourceName>"晚班每日点检"</SourceName></dtEntityColumns><dtEntityColumns><DestName>taskPushRecode.taskCode</DestName><SourceType>expression</SourceType><SourceName>"nightDaycheck"</SourceName></dtEntityColumns><dtEntityColumns><DestName>taskPushRecode.pushTime</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>taskPushRecode.tabelName</DestName><SourceType>expression</SourceType><SourceName>"bo_akl_base_checkInfo"</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord2" instanceName="保存实体到数据库_推送记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_taskPushRecode.crux","colValue":"taskPushRecode.crux","valueType":"entityField"},{"colName":"bo_akl_taskPushRecode.id","colValue":"taskPushRecode.id","valueType":"entityField"},{"colName":"bo_akl_taskPushRecode.isFinish","colValue":"taskPushRecode.isFinish","valueType":"entityField"},{"colName":"bo_akl_taskPushRecode.pushTime","colValue":"taskPushRecode.pushTime","valueType":"entityField"},{"colName":"bo_akl_taskPushRecode.tabelName","colValue":"taskPushRecode.tabelName","valueType":"entityField"},{"colName":"bo_akl_taskPushRecode.taskCode","colValue":"taskPushRecode.taskCode","valueType":"entityField"},{"colName":"bo_akl_taskPushRecode.taskName","colValue":"taskPushRecode.taskName","valueType":"entityField"}],"dataSource":"taskPushRecode","dataSourceType":"ruleSetVar","destTab":"bo_akl_taskPushRecode","isSaveAll":true}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>c1819d8173ac400890f2072ee754de20</ID><SourceName>taskPushRecode</SourceName><SourceType>ruleSetVar</SourceType><SourceNameType>taskPushRecode(方法变量)</SourceNameType><IsSaveAll>True</IsSaveAll><TableName>bo_akl_taskPushRecode</TableName></dtMaster><dtDetails><PID>c1819d8173ac400890f2072ee754de20</PID><SourceField>bo_akl_taskPushRecode.crux</SourceField><DataFrom>entityField</DataFrom><Value>taskPushRecode.crux</Value></dtDetails><dtDetails><PID>c1819d8173ac400890f2072ee754de20</PID><SourceField>bo_akl_taskPushRecode.id</SourceField><DataFrom>entityField</DataFrom><Value>taskPushRecode.id</Value></dtDetails><dtDetails><PID>c1819d8173ac400890f2072ee754de20</PID><SourceField>bo_akl_taskPushRecode.isFinish</SourceField><DataFrom>entityField</DataFrom><Value>taskPushRecode.isFinish</Value></dtDetails><dtDetails><PID>c1819d8173ac400890f2072ee754de20</PID><SourceField>bo_akl_taskPushRecode.pushTime</SourceField><DataFrom>entityField</DataFrom><Value>taskPushRecode.pushTime</Value></dtDetails><dtDetails><PID>c1819d8173ac400890f2072ee754de20</PID><SourceField>bo_akl_taskPushRecode.tabelName</SourceField><DataFrom>entityField</DataFrom><Value>taskPushRecode.tabelName</Value></dtDetails><dtDetails><PID>c1819d8173ac400890f2072ee754de20</PID><SourceField>bo_akl_taskPushRecode.taskCode</SourceField><DataFrom>entityField</DataFrom><Value>taskPushRecode.taskCode</Value></dtDetails><dtDetails><PID>c1819d8173ac400890f2072ee754de20</PID><SourceField>bo_akl_taskPushRecode.taskName</SourceField><DataFrom>entityField</DataFrom><Value>taskPushRecode.taskName</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ClearEntityData" ruleName="清除实体记录" instanceCode="BR_ClearEntityData2" instanceName="清除实体记录_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-10 14:45:07">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dtMaster":[{"entityName":"taskPushRecode","entityType":"ruleSetVar","dsWhere":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><EntityName>taskPushRecode</EntityName><EntityType>ruleSetVar</EntityType><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_OrgQueryPost(岗位单表数据查询)" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_organization","windowCode":"","ruleSetCode":"OrgQueryPost","isParallelism":"False","executeType":"confirm"},"invokeParams":[{"paramCode":"postName","paramType":"expression","paramValue":"\"生产主管\"","paramSource":"","dataFilterType":"","paramFieldMapping":null}],"returnMapping":[{"destType":"ruleSetVariant","dest":"postInfo","srcType":"returnValue","src":"postEntity","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":false,"destFieldMapping":[{"destField":"postId","destType":"char","srcValueType":"field","srcValue":"id"},{"destField":"postName","destType":"char","srcValueType":"field","srcValue":"postName"}],"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><windowCode /><executeType>confirm</executeType><componentCode>vbase_organization</componentCode><ruleSetCode>OrgQueryPost</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>postName</paramCode><paramType>expression</paramType><paramValue>"生产主管"</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtReturnMapping><destType>ruleSetVariant</destType><dest>postInfo</dest><srcType>returnValue</srcType><src>postEntity</src><updateDestEntityMethod>insertOrUpdateBySameId</updateDestEntityMethod><isCleanDestEntityData>False</isCleanDestEntityData><destFieldMapping><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>postId</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>id</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>postName</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>postName</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></destFieldMapping><dsFilterCondition><![CDATA[<NewDataSet />]]]]><![CDATA[></dsFilterCondition><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Variables>
+      <Variable code="dayCheck" name="每天点检" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="equipId" name="设备信息Id" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="equ_No" name="设备编号" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="equ_Name" name="设备名称" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="cycle" name="点检周期" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="checkDate" name="点检时间" fieldType="longDate" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="classes" name="白/晚班" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="operatorCode" name="操作人编号" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="operator" name="操作人" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="isop" name="是否操作过" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="postInfo" name="岗位信息" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="postId" name="岗位Id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="postName" name="岗位名" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="taskPushRecode" name="任务推送记录" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="taskName" name="任务名称" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="taskCode" name="任务编号" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="isFinish" name="是否已经完成" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[1.完成 ]]></description>
+          </Field>
+          <Field code="pushTime" name="任务推送时间" fieldType="date" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="crux" name="关键查询数据" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="tabelName" name="相关表名" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+    </Variables>
+  </Method>
+</Methods>

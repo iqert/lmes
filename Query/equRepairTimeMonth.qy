@@ -1,0 +1,55 @@
+﻿<Query id="abc014f131d041a78b201ad3fbca1b4c" code="equRepairTimeMonth" name="设备维修时间(月)" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-10-22 18:22:37]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-10-23 09:30:39]]></ModificationTime>
+  <VSql><![CDATA[select mad.tmonth,
+ROUND(CAST(rep.rhour*60,'DECIMAL',10,2)/31,2) as rhour
+from baseMonth as mad 
+left join (
+		select 
+		MONTH(rd.startDate) as tmonth,-- 日期 day
+		SUM(rd.repairTime) as rhour  -- 维修时长
+		from bo_akl_EM_maintainRecord as rd 
+		where 
+		YEAR(rd.startDate)=:inputYear AND
+		rd.equipCode=:equNo AND
+		rd.pNo= :prNo
+		group by MONTH(rd.startDate) 
+	)as rep on rep.tmonth=mad.tmonth]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="tmonth" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="rhour" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="inputYear" name="" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="equNo" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="prNo" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="baseMonth" tokenIndexes="35" />
+    <DataItem type="Table" key="bo_akl_EM_maintainRecord" tokenIndexes="77" />
+    <DataItem type="TableField" key="baseMonth.tmonth" tokenIndexes="4,138" />
+    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.startDate" tokenIndexes="53,89,122" />
+    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.repairTime" tokenIndexes="66" />
+    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.equipCode" tokenIndexes="99" />
+    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.pNo" tokenIndexes="108" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="93" />
+    <DataItem type="QueryParam" key="equNo" tokenIndexes="102" />
+    <DataItem type="QueryParam" key="prNo" tokenIndexes="112" />
+  </DataItems>
+</Query>

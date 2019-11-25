@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2017/5/12 10:19:38-->
+<Methods>
+  <Method Code="JGButton1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>!IsEmpty([stockInfo].[id])</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_SetEntityVarControlValue1" />
+      <evaluateRule code="BR_SelectionConfirm1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-01 10:38:44">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请选择一个批次！\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请选择一个批次！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-01 10:39:13">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"6","Target":"batch","SourceType":"expression","SourceEntityType":"","Source":"[stockInfo].[batchNo]","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>6</TargetType><Target>batch</Target><SourceType>expression</SourceType><SourceEntityType /><Source>[stockInfo].[batchNo]</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-01 10:39:18">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="form_selectStockBatch_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-01 10:16:07">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Query","dsWhere":[{"columnType":"1","field":"stockInfo.materialId","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"@materialId","valueType":"9"},{"columnType":"1","field":"stockInfo.stockTypeId","fieldType":"char","leftBracket":"(","logicOperation":"and","operation":"=","rightBracket":")","value":"@stockTypeId","valueType":"9"}],"entityType":"window","entityName":"stockInfo","itemqueryparam":null,"items":[{"destName":"stockInfo.batchNo","sourceName":"stockInfo.batchNo","type":"entityField"},{"destName":"stockInfo.id","sourceName":"stockInfo.id","type":"entityField"},{"destName":"stockInfo.materialId","sourceName":"stockInfo.materialId","type":"entityField"},{"destName":"stockInfo.materialName","sourceName":"stockInfo.materialName","type":"entityField"},{"destName":"stockInfo.materialNo","sourceName":"stockInfo.materialNo","type":"entityField"},{"destName":"stockInfo.materialType","sourceName":"stockInfo.materialType","type":"entityField"},{"destName":"stockInfo.stockNum","sourceName":"stockInfo.stockNum","type":"entityField"},{"destName":"stockInfo.stockType","sourceName":"stockInfo.stockType","type":"entityField"},{"destName":"stockInfo.stockTypeId","sourceName":"stockInfo.stockTypeId","type":"entityField"},{"destName":"stockInfo.unit","sourceName":"stockInfo.unit","type":"entityField"}],"orderBy":null,"sourceName":"stockInfo","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>stockInfo</EntityName><SourceType>Query</SourceType><SourceName>stockInfo</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>stockInfo.materialId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>@materialId</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>stockInfo.stockTypeId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>and</logicOperation><operation>=</operation><rightBracket>)</rightBracket><value>@stockTypeId</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsQueryParam><![CDATA[<dsQueryParam />]]]]><![CDATA[></dsQueryParam><ID>f53ad80cebfa43adb9fbcae042e210e6</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>f53ad80cebfa43adb9fbcae042e210e6</MasterID><DestName>stockInfo.batchNo</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.batchNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f53ad80cebfa43adb9fbcae042e210e6</MasterID><DestName>stockInfo.id</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f53ad80cebfa43adb9fbcae042e210e6</MasterID><DestName>stockInfo.materialId</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.materialId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f53ad80cebfa43adb9fbcae042e210e6</MasterID><DestName>stockInfo.materialName</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.materialName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f53ad80cebfa43adb9fbcae042e210e6</MasterID><DestName>stockInfo.materialNo</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.materialNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f53ad80cebfa43adb9fbcae042e210e6</MasterID><DestName>stockInfo.materialType</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.materialType</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f53ad80cebfa43adb9fbcae042e210e6</MasterID><DestName>stockInfo.stockNum</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.stockNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f53ad80cebfa43adb9fbcae042e210e6</MasterID><DestName>stockInfo.stockType</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.stockType</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f53ad80cebfa43adb9fbcae042e210e6</MasterID><DestName>stockInfo.stockTypeId</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.stockTypeId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f53ad80cebfa43adb9fbcae042e210e6</MasterID><DestName>stockInfo.unit</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.unit</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>f53ad80cebfa43adb9fbcae042e210e6</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>f53ad80cebfa43adb9fbcae042e210e6</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

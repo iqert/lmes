@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2018/6/17 19:15:23-->
+<Methods>
+  <Method Code="JGButton1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>!IsEmpty([bo_akl_base_staffInfo].[id])</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_SetEntityVarControlValue1" />
+      <evaluateRule code="BR_SetEntityVarControlValue2" />
+      <evaluateRule code="BR_SelectionConfirm1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请先选中工人\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请先选中工人"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-26 20:28:47">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_line_start_user.workerId","SourceType":"expression","SourceEntityType":"","Source":"[bo_akl_base_staffInfo].[sNo]","entityFieldMapping":null},{"TargetType":"3","Target":"bo_akl_line_start_user.workerName","SourceType":"expression","SourceEntityType":"","Source":"[bo_akl_base_staffInfo].[sName]","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_line_start_user.workerId</Target><SourceType>expression</SourceType><SourceEntityType /><Source>[bo_akl_base_staffInfo].[sNo]</Source></dtFieldMap><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_line_start_user.workerName</Target><SourceType>expression</SourceType><SourceEntityType /><Source>[bo_akl_base_staffInfo].[sName]</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2" instanceName="给界面实体/控件/变量赋值_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-26 20:25:05">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"6","Target":"start_user","SourceType":"entityField","SourceEntityType":"window","Source":"bo_akl_line_start_user","entityFieldMapping":[{"destFieldName":"id","srcValueType":"entityField","srcValue":"bo_akl_line_start_user.id"},{"destFieldName":"lid","srcValueType":"entityField","srcValue":"bo_akl_line_start_user.lid"},{"destFieldName":"workStation","srcValueType":"entityField","srcValue":"bo_akl_line_start_user.workStation"},{"destFieldName":"workStationId","srcValueType":"entityField","srcValue":"bo_akl_line_start_user.workStationId"},{"destFieldName":"workerName","srcValueType":"entityField","srcValue":"bo_akl_line_start_user.workerName"},{"destFieldName":"workerId","srcValueType":"entityField","srcValue":"bo_akl_line_start_user.workerId"},{"destFieldName":"workerAssistName","srcValueType":"entityField","srcValue":"bo_akl_line_start_user.workerAssistName"}]}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>6</TargetType><Target>start_user</Target><SourceType>entityField</SourceType><SourceEntityType>window</SourceEntityType><Source>bo_akl_line_start_user</Source><SourceEntityXml><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>id</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_start_user.id</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>lid</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_start_user.lid</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>workStation</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_start_user.workStation</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>workStationId</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_start_user.workStationId</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>workerName</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_start_user.workerName</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>workerId</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_start_user.workerId</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>workerAssistName</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_start_user.workerAssistName</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></SourceEntityXml></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="BeEmployeeInformation_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_CopyEntityRecord1_1" />
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+  <evaluateRule code="BR_DeleteListSelectRow2" />
+  <foreach isEnabled="True" isDebug="False" code="ForeachCode2">
+    <define>
+      <varCode>A</varCode>
+      <entityType>ruleSetVar</entityType>
+      <entityCode>V</entityCode>
+      <remark></remark>
+    </define>
+    <sequence>
+      <foreach isEnabled="True" isDebug="False" code="ForeachCode3">
+        <define>
+          <varCode>B</varCode>
+          <entityType>ruleSetVar</entityType>
+          <entityCode>V</entityCode>
+          <remark></remark>
+        </define>
+        <sequence>
+          <if isEnabled="True" isDebug="False" code="IfCode3">
+            <define>
+              <expression>LV.A.sNo==LV.B.sNo</expression>
+              <remark></remark>
+            </define>
+            <sequence>
+              <evaluateRule code="BR_SetLoopVariant1" />
+            </sequence>
+          </if>
+        </sequence>
+      </foreach>
+    </sequence>
+  </foreach>
+  <foreach isEnabled="True" isDebug="False" code="ForeachCode2">
+    <define>
+      <varCode>j</varCode>
+      <entityType>window</entityType>
+      <entityCode>bo_akl_base_staffInfo</entityCode>
+      <remark></remark>
+    </define>
+    <sequence>
+      <if isEnabled="True" isDebug="False" code="IfCode1">
+        <define>
+          <expression>[bo_akl_base_staffInfo].[sNo]==@lineUserCode</expression>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_SetEntityVarControlValue1" />
+        </sequence>
+      </if>
+    </sequence>
+  </foreach>
+  <if isEnabled="True" isDebug="False" code="IfCode2">
+    <define>
+      <expression>BR_VAR_PARENT.Have==0</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_AddTableRecord1" />
+    </sequence>
+  </if>
+  <evaluateRule code="BR_CopyEntityRecord1" />
+  <foreach isEnabled="True" isDebug="False" code="ForeachCode1">
+    <define>
+      <varCode>i</varCode>
+      <entityType>windowInput</entityType>
+      <entityCode>V</entityCode>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_DeleteListSelectRow1" />
+    </sequence>
+  </foreach>
+  <evaluateRule code="BR_DeleteListSelectRow3" />
+  <foreach isEnabled="True" isDebug="False" code="ForeachCode4">
+    <define>
+      <varCode>k</varCode>
+      <entityType>window</entityType>
+      <entityCode>bo_akl_line_resourceOccupancy</entityCode>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_DeleteListSelectRow4" />
+    </sequence>
+  </foreach>
+  <evaluateRule code="BR_ResetSelectedControlValue1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="CopyEntityRecord" ruleName="实体间复制记录" instanceCode="BR_CopyEntityRecord1_1" instanceName="实体间复制记录_把传入的此工站上的旧员工数据赋值给界面实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 16:06:57">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"checkitems":null,"condition":"","copyType":"2","destName":"bo_akl_line_start_user","items":[{"destName":"bo_akl_line_start_user.id","sourceName":"old_start_user.id","type":"entityField"},{"destName":"bo_akl_line_start_user.lid","sourceName":"old_start_user.lid","type":"entityField"},{"destName":"bo_akl_line_start_user.workerAssistName","sourceName":"old_start_user.workerAssistName","type":"entityField"},{"destName":"bo_akl_line_start_user.workerId","sourceName":"old_start_user.workerId","type":"entityField"},{"destName":"bo_akl_line_start_user.workerName","sourceName":"old_start_user.workerName","type":"entityField"},{"destName":"bo_akl_line_start_user.workStation","sourceName":"old_start_user.workStation","type":"entityField"},{"destName":"bo_akl_line_start_user.workStationId","sourceName":"old_start_user.workStationId","type":"entityField"}],"mageitems":null,"sourceName":"old_start_user","type":"1","isAddRecord":true,"jsonVersion":"1.0","destType":"window","sourceType":"windowInput"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtInfo><destName>bo_akl_line_start_user</destName><destType>window</destType><sourceName>old_start_user</sourceName><sourceType>windowInput</sourceType><type>1</type><isAddRecord>True</isAddRecord><copyType>2</copyType><condition /><jsonVersion>1.0</jsonVersion></dtInfo><dtMaster><DestName>bo_akl_line_start_user.id</DestName><SourceType>entityField</SourceType><SourceName>old_start_user.id</SourceName></dtMaster><dtMaster><DestName>bo_akl_line_start_user.lid</DestName><SourceType>entityField</SourceType><SourceName>old_start_user.lid</SourceName></dtMaster><dtMaster><DestName>bo_akl_line_start_user.workerAssistName</DestName><SourceType>entityField</SourceType><SourceName>old_start_user.workerAssistName</SourceName></dtMaster><dtMaster><DestName>bo_akl_line_start_user.workerId</DestName><SourceType>entityField</SourceType><SourceName>old_start_user.workerId</SourceName></dtMaster><dtMaster><DestName>bo_akl_line_start_user.workerName</DestName><SourceType>entityField</SourceType><SourceName>old_start_user.workerName</SourceName></dtMaster><dtMaster><DestName>bo_akl_line_start_user.workStation</DestName><SourceType>entityField</SourceType><SourceName>old_start_user.workStation</SourceName></dtMaster><dtMaster><DestName>bo_akl_line_start_user.workStationId</DestName><SourceType>entityField</SourceType><SourceName>old_start_user.workStationId</SourceName></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体_获取考核记录合格的员工和人力资源信息" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 16:07:49">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Query","dsWhere":null,"entityType":"ruleSetVar","entityName":"V","itemqueryparam":null,"items":[{"destName":"V.sNo","sourceName":"J.sNo","type":"entityField"},{"destName":"V.sName","sourceName":"J.sName","type":"entityField"},{"destName":"V.tLine","sourceName":"J.tLine","type":"entityField"},{"destName":"V.classes","sourceName":"J.classes","type":"entityField"}],"orderBy":[{"field":"bo_akl_base_staffInfo.sNo","type":"ASC"},{"field":"bo_akl_base_staffInfo.position","type":"ASC"},{"field":"bo_akl_base_staffInfo.sSex","type":"ASC"}],"sourceName":"J","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]},{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_line_resourceOccupancy.lid","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"!=","rightBracket":")","value":"@lid","valueType":"9"}],"entityType":"window","entityName":"bo_akl_line_resourceOccupancy","itemqueryparam":null,"items":[{"destName":"bo_akl_line_resourceOccupancy.id","sourceName":"bo_akl_line_resourceOccupancy.id","type":"entityField"},{"destName":"bo_akl_line_resourceOccupancy.isOccupy","sourceName":"bo_akl_line_resourceOccupancy.isOccupy","type":"entityField"},{"destName":"bo_akl_line_resourceOccupancy.sNo","sourceName":"bo_akl_line_resourceOccupancy.sNo","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_line_resourceOccupancy","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>ruleSetVar</EntityType><EntityName>V</EntityName><SourceType>Query</SourceType><SourceName>J</SourceName><dsWhere><![CDATA[<NewDataSet />]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort><dtSort><SortField>bo_akl_base_staffInfo.sNo</SortField><SortWay>ASC</SortWay></dtSort><dtSort><SortField>bo_akl_base_staffInfo.position</SortField><SortWay>ASC</SortWay></dtSort><dtSort><SortField>bo_akl_base_staffInfo.sSex</SortField><SortWay>ASC</SortWay></dtSort></dsSort>]]]]><![CDATA[></dsSort><dsQueryParam><![CDATA[<dsQueryParam />]]]]><![CDATA[></dsQueryParam><ID>269981ffa9ea4b959135207b72c84049</ID><DataLoad /></dtEntityRelation><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_line_resourceOccupancy</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_line_resourceOccupancy</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_line_resourceOccupancy.lid</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>!=</operation><rightBracket>)</rightBracket><value>@lid</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>e53b80f3b2dd4211bd1a8164835f0a64</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>269981ffa9ea4b959135207b72c84049</MasterID><DestName>V.sNo</DestName><SourceType>entityField</SourceType><SourceName>J.sNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>269981ffa9ea4b959135207b72c84049</MasterID><DestName>V.sName</DestName><SourceType>entityField</SourceType><SourceName>J.sName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>269981ffa9ea4b959135207b72c84049</MasterID><DestName>V.tLine</DestName><SourceType>entityField</SourceType><SourceName>J.tLine</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>269981ffa9ea4b959135207b72c84049</MasterID><DestName>V.classes</DestName><SourceType>entityField</SourceType><SourceName>J.classes</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>e53b80f3b2dd4211bd1a8164835f0a64</MasterID><DestName>bo_akl_line_resourceOccupancy.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_resourceOccupancy.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>e53b80f3b2dd4211bd1a8164835f0a64</MasterID><DestName>bo_akl_line_resourceOccupancy.isOccupy</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_resourceOccupancy.isOccupy</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>e53b80f3b2dd4211bd1a8164835f0a64</MasterID><DestName>bo_akl_line_resourceOccupancy.sNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_resourceOccupancy.sNo</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>269981ffa9ea4b959135207b72c84049</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtPager><PagerMasterID>e53b80f3b2dd4211bd1a8164835f0a64</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>269981ffa9ea4b959135207b72c84049</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave><dtTotalRecordSave><TotalRecordSaveMasterID>e53b80f3b2dd4211bd1a8164835f0a64</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow2" instanceName="删除实体记录_去掉不能担任此工站的人" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 16:08:17">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"!Contains([bo_akl_base_staffInfo].[tLine],@workStation)","deleteType":"1","TableName":"bo_akl_base_staffInfo","EntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition>!Contains([bo_akl_base_staffInfo].[tLine],@workStation)</Condition><DeleteType>1</DeleteType><TableName>bo_akl_base_staffInfo</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="CopyEntityRecord" ruleName="实体间复制记录" instanceCode="BR_CopyEntityRecord1" instanceName="实体间复制记录_去重" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 16:10:57">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"checkitems":["bo_akl_base_staffInfo.sNo"],"condition":"","copyType":"2","destName":"bo_akl_base_staffInfo","items":[{"destName":"bo_akl_base_staffInfo.sName","sourceName":"V.sName","type":"entityField"},{"destName":"bo_akl_base_staffInfo.sNo","sourceName":"V.sNo","type":"entityField"},{"destName":"bo_akl_base_staffInfo.tLine","sourceName":"V.tLine","type":"entityField"},{"destName":"bo_akl_base_staffInfo.classes","sourceName":"V.classes","type":"entityField"}],"mageitems":null,"sourceName":"V","type":"2","isAddRecord":true,"jsonVersion":"1.0","destType":"window","sourceType":"ruleSetVar"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtInfo><destName>bo_akl_base_staffInfo</destName><destType>window</destType><sourceName>V</sourceName><sourceType>ruleSetVar</sourceType><type>2</type><isAddRecord>True</isAddRecord><copyType>2</copyType><condition /><jsonVersion>1.0</jsonVersion></dtInfo><dtMaster><DestName>bo_akl_base_staffInfo.sName</DestName><SourceType>entityField</SourceType><SourceName>V.sName</SourceName></dtMaster><dtMaster><DestName>bo_akl_base_staffInfo.sNo</DestName><SourceType>entityField</SourceType><SourceName>V.sNo</SourceName></dtMaster><dtMaster><DestName>bo_akl_base_staffInfo.tLine</DestName><SourceType>entityField</SourceType><SourceName>V.tLine</SourceName></dtMaster><dtMaster><DestName>bo_akl_base_staffInfo.classes</DestName><SourceType>entityField</SourceType><SourceName>V.classes</SourceName></dtMaster><dtCheck><Name>bo_akl_base_staffInfo.sNo</Name></dtCheck></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow3" instanceName="删除实体记录_去掉不符合本班次的人" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 16:12:16">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"[bo_akl_base_staffInfo].[classes]<>@classes","deleteType":"1","TableName":"bo_akl_base_staffInfo","EntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition>[bo_akl_base_staffInfo].[classes]&lt;&gt;@classes</Condition><DeleteType>1</DeleteType><TableName>bo_akl_base_staffInfo</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ResetSelectedControlValue" ruleName="清空控件数值" instanceCode="BR_ResetSelectedControlValue1" instanceName="清空控件数值" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"componentControlCodes":[{"componentControlCode":"JGLocateBox1"}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtControl><Code>JGLocateBox1</Code><CodeName>JGLocateBox1(检索)</CodeName></dtControl></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1" instanceName="新增实体记录_没有则手动添加线长信息" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 16:10:46">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"3","Mappings":[{"destField":"bo_akl_base_staffInfo.sNo","fieldtype":"expression","srcField":"@lineUserCode"},{"destField":"bo_akl_base_staffInfo.sName","fieldtype":"expression","srcField":"@lineUserName"},{"destField":"bo_akl_base_staffInfo.classes","fieldtype":"expression","srcField":"@classes"}],"TableType":"window","TableName":"bo_akl_base_staffInfo","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><Location>3</Location><EntityType>window</EntityType><EntityName>bo_akl_base_staffInfo</EntityName></dtMaster><dtEntityColumns><DestName>bo_akl_base_staffInfo.sNo</DestName><SourceType>expression</SourceType><SourceName>@lineUserCode</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_base_staffInfo.sName</DestName><SourceType>expression</SourceType><SourceName>@lineUserName</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_base_staffInfo.classes</DestName><SourceType>expression</SourceType><SourceName>@classes</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow4" instanceName="删除实体记录_去掉人力资源占用的人" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 16:12:48">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"[bo_akl_base_staffInfo].[sNo]==LV.k.sNo","deleteType":"1","TableName":"bo_akl_base_staffInfo","EntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition>[bo_akl_base_staffInfo].[sNo]==LV.k.sNo</Condition><DeleteType>1</DeleteType><TableName>bo_akl_base_staffInfo</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值_判断是否人员中已含有线长,有则Have赋值为1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 16:10:24">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"Have","SourceType":"expression","SourceEntityType":"","Source":"1","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>Have</Target><SourceType>expression</SourceType><SourceEntityType /><Source>1</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetLoopVariant" ruleName="给循环变量赋值" instanceCode="BR_SetLoopVariant1" instanceName="给循环变量赋值_合拼产线工站字段" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 16:08:57">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Fields":[{"Source":"ConcatStr(LV.A.tLine,\",\",LV.B.tLine)","SourceType":"expression","LoopVarField":"tLine"}],"LoopVar":"B","LoopEntity":"V","LoopEntityType":"ruleSetVar"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtLoopVar><LoopVar>B</LoopVar><LoopEntity>V</LoopEntity><LoopEntityType>ruleSetVar</LoopEntityType></dtLoopVar><dtField><LoopVarField>tLine</LoopVarField><SourceType>expression</SourceType><Source>ConcatStr(LV.A.tLine,",",LV.B.tLine)</Source></dtField></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow1" instanceName="删除实体记录_去掉目前在该工站上的人" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 16:11:43">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"[bo_akl_base_staffInfo].[sNo]==LV.i.workerId","deleteType":"1","TableName":"bo_akl_base_staffInfo","EntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition>[bo_akl_base_staffInfo].[sNo]==LV.i.workerId</Condition><DeleteType>1</DeleteType><TableName>bo_akl_base_staffInfo</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Variables>
+      <Variable code="Have" name="判断是否含有线长" fieldType="integer" initValue="0" isMust="false" desc="" />
+      <Variable code="V" name="" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="sNo" name="员工号" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="sName" name="员工姓名" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="tLine" name="" fieldType="text" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="classes" name="" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="A" name="" fieldType="integer" initValue="0" isMust="false" desc="" />
+      <Variable code="B" name="" fieldType="integer" initValue="0" isMust="false" desc="" />
+      <Variable code="classes" name="" fieldType="char" initValue="" isMust="false" desc="" />
+    </Variables>
+  </Method>
+  <Method Code="JGButton2_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_ExecuteRuleSet1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_执行窗体加载事件" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 16:00:53">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"BeEmployeeInformation_FormLoadAction","isParallelism":"False"},"invokeParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>BeEmployeeInformation_FormLoadAction</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGLocateBox1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+  <evaluateRule code="BR_DeleteListSelectRow2" />
+  <foreach isEnabled="True" isDebug="False" code="ForeachCode2">
+    <define>
+      <varCode>A</varCode>
+      <entityType>ruleSetVar</entityType>
+      <entityCode>V</entityCode>
+      <remark></remark>
+    </define>
+    <sequence>
+      <foreach isEnabled="True" isDebug="False" code="ForeachCode3">
+        <define>
+          <varCode>B</varCode>
+          <entityType>ruleSetVar</entityType>
+          <entityCode>V</entityCode>
+          <remark></remark>
+        </define>
+        <sequence>
+          <if isEnabled="True" isDebug="False" code="IfCode1">
+            <define>
+              <expression>LV.A.sNo==LV.B.sNo</expression>
+              <remark></remark>
+            </define>
+            <sequence>
+              <evaluateRule code="BR_SetLoopVariant1" />
+            </sequence>
+          </if>
+        </sequence>
+      </foreach>
+    </sequence>
+  </foreach>
+  <foreach isEnabled="True" isDebug="False" code="ForeachCode2_1">
+    <define>
+      <varCode>j</varCode>
+      <entityType>window</entityType>
+      <entityCode>bo_akl_base_staffInfo</entityCode>
+      <remark></remark>
+    </define>
+    <sequence>
+      <if isEnabled="True" isDebug="False" code="IfCode2">
+        <define>
+          <expression>[bo_akl_base_staffInfo].[sNo]==@lineUserCode</expression>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_SetEntityVarControlValue1" />
+        </sequence>
+      </if>
+    </sequence>
+  </foreach>
+  <if isEnabled="True" isDebug="False" code="IfCode3">
+    <define>
+      <expression>BR_VAR_PARENT.Have==0</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_AddTableRecord1" />
+    </sequence>
+  </if>
+  <evaluateRule code="BR_CopyEntityRecord1" />
+  <foreach isEnabled="True" isDebug="False" code="ForeachCode1">
+    <define>
+      <varCode>i</varCode>
+      <entityType>windowInput</entityType>
+      <entityCode>V</entityCode>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_DeleteListSelectRow1" />
+    </sequence>
+  </foreach>
+  <evaluateRule code="BR_DeleteListSelectRow3" />
+  <foreach isEnabled="True" isDebug="False" code="ForeachCode4">
+    <define>
+      <varCode>k</varCode>
+      <entityType>window</entityType>
+      <entityCode>bo_akl_line_resourceOccupancy</entityCode>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_DeleteListSelectRow4" />
+    </sequence>
+  </foreach>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体_获取考核记录合格的员工和人力资源信息" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Query","dsWhere":[{"columnType":"1","field":"J.sName","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"},{"columnType":"1","field":"J.sNo","fieldType":"char","leftBracket":"(","logicOperation":"or","operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"}],"entityType":"ruleSetVar","entityName":"V","itemqueryparam":null,"items":[{"destName":"V.sNo","sourceName":"J.sNo","type":"entityField"},{"destName":"V.sName","sourceName":"J.sName","type":"entityField"},{"destName":"V.tLine","sourceName":"J.tLine","type":"entityField"},{"destName":"V.classes","sourceName":"J.classes","type":"entityField"}],"orderBy":[{"field":"bo_akl_base_staffInfo.sNo","type":"ASC"},{"field":"bo_akl_base_staffInfo.position","type":"ASC"},{"field":"bo_akl_base_staffInfo.sSex","type":"ASC"}],"sourceName":"J","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]},{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_line_resourceOccupancy.lid","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"!=","rightBracket":")","value":"@lid","valueType":"9"}],"entityType":"window","entityName":"bo_akl_line_resourceOccupancy","itemqueryparam":null,"items":[{"destName":"bo_akl_line_resourceOccupancy.id","sourceName":"bo_akl_line_resourceOccupancy.id","type":"entityField"},{"destName":"bo_akl_line_resourceOccupancy.isOccupy","sourceName":"bo_akl_line_resourceOccupancy.isOccupy","type":"entityField"},{"destName":"bo_akl_line_resourceOccupancy.sNo","sourceName":"bo_akl_line_resourceOccupancy.sNo","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_line_resourceOccupancy","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>ruleSetVar</EntityType><EntityName>V</EntityName><SourceType>Query</SourceType><SourceName>J</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>J.sName</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>J.sNo</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort><dtSort><SortField>bo_akl_base_staffInfo.sNo</SortField><SortWay>ASC</SortWay></dtSort><dtSort><SortField>bo_akl_base_staffInfo.position</SortField><SortWay>ASC</SortWay></dtSort><dtSort><SortField>bo_akl_base_staffInfo.sSex</SortField><SortWay>ASC</SortWay></dtSort></dsSort>]]]]><![CDATA[></dsSort><dsQueryParam><![CDATA[<dsQueryParam />]]]]><![CDATA[></dsQueryParam><ID>269981ffa9ea4b959135207b72c84049</ID><DataLoad /></dtEntityRelation><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_line_resourceOccupancy</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_line_resourceOccupancy</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_line_resourceOccupancy.lid</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>!=</operation><rightBracket>)</rightBracket><value>@lid</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>e53b80f3b2dd4211bd1a8164835f0a64</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>269981ffa9ea4b959135207b72c84049</MasterID><DestName>V.sNo</DestName><SourceType>entityField</SourceType><SourceName>J.sNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>269981ffa9ea4b959135207b72c84049</MasterID><DestName>V.sName</DestName><SourceType>entityField</SourceType><SourceName>J.sName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>269981ffa9ea4b959135207b72c84049</MasterID><DestName>V.tLine</DestName><SourceType>entityField</SourceType><SourceName>J.tLine</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>269981ffa9ea4b959135207b72c84049</MasterID><DestName>V.classes</DestName><SourceType>entityField</SourceType><SourceName>J.classes</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>e53b80f3b2dd4211bd1a8164835f0a64</MasterID><DestName>bo_akl_line_resourceOccupancy.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_resourceOccupancy.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>e53b80f3b2dd4211bd1a8164835f0a64</MasterID><DestName>bo_akl_line_resourceOccupancy.isOccupy</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_resourceOccupancy.isOccupy</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>e53b80f3b2dd4211bd1a8164835f0a64</MasterID><DestName>bo_akl_line_resourceOccupancy.sNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_resourceOccupancy.sNo</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>269981ffa9ea4b959135207b72c84049</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtPager><PagerMasterID>e53b80f3b2dd4211bd1a8164835f0a64</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>269981ffa9ea4b959135207b72c84049</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave><dtTotalRecordSave><TotalRecordSaveMasterID>e53b80f3b2dd4211bd1a8164835f0a64</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow2" instanceName="删除实体记录_去掉不能担任此工站的人" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 16:13:49">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"!Contains([bo_akl_base_staffInfo].[tLine],@workStation)","deleteType":"1","TableName":"bo_akl_base_staffInfo","EntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition>!Contains([bo_akl_base_staffInfo].[tLine],@workStation)</Condition><DeleteType>1</DeleteType><TableName>bo_akl_base_staffInfo</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="CopyEntityRecord" ruleName="实体间复制记录" instanceCode="BR_CopyEntityRecord1" instanceName="实体间复制记录_去重" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 16:14:31">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"checkitems":["bo_akl_base_staffInfo.sNo"],"condition":"","copyType":"2","destName":"bo_akl_base_staffInfo","items":[{"destName":"bo_akl_base_staffInfo.sName","sourceName":"V.sName","type":"entityField"},{"destName":"bo_akl_base_staffInfo.sNo","sourceName":"V.sNo","type":"entityField"},{"destName":"bo_akl_base_staffInfo.tLine","sourceName":"V.tLine","type":"entityField"},{"destName":"bo_akl_base_staffInfo.classes","sourceName":"V.classes","type":"entityField"}],"mageitems":null,"sourceName":"V","type":"2","isAddRecord":true,"jsonVersion":"1.0","destType":"window","sourceType":"ruleSetVar"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtInfo><destName>bo_akl_base_staffInfo</destName><destType>window</destType><sourceName>V</sourceName><sourceType>ruleSetVar</sourceType><type>2</type><isAddRecord>True</isAddRecord><copyType>2</copyType><condition /><jsonVersion>1.0</jsonVersion></dtInfo><dtMaster><DestName>bo_akl_base_staffInfo.sName</DestName><SourceType>entityField</SourceType><SourceName>V.sName</SourceName></dtMaster><dtMaster><DestName>bo_akl_base_staffInfo.sNo</DestName><SourceType>entityField</SourceType><SourceName>V.sNo</SourceName></dtMaster><dtMaster><DestName>bo_akl_base_staffInfo.tLine</DestName><SourceType>entityField</SourceType><SourceName>V.tLine</SourceName></dtMaster><dtMaster><DestName>bo_akl_base_staffInfo.classes</DestName><SourceType>entityField</SourceType><SourceName>V.classes</SourceName></dtMaster><dtCheck><Name>bo_akl_base_staffInfo.sNo</Name></dtCheck></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow3" instanceName="删除实体记录_去掉不符合本班次的人" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 16:14:51">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"[bo_akl_base_staffInfo].[classes]<>@classes","deleteType":"1","TableName":"bo_akl_base_staffInfo","EntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition>[bo_akl_base_staffInfo].[classes]&lt;&gt;@classes</Condition><DeleteType>1</DeleteType><TableName>bo_akl_base_staffInfo</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow1" instanceName="删除实体记录_去掉目前在该工站上的人" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 16:14:43">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"[bo_akl_base_staffInfo].[sNo]==LV.i.workerId","deleteType":"1","TableName":"bo_akl_base_staffInfo","EntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition>[bo_akl_base_staffInfo].[sNo]==LV.i.workerId</Condition><DeleteType>1</DeleteType><TableName>bo_akl_base_staffInfo</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetLoopVariant" ruleName="给循环变量赋值" instanceCode="BR_SetLoopVariant1" instanceName="给循环变量赋值_合拼产线工站字段" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 16:13:59">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Fields":[{"Source":"ConcatStr(LV.A.tLine,\",\",LV.B.tLine)","SourceType":"expression","LoopVarField":"tLine"}],"LoopVar":"B","LoopEntity":"V","LoopEntityType":"ruleSetVar"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtLoopVar><LoopVar>B</LoopVar><LoopEntity>V</LoopEntity><LoopEntityType>ruleSetVar</LoopEntityType></dtLoopVar><dtField><LoopVarField>tLine</LoopVarField><SourceType>expression</SourceType><Source>ConcatStr(LV.A.tLine,",",LV.B.tLine)</Source></dtField></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow4" instanceName="删除实体记录_去掉人力资源占用的人" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 16:15:01">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"[bo_akl_base_staffInfo].[sNo]==LV.k.sNo","deleteType":"1","TableName":"bo_akl_base_staffInfo","EntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition>[bo_akl_base_staffInfo].[sNo]==LV.k.sNo</Condition><DeleteType>1</DeleteType><TableName>bo_akl_base_staffInfo</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值_判断是否人员中已含有线长,有则Have赋值为1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 16:14:13">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"Have","SourceType":"expression","SourceEntityType":"","Source":"1","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>Have</Target><SourceType>expression</SourceType><SourceEntityType /><Source>1</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1" instanceName="新增实体记录_没有则手动添加线长信息" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 16:14:23">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"3","Mappings":[{"destField":"bo_akl_base_staffInfo.sNo","fieldtype":"expression","srcField":"@lineUserCode"},{"destField":"bo_akl_base_staffInfo.sName","fieldtype":"expression","srcField":"@lineUserName"},{"destField":"bo_akl_base_staffInfo.classes","fieldtype":"expression","srcField":"@classes"}],"TableType":"window","TableName":"bo_akl_base_staffInfo","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><Location>3</Location><EntityType>window</EntityType><EntityName>bo_akl_base_staffInfo</EntityName></dtMaster><dtEntityColumns><DestName>bo_akl_base_staffInfo.sNo</DestName><SourceType>expression</SourceType><SourceName>@lineUserCode</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_base_staffInfo.sName</DestName><SourceType>expression</SourceType><SourceName>@lineUserName</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_base_staffInfo.classes</DestName><SourceType>expression</SourceType><SourceName>@classes</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

@@ -1,0 +1,50 @@
+﻿<Query id="e6acb1d84974487fb0ee50e2e8a56da8" code="sbwbxx" name="设备维保信息" type="VSql">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[liub]]></Creator>
+  <CreationTime><![CDATA[2018-08-15 14:29:34]]></CreationTime>
+  <Modifier><![CDATA[liub]]></Modifier>
+  <ModificationTime><![CDATA[2018-08-15 20:34:49]]></ModificationTime>
+  <VSql><![CDATA[select
+a.id,a.inspectionProject,a.maintenanceContent,a.cycle,
+b.equipNo,b.equipName,b.id as eid
+FROM bo_akl_EM_EIMaintenancePlan a
+left JOIN bo_akl_EM_EquipmentInformation b on a.equipInfoId = b.id]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="id" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="inspectionProject" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="maintenanceContent" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="cycle" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="equipNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="equipName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="eid" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_EM_EIMaintenancePlan" tokenIndexes="37" />
+    <DataItem type="Table" key="bo_akl_EM_EquipmentInformation" tokenIndexes="45" />
+    <DataItem type="Query" key="a" tokenIndexes="2,6,10,14,39,51" />
+    <DataItem type="Query" key="b" tokenIndexes="19,23,27,47,57" />
+    <DataItem type="QueryField" key="a.id" tokenIndexes="4" />
+    <DataItem type="QueryField" key="a.inspectionProject" tokenIndexes="8" />
+    <DataItem type="QueryField" key="a.maintenanceContent" tokenIndexes="12" />
+    <DataItem type="QueryField" key="a.cycle" tokenIndexes="16" />
+    <DataItem type="QueryField" key="b.equipNo" tokenIndexes="21" />
+    <DataItem type="QueryField" key="b.equipName" tokenIndexes="25" />
+    <DataItem type="QueryField" key="b.id" tokenIndexes="29,59" />
+    <DataItem type="QueryField" key="a.equipInfoId" tokenIndexes="53" />
+  </DataItems>
+</Query>

@@ -1,0 +1,146 @@
+﻿<Query id="cb6fb55c6ca44d39a892f36e6365f979" code="prolificacyMonth" name="12个月生产力" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-10-22 10:02:53]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-11-20 23:57:12]]></ModificationTime>
+  <VSql><![CDATA[
+select 
+	md.tmonth, --日期day
+	sopena.opdiff, --生产时间h
+	proNums.cpc, --产量
+	suss.dsa, --人工数量
+	case when CAST(sopena.opdiff,'varchar')='' or CAST(suss.dsa,'varchar')=''
+	then 0 else ROUND(proNums.cpc/sopena.opdiff/suss.dsa,2) end as scl --生产力
+	from baseMonth as md
+	left join(
+				select opema.tmonth,--月份
+				SUM(opema.diffhour) as opdiff --生产时间h
+				from (
+				select 
+				ROUND(CAST(DATEDIFF(MIN(opert.opTime),MAX(opert.opTime),'minute'),'DECIMAL',10,2)/60,2) as diffhour,
+				opert.lid,month(MIN(opert.opTime))as tmonth
+				from bo_akl_line_operation as opert 
+				right join bo_akl_line_start as lineSt on lineSt.id=opert.lid
+				left join bo_akl_base_productlines as pline on pline.id=lineSt.prolineId
+				left join bo_akl_base_projectInfo as poj on poj.id=pline.belongProject
+				where 
+				lineSt.equName=:productNo AND
+				poj.pName=:projectName AND
+				YEAR(opert.opTime)=:inputYear and 
+				--MONTH(opert.opTime)=:inputMonth and
+				lineSt.prolineName=:prlineNo
+				group by opert.lid
+				)as opema group by opema.tmonth
+	)as sopena on sopena.tmonth=md.tmonth
+	left join(
+			select md.tmonth,edp.cpc from baseMonth as md
+			left join(
+			SELECT 
+			MONTH(sto.operateTime) as optime,
+			sum(sto.inStockNum)  AS cpc,
+			mat.materialNo
+			FROM bo_akl_MM_inStockInfo AS sto
+			LEFT JOIN bo_akl_MM_stockType AS st ON st.id = sto.stockTypeId
+			LEFT join bo_akl_MM_materialInfo AS mat ON sto.materialId = mat.id
+			 left join bo_akl_EM_productInfo as ep on mat.materialNo=ep.prNo
+			 left join bo_akl_base_productlines as pline on pline.id=ep.pid
+			left join bo_akl_base_projectInfo as poj on poj.id=pline.belongProject
+			where 
+			mat.materialNo=:productNo AND
+			poj.pName=:projectName AND
+			YEAR(sto.operateTime)=:inputYear and 
+			--MONTH(sto.operateTime)=:inputMonth and
+			ep.prLine=:prlineNo and
+			st.stockType = '成品仓' 
+			--时间
+			group by MONTH(sto.operateTime)
+			) as edp
+			on edp.optime=md.tmonth
+	)as proNums on md.tmonth=proNums.tmonth
+	left join (
+			select md.tmonth,sus.dsa from baseMonth as md
+			left JOIN(
+			select MONTH(sline.startTime) as tmonth,COUNT(*) as dsa from 
+			bo_akl_line_start_user as suser
+			left join bo_akl_line_start as  sline on suser.lid=sline.id
+			left join bo_akl_base_productlines as pline on pline.id=sline.prolineId
+			left join bo_akl_base_projectInfo as poj on poj.id=pline.belongProject
+			where 
+			sline.equName=:productNo AND
+			poj.pName=:projectName AND
+			sline.prolineName=:prlineNo
+			and YEAR(sline.startTime)=:inputYear 
+			group by MONTH(sline.startTime)
+			) as sus on sus.tmonth=md.tmonth
+		) as suss on suss.tmonth=md.tmonth 
+		order by md.tmonth asc
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="tmonth" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="opdiff" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="cpc" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="dsa" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="scl" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="prlineNo" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="inputYear" name="" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="productNo" name="产品编号" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="projectName" name="项目名称" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="baseMonth" tokenIndexes="92,349,615" />
+    <DataItem type="Table" key="bo_akl_line_operation" tokenIndexes="189" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="199,660" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="219,466,680" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="239,486,700" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="446" />
+    <DataItem type="Table" key="bo_akl_line_start_user" tokenIndexes="650" />
+    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="392" />
+    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="402" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="424" />
+    <DataItem type="TableField" key="baseMonth.tmonth" tokenIndexes="5,330,341,580,591,607,780,796,804" />
+    <DataItem type="TableField" key="bo_akl_line_operation.opTime" tokenIndexes="140,147,180,279" />
+    <DataItem type="TableField" key="bo_akl_line_operation.lid" tokenIndexes="172,213,302" />
+    <DataItem type="TableField" key="bo_akl_line_start.id" tokenIndexes="209,674" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="229,476,690" />
+    <DataItem type="TableField" key="bo_akl_line_start.prolineId" tokenIndexes="233,694" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="249,496,710" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="253,500,714" />
+    <DataItem type="TableField" key="bo_akl_line_start.equName" tokenIndexes="259,720" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.pName" tokenIndexes="268,515,729" />
+    <DataItem type="TableField" key="bo_akl_line_start.prolineName" tokenIndexes="291,738" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="460" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.pid" tokenIndexes="480" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prLine" tokenIndexes="538" />
+    <DataItem type="TableField" key="bo_akl_line_start.startTime" tokenIndexes="632,749,763" />
+    <DataItem type="TableField" key="bo_akl_line_start_user.lid" tokenIndexes="670" />
+    <DataItem type="QueryParam" key="productNo" tokenIndexes="262,509,723" />
+    <DataItem type="QueryParam" key="projectName" tokenIndexes="271,518,732" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="283,530,753" />
+    <DataItem type="QueryParam" key="prlineNo" tokenIndexes="294,541,741" />
+  </DataItems>
+</Query>

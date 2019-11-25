@@ -1,0 +1,43 @@
+﻿<Query id="a53db0b8ee504c14acb40923a3b11db1" code="wbsb" name="维保设备" type="VSql">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[liub]]></Creator>
+  <CreationTime><![CDATA[2018-08-15 19:36:31]]></CreationTime>
+  <Modifier><![CDATA[user_20180828002]]></Modifier>
+  <ModificationTime><![CDATA[2018-12-11 10:10:08]]></ModificationTime>
+  <VSql><![CDATA[SELECT a.id, a.equipNo, a.equipName,  b.userName, b.userNo
+FROM bo_akl_EM_EquipmentInformation a
+LEFT JOIN bo_akl_base_equmainuser b ON a.id = b.equId
+where a.type='产线设备'
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="id" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="equipNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="equipName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="userName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="userNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_EM_EquipmentInformation" tokenIndexes="28" />
+    <DataItem type="Table" key="bo_akl_base_equmainuser" tokenIndexes="36" />
+    <DataItem type="Query" key="a" tokenIndexes="2,7,12,30,42,54" />
+    <DataItem type="Query" key="b" tokenIndexes="17,22,38,48" />
+    <DataItem type="QueryField" key="a.id" tokenIndexes="4,44" />
+    <DataItem type="QueryField" key="a.equipNo" tokenIndexes="9" />
+    <DataItem type="QueryField" key="a.equipName" tokenIndexes="14" />
+    <DataItem type="QueryField" key="b.userName" tokenIndexes="19" />
+    <DataItem type="QueryField" key="b.userNo" tokenIndexes="24" />
+    <DataItem type="QueryField" key="b.equId" tokenIndexes="50" />
+    <DataItem type="QueryField" key="a.type" tokenIndexes="56" />
+  </DataItems>
+</Query>

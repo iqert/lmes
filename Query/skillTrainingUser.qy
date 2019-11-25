@@ -1,0 +1,42 @@
+﻿<Query id="5e0480042b1b46d5a5a50d41c0e2a837" code="skillTrainingUser" name="技能培训受训人员数据" type="VSql">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[liub]]></Creator>
+  <CreationTime><![CDATA[2018-07-12 09:30:44]]></CreationTime>
+  <Modifier><![CDATA[liub]]></Modifier>
+  <ModificationTime><![CDATA[2018-07-12 09:44:50]]></ModificationTime>
+  <VSql><![CDATA[SELECT id, sNo, sName, trainDate
+FROM (
+	SELECT a.id, b.sNo, b.sName, b.trainDate
+	FROM bo_akl_PM_TCSkillsTraining a
+	LEFT JOIN bo_akl_base_trainRecordLB b ON CHARINDEX(a.trainingType, b.trainType, 1) > 0
+	) a
+
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="id" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="sNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="sName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="trainDate" name="" dataType="date" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_PM_TCSkillsTraining" tokenIndexes="40" />
+    <DataItem type="Table" key="bo_akl_base_trainRecordLB" tokenIndexes="48" />
+    <DataItem type="Query" key="a" tokenIndexes="19,42,56,75" />
+    <DataItem type="Query" key="b" tokenIndexes="24,29,34,50,61" />
+    <DataItem type="QueryField" key="a.id" tokenIndexes="21" />
+    <DataItem type="QueryField" key="b.sNo" tokenIndexes="26" />
+    <DataItem type="QueryField" key="b.sName" tokenIndexes="31" />
+    <DataItem type="QueryField" key="b.trainDate" tokenIndexes="36" />
+    <DataItem type="QueryField" key="a.trainingType" tokenIndexes="58" />
+    <DataItem type="QueryField" key="b.trainType" tokenIndexes="63" />
+  </DataItems>
+</Query>

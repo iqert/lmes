@@ -1,0 +1,59 @@
+﻿<Query id="821e64b322a64db6a8d14b165479411c" code="getProductLabel" name="获取产品标签信息" type="VSql">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20180828002]]></Creator>
+  <CreationTime><![CDATA[2018-12-18 19:38:22]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-07-30 16:52:55]]></ModificationTime>
+  <VSql><![CDATA[select s.id,s.prolineUserName,s.inspectorName,s.startTime,s.planCode,pii.prName,pji.pNo,pji.pName
+from bo_akl_line_start as s
+left join bo_akl_EM_productInfo as pii on s.equId=pii.id
+left join bo_akl_base_productlines as pl on s.prolineId=pl.id
+left join bo_akl_base_projectInfo as pji on pl.belongProject=pji.id]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="id" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="prolineUserName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="inspectorName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="startTime" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="planCode" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="prName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="pNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="pName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="36" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="46" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="66" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="86" />
+    <DataItem type="TableField" key="bo_akl_line_start.id" tokenIndexes="4" />
+    <DataItem type="TableField" key="bo_akl_line_start.prolineUserName" tokenIndexes="8" />
+    <DataItem type="TableField" key="bo_akl_line_start.inspectorName" tokenIndexes="12" />
+    <DataItem type="TableField" key="bo_akl_line_start.startTime" tokenIndexes="16" />
+    <DataItem type="TableField" key="bo_akl_line_start.planCode" tokenIndexes="20" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prName" tokenIndexes="24" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.pNo" tokenIndexes="28" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.pName" tokenIndexes="32" />
+    <DataItem type="TableField" key="bo_akl_line_start.equId" tokenIndexes="56" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.id" tokenIndexes="60" />
+    <DataItem type="TableField" key="bo_akl_line_start.prolineId" tokenIndexes="76" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="80" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="96" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="100" />
+  </DataItems>
+</Query>

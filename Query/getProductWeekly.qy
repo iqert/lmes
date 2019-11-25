@@ -1,0 +1,45 @@
+﻿<Query id="b0c4be31407449c083c99bc41efaf864" code="getProductWeekly" name="获取生产周计划汇总" type="VSql">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-07-12 14:32:52]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-07-15 17:17:04]]></ModificationTime>
+  <VSql><![CDATA[select a.par,a.spa,b.pNo,a.sumQu from 
+(select c.partNo AS par,c.spacingDays AS spa,c.term AS ter,SUM(c.quantity) as sumQu from bo_akl_MM_productDemandClone_1  AS c group by c.partNo,c.spacingDays,c.term) AS a
+left JOIN bo_akl_base_projectInfo AS b on a.ter=b.pName order by a.spa desc
+
+
+ ]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="par" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="spa" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="pNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="sumQu" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_MM_productDemandClone_1" tokenIndexes="60" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="91" />
+    <DataItem type="Query" key="a" tokenIndexes="2,6,14,85,99,111" />
+    <DataItem type="Query" key="b" tokenIndexes="10,95,103" />
+    <DataItem type="Query" key="c" tokenIndexes="23,31,39,49,64,70,74,78" />
+    <DataItem type="QueryField" key="a.par" tokenIndexes="4" />
+    <DataItem type="QueryField" key="a.spa" tokenIndexes="8,113" />
+    <DataItem type="QueryField" key="b.pNo" tokenIndexes="12" />
+    <DataItem type="QueryField" key="a.sumQu" tokenIndexes="16" />
+    <DataItem type="QueryField" key="c.partNo" tokenIndexes="25,72" />
+    <DataItem type="QueryField" key="c.spacingDays" tokenIndexes="33,76" />
+    <DataItem type="QueryField" key="c.term" tokenIndexes="41,80" />
+    <DataItem type="QueryField" key="c.quantity" tokenIndexes="51" />
+    <DataItem type="QueryField" key="a.ter" tokenIndexes="101" />
+    <DataItem type="QueryField" key="b.pName" tokenIndexes="105" />
+  </DataItems>
+</Query>

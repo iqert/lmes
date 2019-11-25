@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Methods>
+  <Method Code="startLine_4hPush" Type="Server" InterfaceType="Local" RestrictType="Private" TransactionType="transaction" IsExtendable="false" IsRuleChainVisible="false">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+  <evaluateRule code="BR_ExecuteRuleSet4" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>GetEntityRowCountFunc("BR_VAR_PARENT.resultEntity")==1</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ExecuteRuleSet5" />
+    </sequence>
+  </if>
+  <evaluateRule code="BR_ExecuteRuleSet4_1" />
+  <if isEnabled="True" isDebug="False" code="IfCode2">
+    <define>
+      <expression>GetEntityRowCountFunc("BR_VAR_PARENT.resultEntity")==1</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ExecuteRuleSet5_1" />
+    </sequence>
+  </if>
+  <evaluateRule code="BR_ExecuteRuleSet4_1_1" />
+  <if isEnabled="True" isDebug="False" code="IfCode3">
+    <define>
+      <expression>GetEntityRowCountFunc("BR_VAR_PARENT.resultEntity")==1</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ExecuteRuleSet5_1_1" />
+    </sequence>
+  </if>
+  <evaluateRule code="BR_ExecuteRuleSet4_1_1_1_1" />
+  <if isEnabled="True" isDebug="False" code="IfCode4">
+    <define>
+      <expression>GetEntityRowCountFunc("BR_VAR_PARENT.resultEntity")==1</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ExecuteRuleSet5_1_1_1_1" />
+    </sequence>
+  </if>
+  <foreach isEnabled="True" isDebug="False" code="ForeachCode1">
+    <define>
+      <varCode>s</varCode>
+      <entityType>ruleSetVar</entityType>
+      <entityCode>startLine</entityCode>
+      <remark />
+    </define>
+    <sequence>
+      <if isEnabled="True" isDebug="False" code="IfCode5">
+        <define>
+          <expression>LV.s.returnStauts==1</expression>
+          <remark />
+        </define>
+        <sequence>
+          <foreach isEnabled="True" isDebug="False" code="ForeachCode1_1">
+            <define>
+              <varCode>u</varCode>
+              <entityType>ruleSetVar</entityType>
+              <entityCode>resultUserEntity</entityCode>
+              <remark></remark>
+            </define>
+            <sequence>
+              <evaluateRule code="BR_EntityConditionRemove1" />
+              <evaluateRule code="BR_AddTableRecord1_1" />
+              <evaluateRule code="BR_ExecuteRuleSet3_1_1_1_1" />
+              <evaluateRule code="BR_ExecuteRuleSet1_1_1" />
+            </sequence>
+          </foreach>
+        </sequence>
+      </if>
+      <else isEnabled="True" isDebug="False">
+        <define>
+          <remark />
+        </define>
+        <sequence>
+          <foreach isEnabled="True" isDebug="False" code="ForeachCode1_1_1">
+            <define>
+              <varCode>u</varCode>
+              <entityType>ruleSetVar</entityType>
+              <entityCode>resultUserEntity</entityCode>
+              <remark></remark>
+            </define>
+            <sequence>
+              <evaluateRule code="BR_EntityConditionRemove1_1" />
+              <evaluateRule code="BR_AddTableRecord1_1_1" />
+              <evaluateRule code="BR_ExecuteRuleSet3_1_1_1_1_1" />
+              <evaluateRule code="BR_ExecuteRuleSet1_1_1_1" />
+            </sequence>
+          </foreach>
+        </sequence>
+      </else>
+    </sequence>
+  </foreach>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-27 19:53:25">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_line_start.startTime","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"<","rightBracket":")","value":"DateAddFunc(DateTimeNow(),-4,\"H\")","valueType":"9"},{"columnType":"1","field":"bo_akl_line_start.startTime","fieldType":"char","leftBracket":"(","logicOperation":"and","operation":">","rightBracket":")","value":"DateAddFunc(DateTimeNow(),-5,\"H\")","valueType":"9"},{"columnType":"1","field":"bo_akl_line_start.state","fieldType":"char","leftBracket":"(","logicOperation":"and","operation":"=","rightBracket":")","value":"\"开线成功\"","valueType":"9"}],"entityType":"ruleSetVar","entityName":"startLine","isFieldAutoMapping":false,"itemqueryparam":null,"items":[{"destName":"startLine.classes","sourceName":"bo_akl_line_start.classes","type":"entityField"},{"destName":"startLine.id","sourceName":"bo_akl_line_start.id","type":"entityField"},{"destName":"startLine.prolineId","sourceName":"bo_akl_line_start.prolineId","type":"entityField"},{"destName":"startLine.prolineName","sourceName":"bo_akl_line_start.prolineName","type":"entityField"},{"destName":"startLine.prolineUserCode","sourceName":"bo_akl_line_start.prolineUserCode","type":"entityField"},{"destName":"startLine.prolineUserName","sourceName":"bo_akl_line_start.prolineUserName","type":"entityField"},{"destName":"startLine.proTimeId","sourceName":"bo_akl_line_start.proTimeId","type":"entityField"},{"destName":"startLine.proTimeTitle","sourceName":"bo_akl_line_start.proTimeTitle","type":"entityField"},{"destName":"startLine.state","sourceName":"bo_akl_line_start.state","type":"entityField"},{"destName":"startLine.returnStauts","sourceName":"bo_akl_line_start.returnMaterialState","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_line_start","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>ruleSetVar</EntityType><EntityName>startLine</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_line_start</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_line_start.startTime</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>&lt;</operation><rightBracket>)</rightBracket><value>DateAddFunc(DateTimeNow(),-4,"H")</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_line_start.startTime</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>and</logicOperation><operation>&gt;</operation><rightBracket>)</rightBracket><value>DateAddFunc(DateTimeNow(),-5,"H")</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_line_start.state</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>and</logicOperation><operation>=</operation><rightBracket>)</rightBracket><value>"开线成功"</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>509137487a6e4273a1a259700615f62a</ID><DataLoad /><IsFieldAutoMapping>False</IsFieldAutoMapping></dtEntityRelation><dtEntityColumnRelation><MasterID>509137487a6e4273a1a259700615f62a</MasterID><DestName>startLine.classes</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.classes</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>509137487a6e4273a1a259700615f62a</MasterID><DestName>startLine.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>509137487a6e4273a1a259700615f62a</MasterID><DestName>startLine.prolineId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.prolineId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>509137487a6e4273a1a259700615f62a</MasterID><DestName>startLine.prolineName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.prolineName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>509137487a6e4273a1a259700615f62a</MasterID><DestName>startLine.prolineUserCode</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.prolineUserCode</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>509137487a6e4273a1a259700615f62a</MasterID><DestName>startLine.prolineUserName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.prolineUserName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>509137487a6e4273a1a259700615f62a</MasterID><DestName>startLine.proTimeId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.proTimeId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>509137487a6e4273a1a259700615f62a</MasterID><DestName>startLine.proTimeTitle</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.proTimeTitle</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>509137487a6e4273a1a259700615f62a</MasterID><DestName>startLine.state</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.state</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>509137487a6e4273a1a259700615f62a</MasterID><DestName>startLine.returnStauts</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.returnMaterialState</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>509137487a6e4273a1a259700615f62a</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>509137487a6e4273a1a259700615f62a</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet4" instanceName="执行方法_PermQueryRole(权限-查询角色)_线长" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-27 19:46:33">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_permission","windowCode":"","ruleSetCode":"PermQueryRole","isParallelism":"False","executeType":"confirm"},"invokeParams":[{"paramCode":"roleNameLike","paramType":"expression","paramValue":"\"线长\"","paramSource":"","dataFilterType":"","paramFieldMapping":null}],"returnMapping":[{"destType":"ruleSetVariant","dest":"resultEntity","srcType":"returnValue","src":"resultEntity","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":true,"destFieldMapping":[{"destField":"id","destType":"char","srcValueType":"field","srcValue":"id"},{"destField":"roleCode","destType":"char","srcValueType":"field","srcValue":"roleCode"},{"destField":"roleName","destType":"char","srcValueType":"field","srcValue":"roleName"},{"destField":"remark","destType":"char","srcValueType":"field","srcValue":"remark"}],"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><windowCode /><executeType>confirm</executeType><componentCode>vbase_permission</componentCode><ruleSetCode>PermQueryRole</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>roleNameLike</paramCode><paramType>expression</paramType><paramValue>"线长"</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtReturnMapping><destType>ruleSetVariant</destType><dest>resultEntity</dest><srcType>returnValue</srcType><src>resultEntity</src><updateDestEntityMethod>insertOrUpdateBySameId</updateDestEntityMethod><isCleanDestEntityData>True</isCleanDestEntityData><destFieldMapping><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>id</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>id</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>roleCode</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>roleCode</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>roleName</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>roleName</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>remark</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>remark</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></destFieldMapping><dsFilterCondition><![CDATA[<NewDataSet />]]]]><![CDATA[></dsFilterCondition><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet4_1" instanceName="执行方法_PermQueryRole(权限-查询角色)_巡检员" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-27 19:47:20">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_permission","windowCode":"","ruleSetCode":"PermQueryRole","isParallelism":"False","executeType":"confirm"},"invokeParams":[{"paramCode":"roleNameLike","paramType":"expression","paramValue":"\"巡检员\"","paramSource":"","dataFilterType":"","paramFieldMapping":null}],"returnMapping":[{"destType":"ruleSetVariant","dest":"resultEntity","srcType":"returnValue","src":"resultEntity","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":true,"destFieldMapping":[{"destField":"id","destType":"char","srcValueType":"field","srcValue":"id"},{"destField":"roleCode","destType":"char","srcValueType":"field","srcValue":"roleCode"},{"destField":"roleName","destType":"char","srcValueType":"field","srcValue":"roleName"},{"destField":"remark","destType":"char","srcValueType":"field","srcValue":"remark"}],"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><windowCode /><executeType>confirm</executeType><componentCode>vbase_permission</componentCode><ruleSetCode>PermQueryRole</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>roleNameLike</paramCode><paramType>expression</paramType><paramValue>"巡检员"</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtReturnMapping><destType>ruleSetVariant</destType><dest>resultEntity</dest><srcType>returnValue</srcType><src>resultEntity</src><updateDestEntityMethod>insertOrUpdateBySameId</updateDestEntityMethod><isCleanDestEntityData>True</isCleanDestEntityData><destFieldMapping><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>id</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>id</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>roleCode</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>roleCode</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>roleName</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>roleName</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>remark</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>remark</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></destFieldMapping><dsFilterCondition><![CDATA[<NewDataSet />]]]]><![CDATA[></dsFilterCondition><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet4_1_1" instanceName="执行方法_PermQueryRole(权限-查询角色)_生产主管" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-27 19:47:52">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_permission","windowCode":"","ruleSetCode":"PermQueryRole","isParallelism":"False","executeType":"confirm"},"invokeParams":[{"paramCode":"roleNameLike","paramType":"expression","paramValue":"\"生产主管\"","paramSource":"","dataFilterType":"","paramFieldMapping":null}],"returnMapping":[{"destType":"ruleSetVariant","dest":"resultEntity","srcType":"returnValue","src":"resultEntity","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":true,"destFieldMapping":[{"destField":"id","destType":"char","srcValueType":"field","srcValue":"id"},{"destField":"roleCode","destType":"char","srcValueType":"field","srcValue":"roleCode"},{"destField":"roleName","destType":"char","srcValueType":"field","srcValue":"roleName"},{"destField":"remark","destType":"char","srcValueType":"field","srcValue":"remark"}],"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><windowCode /><executeType>confirm</executeType><componentCode>vbase_permission</componentCode><ruleSetCode>PermQueryRole</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>roleNameLike</paramCode><paramType>expression</paramType><paramValue>"生产主管"</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtReturnMapping><destType>ruleSetVariant</destType><dest>resultEntity</dest><srcType>returnValue</srcType><src>resultEntity</src><updateDestEntityMethod>insertOrUpdateBySameId</updateDestEntityMethod><isCleanDestEntityData>True</isCleanDestEntityData><destFieldMapping><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>id</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>id</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>roleCode</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>roleCode</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>roleName</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>roleName</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>remark</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>remark</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></destFieldMapping><dsFilterCondition><![CDATA[<NewDataSet />]]]]><![CDATA[></dsFilterCondition><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet4_1_1_1_1" instanceName="执行方法_PermQueryRole(权限-查询角色)_过程质量工程师" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-27 19:48:02">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_permission","windowCode":"","ruleSetCode":"PermQueryRole","isParallelism":"False","executeType":"confirm"},"invokeParams":[{"paramCode":"roleNameLike","paramType":"expression","paramValue":"\"过程质量工程师\"","paramSource":"","dataFilterType":"","paramFieldMapping":null}],"returnMapping":[{"destType":"ruleSetVariant","dest":"resultEntity","srcType":"returnValue","src":"resultEntity","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":true,"destFieldMapping":[{"destField":"id","destType":"char","srcValueType":"field","srcValue":"id"},{"destField":"roleCode","destType":"char","srcValueType":"field","srcValue":"roleCode"},{"destField":"roleName","destType":"char","srcValueType":"field","srcValue":"roleName"},{"destField":"remark","destType":"char","srcValueType":"field","srcValue":"remark"}],"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><windowCode /><executeType>confirm</executeType><componentCode>vbase_permission</componentCode><ruleSetCode>PermQueryRole</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>roleNameLike</paramCode><paramType>expression</paramType><paramValue>"过程质量工程师"</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtReturnMapping><destType>ruleSetVariant</destType><dest>resultEntity</dest><srcType>returnValue</srcType><src>resultEntity</src><updateDestEntityMethod>insertOrUpdateBySameId</updateDestEntityMethod><isCleanDestEntityData>True</isCleanDestEntityData><destFieldMapping><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>id</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>id</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>roleCode</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>roleCode</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>roleName</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>roleName</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>remark</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>remark</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></destFieldMapping><dsFilterCondition><![CDATA[<NewDataSet />]]]]><![CDATA[></dsFilterCondition><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet5" instanceName="执行方法_API_Biz_QueryUserByRoleId(根据角色Id获取授予该角色权限的人员)" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-27 19:47:14">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_org_permission_rela","windowCode":"","ruleSetCode":"API_Biz_QueryUserByRoleId","isParallelism":"False","executeType":"confirm"},"invokeParams":[{"paramCode":"roleId","paramType":"expression","paramValue":"BR_VAR_PARENT.[resultEntity].[id]","paramSource":"","dataFilterType":"","paramFieldMapping":null}],"returnMapping":[{"destType":"ruleSetVariant","dest":"resultUserEntity","srcType":"returnValue","src":"resultEntity","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":false,"destFieldMapping":[{"destField":"userId","destType":"char","srcValueType":"field","srcValue":"userId"},{"destField":"userName","destType":"char","srcValueType":"field","srcValue":"userName"}],"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><windowCode /><executeType>confirm</executeType><componentCode>vbase_org_permission_rela</componentCode><ruleSetCode>API_Biz_QueryUserByRoleId</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>roleId</paramCode><paramType>expression</paramType><paramValue>BR_VAR_PARENT.[resultEntity].[id]</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtReturnMapping><destType>ruleSetVariant</destType><dest>resultUserEntity</dest><srcType>returnValue</srcType><src>resultEntity</src><updateDestEntityMethod>insertOrUpdateBySameId</updateDestEntityMethod><isCleanDestEntityData>False</isCleanDestEntityData><destFieldMapping><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>userId</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>userId</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>userName</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>userName</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></destFieldMapping><dsFilterCondition><![CDATA[<NewDataSet />]]]]><![CDATA[></dsFilterCondition><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet5_1" instanceName="执行方法_API_Biz_QueryUserByRoleId(根据角色Id获取授予该角色权限的人员)_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-27 19:47:37">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_org_permission_rela","windowCode":"","ruleSetCode":"API_Biz_QueryUserByRoleId","isParallelism":"False","executeType":"confirm"},"invokeParams":[{"paramCode":"roleId","paramType":"expression","paramValue":"BR_VAR_PARENT.[resultEntity].[id]","paramSource":"","dataFilterType":"","paramFieldMapping":null}],"returnMapping":[{"destType":"ruleSetVariant","dest":"resultUserEntity","srcType":"returnValue","src":"resultEntity","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":false,"destFieldMapping":[{"destField":"userId","destType":"char","srcValueType":"field","srcValue":"userId"},{"destField":"userName","destType":"char","srcValueType":"field","srcValue":"userName"}],"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><windowCode /><executeType>confirm</executeType><componentCode>vbase_org_permission_rela</componentCode><ruleSetCode>API_Biz_QueryUserByRoleId</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>roleId</paramCode><paramType>expression</paramType><paramValue>BR_VAR_PARENT.[resultEntity].[id]</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtReturnMapping><destType>ruleSetVariant</destType><dest>resultUserEntity</dest><srcType>returnValue</srcType><src>resultEntity</src><updateDestEntityMethod>insertOrUpdateBySameId</updateDestEntityMethod><isCleanDestEntityData>False</isCleanDestEntityData><destFieldMapping><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>userId</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>userId</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>userName</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>userName</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></destFieldMapping><dsFilterCondition><![CDATA[<NewDataSet />]]]]><![CDATA[></dsFilterCondition><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet5_1_1" instanceName="执行方法_API_Biz_QueryUserByRoleId(根据角色Id获取授予该角色权限的人员)_1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-27 19:47:58">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_org_permission_rela","windowCode":"","ruleSetCode":"API_Biz_QueryUserByRoleId","isParallelism":"False","executeType":"confirm"},"invokeParams":[{"paramCode":"roleId","paramType":"expression","paramValue":"BR_VAR_PARENT.[resultEntity].[id]","paramSource":"","dataFilterType":"","paramFieldMapping":null}],"returnMapping":[{"destType":"ruleSetVariant","dest":"resultUserEntity","srcType":"returnValue","src":"resultEntity","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":false,"destFieldMapping":[{"destField":"userId","destType":"char","srcValueType":"field","srcValue":"userId"},{"destField":"userName","destType":"char","srcValueType":"field","srcValue":"userName"}],"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><windowCode /><executeType>confirm</executeType><componentCode>vbase_org_permission_rela</componentCode><ruleSetCode>API_Biz_QueryUserByRoleId</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>roleId</paramCode><paramType>expression</paramType><paramValue>BR_VAR_PARENT.[resultEntity].[id]</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtReturnMapping><destType>ruleSetVariant</destType><dest>resultUserEntity</dest><srcType>returnValue</srcType><src>resultEntity</src><updateDestEntityMethod>insertOrUpdateBySameId</updateDestEntityMethod><isCleanDestEntityData>False</isCleanDestEntityData><destFieldMapping><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>userId</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>userId</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>userName</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>userName</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></destFieldMapping><dsFilterCondition><![CDATA[<NewDataSet />]]]]><![CDATA[></dsFilterCondition><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet5_1_1_1_1" instanceName="执行方法_API_Biz_QueryUserByRoleId(根据角色Id获取授予该角色权限的人员)_1_1_1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-27 19:48:09">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_org_permission_rela","windowCode":"","ruleSetCode":"API_Biz_QueryUserByRoleId","isParallelism":"False","executeType":"confirm"},"invokeParams":[{"paramCode":"roleId","paramType":"expression","paramValue":"BR_VAR_PARENT.[resultEntity].[id]","paramSource":"","dataFilterType":"","paramFieldMapping":null}],"returnMapping":[{"destType":"ruleSetVariant","dest":"resultUserEntity","srcType":"returnValue","src":"resultEntity","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":false,"destFieldMapping":[{"destField":"userId","destType":"char","srcValueType":"field","srcValue":"userId"},{"destField":"userName","destType":"char","srcValueType":"field","srcValue":"userName"}],"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><windowCode /><executeType>confirm</executeType><componentCode>vbase_org_permission_rela</componentCode><ruleSetCode>API_Biz_QueryUserByRoleId</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>roleId</paramCode><paramType>expression</paramType><paramValue>BR_VAR_PARENT.[resultEntity].[id]</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtReturnMapping><destType>ruleSetVariant</destType><dest>resultUserEntity</dest><srcType>returnValue</srcType><src>resultEntity</src><updateDestEntityMethod>insertOrUpdateBySameId</updateDestEntityMethod><isCleanDestEntityData>False</isCleanDestEntityData><destFieldMapping><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>userId</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>userId</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>userName</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>userName</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></destFieldMapping><dsFilterCondition><![CDATA[<NewDataSet />]]]]><![CDATA[></dsFilterCondition><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="EntityConditionRemove" ruleName="删除实体记录" instanceCode="BR_EntityConditionRemove1_1" instanceName="删除实体记录_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-27 19:53:46">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dtMaster":[{"entityName":"prolineUser","entityType":"ruleSetVar","dsWhere":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><EntityName>prolineUser</EntityName><EntityType>ruleSetVar</EntityType><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1_1_1" instanceName="新增实体记录_1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-27 19:53:46">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"prolineUser.id","fieldtype":"expression","srcField":"LV.u.userId"}],"TableType":"ruleSetVar","TableName":"prolineUser","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>prolineUser</EntityName></dtMaster><dtEntityColumns><DestName>prolineUser.id</DestName><SourceType>expression</SourceType><SourceName>LV.u.userId</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet3_1_1_1_1_1" instanceName="执行方法_API_MailQueryUserIdNames(根据Userid获取人员的详细信息)_1_1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-27 19:53:46">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_org_mail","windowCode":"","ruleSetCode":"API_MailQueryUserIdNames","isParallelism":"False","executeType":"confirm"},"invokeParams":[{"paramCode":"userIdEntity","paramType":"entity","paramValue":"prolineUser","paramSource":"ruleSetVar","dataFilterType":"all","paramFieldMapping":[{"paramEntityField":"userId","fieldValueType":"field","fieldValue":"id"}]}],"returnMapping":[{"destType":"ruleSetVariant","dest":"Account","srcType":"returnValue","src":"accountEntity","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":false,"destFieldMapping":[{"destField":"id","destType":"char","srcValueType":"field","srcValue":"id"},{"destField":"Account","destType":"text","srcValueType":"field","srcValue":"account"}],"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><windowCode /><executeType>confirm</executeType><componentCode>vbase_org_mail</componentCode><ruleSetCode>API_MailQueryUserIdNames</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>userIdEntity</paramCode><paramType>entity</paramType><paramValue>prolineUser</paramValue><paramSource>ruleSetVar</paramSource><paramSourceDisplayText>方法变量实体</paramSourceDisplayText><dataFilterType>all</dataFilterType><paramFieldMapping><![CDATA[<NewDataSet><dtParamFieldMapping><paramEntityField>userId</paramEntityField><paramEntityType>ruleSetVar</paramEntityType><fieldValueType>field</fieldValueType><fieldValue>id</fieldValue></dtParamFieldMapping></NewDataSet>]]]]><![CDATA[></paramFieldMapping></dtInvokeParams><dtReturnMapping><destType>ruleSetVariant</destType><dest>Account</dest><srcType>returnValue</srcType><src>accountEntity</src><updateDestEntityMethod>insertOrUpdateBySameId</updateDestEntityMethod><isCleanDestEntityData>False</isCleanDestEntityData><destFieldMapping><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>id</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>id</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>Account</destField><destType>text</destType><srcValueType>field</srcValueType><srcValue>account</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></destFieldMapping><dsFilterCondition><![CDATA[<NewDataSet />]]]]><![CDATA[></dsFilterCondition><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1_1_1_1" instanceName="执行方法_API_MailSendMessage(发送消息)_1_1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-27 19:54:52">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_mail","windowCode":"","ruleSetCode":"API_MailSendMessage","isParallelism":"False","executeType":"confirm"},"invokeParams":[{"paramCode":"mailEntity","paramType":"entity","paramValue":"Account","paramSource":"ruleSetVar","dataFilterType":"all","paramFieldMapping":[{"paramEntityField":"title","fieldValueType":"expression","fieldValue":"\"刚开线首件测试\""},{"paramEntityField":"message","fieldValueType":"expression","fieldValue":"ConcatStr(\"刚开线，产线名称:\",LV.s.prolineName,\",需要进行首件测试！\")"},{"paramEntityField":"sendAccountId","fieldValueType":"expression","fieldValue":"\"0\""},{"paramEntityField":"sendAccountName","fieldValueType":"expression","fieldValue":"\"系统\""},{"paramEntityField":"receiveAccountId","fieldValueType":"field","fieldValue":"id"},{"paramEntityField":"receiveAccountName","fieldValueType":"field","fieldValue":"Account"},{"paramEntityField":"receiveType","fieldValueType":"expression","fieldValue":"\"user\""}]}],"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><windowCode /><executeType>confirm</executeType><componentCode>vbase_mail</componentCode><ruleSetCode>API_MailSendMessage</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>mailEntity</paramCode><paramType>entity</paramType><paramValue>Account</paramValue><paramSource>ruleSetVar</paramSource><paramSourceDisplayText>方法变量实体</paramSourceDisplayText><dataFilterType>all</dataFilterType><paramFieldMapping><![CDATA[<NewDataSet><dtParamFieldMapping><paramEntityField>title</paramEntityField><fieldValueType>expression</fieldValueType><fieldValue>"刚开线首件测试"</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>message</paramEntityField><paramEntityType>ruleSetVar</paramEntityType><fieldValueType>expression</fieldValueType><fieldValue>ConcatStr("刚开线，产线名称:",LV.s.prolineName,",需要进行首件测试！")</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>sendAccountId</paramEntityField><paramEntityType>ruleSetVar</paramEntityType><fieldValueType>expression</fieldValueType><fieldValue>"0"</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>sendAccountName</paramEntityField><fieldValueType>expression</fieldValueType><fieldValue>"系统"</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>receiveAccountId</paramEntityField><paramEntityType>ruleSetVar</paramEntityType><fieldValueType>field</fieldValueType><fieldValue>id</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>receiveAccountName</paramEntityField><paramEntityType>ruleSetVar</paramEntityType><fieldValueType>field</fieldValueType><fieldValue>Account</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>receiveType</paramEntityField><paramEntityType>ruleSetVar</paramEntityType><fieldValueType>expression</fieldValueType><fieldValue>"user"</fieldValue></dtParamFieldMapping></NewDataSet>]]]]><![CDATA[></paramFieldMapping></dtInvokeParams></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="EntityConditionRemove" ruleName="删除实体记录" instanceCode="BR_EntityConditionRemove1" instanceName="删除实体记录" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-27 19:49:11">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dtMaster":[{"entityName":"prolineUser","entityType":"ruleSetVar","dsWhere":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><EntityName>prolineUser</EntityName><EntityType>ruleSetVar</EntityType><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1_1" instanceName="新增实体记录_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-27 19:49:29">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"prolineUser.id","fieldtype":"expression","srcField":"LV.u.userId"}],"TableType":"ruleSetVar","TableName":"prolineUser","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>prolineUser</EntityName></dtMaster><dtEntityColumns><DestName>prolineUser.id</DestName><SourceType>expression</SourceType><SourceName>LV.u.userId</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet3_1_1_1_1" instanceName="执行方法_API_MailQueryUserIdNames(根据Userid获取人员的详细信息)_1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-27 19:49:32">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_org_mail","windowCode":"","ruleSetCode":"API_MailQueryUserIdNames","isParallelism":"False","executeType":"confirm"},"invokeParams":[{"paramCode":"userIdEntity","paramType":"entity","paramValue":"prolineUser","paramSource":"ruleSetVar","dataFilterType":"all","paramFieldMapping":[{"paramEntityField":"userId","fieldValueType":"field","fieldValue":"id"}]}],"returnMapping":[{"destType":"ruleSetVariant","dest":"Account","srcType":"returnValue","src":"accountEntity","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":false,"destFieldMapping":[{"destField":"id","destType":"char","srcValueType":"field","srcValue":"id"},{"destField":"Account","destType":"text","srcValueType":"field","srcValue":"account"}],"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><windowCode /><executeType>confirm</executeType><componentCode>vbase_org_mail</componentCode><ruleSetCode>API_MailQueryUserIdNames</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>userIdEntity</paramCode><paramType>entity</paramType><paramValue>prolineUser</paramValue><paramSource>ruleSetVar</paramSource><paramSourceDisplayText>方法变量实体</paramSourceDisplayText><dataFilterType>all</dataFilterType><paramFieldMapping><![CDATA[<NewDataSet><dtParamFieldMapping><paramEntityField>userId</paramEntityField><paramEntityType>ruleSetVar</paramEntityType><fieldValueType>field</fieldValueType><fieldValue>id</fieldValue></dtParamFieldMapping></NewDataSet>]]]]><![CDATA[></paramFieldMapping></dtInvokeParams><dtReturnMapping><destType>ruleSetVariant</destType><dest>Account</dest><srcType>returnValue</srcType><src>accountEntity</src><updateDestEntityMethod>insertOrUpdateBySameId</updateDestEntityMethod><isCleanDestEntityData>False</isCleanDestEntityData><destFieldMapping><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>id</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>id</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>Account</destField><destType>text</destType><srcValueType>field</srcValueType><srcValue>account</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></destFieldMapping><dsFilterCondition><![CDATA[<NewDataSet />]]]]><![CDATA[></dsFilterCondition><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1_1_1" instanceName="执行方法_API_MailSendMessage(发送消息)_1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-27 19:55:18">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_mail","windowCode":"","ruleSetCode":"API_MailSendMessage","isParallelism":"False","executeType":"confirm"},"invokeParams":[{"paramCode":"mailEntity","paramType":"entity","paramValue":"Account","paramSource":"ruleSetVar","dataFilterType":"all","paramFieldMapping":[{"paramEntityField":"title","fieldValueType":"expression","fieldValue":"\"刚换型开线首件测试\""},{"paramEntityField":"message","fieldValueType":"expression","fieldValue":"ConcatStr(\"刚产线换型，产线名称:\",LV.s.prolineName,\",需要进行首件测试！\")"},{"paramEntityField":"sendAccountId","fieldValueType":"expression","fieldValue":"\"0\""},{"paramEntityField":"sendAccountName","fieldValueType":"expression","fieldValue":"\"系统\""},{"paramEntityField":"receiveAccountId","fieldValueType":"field","fieldValue":"id"},{"paramEntityField":"receiveAccountName","fieldValueType":"field","fieldValue":"Account"},{"paramEntityField":"receiveType","fieldValueType":"expression","fieldValue":"\"user\""}]}],"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><windowCode /><executeType>confirm</executeType><componentCode>vbase_mail</componentCode><ruleSetCode>API_MailSendMessage</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>mailEntity</paramCode><paramType>entity</paramType><paramValue>Account</paramValue><paramSource>ruleSetVar</paramSource><paramSourceDisplayText>方法变量实体</paramSourceDisplayText><dataFilterType>all</dataFilterType><paramFieldMapping><![CDATA[<NewDataSet><dtParamFieldMapping><paramEntityField>title</paramEntityField><fieldValueType>expression</fieldValueType><fieldValue>"刚换型开线首件测试"</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>message</paramEntityField><paramEntityType>ruleSetVar</paramEntityType><fieldValueType>expression</fieldValueType><fieldValue>ConcatStr("刚产线换型，产线名称:",LV.s.prolineName,",需要进行首件测试！")</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>sendAccountId</paramEntityField><paramEntityType>ruleSetVar</paramEntityType><fieldValueType>expression</fieldValueType><fieldValue>"0"</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>sendAccountName</paramEntityField><fieldValueType>expression</fieldValueType><fieldValue>"系统"</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>receiveAccountId</paramEntityField><paramEntityType>ruleSetVar</paramEntityType><fieldValueType>field</fieldValueType><fieldValue>id</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>receiveAccountName</paramEntityField><paramEntityType>ruleSetVar</paramEntityType><fieldValueType>field</fieldValueType><fieldValue>Account</fieldValue></dtParamFieldMapping><dtParamFieldMapping><paramEntityField>receiveType</paramEntityField><paramEntityType>ruleSetVar</paramEntityType><fieldValueType>expression</fieldValueType><fieldValue>"user"</fieldValue></dtParamFieldMapping></NewDataSet>]]]]><![CDATA[></paramFieldMapping></dtInvokeParams></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Variables>
+      <Variable code="startLine" name="开线" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="prolineUserName" name="线长姓名" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="prolineUserCode" name="线长员工编号" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="proTimeId" name="生产时间Id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="proTimeTitle" name="生产时间标题" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="classes" name="确认班次" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="prolineName" name="产线名称" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="prolineId" name="产线id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="state" name="开线状态" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[开线准备、员工点检、样品/拉力测试、已完成]]></description>
+          </Field>
+          <Field code="returnStauts" name="退料状态" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="resultEntity" name="角色实体" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="角色id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="roleCode" name="角色编码" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="roleName" name="角色名称" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="remark" name="备注" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="resultUserEntity" name="角色用户实体" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="userId" name="用户Id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="userName" name="用户名" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="Account" name="" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="接收人账号Id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="Account" name="接收人账号名" fieldType="text" length="1000" accuracy="">
+            <description><![CDATA[多个使用逗号隔开]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="prolineUser" name="" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+    </Variables>
+  </Method>
+</Methods>

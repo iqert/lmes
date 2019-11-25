@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2017/5/12 10:19:38-->
+<Methods>
+  <Method Code="form_add_mouldDayCheckItem_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>!IsEmpty(@checkId)</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_AddTableRecord1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1" instanceName="新增实体记录" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-02 17:14:56">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"3","Mappings":null,"TableType":"window","TableName":"bo_akl_EM_mouldDayCheckItem","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><Location>3</Location><EntityType>window</EntityType><EntityName>bo_akl_EM_mouldDayCheckItem</EntityName></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-02 17:14:34">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_EM_mouldDayCheckItem.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"@checkId","valueType":"9"}],"entityType":"window","entityName":"bo_akl_EM_mouldDayCheckItem","itemqueryparam":null,"items":[{"destName":"bo_akl_EM_mouldDayCheckItem.checkItem","sourceName":"bo_akl_EM_mouldDayCheckItem.checkItem","type":"entityField"},{"destName":"bo_akl_EM_mouldDayCheckItem.id","sourceName":"bo_akl_EM_mouldDayCheckItem.id","type":"entityField"},{"destName":"bo_akl_EM_mouldDayCheckItem.remark","sourceName":"bo_akl_EM_mouldDayCheckItem.remark","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_EM_mouldDayCheckItem","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_EM_mouldDayCheckItem</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_EM_mouldDayCheckItem</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_EM_mouldDayCheckItem.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>@checkId</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>80e14df37dd64b6696f1d03cdfb9601f</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>80e14df37dd64b6696f1d03cdfb9601f</MasterID><DestName>bo_akl_EM_mouldDayCheckItem.checkItem</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_mouldDayCheckItem.checkItem</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>80e14df37dd64b6696f1d03cdfb9601f</MasterID><DestName>bo_akl_EM_mouldDayCheckItem.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_mouldDayCheckItem.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>80e14df37dd64b6696f1d03cdfb9601f</MasterID><DestName>bo_akl_EM_mouldDayCheckItem.remark</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_mouldDayCheckItem.remark</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>80e14df37dd64b6696f1d03cdfb9601f</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>80e14df37dd64b6696f1d03cdfb9601f</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_CheckRequired1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>BR_OUT.BR_CheckRequired1.isCheckRequiredOK</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_UpdateRecord1" />
+      <evaluateRule code="BR_SelectionConfirm1" />
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="CheckRequired" ruleName="必填项检查" instanceCode="BR_CheckRequired1" instanceName="必填项检查" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-02 17:20:24">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"fieldList":[{"field":"bo_akl_EM_mouldDayCheckItem.checkItem","fieldName":"检查项目"}],"type":"0"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtColumn><Code>bo_akl_EM_mouldDayCheckItem.checkItem</Code><Name>检查项目</Name></dtColumn><dtType><Type>0</Type></dtType></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-02 17:20:49">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_EM_mouldDayCheckItem.checkItem","colValue":"bo_akl_EM_mouldDayCheckItem.checkItem","valueType":"entityField"},{"colName":"bo_akl_EM_mouldDayCheckItem.id","colValue":"bo_akl_EM_mouldDayCheckItem.id","valueType":"entityField"},{"colName":"bo_akl_EM_mouldDayCheckItem.remark","colValue":"bo_akl_EM_mouldDayCheckItem.remark","valueType":"entityField"}],"dataSource":"bo_akl_EM_mouldDayCheckItem","dataSourceType":"window","destTab":"bo_akl_EM_mouldDayCheckItem","isSaveAll":false}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>88b39390659f41708c703066b893c18a</ID><SourceName>bo_akl_EM_mouldDayCheckItem</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_EM_mouldDayCheckItem(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_EM_mouldDayCheckItem</TableName></dtMaster><dtDetails><PID>88b39390659f41708c703066b893c18a</PID><SourceField>bo_akl_EM_mouldDayCheckItem.checkItem</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_mouldDayCheckItem.checkItem</Value></dtDetails><dtDetails><PID>88b39390659f41708c703066b893c18a</PID><SourceField>bo_akl_EM_mouldDayCheckItem.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_mouldDayCheckItem.id</Value></dtDetails><dtDetails><PID>88b39390659f41708c703066b893c18a</PID><SourceField>bo_akl_EM_mouldDayCheckItem.remark</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_mouldDayCheckItem.remark</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-02 17:26:34">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2017/5/12 10:19:38-->
+<Methods>
+  <Method Code="JGButton1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private" IsExtendable="false" IsRuleChainVisible="false">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_CheckRequired1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>BR_OUT.BR_CheckRequired1.isCheckRequiredOK</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <if isEnabled="True" isDebug="False" code="IfCode2">
+        <define>
+          <expression>(GetEntityRowCount("bo_akl_MM_applyAttachment")&gt;0)&amp;&amp;(GetEntityRowCount("bo_akl_MM_applyAttachment_1")&gt;0)&amp;&amp;(GetEntityRowCount("bo_akl_MM_applyAttachment_2")&gt;0)</expression>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_ExecuteRuleSet1_1" />
+          <evaluateRule code="BR_UpdateRecord1" />
+          <evaluateRule code="BR_CopyEntityRecord1" />
+          <evaluateRule code="BR_UpdateRecord2" />
+          <evaluateRule code="BR_SetEntityVarControlValue1" />
+          <evaluateRule code="BR_SelectionConfirm1" />
+        </sequence>
+      </if>
+      <else isEnabled="True" isDebug="False">
+        <define>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_ShowMessage1" />
+        </sequence>
+      </else>
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="CheckRequired" ruleName="必填项检查" instanceCode="BR_CheckRequired1" instanceName="必填项检查" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"fieldList":[{"field":"bo_akl_MM_applyRemoveInsulate.applyType","fieldName":"申请类型"}],"type":"0"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtColumn><Code>bo_akl_MM_applyRemoveInsulate.applyType</Code><Name>申请类型</Name></dtColumn><dtType><Type>0</Type></dtType></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1_1" instanceName="执行方法_API_QueryLoginInfo(API_查询登录信息)" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"LoginComp","windowCode":"","ruleSetCode":"API_QueryLoginInfo","isParallelism":"False"},"invokeParams":null,"returnMapping":[{"destType":"ruleSetVariant","dest":"userId","srcType":"returnValue","src":"userId","updateDestEntityMethod":"","isCleanDestEntityData":false,"destFieldMapping":null,"filterCondition":null,"orderBy":null},{"destType":"ruleSetVariant","dest":"userName","srcType":"returnValue","src":"userName","updateDestEntityMethod":"","isCleanDestEntityData":false,"destFieldMapping":null,"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><componentCode>LoginComp</componentCode><windowCode /><ruleSetCode>API_QueryLoginInfo</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtReturnMapping><destType>ruleSetVariant</destType><dest>userId</dest><srcType>returnValue</srcType><src>userId</src></dtReturnMapping><dtReturnMapping><destType>ruleSetVariant</destType><dest>userName</dest><srcType>returnValue</srcType><src>userName</src></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库_申请记录和附件" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-09-10 15:25:46">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_MM_applyRemoveInsulate.applyState","colValue":"\"待审批\"","valueType":"expression"},{"colName":"bo_akl_MM_applyRemoveInsulate.applyType","colValue":"bo_akl_MM_applyRemoveInsulate.applyType","valueType":"entityField"},{"colName":"bo_akl_MM_applyRemoveInsulate.id","colValue":"bo_akl_MM_applyRemoveInsulate.id","valueType":"entityField"},{"colName":"bo_akl_MM_applyRemoveInsulate.operateTime","colValue":"DateTimeNow()","valueType":"expression"},{"colName":"bo_akl_MM_applyRemoveInsulate.operatorId","colValue":"BR_VAR_PARENT.userId","valueType":"expression"},{"colName":"bo_akl_MM_applyRemoveInsulate.operatorName","colValue":"BR_VAR_PARENT.userName","valueType":"expression"},{"colName":"bo_akl_MM_applyRemoveInsulate.remark","colValue":"bo_akl_MM_applyRemoveInsulate.remark","valueType":"entityField"}],"dataSource":"bo_akl_MM_applyRemoveInsulate","dataSourceType":"window","destTab":"bo_akl_MM_applyRemoveInsulate","isSaveAll":true,"isFieldAutoMapping":false},{"dataMap":[{"colName":"bo_akl_MM_applyAttachment.applyId","colValue":"[bo_akl_MM_applyRemoveInsulate].[id]","valueType":"expression"},{"colName":"bo_akl_MM_applyAttachment.attachmentName","colValue":"bo_akl_MM_applyAttachment.attachmentName","valueType":"entityField"},{"colName":"bo_akl_MM_applyAttachment.attachmentSign","colValue":"bo_akl_MM_applyAttachment.attachmentSign","valueType":"entityField"},{"colName":"bo_akl_MM_applyAttachment.id","colValue":"bo_akl_MM_applyAttachment.id","valueType":"entityField"}],"dataSource":"bo_akl_MM_applyAttachment","dataSourceType":"window","destTab":"bo_akl_MM_applyAttachment","isSaveAll":true,"isFieldAutoMapping":false},{"dataMap":[{"colName":"bo_akl_MM_applyAttachment.applyId","colValue":"[bo_akl_MM_applyRemoveInsulate].[id]","valueType":"expression"},{"colName":"bo_akl_MM_applyAttachment.attachmentName","colValue":"bo_akl_MM_applyAttachment_1.attachmentName","valueType":"entityField"},{"colName":"bo_akl_MM_applyAttachment.attachmentSign","colValue":"bo_akl_MM_applyAttachment_1.attachmentSign","valueType":"entityField"},{"colName":"bo_akl_MM_applyAttachment.id","colValue":"bo_akl_MM_applyAttachment_1.id","valueType":"entityField"}],"dataSource":"bo_akl_MM_applyAttachment_1","dataSourceType":"window","destTab":"bo_akl_MM_applyAttachment","isSaveAll":true,"isFieldAutoMapping":false},{"dataMap":[{"colName":"bo_akl_MM_applyAttachment.applyId","colValue":"[bo_akl_MM_applyRemoveInsulate].[id]","valueType":"expression"},{"colName":"bo_akl_MM_applyAttachment.attachmentName","colValue":"bo_akl_MM_applyAttachment_2.attachmentName","valueType":"entityField"},{"colName":"bo_akl_MM_applyAttachment.attachmentSign","colValue":"bo_akl_MM_applyAttachment_2.attachmentSign","valueType":"entityField"},{"colName":"bo_akl_MM_applyAttachment.id","colValue":"bo_akl_MM_applyAttachment_2.id","valueType":"entityField"}],"dataSource":"bo_akl_MM_applyAttachment_2","dataSourceType":"window","destTab":"bo_akl_MM_applyAttachment","isSaveAll":true,"isFieldAutoMapping":false},{"dataMap":[{"colName":"bo_akl_MM_applyAttachment.applyId","colValue":"[bo_akl_MM_applyRemoveInsulate].[id]","valueType":"expression"},{"colName":"bo_akl_MM_applyAttachment.attachmentName","colValue":"bo_akl_MM_applyAttachment_3.attachmentName","valueType":"entityField"},{"colName":"bo_akl_MM_applyAttachment.attachmentSign","colValue":"bo_akl_MM_applyAttachment_3.attachmentSign","valueType":"entityField"},{"colName":"bo_akl_MM_applyAttachment.id","colValue":"bo_akl_MM_applyAttachment_3.id","valueType":"entityField"}],"dataSource":"bo_akl_MM_applyAttachment_3","dataSourceType":"window","destTab":"bo_akl_MM_applyAttachment","isSaveAll":true,"isFieldAutoMapping":false},{"dataMap":[{"colName":"bo_akl_MM_applyAttachment.applyId","colValue":"[bo_akl_MM_applyRemoveInsulate].[id]","valueType":"expression"},{"colName":"bo_akl_MM_applyAttachment.attachmentName","colValue":"bo_akl_MM_applyAttachment_4.attachmentName","valueType":"entityField"},{"colName":"bo_akl_MM_applyAttachment.attachmentSign","colValue":"bo_akl_MM_applyAttachment_4.attachmentSign","valueType":"entityField"},{"colName":"bo_akl_MM_applyAttachment.id","colValue":"bo_akl_MM_applyAttachment_4.id","valueType":"entityField"}],"dataSource":"bo_akl_MM_applyAttachment_4","dataSourceType":"window","destTab":"bo_akl_MM_applyAttachment","isSaveAll":false,"isFieldAutoMapping":false},{"dataMap":[{"colName":"bo_akl_MM_applyAttachment.applyId","colValue":"[bo_akl_MM_applyRemoveInsulate].[id]","valueType":"expression"},{"colName":"bo_akl_MM_applyAttachment.attachmentName","colValue":"bo_akl_MM_applyAttachment_5.attachmentName","valueType":"entityField"},{"colName":"bo_akl_MM_applyAttachment.attachmentSign","colValue":"bo_akl_MM_applyAttachment_5.attachmentSign","valueType":"entityField"},{"colName":"bo_akl_MM_applyAttachment.id","colValue":"bo_akl_MM_applyAttachment_5.id","valueType":"entityField"}],"dataSource":"bo_akl_MM_applyAttachment_5","dataSourceType":"window","destTab":"bo_akl_MM_applyAttachment","isSaveAll":false,"isFieldAutoMapping":false}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>288dc20926b44590b93300734ef16b0a</ID><SourceName>bo_akl_MM_applyRemoveInsulate</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_MM_applyRemoveInsulate(界面实体)</SourceNameType><IsSaveAll>True</IsSaveAll><TableName>bo_akl_MM_applyRemoveInsulate</TableName></dtMaster><dtMaster><ID>749fb3cd6d7e4e19993185b52b04d5d9</ID><SourceName>bo_akl_MM_applyAttachment</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_MM_applyAttachment(界面实体)</SourceNameType><IsSaveAll>True</IsSaveAll><TableName>bo_akl_MM_applyAttachment</TableName></dtMaster><dtMaster><ID>84b00fce9445425181c300ce4b6ecceb</ID><SourceName>bo_akl_MM_applyAttachment_1</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_MM_applyAttachment_1(界面实体)</SourceNameType><IsSaveAll>True</IsSaveAll><TableName>bo_akl_MM_applyAttachment</TableName></dtMaster><dtMaster><ID>4ed120ed3f5d4fdebadd9a9f46664c2d</ID><SourceName>bo_akl_MM_applyAttachment_2</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_MM_applyAttachment_2(界面实体)</SourceNameType><IsSaveAll>True</IsSaveAll><TableName>bo_akl_MM_applyAttachment</TableName></dtMaster><dtMaster><ID>690df9815aa14ff1982b96ab89b56466</ID><SourceName>bo_akl_MM_applyAttachment_3</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_MM_applyAttachment_3(界面实体)</SourceNameType><IsSaveAll>True</IsSaveAll><TableName>bo_akl_MM_applyAttachment</TableName></dtMaster><dtMaster><ID>330c24ecfce841d6a50410d5def564c4</ID><SourceName>bo_akl_MM_applyAttachment_4</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_MM_applyAttachment_4(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_MM_applyAttachment</TableName><IsFieldAutoMapping>False</IsFieldAutoMapping></dtMaster><dtMaster><ID>58da7e75b65544ff8bf793368649b243</ID><SourceName>bo_akl_MM_applyAttachment_5</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_MM_applyAttachment_5(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_MM_applyAttachment</TableName><IsFieldAutoMapping>False</IsFieldAutoMapping></dtMaster><dtDetails><PID>288dc20926b44590b93300734ef16b0a</PID><SourceField>bo_akl_MM_applyRemoveInsulate.applyState</SourceField><DataFrom>expression</DataFrom><Value>"待审批"</Value></dtDetails><dtDetails><PID>288dc20926b44590b93300734ef16b0a</PID><SourceField>bo_akl_MM_applyRemoveInsulate.applyType</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyRemoveInsulate.applyType</Value></dtDetails><dtDetails><PID>288dc20926b44590b93300734ef16b0a</PID><SourceField>bo_akl_MM_applyRemoveInsulate.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyRemoveInsulate.id</Value></dtDetails><dtDetails><PID>288dc20926b44590b93300734ef16b0a</PID><SourceField>bo_akl_MM_applyRemoveInsulate.operateTime</SourceField><DataFrom>expression</DataFrom><Value>DateTimeNow()</Value></dtDetails><dtDetails><PID>288dc20926b44590b93300734ef16b0a</PID><SourceField>bo_akl_MM_applyRemoveInsulate.operatorId</SourceField><DataFrom>expression</DataFrom><Value>BR_VAR_PARENT.userId</Value></dtDetails><dtDetails><PID>288dc20926b44590b93300734ef16b0a</PID><SourceField>bo_akl_MM_applyRemoveInsulate.operatorName</SourceField><DataFrom>expression</DataFrom><Value>BR_VAR_PARENT.userName</Value></dtDetails><dtDetails><PID>288dc20926b44590b93300734ef16b0a</PID><SourceField>bo_akl_MM_applyRemoveInsulate.remark</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyRemoveInsulate.remark</Value></dtDetails><dtDetails><PID>749fb3cd6d7e4e19993185b52b04d5d9</PID><SourceField>bo_akl_MM_applyAttachment.applyId</SourceField><DataFrom>expression</DataFrom><Value>[bo_akl_MM_applyRemoveInsulate].[id]</Value></dtDetails><dtDetails><PID>749fb3cd6d7e4e19993185b52b04d5d9</PID><SourceField>bo_akl_MM_applyAttachment.attachmentName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyAttachment.attachmentName</Value></dtDetails><dtDetails><PID>749fb3cd6d7e4e19993185b52b04d5d9</PID><SourceField>bo_akl_MM_applyAttachment.attachmentSign</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyAttachment.attachmentSign</Value></dtDetails><dtDetails><PID>749fb3cd6d7e4e19993185b52b04d5d9</PID><SourceField>bo_akl_MM_applyAttachment.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyAttachment.id</Value></dtDetails><dtDetails><PID>84b00fce9445425181c300ce4b6ecceb</PID><SourceField>bo_akl_MM_applyAttachment.applyId</SourceField><DataFrom>expression</DataFrom><Value>[bo_akl_MM_applyRemoveInsulate].[id]</Value></dtDetails><dtDetails><PID>84b00fce9445425181c300ce4b6ecceb</PID><SourceField>bo_akl_MM_applyAttachment.attachmentName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyAttachment_1.attachmentName</Value></dtDetails><dtDetails><PID>84b00fce9445425181c300ce4b6ecceb</PID><SourceField>bo_akl_MM_applyAttachment.attachmentSign</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyAttachment_1.attachmentSign</Value></dtDetails><dtDetails><PID>84b00fce9445425181c300ce4b6ecceb</PID><SourceField>bo_akl_MM_applyAttachment.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyAttachment_1.id</Value></dtDetails><dtDetails><PID>4ed120ed3f5d4fdebadd9a9f46664c2d</PID><SourceField>bo_akl_MM_applyAttachment.applyId</SourceField><DataFrom>expression</DataFrom><Value>[bo_akl_MM_applyRemoveInsulate].[id]</Value></dtDetails><dtDetails><PID>4ed120ed3f5d4fdebadd9a9f46664c2d</PID><SourceField>bo_akl_MM_applyAttachment.attachmentName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyAttachment_2.attachmentName</Value></dtDetails><dtDetails><PID>4ed120ed3f5d4fdebadd9a9f46664c2d</PID><SourceField>bo_akl_MM_applyAttachment.attachmentSign</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyAttachment_2.attachmentSign</Value></dtDetails><dtDetails><PID>4ed120ed3f5d4fdebadd9a9f46664c2d</PID><SourceField>bo_akl_MM_applyAttachment.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyAttachment_2.id</Value></dtDetails><dtDetails><PID>690df9815aa14ff1982b96ab89b56466</PID><SourceField>bo_akl_MM_applyAttachment.applyId</SourceField><DataFrom>expression</DataFrom><Value>[bo_akl_MM_applyRemoveInsulate].[id]</Value></dtDetails><dtDetails><PID>690df9815aa14ff1982b96ab89b56466</PID><SourceField>bo_akl_MM_applyAttachment.attachmentName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyAttachment_3.attachmentName</Value></dtDetails><dtDetails><PID>690df9815aa14ff1982b96ab89b56466</PID><SourceField>bo_akl_MM_applyAttachment.attachmentSign</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyAttachment_3.attachmentSign</Value></dtDetails><dtDetails><PID>690df9815aa14ff1982b96ab89b56466</PID><SourceField>bo_akl_MM_applyAttachment.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyAttachment_3.id</Value></dtDetails><dtDetails><PID>330c24ecfce841d6a50410d5def564c4</PID><SourceField>bo_akl_MM_applyAttachment.applyId</SourceField><DataFrom>expression</DataFrom><Value>[bo_akl_MM_applyRemoveInsulate].[id]</Value></dtDetails><dtDetails><PID>330c24ecfce841d6a50410d5def564c4</PID><SourceField>bo_akl_MM_applyAttachment.attachmentName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyAttachment_4.attachmentName</Value></dtDetails><dtDetails><PID>330c24ecfce841d6a50410d5def564c4</PID><SourceField>bo_akl_MM_applyAttachment.attachmentSign</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyAttachment_4.attachmentSign</Value></dtDetails><dtDetails><PID>330c24ecfce841d6a50410d5def564c4</PID><SourceField>bo_akl_MM_applyAttachment.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyAttachment_4.id</Value></dtDetails><dtDetails><PID>58da7e75b65544ff8bf793368649b243</PID><SourceField>bo_akl_MM_applyAttachment.applyId</SourceField><DataFrom>expression</DataFrom><Value>[bo_akl_MM_applyRemoveInsulate].[id]</Value></dtDetails><dtDetails><PID>58da7e75b65544ff8bf793368649b243</PID><SourceField>bo_akl_MM_applyAttachment.attachmentName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyAttachment_5.attachmentName</Value></dtDetails><dtDetails><PID>58da7e75b65544ff8bf793368649b243</PID><SourceField>bo_akl_MM_applyAttachment.attachmentSign</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyAttachment_5.attachmentSign</Value></dtDetails><dtDetails><PID>58da7e75b65544ff8bf793368649b243</PID><SourceField>bo_akl_MM_applyAttachment.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyAttachment_5.id</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="CopyEntityRecord" ruleName="实体间复制记录" instanceCode="BR_CopyEntityRecord1" instanceName="实体间复制记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"checkitems":null,"condition":"","copyType":"2","destName":"bo_akl_MM_applyInsulateMe","items":[{"destName":"bo_akl_MM_applyInsulateMe.applyId","sourceName":"[bo_akl_MM_applyRemoveInsulate].[id]","type":"expression"},{"destName":"bo_akl_MM_applyInsulateMe.insulateId","sourceName":"insulateRecId.id","type":"entityField"}],"mageitems":null,"sourceName":"insulateRecId","type":"1","isAddRecord":true,"jsonVersion":"1.0","destType":"window","sourceType":"windowInput"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtInfo><destName>bo_akl_MM_applyInsulateMe</destName><destType>window</destType><sourceName>insulateRecId</sourceName><sourceType>windowInput</sourceType><type>1</type><isAddRecord>True</isAddRecord><copyType>2</copyType><condition /><jsonVersion>1.0</jsonVersion></dtInfo><dtMaster><DestName>bo_akl_MM_applyInsulateMe.applyId</DestName><SourceType>expression</SourceType><SourceName>[bo_akl_MM_applyRemoveInsulate].[id]</SourceName></dtMaster><dtMaster><DestName>bo_akl_MM_applyInsulateMe.insulateId</DestName><SourceType>entityField</SourceType><SourceName>insulateRecId.id</SourceName></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord2" instanceName="保存实体到数据库_申请的库存记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_MM_applyInsulateMe.applyId","colValue":"bo_akl_MM_applyInsulateMe.applyId","valueType":"entityField"},{"colName":"bo_akl_MM_applyInsulateMe.id","colValue":"bo_akl_MM_applyInsulateMe.id","valueType":"entityField"},{"colName":"bo_akl_MM_applyInsulateMe.insulateId","colValue":"bo_akl_MM_applyInsulateMe.insulateId","valueType":"entityField"}],"dataSource":"bo_akl_MM_applyInsulateMe","dataSourceType":"window","destTab":"bo_akl_MM_applyInsulateMe","isSaveAll":false}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>cd852931e8f244029d6950aa2a973686</ID><SourceName>bo_akl_MM_applyInsulateMe</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_MM_applyInsulateMe(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_MM_applyInsulateMe</TableName></dtMaster><dtDetails><PID>cd852931e8f244029d6950aa2a973686</PID><SourceField>bo_akl_MM_applyInsulateMe.applyId</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyInsulateMe.applyId</Value></dtDetails><dtDetails><PID>cd852931e8f244029d6950aa2a973686</PID><SourceField>bo_akl_MM_applyInsulateMe.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyInsulateMe.id</Value></dtDetails><dtDetails><PID>cd852931e8f244029d6950aa2a973686</PID><SourceField>bo_akl_MM_applyInsulateMe.insulateId</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_applyInsulateMe.insulateId</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"6","Target":"isOK","SourceType":"expression","SourceEntityType":"","Source":"\"OK\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>6</TargetType><Target>isOK</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"OK"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请上传规定的附件！\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请上传规定的附件！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Variables>
+      <Variable code="userId" name="用户Id" fieldType="char" initValue="" isMust="false" desc="" />
+      <Variable code="userName" name="用户名称" fieldType="char" initValue="" isMust="false" desc="" />
+    </Variables>
+  </Method>
+  <Method Code="form_applyContent_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_AddTableRecord1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1" instanceName="新增实体记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"3","Mappings":[{"destField":"bo_akl_MM_applyRemoveInsulate.applyType","fieldtype":"expression","srcField":"@applyType"}],"TableType":"window","TableName":"bo_akl_MM_applyRemoveInsulate","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><Location>3</Location><EntityType>window</EntityType><EntityName>bo_akl_MM_applyRemoveInsulate</EntityName></dtMaster><dtEntityColumns><DestName>bo_akl_MM_applyRemoveInsulate.applyType</DestName><SourceType>expression</SourceType><SourceName>@applyType</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGAttachment1_OnFileSelected" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_Attachmentoperation1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="Attachmentoperation" ruleName="附件操作" instanceCode="BR_Attachmentoperation1" instanceName="附件操作" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-16 15:50:40">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"componentControlCode":[{"componentControlCode":"JGAttachment1"}],"dataProcess":null,"fileName":null,"function":"1","fileType":"","componentCode":"","reviewScheme":"","watermarkEnable":false,"previewTargetType":"","isPreviewInModalWindow":false,"previewWindowSize":"","watermarkSet":null,"picWatermarkStyle":null,"docProtectSet":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><operate>1</operate><documentColumn /><watermarkEnable>False</watermarkEnable></dtMaster><dtlbSelected><SaveName>JGAttachment1</SaveName><DisplayName>JGAttachment1(作业指导书)</DisplayName></dtlbSelected></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGAttachment1_OnFileDeleted" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DeleteListSelectRow1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow1" instanceName="删除实体记录" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-16 15:58:04">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"","deleteType":"0","TableName":"bo_akl_MM_applyAttachment","EntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition /><DeleteType>0</DeleteType><TableName>bo_akl_MM_applyAttachment</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGAttachment2_OnFileSelected" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_Attachmentoperation1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="Attachmentoperation" ruleName="附件操作" instanceCode="BR_Attachmentoperation1" instanceName="附件操作" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-16 16:12:45">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"componentControlCode":[{"componentControlCode":"JGAttachment2"}],"dataProcess":null,"fileName":null,"function":"1","fileType":"","componentCode":"","reviewScheme":"","watermarkEnable":false,"previewTargetType":"","isPreviewInModalWindow":false,"previewWindowSize":"","watermarkSet":null,"picWatermarkStyle":null,"docProtectSet":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><operate>1</operate><documentColumn /><watermarkEnable>False</watermarkEnable></dtMaster><dtlbSelected><SaveName>JGAttachment2</SaveName><DisplayName>JGAttachment2(其他附件)</DisplayName></dtlbSelected></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGAttachment2_OnFileDeleted" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DeleteListSelectRow1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow1" instanceName="删除实体记录" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-16 16:21:49">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"","deleteType":"0","TableName":"bo_akl_MM_applyAttachment_3","EntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition /><DeleteType>0</DeleteType><TableName>bo_akl_MM_applyAttachment_3</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGAttachment3_OnFileSelected" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_Attachmentoperation1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="Attachmentoperation" ruleName="附件操作" instanceCode="BR_Attachmentoperation1" instanceName="附件操作" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-16 16:22:20">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"componentControlCode":[{"componentControlCode":"JGAttachment3"}],"dataProcess":null,"fileName":null,"function":"1","fileType":"","componentCode":"","reviewScheme":"","watermarkEnable":false,"previewTargetType":"","isPreviewInModalWindow":false,"previewWindowSize":"","watermarkSet":null,"picWatermarkStyle":null,"docProtectSet":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><operate>1</operate><documentColumn /><watermarkEnable>False</watermarkEnable></dtMaster><dtlbSelected><SaveName>JGAttachment3</SaveName><DisplayName>JGAttachment3(MRB文件)</DisplayName></dtlbSelected></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGAttachment3_OnFileDeleted" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DeleteListSelectRow1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow1" instanceName="删除实体记录" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-16 16:22:56">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"","deleteType":"0","TableName":"bo_akl_MM_applyAttachment_1","EntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition /><DeleteType>0</DeleteType><TableName>bo_akl_MM_applyAttachment_1</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGAttachment4_OnFileSelected" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_Attachmentoperation1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="Attachmentoperation" ruleName="附件操作" instanceCode="BR_Attachmentoperation1" instanceName="附件操作" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-16 16:23:18">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"componentControlCode":[{"componentControlCode":"JGAttachment4"}],"dataProcess":null,"fileName":null,"function":"1","fileType":"","componentCode":"","reviewScheme":"","watermarkEnable":false,"previewTargetType":"","isPreviewInModalWindow":false,"previewWindowSize":"","watermarkSet":null,"picWatermarkStyle":null,"docProtectSet":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><operate>1</operate><documentColumn /><watermarkEnable>False</watermarkEnable></dtMaster><dtlbSelected><SaveName>JGAttachment4</SaveName><DisplayName>JGAttachment4(返工风险分析)</DisplayName></dtlbSelected></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGAttachment4_OnFileDeleted" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DeleteListSelectRow1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow1" instanceName="删除实体记录" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-16 16:23:45">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"","deleteType":"0","TableName":"bo_akl_MM_applyAttachment_2","EntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition /><DeleteType>0</DeleteType><TableName>bo_akl_MM_applyAttachment_2</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGAttachment5_OnFileSelected" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_Attachmentoperation1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="Attachmentoperation" ruleName="附件操作" instanceCode="BR_Attachmentoperation1" instanceName="附件操作" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-09-10 14:56:56">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"componentControlCode":[{"componentControlCode":"JGAttachment5"}],"dataProcess":null,"fileName":null,"function":"1","fileType":"","componentCode":"","reviewScheme":"","watermarkEnable":false,"previewTargetType":"","isPreviewInModalWindow":false,"previewWindowSize":"","watermarkSet":null,"picWatermarkStyle":null,"docProtectSet":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><operate>1</operate><documentColumn /><watermarkEnable>False</watermarkEnable></dtMaster><dtlbSelected><SaveName>JGAttachment5</SaveName><DisplayName>JGAttachment5(不良图片)</DisplayName></dtlbSelected></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGAttachment5_OnFileDeleted" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DeleteListSelectRow1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow1" instanceName="删除实体记录" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-09-10 14:58:02">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"","deleteType":"0","TableName":"bo_akl_MM_applyAttachment_4","EntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition /><DeleteType>0</DeleteType><TableName>bo_akl_MM_applyAttachment_4</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGAttachment6_OnFileSelected" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_Attachmentoperation1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="Attachmentoperation" ruleName="附件操作" instanceCode="BR_Attachmentoperation1" instanceName="附件操作" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-09-10 14:58:59">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"componentControlCode":[{"componentControlCode":"JGAttachment6"}],"dataProcess":null,"fileName":null,"function":"1","fileType":"","componentCode":"","reviewScheme":"","watermarkEnable":false,"previewTargetType":"","isPreviewInModalWindow":false,"previewWindowSize":"","watermarkSet":null,"picWatermarkStyle":null,"docProtectSet":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><operate>1</operate><documentColumn /><watermarkEnable>False</watermarkEnable></dtMaster><dtlbSelected><SaveName>JGAttachment6</SaveName><DisplayName>JGAttachment6(合格品图片)</DisplayName></dtlbSelected></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGAttachment6_OnFileDeleted" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DeleteListSelectRow1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow1" instanceName="删除实体记录" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-09-10 14:59:19">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"","deleteType":"0","TableName":"bo_akl_MM_applyAttachment_5","EntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition /><DeleteType>0</DeleteType><TableName>bo_akl_MM_applyAttachment_5</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

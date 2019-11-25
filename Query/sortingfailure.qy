@@ -1,0 +1,102 @@
+﻿<Query id="433e52ac8c274fc59f16810ced756f39" code="sortingfailure" name="内部选别出不良的措施跟进表" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-09-10 11:11:15]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-09-11 13:39:40]]></ModificationTime>
+  <VSql><![CDATA[SELECT
+		qd.insulateTime, --时间
+		qd.batchNo, --批次
+		qd.remark, --不良现象
+		qd.applyId, --记录id
+		qd.badProductNum, 
+		qd.dwa
+FROM (
+	SELECT NULL AS insulateTime, --时间
+		NULL AS batchNo, --批次
+		NULL AS remark, --不良现象
+		NULL AS applyId, --记录id
+		NULL AS badProductNum, 
+		SUM(ins.badProductNum) AS dwa
+	FROM bo_akl_MM_insulateRec AS ins
+	LEFT JOIN bo_akl_MM_applyInsulateMe AS ain ON ins.id = ain.insulateId
+	LEFT JOIN bo_akl_MM_applyRemoveInsulate AS are ON are.id = ain.applyId
+	LEFT JOIN bo_akl_line_start AS lis ON lis.batchNum = ins.batchNo
+	LEFT JOIN bo_akl_base_productlines AS lin ON lin.id = lis.prolineId
+	LEFT JOIN bo_akl_base_projectInfo AS pro ON lin.belongProject = pro.id
+	WHERE (
+			ins.STATE = '选别已处理'
+			OR ins.STATE = '返工已处理'
+			)
+			 and pro.pNo=:pNo
+ and ins.insulateTime>=:startDate 
+and ins.insulateTime<=:endDate
+	
+	UNION ALL
+	
+	SELECT ins.insulateTime, --时间
+		ins.batchNo, --批次
+		are.remark, --不良现象
+		ain.applyId, --记录id
+		ins.badProductNum, NULL AS dwa
+	FROM bo_akl_MM_insulateRec AS ins
+	LEFT JOIN bo_akl_MM_applyInsulateMe AS ain ON ins.id = ain.insulateId
+	LEFT JOIN bo_akl_MM_applyRemoveInsulate AS are ON are.id = ain.applyId
+	LEFT JOIN bo_akl_line_start AS lis ON lis.batchNum = ins.batchNo
+	LEFT JOIN bo_akl_base_productlines AS lin ON lin.id = lis.prolineId
+	LEFT JOIN bo_akl_base_projectInfo AS pro ON lin.belongProject = pro.id
+	WHERE (
+			ins.STATE = '选别已处理'
+			OR ins.STATE = '返工已处理'
+			)
+			and pro.pNo=:pNo
+	 		and ins.insulateTime>=:startDate 
+			and ins.insulateTime<=:endDate
+	) as qd
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="insulateTime" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="batchNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="remark" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="applyId" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="badProductNum" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="dwa" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="pNo" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="endDate" name="" dataType="date">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="startDate" name="" dataType="date">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_MM_insulateRec" tokenIndexes="101,315" />
+    <DataItem type="Table" key="bo_akl_MM_applyInsulateMe" tokenIndexes="111,325" />
+    <DataItem type="Table" key="bo_akl_MM_applyRemoveInsulate" tokenIndexes="133,347" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="155,369" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="177,391" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="199,413" />
+    <DataItem type="QueryParam" key="pNo" tokenIndexes="248,462" />
+    <DataItem type="QueryParam" key="startDate" tokenIndexes="257,471" />
+    <DataItem type="QueryParam" key="endDate" tokenIndexes="266,480" />
+  </DataItems>
+</Query>

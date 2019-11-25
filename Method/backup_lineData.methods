@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Methods>
+  <Method Code="backup_lineData" Type="Server" InterfaceType="Local" RestrictType="Private" TransactionType="transaction">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_SetEntityVarControlValue1" />
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity2" />
+  <if isEnabled="True" isDebug="False" code="IfCode4">
+    <define>
+      <expression>IsEmpty(BR_VAR_PARENT.[newLineData].[id])</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_CopyRecordBetweenEntity1_1" />
+      <evaluateRule code="BR_UpdateRecord1_1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark></remark>
+    </define>
+    <sequence>
+      <foreach isEnabled="True" isDebug="False" code="ForeachCode1">
+        <define>
+          <varCode>va</varCode>
+          <entityType>ruleSetVar</entityType>
+          <entityCode>lineData</entityCode>
+          <remark></remark>
+        </define>
+        <sequence>
+          <foreach isEnabled="True" isDebug="False" code="ForeachCode2">
+            <define>
+              <varCode>vb</varCode>
+              <entityType>ruleSetVar</entityType>
+              <entityCode>newLineData</entityCode>
+              <remark></remark>
+            </define>
+            <sequence>
+              <if isEnabled="True" isDebug="False" code="IfCode1">
+                <define>
+                  <expression>LV.va.Name==LV.vb.Name</expression>
+                  <remark></remark>
+                </define>
+                <sequence>
+                  <if isEnabled="True" isDebug="False" code="IfCode2">
+                    <define>
+                      <expression>!(LV.va.Value==LV.vb.Value)</expression>
+                      <remark></remark>
+                    </define>
+                    <sequence>
+                      <evaluateRule code="BR_CopyRecordBetweenEntity1_1_1" />
+                      <evaluateRule code="BR_UpdateRecord1_1_1" />
+                      <evaluateRule code="BR_AbortLoop1" />
+                    </sequence>
+                  </if>
+                </sequence>
+              </if>
+            </sequence>
+          </foreach>
+        </sequence>
+      </foreach>
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="是否更新标致赋值为0" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"updateTip","SourceType":"expression","SourceEntityType":"","Source":"0","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>updateTip</Target><SourceType>expression</SourceType><SourceEntityType /><Source>0</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="获取实时产线数据表数据" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":null,"entityType":"ruleSetVar","entityName":"lineData","itemqueryparam":null,"items":[{"destName":"lineData.Name","sourceName":"Exchange.Name","type":"entityField"},{"destName":"lineData.Value","sourceName":"Exchange.Value","type":"entityField"},{"destName":"lineData.Timepoint","sourceName":"Exchange.Timepoint","type":"entityField"}],"orderBy":null,"sourceName":"Exchange","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>ruleSetVar</EntityType><EntityName>lineData</EntityName><SourceType>Table</SourceType><SourceName>Exchange</SourceName><dsWhere><![CDATA[<NewDataSet />]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>e3372fa5a4d14d5ab7635f5c5a0c8583</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>e3372fa5a4d14d5ab7635f5c5a0c8583</MasterID><DestName>lineData.Name</DestName><SourceType>entityField</SourceType><SourceName>Exchange.Name</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>e3372fa5a4d14d5ab7635f5c5a0c8583</MasterID><DestName>lineData.Value</DestName><SourceType>entityField</SourceType><SourceName>Exchange.Value</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>e3372fa5a4d14d5ab7635f5c5a0c8583</MasterID><DestName>lineData.Timepoint</DestName><SourceType>entityField</SourceType><SourceName>Exchange.Timepoint</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>e3372fa5a4d14d5ab7635f5c5a0c8583</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>e3372fa5a4d14d5ab7635f5c5a0c8583</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity2" instanceName="获取最新一次记录表数据" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Query","dsWhere":null,"entityType":"ruleSetVar","entityName":"newLineData","itemqueryparam":null,"items":[{"destName":"newLineData.id","sourceName":"lineDataMax.id","type":"entityField"},{"destName":"newLineData.Name","sourceName":"lineDataMax.Name","type":"entityField"},{"destName":"newLineData.Value","sourceName":"lineDataMax.Value","type":"entityField"},{"destName":"newLineData.Timepoint","sourceName":"lineDataMax.Timepoint","type":"entityField"},{"destName":"newLineData.ts","sourceName":"lineDataMax.ts","type":"entityField"}],"orderBy":null,"sourceName":"lineDataMax","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>ruleSetVar</EntityType><EntityName>newLineData</EntityName><SourceType>Query</SourceType><SourceName>lineDataMax</SourceName><dsWhere><![CDATA[<NewDataSet />]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><dsQueryParam><![CDATA[<dsQueryParam />]]]]><![CDATA[></dsQueryParam><ID>197d0c98886e401fbecb7907eabf74d0</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>197d0c98886e401fbecb7907eabf74d0</MasterID><DestName>newLineData.id</DestName><SourceType>entityField</SourceType><SourceName>lineDataMax.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>197d0c98886e401fbecb7907eabf74d0</MasterID><DestName>newLineData.Name</DestName><SourceType>entityField</SourceType><SourceName>lineDataMax.Name</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>197d0c98886e401fbecb7907eabf74d0</MasterID><DestName>newLineData.Value</DestName><SourceType>entityField</SourceType><SourceName>lineDataMax.Value</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>197d0c98886e401fbecb7907eabf74d0</MasterID><DestName>newLineData.Timepoint</DestName><SourceType>entityField</SourceType><SourceName>lineDataMax.Timepoint</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>197d0c98886e401fbecb7907eabf74d0</MasterID><DestName>newLineData.ts</DestName><SourceType>entityField</SourceType><SourceName>lineDataMax.ts</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>197d0c98886e401fbecb7907eabf74d0</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>197d0c98886e401fbecb7907eabf74d0</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="CopyRecordBetweenEntity" ruleName="实体间复制记录" instanceCode="BR_CopyRecordBetweenEntity1_1_1" instanceName="复制实时表数据到记录表实体_1_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"sourceName":"lineData","sourceType":"ruleSetVar","destName":"saveData","destType":"ruleSetVar","copyType":"2","operType":"1","isAddRecord":true,"condition":null,"items":[{"destName":"saveData.Name","sourceName":"lineData.Name","sourceType":"entityField"},{"destName":"saveData.Value","sourceName":"lineData.Value","sourceType":"entityField"},{"destName":"saveData.Timepoint","sourceName":"lineData.Timepoint","sourceType":"entityField"},{"destName":"saveData.ts","sourceName":"DateTimeNow()","sourceType":"expression"}],"checkitems":null,"mergeitems":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtInfo><destName>saveData</destName><destType>ruleSetVar</destType><sourceName>lineData</sourceName><sourceType>ruleSetVar</sourceType><type>1</type><isAddRecord>True</isAddRecord><copyType>2</copyType><condition><![CDATA[<NewDataSet />]]]]><![CDATA[></condition></dtInfo><dtMaster><DestName>saveData.Name</DestName><SourceType>entityField</SourceType><SourceName>lineData.Name</SourceName></dtMaster><dtMaster><DestName>saveData.Value</DestName><SourceType>entityField</SourceType><SourceName>lineData.Value</SourceName></dtMaster><dtMaster><DestName>saveData.Timepoint</DestName><SourceType>entityField</SourceType><SourceName>lineData.Timepoint</SourceName></dtMaster><dtMaster><DestName>saveData.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1_1_1" instanceName="保存实体到数据库_1_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"Exchange_data.id","colValue":"saveData.id","valueType":"entityField"},{"colName":"Exchange_data.Name","colValue":"saveData.Name","valueType":"entityField"},{"colName":"Exchange_data.Timepoint","colValue":"saveData.Timepoint","valueType":"entityField"},{"colName":"Exchange_data.ts","colValue":"saveData.ts","valueType":"entityField"},{"colName":"Exchange_data.Value","colValue":"saveData.Value","valueType":"entityField"}],"dataSource":"saveData","dataSourceType":"ruleSetVar","destTab":"Exchange_data","isSaveAll":true}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>7958b38921e8438fa2e7cd75c06e9431</ID><SourceName>saveData</SourceName><SourceType>ruleSetVar</SourceType><SourceNameType>saveData(方法变量)</SourceNameType><IsSaveAll>True</IsSaveAll><TableName>Exchange_data</TableName></dtMaster><dtDetails><PID>7958b38921e8438fa2e7cd75c06e9431</PID><SourceField>Exchange_data.id</SourceField><DataFrom>entityField</DataFrom><Value>saveData.id</Value></dtDetails><dtDetails><PID>7958b38921e8438fa2e7cd75c06e9431</PID><SourceField>Exchange_data.Name</SourceField><DataFrom>entityField</DataFrom><Value>saveData.Name</Value></dtDetails><dtDetails><PID>7958b38921e8438fa2e7cd75c06e9431</PID><SourceField>Exchange_data.Timepoint</SourceField><DataFrom>entityField</DataFrom><Value>saveData.Timepoint</Value></dtDetails><dtDetails><PID>7958b38921e8438fa2e7cd75c06e9431</PID><SourceField>Exchange_data.ts</SourceField><DataFrom>entityField</DataFrom><Value>saveData.ts</Value></dtDetails><dtDetails><PID>7958b38921e8438fa2e7cd75c06e9431</PID><SourceField>Exchange_data.Value</SourceField><DataFrom>entityField</DataFrom><Value>saveData.Value</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop1" instanceName="中断循环" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"abortType":"break"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>break</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="CopyRecordBetweenEntity" ruleName="实体间复制记录" instanceCode="BR_CopyRecordBetweenEntity1_1" instanceName="复制实时表数据到记录表实体_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"sourceName":"lineData","sourceType":"ruleSetVar","destName":"saveData","destType":"ruleSetVar","copyType":"2","operType":"1","isAddRecord":true,"condition":null,"items":[{"destName":"saveData.Name","sourceName":"lineData.Name","sourceType":"entityField"},{"destName":"saveData.Value","sourceName":"lineData.Value","sourceType":"entityField"},{"destName":"saveData.Timepoint","sourceName":"lineData.Timepoint","sourceType":"entityField"},{"destName":"saveData.ts","sourceName":"DateTimeNow()","sourceType":"expression"}],"checkitems":null,"mergeitems":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtInfo><destName>saveData</destName><destType>ruleSetVar</destType><sourceName>lineData</sourceName><sourceType>ruleSetVar</sourceType><type>1</type><isAddRecord>True</isAddRecord><copyType>2</copyType><condition><![CDATA[<NewDataSet />]]]]><![CDATA[></condition></dtInfo><dtMaster><DestName>saveData.Name</DestName><SourceType>entityField</SourceType><SourceName>lineData.Name</SourceName></dtMaster><dtMaster><DestName>saveData.Value</DestName><SourceType>entityField</SourceType><SourceName>lineData.Value</SourceName></dtMaster><dtMaster><DestName>saveData.Timepoint</DestName><SourceType>entityField</SourceType><SourceName>lineData.Timepoint</SourceName></dtMaster><dtMaster><DestName>saveData.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1_1" instanceName="保存实体到数据库_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"Exchange_data.id","colValue":"saveData.id","valueType":"entityField"},{"colName":"Exchange_data.Name","colValue":"saveData.Name","valueType":"entityField"},{"colName":"Exchange_data.Timepoint","colValue":"saveData.Timepoint","valueType":"entityField"},{"colName":"Exchange_data.ts","colValue":"saveData.ts","valueType":"entityField"},{"colName":"Exchange_data.Value","colValue":"saveData.Value","valueType":"entityField"}],"dataSource":"saveData","dataSourceType":"ruleSetVar","destTab":"Exchange_data","isSaveAll":true}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>7958b38921e8438fa2e7cd75c06e9431</ID><SourceName>saveData</SourceName><SourceType>ruleSetVar</SourceType><SourceNameType>saveData(方法变量)</SourceNameType><IsSaveAll>True</IsSaveAll><TableName>Exchange_data</TableName></dtMaster><dtDetails><PID>7958b38921e8438fa2e7cd75c06e9431</PID><SourceField>Exchange_data.id</SourceField><DataFrom>entityField</DataFrom><Value>saveData.id</Value></dtDetails><dtDetails><PID>7958b38921e8438fa2e7cd75c06e9431</PID><SourceField>Exchange_data.Name</SourceField><DataFrom>entityField</DataFrom><Value>saveData.Name</Value></dtDetails><dtDetails><PID>7958b38921e8438fa2e7cd75c06e9431</PID><SourceField>Exchange_data.Timepoint</SourceField><DataFrom>entityField</DataFrom><Value>saveData.Timepoint</Value></dtDetails><dtDetails><PID>7958b38921e8438fa2e7cd75c06e9431</PID><SourceField>Exchange_data.ts</SourceField><DataFrom>entityField</DataFrom><Value>saveData.ts</Value></dtDetails><dtDetails><PID>7958b38921e8438fa2e7cd75c06e9431</PID><SourceField>Exchange_data.Value</SourceField><DataFrom>entityField</DataFrom><Value>saveData.Value</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Variables>
+      <Variable code="lineData" name="实时产线数据" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="Name" name="" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="Value" name="" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="Timepoint" name="" fieldType="text" length="1000" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="newLineData" name="最新的记录表数据" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="Name" name="Name" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="Value" name="Value" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="Timepoint" name="Timepoint" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="ts" name="记录时间" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="updateTip" name="" fieldType="integer" initValue="" isMust="false" desc="" />
+      <Variable code="saveData" name="" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="Name" name="Name" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="Value" name="Value" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="Timepoint" name="Timepoint" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="ts" name="记录时间" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="PD_NumberIsChange" name="PD_Number是否发生了改变" fieldType="boolean" initValue="False" isMust="false" desc="" />
+    </Variables>
+  </Method>
+</Methods>

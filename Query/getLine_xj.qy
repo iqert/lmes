@@ -1,0 +1,33 @@
+﻿<Query id="114774beaaab4676803dcbe7e7894f22" code="getLine_xj" name="获取产线巡检员数据" type="VSql">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[liub]]></Creator>
+  <CreationTime><![CDATA[2018-07-04 11:09:14]]></CreationTime>
+  <Modifier><![CDATA[liub]]></Modifier>
+  <ModificationTime><![CDATA[2018-07-24 09:21:32]]></ModificationTime>
+  <VSql><![CDATA[select eb.sNo,eb.sName,eb.tLine,pw.vwsNature,pw.pNo from bo_akl_base_examRecordLB eb
+LEFT JOIN
+(select * from bo_akl_base_productling_ws where vwsNature='巡检员') pw on CHARINDEX(pw.wsNo,eb.tLine,1)>0
+where eb.assResult='合格' and eb.userPower!='' and pw.vwsNature!='']]></VSql>
+  <Columns>
+    <Column id="Column_0" code="sNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="sName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="tLine" name="" dataType="text" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="vwsNature" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="pNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_base_examRecordLB" tokenIndexes="24" />
+    <DataItem type="Table" key="bo_akl_base_productling_ws" tokenIndexes="39" />
+  </DataItems>
+</Query>

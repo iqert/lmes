@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2017/5/12 10:19:38-->
+<Methods>
+  <Method Code="JGButton1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>!IsEmpty([bo_akl_MM_applyRemoveInsulate].[id])</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_OpenComponentReturnData1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-11 16:51:51">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"form_applyRemoveInsulateMe","windowName":"申请解除隔离的物料","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"","widthExp":"","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":[{"paramName":"applpId","paramType":"expression","paramValue":"[bo_akl_MM_applyRemoveInsulate].[id]","paramEntityType":"","entityFieldMapping":null}],"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>form_applyRemoveInsulateMe</WindowCode><WindowName>申请解除隔离的物料</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp /><WidthExp /><IsAsyn>False</IsAsyn></dtMaster><dtParam><WindowVariant>applpId</WindowVariant><SourceType>expression</SourceType><SourceTypeDisplayText>表达式</SourceTypeDisplayText><SourceValue>[bo_akl_MM_applyRemoveInsulate].[id]</SourceValue></dtParam></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-11 16:33:33">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请选择需查看的记录！\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请选择需查看的记录！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="form_applyRemoveInsulateRec_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>GetEntityRowCount("bo_akl_MM_applyRemoveInsulate")&gt;0</expression>
+      <remark />
+    </define>
+    <sequence>
+      <foreach isEnabled="True" isDebug="False" code="ForeachCode1">
+        <define>
+          <varCode>ari</varCode>
+          <entityType>window</entityType>
+          <entityCode>bo_akl_MM_applyRemoveInsulate</entityCode>
+          <remark />
+        </define>
+        <sequence>
+          <if isEnabled="True" isDebug="False" code="IfCode2">
+            <define>
+              <expression>LV.ari.applyState=="已审批"</expression>
+              <remark />
+            </define>
+            <sequence>
+              <evaluateRule code="BR_DataBaseDataToInterfaceEntity2" />
+              <if isEnabled="True" isDebug="False" code="IfCode3">
+                <define>
+                  <expression>GetEntityRowCount("BR_VAR_PARENT.bo_akl_MM_removeInsulateAp")&gt;0</expression>
+                  <remark />
+                </define>
+                <sequence>
+                  <evaluateRule code="BR_SetLoopVariant1" />
+                  <evaluateRule code="BR_DeleteListSelectRow1" />
+                </sequence>
+              </if>
+            </sequence>
+          </if>
+        </sequence>
+      </foreach>
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体_申请记录" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-11 21:55:06">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":null,"entityType":"window","entityName":"bo_akl_MM_applyRemoveInsulate","itemqueryparam":null,"items":[{"destName":"bo_akl_MM_applyRemoveInsulate.applyState","sourceName":"bo_akl_MM_applyRemoveInsulate.applyState","type":"entityField"},{"destName":"bo_akl_MM_applyRemoveInsulate.applyType","sourceName":"bo_akl_MM_applyRemoveInsulate.applyType","type":"entityField"},{"destName":"bo_akl_MM_applyRemoveInsulate.id","sourceName":"bo_akl_MM_applyRemoveInsulate.id","type":"entityField"},{"destName":"bo_akl_MM_applyRemoveInsulate.operateTime","sourceName":"bo_akl_MM_applyRemoveInsulate.operateTime","type":"entityField"},{"destName":"bo_akl_MM_applyRemoveInsulate.operatorId","sourceName":"bo_akl_MM_applyRemoveInsulate.operatorId","type":"entityField"},{"destName":"bo_akl_MM_applyRemoveInsulate.operatorName","sourceName":"bo_akl_MM_applyRemoveInsulate.operatorName","type":"entityField"},{"destName":"bo_akl_MM_applyRemoveInsulate.remark","sourceName":"bo_akl_MM_applyRemoveInsulate.remark","type":"entityField"}],"orderBy":[{"field":"bo_akl_MM_applyRemoveInsulate.operateTime","type":"DESC"}],"sourceName":"bo_akl_MM_applyRemoveInsulate","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_MM_applyRemoveInsulate</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_MM_applyRemoveInsulate</SourceName><dsWhere><![CDATA[<NewDataSet />]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort><dtSort><SortField>bo_akl_MM_applyRemoveInsulate.operateTime</SortField><SortWay>DESC</SortWay></dtSort></dsSort>]]]]><![CDATA[></dsSort><ID>e76fcc662fd64f58b28ecf054bb272cd</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>e76fcc662fd64f58b28ecf054bb272cd</MasterID><DestName>bo_akl_MM_applyRemoveInsulate.applyState</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_applyRemoveInsulate.applyState</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>e76fcc662fd64f58b28ecf054bb272cd</MasterID><DestName>bo_akl_MM_applyRemoveInsulate.applyType</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_applyRemoveInsulate.applyType</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>e76fcc662fd64f58b28ecf054bb272cd</MasterID><DestName>bo_akl_MM_applyRemoveInsulate.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_applyRemoveInsulate.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>e76fcc662fd64f58b28ecf054bb272cd</MasterID><DestName>bo_akl_MM_applyRemoveInsulate.operateTime</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_applyRemoveInsulate.operateTime</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>e76fcc662fd64f58b28ecf054bb272cd</MasterID><DestName>bo_akl_MM_applyRemoveInsulate.operatorId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_applyRemoveInsulate.operatorId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>e76fcc662fd64f58b28ecf054bb272cd</MasterID><DestName>bo_akl_MM_applyRemoveInsulate.operatorName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_applyRemoveInsulate.operatorName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>e76fcc662fd64f58b28ecf054bb272cd</MasterID><DestName>bo_akl_MM_applyRemoveInsulate.remark</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_applyRemoveInsulate.remark</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>e76fcc662fd64f58b28ecf054bb272cd</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>e76fcc662fd64f58b28ecf054bb272cd</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetLoopVariant" ruleName="给循环变量赋值" instanceCode="BR_SetLoopVariant1" instanceName="给循环变量赋值" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-11 21:56:53">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Fields":[{"Source":"BR_VAR_PARENT.[bo_akl_MM_removeInsulateAp].[approveResult]","SourceType":"expression","LoopVarField":"approveResult"},{"Source":"BR_VAR_PARENT.[bo_akl_MM_removeInsulateAp].[operateTime]","SourceType":"expression","LoopVarField":"operateTime_ap"},{"Source":"BR_VAR_PARENT.[bo_akl_MM_removeInsulateAp].[operatorName]","SourceType":"expression","LoopVarField":"operatorName_ap"},{"Source":"BR_VAR_PARENT.[bo_akl_MM_removeInsulateAp].[remark]","SourceType":"expression","LoopVarField":"remark_ap"}],"LoopVar":"ari","LoopEntity":"bo_akl_MM_applyRemoveInsulate","LoopEntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtLoopVar><LoopVar>ari</LoopVar><LoopEntity>bo_akl_MM_applyRemoveInsulate</LoopEntity><LoopEntityType>window</LoopEntityType></dtLoopVar><dtField><LoopVarField>approveResult</LoopVarField><SourceType>expression</SourceType><Source>BR_VAR_PARENT.[bo_akl_MM_removeInsulateAp].[approveResult]</Source></dtField><dtField><LoopVarField>operateTime_ap</LoopVarField><SourceType>expression</SourceType><Source>BR_VAR_PARENT.[bo_akl_MM_removeInsulateAp].[operateTime]</Source></dtField><dtField><LoopVarField>operatorName_ap</LoopVarField><SourceType>expression</SourceType><Source>BR_VAR_PARENT.[bo_akl_MM_removeInsulateAp].[operatorName]</Source></dtField><dtField><LoopVarField>remark_ap</LoopVarField><SourceType>expression</SourceType><Source>BR_VAR_PARENT.[bo_akl_MM_removeInsulateAp].[remark]</Source></dtField></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow1" instanceName="删除实体记录_审批记录" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-11 21:57:24">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"True","deleteType":"1","TableName":"bo_akl_MM_removeInsulateAp","EntityType":"ruleSetVar"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition>True</Condition><DeleteType>1</DeleteType><TableName>bo_akl_MM_removeInsulateAp</TableName><EntityType>ruleSetVar</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity2" instanceName="从数据库获取数据到实体_审批记录" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-11 21:55:17">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_MM_removeInsulateAp.applyId","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"LV.ari.id","valueType":"9"}],"entityType":"ruleSetVar","entityName":"bo_akl_MM_removeInsulateAp","itemqueryparam":null,"items":[{"destName":"bo_akl_MM_removeInsulateAp.id","sourceName":"bo_akl_MM_removeInsulateAp.id","type":"entityField"},{"destName":"bo_akl_MM_removeInsulateAp.operatorId","sourceName":"bo_akl_MM_removeInsulateAp.operatorId","type":"entityField"},{"destName":"bo_akl_MM_removeInsulateAp.operatorName","sourceName":"bo_akl_MM_removeInsulateAp.operatorName","type":"entityField"},{"destName":"bo_akl_MM_removeInsulateAp.operateTime","sourceName":"bo_akl_MM_removeInsulateAp.operateTime","type":"entityField"},{"destName":"bo_akl_MM_removeInsulateAp.remark","sourceName":"bo_akl_MM_removeInsulateAp.remark","type":"entityField"},{"destName":"bo_akl_MM_removeInsulateAp.applyId","sourceName":"bo_akl_MM_removeInsulateAp.applyId","type":"entityField"},{"destName":"bo_akl_MM_removeInsulateAp.approveResult","sourceName":"bo_akl_MM_removeInsulateAp.approveResult","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_MM_removeInsulateAp","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>ruleSetVar</EntityType><EntityName>bo_akl_MM_removeInsulateAp</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_MM_removeInsulateAp</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_MM_removeInsulateAp.applyId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>LV.ari.id</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>262d9045e47e43818bd5436795ce0675</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>262d9045e47e43818bd5436795ce0675</MasterID><DestName>bo_akl_MM_removeInsulateAp.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_removeInsulateAp.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>262d9045e47e43818bd5436795ce0675</MasterID><DestName>bo_akl_MM_removeInsulateAp.operatorId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_removeInsulateAp.operatorId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>262d9045e47e43818bd5436795ce0675</MasterID><DestName>bo_akl_MM_removeInsulateAp.operatorName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_removeInsulateAp.operatorName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>262d9045e47e43818bd5436795ce0675</MasterID><DestName>bo_akl_MM_removeInsulateAp.operateTime</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_removeInsulateAp.operateTime</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>262d9045e47e43818bd5436795ce0675</MasterID><DestName>bo_akl_MM_removeInsulateAp.remark</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_removeInsulateAp.remark</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>262d9045e47e43818bd5436795ce0675</MasterID><DestName>bo_akl_MM_removeInsulateAp.applyId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_removeInsulateAp.applyId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>262d9045e47e43818bd5436795ce0675</MasterID><DestName>bo_akl_MM_removeInsulateAp.approveResult</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_removeInsulateAp.approveResult</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>262d9045e47e43818bd5436795ce0675</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>262d9045e47e43818bd5436795ce0675</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Variables>
+      <Variable code="bo_akl_MM_removeInsulateAp" name="解除隔离审批记录" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="operatorId" name="审批人Id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="operatorName" name="审批人名称" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="operateTime" name="审批时间" fieldType="longDate" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="remark" name="备注" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="applyId" name="申请Id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="approveResult" name="审批结果" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+    </Variables>
+  </Method>
+  <Method Code="JGButton2_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>!IsEmpty([bo_akl_MM_applyRemoveInsulate].[id])</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+      <if isEnabled="True" isDebug="False" code="IfCode2">
+        <define>
+          <expression>GetEntityRowCount("BR_VAR_PARENT.bo_akl_MM_applyAttachment")&gt;0</expression>
+          <remark />
+        </define>
+        <sequence>
+          <foreach isEnabled="True" isDebug="False" code="ForeachCode1">
+            <define>
+              <varCode>aa</varCode>
+              <entityType>ruleSetVar</entityType>
+              <entityCode>bo_akl_MM_applyAttachment</entityCode>
+              <remark />
+            </define>
+            <sequence>
+              <evaluateRule code="BR_Attachmentoperation1" />
+            </sequence>
+          </foreach>
+        </sequence>
+      </if>
+      <else isEnabled="True" isDebug="False">
+        <define>
+          <remark />
+        </define>
+        <sequence>
+          <evaluateRule code="BR_ShowMessage1" />
+        </sequence>
+      </else>
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage2" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="Attachmentoperation" ruleName="附件操作" instanceCode="BR_Attachmentoperation1" instanceName="附件操作" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-11 17:04:11">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"componentControlCode":null,"dataProcess":"LV.aa.attachmentSign","fileName":null,"function":"2","fileType":"expression","componentCode":"lmes","reviewScheme":"","watermarkEnable":false,"previewTargetType":"","isPreviewInModalWindow":false,"previewWindowSize":"","watermarkSet":null,"picWatermarkStyle":null,"docProtectSet":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><operate>2</operate><documentColumn>LV.aa.attachmentSign</documentColumn><fileType>expression</fileType><componentCode>lmes</componentCode><fileName /><watermarkEnable>False</watermarkEnable></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体_附件" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-11 17:01:53">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_MM_applyAttachment.applyId","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"[bo_akl_MM_applyRemoveInsulate].[id]","valueType":"9"}],"entityType":"ruleSetVar","entityName":"bo_akl_MM_applyAttachment","itemqueryparam":null,"items":[{"destName":"bo_akl_MM_applyAttachment.id","sourceName":"bo_akl_MM_applyAttachment.id","type":"entityField"},{"destName":"bo_akl_MM_applyAttachment.applyId","sourceName":"bo_akl_MM_applyAttachment.applyId","type":"entityField"},{"destName":"bo_akl_MM_applyAttachment.attachmentSign","sourceName":"bo_akl_MM_applyAttachment.attachmentSign","type":"entityField"},{"destName":"bo_akl_MM_applyAttachment.attachmentName","sourceName":"bo_akl_MM_applyAttachment.attachmentName","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_MM_applyAttachment","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>ruleSetVar</EntityType><EntityName>bo_akl_MM_applyAttachment</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_MM_applyAttachment</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_MM_applyAttachment.applyId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>[bo_akl_MM_applyRemoveInsulate].[id]</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>3dcc52f62647400fb94f4c98b9574d81</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>3dcc52f62647400fb94f4c98b9574d81</MasterID><DestName>bo_akl_MM_applyAttachment.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_applyAttachment.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>3dcc52f62647400fb94f4c98b9574d81</MasterID><DestName>bo_akl_MM_applyAttachment.applyId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_applyAttachment.applyId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>3dcc52f62647400fb94f4c98b9574d81</MasterID><DestName>bo_akl_MM_applyAttachment.attachmentSign</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_applyAttachment.attachmentSign</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>3dcc52f62647400fb94f4c98b9574d81</MasterID><DestName>bo_akl_MM_applyAttachment.attachmentName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_applyAttachment.attachmentName</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>3dcc52f62647400fb94f4c98b9574d81</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>3dcc52f62647400fb94f4c98b9574d81</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage2" instanceName="显示设置的提示信息_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-11 17:05:22">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请选择要下载附件的记录！\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请选择要下载附件的记录！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-11 17:02:39">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"该记录无附件！\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"该记录无附件！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Variables>
+      <Variable code="bo_akl_MM_applyAttachment" name="申请解除隔离附件" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="applyId" name="申请Id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="attachmentSign" name="附件标识" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="attachmentName" name="附件名称" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+    </Variables>
+  </Method>
+  <Method Code="JGLocateBox1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>GetEntityRowCount("bo_akl_MM_applyRemoveInsulate")&gt;0</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <foreach isEnabled="True" isDebug="False" code="ForeachCode1">
+        <define>
+          <varCode>ari</varCode>
+          <entityType>window</entityType>
+          <entityCode>bo_akl_MM_applyRemoveInsulate</entityCode>
+          <remark></remark>
+        </define>
+        <sequence>
+          <if isEnabled="True" isDebug="False" code="IfCode2">
+            <define>
+              <expression>LV.ari.applyState=="已审批"</expression>
+              <remark></remark>
+            </define>
+            <sequence>
+              <evaluateRule code="BR_DataBaseDataToInterfaceEntity2" />
+              <if isEnabled="True" isDebug="False" code="IfCode3">
+                <define>
+                  <expression>GetEntityRowCount("BR_VAR_PARENT.bo_akl_MM_removeInsulateAp")&gt;0</expression>
+                  <remark></remark>
+                </define>
+                <sequence>
+                  <evaluateRule code="BR_SetLoopVariant1" />
+                  <evaluateRule code="BR_DeleteListSelectRow1" />
+                </sequence>
+              </if>
+            </sequence>
+          </if>
+        </sequence>
+      </foreach>
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体_申请记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_MM_applyRemoveInsulate.applyState","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"},{"columnType":"1","field":"bo_akl_MM_applyRemoveInsulate.applyType","fieldType":"char","leftBracket":"(","logicOperation":"or","operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"},{"columnType":"1","field":"bo_akl_MM_applyRemoveInsulate.operateTime","fieldType":"longDate","leftBracket":"(","logicOperation":"or","operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"},{"columnType":"1","field":"bo_akl_MM_applyRemoveInsulate.operatorName","fieldType":"char","leftBracket":"(","logicOperation":"or","operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"},{"columnType":"1","field":"bo_akl_MM_applyRemoveInsulate.remark","fieldType":"char","leftBracket":"(","logicOperation":"or","operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"}],"entityType":"window","entityName":"bo_akl_MM_applyRemoveInsulate","itemqueryparam":null,"items":[{"destName":"bo_akl_MM_applyRemoveInsulate.applyState","sourceName":"bo_akl_MM_applyRemoveInsulate.applyState","type":"entityField"},{"destName":"bo_akl_MM_applyRemoveInsulate.applyType","sourceName":"bo_akl_MM_applyRemoveInsulate.applyType","type":"entityField"},{"destName":"bo_akl_MM_applyRemoveInsulate.id","sourceName":"bo_akl_MM_applyRemoveInsulate.id","type":"entityField"},{"destName":"bo_akl_MM_applyRemoveInsulate.operateTime","sourceName":"bo_akl_MM_applyRemoveInsulate.operateTime","type":"entityField"},{"destName":"bo_akl_MM_applyRemoveInsulate.operatorId","sourceName":"bo_akl_MM_applyRemoveInsulate.operatorId","type":"entityField"},{"destName":"bo_akl_MM_applyRemoveInsulate.operatorName","sourceName":"bo_akl_MM_applyRemoveInsulate.operatorName","type":"entityField"},{"destName":"bo_akl_MM_applyRemoveInsulate.remark","sourceName":"bo_akl_MM_applyRemoveInsulate.remark","type":"entityField"}],"orderBy":[{"field":"bo_akl_MM_applyRemoveInsulate.operateTime","type":"DESC"}],"sourceName":"bo_akl_MM_applyRemoveInsulate","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_MM_applyRemoveInsulate</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_MM_applyRemoveInsulate</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_MM_applyRemoveInsulate.applyState</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_MM_applyRemoveInsulate.applyType</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_MM_applyRemoveInsulate.operateTime</field><fieldType>longDate</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_MM_applyRemoveInsulate.operatorName</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_MM_applyRemoveInsulate.remark</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort><dtSort><SortField>bo_akl_MM_applyRemoveInsulate.operateTime</SortField><SortWay>DESC</SortWay></dtSort></dsSort>]]]]><![CDATA[></dsSort><ID>e76fcc662fd64f58b28ecf054bb272cd</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>e76fcc662fd64f58b28ecf054bb272cd</MasterID><DestName>bo_akl_MM_applyRemoveInsulate.applyState</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_applyRemoveInsulate.applyState</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>e76fcc662fd64f58b28ecf054bb272cd</MasterID><DestName>bo_akl_MM_applyRemoveInsulate.applyType</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_applyRemoveInsulate.applyType</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>e76fcc662fd64f58b28ecf054bb272cd</MasterID><DestName>bo_akl_MM_applyRemoveInsulate.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_applyRemoveInsulate.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>e76fcc662fd64f58b28ecf054bb272cd</MasterID><DestName>bo_akl_MM_applyRemoveInsulate.operateTime</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_applyRemoveInsulate.operateTime</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>e76fcc662fd64f58b28ecf054bb272cd</MasterID><DestName>bo_akl_MM_applyRemoveInsulate.operatorId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_applyRemoveInsulate.operatorId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>e76fcc662fd64f58b28ecf054bb272cd</MasterID><DestName>bo_akl_MM_applyRemoveInsulate.operatorName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_applyRemoveInsulate.operatorName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>e76fcc662fd64f58b28ecf054bb272cd</MasterID><DestName>bo_akl_MM_applyRemoveInsulate.remark</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_applyRemoveInsulate.remark</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>e76fcc662fd64f58b28ecf054bb272cd</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>e76fcc662fd64f58b28ecf054bb272cd</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetLoopVariant" ruleName="给循环变量赋值" instanceCode="BR_SetLoopVariant1" instanceName="给循环变量赋值" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Fields":[{"Source":"BR_VAR_PARENT.[bo_akl_MM_removeInsulateAp].[approveResult]","SourceType":"expression","LoopVarField":"approveResult"},{"Source":"BR_VAR_PARENT.[bo_akl_MM_removeInsulateAp].[operateTime]","SourceType":"expression","LoopVarField":"operateTime_ap"},{"Source":"BR_VAR_PARENT.[bo_akl_MM_removeInsulateAp].[operatorName]","SourceType":"expression","LoopVarField":"operatorName_ap"},{"Source":"BR_VAR_PARENT.[bo_akl_MM_removeInsulateAp].[remark]","SourceType":"expression","LoopVarField":"remark_ap"}],"LoopVar":"ari","LoopEntity":"bo_akl_MM_applyRemoveInsulate","LoopEntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtLoopVar><LoopVar>ari</LoopVar><LoopEntity>bo_akl_MM_applyRemoveInsulate</LoopEntity><LoopEntityType>window</LoopEntityType></dtLoopVar><dtField><LoopVarField>approveResult</LoopVarField><SourceType>expression</SourceType><Source>BR_VAR_PARENT.[bo_akl_MM_removeInsulateAp].[approveResult]</Source></dtField><dtField><LoopVarField>operateTime_ap</LoopVarField><SourceType>expression</SourceType><Source>BR_VAR_PARENT.[bo_akl_MM_removeInsulateAp].[operateTime]</Source></dtField><dtField><LoopVarField>operatorName_ap</LoopVarField><SourceType>expression</SourceType><Source>BR_VAR_PARENT.[bo_akl_MM_removeInsulateAp].[operatorName]</Source></dtField><dtField><LoopVarField>remark_ap</LoopVarField><SourceType>expression</SourceType><Source>BR_VAR_PARENT.[bo_akl_MM_removeInsulateAp].[remark]</Source></dtField></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow1" instanceName="删除实体记录_审批记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"True","deleteType":"1","TableName":"bo_akl_MM_removeInsulateAp","EntityType":"ruleSetVar"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition>True</Condition><DeleteType>1</DeleteType><TableName>bo_akl_MM_removeInsulateAp</TableName><EntityType>ruleSetVar</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity2" instanceName="从数据库获取数据到实体_审批记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_MM_removeInsulateAp.applyId","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"LV.ari.id","valueType":"9"}],"entityType":"ruleSetVar","entityName":"bo_akl_MM_removeInsulateAp","itemqueryparam":null,"items":[{"destName":"bo_akl_MM_removeInsulateAp.id","sourceName":"bo_akl_MM_removeInsulateAp.id","type":"entityField"},{"destName":"bo_akl_MM_removeInsulateAp.operatorId","sourceName":"bo_akl_MM_removeInsulateAp.operatorId","type":"entityField"},{"destName":"bo_akl_MM_removeInsulateAp.operatorName","sourceName":"bo_akl_MM_removeInsulateAp.operatorName","type":"entityField"},{"destName":"bo_akl_MM_removeInsulateAp.operateTime","sourceName":"bo_akl_MM_removeInsulateAp.operateTime","type":"entityField"},{"destName":"bo_akl_MM_removeInsulateAp.remark","sourceName":"bo_akl_MM_removeInsulateAp.remark","type":"entityField"},{"destName":"bo_akl_MM_removeInsulateAp.applyId","sourceName":"bo_akl_MM_removeInsulateAp.applyId","type":"entityField"},{"destName":"bo_akl_MM_removeInsulateAp.approveResult","sourceName":"bo_akl_MM_removeInsulateAp.approveResult","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_MM_removeInsulateAp","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>ruleSetVar</EntityType><EntityName>bo_akl_MM_removeInsulateAp</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_MM_removeInsulateAp</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_MM_removeInsulateAp.applyId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>LV.ari.id</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>262d9045e47e43818bd5436795ce0675</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>262d9045e47e43818bd5436795ce0675</MasterID><DestName>bo_akl_MM_removeInsulateAp.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_removeInsulateAp.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>262d9045e47e43818bd5436795ce0675</MasterID><DestName>bo_akl_MM_removeInsulateAp.operatorId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_removeInsulateAp.operatorId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>262d9045e47e43818bd5436795ce0675</MasterID><DestName>bo_akl_MM_removeInsulateAp.operatorName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_removeInsulateAp.operatorName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>262d9045e47e43818bd5436795ce0675</MasterID><DestName>bo_akl_MM_removeInsulateAp.operateTime</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_removeInsulateAp.operateTime</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>262d9045e47e43818bd5436795ce0675</MasterID><DestName>bo_akl_MM_removeInsulateAp.remark</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_removeInsulateAp.remark</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>262d9045e47e43818bd5436795ce0675</MasterID><DestName>bo_akl_MM_removeInsulateAp.applyId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_removeInsulateAp.applyId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>262d9045e47e43818bd5436795ce0675</MasterID><DestName>bo_akl_MM_removeInsulateAp.approveResult</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_removeInsulateAp.approveResult</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>262d9045e47e43818bd5436795ce0675</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>262d9045e47e43818bd5436795ce0675</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Variables>
+      <Variable code="bo_akl_MM_removeInsulateAp" name="解除隔离审批记录" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="operatorId" name="审批人Id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="operatorName" name="审批人名称" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="operateTime" name="审批时间" fieldType="longDate" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="remark" name="备注" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="applyId" name="申请Id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="approveResult" name="审批结果" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+    </Variables>
+  </Method>
+  <Method Code="JGButton2_OnClick_1" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>!IsEmpty([bo_akl_MM_applyRemoveInsulate].[id])</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_OpenComponentReturnData1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"form_downloadAttachments","windowName":"下载附件","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"","widthExp":"","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":[{"paramName":"applyId","paramType":"expression","paramValue":"[bo_akl_MM_applyRemoveInsulate].[id]","paramEntityType":"","entityFieldMapping":null}],"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>form_downloadAttachments</WindowCode><WindowName>下载附件</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp /><WidthExp /><IsAsyn>False</IsAsyn></dtMaster><dtParam><WindowVariant>applyId</WindowVariant><SourceType>expression</SourceType><SourceTypeDisplayText>表达式</SourceTypeDisplayText><SourceValue>[bo_akl_MM_applyRemoveInsulate].[id]</SourceValue></dtParam></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-19 14:08:45">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请选择要下载附件的记录！\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请选择要下载附件的记录！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

@@ -1,0 +1,67 @@
+﻿<Query id="70500b34b7be4694ac5367bee5b35756" code="stockInfo" name="库存信息" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20180828002]]></Creator>
+  <CreationTime><![CDATA[2018-11-21 09:49:05]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-09-19 10:22:42]]></ModificationTime>
+  <VSql><![CDATA[select mi.materialNo,mi.materialName,mi.materialType,mi.unit,mi.bomUnit,
+st1.stockType,si.* from bo_akl_MM_stockInfo as si 
+left join bo_akl_MM_materialInfo as mi on si.materialId=mi.id
+left join bo_akl_MM_stockType as st1 on si.stockTypeId=st1.id
+where si.stockNum>0.0]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="materialNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="materialName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="materialType" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="unit" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="bomUnit" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="stockType" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="id" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="materialId" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_8" code="stockTypeId" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_9" code="stockNum" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_10" code="batchNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_11" code="regionId" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_MM_stockInfo" tokenIndexes="33" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="43" />
+    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="63" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="4" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialName" tokenIndexes="8" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialType" tokenIndexes="12" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.unit" tokenIndexes="16" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.bomUnit" tokenIndexes="20" />
+    <DataItem type="TableField" key="bo_akl_MM_stockType.stockType" tokenIndexes="25" />
+    <DataItem type="TableField" key="bo_akl_MM_stockInfo.materialId" tokenIndexes="53" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="57" />
+    <DataItem type="TableField" key="bo_akl_MM_stockInfo.stockTypeId" tokenIndexes="73" />
+    <DataItem type="TableField" key="bo_akl_MM_stockType.id" tokenIndexes="77" />
+    <DataItem type="TableField" key="bo_akl_MM_stockInfo.stockNum" tokenIndexes="83" />
+  </DataItems>
+</Query>

@@ -1,0 +1,111 @@
+﻿<Query id="60ed40472f7c484bad6499ca10cdd7ba" code="InternalDefectMonth" name="内部缺陷ppm月" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-10-23 23:03:28]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-10-23 23:14:32]]></ModificationTime>
+  <VSql><![CDATA[
+select 
+ide.blps,--不良品数量
+ide.cpcs,--成品数量
+ide.glcs,--隔离数量
+case when ide.blps=0 and ide.cpcs=0 and ide.glcs=0 then 0 else ROUND((ide.blps+ide.glcs)/(ide.blps+ide.cpcs+ide.glcs)*1000000,2)
+ end as qx,
+--ROUND((ide.blps+ide.glcs)/(ide.blps+ide.cpcs+ide.glcs)*1000000,2) as qx,
+md.tmonth from baseMonth as md 
+	left join 
+	(
+	select stt.tmonth,
+	--ROUND((blps+glcs)/(blps+cpcs+glcs)*1000000,2) as qx,
+	SUM(stt.blpc) as blps, --不良品数量
+	SUM(stt.cpc) as cpcs, --成品数量
+	SUM(stt.glc) as glcs --隔离数量
+	from (
+			select case 
+			when st.stockType='不良品仓'  THEN sto.inStockNum 
+			else 0 end as blpc,
+			case 
+			when st.stockType='成品仓'  THEN sto.inStockNum 
+			else 0 end as cpc,
+			case 
+			when st.stockType='隔离仓'  THEN sto.inStockNum 
+			else 0 end as glc,
+			sto.materialId,
+			month(sto.operateTime) as tmonth
+			from bo_akl_MM_inStockInfo as sto 
+			left join bo_akl_MM_stockType st on st.id=sto.stockTypeId
+			where 
+			year(sto.operateTime)=:inputYear 
+		) as stt
+		left join bo_akl_MM_materialInfo as mat on stt.materialId=mat.id
+		left join bo_akl_EM_productInfo as ep on mat.materialNo=ep.prNo
+		left join bo_akl_base_productlines as pli on pli.pNo=ep.prLine
+		left join bo_akl_base_projectInfo as pj on pj.id=pli.belongProject
+		where
+		ep.prLine=:plNo and 
+		pj.pName=:prName
+		--YEAR(sto.operateTime)=:inputYear 
+		group by stt.tmonth
+	) as ide on ide.tmonth=md.tmonth
+								]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="blps" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="cpcs" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="glcs" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="qx" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="tmonth" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="pNo" name="产品编号" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="plNo" name="产线编号" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="prName" name="项目名称" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="inputYear" name="" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="baseMonth" tokenIndexes="95" />
+    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="262" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="308" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="328" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="348" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="368" />
+    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="272" />
+    <DataItem type="TableField" key="baseMonth.tmonth" tokenIndexes="91,426" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.inStockNum" tokenIndexes="177,204,231" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.materialId" tokenIndexes="246" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.operateTime" tokenIndexes="253,292" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.stockTypeId" tokenIndexes="284" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="322" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="338" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="342" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="358" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prLine" tokenIndexes="362,388" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="378" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="382" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.pName" tokenIndexes="397" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="296" />
+    <DataItem type="QueryParam" key="plNo" tokenIndexes="391" />
+    <DataItem type="QueryParam" key="prName" tokenIndexes="400" />
+  </DataItems>
+</Query>

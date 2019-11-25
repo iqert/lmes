@@ -1,0 +1,91 @@
+﻿<Query id="12c2a6db8e654fbb96ec4eca6a9d338d" code="getBomserach" name="关键字搜索Bom" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-10-18 09:00:03]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-10-18 10:16:15]]></ModificationTime>
+  <VSql><![CDATA[select b.*,m.bomUnit,m.projectNo,stm.snum
+from (select rebom.materialNo,rebom.useNum,rebom.remark,rebom.PID,rebom.OrderNo,
+	rebom.InnerCode,rebom.IsLeaf,rebom.id from 
+(
+	SELECT b.materialNo,b.useNum,b.remark,b.PID,b.OrderNo,
+	b.InnerCode,b.IsLeaf,b.id from bo_akl_MM_bomInfo AS b  where   b.materialNo=:serach
+	
+	union all
+	select bi.materialNo,bi.useNum,bi.remark,bi.PID,bi.OrderNo,
+	bi.InnerCode,bi.IsLeaf,bi.id  from bo_akl_MM_bomInfo AS bi
+	where bi.PID IN(SELECT b.id from bo_akl_MM_bomInfo AS b where  b.materialNo=:serach and  b.PID='')	
+	union all
+	select bi.materialNo,bi.useNum,bi.remark,bi.PID,bi.OrderNo,
+	bi.InnerCode,bi.IsLeaf,bi.id  from bo_akl_MM_bomInfo AS bi 
+	where bi.id IN(SELECT b.PID from bo_akl_MM_bomInfo AS b   where   b.materialNo=:serach and b.PID!='')
+) as rebom) as b 
+left join bo_akl_MM_materialInfo as m on b.materialNo=m.materialNo 
+left join(
+select m.materialNo,SUM(si.stockNum)as snum from bo_akl_MM_stockInfo as si 
+left join bo_akl_MM_materialInfo m on m.id=si.materialId  where si.stockNum>0.0
+group by m.materialNo) as stm on stm.materialNo=m.materialNo 
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="bomUnit" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="projectNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="snum" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="materialNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="useNum" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="remark" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="PID" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="OrderNo" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_8" code="InnerCode" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_9" code="IsLeaf" name="" dataType="boolean" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_10" code="id" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="serach" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="301,350" />
+    <DataItem type="Table" key="bo_akl_MM_stockInfo" tokenIndexes="340" />
+    <DataItem type="Table" key="bo_akl_MM_bomInfo" tokenIndexes="97,153,175,240,262" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.bomUnit" tokenIndexes="8" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.projectNo" tokenIndexes="12" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="315,326,378,393" />
+    <DataItem type="TableField" key="bo_akl_MM_stockInfo.stockNum" tokenIndexes="332,368" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="358" />
+    <DataItem type="TableField" key="bo_akl_MM_stockInfo.materialId" tokenIndexes="362" />
+    <DataItem type="Query" key="b" tokenIndexes="62,66,70,74,78,83,87,91,101,105,169,179,183,192,256,266,270,279,295,309" />
+    <DataItem type="QueryField" key="b.materialNo" tokenIndexes="64,107,185,272,311" />
+    <DataItem type="QueryField" key="b.useNum" tokenIndexes="68" />
+    <DataItem type="QueryField" key="b.remark" tokenIndexes="72" />
+    <DataItem type="QueryField" key="b.PID" tokenIndexes="76,194,258,281" />
+    <DataItem type="QueryField" key="b.OrderNo" tokenIndexes="80" />
+    <DataItem type="QueryField" key="b.InnerCode" tokenIndexes="85" />
+    <DataItem type="QueryField" key="b.IsLeaf" tokenIndexes="89" />
+    <DataItem type="QueryField" key="b.id" tokenIndexes="93,171" />
+    <DataItem type="QueryParam" key="serach" tokenIndexes="110,188,275" />
+  </DataItems>
+</Query>

@@ -1,0 +1,31 @@
+﻿<Query id="5c9f686edba64c00b46e851f0ce55397" code="getProjectNo" name="获取项目编号" type="VSql">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20180828002]]></Creator>
+  <CreationTime><![CDATA[2019-02-09 18:18:35]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-07-30 16:52:56]]></ModificationTime>
+  <VSql><![CDATA[select s.id,pji.pNo
+from bo_akl_line_start as s
+left join bo_akl_base_productlines as pl on s.prolineId=pl.id
+left join bo_akl_base_projectInfo as pji on pl.belongProject=pji.id]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="id" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="pNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="12" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="22" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="42" />
+    <DataItem type="TableField" key="bo_akl_line_start.id" tokenIndexes="4" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.pNo" tokenIndexes="8" />
+    <DataItem type="TableField" key="bo_akl_line_start.prolineId" tokenIndexes="32" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="36" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="52" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="56" />
+  </DataItems>
+</Query>

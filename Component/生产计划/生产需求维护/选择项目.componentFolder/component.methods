@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2019/7/10 18:25:11-->
+<Methods>
+  <Method Code="form11_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-07-11 14:06:02">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_base_projectInfo.Pclient","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"@pclient","valueType":"9"}],"entityType":"window","entityName":"bo_akl_base_projectInfo","itemqueryparam":null,"items":[{"destName":"bo_akl_base_projectInfo.cId","sourceName":"bo_akl_base_projectInfo.cId","type":"entityField"},{"destName":"bo_akl_base_projectInfo.id","sourceName":"bo_akl_base_projectInfo.id","type":"entityField"},{"destName":"bo_akl_base_projectInfo.Pclient","sourceName":"bo_akl_base_projectInfo.Pclient","type":"entityField"},{"destName":"bo_akl_base_projectInfo.pName","sourceName":"bo_akl_base_projectInfo.pName","type":"entityField"},{"destName":"bo_akl_base_projectInfo.pNo","sourceName":"bo_akl_base_projectInfo.pNo","type":"entityField"},{"destName":"bo_akl_base_projectInfo.pNote","sourceName":"bo_akl_base_projectInfo.pNote","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_base_projectInfo","dataLoad":"","pager":[{"isPaging":false,"pageSize":"10","pageNo":"1","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_base_projectInfo</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_base_projectInfo</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_base_projectInfo.Pclient</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>@pclient</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>781cd2dffa434237b12b7c720e69d726</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>781cd2dffa434237b12b7c720e69d726</MasterID><DestName>bo_akl_base_projectInfo.cId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_projectInfo.cId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>781cd2dffa434237b12b7c720e69d726</MasterID><DestName>bo_akl_base_projectInfo.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_projectInfo.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>781cd2dffa434237b12b7c720e69d726</MasterID><DestName>bo_akl_base_projectInfo.Pclient</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_projectInfo.Pclient</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>781cd2dffa434237b12b7c720e69d726</MasterID><DestName>bo_akl_base_projectInfo.pName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_projectInfo.pName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>781cd2dffa434237b12b7c720e69d726</MasterID><DestName>bo_akl_base_projectInfo.pNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_projectInfo.pNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>781cd2dffa434237b12b7c720e69d726</MasterID><DestName>bo_akl_base_projectInfo.pNote</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_projectInfo.pNote</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>781cd2dffa434237b12b7c720e69d726</PagerMasterID><isPaging>False</isPaging><pageNo>1</pageNo><pageSize>10</pageSize></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>781cd2dffa434237b12b7c720e69d726</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>GetSelectedRecordNum("bo_akl_base_projectInfo")==1</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_CopyEntityRecord1" />
+      <evaluateRule code="BR_SelectionConfirm1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="CopyEntityRecord" ruleName="实体间复制记录" instanceCode="BR_CopyEntityRecord1" instanceName="实体间复制记录" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-07-11 09:24:56">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"checkitems":null,"condition":"","copyType":"1","destName":"project","items":[{"destName":"project.pirjectName","sourceName":"bo_akl_base_projectInfo.pName","type":"entityField"}],"mageitems":null,"sourceName":"bo_akl_base_projectInfo","type":"1","isAddRecord":true,"jsonVersion":"1.0","destType":"windowOutput","sourceType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtInfo><destName>project</destName><destType>windowOutput</destType><sourceName>bo_akl_base_projectInfo</sourceName><sourceType>window</sourceType><type>1</type><isAddRecord>True</isAddRecord><copyType>1</copyType><condition /><jsonVersion>1.0</jsonVersion></dtInfo><dtMaster><DestName>project.pirjectName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_projectInfo.pName</SourceName></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-07-11 09:25:11">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-07-11 09:24:05">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请选择一个项目\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请选择一个项目"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

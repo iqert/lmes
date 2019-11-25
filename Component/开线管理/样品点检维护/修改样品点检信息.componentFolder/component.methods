@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2018/7/1 21:16:09-->
+<Methods>
+  <Method Code="changeSampleInfo_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>@sampleInfoId &lt;&gt; "0"</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_AddTableRecord1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1" instanceName="新增实体记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"3","Mappings":null,"TableType":"window","TableName":"bo_akl_line_sampleInfo","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><Location>3</Location><EntityType>window</EntityType><EntityName>bo_akl_line_sampleInfo</EntityName></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 15:40:36">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_line_sampleInfo.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"@sampleInfoId","valueType":"9"}],"entityType":"window","entityName":"bo_akl_line_sampleInfo","itemqueryparam":null,"items":[{"destName":"bo_akl_line_sampleInfo.ampleName","sourceName":"bo_akl_line_sampleInfo.ampleName","type":"entityField"},{"destName":"bo_akl_line_sampleInfo.equId","sourceName":"bo_akl_line_sampleInfo.equId","type":"entityField"},{"destName":"bo_akl_line_sampleInfo.equName","sourceName":"bo_akl_line_sampleInfo.equName","type":"entityField"},{"destName":"bo_akl_line_sampleInfo.id","sourceName":"bo_akl_line_sampleInfo.id","type":"entityField"},{"destName":"bo_akl_line_sampleInfo.prolineId","sourceName":"bo_akl_line_sampleInfo.prolineId","type":"entityField"},{"destName":"bo_akl_line_sampleInfo.prolineNo","sourceName":"bo_akl_line_sampleInfo.prolineNo","type":"entityField"},{"destName":"bo_akl_line_sampleInfo.productName","sourceName":"bo_akl_line_sampleInfo.productName","type":"entityField"},{"destName":"bo_akl_line_sampleInfo.isUsedCheckSpots","sourceName":"bo_akl_line_sampleInfo.isUsedCheckSpots","type":"entityField"},{"destName":"bo_akl_line_sampleInfo.testStation","sourceName":"bo_akl_line_sampleInfo.testStation","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_line_sampleInfo","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_line_sampleInfo</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_line_sampleInfo</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_line_sampleInfo.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>@sampleInfoId</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>7b92a484ffd84024a6cd901084d1c1a6</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>7b92a484ffd84024a6cd901084d1c1a6</MasterID><DestName>bo_akl_line_sampleInfo.ampleName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_sampleInfo.ampleName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>7b92a484ffd84024a6cd901084d1c1a6</MasterID><DestName>bo_akl_line_sampleInfo.equId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_sampleInfo.equId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>7b92a484ffd84024a6cd901084d1c1a6</MasterID><DestName>bo_akl_line_sampleInfo.equName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_sampleInfo.equName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>7b92a484ffd84024a6cd901084d1c1a6</MasterID><DestName>bo_akl_line_sampleInfo.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_sampleInfo.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>7b92a484ffd84024a6cd901084d1c1a6</MasterID><DestName>bo_akl_line_sampleInfo.prolineId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_sampleInfo.prolineId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>7b92a484ffd84024a6cd901084d1c1a6</MasterID><DestName>bo_akl_line_sampleInfo.prolineNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_sampleInfo.prolineNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>7b92a484ffd84024a6cd901084d1c1a6</MasterID><DestName>bo_akl_line_sampleInfo.productName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_sampleInfo.productName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>7b92a484ffd84024a6cd901084d1c1a6</MasterID><DestName>bo_akl_line_sampleInfo.isUsedCheckSpots</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_sampleInfo.isUsedCheckSpots</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>7b92a484ffd84024a6cd901084d1c1a6</MasterID><DestName>bo_akl_line_sampleInfo.testStation</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_sampleInfo.testStation</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>7b92a484ffd84024a6cd901084d1c1a6</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>7b92a484ffd84024a6cd901084d1c1a6</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="productlingIddBaseDictBox_OpenModuleAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_SetEntityVarControlValue2" />
+  <evaluateRule code="BR_OpenComponentReturnData1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>@productlingId &lt;&gt; "0"</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_SetEntityVarControlValue1" />
+      <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+      <evaluateRule code="BR_SetEntityVarControlValue3" />
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2" instanceName="给界面实体/控件/变量赋值_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"2","Target":"productlingId","SourceType":"expression","SourceEntityType":"","Source":"\"0\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>2</TargetType><Target>productlingId</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"0"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"chooseProductlings","windowName":"选择产线","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"374","widthExp":"486","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":null,"returnMapping":[{"destType":"windowVariant","dest":"productlingId","srcType":"returnValue","src":"productlingId","updateDestEntityMethod":"","isCleanDestEntityData":false,"destFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>chooseProductlings</WindowCode><WindowName>选择产线</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp>374</HeightExp><WidthExp>486</WidthExp><IsAsyn>False</IsAsyn></dtMaster><dtReturnValue><TargetType>windowVariant</TargetType><Target>productlingId</Target><SourceType>returnValue</SourceType><Source>productlingId</Source></dtReturnValue></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"6","Target":"productlingId","SourceType":"expression","SourceEntityType":"","Source":"@productlingId","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>6</TargetType><Target>productlingId</Target><SourceType>expression</SourceType><SourceEntityType /><Source>@productlingId</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_base_productlines.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"@productlingId","valueType":"9"}],"entityType":"window","entityName":"bo_akl_base_productlines","itemqueryparam":null,"items":[{"destName":"bo_akl_base_productlines.belongProject","sourceName":"bo_akl_base_productlines.belongProject","type":"entityField"},{"destName":"bo_akl_base_productlines.equNo","sourceName":"bo_akl_base_productlines.equNo","type":"entityField"},{"destName":"bo_akl_base_productlines.id","sourceName":"bo_akl_base_productlines.id","type":"entityField"},{"destName":"bo_akl_base_productlines.pCName","sourceName":"bo_akl_base_productlines.pCName","type":"entityField"},{"destName":"bo_akl_base_productlines.pEName","sourceName":"bo_akl_base_productlines.pEName","type":"entityField"},{"destName":"bo_akl_base_productlines.pNo","sourceName":"bo_akl_base_productlines.pNo","type":"entityField"},{"destName":"bo_akl_base_productlines.pNote","sourceName":"bo_akl_base_productlines.pNote","type":"entityField"},{"destName":"bo_akl_base_productlines.startTime","sourceName":"bo_akl_base_productlines.startTime","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_base_productlines","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_base_productlines</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_base_productlines</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_base_productlines.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>@productlingId</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>a28f4855e2ce4209aebc690fdfcabaa1</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>a28f4855e2ce4209aebc690fdfcabaa1</MasterID><DestName>bo_akl_base_productlines.belongProject</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productlines.belongProject</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>a28f4855e2ce4209aebc690fdfcabaa1</MasterID><DestName>bo_akl_base_productlines.equNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productlines.equNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>a28f4855e2ce4209aebc690fdfcabaa1</MasterID><DestName>bo_akl_base_productlines.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productlines.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>a28f4855e2ce4209aebc690fdfcabaa1</MasterID><DestName>bo_akl_base_productlines.pCName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productlines.pCName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>a28f4855e2ce4209aebc690fdfcabaa1</MasterID><DestName>bo_akl_base_productlines.pEName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productlines.pEName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>a28f4855e2ce4209aebc690fdfcabaa1</MasterID><DestName>bo_akl_base_productlines.pNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productlines.pNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>a28f4855e2ce4209aebc690fdfcabaa1</MasterID><DestName>bo_akl_base_productlines.pNote</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productlines.pNote</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>a28f4855e2ce4209aebc690fdfcabaa1</MasterID><DestName>bo_akl_base_productlines.startTime</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productlines.startTime</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>a28f4855e2ce4209aebc690fdfcabaa1</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>a28f4855e2ce4209aebc690fdfcabaa1</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3" instanceName="给界面实体/控件/变量赋值_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-11 15:14:49">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_line_sampleInfo.prolineId","SourceType":"expression","SourceEntityType":"","Source":"[bo_akl_base_productlines].[id]","entityFieldMapping":null},{"TargetType":"3","Target":"bo_akl_line_sampleInfo.prolineNo","SourceType":"expression","SourceEntityType":"","Source":"[bo_akl_base_productlines].[pNo]","entityFieldMapping":null},{"TargetType":"3","Target":"bo_akl_line_sampleInfo.equId","SourceType":"expression","SourceEntityType":"","Source":"Null()","entityFieldMapping":null},{"TargetType":"3","Target":"bo_akl_line_sampleInfo.equName","SourceType":"expression","SourceEntityType":"","Source":"Null()","entityFieldMapping":null},{"TargetType":"3","Target":"bo_akl_line_sampleInfo.productName","SourceType":"expression","SourceEntityType":"","Source":"Null()","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_line_sampleInfo.prolineId</Target><SourceType>expression</SourceType><SourceEntityType /><Source>[bo_akl_base_productlines].[id]</Source></dtFieldMap><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_line_sampleInfo.prolineNo</Target><SourceType>expression</SourceType><SourceEntityType /><Source>[bo_akl_base_productlines].[pNo]</Source></dtFieldMap><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_line_sampleInfo.equId</Target><SourceType>expression</SourceType><SourceEntityType /><Source>Null()</Source></dtFieldMap><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_line_sampleInfo.equName</Target><SourceType>expression</SourceType><SourceEntityType /><Source>Null()</Source></dtFieldMap><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_line_sampleInfo.productName</Target><SourceType>expression</SourceType><SourceEntityType /><Source>Null()</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="productBaseDictBox_OpenModuleAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>@productlingId &lt;&gt; "0"</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_OpenComponentReturnData1" />
+      <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+      <evaluateRule code="BR_SetEntityVarControlValue1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请先选择产线\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请先选择产线"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"chooseProduct","windowName":"选择成品","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"301","widthExp":"371","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":[{"paramName":"productkingId","paramType":"expression","paramValue":"@productlingId","paramEntityType":"","entityFieldMapping":null}],"returnMapping":[{"destType":"windowVariant","dest":"productId","srcType":"returnValue","src":"productId","updateDestEntityMethod":"","isCleanDestEntityData":false,"destFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>chooseProduct</WindowCode><WindowName>选择成品</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp>301</HeightExp><WidthExp>371</WidthExp><IsAsyn>False</IsAsyn></dtMaster><dtReturnValue><TargetType>windowVariant</TargetType><Target>productId</Target><SourceType>returnValue</SourceType><Source>productId</Source></dtReturnValue><dtParam><WindowVariant>productkingId</WindowVariant><SourceType>expression</SourceType><SourceTypeDisplayText>表达式</SourceTypeDisplayText><SourceValue>@productlingId</SourceValue></dtParam></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-11 15:06:33">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_EM_productInfo.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"@productId","valueType":"9"}],"entityType":"window","entityName":"bo_akl_EM_productInfo","itemqueryparam":null,"items":[{"destName":"bo_akl_EM_productInfo.id","sourceName":"bo_akl_EM_productInfo.id","type":"entityField"},{"destName":"bo_akl_EM_productInfo.pid","sourceName":"bo_akl_EM_productInfo.pid","type":"entityField"},{"destName":"bo_akl_EM_productInfo.prLine","sourceName":"bo_akl_EM_productInfo.prLine","type":"entityField"},{"destName":"bo_akl_EM_productInfo.prName","sourceName":"bo_akl_EM_productInfo.prName","type":"entityField"},{"destName":"bo_akl_EM_productInfo.prNo","sourceName":"bo_akl_EM_productInfo.prNo","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_EM_productInfo","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_EM_productInfo</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_EM_productInfo</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_EM_productInfo.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>@productId</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>4e34c1161ed64f28877b849f15ccad03</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>4e34c1161ed64f28877b849f15ccad03</MasterID><DestName>bo_akl_EM_productInfo.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_productInfo.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>4e34c1161ed64f28877b849f15ccad03</MasterID><DestName>bo_akl_EM_productInfo.pid</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_productInfo.pid</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>4e34c1161ed64f28877b849f15ccad03</MasterID><DestName>bo_akl_EM_productInfo.prLine</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_productInfo.prLine</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>4e34c1161ed64f28877b849f15ccad03</MasterID><DestName>bo_akl_EM_productInfo.prName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_productInfo.prName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>4e34c1161ed64f28877b849f15ccad03</MasterID><DestName>bo_akl_EM_productInfo.prNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_productInfo.prNo</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>4e34c1161ed64f28877b849f15ccad03</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>4e34c1161ed64f28877b849f15ccad03</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-11 15:11:32">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_line_sampleInfo.equId","SourceType":"expression","SourceEntityType":"","Source":"[bo_akl_EM_productInfo].[id]","entityFieldMapping":null},{"TargetType":"3","Target":"bo_akl_line_sampleInfo.equName","SourceType":"expression","SourceEntityType":"","Source":"[bo_akl_EM_productInfo].[prNo]","entityFieldMapping":null},{"TargetType":"3","Target":"bo_akl_line_sampleInfo.productName","SourceType":"expression","SourceEntityType":"","Source":"[bo_akl_EM_productInfo].[prName]","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_line_sampleInfo.equId</Target><SourceType>expression</SourceType><SourceEntityType /><Source>[bo_akl_EM_productInfo].[id]</Source></dtFieldMap><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_line_sampleInfo.equName</Target><SourceType>expression</SourceType><SourceEntityType /><Source>[bo_akl_EM_productInfo].[prNo]</Source></dtFieldMap><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_line_sampleInfo.productName</Target><SourceType>expression</SourceType><SourceEntityType /><Source>[bo_akl_EM_productInfo].[prName]</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="saveButton_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_CheckRequired1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>BR_OUT.BR_CheckRequired1.isCheckRequiredOK</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_UpdateRecord1" />
+      <evaluateRule code="BR_SetEntityVarControlValue1" />
+      <evaluateRule code="BR_SelectionConfirm1" />
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="CheckRequired" ruleName="必填项检查" instanceCode="BR_CheckRequired1" instanceName="必填项检查" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 15:42:17">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"fieldList":[{"field":"bo_akl_line_sampleInfo.ampleName","fieldName":"样品名称"},{"field":"bo_akl_line_sampleInfo.equName","fieldName":"型号名称"},{"field":"bo_akl_line_sampleInfo.prolineNo","fieldName":"产线编号"},{"field":"bo_akl_line_sampleInfo.testStation","fieldName":"检测工站"}],"type":"0"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtColumn><Code>bo_akl_line_sampleInfo.ampleName</Code><Name>样品名称</Name></dtColumn><dtColumn><Code>bo_akl_line_sampleInfo.equName</Code><Name>型号名称</Name></dtColumn><dtColumn><Code>bo_akl_line_sampleInfo.prolineNo</Code><Name>产线编号</Name></dtColumn><dtColumn><Code>bo_akl_line_sampleInfo.testStation</Code><Name>检测工站</Name></dtColumn><dtType><Type>0</Type></dtType></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 15:42:23">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_line_sampleInfo.ampleName","colValue":"bo_akl_line_sampleInfo.ampleName","valueType":"entityField"},{"colName":"bo_akl_line_sampleInfo.equId","colValue":"bo_akl_line_sampleInfo.equId","valueType":"entityField"},{"colName":"bo_akl_line_sampleInfo.equName","colValue":"bo_akl_line_sampleInfo.equName","valueType":"entityField"},{"colName":"bo_akl_line_sampleInfo.id","colValue":"bo_akl_line_sampleInfo.id","valueType":"entityField"},{"colName":"bo_akl_line_sampleInfo.prolineId","colValue":"bo_akl_line_sampleInfo.prolineId","valueType":"entityField"},{"colName":"bo_akl_line_sampleInfo.prolineNo","colValue":"bo_akl_line_sampleInfo.prolineNo","valueType":"entityField"},{"colName":"bo_akl_line_sampleInfo.productName","colValue":"bo_akl_line_sampleInfo.productName","valueType":"entityField"},{"colName":"bo_akl_line_sampleInfo.isUsedCheckSpots","colValue":"bo_akl_line_sampleInfo.isUsedCheckSpots","valueType":"entityField"},{"colName":"bo_akl_line_sampleInfo.testStation","colValue":"bo_akl_line_sampleInfo.testStation","valueType":"entityField"}],"dataSource":"bo_akl_line_sampleInfo","dataSourceType":"window","destTab":"bo_akl_line_sampleInfo","isSaveAll":false}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>efc74c570831431386b7f310319ca790</ID><SourceName>bo_akl_line_sampleInfo</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_line_sampleInfo(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_line_sampleInfo</TableName></dtMaster><dtDetails><PID>efc74c570831431386b7f310319ca790</PID><SourceField>bo_akl_line_sampleInfo.ampleName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_sampleInfo.ampleName</Value></dtDetails><dtDetails><PID>efc74c570831431386b7f310319ca790</PID><SourceField>bo_akl_line_sampleInfo.equId</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_sampleInfo.equId</Value></dtDetails><dtDetails><PID>efc74c570831431386b7f310319ca790</PID><SourceField>bo_akl_line_sampleInfo.equName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_sampleInfo.equName</Value></dtDetails><dtDetails><PID>efc74c570831431386b7f310319ca790</PID><SourceField>bo_akl_line_sampleInfo.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_sampleInfo.id</Value></dtDetails><dtDetails><PID>efc74c570831431386b7f310319ca790</PID><SourceField>bo_akl_line_sampleInfo.prolineId</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_sampleInfo.prolineId</Value></dtDetails><dtDetails><PID>efc74c570831431386b7f310319ca790</PID><SourceField>bo_akl_line_sampleInfo.prolineNo</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_sampleInfo.prolineNo</Value></dtDetails><dtDetails><PID>efc74c570831431386b7f310319ca790</PID><SourceField>bo_akl_line_sampleInfo.productName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_sampleInfo.productName</Value></dtDetails><dtDetails><PID>efc74c570831431386b7f310319ca790</PID><SourceField>bo_akl_line_sampleInfo.isUsedCheckSpots</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_sampleInfo.isUsedCheckSpots</Value></dtDetails><dtDetails><PID>efc74c570831431386b7f310319ca790</PID><SourceField>bo_akl_line_sampleInfo.testStation</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_line_sampleInfo.testStation</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-13 15:42:36">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"6","Target":"ypdj","SourceType":"entityField","SourceEntityType":"window","Source":"bo_akl_line_sampleInfo","entityFieldMapping":[{"destFieldName":"id","srcValueType":"entityField","srcValue":"bo_akl_line_sampleInfo.id"},{"destFieldName":"prolineNo","srcValueType":"entityField","srcValue":"bo_akl_line_sampleInfo.prolineNo"},{"destFieldName":"prolineId","srcValueType":"entityField","srcValue":"bo_akl_line_sampleInfo.prolineId"},{"destFieldName":"equName","srcValueType":"entityField","srcValue":"bo_akl_line_sampleInfo.equName"},{"destFieldName":"equId","srcValueType":"entityField","srcValue":"bo_akl_line_sampleInfo.equId"},{"destFieldName":"ampleName","srcValueType":"entityField","srcValue":"bo_akl_line_sampleInfo.ampleName"},{"destFieldName":"productName","srcValueType":"entityField","srcValue":"bo_akl_line_sampleInfo.productName"},{"destFieldName":"isUsedCheckSpots","srcValueType":"entityField","srcValue":"bo_akl_line_sampleInfo.isUsedCheckSpots"},{"destFieldName":"testStation","srcValueType":"entityField","srcValue":"bo_akl_line_sampleInfo.testStation"}]}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>6</TargetType><Target>ypdj</Target><SourceType>entityField</SourceType><SourceEntityType>window</SourceEntityType><Source>bo_akl_line_sampleInfo</Source><SourceEntityXml><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>id</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_sampleInfo.id</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>prolineNo</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_sampleInfo.prolineNo</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>prolineId</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_sampleInfo.prolineId</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>equName</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_sampleInfo.equName</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>equId</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_sampleInfo.equId</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>ampleName</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_sampleInfo.ampleName</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>productName</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_sampleInfo.productName</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>isUsedCheckSpots</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_sampleInfo.isUsedCheckSpots</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>testStation</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_line_sampleInfo.testStation</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></SourceEntityXml></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

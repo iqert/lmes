@@ -1,0 +1,57 @@
+﻿<form type="1002" code="newTendingFHistory" IsLocked="False">
+  <propertys>
+    <property name="Width"><![CDATA[333]]></property>
+    <property name="Height"><![CDATA[292]]></property>
+    <property name="HeightSet"><![CDATA[StaticHeight]]></property>
+    <property name="LayoutType"><![CDATA[None]]></property>
+    <property name="TableName"><![CDATA[]]></property>
+    <property name="FormLoadAction"><![CDATA[newTendingFHistory_FormLoadAction]]></property>
+    <property name="FormCloseAction"><![CDATA[]]></property>
+    <property name="FormClosingAction"><![CDATA[]]></property>
+    <property name="BackColor"><![CDATA[]]></property>
+    <property name="Padding"><![CDATA[0, 0, 0, 0]]></property>
+    <property name="Name"><![CDATA[新增维修保养记录子表]]></property>
+    <property name="FormBorderStyle"><![CDATA[FixedSingle]]></property>
+    <property name="WindowState"><![CDATA[Normal]]></property>
+    <property name="MaximizeBox"><![CDATA[True]]></property>
+    <property name="RefResources"><![CDATA[]]></property>
+  </propertys>
+  <controls>
+    <JGTextBox Code="JGTextBox1" ColumnName="remark" Height="42" LabelText="备注" Left="25" PercentHeight="14.4%" PercentWidth="83.8%" TabIndex="6" TableName="bo_akl_base_tendingInfo" TextLength="1000" Top="199" Width="279" />
+    <JGComboBox Code="JGComboBox2" DropDownSource="{&quot;DataSourceSetting&quot;:{&quot;DataConfig&quot;:{&quot;DefaultSaveColumn&quot;:null,&quot;DefaultShowColumn&quot;:null,&quot;SourceType&quot;:null,&quot;SourceID&quot;:null,&quot;SourceName&quot;:null,&quot;MapTable&quot;:null,&quot;SaveColumn&quot;:null,&quot;ShowColumn&quot;:null,&quot;SortField&quot;:null,&quot;SortType&quot;:null,&quot;MaxRecCount&quot;:0,&quot;QueryField&quot;:null,&quot;QueryMethod&quot;:null,&quot;IsPickListFields&quot;:false,&quot;ConstData&quot;:[{&quot;id&quot;:&quot;OK&quot;,&quot;text&quot;:&quot;OK&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;NOK&quot;,&quot;text&quot;:&quot;NOK&quot;,&quot;selected&quot;:&quot;False&quot;}],&quot;SqlQueryConstData&quot;:null,&quot;EntityConstData&quot;:null,&quot;Condition&quot;:null,&quot;QueryParam&quot;:null,&quot;PickListFields&quot;:null},&quot;DataSourceType&quot;:&quot;CustomConst&quot;}}" IDColumnName="tStatus" LabelText="运行状态" Left="25" PercentHeight="8.9%" PercentWidth="83.8%" TabIndex="6" TableName="bo_akl_base_tendingInfo" Top="135" Width="279" />
+    <JGComboBox Code="JGComboBox1" DropDownSource="{&quot;DataSourceSetting&quot;:{&quot;DataConfig&quot;:{&quot;DefaultSaveColumn&quot;:null,&quot;DefaultShowColumn&quot;:null,&quot;SourceType&quot;:null,&quot;SourceID&quot;:null,&quot;SourceName&quot;:null,&quot;MapTable&quot;:null,&quot;SaveColumn&quot;:null,&quot;ShowColumn&quot;:null,&quot;SortField&quot;:null,&quot;SortType&quot;:null,&quot;MaxRecCount&quot;:0,&quot;QueryField&quot;:null,&quot;QueryMethod&quot;:null,&quot;IsPickListFields&quot;:false,&quot;ConstData&quot;:[{&quot;id&quot;:&quot;正常&quot;,&quot;text&quot;:&quot;正常&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;不正常&quot;,&quot;text&quot;:&quot;不正常&quot;,&quot;selected&quot;:&quot;False&quot;}],&quot;SqlQueryConstData&quot;:null,&quot;EntityConstData&quot;:null,&quot;Condition&quot;:null,&quot;QueryParam&quot;:null,&quot;PickListFields&quot;:null},&quot;DataSourceType&quot;:&quot;CustomConst&quot;}}" IDColumnName="tRecord" LabelText="维护保养记录" Left="25" PercentHeight="8.9%" PercentWidth="83.8%" TabIndex="6" TableName="bo_akl_base_tendingInfo" Top="103" Width="279" />
+    <JGBaseDictBox Code="manBaseDictBox" ColumnName="useMen" IDColumnName="useMen" IsMust="True" LabelText="记录人" Left="25" OpenModuleAction="manBaseDictBox_OpenModuleAction" PercentHeight="8.9%" PercentWidth="83.8%" TabIndex="5" TableName="bo_akl_base_tendingInfo" Top="167" Width="279" />
+    <JGButton Code="JGButton" LabelText="保存" Left="106" OnClick="JGButton_OnClick" PercentHeight="8.9%" PercentWidth="26.4%" TabIndex="6" Top="263" Width="88" />
+    <JGBaseDictBox Code="contentBaseDictBox" ColumnName="tContent" IDColumnName="tContent" IsEdit="True" IsMust="True" LabelText="维护保养内容" Left="25" OpenModuleAction="checkProjectBaseDictBox_OpenModuleAction" PercentHeight="8.9%" PercentWidth="83.8%" TabIndex="2" TableName="bo_akl_base_tendingInfo" Top="71" Width="279" />
+    <JGBaseDictBox Code="checkProjectBaseDictBox" ColumnName="checkProject" IDColumnName="checkProject" IsEdit="True" IsMust="True" LabelText="检查项目" Left="25" OpenModuleAction="checkProjectBaseDictBox_OpenModuleAction" PercentHeight="8.9%" PercentWidth="83.8%" TabIndex="1" TableName="bo_akl_base_tendingInfo" Top="24" Width="279" />
+  </controls>
+  <outputs>
+    <variable code="equipId" name="设备信息Id" fieldType="char" defaultValue="" description="" isRestore="false" />
+    <variable code="wxbyjlzb" name="" fieldType="entity" defaultValue="" description="" isRestore="false">
+      <entity>
+        <field code="id" name="" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="planId" name="设备信息_维保计划Id" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="checkProject" name="检查项目" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="tContent" name="维护保养内容" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="tRecord" name="维护保养记录" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="tStatus" name="运行状态" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="employeeId" name="记录人Id" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="useMen" name="记录人" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="tendingMainId" name="维护保用记录主表Id" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="remark" name="备注" fieldType="char" defaultValue="" isRestore="false" />
+      </entity>
+    </variable>
+  </outputs>
+  <inputs>
+    <variable code="tendingMainId" name="维修保养记录主表Id" fieldType="char" defaultValue="" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+    <variable code="tencePlanId" name="设备信息_维保计划Id" fieldType="char" defaultValue="0" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+    <variable code="employeeId" name="员工信息Id" fieldType="char" defaultValue="0" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+  </inputs>
+  <remark><![CDATA[]]></remark>
+</form>

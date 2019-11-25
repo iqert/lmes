@@ -1,0 +1,114 @@
+﻿<Query id="5d610b9998c3456ca128fd88103a1f57" code="modelQualityQuestion" name="注塑每日质量问题一览" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-09-03 15:56:17]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-09-10 10:36:55]]></ModificationTime>
+  <VSql><![CDATA[
+    --生产状态 不良品数量,隔离数量，产线名称，产品名称， 批次         产品生产总数          已检查
+select 
+case when COUNT(pp.id)>0 then'生产'
+else '未生产' end as proStatus,
+ROUND(bm.blpc/COUNT(pp.id),2) as blpl,
+bm.glc,
+ba.prolineName,
+ba.equName,
+ba.batchNum,
+COUNT(pp.id) as counds,
+SUM(pp.ycheck) as djcNum from 
+	(select 
+		case 
+		when prl.labelType!='待检测'  THEN 1 
+		else 0 end as ycheck,
+		prl.*
+		--主表查询产品标签
+		from bo_akl_LM_printProductLabel as prl where 
+		
+		YEAR(prl.printTime)=:inputYear and MONTH(prl.printTime)=:inputMonth and DAYOFMONTH(prl.printTime)=:inputDay and 
+		prl.labelType is not null) 
+		as pp 
+		--关联产线
+		left join bo_akl_line_start as ba on pp.lineStartId=ba.id 
+		--关联入库记录表，同时统计不良品仓和隔离仓数量
+		left join (
+				select spy.batchNo,SUM(blpc) as blpc,SUM(wsc) as glc from
+				(select  
+					case 
+					when syp.stockType='不良品仓'  THEN ins.inStockNum 
+					else 0 end as blpc,
+					case 
+					when syp.stockType='隔离仓'  THEN ins.inStockNum 
+					else 0 end as wsc,ins.*
+					from bo_akl_MM_inStockInfo as ins
+					left join bo_akl_MM_stockType as syp on ins.stockTypeId=syp.id
+					where YEAR(ins.operateTime)=:inputYear and MONTH(ins.operateTime)=:inputMonth and DAYOFMONTH(ins.operateTime)=:inputDay
+					) as spy
+					--分组用来去重，并合计不良品仓，隔离仓
+					group by spy.batchNo
+			  ) as bm 
+				on bm.batchNo=ba.batchNum
+			where  ba.lineStartType='注塑'
+			group by pp.lineStartId,bm.glc,ba.prolineName,ba.equName,ba.batchNum,bm.blpc
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="proStatus" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="blpl" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="glc" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="prolineName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="equName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="batchNum" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="counds" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="djcNum" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="inputYear" name="" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="inputMonth" name="" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="inputDay" name="" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_LM_printProductLabel" tokenIndexes="133" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="198" />
+    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="310" />
+    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="320" />
+    <DataItem type="TableField" key="bo_akl_line_start.prolineName" tokenIndexes="59,426" />
+    <DataItem type="TableField" key="bo_akl_line_start.equName" tokenIndexes="64,430" />
+    <DataItem type="TableField" key="bo_akl_line_start.batchNum" tokenIndexes="69,402,434" />
+    <DataItem type="TableField" key="bo_akl_LM_printProductLabel.labelType" tokenIndexes="106,179" />
+    <DataItem type="TableField" key="bo_akl_LM_printProductLabel.printTime" tokenIndexes="145,157,169" />
+    <DataItem type="TableField" key="bo_akl_line_start.id" tokenIndexes="212" />
+    <DataItem type="TableField" key="bo_akl_MM_stockType.stockType" tokenIndexes="257,284" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.inStockNum" tokenIndexes="265,292" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.stockTypeId" tokenIndexes="330" />
+    <DataItem type="TableField" key="bo_akl_MM_stockType.id" tokenIndexes="334" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.operateTime" tokenIndexes="342,354,366" />
+    <DataItem type="TableField" key="bo_akl_line_start.lineStartType" tokenIndexes="408" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="149,346" />
+    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="161,358" />
+    <DataItem type="QueryParam" key="inputDay" tokenIndexes="173,370" />
+  </DataItems>
+</Query>

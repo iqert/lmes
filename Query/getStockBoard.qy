@@ -1,0 +1,108 @@
+﻿<Query id="04c17b5780fe4277b381aac1c0639965" code="getStockBoard" name="获取仓库看板信息" type="VSql">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20180828002]]></Creator>
+  <CreationTime><![CDATA[2019-01-18 16:56:01]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-07-12 10:33:41]]></ModificationTime>
+  <VSql><![CDATA[select pps.*,
+pp.startProTime,pp.proPlanNo,pp.proNum,pp.proDeadline,
+pl.pNo,pl.placePosition,
+mi.materialType,mi.materialName,mi.maxSendNum
+from bo_akl_MM_productionPlanSub as pps
+left join bo_akl_MM_productionPlan as pp on pps.planId=pp.id
+left join bo_akl_base_productlines as pl on pp.productLineId=pl.id
+left join bo_akl_MM_materialInfo as mi on pps.materialNo=mi.materialNo
+where pps.confirmSend=False
+--order by pp.startProTime]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="startProTime" name="" dataType="date" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="proPlanNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="proNum" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="proDeadline" name="" dataType="date" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="pNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="placePosition" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="materialType" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="materialName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_8" code="maxSendNum" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_9" code="addMaterial" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_10" code="confirmSend" name="" dataType="boolean" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_11" code="nextSendTime" name="" dataType="longDate" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_12" code="alreadySend" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_13" code="id" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_14" code="materialNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_15" code="useNum" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_16" code="remark" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_17" code="PID" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_18" code="OrderNo" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_19" code="InnerCode" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_20" code="IsLeaf" name="" dataType="boolean" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_21" code="planId" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_MM_productionPlanSub" tokenIndexes="47" />
+    <DataItem type="Table" key="bo_akl_MM_productionPlan" tokenIndexes="57" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="77" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="97" />
+    <DataItem type="TableField" key="bo_akl_MM_productionPlan.startProTime" tokenIndexes="9" />
+    <DataItem type="TableField" key="bo_akl_MM_productionPlan.proPlanNo" tokenIndexes="13" />
+    <DataItem type="TableField" key="bo_akl_MM_productionPlan.proNum" tokenIndexes="17" />
+    <DataItem type="TableField" key="bo_akl_MM_productionPlan.proDeadline" tokenIndexes="21" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="26" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.placePosition" tokenIndexes="30" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialType" tokenIndexes="35" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialName" tokenIndexes="39" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.maxSendNum" tokenIndexes="43" />
+    <DataItem type="TableField" key="bo_akl_MM_productionPlanSub.planId" tokenIndexes="67" />
+    <DataItem type="TableField" key="bo_akl_MM_productionPlan.id" tokenIndexes="71" />
+    <DataItem type="TableField" key="bo_akl_MM_productionPlan.productLineId" tokenIndexes="87" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="91" />
+    <DataItem type="TableField" key="bo_akl_MM_productionPlanSub.materialNo" tokenIndexes="107" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="111" />
+    <DataItem type="TableField" key="bo_akl_MM_productionPlanSub.confirmSend" tokenIndexes="117" />
+  </DataItems>
+</Query>

@@ -1,0 +1,58 @@
+﻿<Query id="04c13aa7899c41e68e6e965d8efbf0ce" code="getLineUserSt" name="开线人员信息+工站名称" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[liub]]></Creator>
+  <CreationTime><![CDATA[2019-04-12 09:14:47]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-11-21 23:19:01]]></ModificationTime>
+  <VSql><![CDATA[select 
+A.*,B.workCName
+from bo_akl_line_start_user A
+left join bo_akl_base_productInfo_ws B on A.workStationId=B.id
+
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="workCName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="id" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="lid" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="isAutomatic" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="workStation" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="workStationId" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="workerName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="workerId" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_8" code="workerAssistName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_9" code="workStationName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_10" code="sName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_line_start_user" tokenIndexes="12" />
+    <DataItem type="Table" key="bo_akl_base_productInfo_ws" tokenIndexes="20" />
+    <DataItem type="Query" key="B" tokenIndexes="6,22,30" />
+    <DataItem type="Query" key="A" tokenIndexes="14,26" />
+    <DataItem type="QueryField" key="B.workCName" tokenIndexes="8" />
+    <DataItem type="QueryField" key="A.workStationId" tokenIndexes="28" />
+    <DataItem type="QueryField" key="B.id" tokenIndexes="32" />
+  </DataItems>
+</Query>

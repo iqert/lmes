@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2017/5/12 10:27:24-->
+<Methods>
+  <Method Code="btn_add_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private" TransactionType="transaction">
+    <Description><![CDATA[]]></Description>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>IsEmpty([bo_akl_MM_stockType].[PID])</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_TreeNodeMoveUpDownEditor1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="TreeNodeMoveUpDownEditor" ruleName="实体树形操作" instanceCode="BR_TreeNodeMoveUpDownEditor1" instanceName="实体树形操作" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-21 15:08:04">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"controlType":"4","mapping":null,"dataSourceName":"bo_akl_MM_stockType","treeStruct":[{"tableName":"bo_akl_MM_stockType","type":"1","pidField":"PID","treeCodeField":"InnerCode","orderField":"OrderNo","isLeafField":"IsLeaf","leftField":"","rightField":"","bizCodeField":"","bizCodeFormat":"","busiFilterField":""}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><DataSourceCode>bo_akl_MM_stockType</DataSourceCode><OperateCode>4</OperateCode></dtMaster><dtTreeStruct><TableName>bo_akl_MM_stockType</TableName><Type>1</Type><PIDField>PID</PIDField><TreeCodeField>InnerCode</TreeCodeField><OrderField>OrderNo</OrderField><IsLeafField>IsLeaf</IsLeafField><LeftField /><RightField /><BusiFilterField /></dtTreeStruct></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-21 15:09:30">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请选择一个仓库类型！\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请选择一个仓库类型！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Remark><![CDATA[]]></Remark>
+  </Method>
+  <Method Code="form_stockInfo_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>GetEntityRowCount("bo_akl_MM_stockType")&gt;0</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_DataBaseDataToInterfaceEntity2" />
+      <evaluateRule code="BR_DataBaseDataToInterfaceEntity3" />
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取仓库类型数据到实体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":null,"entityType":"window","entityName":"bo_akl_MM_stockType","itemqueryparam":null,"items":[{"destName":"bo_akl_MM_stockType.id","sourceName":"bo_akl_MM_stockType.id","type":"entityField"},{"destName":"bo_akl_MM_stockType.InnerCode","sourceName":"bo_akl_MM_stockType.InnerCode","type":"entityField"},{"destName":"bo_akl_MM_stockType.IsLeaf","sourceName":"bo_akl_MM_stockType.IsLeaf","type":"entityField"},{"destName":"bo_akl_MM_stockType.OrderNo","sourceName":"bo_akl_MM_stockType.OrderNo","type":"entityField"},{"destName":"bo_akl_MM_stockType.PID","sourceName":"bo_akl_MM_stockType.PID","type":"entityField"},{"destName":"bo_akl_MM_stockType.stockType","sourceName":"bo_akl_MM_stockType.stockType","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_MM_stockType","dataLoad":"0","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":[{"tableName":"bo_akl_MM_stockType","type":"1","pidField":"PID","treeCodeField":"InnerCode","orderField":"OrderNo","isLeafField":"IsLeaf","leftField":"","rightField":"","bizCodeField":"","bizCodeFormat":"","busiFilterField":""}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_MM_stockType</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_MM_stockType</SourceName><dsWhere><![CDATA[<NewDataSet />]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>7a833874ae4c4f9b87b22a7c3731ea86</ID><DataLoad>0</DataLoad></dtEntityRelation><dtEntityColumnRelation><MasterID>7a833874ae4c4f9b87b22a7c3731ea86</MasterID><DestName>bo_akl_MM_stockType.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_stockType.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>7a833874ae4c4f9b87b22a7c3731ea86</MasterID><DestName>bo_akl_MM_stockType.InnerCode</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_stockType.InnerCode</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>7a833874ae4c4f9b87b22a7c3731ea86</MasterID><DestName>bo_akl_MM_stockType.IsLeaf</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_stockType.IsLeaf</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>7a833874ae4c4f9b87b22a7c3731ea86</MasterID><DestName>bo_akl_MM_stockType.OrderNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_stockType.OrderNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>7a833874ae4c4f9b87b22a7c3731ea86</MasterID><DestName>bo_akl_MM_stockType.PID</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_stockType.PID</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>7a833874ae4c4f9b87b22a7c3731ea86</MasterID><DestName>bo_akl_MM_stockType.stockType</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_stockType.stockType</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>7a833874ae4c4f9b87b22a7c3731ea86</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>7a833874ae4c4f9b87b22a7c3731ea86</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave><dtTreeStruct><TableName>bo_akl_MM_stockType</TableName><Type>1</Type><PIDField>PID</PIDField><TreeCodeField>InnerCode</TreeCodeField><OrderField>OrderNo</OrderField><IsLeafField>IsLeaf</IsLeafField><LeftField /><RightField /><BusiFilterField /><PID>7a833874ae4c4f9b87b22a7c3731ea86</PID></dtTreeStruct></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity2" instanceName="从数据库获取库存数据到实体" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Query","dsWhere":[{"columnType":"1","field":"stockInfo.regionId","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"[bo_akl_MM_stockType].[id]","valueType":"9"},{"columnType":"1","field":"stockInfo.stockTypeId","fieldType":"char","leftBracket":"(","logicOperation":"or","operation":"=","rightBracket":")","value":"[bo_akl_MM_stockType].[id]","valueType":"9"}],"entityType":"window","entityName":"stockInfo","itemqueryparam":null,"items":[{"destName":"stockInfo.batchNo","sourceName":"stockInfo.batchNo","type":"entityField"},{"destName":"stockInfo.id","sourceName":"stockInfo.id","type":"entityField"},{"destName":"stockInfo.materialId","sourceName":"stockInfo.materialId","type":"entityField"},{"destName":"stockInfo.materialNo","sourceName":"stockInfo.materialNo","type":"entityField"},{"destName":"stockInfo.region","sourceName":"stockInfo.region","type":"entityField"},{"destName":"stockInfo.regionId","sourceName":"stockInfo.regionId","type":"entityField"},{"destName":"stockInfo.stockNum","sourceName":"stockInfo.stockNum","type":"entityField"},{"destName":"stockInfo.stockType","sourceName":"stockInfo.stockType","type":"entityField"},{"destName":"stockInfo.stockTypeId","sourceName":"stockInfo.stockTypeId","type":"entityField"},{"destName":"stockInfo.unit","sourceName":"stockInfo.unit","type":"entityField"}],"orderBy":null,"sourceName":"stockInfo","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>stockInfo</EntityName><SourceType>Query</SourceType><SourceName>stockInfo</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>stockInfo.regionId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>[bo_akl_MM_stockType].[id]</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>stockInfo.stockTypeId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>=</operation><rightBracket>)</rightBracket><value>[bo_akl_MM_stockType].[id]</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsQueryParam><![CDATA[<dsQueryParam />]]]]><![CDATA[></dsQueryParam><ID>26a1e385f9044121aefaa01ecd3b8d1e</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.batchNo</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.batchNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.id</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.materialId</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.materialId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.materialNo</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.materialNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.region</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.region</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.regionId</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.regionId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.stockNum</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.stockNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.stockType</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.stockType</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.stockTypeId</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.stockTypeId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.unit</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.unit</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>26a1e385f9044121aefaa01ecd3b8d1e</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>26a1e385f9044121aefaa01ecd3b8d1e</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity3" instanceName="从数据库获取数据到实体_总" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-11 16:30:46">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Query","dsWhere":[{"columnType":"1","field":"stockInfo_sum.regionId","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"[bo_akl_MM_stockType].[id]","valueType":"9"},{"columnType":"1","field":"stockInfo_sum.stockTypeId","fieldType":"char","leftBracket":"(","logicOperation":"or","operation":"=","rightBracket":")","value":"[bo_akl_MM_stockType].[id]","valueType":"9"}],"entityType":"window","entityName":"stockInfo_sum","itemqueryparam":null,"items":[{"destName":"stockInfo_sum.materialId","sourceName":"stockInfo_sum.materialId","type":"entityField"},{"destName":"stockInfo_sum.materialNo","sourceName":"stockInfo_sum.materialNo","type":"entityField"},{"destName":"stockInfo_sum.region","sourceName":"stockInfo_sum.region","type":"entityField"},{"destName":"stockInfo_sum.regionId","sourceName":"stockInfo_sum.regionId","type":"entityField"},{"destName":"stockInfo_sum.stockType","sourceName":"stockInfo_sum.stockType","type":"entityField"},{"destName":"stockInfo_sum.stockTypeId","sourceName":"stockInfo_sum.stockTypeId","type":"entityField"},{"destName":"stockInfo_sum.total","sourceName":"stockInfo_sum.total","type":"entityField"},{"destName":"stockInfo_sum.unit","sourceName":"stockInfo_sum.unit","type":"entityField"}],"orderBy":null,"sourceName":"stockInfo_sum","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>stockInfo_sum</EntityName><SourceType>Query</SourceType><SourceName>stockInfo_sum</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>stockInfo_sum.regionId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>[bo_akl_MM_stockType].[id]</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>stockInfo_sum.stockTypeId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>=</operation><rightBracket>)</rightBracket><value>[bo_akl_MM_stockType].[id]</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsQueryParam><![CDATA[<dsQueryParam />]]]]><![CDATA[></dsQueryParam><ID>319573a2ed2d4b58a846fa7c803ea0d9</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.materialId</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.materialId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.materialNo</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.materialNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.region</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.region</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.regionId</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.regionId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.stockType</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.stockType</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.stockTypeId</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.stockTypeId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.total</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.total</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.unit</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.unit</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>319573a2ed2d4b58a846fa7c803ea0d9</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>319573a2ed2d4b58a846fa7c803ea0d9</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGTreeView1_OnSelectIndexChanged" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity2" />
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity3" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity2" instanceName="从数据库获取库存数据到实体" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Query","dsWhere":[{"columnType":"1","field":"stockInfo.regionId","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"[bo_akl_MM_stockType].[id]","valueType":"9"},{"columnType":"1","field":"stockInfo.stockTypeId","fieldType":"char","leftBracket":"(","logicOperation":"or","operation":"=","rightBracket":")","value":"[bo_akl_MM_stockType].[id]","valueType":"9"}],"entityType":"window","entityName":"stockInfo","itemqueryparam":null,"items":[{"destName":"stockInfo.batchNo","sourceName":"stockInfo.batchNo","type":"entityField"},{"destName":"stockInfo.id","sourceName":"stockInfo.id","type":"entityField"},{"destName":"stockInfo.materialId","sourceName":"stockInfo.materialId","type":"entityField"},{"destName":"stockInfo.materialNo","sourceName":"stockInfo.materialNo","type":"entityField"},{"destName":"stockInfo.region","sourceName":"stockInfo.region","type":"entityField"},{"destName":"stockInfo.regionId","sourceName":"stockInfo.regionId","type":"entityField"},{"destName":"stockInfo.stockNum","sourceName":"stockInfo.stockNum","type":"entityField"},{"destName":"stockInfo.stockType","sourceName":"stockInfo.stockType","type":"entityField"},{"destName":"stockInfo.stockTypeId","sourceName":"stockInfo.stockTypeId","type":"entityField"},{"destName":"stockInfo.unit","sourceName":"stockInfo.unit","type":"entityField"}],"orderBy":null,"sourceName":"stockInfo","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>stockInfo</EntityName><SourceType>Query</SourceType><SourceName>stockInfo</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>stockInfo.regionId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>[bo_akl_MM_stockType].[id]</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>stockInfo.stockTypeId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>=</operation><rightBracket>)</rightBracket><value>[bo_akl_MM_stockType].[id]</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsQueryParam><![CDATA[<dsQueryParam />]]]]><![CDATA[></dsQueryParam><ID>26a1e385f9044121aefaa01ecd3b8d1e</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.batchNo</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.batchNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.id</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.materialId</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.materialId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.materialNo</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.materialNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.region</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.region</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.regionId</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.regionId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.stockNum</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.stockNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.stockType</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.stockType</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.stockTypeId</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.stockTypeId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.unit</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.unit</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>26a1e385f9044121aefaa01ecd3b8d1e</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>26a1e385f9044121aefaa01ecd3b8d1e</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity3" instanceName="从数据库获取数据到实体_总" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-11 16:31:22">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Query","dsWhere":[{"columnType":"1","field":"stockInfo_sum.regionId","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"[bo_akl_MM_stockType].[id]","valueType":"9"},{"columnType":"1","field":"stockInfo_sum.stockTypeId","fieldType":"char","leftBracket":"(","logicOperation":"or","operation":"=","rightBracket":")","value":"[bo_akl_MM_stockType].[id]","valueType":"9"}],"entityType":"window","entityName":"stockInfo_sum","itemqueryparam":null,"items":[{"destName":"stockInfo_sum.materialId","sourceName":"stockInfo_sum.materialId","type":"entityField"},{"destName":"stockInfo_sum.materialNo","sourceName":"stockInfo_sum.materialNo","type":"entityField"},{"destName":"stockInfo_sum.region","sourceName":"stockInfo_sum.region","type":"entityField"},{"destName":"stockInfo_sum.regionId","sourceName":"stockInfo_sum.regionId","type":"entityField"},{"destName":"stockInfo_sum.stockType","sourceName":"stockInfo_sum.stockType","type":"entityField"},{"destName":"stockInfo_sum.stockTypeId","sourceName":"stockInfo_sum.stockTypeId","type":"entityField"},{"destName":"stockInfo_sum.total","sourceName":"stockInfo_sum.total","type":"entityField"},{"destName":"stockInfo_sum.unit","sourceName":"stockInfo_sum.unit","type":"entityField"}],"orderBy":null,"sourceName":"stockInfo_sum","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>stockInfo_sum</EntityName><SourceType>Query</SourceType><SourceName>stockInfo_sum</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>stockInfo_sum.regionId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>[bo_akl_MM_stockType].[id]</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>stockInfo_sum.stockTypeId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>=</operation><rightBracket>)</rightBracket><value>[bo_akl_MM_stockType].[id]</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsQueryParam><![CDATA[<dsQueryParam />]]]]><![CDATA[></dsQueryParam><ID>319573a2ed2d4b58a846fa7c803ea0d9</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.materialId</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.materialId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.materialNo</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.materialNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.region</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.region</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.regionId</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.regionId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.stockType</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.stockType</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.stockTypeId</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.stockTypeId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.total</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.total</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.unit</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.unit</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>319573a2ed2d4b58a846fa7c803ea0d9</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>319573a2ed2d4b58a846fa7c803ea0d9</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton2_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>IsEmpty([bo_akl_MM_stockType].[PID])&amp;&amp;(GetEntityRowCount("bo_akl_MM_stockType")&gt;0)</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_TreeNodeMoveUpDownEditor1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请选择一个仓库类型！\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请选择一个仓库类型！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="TreeNodeMoveUpDownEditor" ruleName="实体树形操作" instanceCode="BR_TreeNodeMoveUpDownEditor1" instanceName="实体树形操作" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"controlType":"5","mapping":null,"dataSourceName":"bo_akl_MM_stockType","treeStruct":[{"tableName":"bo_akl_MM_stockType","type":"1","pidField":"PID","treeCodeField":"InnerCode","orderField":"OrderNo","isLeafField":"IsLeaf","leftField":"","rightField":"","bizCodeField":"","bizCodeFormat":"","busiFilterField":""}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><DataSourceCode>bo_akl_MM_stockType</DataSourceCode><OperateCode>5</OperateCode></dtMaster><dtTreeStruct><TableName>bo_akl_MM_stockType</TableName><Type>1</Type><PIDField>PID</PIDField><TreeCodeField>InnerCode</TreeCodeField><OrderField>OrderNo</OrderField><IsLeafField>IsLeaf</IsLeafField><LeftField /><RightField /><BusiFilterField /></dtTreeStruct></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton3_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode4">
+    <define>
+      <expression>GetSelectedRecordNum("bo_akl_MM_stockType")==1</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage1_2" />
+      <if isEnabled="True" isDebug="False" code="IfCode3">
+        <define>
+          <expression>BR_OUT.BR_ShowMessage1_2.confirm</expression>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_RecordReferenceCheck1" />
+          <if isEnabled="True" isDebug="False" code="IfCode1">
+            <define>
+              <expression>BR_OUT.BR_RecordReferenceCheck1.isReferenced</expression>
+              <remark></remark>
+            </define>
+            <sequence>
+              <evaluateRule code="BR_ShowMessage1" />
+              <evaluateRule code="BR_AbortRule1" />
+            </sequence>
+          </if>
+          <evaluateRule code="BR_RecordReferenceCheck1_1" />
+          <if isEnabled="True" isDebug="False" code="IfCode2">
+            <define>
+              <expression>BR_OUT.BR_RecordReferenceCheck1_1.isReferenced</expression>
+              <remark></remark>
+            </define>
+            <sequence>
+              <evaluateRule code="BR_ShowMessage1_1" />
+              <evaluateRule code="BR_AbortRule1_1" />
+            </sequence>
+          </if>
+          <evaluateRule code="BR_TreeNodeMoveUpDownEditor1" />
+          <evaluateRule code="BR_UpdateRecord1" />
+        </sequence>
+      </if>
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage2" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1_1" instanceName="显示设置的提示信息_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"该仓库区域被其他数据引用，不能删除！\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"该仓库区域被其他数据引用，不能删除！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AbortRule" ruleName="中断规则" instanceCode="BR_AbortRule1_1" instanceName="中断规则_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"abortType":"CURRENT","msgnote":""}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>CURRENT</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1_2" instanceName="是否确认删除" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"3","time":null,"simpleChinesePrompt":{"msgnote":"\"是否确认删除？\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>3</MsgType><SimpleChinese>"是否确认删除？"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"该仓库类型被其他数据引用，不能删除！\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"该仓库类型被其他数据引用，不能删除！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AbortRule" ruleName="中断规则" instanceCode="BR_AbortRule1" instanceName="中断规则" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"abortType":"CURRENT","msgnote":""}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>CURRENT</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage2" instanceName="显示设置的提示信息_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-11 17:07:56">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请选择仓库类型或区域！\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请选择仓库类型或区域！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="RecordReferenceCheck" ruleName="记录引用检查" instanceCode="BR_RecordReferenceCheck1" instanceName="记录引用检查" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":null,"checkField":"bo_akl_MM_stockInfo.stockTypeId","checkTable":"bo_akl_MM_stockInfo","sourceField":"bo_akl_MM_stockType.id","sourceTable":"bo_akl_MM_stockType"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><CheckTableName>bo_akl_MM_stockInfo</CheckTableName><CheckTableColumn>bo_akl_MM_stockInfo.stockTypeId</CheckTableColumn><CheckSourceEntity>bo_akl_MM_stockType</CheckSourceEntity><CheckSourceField>bo_akl_MM_stockType.id</CheckSourceField><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="RecordReferenceCheck" ruleName="记录引用检查" instanceCode="BR_RecordReferenceCheck1_1" instanceName="记录引用检查_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":null,"checkField":"bo_akl_MM_stockInfo.regionId","checkTable":"bo_akl_MM_stockInfo","sourceField":"bo_akl_MM_stockType.id","sourceTable":"bo_akl_MM_stockType"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><CheckTableName>bo_akl_MM_stockInfo</CheckTableName><CheckTableColumn>bo_akl_MM_stockInfo.regionId</CheckTableColumn><CheckSourceEntity>bo_akl_MM_stockType</CheckSourceEntity><CheckSourceField>bo_akl_MM_stockType.id</CheckSourceField><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="TreeNodeMoveUpDownEditor" ruleName="实体树形操作" instanceCode="BR_TreeNodeMoveUpDownEditor1" instanceName="实体树形操作" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"controlType":"11","mapping":null,"dataSourceName":"bo_akl_MM_stockType","treeStruct":[{"tableName":"bo_akl_MM_stockType","type":"1","pidField":"PID","treeCodeField":"InnerCode","orderField":"OrderNo","isLeafField":"IsLeaf","leftField":"","rightField":"","bizCodeField":"","bizCodeFormat":"","busiFilterField":""}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><DataSourceCode>bo_akl_MM_stockType</DataSourceCode><OperateCode>11</OperateCode></dtMaster><dtTreeStruct><TableName>bo_akl_MM_stockType</TableName><Type>1</Type><PIDField>PID</PIDField><TreeCodeField>InnerCode</TreeCodeField><OrderField>OrderNo</OrderField><IsLeafField>IsLeaf</IsLeafField><LeftField /><RightField /><BusiFilterField /></dtTreeStruct></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_MM_stockType.id","colValue":"bo_akl_MM_stockType.id","valueType":"entityField"},{"colName":"bo_akl_MM_stockType.InnerCode","colValue":"bo_akl_MM_stockType.InnerCode","valueType":"entityField"},{"colName":"bo_akl_MM_stockType.IsLeaf","colValue":"bo_akl_MM_stockType.IsLeaf","valueType":"entityField"},{"colName":"bo_akl_MM_stockType.OrderNo","colValue":"bo_akl_MM_stockType.OrderNo","valueType":"entityField"},{"colName":"bo_akl_MM_stockType.PID","colValue":"bo_akl_MM_stockType.PID","valueType":"entityField"},{"colName":"bo_akl_MM_stockType.stockType","colValue":"bo_akl_MM_stockType.stockType","valueType":"entityField"}],"dataSource":"bo_akl_MM_stockType","dataSourceType":"window","destTab":"bo_akl_MM_stockType","isSaveAll":false}],"treeStruct":[{"tableName":"bo_akl_MM_stockType","type":"1","pidField":"PID","treeCodeField":"InnerCode","orderField":"OrderNo","isLeafField":"IsLeaf","leftField":"","rightField":"","bizCodeField":"","bizCodeFormat":"","busiFilterField":""}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>023dabae8a6b45a0b532ca676f4a6b8f</ID><SourceName>bo_akl_MM_stockType</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_MM_stockType(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_MM_stockType</TableName></dtMaster><dtDetails><PID>023dabae8a6b45a0b532ca676f4a6b8f</PID><SourceField>bo_akl_MM_stockType.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_stockType.id</Value></dtDetails><dtDetails><PID>023dabae8a6b45a0b532ca676f4a6b8f</PID><SourceField>bo_akl_MM_stockType.InnerCode</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_stockType.InnerCode</Value></dtDetails><dtDetails><PID>023dabae8a6b45a0b532ca676f4a6b8f</PID><SourceField>bo_akl_MM_stockType.IsLeaf</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_stockType.IsLeaf</Value></dtDetails><dtDetails><PID>023dabae8a6b45a0b532ca676f4a6b8f</PID><SourceField>bo_akl_MM_stockType.OrderNo</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_stockType.OrderNo</Value></dtDetails><dtDetails><PID>023dabae8a6b45a0b532ca676f4a6b8f</PID><SourceField>bo_akl_MM_stockType.PID</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_stockType.PID</Value></dtDetails><dtDetails><PID>023dabae8a6b45a0b532ca676f4a6b8f</PID><SourceField>bo_akl_MM_stockType.stockType</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_stockType.stockType</Value></dtDetails><dtTreeStruct><TableName>bo_akl_MM_stockType</TableName><Type>1</Type><PIDField>PID</PIDField><TreeCodeField>InnerCode</TreeCodeField><OrderField>OrderNo</OrderField><IsLeafField>IsLeaf</IsLeafField><LeftField /><RightField /><BusiFilterField /><PID>023dabae8a6b45a0b532ca676f4a6b8f</PID></dtTreeStruct></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGLocateBox1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity2" />
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity3" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity2" instanceName="从数据库获取库存数据到实体" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Query","dsWhere":[{"columnType":"1","field":"stockInfo.materialNo","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"},{"columnType":"1","field":"stockInfo.batchNo","fieldType":"char","leftBracket":"(","logicOperation":"or","operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"}],"entityType":"window","entityName":"stockInfo","itemqueryparam":null,"items":[{"destName":"stockInfo.batchNo","sourceName":"stockInfo.batchNo","type":"entityField"},{"destName":"stockInfo.id","sourceName":"stockInfo.id","type":"entityField"},{"destName":"stockInfo.materialId","sourceName":"stockInfo.materialId","type":"entityField"},{"destName":"stockInfo.materialNo","sourceName":"stockInfo.materialNo","type":"entityField"},{"destName":"stockInfo.region","sourceName":"stockInfo.region","type":"entityField"},{"destName":"stockInfo.regionId","sourceName":"stockInfo.regionId","type":"entityField"},{"destName":"stockInfo.stockNum","sourceName":"stockInfo.stockNum","type":"entityField"},{"destName":"stockInfo.stockType","sourceName":"stockInfo.stockType","type":"entityField"},{"destName":"stockInfo.stockTypeId","sourceName":"stockInfo.stockTypeId","type":"entityField"},{"destName":"stockInfo.unit","sourceName":"stockInfo.unit","type":"entityField"}],"orderBy":null,"sourceName":"stockInfo","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>stockInfo</EntityName><SourceType>Query</SourceType><SourceName>stockInfo</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>stockInfo.materialNo</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>stockInfo.batchNo</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsQueryParam><![CDATA[<dsQueryParam />]]]]><![CDATA[></dsQueryParam><ID>26a1e385f9044121aefaa01ecd3b8d1e</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.batchNo</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.batchNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.id</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.materialId</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.materialId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.materialNo</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.materialNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.region</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.region</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.regionId</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.regionId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.stockNum</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.stockNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.stockType</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.stockType</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.stockTypeId</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.stockTypeId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>26a1e385f9044121aefaa01ecd3b8d1e</MasterID><DestName>stockInfo.unit</DestName><SourceType>entityField</SourceType><SourceName>stockInfo.unit</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>26a1e385f9044121aefaa01ecd3b8d1e</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>26a1e385f9044121aefaa01ecd3b8d1e</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity3" instanceName="从数据库获取数据到实体_总" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-11 16:32:55">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Query","dsWhere":[{"columnType":"1","field":"stockInfo_sum.materialNo","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"}],"entityType":"window","entityName":"stockInfo_sum","itemqueryparam":null,"items":[{"destName":"stockInfo_sum.materialId","sourceName":"stockInfo_sum.materialId","type":"entityField"},{"destName":"stockInfo_sum.materialNo","sourceName":"stockInfo_sum.materialNo","type":"entityField"},{"destName":"stockInfo_sum.region","sourceName":"stockInfo_sum.region","type":"entityField"},{"destName":"stockInfo_sum.regionId","sourceName":"stockInfo_sum.regionId","type":"entityField"},{"destName":"stockInfo_sum.stockType","sourceName":"stockInfo_sum.stockType","type":"entityField"},{"destName":"stockInfo_sum.stockTypeId","sourceName":"stockInfo_sum.stockTypeId","type":"entityField"},{"destName":"stockInfo_sum.total","sourceName":"stockInfo_sum.total","type":"entityField"},{"destName":"stockInfo_sum.unit","sourceName":"stockInfo_sum.unit","type":"entityField"}],"orderBy":null,"sourceName":"stockInfo_sum","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>stockInfo_sum</EntityName><SourceType>Query</SourceType><SourceName>stockInfo_sum</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>stockInfo_sum.materialNo</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsQueryParam><![CDATA[<dsQueryParam />]]]]><![CDATA[></dsQueryParam><ID>319573a2ed2d4b58a846fa7c803ea0d9</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.materialId</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.materialId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.materialNo</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.materialNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.region</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.region</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.regionId</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.regionId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.stockType</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.stockType</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.stockTypeId</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.stockTypeId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.total</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.total</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>319573a2ed2d4b58a846fa7c803ea0d9</MasterID><DestName>stockInfo_sum.unit</DestName><SourceType>entityField</SourceType><SourceName>stockInfo_sum.unit</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>319573a2ed2d4b58a846fa7c803ea0d9</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>319573a2ed2d4b58a846fa7c803ea0d9</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton4_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_CheckRequired1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>BR_OUT.BR_CheckRequired1.isCheckRequiredOK</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_UpdateRecord1" />
+      <evaluateRule code="BR_ShowMessage1" />
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="CheckRequired" ruleName="必填项检查" instanceCode="BR_CheckRequired1" instanceName="必填项检查" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-28 11:32:47">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"fieldList":[{"field":"bo_akl_MM_stockType.stockType","fieldName":"仓库类型"}],"type":"0"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtColumn><Code>bo_akl_MM_stockType.stockType</Code><Name>仓库类型</Name></dtColumn><dtType><Type>0</Type></dtType></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_MM_stockType.id","colValue":"bo_akl_MM_stockType.id","valueType":"entityField"},{"colName":"bo_akl_MM_stockType.InnerCode","colValue":"bo_akl_MM_stockType.InnerCode","valueType":"entityField"},{"colName":"bo_akl_MM_stockType.IsLeaf","colValue":"bo_akl_MM_stockType.IsLeaf","valueType":"entityField"},{"colName":"bo_akl_MM_stockType.OrderNo","colValue":"bo_akl_MM_stockType.OrderNo","valueType":"entityField"},{"colName":"bo_akl_MM_stockType.PID","colValue":"bo_akl_MM_stockType.PID","valueType":"entityField"},{"colName":"bo_akl_MM_stockType.stockType","colValue":"bo_akl_MM_stockType.stockType","valueType":"entityField"}],"dataSource":"bo_akl_MM_stockType","dataSourceType":"window","destTab":"bo_akl_MM_stockType","isSaveAll":false}],"treeStruct":[{"tableName":"bo_akl_MM_stockType","type":"1","pidField":"PID","treeCodeField":"InnerCode","orderField":"OrderNo","isLeafField":"IsLeaf","leftField":"","rightField":"","bizCodeField":"","bizCodeFormat":"","busiFilterField":""}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>2a1b545bb61f40d7ab9ed8a6291dfe18</ID><SourceName>bo_akl_MM_stockType</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_MM_stockType(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_MM_stockType</TableName></dtMaster><dtDetails><PID>2a1b545bb61f40d7ab9ed8a6291dfe18</PID><SourceField>bo_akl_MM_stockType.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_stockType.id</Value></dtDetails><dtDetails><PID>2a1b545bb61f40d7ab9ed8a6291dfe18</PID><SourceField>bo_akl_MM_stockType.InnerCode</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_stockType.InnerCode</Value></dtDetails><dtDetails><PID>2a1b545bb61f40d7ab9ed8a6291dfe18</PID><SourceField>bo_akl_MM_stockType.IsLeaf</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_stockType.IsLeaf</Value></dtDetails><dtDetails><PID>2a1b545bb61f40d7ab9ed8a6291dfe18</PID><SourceField>bo_akl_MM_stockType.OrderNo</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_stockType.OrderNo</Value></dtDetails><dtDetails><PID>2a1b545bb61f40d7ab9ed8a6291dfe18</PID><SourceField>bo_akl_MM_stockType.PID</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_stockType.PID</Value></dtDetails><dtDetails><PID>2a1b545bb61f40d7ab9ed8a6291dfe18</PID><SourceField>bo_akl_MM_stockType.stockType</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_stockType.stockType</Value></dtDetails><dtTreeStruct><TableName>bo_akl_MM_stockType</TableName><Type>1</Type><PIDField>PID</PIDField><TreeCodeField>InnerCode</TreeCodeField><OrderField>OrderNo</OrderField><IsLeafField>IsLeaf</IsLeafField><LeftField /><RightField /><BusiFilterField /><PID>2a1b545bb61f40d7ab9ed8a6291dfe18</PID></dtTreeStruct></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-28 11:31:26">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"保存成功！\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"保存成功！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton5_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>GetSelectedRecordNum("stockInfo_sum")==1</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_OpenComponentReturnData1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-11 17:08:42">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请选择一个库存信息！\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请选择一个库存信息！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-12-11 17:09:44">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"form_stockBatch","windowName":"查看库存批次","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"","widthExp":"","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":[{"paramName":"materialId","paramType":"expression","paramValue":"[stockInfo_sum].[materialId]","paramEntityType":"","entityFieldMapping":null},{"paramName":"stockTypeId","paramType":"expression","paramValue":"[stockInfo_sum].[stockTypeId]","paramEntityType":"","entityFieldMapping":null},{"paramName":"regionId","paramType":"expression","paramValue":"[stockInfo_sum].[regionId]","paramEntityType":"","entityFieldMapping":null}],"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>form_stockBatch</WindowCode><WindowName>查看库存批次</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp /><WidthExp /><IsAsyn>False</IsAsyn></dtMaster><dtParam><WindowVariant>materialId</WindowVariant><SourceType>expression</SourceType><SourceTypeDisplayText>表达式</SourceTypeDisplayText><SourceValue>[stockInfo_sum].[materialId]</SourceValue></dtParam><dtParam><WindowVariant>stockTypeId</WindowVariant><SourceType>expression</SourceType><SourceTypeDisplayText>表达式</SourceTypeDisplayText><SourceValue>[stockInfo_sum].[stockTypeId]</SourceValue></dtParam><dtParam><WindowVariant>regionId</WindowVariant><SourceType>expression</SourceType><SourceTypeDisplayText>表达式</SourceTypeDisplayText><SourceValue>[stockInfo_sum].[regionId]</SourceValue></dtParam></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

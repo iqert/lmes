@@ -1,0 +1,430 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2017/5/12 10:19:38-->
+<Methods>
+  <Method Code="JGDataGrid1_OnSelectionChanged" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>GetEntitySelectedRowCount("bo_akl_MM_productionPlan")&lt;&gt;0</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_MakeControlRVE1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_MakeControlRVE2" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="MakeControlRVE" ruleName="控制控件的只读、使能、显示" instanceCode="BR_MakeControlRVE1" instanceName="控制控件的只读、使能、显示" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"mapping":[{"componentControlCode":"JGButton5","control":"True"}],"type":"3"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OperType>3</OperType></dtMaster><dtControlColumns><ControlCode>JGButton5</ControlCode><IsCheck>True</IsCheck></dtControlColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="MakeControlRVE" ruleName="控制控件的只读、使能、显示" instanceCode="BR_MakeControlRVE2" instanceName="控制控件的只读、使能、显示_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"mapping":[{"componentControlCode":"JGButton5","control":"False"}],"type":"3"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OperType>3</OperType></dtMaster><dtControlColumns><ControlCode>JGButton5</ControlCode><IsCheck>False</IsCheck></dtControlColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="form_production_plan_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+  <evaluateRule code="BR_ExecuteRuleSet4" />
+  <evaluateRule code="BR_ExecuteRuleSet5" />
+  <evaluateRule code="BR_ShowMessage1_1" />
+  <evaluateRule code="BR_ShowMessage1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":null,"entityType":"window","entityName":"bo_akl_MM_productionPlan","itemqueryparam":null,"items":[{"destName":"bo_akl_MM_productionPlan.bomNo","sourceName":"bo_akl_MM_productionPlan.bomNo","type":"entityField"},{"destName":"bo_akl_MM_productionPlan.id","sourceName":"bo_akl_MM_productionPlan.id","type":"entityField"},{"destName":"bo_akl_MM_productionPlan.proDeadline","sourceName":"bo_akl_MM_productionPlan.proDeadline","type":"entityField"},{"destName":"bo_akl_MM_productionPlan.proNum","sourceName":"bo_akl_MM_productionPlan.proNum","type":"entityField"},{"destName":"bo_akl_MM_productionPlan.proPlanNo","sourceName":"bo_akl_MM_productionPlan.proPlanNo","type":"entityField"},{"destName":"bo_akl_MM_productionPlan.alreadyProNum","sourceName":"bo_akl_MM_productionPlan.alreadyProNum","type":"entityField"},{"destName":"bo_akl_MM_productionPlan.startProTime","sourceName":"bo_akl_MM_productionPlan.startProTime","type":"entityField"},{"destName":"bo_akl_MM_productionPlan.productLineId","sourceName":"bo_akl_MM_productionPlan.productLineId","type":"entityField"},{"destName":"bo_akl_MM_productionPlan.productLineNo","sourceName":"bo_akl_MM_productionPlan.productLineNo","type":"entityField"}],"orderBy":[{"field":"bo_akl_MM_productionPlan.startProTime","type":"DESC"}],"sourceName":"bo_akl_MM_productionPlan","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_MM_productionPlan</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_MM_productionPlan</SourceName><dsWhere><![CDATA[<NewDataSet />]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort><dtSort><SortField>bo_akl_MM_productionPlan.startProTime</SortField><SortWay>DESC</SortWay></dtSort></dsSort>]]]]><![CDATA[></dsSort><ID>f870035243b3457b90abd2d237fe97af</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>f870035243b3457b90abd2d237fe97af</MasterID><DestName>bo_akl_MM_productionPlan.bomNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_productionPlan.bomNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f870035243b3457b90abd2d237fe97af</MasterID><DestName>bo_akl_MM_productionPlan.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_productionPlan.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f870035243b3457b90abd2d237fe97af</MasterID><DestName>bo_akl_MM_productionPlan.proDeadline</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_productionPlan.proDeadline</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f870035243b3457b90abd2d237fe97af</MasterID><DestName>bo_akl_MM_productionPlan.proNum</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_productionPlan.proNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f870035243b3457b90abd2d237fe97af</MasterID><DestName>bo_akl_MM_productionPlan.proPlanNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_productionPlan.proPlanNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f870035243b3457b90abd2d237fe97af</MasterID><DestName>bo_akl_MM_productionPlan.alreadyProNum</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_productionPlan.alreadyProNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f870035243b3457b90abd2d237fe97af</MasterID><DestName>bo_akl_MM_productionPlan.startProTime</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_productionPlan.startProTime</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f870035243b3457b90abd2d237fe97af</MasterID><DestName>bo_akl_MM_productionPlan.productLineId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_productionPlan.productLineId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f870035243b3457b90abd2d237fe97af</MasterID><DestName>bo_akl_MM_productionPlan.productLineNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_productionPlan.productLineNo</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>f870035243b3457b90abd2d237fe97af</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>f870035243b3457b90abd2d237fe97af</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet4" instanceName="执行方法_PermQueryRole(权限-查询角色)" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-26 09:41:40">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_permission","windowCode":"","ruleSetCode":"PermQueryRole","isParallelism":"False"},"invokeParams":[{"paramCode":"roleNameLike","paramType":"expression","paramValue":"\"生产主管\"","paramSource":"","dataFilterType":"","paramFieldMapping":null}],"returnMapping":[{"destType":"ruleSetVariant","dest":"resultEntity","srcType":"returnValue","src":"resultEntity","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":false,"destFieldMapping":[{"destField":"id","destType":"char","srcValueType":"field","srcValue":"id"},{"destField":"roleCode","destType":"char","srcValueType":"field","srcValue":"roleCode"},{"destField":"roleName","destType":"char","srcValueType":"field","srcValue":"roleName"},{"destField":"remark","destType":"char","srcValueType":"field","srcValue":"remark"}],"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><componentCode>vbase_permission</componentCode><windowCode /><ruleSetCode>PermQueryRole</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>roleNameLike</paramCode><paramType>expression</paramType><paramValue>"生产主管"</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtReturnMapping><destType>ruleSetVariant</destType><dest>resultEntity</dest><srcType>returnValue</srcType><src>resultEntity</src><updateDestEntityMethod>insertOrUpdateBySameId</updateDestEntityMethod><isCleanDestEntityData>False</isCleanDestEntityData><destFieldMapping><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>id</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>id</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>roleCode</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>roleCode</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>roleName</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>roleName</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>remark</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>remark</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></destFieldMapping><dsFilterCondition>&lt;NewDataSet /&gt;</dsFilterCondition><dsSort>&lt;dsSort /&gt;</dsSort></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet5" instanceName="执行方法_API_Biz_QueryUserByRoleId(根据角色Id获取授予该角色权限的人员)" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_org_permission_rela","windowCode":"","ruleSetCode":"API_Biz_QueryUserByRoleId","isParallelism":"False"},"invokeParams":[{"paramCode":"roleId","paramType":"expression","paramValue":"BR_VAR_PARENT.[resultEntity].[id]","paramSource":"","dataFilterType":"","paramFieldMapping":null}],"returnMapping":[{"destType":"ruleSetVariant","dest":"resultUserEntity","srcType":"returnValue","src":"resultEntity","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":false,"destFieldMapping":[{"destField":"userId","destType":"char","srcValueType":"field","srcValue":"userId"},{"destField":"userName","destType":"char","srcValueType":"field","srcValue":"userName"}],"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><componentCode>vbase_org_permission_rela</componentCode><windowCode /><ruleSetCode>API_Biz_QueryUserByRoleId</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>roleId</paramCode><paramType>expression</paramType><paramValue>BR_VAR_PARENT.[resultEntity].[id]</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtReturnMapping><destType>ruleSetVariant</destType><dest>resultUserEntity</dest><srcType>returnValue</srcType><src>resultEntity</src><updateDestEntityMethod>insertOrUpdateBySameId</updateDestEntityMethod><isCleanDestEntityData>False</isCleanDestEntityData><destFieldMapping><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>userId</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>userId</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>userName</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>userName</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></destFieldMapping><dsFilterCondition>&lt;NewDataSet /&gt;</dsFilterCondition><dsSort>&lt;dsSort /&gt;</dsSort></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1_1" instanceName="显示设置的提示信息_1" isNeedLog="False" isEnabled="False" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-26 09:42:44">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"BR_VAR_PARENT.[resultEntity].[roleName]","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>BR_VAR_PARENT.[resultEntity].[roleName]</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"BR_VAR_PARENT.[resultUserEntity].[userName]","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>BR_VAR_PARENT.[resultUserEntity].[userName]</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Variables>
+      <Variable code="resultEntity" name="角色实体" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="角色id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="roleCode" name="角色编码" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="roleName" name="角色名称" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="remark" name="备注" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="resultUserEntity" name="角色用户实体" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="userId" name="用户Id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="userName" name="用户名" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="Account" name="" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="接收人账号Id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="Account" name="接收人账号名" fieldType="text" length="1000" accuracy="">
+            <description><![CDATA[多个使用逗号隔开]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="prolineUser" name="" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="roleInfo" name="角色信息" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="roleId" name="角色ID" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="roleCode" name="角色编号" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="roleName" name="角色名称" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+    </Variables>
+  </Method>
+  <Method Code="JGButton1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_OpenComponentReturnData1" />
+  <evaluateRule code="BR_ExecuteRuleSet1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-13 11:05:53">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"form_add_productionPlan","windowName":"新增生产计划","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"","widthExp":"","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>form_add_productionPlan</WindowCode><WindowName>新增生产计划</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp /><WidthExp /><IsAsyn>False</IsAsyn></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_form_production_plan_FormLoadAction(form_production_plan_窗体加载事件)" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"form_production_plan_FormLoadAction","isParallelism":"False"},"invokeParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>form_production_plan_FormLoadAction</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton4_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_OpenComponentReturnData1" />
+  <evaluateRule code="BR_ExecuteRuleSet1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"form_add_productionPlan","windowName":"新增生产计划","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"","widthExp":"","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":[{"paramName":"proPlanId","paramType":"expression","paramValue":"[bo_akl_MM_productionPlan].[id]","paramEntityType":"","entityFieldMapping":null}],"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>form_add_productionPlan</WindowCode><WindowName>新增生产计划</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp /><WidthExp /><IsAsyn>False</IsAsyn></dtMaster><dtParam><WindowVariant>proPlanId</WindowVariant><SourceType>expression</SourceType><SourceTypeDisplayText>表达式</SourceTypeDisplayText><SourceValue>[bo_akl_MM_productionPlan].[id]</SourceValue></dtParam></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_form_production_plan_FormLoadAction(form_production_plan_窗体加载事件)" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"form_production_plan_FormLoadAction","isParallelism":"False"},"invokeParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>form_production_plan_FormLoadAction</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton5_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_ShowMessage1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>BR_OUT.BR_ShowMessage1.confirm</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_CopyEntityRecord1" />
+      <foreach isEnabled="True" isDebug="False" code="ForeachCode1">
+        <define>
+          <varCode>pp</varCode>
+          <entityType>ruleSetVar</entityType>
+          <entityCode>proPlan</entityCode>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+          <if isEnabled="True" isDebug="False" code="IfCode2">
+            <define>
+              <expression>GetEntityRowCount("BR_VAR_PARENT.bo_akl_line_start") &gt; 0</expression>
+              <remark></remark>
+            </define>
+            <sequence>
+              <evaluateRule code="BR_ShowMessage2" />
+              <evaluateRule code="BR_AbortRule1" />
+            </sequence>
+          </if>
+        </sequence>
+      </foreach>
+      <foreach isEnabled="True" isDebug="False" code="ForeachCode2">
+        <define>
+          <varCode>pp2</varCode>
+          <entityType>ruleSetVar</entityType>
+          <entityCode>proPlan</entityCode>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_DeleteConditionRelationData1" />
+        </sequence>
+      </foreach>
+      <evaluateRule code="BR_DeleteListSelectRow1" />
+      <evaluateRule code="BR_UpdateRecord1" />
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"3","time":null,"simpleChinesePrompt":{"msgnote":"\"是否确认删除？\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>3</MsgType><SimpleChinese>"是否确认删除？"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage2" instanceName="显示设置的提示信息_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"ConcatStr(\"生产计划单号:\",LV.pp.proPlanNo,\",被其他数据引用,无法删除!\")","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>ConcatStr("生产计划单号:",LV.pp.proPlanNo,",被其他数据引用,无法删除!")</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AbortRule" ruleName="中断规则" instanceCode="BR_AbortRule1" instanceName="中断规则" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"abortType":"CURRENT","msgnote":""}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>CURRENT</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteConditionRelationData" ruleName="删除数据库中的记录" instanceCode="BR_DeleteConditionRelationData1" instanceName="删除数据库中的记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dtChileMaps":[{"orderNo":"1","tableName":"bo_akl_MM_productionPlanSub","dsWhere":[{"columnType":"1","field":"bo_akl_MM_productionPlanSub.planId","fieldType":"char","leftBracket":"(","logicOperation":"","operation":"=","rightBracket":")","value":"LV.pp2.id","valueType":"9"}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtConditionMaster><TableName>bo_akl_MM_productionPlanSub</TableName><Condition><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_MM_productionPlanSub.planId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>LV.pp2.id</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></Condition><OrderNo>1</OrderNo></dtConditionMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_line_start.planId","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"LV.pp.id","valueType":"9"}],"entityType":"ruleSetVar","entityName":"bo_akl_line_start","itemqueryparam":null,"items":[{"destName":"bo_akl_line_start.id","sourceName":"bo_akl_line_start.id","type":"entityField"},{"destName":"bo_akl_line_start.prolineName","sourceName":"bo_akl_line_start.prolineName","type":"entityField"},{"destName":"bo_akl_line_start.classes","sourceName":"bo_akl_line_start.classes","type":"entityField"},{"destName":"bo_akl_line_start.startTime","sourceName":"bo_akl_line_start.startTime","type":"entityField"},{"destName":"bo_akl_line_start.startClasses","sourceName":"bo_akl_line_start.startClasses","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_line_start","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>ruleSetVar</EntityType><EntityName>bo_akl_line_start</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_line_start</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_line_start.planId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>LV.pp.id</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>177eb4d786ee4e50a4cd1e11fccac8d5</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>177eb4d786ee4e50a4cd1e11fccac8d5</MasterID><DestName>bo_akl_line_start.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>177eb4d786ee4e50a4cd1e11fccac8d5</MasterID><DestName>bo_akl_line_start.prolineName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.prolineName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>177eb4d786ee4e50a4cd1e11fccac8d5</MasterID><DestName>bo_akl_line_start.classes</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.classes</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>177eb4d786ee4e50a4cd1e11fccac8d5</MasterID><DestName>bo_akl_line_start.startTime</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.startTime</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>177eb4d786ee4e50a4cd1e11fccac8d5</MasterID><DestName>bo_akl_line_start.startClasses</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.startClasses</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>177eb4d786ee4e50a4cd1e11fccac8d5</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>177eb4d786ee4e50a4cd1e11fccac8d5</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="CopyEntityRecord" ruleName="实体间复制记录" instanceCode="BR_CopyEntityRecord1" instanceName="实体间复制记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"checkitems":null,"condition":"","copyType":"1","destName":"proPlan","items":[{"destName":"proPlan.id","sourceName":"bo_akl_MM_productionPlan.id","type":"entityField"},{"destName":"proPlan.proPlanNo","sourceName":"bo_akl_MM_productionPlan.proPlanNo","type":"entityField"}],"mageitems":null,"sourceName":"bo_akl_MM_productionPlan","type":"1","isAddRecord":true,"jsonVersion":"1.0","destType":"ruleSetVar","sourceType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtInfo><destName>proPlan</destName><destType>ruleSetVar</destType><sourceName>bo_akl_MM_productionPlan</sourceName><sourceType>window</sourceType><type>1</type><isAddRecord>True</isAddRecord><copyType>1</copyType><condition /><jsonVersion>1.0</jsonVersion></dtInfo><dtMaster><DestName>proPlan.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_productionPlan.id</SourceName></dtMaster><dtMaster><DestName>proPlan.proPlanNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_productionPlan.proPlanNo</SourceName></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow1" instanceName="删除实体记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"","deleteType":"0","TableName":"bo_akl_MM_productionPlan","EntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition /><DeleteType>0</DeleteType><TableName>bo_akl_MM_productionPlan</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-01-18 15:14:41">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_MM_productionPlan.bomNo","colValue":"bo_akl_MM_productionPlan.bomNo","valueType":"entityField"},{"colName":"bo_akl_MM_productionPlan.id","colValue":"bo_akl_MM_productionPlan.id","valueType":"entityField"},{"colName":"bo_akl_MM_productionPlan.proDeadline","colValue":"bo_akl_MM_productionPlan.proDeadline","valueType":"entityField"},{"colName":"bo_akl_MM_productionPlan.proNum","colValue":"bo_akl_MM_productionPlan.proNum","valueType":"entityField"},{"colName":"bo_akl_MM_productionPlan.proPlanNo","colValue":"bo_akl_MM_productionPlan.proPlanNo","valueType":"entityField"},{"colName":"bo_akl_MM_productionPlan.alreadyProNum","colValue":"bo_akl_MM_productionPlan.alreadyProNum","valueType":"entityField"},{"colName":"bo_akl_MM_productionPlan.startProTime","colValue":"bo_akl_MM_productionPlan.startProTime","valueType":"entityField"},{"colName":"bo_akl_MM_productionPlan.productLineId","colValue":"bo_akl_MM_productionPlan.productLineId","valueType":"entityField"},{"colName":"bo_akl_MM_productionPlan.productLineNo","colValue":"bo_akl_MM_productionPlan.productLineNo","valueType":"entityField"}],"dataSource":"bo_akl_MM_productionPlan","dataSourceType":"window","destTab":"bo_akl_MM_productionPlan","isSaveAll":false}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>f979b0567fa647d29bcd418d7d9d8d7c</ID><SourceName>bo_akl_MM_productionPlan</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_MM_productionPlan(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_MM_productionPlan</TableName></dtMaster><dtDetails><PID>f979b0567fa647d29bcd418d7d9d8d7c</PID><SourceField>bo_akl_MM_productionPlan.bomNo</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_productionPlan.bomNo</Value></dtDetails><dtDetails><PID>f979b0567fa647d29bcd418d7d9d8d7c</PID><SourceField>bo_akl_MM_productionPlan.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_productionPlan.id</Value></dtDetails><dtDetails><PID>f979b0567fa647d29bcd418d7d9d8d7c</PID><SourceField>bo_akl_MM_productionPlan.proDeadline</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_productionPlan.proDeadline</Value></dtDetails><dtDetails><PID>f979b0567fa647d29bcd418d7d9d8d7c</PID><SourceField>bo_akl_MM_productionPlan.proNum</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_productionPlan.proNum</Value></dtDetails><dtDetails><PID>f979b0567fa647d29bcd418d7d9d8d7c</PID><SourceField>bo_akl_MM_productionPlan.proPlanNo</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_productionPlan.proPlanNo</Value></dtDetails><dtDetails><PID>f979b0567fa647d29bcd418d7d9d8d7c</PID><SourceField>bo_akl_MM_productionPlan.alreadyProNum</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_productionPlan.alreadyProNum</Value></dtDetails><dtDetails><PID>f979b0567fa647d29bcd418d7d9d8d7c</PID><SourceField>bo_akl_MM_productionPlan.startProTime</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_productionPlan.startProTime</Value></dtDetails><dtDetails><PID>f979b0567fa647d29bcd418d7d9d8d7c</PID><SourceField>bo_akl_MM_productionPlan.productLineId</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_productionPlan.productLineId</Value></dtDetails><dtDetails><PID>f979b0567fa647d29bcd418d7d9d8d7c</PID><SourceField>bo_akl_MM_productionPlan.productLineNo</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_productionPlan.productLineNo</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Variables>
+      <Variable code="proPlan" name="生产计划" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="proPlanNo" name="生产计划单号" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="bo_akl_line_start" name="开线主表" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="prolineName" name="产线名称" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="classes" name="确认班次" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="startTime" name="创建此开线的时间" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="startClasses" name="开线班次" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+    </Variables>
+  </Method>
+  <Method Code="JGLocateBox1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-02-14 14:45:08">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_MM_productionPlan.bomNo","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"},{"columnType":"1","field":"bo_akl_MM_productionPlan.proDeadline","fieldType":"date","leftBracket":"(","logicOperation":"or","operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"},{"columnType":"1","field":"bo_akl_MM_productionPlan.proPlanNo","fieldType":"char","leftBracket":"(","logicOperation":"or","operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"},{"columnType":"1","field":"bo_akl_MM_productionPlan.startProTime","fieldType":"date","leftBracket":"(","logicOperation":"or","operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"},{"columnType":"1","field":"bo_akl_MM_productionPlan.productLineNo","fieldType":"char","leftBracket":"(","logicOperation":"or","operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"}],"entityType":"window","entityName":"bo_akl_MM_productionPlan","itemqueryparam":null,"items":[{"destName":"bo_akl_MM_productionPlan.bomNo","sourceName":"bo_akl_MM_productionPlan.bomNo","type":"entityField"},{"destName":"bo_akl_MM_productionPlan.id","sourceName":"bo_akl_MM_productionPlan.id","type":"entityField"},{"destName":"bo_akl_MM_productionPlan.proDeadline","sourceName":"bo_akl_MM_productionPlan.proDeadline","type":"entityField"},{"destName":"bo_akl_MM_productionPlan.proNum","sourceName":"bo_akl_MM_productionPlan.proNum","type":"entityField"},{"destName":"bo_akl_MM_productionPlan.proPlanNo","sourceName":"bo_akl_MM_productionPlan.proPlanNo","type":"entityField"},{"destName":"bo_akl_MM_productionPlan.alreadyProNum","sourceName":"bo_akl_MM_productionPlan.alreadyProNum","type":"entityField"},{"destName":"bo_akl_MM_productionPlan.startProTime","sourceName":"bo_akl_MM_productionPlan.startProTime","type":"entityField"},{"destName":"bo_akl_MM_productionPlan.productLineId","sourceName":"bo_akl_MM_productionPlan.productLineId","type":"entityField"},{"destName":"bo_akl_MM_productionPlan.productLineNo","sourceName":"bo_akl_MM_productionPlan.productLineNo","type":"entityField"}],"orderBy":[{"field":"bo_akl_MM_productionPlan.startProTime","type":"DESC"}],"sourceName":"bo_akl_MM_productionPlan","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_MM_productionPlan</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_MM_productionPlan</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_MM_productionPlan.bomNo</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_MM_productionPlan.proDeadline</field><fieldType>date</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_MM_productionPlan.proPlanNo</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_MM_productionPlan.startProTime</field><fieldType>date</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_MM_productionPlan.productLineNo</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort><dtSort><SortField>bo_akl_MM_productionPlan.startProTime</SortField><SortWay>DESC</SortWay></dtSort></dsSort>]]]]><![CDATA[></dsSort><ID>f870035243b3457b90abd2d237fe97af</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>f870035243b3457b90abd2d237fe97af</MasterID><DestName>bo_akl_MM_productionPlan.bomNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_productionPlan.bomNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f870035243b3457b90abd2d237fe97af</MasterID><DestName>bo_akl_MM_productionPlan.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_productionPlan.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f870035243b3457b90abd2d237fe97af</MasterID><DestName>bo_akl_MM_productionPlan.proDeadline</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_productionPlan.proDeadline</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f870035243b3457b90abd2d237fe97af</MasterID><DestName>bo_akl_MM_productionPlan.proNum</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_productionPlan.proNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f870035243b3457b90abd2d237fe97af</MasterID><DestName>bo_akl_MM_productionPlan.proPlanNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_productionPlan.proPlanNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f870035243b3457b90abd2d237fe97af</MasterID><DestName>bo_akl_MM_productionPlan.alreadyProNum</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_productionPlan.alreadyProNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f870035243b3457b90abd2d237fe97af</MasterID><DestName>bo_akl_MM_productionPlan.startProTime</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_productionPlan.startProTime</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f870035243b3457b90abd2d237fe97af</MasterID><DestName>bo_akl_MM_productionPlan.productLineId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_productionPlan.productLineId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>f870035243b3457b90abd2d237fe97af</MasterID><DestName>bo_akl_MM_productionPlan.productLineNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_productionPlan.productLineNo</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>f870035243b3457b90abd2d237fe97af</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>f870035243b3457b90abd2d237fe97af</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton2_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>!IsEmpty([bo_akl_MM_productionPlan].[id])</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_OpenComponentReturnData1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"form_bomInfo1","windowName":"查看BOM信息","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"","widthExp":"","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":[{"paramName":"planId","paramType":"expression","paramValue":"[bo_akl_MM_productionPlan].[id]","paramEntityType":"","entityFieldMapping":null}],"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>form_bomInfo1</WindowCode><WindowName>查看BOM信息</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp /><WidthExp /><IsAsyn>False</IsAsyn></dtMaster><dtParam><WindowVariant>planId</WindowVariant><SourceType>expression</SourceType><SourceTypeDisplayText>表达式</SourceTypeDisplayText><SourceValue>[bo_akl_MM_productionPlan].[id]</SourceValue></dtParam></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请先选择一个生产计划！\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请先选择一个生产计划！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton3_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>!IsEmpty([bo_akl_MM_productionPlan].[id])</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_OpenComponentReturnData1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"form_addMaterialNum","windowName":"补料","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"","widthExp":"","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":[{"paramName":"planId","paramType":"expression","paramValue":"[bo_akl_MM_productionPlan].[id]","paramEntityType":"","entityFieldMapping":null}],"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>form_addMaterialNum</WindowCode><WindowName>补料</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp /><WidthExp /><IsAsyn>False</IsAsyn></dtMaster><dtParam><WindowVariant>planId</WindowVariant><SourceType>expression</SourceType><SourceTypeDisplayText>表达式</SourceTypeDisplayText><SourceValue>[bo_akl_MM_productionPlan].[id]</SourceValue></dtParam></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请先选择一个生产计划！\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请先选择一个生产计划！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

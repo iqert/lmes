@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Methods>
+  <Method Code="app_login" Type="Server" InterfaceType="Local" RestrictType="Private" TransactionType="transaction">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_ExecuteRuleSet1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_API_AccPwdIdentityAndLogin(API_账号密码校验与登录)" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-01-02 19:19:59">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"LoginComp","windowCode":"","ruleSetCode":"API_AccPwdIdentityAndLogin","isParallelism":"False","executeType":"confirm"},"invokeParams":[{"paramCode":"loginAccount","paramType":"expression","paramValue":"BR_IN_PARENT.userName","paramSource":"","dataFilterType":"","paramFieldMapping":null},{"paramCode":"loginPassword","paramType":"expression","paramValue":"MD5Encrypt(BR_IN_PARENT.userPW)","paramSource":"","dataFilterType":"","paramFieldMapping":null}],"returnMapping":[{"destType":"ruleSetOutput","dest":"errorDetail","srcType":"returnValue","src":"errorDetail","updateDestEntityMethod":"","isCleanDestEntityData":false,"destFieldMapping":null,"filterCondition":null,"orderBy":null},{"destType":"ruleSetOutput","dest":"isSuccess","srcType":"returnValue","src":"isSuccess","updateDestEntityMethod":"","isCleanDestEntityData":false,"destFieldMapping":null,"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><windowCode /><executeType>confirm</executeType><componentCode>LoginComp</componentCode><ruleSetCode>API_AccPwdIdentityAndLogin</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>loginAccount</paramCode><paramType>expression</paramType><paramValue>BR_IN_PARENT.userName</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtInvokeParams><paramCode>loginPassword</paramCode><paramType>expression</paramType><paramValue>MD5Encrypt(BR_IN_PARENT.userPW)</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtReturnMapping><destType>ruleSetOutput</destType><dest>errorDetail</dest><srcType>returnValue</srcType><src>errorDetail</src></dtReturnMapping><dtReturnMapping><destType>ruleSetOutput</destType><dest>isSuccess</dest><srcType>returnValue</srcType><src>isSuccess</src></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Inputs>
+      <Variable code="userName" name="" fieldType="char" initValue="" isMust="false" desc="" />
+      <Variable code="userPW" name="" fieldType="char" initValue="" isMust="false" desc="" />
+    </Inputs>
+    <Outputs>
+      <Variable code="isSuccess" name="是否登录成功" fieldType="boolean" initValue="" isMust="false" desc="" />
+      <Variable code="errorDetail" name="错误信息" fieldType="char" initValue="" isMust="false" desc="" />
+    </Outputs>
+  </Method>
+</Methods>

@@ -1,0 +1,35 @@
+﻿<Query id="1d8bb8dabc274c95a9cf2b7b8e1e0cd5" code="J" name="查询员工技能培训考核记录中合格的记录" type="VSql">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[100466]]></Creator>
+  <CreationTime><![CDATA[2018-06-29 14:06:49]]></CreationTime>
+  <Modifier><![CDATA[user_20180828002]]></Modifier>
+  <ModificationTime><![CDATA[2018-11-07 16:53:02]]></ModificationTime>
+  <VSql><![CDATA[SELECT st.sNo, st.sName, exB.tLine, st.classes
+FROM bo_akl_base_examRecordLB AS exB
+LEFT JOIN bo_akl_base_examEmployee AS ex ON exB.teId = ex.id
+LEFT JOIN bo_akl_base_staffInfo AS st ON ex.teId = st.id
+WHERE exB.assResult = '合格'
+	AND exB.userPower IS NOT NULL
+	AND st.sStatus = '在职'
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="sNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="sName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="tLine" name="" dataType="text" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="classes" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_base_examRecordLB" tokenIndexes="23" />
+    <DataItem type="Table" key="bo_akl_base_examEmployee" tokenIndexes="33" />
+    <DataItem type="Table" key="bo_akl_base_staffInfo" tokenIndexes="55" />
+  </DataItems>
+</Query>

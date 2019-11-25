@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2019/8/5 11:37:01-->
+<Methods>
+  <Method Code="form45_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-05 11:38:34">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":null,"entityType":"window","entityName":"bo_akl_base_equmainuser","itemqueryparam":null,"items":[{"destName":"bo_akl_base_equmainuser.equId","sourceName":"bo_akl_base_equmainuser.equId","type":"entityField"},{"destName":"bo_akl_base_equmainuser.equName","sourceName":"bo_akl_base_equmainuser.equName","type":"entityField"},{"destName":"bo_akl_base_equmainuser.equNo","sourceName":"bo_akl_base_equmainuser.equNo","type":"entityField"},{"destName":"bo_akl_base_equmainuser.id","sourceName":"bo_akl_base_equmainuser.id","type":"entityField"},{"destName":"bo_akl_base_equmainuser.userName","sourceName":"bo_akl_base_equmainuser.userName","type":"entityField"},{"destName":"bo_akl_base_equmainuser.userNo","sourceName":"bo_akl_base_equmainuser.userNo","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_base_equmainuser","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_base_equmainuser</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_base_equmainuser</SourceName><dsWhere><![CDATA[<NewDataSet />]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>026079f5c5ef4fc99fca4b0aef22d241</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>026079f5c5ef4fc99fca4b0aef22d241</MasterID><DestName>bo_akl_base_equmainuser.equId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_equmainuser.equId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>026079f5c5ef4fc99fca4b0aef22d241</MasterID><DestName>bo_akl_base_equmainuser.equName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_equmainuser.equName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>026079f5c5ef4fc99fca4b0aef22d241</MasterID><DestName>bo_akl_base_equmainuser.equNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_equmainuser.equNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>026079f5c5ef4fc99fca4b0aef22d241</MasterID><DestName>bo_akl_base_equmainuser.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_equmainuser.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>026079f5c5ef4fc99fca4b0aef22d241</MasterID><DestName>bo_akl_base_equmainuser.userName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_equmainuser.userName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>026079f5c5ef4fc99fca4b0aef22d241</MasterID><DestName>bo_akl_base_equmainuser.userNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_equmainuser.userNo</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>026079f5c5ef4fc99fca4b0aef22d241</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>026079f5c5ef4fc99fca4b0aef22d241</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>GetSelectedRecordNum("bo_akl_base_equmainuser")==1</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_SetEntityVarControlValue1" />
+      <evaluateRule code="BR_SelectionConfirm1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-05 13:40:21">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"6","Target":"repairMan","SourceType":"expression","SourceEntityType":"","Source":"[bo_akl_base_equmainuser].[userName]","entityFieldMapping":null},{"TargetType":"6","Target":"repariNo","SourceType":"expression","SourceEntityType":"","Source":"[bo_akl_base_equmainuser].[userNo]","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>6</TargetType><Target>repairMan</Target><SourceType>expression</SourceType><SourceEntityType /><Source>[bo_akl_base_equmainuser].[userName]</Source></dtFieldMap><dtFieldMap><TargetType>6</TargetType><Target>repariNo</Target><SourceType>expression</SourceType><SourceEntityType /><Source>[bo_akl_base_equmainuser].[userNo]</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-05 13:40:30">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-05 13:39:06">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请选择一条记录\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请选择一条记录"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

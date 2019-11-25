@@ -1,0 +1,69 @@
+﻿<form type="1002" code="newTending" IsLocked="False">
+  <propertys>
+    <property name="Width"><![CDATA[929]]></property>
+    <property name="Height"><![CDATA[468]]></property>
+    <property name="HeightSet"><![CDATA[StaticHeight]]></property>
+    <property name="LayoutType"><![CDATA[None]]></property>
+    <property name="TableName"><![CDATA[]]></property>
+    <property name="FormLoadAction"><![CDATA[newTending_FormLoadAction]]></property>
+    <property name="ResizeAction"><![CDATA[]]></property>
+    <property name="FormCloseAction"><![CDATA[]]></property>
+    <property name="FormClosingAction"><![CDATA[]]></property>
+    <property name="BackColor"><![CDATA[]]></property>
+    <property name="Padding"><![CDATA[0, 0, 0, 0]]></property>
+    <property name="Name"><![CDATA[新建维修保养记录]]></property>
+    <property name="FormBorderStyle"><![CDATA[FixedSingle]]></property>
+    <property name="WindowState"><![CDATA[Normal]]></property>
+    <property name="MaximizeBox"><![CDATA[True]]></property>
+    <property name="RefResources"><![CDATA[]]></property>
+    <property name="ControlDocInfo"><![CDATA[]]></property>
+    <property name="ThemeVar"><![CDATA[]]></property>
+  </propertys>
+  <controls>
+    <JGButton Code="JGButton1" LabelText="修改" PercentHeight="5.6%" PercentWidth="5.6%" Top="139" Left="72" TabIndex="8" OnClick="JGButton1_OnClick" />
+    <JGButton Code="newButton" LabelText="新增" PercentHeight="5.6%" PercentWidth="5.6%" Top="139" Left="14" TabIndex="7" OnClick="newButton_OnClick" />
+    <JGButton Code="JGButton2" LabelText="删除" PercentHeight="5.6%" PercentWidth="5.6%" Top="139" Left="130" TabIndex="9" Visible="False" BackColor="255, 0, 0" OnClick="deleteButton_OnClick" />
+    <JGDataGrid Code="JGDataGrid1" LabelText="列表" Width="896" Height="247" PercentHeight="52.8%" PercentWidth="96.4%" Top="171" Left="14" TabIndex="10" FetchMode="paged" PageInfo="{&quot;PageList&quot;:[10,20,30,40,50,5],&quot;DefaultPageSize&quot;:5}" OnSelectionChanged="JGDataGrid1_OnSelectionChanged" TableName="bo_akl_base_tendingInfo" ChooseMode="3" EditTrigger="click">
+      <JGTextBoxColumn Code="JGTextBoxColumn1_1" ColumnName="checkProject" LabelText="检查项目" TableName="bo_akl_base_tendingInfo" TextLength="128" Width="141" />
+      <JGTextBoxColumn Code="JGTextBoxColumn2_1" ColumnName="tContent" LabelText="维护保养内容" TableName="bo_akl_base_tendingInfo" TextLength="128" Width="170" />
+      <JGComboBoxColumn Code="JGTextBoxColumn3_1" ColumnName="tRecord" DropDownSource="{&quot;DataSourceSetting&quot;:{&quot;DataConfig&quot;:{&quot;DefaultSaveColumn&quot;:null,&quot;DefaultShowColumn&quot;:null,&quot;SourceType&quot;:null,&quot;SourceID&quot;:null,&quot;SourceName&quot;:null,&quot;MapTable&quot;:null,&quot;SaveColumn&quot;:null,&quot;ShowColumn&quot;:null,&quot;SortField&quot;:null,&quot;SortType&quot;:null,&quot;MaxRecCount&quot;:0,&quot;QueryField&quot;:null,&quot;QueryMethod&quot;:null,&quot;IsPickListFields&quot;:false,&quot;ConstData&quot;:[{&quot;id&quot;:&quot;正常&quot;,&quot;text&quot;:&quot;正常&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;不正常&quot;,&quot;text&quot;:&quot;不正常&quot;,&quot;selected&quot;:&quot;False&quot;}],&quot;SqlQueryConstData&quot;:null,&quot;EntityConstData&quot;:null,&quot;Condition&quot;:null,&quot;QueryParam&quot;:null,&quot;PickListFields&quot;:null},&quot;DataSourceType&quot;:&quot;CustomConst&quot;}}" IDColumnName="tRecord" LabelText="维护保养记录" TableName="bo_akl_base_tendingInfo" Width="144" />
+      <JGComboBoxColumn Code="JGTextBoxColumn4_1" ColumnName="tStatus" DropDownSource="{&quot;DataSourceSetting&quot;:{&quot;DataConfig&quot;:{&quot;DefaultSaveColumn&quot;:null,&quot;DefaultShowColumn&quot;:null,&quot;SourceType&quot;:null,&quot;SourceID&quot;:null,&quot;SourceName&quot;:null,&quot;MapTable&quot;:null,&quot;SaveColumn&quot;:null,&quot;ShowColumn&quot;:null,&quot;SortField&quot;:null,&quot;SortType&quot;:null,&quot;MaxRecCount&quot;:0,&quot;QueryField&quot;:null,&quot;QueryMethod&quot;:null,&quot;IsPickListFields&quot;:false,&quot;ConstData&quot;:[{&quot;id&quot;:&quot;OK&quot;,&quot;text&quot;:&quot;OK&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;NOK&quot;,&quot;text&quot;:&quot;NOK&quot;,&quot;selected&quot;:&quot;False&quot;}],&quot;SqlQueryConstData&quot;:null,&quot;EntityConstData&quot;:null,&quot;Condition&quot;:null,&quot;QueryParam&quot;:null,&quot;PickListFields&quot;:null},&quot;DataSourceType&quot;:&quot;CustomConst&quot;}}" IDColumnName="tStatus" LabelText="运行状态" TableName="bo_akl_base_tendingInfo" />
+      <JGTextBoxColumn Code="JGTextBoxColumn5_1" ColumnName="useMen" LabelText="记录人" OnClick="manBaseDictBox_OpenModuleAction" ReadOnly="True" TableName="bo_akl_base_tendingInfo" TextLength="128" />
+      <JGTextBoxColumn Code="JGTextBoxColumn6" ColumnName="remark" LabelText="备注" TableName="bo_akl_base_tendingInfo" TextLength="1000" Width="186" />
+    </JGDataGrid>
+    <JGButton Code="saveButton" LabelText="保存" Width="134" PercentHeight="5.6%" PercentWidth="14.4%" Top="433" Left="402" TabIndex="11" OnClick="saveButton_OnClick" />
+    <JGComboBox Code="cycleComboBox" LabelText="周期" Width="287" PercentHeight="5.6%" PercentWidth="30.9%" Top="98" Left="14" TabIndex="4" TableName="bo_akl_base_tending" IDColumnName="cycle" ColumnName="cycle" DropDownSource="{&quot;DataSourceSetting&quot;:{&quot;DataConfig&quot;:{&quot;DefaultSaveColumn&quot;:null,&quot;DefaultShowColumn&quot;:null,&quot;SourceType&quot;:null,&quot;SourceID&quot;:null,&quot;SourceName&quot;:null,&quot;MapTable&quot;:null,&quot;SaveColumn&quot;:null,&quot;ShowColumn&quot;:null,&quot;SortField&quot;:null,&quot;SortType&quot;:null,&quot;MaxRecCount&quot;:0,&quot;QueryField&quot;:null,&quot;QueryMethod&quot;:null,&quot;IsPickListFields&quot;:false,&quot;ConstData&quot;:[{&quot;id&quot;:&quot;每周&quot;,&quot;text&quot;:&quot;每周&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;每月&quot;,&quot;text&quot;:&quot;每月&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;每季度&quot;,&quot;text&quot;:&quot;每季度&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;每半年&quot;,&quot;text&quot;:&quot;每半年&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;每年&quot;,&quot;text&quot;:&quot;每年&quot;,&quot;selected&quot;:&quot;False&quot;}],&quot;SqlQueryConstData&quot;:null,&quot;EntityConstData&quot;:null,&quot;Condition&quot;:null,&quot;QueryParam&quot;:null,&quot;PickListFields&quot;:null},&quot;DataSourceType&quot;:&quot;CustomConst&quot;}}" />
+    <JGDateTimePicker Code="tendingDateTimePicker" LabelText="维护保养日期" Width="300" PercentHeight="5.6%" PercentWidth="32.3%" Top="98" Left="307" TabIndex="5" TableName="bo_akl_base_tending" ColumnName="tDate" DefaultValue="DateTimeNow()" />
+    <JGLabel Code="JGLabel1" LabelText="维修保养记录" Height="34" Width="134" PercentHeight="7.3%" PercentWidth="14.4%" Top="13" Left="402" TabIndex="1" FontStyle="微软雅黑, 15pt, style=Bold" />
+    <JGBaseDictBox Code="equipNameBaseDictBox" LabelText="设备名称" Width="432" PercentHeight="5.6%" PercentWidth="46.5%" Top="52" Left="481" TabIndex="3" TableName="bo_akl_base_tending" IDColumnName="eqName" ColumnName="eqName" IsMust="True" />
+    <JGBaseDictBox Code="equipNoBaseDictBox" LabelText="设备编号" Width="432" PercentHeight="5.6%" PercentWidth="46.5%" Top="52" Left="14" TabIndex="2" OpenModuleAction="equipNoBaseDictBox_OpenModuleAction" TableName="bo_akl_base_tending" IDColumnName="eqNo" ColumnName="eqNo" IsMust="True" />
+    <JGTextBox Code="JGTextBox1" LabelText="操作人" Width="300" PercentHeight="5.6%" PercentWidth="32.3%" Top="98" Left="613" TabIndex="6" TableName="bo_akl_base_tending" ColumnName="operator" ReadOnly="True" IsMust="True" />
+  </controls>
+  <outputs>
+    <variable code="wxbyjl" name="" fieldType="entity" defaultValue="" description="" isRestore="false">
+      <entity>
+        <field code="id" name="" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="equipId" name="设备信息Id" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="eqNo" name="设备编号" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="eqName" name="设备名称" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="tDate" name="维护保养日期" fieldType="date" defaultValue="" isRestore="false" />
+        <field code="cycle" name="周期" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="operatorCode" name="操作人编号" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="operator" name="操作人" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="remark" name="备注" fieldType="char" defaultValue="" isRestore="false" />
+      </entity>
+    </variable>
+  </outputs>
+  <inputs>
+    <variable code="equipId" name="设备信息Id" fieldType="char" defaultValue="0" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+    <variable code="isSave" name="" fieldType="boolean" defaultValue="false" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+    <variable code="employeeId" name="员工信息Id" fieldType="char" defaultValue="0" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+  </inputs>
+  <remark><![CDATA[]]></remark>
+</form>

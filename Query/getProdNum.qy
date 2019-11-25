@@ -1,0 +1,23 @@
+﻿<Query id="6fd8ad3804f647508bf6cf60734d8439" code="getProdNum" name="通过产线获取产量" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-11-25 00:11:34]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-11-25 00:13:32]]></ModificationTime>
+  <VSql><![CDATA[select SUM(boxPartsNum) as bpx from bo_akl_LM_printProductLabel where lineStartId=:startid]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="bpx" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="startid" name="开线id" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_LM_printProductLabel" tokenIndexes="13" />
+    <DataItem type="QueryParam" key="startid" tokenIndexes="20" />
+  </DataItems>
+</Query>

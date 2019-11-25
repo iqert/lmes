@@ -1,0 +1,32 @@
+﻿<Query id="74ce4f7bcd7d4d209294e4a9f7325c1c" code="lineDataMax" name="产线数据记录表最新的数据" type="VSql">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[liub]]></Creator>
+  <CreationTime><![CDATA[2018-07-09 13:48:47]]></CreationTime>
+  <Modifier><![CDATA[liub]]></Modifier>
+  <ModificationTime><![CDATA[2018-07-09 13:50:54]]></ModificationTime>
+  <VSql><![CDATA[SELECT id,Name,Value,Timepoint,ts FROM Exchange_data
+WHERE ts = (SELECT MAX(ts) as a FROM Exchange_data)
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="id" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="Name" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="Value" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="Timepoint" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="ts" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="Exchange_data" tokenIndexes="14,36" />
+    <DataItem type="Query" key="a" tokenIndexes="32" />
+  </DataItems>
+</Query>

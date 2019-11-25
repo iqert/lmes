@@ -1,0 +1,44 @@
+﻿<form type="1002" code="RepairUpkeepHistory" IsLocked="False">
+  <propertys>
+    <property name="Width"><![CDATA[1170]]></property>
+    <property name="Height"><![CDATA[480]]></property>
+    <property name="HeightSet"><![CDATA[StaticHeight]]></property>
+    <property name="LayoutType"><![CDATA[BorderLayout]]></property>
+    <property name="TableName"><![CDATA[bo_akl_baseInfo_tending]]></property>
+    <property name="FormLoadAction"><![CDATA[RepairUpkeepHistory_FormLoadAction]]></property>
+    <property name="FormCloseAction"><![CDATA[]]></property>
+    <property name="FormClosingAction"><![CDATA[]]></property>
+    <property name="BackColor"><![CDATA[]]></property>
+    <property name="Padding"><![CDATA[0, 0, 0, 0]]></property>
+    <property name="Name"><![CDATA[维修保养记录]]></property>
+    <property name="FormBorderStyle"><![CDATA[FixedSingle]]></property>
+    <property name="WindowState"><![CDATA[Normal]]></property>
+    <property name="MaximizeBox"><![CDATA[True]]></property>
+    <property name="RefResources"><![CDATA[]]></property>
+  </propertys>
+  <controls>
+    <JGPanel Code="JGPanel2" Dock="Fill" Height="434" Left="20" PercentHeight="90.4%" PercentWidth="98.3%" TabIndex="12" Top="46" Width="1150">
+      <JGDataGrid ChooseMode="3" Code="repairDataGrid" CriteriaStyle="[{&quot;Criteria&quot;:&quot;[bo_akl_base_tending].[isop] == \&quot;0\&quot;&quot;,&quot;ValueForeColor&quot;:&quot;255,31,0&quot;,&quot;ValueBackColor&quot;:null,&quot;ValueFontStyle&quot;:null,&quot;Columns&quot;:[&quot;JGTextBoxColumn5&quot;,&quot;JGTextBoxColumn6&quot;,&quot;JGDateTimePickerColumn2&quot;,&quot;JGTextBoxColumn7&quot;]}]" Dock="Fill" FetchMode="paged" Height="434" LabelText="列表" OnDoubleClick="changeButton_OnClick" OnSelectionChanged="repairDataGrid_OnSelectionChanged" PageInfo="{&quot;PageList&quot;:[10,20,30,40,50,100],&quot;DefaultPageSize&quot;:50}" PercentHeight="100%" PercentWidth="100%" ReadOnly="True" TabIndex="5" TableName="bo_akl_base_tending" Width="1150">
+        <JGTextBoxColumn AllowSort="True" Code="JGTextBoxColumn5" ColumnName="eqNo" LabelText="设备编号" TableName="bo_akl_base_tending" TextLength="128" Width="228" />
+        <JGTextBoxColumn AllowSort="True" Code="JGTextBoxColumn6" ColumnName="eqName" LabelText="设备名称" TableName="bo_akl_base_tending" TextLength="128" Width="157" />
+        <JGDateTimePickerColumn AllowSort="True" Code="JGDateTimePickerColumn2" ColumnName="tDate" LabelText="维护保养日期" TableName="bo_akl_base_tending" Width="175" />
+        <JGTextBoxColumn AllowSort="True" Code="JGTextBoxColumn7" ColumnName="cycle" LabelText="周期" TableName="bo_akl_base_tending" TextLength="128" Width="150" />
+      </JGDataGrid>
+    </JGPanel>
+    <JGPanel BorderWidth="0" Code="JGPanel1" Dock="Left" Height="434" PercentHeight="90.4%" PercentWidth="1.7%" TabIndex="11" Top="46" Width="20" />
+    <JGPanel BorderWidth="0" Code="buttonPanel" Dock="Top" Height="46" PercentHeight="9.6%" PercentWidth="100%" TabIndex="11" Width="1170">
+      <JGButton Code="JGButton6" LabelText="清空数据" Left="1083" OnClick="JGButton6_OnClick" PercentHeight="56.5%" PercentWidth="6.6%" TabIndex="14" Top="10" Visible="False" Width="77" />
+      <JGButton Code="JGButton5" LabelText="触发生成维保任务" Left="951" OnClick="JGButton5_OnClick" PercentHeight="56.5%" PercentWidth="10.8%" TabIndex="13" Top="10" Visible="False" Width="126" />
+      <JGButton Code="JGButton4" LabelText="新建" Left="777" OnClick="newButton_OnClick" PercentHeight="56.5%" PercentWidth="4.4%" TabIndex="1100" Top="10" />
+      <JGButton Code="JGButton3" LabelText="重置" Left="246" OnClick="refreshButton_OnClick" PercentHeight="56.5%" PercentWidth="4.4%" TabIndex="1104" Top="12" />
+      <JGButton Code="JGButton2" LabelText="修改" Left="835" OnClick="changeButton_OnClick" PercentHeight="56.5%" PercentWidth="4.4%" TabIndex="1101" Top="10" />
+      <JGButton BackColor="255, 0, 0" Code="JGButton1" LabelText="删除" Left="893" OnClick="deleteButton_OnClick" PercentHeight="56.5%" PercentWidth="4.4%" TabIndex="1102" Top="10" Visible="False" />
+      <JGLocateBox Code="JGLocateBox1" Left="20" OnClick="JGLocateBox1_OnClick" PercentHeight="60.9%" PercentWidth="18.8%" TabIndex="1103" Top="10" />
+    </JGPanel>
+  </controls>
+  <outputs>
+    <variable code="tendingId" name="维修保养记录Id" fieldType="char" defaultValue="" description="" isRestore="false" />
+  </outputs>
+  <inputs />
+  <remark><![CDATA[]]></remark>
+</form>

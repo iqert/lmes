@@ -1,0 +1,59 @@
+﻿<form type="1002" code="form_add_mouldDayUpkeepRec" IsLocked="False">
+  <propertys>
+    <property name="Width"><![CDATA[662]]></property>
+    <property name="Height"><![CDATA[450]]></property>
+    <property name="HeightSet"><![CDATA[StaticHeight]]></property>
+    <property name="LayoutType"><![CDATA[BorderLayout]]></property>
+    <property name="TableName"><![CDATA[]]></property>
+    <property name="FormLoadAction"><![CDATA[form_add_mouldDayUpkeepRec_FormLoadAction]]></property>
+    <property name="FormCloseAction"><![CDATA[]]></property>
+    <property name="FormClosingAction"><![CDATA[]]></property>
+    <property name="BackColor"><![CDATA[]]></property>
+    <property name="Padding"><![CDATA[0, 0, 0, 0]]></property>
+    <property name="Name"><![CDATA[新增模具日常保养记录]]></property>
+    <property name="FormBorderStyle"><![CDATA[FixedSingle]]></property>
+    <property name="WindowState"><![CDATA[Normal]]></property>
+    <property name="MaximizeBox"><![CDATA[True]]></property>
+    <property name="RefResources"><![CDATA[]]></property>
+  </propertys>
+  <controls>
+    <JGPanel BorderStyle="None" Code="Pnl_Fill" Dock="Fill" Height="450" LayoutType="BorderLayout" Left="10" PercentHeight="100%" PercentWidth="96.4%" TabIndex="1" Width="638">
+      <JGPanel BorderStyle="None" Code="Pnl_Center" Dock="Fill" Height="426" LayoutType="BorderLayout" PercentHeight="94.7%" PercentWidth="100%" TabIndex="5" Top="12" Width="638">
+        <JGBaseDictBox Code="JGBaseDictBox1" ColumnName="equipNo" IDColumnName="equipNo" IsMust="True" LabelText="模具编号" Left="6" OpenModuleAction="JGBaseDictBox1_OpenModuleAction" PercentHeight="6.1%" PercentWidth="36.8%" TabIndex="16" TableName="bo_akl_EM_mouldDayUpkeepRec" Top="55" />
+        <JGRadioGroup Code="JGRadioGroup1" ColumnName="classes" DropDownSource="{&quot;DataSourceSetting&quot;:{&quot;DataConfig&quot;:{&quot;DefaultSaveColumn&quot;:null,&quot;DefaultShowColumn&quot;:null,&quot;SourceType&quot;:null,&quot;SourceID&quot;:null,&quot;SourceName&quot;:null,&quot;MapTable&quot;:null,&quot;SaveColumn&quot;:null,&quot;ShowColumn&quot;:null,&quot;SortField&quot;:null,&quot;SortType&quot;:null,&quot;MaxRecCount&quot;:0,&quot;QueryField&quot;:null,&quot;QueryMethod&quot;:null,&quot;IsPickListFields&quot;:false,&quot;ConstData&quot;:[{&quot;id&quot;:&quot;白班&quot;,&quot;text&quot;:&quot;白班&quot;,&quot;selected&quot;:&quot;True&quot;},{&quot;id&quot;:&quot;晚班&quot;,&quot;text&quot;:&quot;晚班&quot;,&quot;selected&quot;:&quot;False&quot;}],&quot;SqlQueryConstData&quot;:null,&quot;EntityConstData&quot;:null,&quot;Condition&quot;:null,&quot;QueryParam&quot;:null,&quot;PickListFields&quot;:null},&quot;DataSourceType&quot;:&quot;CustomConst&quot;}}" IDColumnName="classes" LabelText="白/晚班" Left="6" PercentHeight="6.1%" PercentWidth="36.8%" TabIndex="15" TableName="bo_akl_EM_mouldDayUpkeepRec" Top="119" />
+        <JGDataGrid Code="JGDataGrid1" EditTrigger="click" Height="208" LabelText="列表" Left="6" PercentHeight="48.8%" PercentWidth="98.1%" TabIndex="14" TableName="bo_akl_EM_mouldDayUpkeepSub" Top="164" Width="626">
+          <JGTextBoxColumn Code="JGTextBoxColumn1" ColumnName="checkItem" LabelText="检查项目" ReadOnly="True" TableName="bo_akl_EM_mouldDayUpkeepSub" Width="150" />
+          <JGTextBoxColumn Code="JGTextBoxColumn2" ColumnName="mouldStatus" LabelText="模具状态" OnCellDoubleClick="JGTextBoxColumn2_OnCellDoubleClick" ReadOnly="True" TableName="bo_akl_EM_mouldDayUpkeepSub" Width="100" />
+          <JGTextBoxColumn Code="JGTextBoxColumn3" ColumnName="remark" LabelText="备注" TableName="bo_akl_EM_mouldDayUpkeepSub" Width="140" />
+          <JGTextBoxColumn Code="JGImageColumn1" ColumnName="picture" LabelText="图片" OnClick="form_add_mouldDayUpkeepRec_OnClick" ReadOnly="True" TableName="bo_akl_EM_mouldDayUpkeepSub" Width="100" />
+          <JGTextBoxColumn Code="JGTextBoxColumn4" ColumnName="upload" LabelText="操作" OnClick="JGTextBoxColumn4_OnClick" ReadOnly="True" TableName="bo_akl_EM_mouldDayUpkeepSub" />
+        </JGDataGrid>
+        <JGButton Code="JGButton1" LabelText="保存" Left="296" OnClick="JGButton1_OnClick" PercentHeight="6.1%" PercentWidth="8.2%" TabIndex="16" Top="388" />
+        <JGLabel Code="JGLabel1" FontStyle="微软雅黑, 15.75pt, style=Bold" Height="43" LabelText="模具日常保养记录" Left="230" PercentHeight="10.1%" PercentWidth="28.5%" TabIndex="15" Top="6" Width="182" />
+        <JGDateTimePicker Code="JGDateTimePicker1" ColumnName="upkeepDate" DefaultValue="DateTimeNow()" IsMust="True" LabelText="保养时间" Left="6" PercentHeight="6.1%" PercentWidth="36.8%" TabIndex="0" TableName="bo_akl_EM_mouldDayUpkeepRec" Top="87" />
+        <JGTextBox Code="JGTextBox1" ColumnName="operatorName" LabelText="操作人" Left="397" PercentHeight="6.1%" PercentWidth="36.8%" ReadOnly="True" TabIndex="0" TableName="bo_akl_EM_mouldDayUpkeepRec" Top="87" />
+        <JGTextBox Code="JGTextBox4" ColumnName="equipName" LabelText="模具名称" Left="397" PercentHeight="6.1%" PercentWidth="36.8%" ReadOnly="True" TabIndex="0" TableName="bo_akl_EM_mouldDayUpkeepRec" Top="55" />
+      </JGPanel>
+      <JGPanel BorderStyle="None" Code="Pnl_Top" Dock="Top" Height="12" LayoutType="BorderLayout" PercentHeight="2.7%" PercentWidth="100%" TabIndex="1" Width="638" />
+      <JGPanel BorderStyle="None" Code="Pnl_Bottom" Dock="Bottom" Height="12" LayoutType="BorderLayout" PercentHeight="2.7%" PercentWidth="100%" TabIndex="1" Top="438" Width="638" />
+    </JGPanel>
+    <JGPanel BorderStyle="None" Code="Pnl_Left" Dock="Left" Height="450" LayoutType="BorderLayout" PercentHeight="100%" PercentWidth="1.8%" TabIndex="1" Width="12" />
+    <JGPanel BorderStyle="None" Code="Pnl_Right" Dock="Right" Height="450" LayoutType="BorderLayout" Left="948" PercentHeight="100%" PercentWidth="1.8%" TabIndex="1" Width="12">
+      <JGLabel Code="Lab_Help" Dock="Top" FontStyle="微软雅黑, 6.75pt" LabelText="" PercentHeight="5.3%" PercentWidth="100%" TabIndex="7" ToolTip="&quot;帮助&quot;" Width="12" />
+      <JGLabel Code="Lab_Info" Dock="Bottom" FontStyle="微软雅黑, 6.75pt" LabelText="" PercentHeight="5.3%" PercentWidth="100%" TabIndex="6" ToolTip="&quot;获取当前窗口信息&quot;" Top="330" Width="12" />
+    </JGPanel>
+  </controls>
+  <outputs />
+  <inputs>
+    <variable code="equName" name="设备名称" fieldType="char" defaultValue="" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+    <variable code="equNo" name="设备编码" fieldType="char" defaultValue="" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+    <variable code="upkeepId" name="保养记录Id" fieldType="char" defaultValue="" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+  </inputs>
+  <remark><![CDATA[]]></remark>
+</form>

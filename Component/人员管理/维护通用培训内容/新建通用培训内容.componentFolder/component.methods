@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2018/6/15 14:59:34-->
+<Methods>
+  <Method Code="JGButton1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_CheckUnique1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>BR_OUT.BR_CheckUnique1.isUnique==False</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_CheckRequired1" />
+      <if isEnabled="True" isDebug="False" code="IfCode2">
+        <define>
+          <expression>BR_OUT.BR_CheckRequired1.isCheckRequiredOK==True</expression>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_UpdateRecord1" />
+          <evaluateRule code="BR_SetEntityVarControlValue1" />
+          <evaluateRule code="BR_SelectionConfirm1" />
+        </sequence>
+      </if>
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="CheckUnique" ruleName="前后台唯一性检查" instanceCode="BR_CheckUnique1" instanceName="前后台唯一性检查" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isBackgroudCheck":true,"entityName":"bo_akl_PM_TCGeneralTraining","tableName":"bo_akl_PM_TCGeneralTraining","isAutoSelectRepeatRow":false,"checkFields":[{"entityFiled":"bo_akl_PM_TCGeneralTraining.trainingType","tableField":"bo_akl_PM_TCGeneralTraining.trainingType"}],"dsWhere":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><IsBackgroudCheck>true</IsBackgroudCheck><EntityName>bo_akl_PM_TCGeneralTraining</EntityName><TableName>bo_akl_PM_TCGeneralTraining</TableName><IsAutoSelectRepeatRow>false</IsAutoSelectRepeatRow><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition></dtMaster><dtCheckFields><EntityField>bo_akl_PM_TCGeneralTraining.trainingType</EntityField><TableField>bo_akl_PM_TCGeneralTraining.trainingType</TableField></dtCheckFields></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_PM_TCGeneralTraining.enclosure","colValue":"bo_akl_PM_TCGeneralTraining.enclosure","valueType":"entityField"},{"colName":"bo_akl_PM_TCGeneralTraining.enclosureName","colValue":"bo_akl_PM_TCGeneralTraining.enclosureName","valueType":"entityField"},{"colName":"bo_akl_PM_TCGeneralTraining.id","colValue":"bo_akl_PM_TCGeneralTraining.id","valueType":"entityField"},{"colName":"bo_akl_PM_TCGeneralTraining.remarks","colValue":"bo_akl_PM_TCGeneralTraining.remarks","valueType":"entityField"},{"colName":"bo_akl_PM_TCGeneralTraining.trainingContent","colValue":"bo_akl_PM_TCGeneralTraining.trainingContent","valueType":"entityField"},{"colName":"bo_akl_PM_TCGeneralTraining.trainingType","colValue":"bo_akl_PM_TCGeneralTraining.trainingType","valueType":"entityField"}],"dataSource":"bo_akl_PM_TCGeneralTraining","dataSourceType":"window","destTab":"bo_akl_PM_TCGeneralTraining","isSaveAll":false}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>239aab05e4ae4808b29e693932b9f120</ID><SourceName>bo_akl_PM_TCGeneralTraining</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_PM_TCGeneralTraining(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_PM_TCGeneralTraining</TableName></dtMaster><dtDetails><PID>239aab05e4ae4808b29e693932b9f120</PID><SourceField>bo_akl_PM_TCGeneralTraining.enclosure</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_PM_TCGeneralTraining.enclosure</Value></dtDetails><dtDetails><PID>239aab05e4ae4808b29e693932b9f120</PID><SourceField>bo_akl_PM_TCGeneralTraining.enclosureName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_PM_TCGeneralTraining.enclosureName</Value></dtDetails><dtDetails><PID>239aab05e4ae4808b29e693932b9f120</PID><SourceField>bo_akl_PM_TCGeneralTraining.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_PM_TCGeneralTraining.id</Value></dtDetails><dtDetails><PID>239aab05e4ae4808b29e693932b9f120</PID><SourceField>bo_akl_PM_TCGeneralTraining.remarks</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_PM_TCGeneralTraining.remarks</Value></dtDetails><dtDetails><PID>239aab05e4ae4808b29e693932b9f120</PID><SourceField>bo_akl_PM_TCGeneralTraining.trainingContent</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_PM_TCGeneralTraining.trainingContent</Value></dtDetails><dtDetails><PID>239aab05e4ae4808b29e693932b9f120</PID><SourceField>bo_akl_PM_TCGeneralTraining.trainingType</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_PM_TCGeneralTraining.trainingType</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"6","Target":"typxnr","SourceType":"entityField","SourceEntityType":"window","Source":"bo_akl_PM_TCGeneralTraining","entityFieldMapping":[{"destFieldName":"trainingType","srcValueType":"entityField","srcValue":"bo_akl_PM_TCGeneralTraining.trainingType"},{"destFieldName":"trainingContent","srcValueType":"entityField","srcValue":"bo_akl_PM_TCGeneralTraining.trainingContent"},{"destFieldName":"remarks","srcValueType":"entityField","srcValue":"bo_akl_PM_TCGeneralTraining.remarks"},{"destFieldName":"enclosure","srcValueType":"entityField","srcValue":"bo_akl_PM_TCGeneralTraining.enclosure"},{"destFieldName":"id","srcValueType":"entityField","srcValue":"bo_akl_PM_TCGeneralTraining.id"},{"destFieldName":"enclosureName","srcValueType":"entityField","srcValue":"bo_akl_PM_TCGeneralTraining.enclosureName"}]}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>6</TargetType><Target>typxnr</Target><SourceType>entityField</SourceType><SourceEntityType>window</SourceEntityType><Source>bo_akl_PM_TCGeneralTraining</Source><SourceEntityXml><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>trainingType</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_PM_TCGeneralTraining.trainingType</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>trainingContent</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_PM_TCGeneralTraining.trainingContent</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>remarks</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_PM_TCGeneralTraining.remarks</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>enclosure</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_PM_TCGeneralTraining.enclosure</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>id</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_PM_TCGeneralTraining.id</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>enclosureName</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_PM_TCGeneralTraining.enclosureName</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></SourceEntityXml></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"已经存在相同的培训性质\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"已经存在相同的培训性质"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="CheckRequired" ruleName="必填项检查" instanceCode="BR_CheckRequired1" instanceName="必填项检查" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"fieldList":[{"field":"bo_akl_PM_TCGeneralTraining.trainingContent","fieldName":"bo_akl_PM_TCGeneralTraining.trainingContent"},{"field":"bo_akl_PM_TCGeneralTraining.trainingType","fieldName":"bo_akl_PM_TCGeneralTraining.trainingType"}],"type":"0"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtColumn><Code>bo_akl_PM_TCGeneralTraining.trainingContent</Code><Name>bo_akl_PM_TCGeneralTraining.trainingContent</Name></dtColumn><dtColumn><Code>bo_akl_PM_TCGeneralTraining.trainingType</Code><Name>bo_akl_PM_TCGeneralTraining.trainingType</Name></dtColumn><dtType><Type>0</Type></dtType></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="NewMaintenanceOfGeneralTrainingContent_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>IsEmpty(@id)</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_AddTableRecord1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+      <if isEnabled="True" isDebug="False" code="IfCode2">
+        <define>
+          <expression>@state=="查看"</expression>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_MakeControlRVE1" />
+          <evaluateRule code="BR_MakeControlRVE1_1" />
+        </sequence>
+      </if>
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="MakeControlRVE" ruleName="控制控件的只读、使能、显示" instanceCode="BR_MakeControlRVE1" instanceName="控制控件的只读、使能、显示_控制按钮使能" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 09:29:33">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"mapping":[{"componentControlCode":"JGButton1","control":"False"},{"componentControlCode":"JGAttachment1","control":"False"}],"type":"2"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OperType>2</OperType></dtMaster><dtControlColumns><ControlCode>JGButton1</ControlCode><IsCheck>False</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGAttachment1</ControlCode><IsCheck>False</IsCheck></dtControlColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="MakeControlRVE" ruleName="控制控件的只读、使能、显示" instanceCode="BR_MakeControlRVE1_1" instanceName="控制控件的只读、使能、显示_控制只读" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-31 09:29:40">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"mapping":[{"componentControlCode":"JGTextBox1","control":"True"},{"componentControlCode":"JGLongTextBox2","control":"True"},{"componentControlCode":"JGLongTextBox1","control":"True"}],"type":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OperType>1</OperType></dtMaster><dtControlColumns><ControlCode>JGTextBox1</ControlCode><IsCheck>True</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGLongTextBox2</ControlCode><IsCheck>True</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGLongTextBox1</ControlCode><IsCheck>True</IsCheck></dtControlColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1" instanceName="新增实体记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"3","Mappings":null,"TableType":"window","TableName":"bo_akl_PM_TCGeneralTraining","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><Location>3</Location><EntityType>window</EntityType><EntityName>bo_akl_PM_TCGeneralTraining</EntityName></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_PM_TCGeneralTraining.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"@id","valueType":"9"}],"entityType":"window","entityName":"bo_akl_PM_TCGeneralTraining","itemqueryparam":null,"items":[{"destName":"bo_akl_PM_TCGeneralTraining.enclosure","sourceName":"bo_akl_PM_TCGeneralTraining.enclosure","type":"entityField"},{"destName":"bo_akl_PM_TCGeneralTraining.id","sourceName":"bo_akl_PM_TCGeneralTraining.id","type":"entityField"},{"destName":"bo_akl_PM_TCGeneralTraining.remarks","sourceName":"bo_akl_PM_TCGeneralTraining.remarks","type":"entityField"},{"destName":"bo_akl_PM_TCGeneralTraining.trainingContent","sourceName":"bo_akl_PM_TCGeneralTraining.trainingContent","type":"entityField"},{"destName":"bo_akl_PM_TCGeneralTraining.enclosureName","sourceName":"bo_akl_PM_TCGeneralTraining.enclosureName","type":"entityField"},{"destName":"bo_akl_PM_TCGeneralTraining.trainingType","sourceName":"bo_akl_PM_TCGeneralTraining.trainingType","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_PM_TCGeneralTraining","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_PM_TCGeneralTraining</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_PM_TCGeneralTraining</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_PM_TCGeneralTraining.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>@id</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>d8ccacc413b74634a5f4348a139c8b64</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>d8ccacc413b74634a5f4348a139c8b64</MasterID><DestName>bo_akl_PM_TCGeneralTraining.enclosure</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_PM_TCGeneralTraining.enclosure</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d8ccacc413b74634a5f4348a139c8b64</MasterID><DestName>bo_akl_PM_TCGeneralTraining.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_PM_TCGeneralTraining.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d8ccacc413b74634a5f4348a139c8b64</MasterID><DestName>bo_akl_PM_TCGeneralTraining.remarks</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_PM_TCGeneralTraining.remarks</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d8ccacc413b74634a5f4348a139c8b64</MasterID><DestName>bo_akl_PM_TCGeneralTraining.trainingContent</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_PM_TCGeneralTraining.trainingContent</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d8ccacc413b74634a5f4348a139c8b64</MasterID><DestName>bo_akl_PM_TCGeneralTraining.enclosureName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_PM_TCGeneralTraining.enclosureName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d8ccacc413b74634a5f4348a139c8b64</MasterID><DestName>bo_akl_PM_TCGeneralTraining.trainingType</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_PM_TCGeneralTraining.trainingType</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>d8ccacc413b74634a5f4348a139c8b64</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>d8ccacc413b74634a5f4348a139c8b64</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGAttachment1_OnFileSelected" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_Attachmentoperation1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="Attachmentoperation" ruleName="附件操作" instanceCode="BR_Attachmentoperation1" instanceName="附件操作" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"componentControlCode":[{"componentControlCode":"JGAttachment1"}],"dataProcess":null,"fileName":null,"function":"1","fileType":"","componentCode":"","reviewScheme":"","watermarkEnable":false,"previewTargetType":"","isPreviewInModalWindow":false,"previewWindowSize":"","watermarkSet":null,"picWatermarkStyle":null,"docProtectSet":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><operate>1</operate><documentColumn /><watermarkEnable>False</watermarkEnable></dtMaster><dtlbSelected><SaveName>JGAttachment1</SaveName><DisplayName>JGAttachment1(附件)</DisplayName></dtlbSelected></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGAttachment1_OnFileDeleted" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_SetEntityVarControlValue1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_PM_TCGeneralTraining.enclosureName","SourceType":"expression","SourceEntityType":"","Source":"\"\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_PM_TCGeneralTraining.enclosureName</Target><SourceType>expression</SourceType><SourceEntityType /><Source>""</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGTextBox2_OnEnter" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_Attachmentoperation1" />
+  <evaluateRule code="BR_CursorJumpControl1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="Attachmentoperation" ruleName="附件操作" instanceCode="BR_Attachmentoperation1" instanceName="附件操作" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"componentControlCode":null,"dataProcess":"bo_akl_PM_TCGeneralTraining.enclosure","fileName":null,"function":"2","fileType":"dynamic","componentCode":"akl_ry_system","reviewScheme":"","watermarkEnable":false,"previewTargetType":"","isPreviewInModalWindow":false,"previewWindowSize":"","watermarkSet":null,"picWatermarkStyle":null,"docProtectSet":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><operate>2</operate><documentColumn>bo_akl_PM_TCGeneralTraining.enclosure</documentColumn><fileType>dynamic</fileType><componentCode>akl_ry_system</componentCode><fileName /><watermarkEnable>False</watermarkEnable></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="CursorJumpControl" ruleName="光标跳转控制" instanceCode="BR_CursorJumpControl1" instanceName="光标跳转控制" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"ControlCode":"JGTextBox1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ControlCode>JGTextBox1</ControlCode><ControlDisplayName>JGTextBox1(培训内容)</ControlDisplayName></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

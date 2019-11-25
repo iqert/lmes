@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2018/6/14 17:06:40-->
+<Methods>
+  <Method Code="JGButton1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>!IsEmpty([bo_akl_EM_recordOfTooling].[id])</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_OpenComponentReturnData1" />
+      <if isEnabled="True" isDebug="False" code="IfCode2">
+        <define>
+          <expression>BR_OUT.BR_OpenComponentReturnData1.isConfirmSelectionOnClose</expression>
+          <remark />
+        </define>
+        <sequence>
+          <evaluateRule code="BR_ExecuteRuleSet1" />
+        </sequence>
+      </if>
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请选择需要检测登记的记录！\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请选择需要检测登记的记录！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"add_carrierCheck","windowName":"检测登记","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"","widthExp":"","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":[{"paramName":"checkId","paramType":"expression","paramValue":"[bo_akl_EM_recordOfTooling].[id]","paramEntityType":"","entityFieldMapping":null}],"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>add_carrierCheck</WindowCode><WindowName>检测登记</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp /><WidthExp /><IsAsyn>False</IsAsyn></dtMaster><dtParam><WindowVariant>checkId</WindowVariant><SourceType>expression</SourceType><SourceTypeDisplayText>表达式</SourceTypeDisplayText><SourceValue>[bo_akl_EM_recordOfTooling].[id]</SourceValue></dtParam></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_carrierCheck_FormLoadAction(carrierCheck_窗体加载事件)" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-01-24 14:36:38">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"carrierCheck_FormLoadAction","isParallelism":"False"},"invokeParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>carrierCheck_FormLoadAction</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="carrierCheck_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-01-23 19:53:35">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_EM_recordOfTooling.state","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"\"待检测\"","valueType":"9"}],"entityType":"window","entityName":"bo_akl_EM_recordOfTooling","itemqueryparam":null,"items":[{"destName":"bo_akl_EM_recordOfTooling.checkNum","sourceName":"bo_akl_EM_recordOfTooling.checkNum","type":"entityField"},{"destName":"bo_akl_EM_recordOfTooling.checkReport","sourceName":"bo_akl_EM_recordOfTooling.checkReport","type":"entityField"},{"destName":"bo_akl_EM_recordOfTooling.checkReportName","sourceName":"bo_akl_EM_recordOfTooling.checkReportName","type":"entityField"},{"destName":"bo_akl_EM_recordOfTooling.dateOfCalibration","sourceName":"bo_akl_EM_recordOfTooling.dateOfCalibration","type":"entityField"},{"destName":"bo_akl_EM_recordOfTooling.equipId","sourceName":"bo_akl_EM_recordOfTooling.equipId","type":"entityField"},{"destName":"bo_akl_EM_recordOfTooling.equipInfoName","sourceName":"bo_akl_EM_recordOfTooling.equipInfoName","type":"entityField"},{"destName":"bo_akl_EM_recordOfTooling.equipInfoNo","sourceName":"bo_akl_EM_recordOfTooling.equipInfoNo","type":"entityField"},{"destName":"bo_akl_EM_recordOfTooling.id","sourceName":"bo_akl_EM_recordOfTooling.id","type":"entityField"},{"destName":"bo_akl_EM_recordOfTooling.isOp","sourceName":"bo_akl_EM_recordOfTooling.isOp","type":"entityField"},{"destName":"bo_akl_EM_recordOfTooling.lastCalibrationDate","sourceName":"bo_akl_EM_recordOfTooling.lastCalibrationDate","type":"entityField"},{"destName":"bo_akl_EM_recordOfTooling.operator","sourceName":"bo_akl_EM_recordOfTooling.operator","type":"entityField"},{"destName":"bo_akl_EM_recordOfTooling.operatorCode","sourceName":"bo_akl_EM_recordOfTooling.operatorCode","type":"entityField"},{"destName":"bo_akl_EM_recordOfTooling.resultDetermination","sourceName":"bo_akl_EM_recordOfTooling.resultDetermination","type":"entityField"},{"destName":"bo_akl_EM_recordOfTooling.space","sourceName":"bo_akl_EM_recordOfTooling.space","type":"entityField"},{"destName":"bo_akl_EM_recordOfTooling.state","sourceName":"bo_akl_EM_recordOfTooling.state","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_EM_recordOfTooling","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_EM_recordOfTooling</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_EM_recordOfTooling</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_EM_recordOfTooling.state</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>"待检测"</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>ce766e33302c46c1aaa048ea2ba1a68d</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>ce766e33302c46c1aaa048ea2ba1a68d</MasterID><DestName>bo_akl_EM_recordOfTooling.checkNum</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_recordOfTooling.checkNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>ce766e33302c46c1aaa048ea2ba1a68d</MasterID><DestName>bo_akl_EM_recordOfTooling.checkReport</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_recordOfTooling.checkReport</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>ce766e33302c46c1aaa048ea2ba1a68d</MasterID><DestName>bo_akl_EM_recordOfTooling.checkReportName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_recordOfTooling.checkReportName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>ce766e33302c46c1aaa048ea2ba1a68d</MasterID><DestName>bo_akl_EM_recordOfTooling.dateOfCalibration</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_recordOfTooling.dateOfCalibration</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>ce766e33302c46c1aaa048ea2ba1a68d</MasterID><DestName>bo_akl_EM_recordOfTooling.equipId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_recordOfTooling.equipId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>ce766e33302c46c1aaa048ea2ba1a68d</MasterID><DestName>bo_akl_EM_recordOfTooling.equipInfoName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_recordOfTooling.equipInfoName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>ce766e33302c46c1aaa048ea2ba1a68d</MasterID><DestName>bo_akl_EM_recordOfTooling.equipInfoNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_recordOfTooling.equipInfoNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>ce766e33302c46c1aaa048ea2ba1a68d</MasterID><DestName>bo_akl_EM_recordOfTooling.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_recordOfTooling.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>ce766e33302c46c1aaa048ea2ba1a68d</MasterID><DestName>bo_akl_EM_recordOfTooling.isOp</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_recordOfTooling.isOp</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>ce766e33302c46c1aaa048ea2ba1a68d</MasterID><DestName>bo_akl_EM_recordOfTooling.lastCalibrationDate</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_recordOfTooling.lastCalibrationDate</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>ce766e33302c46c1aaa048ea2ba1a68d</MasterID><DestName>bo_akl_EM_recordOfTooling.operator</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_recordOfTooling.operator</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>ce766e33302c46c1aaa048ea2ba1a68d</MasterID><DestName>bo_akl_EM_recordOfTooling.operatorCode</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_recordOfTooling.operatorCode</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>ce766e33302c46c1aaa048ea2ba1a68d</MasterID><DestName>bo_akl_EM_recordOfTooling.resultDetermination</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_recordOfTooling.resultDetermination</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>ce766e33302c46c1aaa048ea2ba1a68d</MasterID><DestName>bo_akl_EM_recordOfTooling.space</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_recordOfTooling.space</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>ce766e33302c46c1aaa048ea2ba1a68d</MasterID><DestName>bo_akl_EM_recordOfTooling.state</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_recordOfTooling.state</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>ce766e33302c46c1aaa048ea2ba1a68d</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>ce766e33302c46c1aaa048ea2ba1a68d</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

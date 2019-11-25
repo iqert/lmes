@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component code="vbase_org_mail" name="vbase_机构与站内信关联构件" desc="" matchVersion="0">
+  <resourcePackages />
+  <metaInfos>
+    <metaInfo type="model">
+      <modelMetas />
+    </metaInfo>
+    <metaInfo type="file-resource">
+      <fileResourceMetas />
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_MailQueryAccountIdNames" desc="" name="根据账号id获取人员的详细信息">
+          <inputs>
+            <variables>
+              <variable code="accountIdEntity" name="账号id" type="entity" desc="" initValue="" isMust="true" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="accountIdEntity">
+                <element code="accountId" name="账号id" type="text" length="1000" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="resultEntity" name="关联查询返回实体" type="entity" desc="" initValue="" />
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="errorDetail" name="异常明细" type="char" desc="" initValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="resultEntity">
+                <element code="id" name="记录唯一ID" type="char" length="255" precision="0" desc="" />
+                <element code="u_id" name="人员id" type="text" length="1000" precision="0" desc="" />
+                <element code="u_userName" name="人员姓名" type="text" length="1000" precision="0" desc="" />
+                <element code="a_id" name="账号id" type="text" length="1000" precision="0" desc="" />
+                <element code="a_account" name="账号名称" type="text" length="1000" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+    <metaInfo type="server-ruleSet">
+      <ruleSetMetas>
+        <ruleSetMeta windowCode="" metaCode="API_MailQueryUserIdNames" desc="" name="根据Userid获取人员的详细信息">
+          <inputs>
+            <variables>
+              <variable code="userIdEntity" name="人员id" type="entity" desc="" initValue="" isMust="true" enumValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="userIdEntity">
+                <element code="userId" name="人员id" type="text" length="1000" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </inputs>
+          <outputs>
+            <variables>
+              <variable code="isSuccess" name="是否成功" type="boolean" desc="" initValue="" />
+              <variable code="errorDetail" name="异常明细" type="char" desc="" initValue="" />
+              <variable code="accountEntity" name="账号数据" type="entity" desc="" initValue="" />
+            </variables>
+            <dataTypes>
+              <dataType code="accountEntity">
+                <element code="id" name="id" type="char" length="255" precision="0" desc="" />
+                <element code="account" name="账号" type="char" length="255" precision="0" desc="" />
+              </dataType>
+            </dataTypes>
+          </outputs>
+        </ruleSetMeta>
+      </ruleSetMetas>
+    </metaInfo>
+  </metaInfos>
+  <manifest>
+    <bundle-info>
+      <symbolic-name><![CDATA[vbase_org_mail]]></symbolic-name>
+      <bundle-name><![CDATA[vbase_机构与站内信关联构件]]></bundle-name>
+      <bundle-version><![CDATA[3.6.0]]></bundle-version>
+      <bundle-type><![CDATA[DesignSchemaSDK]]></bundle-type>
+      <provider><![CDATA[huangsq]]></provider>
+      <description><![CDATA[]]></description>
+      <lastModified>1524630433000</lastModified>
+      <outTableInitDatas>false</outTableInitDatas>
+    </bundle-info>
+    <interface>
+      <apis>
+        <api>
+          <metaReference windowCode="" metaCode="API_MailQueryAccountIdNames" metaType="server-ruleSet" metaName="根据账号id获取人员的详细信息" />
+        </api>
+        <api>
+          <metaReference windowCode="" metaCode="API_MailQueryUserIdNames" metaType="server-ruleSet" metaName="根据Userid获取人员的详细信息" />
+        </api>
+      </apis>
+      <spis />
+    </interface>
+    <dependencies>
+      <dependency componentCode="vbase_organization" version="3.4.29" type="api" metaCode="OrgQueryUser2Account" metaType="server-ruleSet">
+        <IsEnabled xmlns:q1="http://www.w3.org/2001/XMLSchema" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" p6:type="q1:boolean">true</IsEnabled>
+      </dependency>
+      <dependency componentCode="vbase_organization" version="3.4.29" type="api" metaCode="OrgQueryAccount" metaType="server-ruleSet">
+        <IsEnabled xmlns:q2="http://www.w3.org/2001/XMLSchema" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" p6:type="q2:boolean">true</IsEnabled>
+      </dependency>
+    </dependencies>
+    <imports>
+      <import componentCode="com.toone.v3.platform-Webrule_SetEntityVarControlValue" componentName="给界面实体/控件/变量赋值" />
+      <import componentCode="com.toone.v3.platform-Webrule_AbortRule" componentName="中断规则" />
+      <import componentCode="com.toone.v3.platform-Webrule_ExecuteRuleSet" componentName="执行方法" />
+      <import componentCode="vbase_organization" componentName="VBase_组织机构" />
+    </imports>
+    <consistencies>
+      <consistency matchCode="ServerRules.ExecuteRuleSet" matchVersion="2" />
+      <consistency matchCode="ServerRules.SetEntityVarControlValue" matchVersion="2" />
+      <consistency matchCode="ServerRules.AbortRule" matchVersion="1" />
+      <consistency matchCode="ServerFunctions.GetEntityRowCountFunc" matchVersion="1" />
+      <consistency matchCode="ServerFunctions.ListToStringFunc" matchVersion="1" />
+    </consistencies>
+  </manifest>
+  <partLibType>
+    <partLibTypeCode><![CDATA[release]]></partLibTypeCode>
+    <partLibTypeName><![CDATA[稳定版 (release)]]></partLibTypeName>
+  </partLibType>
+</component>

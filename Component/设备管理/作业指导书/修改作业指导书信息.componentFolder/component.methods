@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2018/6/26 11:32:12-->
+<Methods>
+  <Method Code="JGAttachment_OnFileSelected" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_Attachmentoperation1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="Attachmentoperation" ruleName="附件操作" instanceCode="BR_Attachmentoperation1" instanceName="附件操作" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100469" lastModifiedTime="2018-06-26 11:38:34">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"componentControlCode":[{"componentControlCode":"JGAttachment"}],"dataProcess":null,"fileName":null,"function":"1","fileType":"","componentCode":"","reviewScheme":"","watermarkEnable":false,"previewTargetType":"","isPreviewInModalWindow":false,"previewWindowSize":"","watermarkSet":null,"picWatermarkStyle":null,"docProtectSet":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><operate>1</operate><documentColumn /><watermarkEnable>False</watermarkEnable></dtMaster><dtlbSelected><SaveName>JGAttachment</SaveName><DisplayName>JGAttachment(附件)</DisplayName></dtlbSelected></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="deleteButton_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_ShowMessage1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>BR_OUT.BR_ShowMessage1.confirm</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_SetEntityVarControlValue1" />
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100469" lastModifiedTime="2018-06-26 11:42:45">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"3","time":null,"simpleChinesePrompt":{"msgnote":"\"是否删除此附件\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>3</MsgType><SimpleChinese>"是否删除此附件"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_EM_guideBook.bookEnclosure","SourceType":"expression","SourceEntityType":"","Source":"Null()","entityFieldMapping":null},{"TargetType":"3","Target":"bo_akl_EM_guideBook.bookEnclosureName","SourceType":"expression","SourceEntityType":"","Source":"Null()","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_EM_guideBook.bookEnclosure</Target><SourceType>expression</SourceType><SourceEntityType /><Source>Null()</Source></dtFieldMap><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_EM_guideBook.bookEnclosureName</Target><SourceType>expression</SourceType><SourceEntityType /><Source>Null()</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="downloadButton_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_Attachmentoperation1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="Attachmentoperation" ruleName="附件操作" instanceCode="BR_Attachmentoperation1" instanceName="附件操作" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100469" lastModifiedTime="2018-06-26 11:42:13">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"componentControlCode":null,"dataProcess":"bo_akl_EM_guideBook.bookEnclosure","fileName":null,"function":"2","fileType":"dynamic","componentCode":"akl2","reviewScheme":"","watermarkEnable":false,"previewTargetType":"","isPreviewInModalWindow":false,"previewWindowSize":"","watermarkSet":null,"picWatermarkStyle":null,"docProtectSet":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><operate>2</operate><documentColumn>bo_akl_EM_guideBook.bookEnclosure</documentColumn><fileType>dynamic</fileType><componentCode>akl2</componentCode><fileName /><watermarkEnable>False</watermarkEnable></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="saveButton_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_CheckRequired1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>BR_OUT.BR_CheckRequired1.isCheckRequiredOK</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_UpdateRecord1" />
+      <evaluateRule code="BR_SetEntityVarControlValue1" />
+      <evaluateRule code="BR_SelectionConfirm1" />
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="CheckRequired" ruleName="必填项检查" instanceCode="BR_CheckRequired1" instanceName="必填项检查" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"fieldList":[{"field":"bo_akl_EM_guideBook.bookName","fieldName":"书名"},{"field":"bo_akl_EM_guideBook.bookVersion","fieldName":"版本"},{"field":"bo_akl_EM_guideBook.createDate","fieldName":"创建日期"}],"type":"0"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtColumn><Code>bo_akl_EM_guideBook.bookName</Code><Name>书名</Name></dtColumn><dtColumn><Code>bo_akl_EM_guideBook.bookVersion</Code><Name>版本</Name></dtColumn><dtColumn><Code>bo_akl_EM_guideBook.createDate</Code><Name>创建日期</Name></dtColumn><dtType><Type>0</Type></dtType></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_EM_guideBook.bookEnclosure","colValue":"bo_akl_EM_guideBook.bookEnclosure","valueType":"entityField"},{"colName":"bo_akl_EM_guideBook.bookEnclosureName","colValue":"bo_akl_EM_guideBook.bookEnclosureName","valueType":"entityField"},{"colName":"bo_akl_EM_guideBook.bookName","colValue":"bo_akl_EM_guideBook.bookName","valueType":"entityField"},{"colName":"bo_akl_EM_guideBook.bookVersion","colValue":"bo_akl_EM_guideBook.bookVersion","valueType":"entityField"},{"colName":"bo_akl_EM_guideBook.id","colValue":"bo_akl_EM_guideBook.id","valueType":"entityField"},{"colName":"bo_akl_EM_guideBook.note","colValue":"bo_akl_EM_guideBook.note","valueType":"entityField"},{"colName":"bo_akl_EM_guideBook.createDate","colValue":"bo_akl_EM_guideBook.createDate","valueType":"entityField"}],"dataSource":"bo_akl_EM_guideBook","dataSourceType":"window","destTab":"bo_akl_EM_guideBook","isSaveAll":false}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>d49ef8f1cc8d49338260f50146b78632</ID><SourceName>bo_akl_EM_guideBook</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_EM_guideBook(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_EM_guideBook</TableName></dtMaster><dtDetails><PID>d49ef8f1cc8d49338260f50146b78632</PID><SourceField>bo_akl_EM_guideBook.bookEnclosure</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_guideBook.bookEnclosure</Value></dtDetails><dtDetails><PID>d49ef8f1cc8d49338260f50146b78632</PID><SourceField>bo_akl_EM_guideBook.bookEnclosureName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_guideBook.bookEnclosureName</Value></dtDetails><dtDetails><PID>d49ef8f1cc8d49338260f50146b78632</PID><SourceField>bo_akl_EM_guideBook.bookName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_guideBook.bookName</Value></dtDetails><dtDetails><PID>d49ef8f1cc8d49338260f50146b78632</PID><SourceField>bo_akl_EM_guideBook.bookVersion</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_guideBook.bookVersion</Value></dtDetails><dtDetails><PID>d49ef8f1cc8d49338260f50146b78632</PID><SourceField>bo_akl_EM_guideBook.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_guideBook.id</Value></dtDetails><dtDetails><PID>d49ef8f1cc8d49338260f50146b78632</PID><SourceField>bo_akl_EM_guideBook.note</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_guideBook.note</Value></dtDetails><dtDetails><PID>d49ef8f1cc8d49338260f50146b78632</PID><SourceField>bo_akl_EM_guideBook.createDate</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_guideBook.createDate</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100466" lastModifiedTime="2018-07-29 14:07:45">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"6","Target":"zyzds","SourceType":"entityField","SourceEntityType":"window","Source":"bo_akl_EM_guideBook","entityFieldMapping":[{"destFieldName":"id","srcValueType":"entityField","srcValue":"bo_akl_EM_guideBook.id"},{"destFieldName":"bookName","srcValueType":"entityField","srcValue":"bo_akl_EM_guideBook.bookName"},{"destFieldName":"bookVersion","srcValueType":"entityField","srcValue":"bo_akl_EM_guideBook.bookVersion"},{"destFieldName":"bookEnclosure","srcValueType":"entityField","srcValue":"bo_akl_EM_guideBook.bookEnclosure"},{"destFieldName":"bookEnclosureName","srcValueType":"entityField","srcValue":"bo_akl_EM_guideBook.bookEnclosureName"},{"destFieldName":"note","srcValueType":"entityField","srcValue":"bo_akl_EM_guideBook.note"},{"destFieldName":"createDate","srcValueType":"entityField","srcValue":"bo_akl_EM_guideBook.createDate"}]}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>6</TargetType><Target>zyzds</Target><SourceType>entityField</SourceType><SourceEntityType>window</SourceEntityType><Source>bo_akl_EM_guideBook</Source><SourceEntityXml><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>id</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_EM_guideBook.id</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>bookName</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_EM_guideBook.bookName</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>bookVersion</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_EM_guideBook.bookVersion</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>bookEnclosure</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_EM_guideBook.bookEnclosure</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>bookEnclosureName</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_EM_guideBook.bookEnclosureName</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>note</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_EM_guideBook.note</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>createDate</destField><srcValueType>entityField</srcValueType><srcValue>bo_akl_EM_guideBook.createDate</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></SourceEntityXml></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="changeGuideBookInfo_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>@bookId &lt;&gt; "0"</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_AddTableRecord1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100469" lastModifiedTime="2018-06-29 11:53:00">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_EM_guideBook.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"@bookId","valueType":"9"}],"entityType":"window","entityName":"bo_akl_EM_guideBook","itemqueryparam":null,"items":[{"destName":"bo_akl_EM_guideBook.bookEnclosure","sourceName":"bo_akl_EM_guideBook.bookEnclosure","type":"entityField"},{"destName":"bo_akl_EM_guideBook.bookEnclosureName","sourceName":"bo_akl_EM_guideBook.bookEnclosureName","type":"entityField"},{"destName":"bo_akl_EM_guideBook.bookName","sourceName":"bo_akl_EM_guideBook.bookName","type":"entityField"},{"destName":"bo_akl_EM_guideBook.bookVersion","sourceName":"bo_akl_EM_guideBook.bookVersion","type":"entityField"},{"destName":"bo_akl_EM_guideBook.id","sourceName":"bo_akl_EM_guideBook.id","type":"entityField"},{"destName":"bo_akl_EM_guideBook.note","sourceName":"bo_akl_EM_guideBook.note","type":"entityField"},{"destName":"bo_akl_EM_guideBook.createDate","sourceName":"bo_akl_EM_guideBook.createDate","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_EM_guideBook","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_EM_guideBook</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_EM_guideBook</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_EM_guideBook.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>@bookId</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>875bfccf36054559aae2ed439912a8d7</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>875bfccf36054559aae2ed439912a8d7</MasterID><DestName>bo_akl_EM_guideBook.bookEnclosure</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_guideBook.bookEnclosure</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>875bfccf36054559aae2ed439912a8d7</MasterID><DestName>bo_akl_EM_guideBook.bookEnclosureName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_guideBook.bookEnclosureName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>875bfccf36054559aae2ed439912a8d7</MasterID><DestName>bo_akl_EM_guideBook.bookName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_guideBook.bookName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>875bfccf36054559aae2ed439912a8d7</MasterID><DestName>bo_akl_EM_guideBook.bookVersion</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_guideBook.bookVersion</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>875bfccf36054559aae2ed439912a8d7</MasterID><DestName>bo_akl_EM_guideBook.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_guideBook.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>875bfccf36054559aae2ed439912a8d7</MasterID><DestName>bo_akl_EM_guideBook.note</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_guideBook.note</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>875bfccf36054559aae2ed439912a8d7</MasterID><DestName>bo_akl_EM_guideBook.createDate</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_guideBook.createDate</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>875bfccf36054559aae2ed439912a8d7</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>875bfccf36054559aae2ed439912a8d7</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1" instanceName="新增实体记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"3","Mappings":[{"destField":"bo_akl_EM_guideBook.createDate","fieldtype":"expression","srcField":"DateToString(\"yyyy-MM-dd\", DateTimeNow())"}],"TableType":"window","TableName":"bo_akl_EM_guideBook","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><Location>3</Location><EntityType>window</EntityType><EntityName>bo_akl_EM_guideBook</EntityName></dtMaster><dtEntityColumns><DestName>bo_akl_EM_guideBook.createDate</DestName><SourceType>expression</SourceType><SourceName>DateToString("yyyy-MM-dd", DateTimeNow())</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGTextBox_OnEnter" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_Attachmentoperation1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="Attachmentoperation" ruleName="附件操作" instanceCode="BR_Attachmentoperation1" instanceName="附件操作" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100469" lastModifiedTime="2018-06-28 13:14:07">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"componentControlCode":null,"dataProcess":"bo_akl_EM_guideBook.bookEnclosure","fileName":null,"function":"2","fileType":"dynamic","componentCode":"akl2","reviewScheme":"","watermarkEnable":false,"previewTargetType":"","isPreviewInModalWindow":false,"previewWindowSize":"","watermarkSet":null,"picWatermarkStyle":null,"docProtectSet":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><operate>2</operate><documentColumn>bo_akl_EM_guideBook.bookEnclosure</documentColumn><fileType>dynamic</fileType><componentCode>akl2</componentCode><fileName /><watermarkEnable>False</watermarkEnable></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGBaseDictBox1_OpenModuleAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_OpenComponentReturnData1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>@guideBook &lt;&gt; "0"</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_SetEntityVarControlValue1" />
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100469" lastModifiedTime="2018-06-28 13:41:07">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"chooseGuideBook","windowName":"选择作业指导书","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"277","widthExp":"508","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":null,"returnMapping":[{"destType":"windowVariant","dest":"guideBook","srcType":"returnValue","src":"guideBook","updateDestEntityMethod":"","isCleanDestEntityData":false,"destFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>chooseGuideBook</WindowCode><WindowName>选择作业指导书</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp>277</HeightExp><WidthExp>508</WidthExp><IsAsyn>False</IsAsyn></dtMaster><dtReturnValue><TargetType>windowVariant</TargetType><Target>guideBook</Target><SourceType>returnValue</SourceType><Source>guideBook</Source></dtReturnValue></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="100469" lastModifiedTime="2018-06-28 13:42:01">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_EM_guideBook.bookName","SourceType":"expression","SourceEntityType":"","Source":"@guideBook","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_EM_guideBook.bookName</Target><SourceType>expression</SourceType><SourceEntityType /><Source>@guideBook</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

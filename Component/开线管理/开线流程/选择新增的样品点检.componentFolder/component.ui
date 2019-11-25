@@ -1,0 +1,59 @@
+﻿<form type="1002" code="chooseNewSample" IsLocked="False">
+  <propertys>
+    <property name="Width"><![CDATA[630]]></property>
+    <property name="Height"><![CDATA[305]]></property>
+    <property name="HeightSet"><![CDATA[StaticHeight]]></property>
+    <property name="LayoutType"><![CDATA[None]]></property>
+    <property name="TableName"><![CDATA[]]></property>
+    <property name="FormLoadAction"><![CDATA[chooseNewSample_FormLoadAction]]></property>
+    <property name="FormCloseAction"><![CDATA[]]></property>
+    <property name="FormClosingAction"><![CDATA[]]></property>
+    <property name="BackColor"><![CDATA[]]></property>
+    <property name="Padding"><![CDATA[0, 0, 0, 0]]></property>
+    <property name="Name"><![CDATA[选择新增的样品点检]]></property>
+    <property name="FormBorderStyle"><![CDATA[FixedSingle]]></property>
+    <property name="WindowState"><![CDATA[Normal]]></property>
+    <property name="MaximizeBox"><![CDATA[True]]></property>
+    <property name="RefResources"><![CDATA[]]></property>
+  </propertys>
+  <controls>
+    <JGButton Code="sureButton" LabelText="确定" Left="305" OnClick="sureButton_OnClick" PercentHeight="8.5%" PercentWidth="8.3%" TabIndex="3" Top="15" />
+    <JGLocateBox Code="JGLocateBox1" Height="27" Left="21" OnClick="JGLocateBox1_OnClick" PercentHeight="8.9%" PercentWidth="34.9%" TabIndex="1" Top="14" />
+    <JGButton Code="refreshButton" LabelText="重置" Left="247" OnClick="refreshButton_OnClick" PercentHeight="8.5%" PercentWidth="8.3%" TabIndex="2" Top="15" />
+    <JGDataGrid ChooseMode="3" Code="JGDataGrid1" FetchMode="paged" Height="194" LabelText="列表" Left="21" OnDoubleClick="sureButton_OnClick" PageInfo="{&quot;PageList&quot;:[10,20,30,40,50,100],&quot;DefaultPageSize&quot;:50}" PercentHeight="63.6%" PercentWidth="92.1%" ReadOnly="True" TabIndex="4" TableName="bo_akl_line_sampleInfo" Top="47" Width="580">
+      <JGTextBoxColumn AllowSort="True" Code="JGTextBoxColumn1" ColumnName="prolineNo" LabelText="产线编号" TableName="bo_akl_line_sampleInfo" Width="183" />
+      <JGTextBoxColumn AllowSort="True" Code="JGTextBoxColumn2" ColumnName="equName" LabelText="型号名称" TableName="bo_akl_line_sampleInfo" Width="191" />
+      <JGTextBoxColumn AllowSort="True" Code="JGTextBoxColumn3" ColumnName="ampleName" LabelText="样品名称" TableName="bo_akl_line_sampleInfo" Width="174" />
+    </JGDataGrid>
+  </controls>
+  <outputs>
+    <variable code="sample" name="样品点检项Id" fieldType="entity" defaultValue="" description="" isRestore="false">
+      <entity>
+        <field code="id" name="" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="prolineNo" name="产线编号" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="prolineId" name="产线id" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="equName" name="型号名称" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="equId" name="型号id" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="ampleName" name="样品名称" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="productName" name="成品名称" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="isUsedCheckSpots" name="是否用于点检数" fieldType="char" defaultValue="" isRestore="false" />
+      </entity>
+    </variable>
+  </outputs>
+  <inputs>
+    <variable code="V" name="" fieldType="entity" defaultValue="" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+      <entity>
+        <field code="sampleName" name="样品名称" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="sampleId" name="样品id" fieldType="char" defaultValue="" isRestore="false" />
+      </entity>
+    </variable>
+    <variable code="productLineId" name="" fieldType="char" defaultValue="" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+    <variable code="productId" name="" fieldType="char" defaultValue="" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+  </inputs>
+  <remark><![CDATA[]]></remark>
+</form>

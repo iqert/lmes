@@ -1,0 +1,80 @@
+﻿<Query id="15942293ad62499b99e30a003030969c" code="dqqq" name="wq" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-09-03 09:01:47]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-09-07 11:01:48]]></ModificationTime>
+  <VSql><![CDATA[
+
+select  
+		ins.optime,
+		mat.materialNo, --物料编号
+		SUM(ins.blpc) as blpcbadNum,--不良品数量
+		SUM(ins.glc) as glcbadNum,
+		ep.boxPartsNum as boxPartsNum--每箱多少个
+		from (	
+				select 
+				case 
+				when st.stockType='不良品仓'  THEN sto.inStockNum 
+				else 0 end as blpc,
+				case 
+				when st.stockType='隔离仓'  THEN sto.inStockNum 
+				else 0 end as glc,
+				WEEK(sto.operateTime) as optime,
+				sto.*
+				from bo_akl_MM_inStockInfo as sto 
+				left join bo_akl_MM_stockType st on st.id=sto.stockTypeId
+			)
+		 as ins 
+	    left join bo_akl_MM_materialInfo as mat on ins.materialId=mat.id
+	    left join bo_akl_EM_productInfo as ep on mat.materialNo=ep.prNo
+		group by ins.optime,mat.materialNo]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="optime" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="materialNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="blpcbadNum" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="glcbadNum" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="boxPartsNum" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="inputMonth" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="inputYear" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="inputDay" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="pNo" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="127" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="161" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="181" />
+    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="137" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="10,191,207" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.boxPartsNum" tokenIndexes="42" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.inStockNum" tokenIndexes="69,96" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.operateTime" tokenIndexes="113" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.stockTypeId" tokenIndexes="149" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="175" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="195" />
+  </DataItems>
+</Query>

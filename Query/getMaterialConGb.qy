@@ -1,0 +1,28 @@
+﻿<Query id="1598087b799b459d84ead75c1a795490" code="getMaterialConGb" name="分组物料确认" type="VSql">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-08-06 17:52:52]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-08-07 09:51:17]]></ModificationTime>
+  <VSql><![CDATA[select materialId,SUM(num) as snum from bo_akl_line_materialConfirm f where f.isInsulate is null and startId=:startId   group by materialId ]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="materialId" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="snum" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="startId" name="开线id" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_line_materialConfirm" tokenIndexes="15" />
+    <DataItem type="Query" key="f" tokenIndexes="17,21" />
+    <DataItem type="QueryField" key="f.isInsulate" tokenIndexes="23" />
+    <DataItem type="QueryParam" key="startId" tokenIndexes="34" />
+  </DataItems>
+</Query>

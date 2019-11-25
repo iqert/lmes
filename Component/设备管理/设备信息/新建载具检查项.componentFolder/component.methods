@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2018/6/22 18:17:46-->
+<Methods>
+  <Method Code="add_carrierCheckItem_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>IsEmpty(@itemId)</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_AddTableRecord1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+      <if isEnabled="True" isDebug="False" code="IfCode2">
+        <define>
+          <expression>[bo_akl_EM_carrierCheckItem].[isSize] == "是"</expression>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_MakeControlRVE1" />
+        </sequence>
+      </if>
+      <else isEnabled="True" isDebug="False">
+        <define>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_MakeControlRVE2" />
+        </sequence>
+      </else>
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1" instanceName="新增实体记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"3","Mappings":[{"destField":"bo_akl_EM_carrierCheckItem.equId","fieldtype":"expression","srcField":"@equId"}],"TableType":"window","TableName":"bo_akl_EM_carrierCheckItem","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><Location>3</Location><EntityType>window</EntityType><EntityName>bo_akl_EM_carrierCheckItem</EntityName></dtMaster><dtEntityColumns><DestName>bo_akl_EM_carrierCheckItem.equId</DestName><SourceType>expression</SourceType><SourceName>@equId</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="MakeControlRVE" ruleName="控制控件的只读、使能、显示" instanceCode="BR_MakeControlRVE1" instanceName="控制控件的只读、使能、显示" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"mapping":[{"componentControlCode":"JGComboBox1","control":"False"},{"componentControlCode":"JGTextBox8","control":"False"},{"componentControlCode":"JGTextBox6","control":"False"},{"componentControlCode":"JGTextBox5","control":"True"},{"componentControlCode":"JGTextBox4","control":"True"},{"componentControlCode":"JGTextBox3","control":"True"},{"componentControlCode":"JGRadioGroup1","control":"False"}],"type":"3"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OperType>3</OperType></dtMaster><dtControlColumns><ControlCode>JGComboBox1</ControlCode><IsCheck>False</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGTextBox8</ControlCode><IsCheck>False</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGTextBox6</ControlCode><IsCheck>False</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGTextBox5</ControlCode><IsCheck>True</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGTextBox4</ControlCode><IsCheck>True</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGTextBox3</ControlCode><IsCheck>True</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGRadioGroup1</ControlCode><IsCheck>False</IsCheck></dtControlColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_EM_carrierCheckItem.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"@itemId","valueType":"9"}],"entityType":"window","entityName":"bo_akl_EM_carrierCheckItem","itemqueryparam":null,"items":[{"destName":"bo_akl_EM_carrierCheckItem.checkItem","sourceName":"bo_akl_EM_carrierCheckItem.checkItem","type":"entityField"},{"destName":"bo_akl_EM_carrierCheckItem.checkTool","sourceName":"bo_akl_EM_carrierCheckItem.checkTool","type":"entityField"},{"destName":"bo_akl_EM_carrierCheckItem.equId","sourceName":"bo_akl_EM_carrierCheckItem.equId","type":"entityField"},{"destName":"bo_akl_EM_carrierCheckItem.id","sourceName":"bo_akl_EM_carrierCheckItem.id","type":"entityField"},{"destName":"bo_akl_EM_carrierCheckItem.isSize","sourceName":"bo_akl_EM_carrierCheckItem.isSize","type":"entityField"},{"destName":"bo_akl_EM_carrierCheckItem.sizeDiffer","sourceName":"bo_akl_EM_carrierCheckItem.sizeDiffer","type":"entityField"},{"destName":"bo_akl_EM_carrierCheckItem.testMax","sourceName":"bo_akl_EM_carrierCheckItem.testMax","type":"entityField"},{"destName":"bo_akl_EM_carrierCheckItem.testMin","sourceName":"bo_akl_EM_carrierCheckItem.testMin","type":"entityField"},{"destName":"bo_akl_EM_carrierCheckItem.testNum","sourceName":"bo_akl_EM_carrierCheckItem.testNum","type":"entityField"},{"destName":"bo_akl_EM_carrierCheckItem.testKey","sourceName":"bo_akl_EM_carrierCheckItem.testKey","type":"entityField"},{"destName":"bo_akl_EM_carrierCheckItem.testState","sourceName":"bo_akl_EM_carrierCheckItem.testState","type":"entityField"},{"destName":"bo_akl_EM_carrierCheckItem.testVal","sourceName":"bo_akl_EM_carrierCheckItem.testVal","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_EM_carrierCheckItem","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_EM_carrierCheckItem</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_EM_carrierCheckItem</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_EM_carrierCheckItem.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>@itemId</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>c3505b27d9c64addacede010a10e522b</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>c3505b27d9c64addacede010a10e522b</MasterID><DestName>bo_akl_EM_carrierCheckItem.checkItem</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_carrierCheckItem.checkItem</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>c3505b27d9c64addacede010a10e522b</MasterID><DestName>bo_akl_EM_carrierCheckItem.checkTool</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_carrierCheckItem.checkTool</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>c3505b27d9c64addacede010a10e522b</MasterID><DestName>bo_akl_EM_carrierCheckItem.equId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_carrierCheckItem.equId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>c3505b27d9c64addacede010a10e522b</MasterID><DestName>bo_akl_EM_carrierCheckItem.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_carrierCheckItem.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>c3505b27d9c64addacede010a10e522b</MasterID><DestName>bo_akl_EM_carrierCheckItem.isSize</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_carrierCheckItem.isSize</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>c3505b27d9c64addacede010a10e522b</MasterID><DestName>bo_akl_EM_carrierCheckItem.sizeDiffer</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_carrierCheckItem.sizeDiffer</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>c3505b27d9c64addacede010a10e522b</MasterID><DestName>bo_akl_EM_carrierCheckItem.testMax</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_carrierCheckItem.testMax</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>c3505b27d9c64addacede010a10e522b</MasterID><DestName>bo_akl_EM_carrierCheckItem.testMin</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_carrierCheckItem.testMin</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>c3505b27d9c64addacede010a10e522b</MasterID><DestName>bo_akl_EM_carrierCheckItem.testNum</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_carrierCheckItem.testNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>c3505b27d9c64addacede010a10e522b</MasterID><DestName>bo_akl_EM_carrierCheckItem.testKey</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_carrierCheckItem.testKey</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>c3505b27d9c64addacede010a10e522b</MasterID><DestName>bo_akl_EM_carrierCheckItem.testState</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_carrierCheckItem.testState</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>c3505b27d9c64addacede010a10e522b</MasterID><DestName>bo_akl_EM_carrierCheckItem.testVal</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_carrierCheckItem.testVal</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>c3505b27d9c64addacede010a10e522b</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>c3505b27d9c64addacede010a10e522b</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="MakeControlRVE" ruleName="控制控件的只读、使能、显示" instanceCode="BR_MakeControlRVE2" instanceName="控制控件的只读、使能、显示_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="liub" lastModifiedTime="2019-03-28 17:45:20">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"mapping":[{"componentControlCode":"JGComboBox1","control":"False"},{"componentControlCode":"JGTextBox8","control":"False"},{"componentControlCode":"JGTextBox6","control":"False"},{"componentControlCode":"JGTextBox5","control":"False"},{"componentControlCode":"JGTextBox4","control":"False"},{"componentControlCode":"JGTextBox3","control":"False"},{"componentControlCode":"JGRadioGroup1","control":"True"}],"type":"3"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OperType>3</OperType></dtMaster><dtControlColumns><ControlCode>JGComboBox1</ControlCode><IsCheck>False</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGTextBox8</ControlCode><IsCheck>False</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGTextBox6</ControlCode><IsCheck>False</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGTextBox5</ControlCode><IsCheck>False</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGTextBox4</ControlCode><IsCheck>False</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGTextBox3</ControlCode><IsCheck>False</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGRadioGroup1</ControlCode><IsCheck>True</IsCheck></dtControlColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="newButton_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_CheckRequired1" />
+  <if isEnabled="True" isDebug="False" code="IfCode4">
+    <define>
+      <expression>[bo_akl_EM_carrierCheckItem].[isSize] == "是"</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_SetEntityVarControlValue1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_SetEntityVarControlValue2" />
+    </sequence>
+  </else>
+  <if isEnabled="False" isDebug="False" code="IfCode1">
+    <define>
+      <expression>BR_OUT.BR_CheckRequired1.isCheckRequiredOK</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <if isEnabled="False" isDebug="False" code="IfCode2">
+        <define>
+          <expression>[bo_akl_EM_carrierCheckItem].[isSize]=="是"</expression>
+          <remark></remark>
+        </define>
+        <sequence>
+          <if isEnabled="False" isDebug="False" code="IfCode3">
+            <define>
+              <expression>IsNullOrEmpty([bo_akl_EM_carrierCheckItem].[sizeDiffer],False)==False</expression>
+              <remark></remark>
+            </define>
+            <sequence>
+              <evaluateRule code="BR_ShowMessage1" />
+              <evaluateRule code="BR_AbortRule1" />
+            </sequence>
+          </if>
+        </sequence>
+      </if>
+    </sequence>
+  </if>
+  <evaluateRule code="BR_UpdateRecord1" />
+  <evaluateRule code="BR_SelectionConfirm1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="CheckRequired" ruleName="必填项检查" instanceCode="BR_CheckRequired1" instanceName="必填项检查" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"fieldList":[{"field":"bo_akl_EM_carrierCheckItem.checkItem","fieldName":"检查项目"},{"field":"bo_akl_EM_carrierCheckItem.checkTool","fieldName":"检查工具"}],"type":"0"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtColumn><Code>bo_akl_EM_carrierCheckItem.checkItem</Code><Name>检查项目</Name></dtColumn><dtColumn><Code>bo_akl_EM_carrierCheckItem.checkTool</Code><Name>检查工具</Name></dtColumn><dtType><Type>0</Type></dtType></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_EM_carrierCheckItem.checkItem","colValue":"bo_akl_EM_carrierCheckItem.checkItem","valueType":"entityField"},{"colName":"bo_akl_EM_carrierCheckItem.checkTool","colValue":"bo_akl_EM_carrierCheckItem.checkTool","valueType":"entityField"},{"colName":"bo_akl_EM_carrierCheckItem.equId","colValue":"bo_akl_EM_carrierCheckItem.equId","valueType":"entityField"},{"colName":"bo_akl_EM_carrierCheckItem.id","colValue":"bo_akl_EM_carrierCheckItem.id","valueType":"entityField"},{"colName":"bo_akl_EM_carrierCheckItem.isSize","colValue":"bo_akl_EM_carrierCheckItem.isSize","valueType":"entityField"},{"colName":"bo_akl_EM_carrierCheckItem.sizeDiffer","colValue":"bo_akl_EM_carrierCheckItem.sizeDiffer","valueType":"entityField"},{"colName":"bo_akl_EM_carrierCheckItem.testMax","colValue":"bo_akl_EM_carrierCheckItem.testMax","valueType":"entityField"},{"colName":"bo_akl_EM_carrierCheckItem.testMin","colValue":"bo_akl_EM_carrierCheckItem.testMin","valueType":"entityField"},{"colName":"bo_akl_EM_carrierCheckItem.testNum","colValue":"bo_akl_EM_carrierCheckItem.testNum","valueType":"entityField"},{"colName":"bo_akl_EM_carrierCheckItem.testIs","colValue":"bo_akl_EM_carrierCheckItem.testIs","valueType":"entityField"},{"colName":"bo_akl_EM_carrierCheckItem.testKey","colValue":"bo_akl_EM_carrierCheckItem.testKey","valueType":"entityField"},{"colName":"bo_akl_EM_carrierCheckItem.testState","colValue":"bo_akl_EM_carrierCheckItem.testState","valueType":"entityField"},{"colName":"bo_akl_EM_carrierCheckItem.testVal","colValue":"bo_akl_EM_carrierCheckItem.testVal","valueType":"entityField"}],"dataSource":"bo_akl_EM_carrierCheckItem","dataSourceType":"window","destTab":"bo_akl_EM_carrierCheckItem","isSaveAll":false}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>bb8b108482a04055a7a428015a85a6e3</ID><SourceName>bo_akl_EM_carrierCheckItem</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_EM_carrierCheckItem(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_EM_carrierCheckItem</TableName></dtMaster><dtDetails><PID>bb8b108482a04055a7a428015a85a6e3</PID><SourceField>bo_akl_EM_carrierCheckItem.checkItem</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_carrierCheckItem.checkItem</Value></dtDetails><dtDetails><PID>bb8b108482a04055a7a428015a85a6e3</PID><SourceField>bo_akl_EM_carrierCheckItem.checkTool</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_carrierCheckItem.checkTool</Value></dtDetails><dtDetails><PID>bb8b108482a04055a7a428015a85a6e3</PID><SourceField>bo_akl_EM_carrierCheckItem.equId</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_carrierCheckItem.equId</Value></dtDetails><dtDetails><PID>bb8b108482a04055a7a428015a85a6e3</PID><SourceField>bo_akl_EM_carrierCheckItem.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_carrierCheckItem.id</Value></dtDetails><dtDetails><PID>bb8b108482a04055a7a428015a85a6e3</PID><SourceField>bo_akl_EM_carrierCheckItem.isSize</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_carrierCheckItem.isSize</Value></dtDetails><dtDetails><PID>bb8b108482a04055a7a428015a85a6e3</PID><SourceField>bo_akl_EM_carrierCheckItem.sizeDiffer</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_carrierCheckItem.sizeDiffer</Value></dtDetails><dtDetails><PID>bb8b108482a04055a7a428015a85a6e3</PID><SourceField>bo_akl_EM_carrierCheckItem.testMax</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_carrierCheckItem.testMax</Value></dtDetails><dtDetails><PID>bb8b108482a04055a7a428015a85a6e3</PID><SourceField>bo_akl_EM_carrierCheckItem.testMin</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_carrierCheckItem.testMin</Value></dtDetails><dtDetails><PID>bb8b108482a04055a7a428015a85a6e3</PID><SourceField>bo_akl_EM_carrierCheckItem.testNum</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_carrierCheckItem.testNum</Value></dtDetails><dtDetails><PID>bb8b108482a04055a7a428015a85a6e3</PID><SourceField>bo_akl_EM_carrierCheckItem.testIs</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_carrierCheckItem.testIs</Value></dtDetails><dtDetails><PID>bb8b108482a04055a7a428015a85a6e3</PID><SourceField>bo_akl_EM_carrierCheckItem.testKey</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_carrierCheckItem.testKey</Value></dtDetails><dtDetails><PID>bb8b108482a04055a7a428015a85a6e3</PID><SourceField>bo_akl_EM_carrierCheckItem.testState</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_carrierCheckItem.testState</Value></dtDetails><dtDetails><PID>bb8b108482a04055a7a428015a85a6e3</PID><SourceField>bo_akl_EM_carrierCheckItem.testVal</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_carrierCheckItem.testVal</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="liub" lastModifiedTime="2019-03-28 15:35:03">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_EM_carrierCheckItem.testKey","SourceType":"expression","SourceEntityType":"","Source":"\" \"","entityFieldMapping":null},{"TargetType":"3","Target":"bo_akl_EM_carrierCheckItem.testVal","SourceType":"expression","SourceEntityType":"","Source":"\" \"","entityFieldMapping":null},{"TargetType":"3","Target":"bo_akl_EM_carrierCheckItem.testState","SourceType":"expression","SourceEntityType":"","Source":"\" \"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_EM_carrierCheckItem.testKey</Target><SourceType>expression</SourceType><SourceEntityType /><Source>" "</Source></dtFieldMap><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_EM_carrierCheckItem.testVal</Target><SourceType>expression</SourceType><SourceEntityType /><Source>" "</Source></dtFieldMap><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_EM_carrierCheckItem.testState</Target><SourceType>expression</SourceType><SourceEntityType /><Source>" "</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"是否尺寸为是时，尺寸相差值必须填！\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"是否尺寸为是时，尺寸相差值必须填！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AbortRule" ruleName="中断规则" instanceCode="BR_AbortRule1" instanceName="中断规则" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"abortType":"CURRENT","msgnote":""}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>CURRENT</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2" instanceName="给界面实体/控件/变量赋值_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="liub" lastModifiedTime="2019-03-28 15:35:37">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_EM_carrierCheckItem.testMax","SourceType":"expression","SourceEntityType":"","Source":"\" \"","entityFieldMapping":null},{"TargetType":"3","Target":"bo_akl_EM_carrierCheckItem.testMin","SourceType":"expression","SourceEntityType":"","Source":"\" \"","entityFieldMapping":null},{"TargetType":"3","Target":"bo_akl_EM_carrierCheckItem.testNum","SourceType":"expression","SourceEntityType":"","Source":"\" \"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_EM_carrierCheckItem.testMax</Target><SourceType>expression</SourceType><SourceEntityType /><Source>" "</Source></dtFieldMap><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_EM_carrierCheckItem.testMin</Target><SourceType>expression</SourceType><SourceEntityType /><Source>" "</Source></dtFieldMap><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_EM_carrierCheckItem.testNum</Target><SourceType>expression</SourceType><SourceEntityType /><Source>" "</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGComboBox2_OnValueChanged" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>CC.JGRadioGroup2.Value == "是"</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_MakeControlRVE1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_MakeControlRVE2" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="MakeControlRVE" ruleName="控制控件的只读、使能、显示" instanceCode="BR_MakeControlRVE1" instanceName="控制控件的只读、使能、显示" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"mapping":[{"componentControlCode":"JGTextBox8","control":"False"},{"componentControlCode":"JGTextBox6","control":"False"},{"componentControlCode":"JGComboBox1","control":"False"},{"componentControlCode":"JGTextBox5","control":"True"},{"componentControlCode":"JGTextBox4","control":"True"},{"componentControlCode":"JGTextBox3","control":"True"},{"componentControlCode":"JGRadioGroup1","control":"False"}],"type":"3"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OperType>3</OperType></dtMaster><dtControlColumns><ControlCode>JGTextBox8</ControlCode><IsCheck>False</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGTextBox6</ControlCode><IsCheck>False</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGComboBox1</ControlCode><IsCheck>False</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGTextBox5</ControlCode><IsCheck>True</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGTextBox4</ControlCode><IsCheck>True</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGTextBox3</ControlCode><IsCheck>True</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGRadioGroup1</ControlCode><IsCheck>False</IsCheck></dtControlColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="MakeControlRVE" ruleName="控制控件的只读、使能、显示" instanceCode="BR_MakeControlRVE2" instanceName="控制控件的只读、使能、显示_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="liub" lastModifiedTime="2019-03-28 17:45:27">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"mapping":[{"componentControlCode":"JGTextBox8","control":"False"},{"componentControlCode":"JGTextBox6","control":"False"},{"componentControlCode":"JGTextBox5","control":"False"},{"componentControlCode":"JGTextBox4","control":"False"},{"componentControlCode":"JGTextBox3","control":"False"},{"componentControlCode":"JGRadioGroup1","control":"True"}],"type":"3"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OperType>3</OperType></dtMaster><dtControlColumns><ControlCode>JGTextBox8</ControlCode><IsCheck>False</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGTextBox6</ControlCode><IsCheck>False</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGTextBox5</ControlCode><IsCheck>False</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGTextBox4</ControlCode><IsCheck>False</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGTextBox3</ControlCode><IsCheck>False</IsCheck></dtControlColumns><dtControlColumns><ControlCode>JGRadioGroup1</ControlCode><IsCheck>True</IsCheck></dtControlColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

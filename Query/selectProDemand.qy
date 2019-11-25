@@ -1,0 +1,61 @@
+﻿<Query id="3359339a20bf483794509903f2b86929" code="selectProDemand" name="查询需求详细" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-07-11 11:24:37]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-10-18 11:03:58]]></ModificationTime>
+  <VSql><![CDATA[SELECT a.*,b.maxTime from bo_akl_MM_productionDemand AS a left join (select c.materialNo as ano,MAX(c.printTime) as maxTime  from bo_akl_LM_printProductLabel AS c group by c.materialNo 
+) AS b on a.partNo=b.ano order by shippingDate asc
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="maxTime" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="id" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="customer" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="customerName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="partNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="shippingDate" name="" dataType="date" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="term" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="recodeid" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_8" code="lastProductDate" name="" dataType="date" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_9" code="spacingDays" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_10" code="advanceDays" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_11" code="quantity" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_MM_productionDemand" tokenIndexes="12" />
+    <DataItem type="Table" key="bo_akl_LM_printProductLabel" tokenIndexes="46" />
+    <DataItem type="Query" key="b" tokenIndexes="6,64,72" />
+    <DataItem type="Query" key="c" tokenIndexes="25,35,50,56" />
+    <DataItem type="Query" key="a" tokenIndexes="16,68" />
+    <DataItem type="QueryField" key="b.maxTime" tokenIndexes="8" />
+    <DataItem type="QueryField" key="c.materialNo" tokenIndexes="27,58" />
+    <DataItem type="QueryField" key="c.printTime" tokenIndexes="37" />
+    <DataItem type="QueryField" key="a.partNo" tokenIndexes="70" />
+    <DataItem type="QueryField" key="b.ano" tokenIndexes="74" />
+  </DataItems>
+</Query>

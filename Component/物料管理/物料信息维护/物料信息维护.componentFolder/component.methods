@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Created: 2017/5/12 10:19:38-->
+<Methods>
+  <Method Code="JGDataGrid1_OnSelectionChanged" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>GetEntitySelectedRowCount("bo_akl_MM_materialInfo")&lt;&gt;0</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_MakeControlRVE1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_MakeControlRVE2" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="MakeControlRVE" ruleName="控制控件的只读、使能、显示" instanceCode="BR_MakeControlRVE2" instanceName="控制控件的只读、使能、显示_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"mapping":[{"componentControlCode":"JGButton5","control":"False"}],"type":"3"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OperType>3</OperType></dtMaster><dtControlColumns><ControlCode>JGButton5</ControlCode><IsCheck>False</IsCheck></dtControlColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="MakeControlRVE" ruleName="控制控件的只读、使能、显示" instanceCode="BR_MakeControlRVE1" instanceName="控制控件的只读、使能、显示" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"mapping":[{"componentControlCode":"JGButton5","control":"True"}],"type":"3"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OperType>3</OperType></dtMaster><dtControlColumns><ControlCode>JGButton5</ControlCode><IsCheck>True</IsCheck></dtControlColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="form_materialInfo_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-07-12 10:37:42">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":null,"entityType":"window","entityName":"bo_akl_MM_materialInfo","itemqueryparam":null,"items":[{"destName":"bo_akl_MM_materialInfo.bomUnit","sourceName":"bo_akl_MM_materialInfo.bomUnit","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.id","sourceName":"bo_akl_MM_materialInfo.id","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.materialName","sourceName":"bo_akl_MM_materialInfo.materialName","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.materialNo","sourceName":"bo_akl_MM_materialInfo.materialNo","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.materialType","sourceName":"bo_akl_MM_materialInfo.materialType","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.packNum","sourceName":"bo_akl_MM_materialInfo.packNum","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.remark","sourceName":"bo_akl_MM_materialInfo.remark","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.unit","sourceName":"bo_akl_MM_materialInfo.unit","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.waterLevel","sourceName":"bo_akl_MM_materialInfo.waterLevel","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.maxSendNum","sourceName":"bo_akl_MM_materialInfo.maxSendNum","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.cusNo","sourceName":"bo_akl_MM_materialInfo.cusNo","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.ecn","sourceName":"bo_akl_MM_materialInfo.ecn","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.projectNo","sourceName":"bo_akl_MM_materialInfo.projectNo","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.maxWaterLevel","sourceName":"bo_akl_MM_materialInfo.maxWaterLevel","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.minWaterLevel","sourceName":"bo_akl_MM_materialInfo.minWaterLevel","type":"entityField"}],"orderBy":[{"field":"bo_akl_MM_materialInfo.materialNo","type":"ASC"}],"sourceName":"bo_akl_MM_materialInfo","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_MM_materialInfo</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_MM_materialInfo</SourceName><dsWhere><![CDATA[<NewDataSet />]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort><dtSort><SortField>bo_akl_MM_materialInfo.materialNo</SortField><SortWay>ASC</SortWay></dtSort></dsSort>]]]]><![CDATA[></dsSort><ID>9979390b6ded4d81a97373eb31937dd3</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>9979390b6ded4d81a97373eb31937dd3</MasterID><DestName>bo_akl_MM_materialInfo.bomUnit</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.bomUnit</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>9979390b6ded4d81a97373eb31937dd3</MasterID><DestName>bo_akl_MM_materialInfo.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>9979390b6ded4d81a97373eb31937dd3</MasterID><DestName>bo_akl_MM_materialInfo.materialName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.materialName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>9979390b6ded4d81a97373eb31937dd3</MasterID><DestName>bo_akl_MM_materialInfo.materialNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.materialNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>9979390b6ded4d81a97373eb31937dd3</MasterID><DestName>bo_akl_MM_materialInfo.materialType</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.materialType</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>9979390b6ded4d81a97373eb31937dd3</MasterID><DestName>bo_akl_MM_materialInfo.packNum</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.packNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>9979390b6ded4d81a97373eb31937dd3</MasterID><DestName>bo_akl_MM_materialInfo.remark</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.remark</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>9979390b6ded4d81a97373eb31937dd3</MasterID><DestName>bo_akl_MM_materialInfo.unit</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.unit</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>9979390b6ded4d81a97373eb31937dd3</MasterID><DestName>bo_akl_MM_materialInfo.waterLevel</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.waterLevel</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>9979390b6ded4d81a97373eb31937dd3</MasterID><DestName>bo_akl_MM_materialInfo.maxSendNum</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.maxSendNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>9979390b6ded4d81a97373eb31937dd3</MasterID><DestName>bo_akl_MM_materialInfo.cusNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.cusNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>9979390b6ded4d81a97373eb31937dd3</MasterID><DestName>bo_akl_MM_materialInfo.ecn</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.ecn</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>9979390b6ded4d81a97373eb31937dd3</MasterID><DestName>bo_akl_MM_materialInfo.projectNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.projectNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>9979390b6ded4d81a97373eb31937dd3</MasterID><DestName>bo_akl_MM_materialInfo.maxWaterLevel</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.maxWaterLevel</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>9979390b6ded4d81a97373eb31937dd3</MasterID><DestName>bo_akl_MM_materialInfo.minWaterLevel</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.minWaterLevel</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>9979390b6ded4d81a97373eb31937dd3</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>9979390b6ded4d81a97373eb31937dd3</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_OpenComponentReturnData1" />
+  <evaluateRule code="BR_ExecuteRuleSet1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"form_add_materialInfo","windowName":"新增物料信息","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"","widthExp":"","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":null,"returnMapping":[{"destType":"entity","dest":"bo_akl_MM_materialInfo","srcType":"returnValue","src":"data","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":false,"destFieldMapping":[{"destField":"bo_akl_MM_materialInfo.bomUnit","srcValueType":"field","srcValue":"bomUnit"},{"destField":"bo_akl_MM_materialInfo.cusNo","srcValueType":"field","srcValue":"cusNo"},{"destField":"bo_akl_MM_materialInfo.ecn","srcValueType":"field","srcValue":"ecn"},{"destField":"bo_akl_MM_materialInfo.id","srcValueType":"field","srcValue":"id"},{"destField":"bo_akl_MM_materialInfo.materialName","srcValueType":"field","srcValue":"materialName"},{"destField":"bo_akl_MM_materialInfo.materialNo","srcValueType":"field","srcValue":"materialNo"},{"destField":"bo_akl_MM_materialInfo.materialType","srcValueType":"field","srcValue":"materialType"},{"destField":"bo_akl_MM_materialInfo.maxSendNum","srcValueType":"field","srcValue":"maxSendNum"},{"destField":"bo_akl_MM_materialInfo.packNum","srcValueType":"field","srcValue":"packNum"},{"destField":"bo_akl_MM_materialInfo.projectNo","srcValueType":"field","srcValue":"projectNo"},{"destField":"bo_akl_MM_materialInfo.remark","srcValueType":"field","srcValue":"remark"},{"destField":"bo_akl_MM_materialInfo.unit","srcValueType":"field","srcValue":"unit"},{"destField":"bo_akl_MM_materialInfo.waterLevel","srcValueType":"field","srcValue":"waterLevel"}]}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>form_add_materialInfo</WindowCode><WindowName>新增物料信息</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp /><WidthExp /><IsAsyn>False</IsAsyn></dtMaster><dtReturnValue><TargetType>entity</TargetType><Target>bo_akl_MM_materialInfo</Target><SourceType>returnValue</SourceType><Source>data</Source><UpdateWay>insertOrUpdateBySameId</UpdateWay><IsClearData>False</IsClearData><SourceMapping><![CDATA[<dsSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.bomUnit</TargetField><SourceType>field</SourceType><Source>bomUnit</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.cusNo</TargetField><SourceType>field</SourceType><Source>cusNo</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.ecn</TargetField><SourceType>field</SourceType><Source>ecn</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.id</TargetField><SourceType>field</SourceType><Source>id</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.materialName</TargetField><SourceType>field</SourceType><Source>materialName</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.materialNo</TargetField><SourceType>field</SourceType><Source>materialNo</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.materialType</TargetField><SourceType>field</SourceType><Source>materialType</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.maxSendNum</TargetField><SourceType>field</SourceType><Source>maxSendNum</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.packNum</TargetField><SourceType>field</SourceType><Source>packNum</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.projectNo</TargetField><SourceType>field</SourceType><Source>projectNo</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.remark</TargetField><SourceType>field</SourceType><Source>remark</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.unit</TargetField><SourceType>field</SourceType><Source>unit</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.waterLevel</TargetField><SourceType>field</SourceType><Source>waterLevel</Source></dtSourceMapping></dsSourceMapping>]]]]><![CDATA[></SourceMapping></dtReturnValue></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_form_materialInfo_FormLoadAction(form_materialInfo_窗体加载事件)" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"form_materialInfo_FormLoadAction","isParallelism":"False"},"invokeParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>form_materialInfo_FormLoadAction</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton4_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_OpenComponentReturnData1" />
+  <evaluateRule code="BR_ExecuteRuleSet1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"form_add_materialInfo","windowName":"新增物料信息","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"","widthExp":"","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":[{"paramName":"materialId","paramType":"expression","paramValue":"[bo_akl_MM_materialInfo].[id]","paramEntityType":"","entityFieldMapping":null}],"returnMapping":[{"destType":"entity","dest":"bo_akl_MM_materialInfo","srcType":"returnValue","src":"data","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":false,"destFieldMapping":[{"destField":"bo_akl_MM_materialInfo.bomUnit","srcValueType":"field","srcValue":"bomUnit"},{"destField":"bo_akl_MM_materialInfo.cusNo","srcValueType":"field","srcValue":"cusNo"},{"destField":"bo_akl_MM_materialInfo.ecn","srcValueType":"field","srcValue":"ecn"},{"destField":"bo_akl_MM_materialInfo.id","srcValueType":"field","srcValue":"id"},{"destField":"bo_akl_MM_materialInfo.materialName","srcValueType":"field","srcValue":"materialName"},{"destField":"bo_akl_MM_materialInfo.materialNo","srcValueType":"field","srcValue":"materialNo"},{"destField":"bo_akl_MM_materialInfo.materialType","srcValueType":"field","srcValue":"materialType"},{"destField":"bo_akl_MM_materialInfo.maxSendNum","srcValueType":"field","srcValue":"maxSendNum"},{"destField":"bo_akl_MM_materialInfo.packNum","srcValueType":"field","srcValue":"packNum"},{"destField":"bo_akl_MM_materialInfo.projectNo","srcValueType":"field","srcValue":"projectNo"},{"destField":"bo_akl_MM_materialInfo.remark","srcValueType":"field","srcValue":"remark"},{"destField":"bo_akl_MM_materialInfo.unit","srcValueType":"field","srcValue":"unit"},{"destField":"bo_akl_MM_materialInfo.waterLevel","srcValueType":"field","srcValue":"waterLevel"}]}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>form_add_materialInfo</WindowCode><WindowName>新增物料信息</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp /><WidthExp /><IsAsyn>False</IsAsyn></dtMaster><dtReturnValue><TargetType>entity</TargetType><Target>bo_akl_MM_materialInfo</Target><SourceType>returnValue</SourceType><Source>data</Source><UpdateWay>insertOrUpdateBySameId</UpdateWay><IsClearData>False</IsClearData><SourceMapping><![CDATA[<dsSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.bomUnit</TargetField><SourceType>field</SourceType><Source>bomUnit</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.cusNo</TargetField><SourceType>field</SourceType><Source>cusNo</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.ecn</TargetField><SourceType>field</SourceType><Source>ecn</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.id</TargetField><SourceType>field</SourceType><Source>id</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.materialName</TargetField><SourceType>field</SourceType><Source>materialName</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.materialNo</TargetField><SourceType>field</SourceType><Source>materialNo</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.materialType</TargetField><SourceType>field</SourceType><Source>materialType</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.maxSendNum</TargetField><SourceType>field</SourceType><Source>maxSendNum</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.packNum</TargetField><SourceType>field</SourceType><Source>packNum</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.projectNo</TargetField><SourceType>field</SourceType><Source>projectNo</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.remark</TargetField><SourceType>field</SourceType><Source>remark</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.unit</TargetField><SourceType>field</SourceType><Source>unit</Source></dtSourceMapping><dtSourceMapping><TargetField>bo_akl_MM_materialInfo.waterLevel</TargetField><SourceType>field</SourceType><Source>waterLevel</Source></dtSourceMapping></dsSourceMapping>]]]]><![CDATA[></SourceMapping></dtReturnValue><dtParam><WindowVariant>materialId</WindowVariant><SourceType>expression</SourceType><SourceTypeDisplayText>表达式</SourceTypeDisplayText><SourceValue>[bo_akl_MM_materialInfo].[id]</SourceValue></dtParam></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_form_materialInfo_FormLoadAction(form_materialInfo_窗体加载事件)" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"form_materialInfo_FormLoadAction","isParallelism":"False"},"invokeParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>form_materialInfo_FormLoadAction</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton5_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_ShowMessage1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>BR_OUT.BR_ShowMessage1.confirm</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_CopyEntityRecord1" />
+      <foreach isEnabled="True" isDebug="False" code="ForeachCode1">
+        <define>
+          <varCode>m</varCode>
+          <entityType>ruleSetVar</entityType>
+          <entityCode>material</entityCode>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+          <if isEnabled="True" isDebug="False" code="IfCode2">
+            <define>
+              <expression>GetEntityRowCount("BR_VAR_PARENT.bo_akl_MM_stockInfo") &gt; 0</expression>
+              <remark></remark>
+            </define>
+            <sequence>
+              <evaluateRule code="BR_ShowMessage2" />
+              <evaluateRule code="BR_AbortRule1" />
+            </sequence>
+          </if>
+        </sequence>
+      </foreach>
+      <foreach isEnabled="True" isDebug="False" code="ForeachCode2">
+        <define>
+          <varCode>m2</varCode>
+          <entityType>ruleSetVar</entityType>
+          <entityCode>material</entityCode>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_DeleteConditionRelationData1" />
+        </sequence>
+      </foreach>
+      <evaluateRule code="BR_DeleteListSelectRow1" />
+      <evaluateRule code="BR_UpdateRecord1" />
+    </sequence>
+  </if>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"3","time":null,"simpleChinesePrompt":{"msgnote":"\"是否确认删除？\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>3</MsgType><SimpleChinese>"是否确认删除？"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_MM_stockInfo.materialId","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"LV.m.id","valueType":"9"}],"entityType":"ruleSetVar","entityName":"bo_akl_MM_stockInfo","itemqueryparam":null,"items":[{"destName":"bo_akl_MM_stockInfo.id","sourceName":"bo_akl_MM_stockInfo.id","type":"entityField"},{"destName":"bo_akl_MM_stockInfo.materialId","sourceName":"bo_akl_MM_stockInfo.materialId","type":"entityField"},{"destName":"bo_akl_MM_stockInfo.stockTypeId","sourceName":"bo_akl_MM_stockInfo.stockTypeId","type":"entityField"},{"destName":"bo_akl_MM_stockInfo.stockNum","sourceName":"bo_akl_MM_stockInfo.stockNum","type":"entityField"},{"destName":"bo_akl_MM_stockInfo.batchNo","sourceName":"bo_akl_MM_stockInfo.batchNo","type":"entityField"},{"destName":"bo_akl_MM_stockInfo.regionId","sourceName":"bo_akl_MM_stockInfo.regionId","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_MM_stockInfo","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>ruleSetVar</EntityType><EntityName>bo_akl_MM_stockInfo</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_MM_stockInfo</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_MM_stockInfo.materialId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>LV.m.id</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><dsQueryParam><![CDATA[<dsQueryParam />]]]]><![CDATA[></dsQueryParam><ID>d56a8beedd0540a29ca7b15ee59df7f1</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>d56a8beedd0540a29ca7b15ee59df7f1</MasterID><DestName>bo_akl_MM_stockInfo.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_stockInfo.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d56a8beedd0540a29ca7b15ee59df7f1</MasterID><DestName>bo_akl_MM_stockInfo.materialId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_stockInfo.materialId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d56a8beedd0540a29ca7b15ee59df7f1</MasterID><DestName>bo_akl_MM_stockInfo.stockTypeId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_stockInfo.stockTypeId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d56a8beedd0540a29ca7b15ee59df7f1</MasterID><DestName>bo_akl_MM_stockInfo.stockNum</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_stockInfo.stockNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d56a8beedd0540a29ca7b15ee59df7f1</MasterID><DestName>bo_akl_MM_stockInfo.batchNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_stockInfo.batchNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>d56a8beedd0540a29ca7b15ee59df7f1</MasterID><DestName>bo_akl_MM_stockInfo.regionId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_stockInfo.regionId</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>d56a8beedd0540a29ca7b15ee59df7f1</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>d56a8beedd0540a29ca7b15ee59df7f1</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage2" instanceName="显示设置的提示信息_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"ConcatStr(\"物料型号:\",LV.m.materialNo,\",被其他数据引用,无法删除!\")","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>ConcatStr("物料型号:",LV.m.materialNo,",被其他数据引用,无法删除!")</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AbortRule" ruleName="中断规则" instanceCode="BR_AbortRule1" instanceName="中断规则" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"abortType":"CURRENT","msgnote":""}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>CURRENT</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteConditionRelationData" ruleName="删除数据库中的记录" instanceCode="BR_DeleteConditionRelationData1" instanceName="删除数据库中的记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dtChileMaps":[{"orderNo":"1","tableName":"bo_akl_MM_materialChangeRecord","dsWhere":[{"columnType":"1","field":"bo_akl_MM_materialChangeRecord.materialId","fieldType":"char","leftBracket":"(","logicOperation":"","operation":"=","rightBracket":")","value":"LV.m2.id","valueType":"9"}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtConditionMaster><TableName>bo_akl_MM_materialChangeRecord</TableName><Condition><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_MM_materialChangeRecord.materialId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>LV.m2.id</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></Condition><OrderNo>1</OrderNo></dtConditionMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="CopyEntityRecord" ruleName="实体间复制记录" instanceCode="BR_CopyEntityRecord1" instanceName="实体间复制记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"checkitems":null,"condition":"","copyType":"1","destName":"material","items":[{"destName":"material.id","sourceName":"bo_akl_MM_materialInfo.id","type":"entityField"},{"destName":"material.materialNo","sourceName":"bo_akl_MM_materialInfo.materialNo","type":"entityField"}],"mageitems":null,"sourceName":"bo_akl_MM_materialInfo","type":"1","isAddRecord":true,"jsonVersion":"1.0","destType":"ruleSetVar","sourceType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtInfo><destName>material</destName><destType>ruleSetVar</destType><sourceName>bo_akl_MM_materialInfo</sourceName><sourceType>window</sourceType><type>1</type><isAddRecord>True</isAddRecord><copyType>1</copyType><condition /><jsonVersion>1.0</jsonVersion></dtInfo><dtMaster><DestName>material.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.id</SourceName></dtMaster><dtMaster><DestName>material.materialNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.materialNo</SourceName></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow1" instanceName="删除实体记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"","deleteType":"0","TableName":"bo_akl_MM_materialInfo","EntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition /><DeleteType>0</DeleteType><TableName>bo_akl_MM_materialInfo</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2019-01-18 11:08:30">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_MM_materialInfo.bomUnit","colValue":"bo_akl_MM_materialInfo.bomUnit","valueType":"entityField"},{"colName":"bo_akl_MM_materialInfo.id","colValue":"bo_akl_MM_materialInfo.id","valueType":"entityField"},{"colName":"bo_akl_MM_materialInfo.materialName","colValue":"bo_akl_MM_materialInfo.materialName","valueType":"entityField"},{"colName":"bo_akl_MM_materialInfo.materialNo","colValue":"bo_akl_MM_materialInfo.materialNo","valueType":"entityField"},{"colName":"bo_akl_MM_materialInfo.materialType","colValue":"bo_akl_MM_materialInfo.materialType","valueType":"entityField"},{"colName":"bo_akl_MM_materialInfo.packNum","colValue":"bo_akl_MM_materialInfo.packNum","valueType":"entityField"},{"colName":"bo_akl_MM_materialInfo.remark","colValue":"bo_akl_MM_materialInfo.remark","valueType":"entityField"},{"colName":"bo_akl_MM_materialInfo.unit","colValue":"bo_akl_MM_materialInfo.unit","valueType":"entityField"},{"colName":"bo_akl_MM_materialInfo.waterLevel","colValue":"bo_akl_MM_materialInfo.waterLevel","valueType":"entityField"},{"colName":"bo_akl_MM_materialInfo.maxSendNum","colValue":"bo_akl_MM_materialInfo.maxSendNum","valueType":"entityField"}],"dataSource":"bo_akl_MM_materialInfo","dataSourceType":"window","destTab":"bo_akl_MM_materialInfo","isSaveAll":false}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>67bd56f95dd340c39a1f433e5befb608</ID><SourceName>bo_akl_MM_materialInfo</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_MM_materialInfo(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_MM_materialInfo</TableName></dtMaster><dtDetails><PID>67bd56f95dd340c39a1f433e5befb608</PID><SourceField>bo_akl_MM_materialInfo.bomUnit</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_materialInfo.bomUnit</Value></dtDetails><dtDetails><PID>67bd56f95dd340c39a1f433e5befb608</PID><SourceField>bo_akl_MM_materialInfo.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_materialInfo.id</Value></dtDetails><dtDetails><PID>67bd56f95dd340c39a1f433e5befb608</PID><SourceField>bo_akl_MM_materialInfo.materialName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_materialInfo.materialName</Value></dtDetails><dtDetails><PID>67bd56f95dd340c39a1f433e5befb608</PID><SourceField>bo_akl_MM_materialInfo.materialNo</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_materialInfo.materialNo</Value></dtDetails><dtDetails><PID>67bd56f95dd340c39a1f433e5befb608</PID><SourceField>bo_akl_MM_materialInfo.materialType</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_materialInfo.materialType</Value></dtDetails><dtDetails><PID>67bd56f95dd340c39a1f433e5befb608</PID><SourceField>bo_akl_MM_materialInfo.packNum</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_materialInfo.packNum</Value></dtDetails><dtDetails><PID>67bd56f95dd340c39a1f433e5befb608</PID><SourceField>bo_akl_MM_materialInfo.remark</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_materialInfo.remark</Value></dtDetails><dtDetails><PID>67bd56f95dd340c39a1f433e5befb608</PID><SourceField>bo_akl_MM_materialInfo.unit</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_materialInfo.unit</Value></dtDetails><dtDetails><PID>67bd56f95dd340c39a1f433e5befb608</PID><SourceField>bo_akl_MM_materialInfo.waterLevel</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_materialInfo.waterLevel</Value></dtDetails><dtDetails><PID>67bd56f95dd340c39a1f433e5befb608</PID><SourceField>bo_akl_MM_materialInfo.maxSendNum</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_MM_materialInfo.maxSendNum</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Variables>
+      <Variable code="material" name="物料" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="物料id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="materialNo" name="物料型号" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="bo_akl_MM_stockInfo" name="库存信息" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="materialId" name="物料Id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="stockTypeId" name="仓库类型Id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="stockNum" name="库存数量" fieldType="number" length="50" accuracy="4">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="batchNo" name="批次号" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="regionId" name="区域Id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+    </Variables>
+  </Method>
+  <Method Code="JGLocateBox1_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-19 17:10:24">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_MM_materialInfo.materialName","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"},{"columnType":"1","field":"bo_akl_MM_materialInfo.materialNo","fieldType":"char","leftBracket":"(","logicOperation":"or","operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"},{"columnType":"1","field":"bo_akl_MM_materialInfo.materialType","fieldType":"char","leftBracket":"(","logicOperation":"or","operation":"like","rightBracket":")","value":"CC.JGLocateBox1.Value","valueType":"9"}],"entityType":"window","entityName":"bo_akl_MM_materialInfo","itemqueryparam":null,"items":[{"destName":"bo_akl_MM_materialInfo.bomUnit","sourceName":"bo_akl_MM_materialInfo.bomUnit","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.id","sourceName":"bo_akl_MM_materialInfo.id","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.materialName","sourceName":"bo_akl_MM_materialInfo.materialName","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.materialNo","sourceName":"bo_akl_MM_materialInfo.materialNo","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.materialType","sourceName":"bo_akl_MM_materialInfo.materialType","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.packNum","sourceName":"bo_akl_MM_materialInfo.packNum","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.remark","sourceName":"bo_akl_MM_materialInfo.remark","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.unit","sourceName":"bo_akl_MM_materialInfo.unit","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.waterLevel","sourceName":"bo_akl_MM_materialInfo.waterLevel","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.maxSendNum","sourceName":"bo_akl_MM_materialInfo.maxSendNum","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.cusNo","sourceName":"bo_akl_MM_materialInfo.cusNo","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.ecn","sourceName":"bo_akl_MM_materialInfo.ecn","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.maxWaterLevel","sourceName":"bo_akl_MM_materialInfo.maxWaterLevel","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.minWaterLevel","sourceName":"bo_akl_MM_materialInfo.minWaterLevel","type":"entityField"},{"destName":"bo_akl_MM_materialInfo.projectNo","sourceName":"bo_akl_MM_materialInfo.projectNo","type":"entityField"}],"orderBy":[{"field":"bo_akl_MM_materialInfo.materialNo","type":"ASC"}],"sourceName":"bo_akl_MM_materialInfo","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_MM_materialInfo</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_MM_materialInfo</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_MM_materialInfo.materialName</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_MM_materialInfo.materialNo</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_MM_materialInfo.materialType</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>or</logicOperation><operation>like</operation><rightBracket>)</rightBracket><value>CC.JGLocateBox1.Value</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort><dtSort><SortField>bo_akl_MM_materialInfo.materialNo</SortField><SortWay>ASC</SortWay></dtSort></dsSort>]]]]><![CDATA[></dsSort><ID>a74c6bda8c734eb18701e6870bb0dbf3</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>a74c6bda8c734eb18701e6870bb0dbf3</MasterID><DestName>bo_akl_MM_materialInfo.bomUnit</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.bomUnit</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>a74c6bda8c734eb18701e6870bb0dbf3</MasterID><DestName>bo_akl_MM_materialInfo.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>a74c6bda8c734eb18701e6870bb0dbf3</MasterID><DestName>bo_akl_MM_materialInfo.materialName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.materialName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>a74c6bda8c734eb18701e6870bb0dbf3</MasterID><DestName>bo_akl_MM_materialInfo.materialNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.materialNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>a74c6bda8c734eb18701e6870bb0dbf3</MasterID><DestName>bo_akl_MM_materialInfo.materialType</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.materialType</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>a74c6bda8c734eb18701e6870bb0dbf3</MasterID><DestName>bo_akl_MM_materialInfo.packNum</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.packNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>a74c6bda8c734eb18701e6870bb0dbf3</MasterID><DestName>bo_akl_MM_materialInfo.remark</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.remark</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>a74c6bda8c734eb18701e6870bb0dbf3</MasterID><DestName>bo_akl_MM_materialInfo.unit</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.unit</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>a74c6bda8c734eb18701e6870bb0dbf3</MasterID><DestName>bo_akl_MM_materialInfo.waterLevel</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.waterLevel</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>a74c6bda8c734eb18701e6870bb0dbf3</MasterID><DestName>bo_akl_MM_materialInfo.maxSendNum</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.maxSendNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>a74c6bda8c734eb18701e6870bb0dbf3</MasterID><DestName>bo_akl_MM_materialInfo.cusNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.cusNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>a74c6bda8c734eb18701e6870bb0dbf3</MasterID><DestName>bo_akl_MM_materialInfo.ecn</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.ecn</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>a74c6bda8c734eb18701e6870bb0dbf3</MasterID><DestName>bo_akl_MM_materialInfo.maxWaterLevel</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.maxWaterLevel</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>a74c6bda8c734eb18701e6870bb0dbf3</MasterID><DestName>bo_akl_MM_materialInfo.minWaterLevel</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.minWaterLevel</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>a74c6bda8c734eb18701e6870bb0dbf3</MasterID><DestName>bo_akl_MM_materialInfo.projectNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_materialInfo.projectNo</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>a74c6bda8c734eb18701e6870bb0dbf3</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>a74c6bda8c734eb18701e6870bb0dbf3</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton2_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_Attachmentoperation1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="Attachmentoperation" ruleName="附件操作" instanceCode="BR_Attachmentoperation1" instanceName="附件操作" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-13 14:16:20">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"componentControlCode":null,"dataProcess":"Fileno_18.xlsx","fileName":"物料信息","function":"2","fileType":"static","componentCode":"lmes","reviewScheme":"","watermarkEnable":false,"previewTargetType":"","isPreviewInModalWindow":false,"previewWindowSize":"","watermarkSet":null,"picWatermarkStyle":null,"docProtectSet":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><operate>2</operate><documentColumn>Fileno_18.xlsx</documentColumn><fileType>static</fileType><componentCode>lmes</componentCode><fileCode>Fileno_18</fileCode><fileName>物料信息</fileName><watermarkEnable>False</watermarkEnable></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton3_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DeleteConditionRelationData1_1" />
+  <evaluateRule code="BR_ImportExcelToDB1" />
+  <evaluateRule code="BR_CopyDataBetweenTables1" />
+  <evaluateRule code="BR_DeleteConditionRelationData1" />
+  <evaluateRule code="BR_ExecuteRuleSet1" />
+  <evaluateRule code="BR_ShowMessage1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DeleteConditionRelationData" ruleName="删除数据库中的记录" instanceCode="BR_DeleteConditionRelationData1_1" instanceName="删除数据库中的记录_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dtChileMaps":[{"orderNo":"1","tableName":"bo_akl_MM_materialInfo_clone","dsWhere":null}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtConditionMaster><TableName>bo_akl_MM_materialInfo_clone</TableName><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition><OrderNo>1</OrderNo></dtConditionMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ImportExcelToDB" ruleName="Excel导入到数据库表" instanceCode="BR_ImportExcelToDB1" instanceName="Excel导入到数据库表" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"fileSource":"JGAttachment1","items":[{"targetTable":"bo_akl_MM_materialInfo_clone","sheetNum":"0","dataStartRow":"3","importNodeId":"","mapping":[{"fieldCode":"bomUnit","fieldName":"BOM单位","sourceType":"excelColName","sourceValue":"BOM单位（个，克，毫克，毫米）"},{"fieldCode":"materialName","fieldName":"物料名称","sourceType":"excelColName","sourceValue":"物料名称"},{"fieldCode":"materialNo","fieldName":"物料型号","sourceType":"excelColName","sourceValue":"物料型号"},{"fieldCode":"materialType","fieldName":"物料类型","sourceType":"excelColName","sourceValue":"物料类型（原材料，半成品，成品）"},{"fieldCode":"packNum","fieldName":"包装数量","sourceType":"excelColName","sourceValue":"包装数量"},{"fieldCode":"remark","fieldName":"备注","sourceType":"excelColName","sourceValue":"备注"},{"fieldCode":"unit","fieldName":"单位","sourceType":"excelColName","sourceValue":"单位（个，米，千克）"},{"fieldCode":"waterLevel","fieldName":"水位","sourceType":"excelColName","sourceValue":"水位"},{"fieldCode":"maxSendNum","fieldName":"最大允许发料量","sourceType":"excelColName","sourceValue":"最大允许发料量"},{"fieldCode":"maxWaterLevel","fieldName":"最大水位","sourceType":"excelColName","sourceValue":"最大水位"},{"fieldCode":"minWaterLevel","fieldName":"最小水位","sourceType":"excelColName","sourceValue":"最小水位"},{"fieldCode":"cusNo","fieldName":"客户/供应商编号","sourceType":"excelColName","sourceValue":"客户/供应商编号"},{"fieldCode":"ecn","fieldName":"工程变更","sourceType":"excelColName","sourceValue":"工程变更"},{"fieldCode":"projectNo","fieldName":"所属项目","sourceType":"excelColName","sourceValue":"所属项目"}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFileSource><FileSource>JGAttachment1</FileSource></dtFileSource><dtSheetMapping><ID>03b81de391914cd885d919408c7bf6f0</ID><TargetTable>bo_akl_MM_materialInfo_clone</TargetTable><SheetNum>0</SheetNum><DataStartRow>3</DataStartRow><ImportNodeId /></dtSheetMapping><dtFieldMapping><PID>03b81de391914cd885d919408c7bf6f0</PID><TableCode>bo_akl_MM_materialInfo_clone</TableCode><FieldCode>bomUnit</FieldCode><FieldName>BOM单位</FieldName><SourceType>excelColName</SourceType><SourceValue>BOM单位（个，克，毫克，毫米）</SourceValue></dtFieldMapping><dtFieldMapping><PID>03b81de391914cd885d919408c7bf6f0</PID><TableCode>bo_akl_MM_materialInfo_clone</TableCode><FieldCode>materialName</FieldCode><FieldName>物料名称</FieldName><SourceType>excelColName</SourceType><SourceValue>物料名称</SourceValue></dtFieldMapping><dtFieldMapping><PID>03b81de391914cd885d919408c7bf6f0</PID><TableCode>bo_akl_MM_materialInfo_clone</TableCode><FieldCode>materialNo</FieldCode><FieldName>物料型号</FieldName><SourceType>excelColName</SourceType><SourceValue>物料型号</SourceValue></dtFieldMapping><dtFieldMapping><PID>03b81de391914cd885d919408c7bf6f0</PID><TableCode>bo_akl_MM_materialInfo_clone</TableCode><FieldCode>materialType</FieldCode><FieldName>物料类型</FieldName><SourceType>excelColName</SourceType><SourceValue>物料类型（原材料，半成品，成品）</SourceValue></dtFieldMapping><dtFieldMapping><PID>03b81de391914cd885d919408c7bf6f0</PID><TableCode>bo_akl_MM_materialInfo_clone</TableCode><FieldCode>packNum</FieldCode><FieldName>包装数量</FieldName><SourceType>excelColName</SourceType><SourceValue>包装数量</SourceValue></dtFieldMapping><dtFieldMapping><PID>03b81de391914cd885d919408c7bf6f0</PID><TableCode>bo_akl_MM_materialInfo_clone</TableCode><FieldCode>remark</FieldCode><FieldName>备注</FieldName><SourceType>excelColName</SourceType><SourceValue>备注</SourceValue></dtFieldMapping><dtFieldMapping><PID>03b81de391914cd885d919408c7bf6f0</PID><TableCode>bo_akl_MM_materialInfo_clone</TableCode><FieldCode>unit</FieldCode><FieldName>单位</FieldName><SourceType>excelColName</SourceType><SourceValue>单位（个，米，千克）</SourceValue></dtFieldMapping><dtFieldMapping><PID>03b81de391914cd885d919408c7bf6f0</PID><TableCode>bo_akl_MM_materialInfo_clone</TableCode><FieldCode>waterLevel</FieldCode><FieldName>水位</FieldName><SourceType>excelColName</SourceType><SourceValue>水位</SourceValue></dtFieldMapping><dtFieldMapping><PID>03b81de391914cd885d919408c7bf6f0</PID><TableCode>bo_akl_MM_materialInfo_clone</TableCode><FieldCode>maxSendNum</FieldCode><FieldName>最大允许发料量</FieldName><SourceType>excelColName</SourceType><SourceValue>最大允许发料量</SourceValue></dtFieldMapping><dtFieldMapping><PID>03b81de391914cd885d919408c7bf6f0</PID><TableCode>bo_akl_MM_materialInfo_clone</TableCode><FieldCode>maxWaterLevel</FieldCode><FieldName>最大水位</FieldName><SourceType>excelColName</SourceType><SourceValue>最大水位</SourceValue></dtFieldMapping><dtFieldMapping><PID>03b81de391914cd885d919408c7bf6f0</PID><TableCode>bo_akl_MM_materialInfo_clone</TableCode><FieldCode>minWaterLevel</FieldCode><FieldName>最小水位</FieldName><SourceType>excelColName</SourceType><SourceValue>最小水位</SourceValue></dtFieldMapping><dtFieldMapping><PID>03b81de391914cd885d919408c7bf6f0</PID><TableCode>bo_akl_MM_materialInfo_clone</TableCode><FieldCode>cusNo</FieldCode><FieldName>客户/供应商编号</FieldName><SourceType>excelColName</SourceType><SourceValue>客户/供应商编号</SourceValue></dtFieldMapping><dtFieldMapping><PID>03b81de391914cd885d919408c7bf6f0</PID><TableCode>bo_akl_MM_materialInfo_clone</TableCode><FieldCode>ecn</FieldCode><FieldName>工程变更</FieldName><SourceType>excelColName</SourceType><SourceValue>工程变更</SourceValue></dtFieldMapping><dtFieldMapping><PID>03b81de391914cd885d919408c7bf6f0</PID><TableCode>bo_akl_MM_materialInfo_clone</TableCode><FieldCode>projectNo</FieldCode><FieldName>所属项目</FieldName><SourceType>excelColName</SourceType><SourceValue>所属项目</SourceValue></dtFieldMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="CopyDataBetweenTables" ruleName="表间数据复制" instanceCode="BR_CopyDataBetweenTables1" instanceName="表间数据复制" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"condition":[{"columnType":"1","field":"bo_akl_MM_materialInfo_clone.materialNo","fieldType":"char","leftBracket":"(","logicOperation":"","operation":"is not","rightBracket":")","value":"null","valueQueryControlID":"","valueType":"9"}],"destTableName":"bo_akl_MM_materialInfo","equalFields":[{"checkRepeat":"False","destField":"bo_akl_MM_materialInfo.bomUnit","sourceField":"bo_akl_MM_materialInfo_clone.bomUnit","sourcetype":"tableField","treatRepeattype":"2"},{"checkRepeat":"False","destField":"bo_akl_MM_materialInfo.materialName","sourceField":"bo_akl_MM_materialInfo_clone.materialName","sourcetype":"tableField","treatRepeattype":"2"},{"checkRepeat":"True","destField":"bo_akl_MM_materialInfo.materialNo","sourceField":"bo_akl_MM_materialInfo_clone.materialNo","sourcetype":"tableField","treatRepeattype":"3"},{"checkRepeat":"False","destField":"bo_akl_MM_materialInfo.materialType","sourceField":"bo_akl_MM_materialInfo_clone.materialType","sourcetype":"tableField","treatRepeattype":"2"},{"checkRepeat":"False","destField":"bo_akl_MM_materialInfo.packNum","sourceField":"bo_akl_MM_materialInfo_clone.packNum","sourcetype":"tableField","treatRepeattype":"2"},{"checkRepeat":"False","destField":"bo_akl_MM_materialInfo.remark","sourceField":"bo_akl_MM_materialInfo_clone.remark","sourcetype":"tableField","treatRepeattype":"2"},{"checkRepeat":"False","destField":"bo_akl_MM_materialInfo.unit","sourceField":"bo_akl_MM_materialInfo_clone.unit","sourcetype":"tableField","treatRepeattype":"2"},{"checkRepeat":"False","destField":"bo_akl_MM_materialInfo.waterLevel","sourceField":"bo_akl_MM_materialInfo_clone.waterLevel","sourcetype":"tableField","treatRepeattype":"2"},{"checkRepeat":"False","destField":"bo_akl_MM_materialInfo.maxSendNum","sourceField":"bo_akl_MM_materialInfo_clone.maxSendNum","sourcetype":"tableField","treatRepeattype":"2"},{"checkRepeat":"False","destField":"bo_akl_MM_materialInfo.cusNo","sourceField":"bo_akl_MM_materialInfo_clone.cusNo","sourcetype":"tableField","treatRepeattype":"2"},{"checkRepeat":"False","destField":"bo_akl_MM_materialInfo.ecn","sourceField":"bo_akl_MM_materialInfo_clone.ecn","sourcetype":"tableField","treatRepeattype":"2"},{"checkRepeat":"False","destField":"bo_akl_MM_materialInfo.projectNo","sourceField":"bo_akl_MM_materialInfo_clone.projectNo","sourcetype":"tableField","treatRepeattype":"2"},{"checkRepeat":"False","destField":"bo_akl_MM_materialInfo.maxWaterLevel","sourceField":"bo_akl_MM_materialInfo_clone.maxWaterLevel","sourcetype":"tableField","treatRepeattype":"2"},{"checkRepeat":"False","destField":"bo_akl_MM_materialInfo.minWaterLevel","sourceField":"bo_akl_MM_materialInfo_clone.minWaterLevel","sourcetype":"tableField","treatRepeattype":"2"}],"repeatType":"3","sourceTableName":"bo_akl_MM_materialInfo_clone","sourceType":"Table","queryParam":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><destTableName>bo_akl_MM_materialInfo</destTableName><sourceTableName>bo_akl_MM_materialInfo_clone</sourceTableName><sourceType>Table</sourceType><repeatType>3</repeatType><condition><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_MM_materialInfo_clone.materialNo</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>is not</operation><rightBracket>)</rightBracket><value>null</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></condition></dtMaster><dtField><destField>bo_akl_MM_materialInfo.bomUnit</destField><sourcetype>tableField</sourcetype><sourceField>bo_akl_MM_materialInfo_clone.bomUnit</sourceField><checkeRepeat>False</checkeRepeat><TreatRepeattype>2</TreatRepeattype></dtField><dtField><destField>bo_akl_MM_materialInfo.materialName</destField><sourcetype>tableField</sourcetype><sourceField>bo_akl_MM_materialInfo_clone.materialName</sourceField><checkeRepeat>False</checkeRepeat><TreatRepeattype>2</TreatRepeattype></dtField><dtField><destField>bo_akl_MM_materialInfo.materialNo</destField><sourcetype>tableField</sourcetype><sourceField>bo_akl_MM_materialInfo_clone.materialNo</sourceField><checkeRepeat>True</checkeRepeat><TreatRepeattype>3</TreatRepeattype></dtField><dtField><destField>bo_akl_MM_materialInfo.materialType</destField><sourcetype>tableField</sourcetype><sourceField>bo_akl_MM_materialInfo_clone.materialType</sourceField><checkeRepeat>False</checkeRepeat><TreatRepeattype>2</TreatRepeattype></dtField><dtField><destField>bo_akl_MM_materialInfo.packNum</destField><sourcetype>tableField</sourcetype><sourceField>bo_akl_MM_materialInfo_clone.packNum</sourceField><checkeRepeat>False</checkeRepeat><TreatRepeattype>2</TreatRepeattype></dtField><dtField><destField>bo_akl_MM_materialInfo.remark</destField><sourcetype>tableField</sourcetype><sourceField>bo_akl_MM_materialInfo_clone.remark</sourceField><checkeRepeat>False</checkeRepeat><TreatRepeattype>2</TreatRepeattype></dtField><dtField><destField>bo_akl_MM_materialInfo.unit</destField><sourcetype>tableField</sourcetype><sourceField>bo_akl_MM_materialInfo_clone.unit</sourceField><checkeRepeat>False</checkeRepeat><TreatRepeattype>2</TreatRepeattype></dtField><dtField><destField>bo_akl_MM_materialInfo.waterLevel</destField><sourcetype>tableField</sourcetype><sourceField>bo_akl_MM_materialInfo_clone.waterLevel</sourceField><checkeRepeat>False</checkeRepeat><TreatRepeattype>2</TreatRepeattype></dtField><dtField><destField>bo_akl_MM_materialInfo.maxSendNum</destField><sourcetype>tableField</sourcetype><sourceField>bo_akl_MM_materialInfo_clone.maxSendNum</sourceField><checkeRepeat>False</checkeRepeat><TreatRepeattype>2</TreatRepeattype></dtField><dtField><destField>bo_akl_MM_materialInfo.cusNo</destField><sourcetype>tableField</sourcetype><sourceField>bo_akl_MM_materialInfo_clone.cusNo</sourceField><checkeRepeat>False</checkeRepeat><TreatRepeattype>2</TreatRepeattype></dtField><dtField><destField>bo_akl_MM_materialInfo.ecn</destField><sourcetype>tableField</sourcetype><sourceField>bo_akl_MM_materialInfo_clone.ecn</sourceField><checkeRepeat>False</checkeRepeat><TreatRepeattype>2</TreatRepeattype></dtField><dtField><destField>bo_akl_MM_materialInfo.projectNo</destField><sourcetype>tableField</sourcetype><sourceField>bo_akl_MM_materialInfo_clone.projectNo</sourceField><checkeRepeat>False</checkeRepeat><TreatRepeattype>2</TreatRepeattype></dtField><dtField><destField>bo_akl_MM_materialInfo.maxWaterLevel</destField><sourcetype>tableField</sourcetype><sourceField>bo_akl_MM_materialInfo_clone.maxWaterLevel</sourceField><checkeRepeat>False</checkeRepeat><TreatRepeattype>2</TreatRepeattype></dtField><dtField><destField>bo_akl_MM_materialInfo.minWaterLevel</destField><sourcetype>tableField</sourcetype><sourceField>bo_akl_MM_materialInfo_clone.minWaterLevel</sourceField><checkeRepeat>False</checkeRepeat><TreatRepeattype>2</TreatRepeattype></dtField></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DeleteConditionRelationData" ruleName="删除数据库中的记录" instanceCode="BR_DeleteConditionRelationData1" instanceName="删除数据库中的记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dtChileMaps":[{"orderNo":"1","tableName":"bo_akl_MM_materialInfo_clone","dsWhere":null}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtConditionMaster><TableName>bo_akl_MM_materialInfo_clone</TableName><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition><OrderNo>1</OrderNo></dtConditionMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_form_materialInfo_FormLoadAction(form_materialInfo_窗体加载事件)" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"form_materialInfo_FormLoadAction","isParallelism":"False"},"invokeParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>form_materialInfo_FormLoadAction</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"导入成功!\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"导入成功!"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton6_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>!IsEmpty([bo_akl_MM_materialInfo].[id])</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_OpenComponentReturnData1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage1" />
+    </sequence>
+  </else>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"form_changeRecord","windowName":"修改记录","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"","browerWindowFlag":"","windowContainer":"","heightExp":"","widthExp":"","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":[{"paramName":"materialId","paramType":"expression","paramValue":"[bo_akl_MM_materialInfo].[id]","paramEntityType":"","entityFieldMapping":null}],"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>form_changeRecord</WindowCode><WindowName>修改记录</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle /><IsChooseLanguage>False</IsChooseLanguage><HeightExp /><WidthExp /><IsAsyn>False</IsAsyn></dtMaster><dtParam><WindowVariant>materialId</WindowVariant><SourceType>expression</SourceType><SourceTypeDisplayText>表达式</SourceTypeDisplayText><SourceValue>[bo_akl_MM_materialInfo].[id]</SourceValue></dtParam></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请选择一条物料信息进行查看！\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请选择一条物料信息进行查看！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="JGButton7_OnClick" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_ExportDataToExcel1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="ExportDataToExcel" ruleName="导出数据库数据到Excel" instanceCode="BR_ExportDataToExcel1" instanceName="导出数据库数据到Excel" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-15 14:14:47">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"defaultFileName":"\"物料信息\"","fileType":"xls","items":[{"sheetName":"\"物料信息\"","dataSource":"bo_akl_MM_materialInfo","dataSourceType":"Table","filterCondition":null,"queryParam":null,"mapping":[{"fieldCode":"materialName","excelColName":"物料名称","exportData":true,"orderType":""},{"fieldCode":"bomUnit","excelColName":"BOM单位","exportData":true,"orderType":""},{"fieldCode":"materialNo","excelColName":"物料型号","exportData":true,"orderType":""},{"fieldCode":"materialType","excelColName":"物料类型","exportData":true,"orderType":""},{"fieldCode":"maxSendNum","excelColName":"最大允许发料量","exportData":true,"orderType":""},{"fieldCode":"packNum","excelColName":"包装数量","exportData":true,"orderType":""},{"fieldCode":"remark","excelColName":"备注","exportData":true,"orderType":""},{"fieldCode":"unit","excelColName":"单位","exportData":true,"orderType":""},{"fieldCode":"waterLevel","excelColName":"水位","exportData":true,"orderType":""},{"fieldCode":"cusNo","excelColName":"客户/供应商编号","exportData":true,"orderType":""},{"fieldCode":"ecn","excelColName":"工程变更","exportData":true,"orderType":""},{"fieldCode":"projectNo","excelColName":"所属项目","exportData":true,"orderType":""},{"fieldCode":"maxWaterLevel","excelColName":"最大水位","exportData":true,"orderType":""},{"fieldCode":"minWaterLevel","excelColName":"最小水位","exportData":true,"orderType":""}]}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><DefaultFileName>"物料信息"</DefaultFileName><FileType>xls</FileType></dtMaster><dtItems><ID>c24a0c52a4cc4533a5d768c5708fb56d</ID><SheetName>"物料信息"</SheetName><DataSource>bo_akl_MM_materialInfo</DataSource><DataSourceType>Table</DataSourceType><dsFilterCondition><![CDATA[<NewDataSet />]]]]><![CDATA[></dsFilterCondition></dtItems><dtMapping><FieldCode>materialName</FieldCode><ExcelColName>物料名称</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>c24a0c52a4cc4533a5d768c5708fb56d</ItemID></dtMapping><dtMapping><FieldCode>bomUnit</FieldCode><ExcelColName>BOM单位</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>c24a0c52a4cc4533a5d768c5708fb56d</ItemID></dtMapping><dtMapping><FieldCode>materialNo</FieldCode><ExcelColName>物料型号</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>c24a0c52a4cc4533a5d768c5708fb56d</ItemID></dtMapping><dtMapping><FieldCode>materialType</FieldCode><ExcelColName>物料类型</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>c24a0c52a4cc4533a5d768c5708fb56d</ItemID></dtMapping><dtMapping><FieldCode>maxSendNum</FieldCode><ExcelColName>最大允许发料量</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>c24a0c52a4cc4533a5d768c5708fb56d</ItemID></dtMapping><dtMapping><FieldCode>packNum</FieldCode><ExcelColName>包装数量</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>c24a0c52a4cc4533a5d768c5708fb56d</ItemID></dtMapping><dtMapping><FieldCode>remark</FieldCode><ExcelColName>备注</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>c24a0c52a4cc4533a5d768c5708fb56d</ItemID></dtMapping><dtMapping><FieldCode>unit</FieldCode><ExcelColName>单位</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>c24a0c52a4cc4533a5d768c5708fb56d</ItemID></dtMapping><dtMapping><FieldCode>waterLevel</FieldCode><ExcelColName>水位</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>c24a0c52a4cc4533a5d768c5708fb56d</ItemID></dtMapping><dtMapping><FieldCode>cusNo</FieldCode><ExcelColName>客户/供应商编号</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>c24a0c52a4cc4533a5d768c5708fb56d</ItemID></dtMapping><dtMapping><FieldCode>ecn</FieldCode><ExcelColName>工程变更</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>c24a0c52a4cc4533a5d768c5708fb56d</ItemID></dtMapping><dtMapping><FieldCode>projectNo</FieldCode><ExcelColName>所属项目</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>c24a0c52a4cc4533a5d768c5708fb56d</ItemID></dtMapping><dtMapping><FieldCode>maxWaterLevel</FieldCode><ExcelColName>最大水位</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>c24a0c52a4cc4533a5d768c5708fb56d</ItemID></dtMapping><dtMapping><FieldCode>minWaterLevel</FieldCode><ExcelColName>最小水位</ExcelColName><ExportData>True</ExportData><OrderType /><ItemID>c24a0c52a4cc4533a5d768c5708fb56d</ItemID></dtMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+</Methods>

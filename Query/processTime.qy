@@ -1,0 +1,127 @@
+﻿<Query id="244a707da46544e6abc542433e7d9730" code="processTime" name="计件报表" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-11-24 10:21:36]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-11-24 17:29:52]]></ModificationTime>
+  <VSql><![CDATA[select 
+lu.workerName, --姓名
+lu.workerId, --工号
+pline.pNo,--产线编号
+stLine.planCode, --生产制令号
+stLine.classes,--班次
+stLine.startTime,--日期
+stLine.equName, --产品型号
+case 
+when pline.pType=1  THEN '组装' 
+when pline.pType=2  THEN '焊接'
+when pline.pType=3  THEN '与加工'
+when pline.pType=4  THEN '注塑'
+else  '组装' end as linetype, --工序
+lu.workStation, --工序编号
+lu.workStationName, --工序名称
+prod.proNum, --产量
+case when prot.newBzjjCh<prod.proNum THEN prod.proNum-prot.newBzjjCh 
+else 0 end as ccSum,--超产数量
+prot.newBzjjCh, --定额数量(标准计件产出)
+proHour.phour --输入时间
+from bo_akl_line_start_user as lu 
+left join bo_akl_line_start as stLine on lu.lid=stLine.id --开线
+left join bo_akl_base_productlines as pline on pline.id=stLine.prolineId --产线
+left join bo_akl_base_processtime as prot on prot.pNo=stLine.equName  --计件
+left join 
+(select  plabel.lineStartId as lineId,SUM(plabel.boxPartsNum) as proNum from bo_akl_LM_printProductLabel as plabel
+where YEAR(plabel.printTime)=:inyear and MONTH(plabel.printTime)=:inmonth
+group by plabel.lineStartId) as prod on prod.lineId=lu.lid --产量
+left join (select op.lid,DATEDIFF(min(op.opTime),max(op.opTime),'hour') as phour from bo_akl_line_operation as op
+where YEAR(op.opTime)=:inyear and MONTH(op.opTime)=:inmonth
+group by op.lid) as proHour
+on proHour.lid=lu.lid  --输入时间
+order by lu.sName]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="workerName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="workerId" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="pNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="planCode" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="classes" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="startTime" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="equName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="linetype" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_8" code="workStation" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_9" code="workStationName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_10" code="proNum" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_11" code="ccSum" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_12" code="newBzjjCh" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_13" code="phour" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="inyear" name="年月" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="inmonth" name="年月" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_line_start_user" tokenIndexes="167" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="177" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="198" />
+    <DataItem type="Table" key="bo_akl_base_processtime" tokenIndexes="219" />
+    <DataItem type="Table" key="bo_akl_LM_printProductLabel" tokenIndexes="264" />
+    <DataItem type="Table" key="bo_akl_line_operation" tokenIndexes="354" />
+    <DataItem type="TableField" key="bo_akl_line_start_user.workerName" tokenIndexes="4" />
+    <DataItem type="TableField" key="bo_akl_line_start_user.workerId" tokenIndexes="10" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="16" />
+    <DataItem type="TableField" key="bo_akl_line_start.planCode" tokenIndexes="21" />
+    <DataItem type="TableField" key="bo_akl_line_start.classes" tokenIndexes="27" />
+    <DataItem type="TableField" key="bo_akl_line_start.startTime" tokenIndexes="32" />
+    <DataItem type="TableField" key="bo_akl_line_start.equName" tokenIndexes="37,233" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pType" tokenIndexes="47,59,71,83" />
+    <DataItem type="TableField" key="bo_akl_line_start_user.workStation" tokenIndexes="105" />
+    <DataItem type="TableField" key="bo_akl_line_start_user.workStationName" tokenIndexes="111" />
+    <DataItem type="TableField" key="bo_akl_base_processtime.newBzjjCh" tokenIndexes="127,141,156" />
+    <DataItem type="TableField" key="bo_akl_line_start_user.lid" tokenIndexes="187,315,405" />
+    <DataItem type="TableField" key="bo_akl_line_start.id" tokenIndexes="191" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="208" />
+    <DataItem type="TableField" key="bo_akl_line_start.prolineId" tokenIndexes="212" />
+    <DataItem type="TableField" key="bo_akl_base_processtime.pNo" tokenIndexes="229" />
+    <DataItem type="TableField" key="bo_akl_LM_printProductLabel.lineStartId" tokenIndexes="245,300" />
+    <DataItem type="TableField" key="bo_akl_LM_printProductLabel.boxPartsNum" tokenIndexes="255" />
+    <DataItem type="TableField" key="bo_akl_LM_printProductLabel.printTime" tokenIndexes="276,288" />
+    <DataItem type="TableField" key="bo_akl_line_operation.lid" tokenIndexes="327,390" />
+    <DataItem type="TableField" key="bo_akl_line_operation.opTime" tokenIndexes="335,342,366,378" />
+    <DataItem type="TableField" key="bo_akl_line_start_user.sName" tokenIndexes="414" />
+    <DataItem type="QueryParam" key="inyear" tokenIndexes="280,370" />
+    <DataItem type="QueryParam" key="inmonth" tokenIndexes="292,382" />
+  </DataItems>
+</Query>

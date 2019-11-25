@@ -1,0 +1,79 @@
+﻿<Query id="3a6917afc8984dbfa01d54e88b3bed31" code="I" name="查询项目下的工站信息" type="VSql">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[100466]]></Creator>
+  <CreationTime><![CDATA[2018-06-23 21:56:01]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-08-21 16:25:03]]></ModificationTime>
+  <VSql><![CDATA[SELECT a.id, a.isReal, a.pName, a.pNature, a.workCName, a.workEName, a.wsNo, b.belongProject,b.pNo,c.positionType,a.bookName,a.bookVersion,a.isAutomatic
+FROM bo_akl_base_productling_ws AS a
+LEFT JOIN bo_akl_base_productlines AS b ON a.pNo = b.id
+LEFT JOIN bo_akl_base_positionType AS c ON a.pNature=c.id
+ORDER BY a.wsNo
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="id" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="isReal" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="pName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="pNature" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="workCName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="workEName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="wsNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="belongProject" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_8" code="pNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_9" code="positionType" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_10" code="bookName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_11" code="bookVersion" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_12" code="isAutomatic" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_base_productling_ws" tokenIndexes="63" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="73" />
+    <DataItem type="Table" key="bo_akl_base_positionType" tokenIndexes="95" />
+    <DataItem type="Query" key="a" tokenIndexes="2,7,12,17,22,27,32,49,53,57,67,81,103,115" />
+    <DataItem type="Query" key="b" tokenIndexes="37,41,77,87" />
+    <DataItem type="Query" key="c" tokenIndexes="45,99,107" />
+    <DataItem type="QueryField" key="a.id" tokenIndexes="4" />
+    <DataItem type="QueryField" key="a.isReal" tokenIndexes="9" />
+    <DataItem type="QueryField" key="a.pName" tokenIndexes="14" />
+    <DataItem type="QueryField" key="a.pNature" tokenIndexes="19,105" />
+    <DataItem type="QueryField" key="a.workCName" tokenIndexes="24" />
+    <DataItem type="QueryField" key="a.workEName" tokenIndexes="29" />
+    <DataItem type="QueryField" key="a.wsNo" tokenIndexes="34,117" />
+    <DataItem type="QueryField" key="b.belongProject" tokenIndexes="39" />
+    <DataItem type="QueryField" key="b.pNo" tokenIndexes="43" />
+    <DataItem type="QueryField" key="c.positionType" tokenIndexes="47" />
+    <DataItem type="QueryField" key="a.bookName" tokenIndexes="51" />
+    <DataItem type="QueryField" key="a.bookVersion" tokenIndexes="55" />
+    <DataItem type="QueryField" key="a.isAutomatic" tokenIndexes="59" />
+    <DataItem type="QueryField" key="a.pNo" tokenIndexes="83" />
+    <DataItem type="QueryField" key="b.id" tokenIndexes="89" />
+    <DataItem type="QueryField" key="c.id" tokenIndexes="109" />
+  </DataItems>
+</Query>

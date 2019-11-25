@@ -1,0 +1,254 @@
+﻿<form type="1002" code="newEquipInfo" IsLocked="False">
+  <propertys>
+    <property name="Width"><![CDATA[959]]></property>
+    <property name="Height"><![CDATA[885]]></property>
+    <property name="HeightSet"><![CDATA[StaticHeight]]></property>
+    <property name="LayoutType"><![CDATA[None]]></property>
+    <property name="TableName"><![CDATA[]]></property>
+    <property name="FormLoadAction"><![CDATA[newEquipInfo_FormLoadAction]]></property>
+    <property name="ResizeAction"><![CDATA[]]></property>
+    <property name="FormCloseAction"><![CDATA[]]></property>
+    <property name="FormClosingAction"><![CDATA[]]></property>
+    <property name="BackColor"><![CDATA[]]></property>
+    <property name="Padding"><![CDATA[0, 0, 0, 0]]></property>
+    <property name="Name"><![CDATA[新建设备]]></property>
+    <property name="FormBorderStyle"><![CDATA[FixedSingle]]></property>
+    <property name="WindowState"><![CDATA[Normal]]></property>
+    <property name="MaximizeBox"><![CDATA[True]]></property>
+    <property name="RefResources"><![CDATA[]]></property>
+    <property name="ControlDocInfo"><![CDATA[]]></property>
+    <property name="IsWindowReport"><![CDATA[]]></property>
+    <property name="ThemeVar"><![CDATA[]]></property>
+  </propertys>
+  <controls>
+    <JGTextBox Code="JGTextBox41" LabelText="固定资产编号" PercentHeight="2.9%" PercentWidth="24.5%" Top="108" Left="671" TabIndex="125" TableName="bo_akl_EM_EquipmentInformation" ColumnName="fixedAssetsNo" MultiHeight="0px" MultiWidth="0px" />
+    <JGTextBox Code="eqpipNameTextBox" LabelText="设备名称" Width="260" PercentHeight="2.9%" PercentWidth="27.1%" Top="108" Left="350" TabIndex="4" TableName="bo_akl_EM_EquipmentInformation" ColumnName="equipName" DefaultValue="Null()" IsMust="True" MultiHeight="0px" MultiWidth="0px" />
+    <JGTabControl Code="JGTabControl1" Height="593" Width="918" PercentHeight="67%" PercentWidth="95.7%" Top="137" Left="16" TabIndex="5" TabBarVisible="False" MultiHeight="0px" MultiWidth="0px">
+      <JGTabPage Code="JGTabPage1" LabelText="量检具" TabIndex="1" MultiHeight="0px" MultiWidth="0px">
+        <JGButton Code="JGButton17" LabelText="保存" Width="95" PercentHeight="4.4%" PercentWidth="10.3%" Top="544" Left="401" TabIndex="121" OnClick="saveButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+        <JGLongTextBox Code="noteLongTextBox" LabelText="备注" Width="556" PercentHeight="4.4%" PercentWidth="60.6%" Top="263" Left="334" TabIndex="116" TableName="bo_akl_EM_EquipmentInformation" ColumnName="instrumentRemarks" TextLength="1023" MultiHeight="0px" MultiWidth="0px" />
+        <JGButton Code="downloadButton" LabelText="下载" PercentHeight="4.4%" PercentWidth="5.7%" Top="231" Left="12" TabIndex="113" OnClick="downloadButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+        <JGButton Code="deleteButton" LabelText="删除" PercentHeight="4.4%" PercentWidth="5.7%" Top="231" Left="70" TabIndex="114" BackColor="255, 0, 0" OnClick="deleteButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+        <JGAttachment Code="JGAttachment1" LabelText="图片" PercentHeight="4.4%" PercentWidth="32%" Top="199" Left="8" TabIndex="111" OnFileSelected="JGAttachment1_OnFileSelected" TableName="instrumentPictureForm" FileNameColumn="instrumentPictureName" ColumnName="instrumentPicture" MultiHeight="0px" MultiWidth="0px" />
+        <JGDataGrid Code="JGDataGrid1" LabelText="列表" Width="290" Height="203" PercentHeight="34.3%" PercentWidth="31.6%" Top="263" Left="12" TabIndex="115" FetchMode="paged" PageInfo="{&quot;PageList&quot;:[10,20,30,40,50,5],&quot;DefaultPageSize&quot;:5}" OnSelectionChanged="JGDataGrid1_OnSelectionChanged_1" TableName="instrumentPictureForm" ReadOnly="True" ChooseMode="3" MultiHeight="0px" MultiWidth="0px">
+          <JGTextBoxColumn Code="JGTextBoxColumn8" ColumnName="instrumentPictureName" LabelText="量检具图片" TableName="instrumentPictureForm" Width="230" />
+        </JGDataGrid>
+        <JGIntegerBox Code="JGIntegerBox1" LabelText="校准间隔" PercentHeight="4.4%" PercentWidth="25.6%" Top="501" Left="334" TabIndex="119" OnValueChanged="JGDateTimePicker2_OnValueChanged" TableName="bo_akl_EM_EquipmentInformation" ColumnName="howLongTocheck" DefaultValue="365" IsMust="True" Value="0" MultiHeight="0px" MultiWidth="0px" />
+        <JGDateTimePicker Code="JGDateTimePicker3" LabelText="下次校准日期" PercentHeight="4.4%" PercentWidth="25.6%" Top="502" Left="651" TabIndex="120" TableName="bo_akl_EM_EquipmentInformation" ColumnName="nextCheckDate" ReadOnly="True" MultiHeight="0px" MultiWidth="0px" />
+        <JGDateTimePicker Code="JGDateTimePicker2" LabelText="上次校准日期" Width="275" PercentHeight="4.4%" PercentWidth="30%" Top="501" TabIndex="118" OnValueChanged="JGDateTimePicker2_OnValueChanged" TableName="bo_akl_EM_EquipmentInformation" ColumnName="formCheckDate" DefaultValue="Null()" IsMust="True" MultiHeight="0px" MultiWidth="0px" />
+        <JGLabel Code="checkPlanLabel" LabelText="校准计划" Width="103" PercentHeight="4.1%" PercentWidth="11.2%" Top="472" Left="11" TabIndex="117" FontStyle="微软雅黑, 12pt, style=Bold" MultiHeight="0px" MultiWidth="0px" />
+        <JGTextBox Code="JGTextBox1" LabelText="量检具类别" Width="238" PercentHeight="4.4%" PercentWidth="25.9%" Top="18" Left="652" TabIndex="101" TableName="bo_akl_EM_EquipmentInformation" ColumnName="instrumentType" MultiHeight="0px" MultiWidth="0px" />
+        <JGTextBox Code="JGTextBox3" LabelText="型号" Width="278" PercentHeight="4.4%" PercentWidth="30.3%" Top="61" Left="8" TabIndex="102" TableName="bo_akl_EM_EquipmentInformation" ColumnName="instrumentModel" MultiHeight="0px" MultiWidth="0px" />
+        <JGTextBox Code="JGTextBox4" LabelText="出厂编号" Width="256" PercentHeight="4.4%" PercentWidth="27.9%" Top="61" Left="338" TabIndex="103" TableName="bo_akl_EM_EquipmentInformation" ColumnName="instrumentFactoryNumber" MultiHeight="0px" MultiWidth="0px" />
+        <JGTextBox Code="JGTextBox5" LabelText="制造商" Width="238" PercentHeight="4.4%" PercentWidth="25.9%" Top="61" Left="652" TabIndex="104" TableName="bo_akl_EM_EquipmentInformation" ColumnName="instrumentManufacturer" MultiHeight="0px" MultiWidth="0px" />
+        <JGTextBox Code="JGTextBox6" LabelText="测量范围" PercentHeight="4.4%" PercentWidth="25.6%" Top="106" Left="655" TabIndex="107" TableName="bo_akl_EM_EquipmentInformation" ColumnName="instrumentMeasuringRange" MultiHeight="0px" MultiWidth="0px" />
+        <JGTextBox Code="JGTextBox7" LabelText="图纸编号" Width="275" PercentHeight="4.4%" PercentWidth="30%" Top="106" Left="11" TabIndex="105" TableName="bo_akl_EM_EquipmentInformation" ColumnName="instrumentDrawingNumber" MultiHeight="0px" MultiWidth="0px" />
+        <JGTextBox Code="JGTextBox8" LabelText="分辨力" Width="256" PercentHeight="4.4%" PercentWidth="27.9%" Top="106" Left="338" TabIndex="106" TableName="bo_akl_EM_EquipmentInformation" ColumnName="instrumentResolution" MultiHeight="0px" MultiWidth="0px" />
+        <JGTextBox Code="JGTextBox9" LabelText="使用部门" Width="238" PercentHeight="4.4%" PercentWidth="25.9%" Top="150" Left="652" TabIndex="110" TableName="bo_akl_EM_EquipmentInformation" ColumnName="instrumentUseDepartment" MultiHeight="0px" MultiWidth="0px" />
+        <JGTextBox Code="JGTextBox10" LabelText="使用地点" Width="278" PercentHeight="4.4%" PercentWidth="30.3%" Top="150" Left="8" TabIndex="108" TableName="bo_akl_EM_EquipmentInformation" ColumnName="instrumentPlaceOfUse" MultiHeight="0px" MultiWidth="0px" />
+        <JGTextBox Code="JGTextBox11" LabelText="保管人" Width="256" PercentHeight="4.4%" PercentWidth="27.9%" Top="150" Left="338" TabIndex="109" TableName="bo_akl_EM_EquipmentInformation" ColumnName="instrumentCustodian" MultiHeight="0px" MultiWidth="0px" />
+        <JGDateTimePicker Code="JGDateTimePicker1" LabelText="采购日期" Width="259" PercentHeight="4.4%" PercentWidth="28.2%" Top="199" Left="335" TabIndex="112" TableName="bo_akl_EM_EquipmentInformation" ColumnName="instrumentDateOfProcurement" MultiHeight="0px" MultiWidth="0px" />
+        <JGRadioGroup Code="JGRadioGroup2" LabelText="分类" Width="377" PercentHeight="4.4%" PercentWidth="41.1%" Top="18" Left="11" TabIndex="100" TableName="bo_akl_EM_EquipmentInformation" IDColumnName="instrumentClassification" DropDownSource="{&quot;DataSourceSetting&quot;:{&quot;DataConfig&quot;:{&quot;DefaultSaveColumn&quot;:null,&quot;DefaultShowColumn&quot;:null,&quot;SourceType&quot;:null,&quot;SourceID&quot;:null,&quot;SourceName&quot;:null,&quot;MapTable&quot;:null,&quot;SaveColumn&quot;:null,&quot;ShowColumn&quot;:null,&quot;SortField&quot;:null,&quot;SortType&quot;:null,&quot;MaxRecCount&quot;:0,&quot;QueryField&quot;:null,&quot;QueryMethod&quot;:null,&quot;IsPickListFields&quot;:false,&quot;ConstData&quot;:[{&quot;id&quot;:&quot;量具仪器&quot;,&quot;text&quot;:&quot;量具仪器&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;检具&quot;,&quot;text&quot;:&quot;检具&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;塞规&quot;,&quot;text&quot;:&quot;塞规&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;测量夹具&quot;,&quot;text&quot;:&quot;测量夹具&quot;,&quot;selected&quot;:&quot;False&quot;}],&quot;SqlQueryConstData&quot;:null,&quot;EntityConstData&quot;:null,&quot;Condition&quot;:null,&quot;QueryParam&quot;:null,&quot;PickListFields&quot;:null},&quot;DataSourceType&quot;:&quot;CustomConst&quot;}}" MultiHeight="0px" MultiWidth="0px" />
+      </JGTabPage>
+      <JGTabPage Code="JGTabPage2" LabelText="产线设备" TabIndex="2" MultiHeight="0px" MultiWidth="0px">
+        <JGTabControl Code="JGTabControl2" Height="500" Width="895" PercentHeight="84.5%" PercentWidth="97.5%" Top="50" Left="11" TabIndex="201" MultiHeight="0px" MultiWidth="0px">
+          <JGTabPage Code="JGTabPage7" LabelText="设备信息_设备维保计划" TabIndex="1" MultiHeight="0px" MultiWidth="0px">
+            <JGDataGrid Code="JGDataGrid6" LabelText="列表" Width="866" Height="370" PercentHeight="370%" PercentWidth="433%" Top="72" Left="3" TabIndex="4" PageInfo="{&quot;PageList&quot;:[10,20,30,40,50,5],&quot;DefaultPageSize&quot;:5}" OnSelectionChanged="repairPlanDataGrid_OnSelectionChanged" TableName="bo_akl_EM_EIMaintenancePlan" ReadOnly="True" ChooseMode="3" MultiHeight="0px" MultiWidth="0px">
+              <JGTextBoxColumn AllowSort="True" Code="JGTextBoxColumn1_1" ColumnName="inspectionProject" LabelText="检查项目" TableName="bo_akl_EM_EIMaintenancePlan" Width="173" />
+              <JGTextBoxColumn Code="JGTextBoxColumn2_1" ColumnName="maintenanceContent" LabelText="维护保养内容" TableName="bo_akl_EM_EIMaintenancePlan" Width="282" />
+              <JGComboBoxColumn Code="JGComboBoxColumn1_1" ColumnName="cycle" DropDownSource="{&quot;DataSourceSetting&quot;:{&quot;DataConfig&quot;:{&quot;DefaultSaveColumn&quot;:null,&quot;DefaultShowColumn&quot;:null,&quot;SourceType&quot;:null,&quot;SourceID&quot;:null,&quot;SourceName&quot;:null,&quot;MapTable&quot;:null,&quot;SaveColumn&quot;:null,&quot;ShowColumn&quot;:null,&quot;SortField&quot;:null,&quot;SortType&quot;:null,&quot;MaxRecCount&quot;:0,&quot;QueryField&quot;:null,&quot;QueryMethod&quot;:null,&quot;IsPickListFields&quot;:false,&quot;ConstData&quot;:[{&quot;id&quot;:&quot;每年&quot;,&quot;text&quot;:&quot;每年&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;每半年&quot;,&quot;text&quot;:&quot;每半年&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;每季度&quot;,&quot;text&quot;:&quot;每季度&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;每月&quot;,&quot;text&quot;:&quot;每月&quot;,&quot;selected&quot;:&quot;False&quot;}],&quot;SqlQueryConstData&quot;:null,&quot;EntityConstData&quot;:null,&quot;Condition&quot;:null,&quot;QueryParam&quot;:null,&quot;PickListFields&quot;:null},&quot;DataSourceType&quot;:&quot;CustomConst&quot;}}" IDColumnName="cycle" LabelText="周期" TableName="bo_akl_EM_EIMaintenancePlan" />
+            </JGDataGrid>
+            <JGButton Code="JGButton9" LabelText="修改" PercentHeight="26%" PercentWidth="26%" Top="40" Left="61" TabIndex="2" OnClick="changeButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+            <JGButton Code="JGButton11" LabelText="新增" PercentHeight="26%" PercentWidth="26%" Top="40" Left="3" TabIndex="1" OnClick="newRepairPlanButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+            <JGButton Code="JGButton12" LabelText="删除" PercentHeight="26%" PercentWidth="26%" Top="40" Left="119" TabIndex="3" Visible="False" BackColor="255, 0, 0" OnClick="deleteRepairPlanButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+          </JGTabPage>
+          <JGTabPage Code="JGTabPage8" LabelText="设备信息_点检" TabIndex="2" MultiHeight="0px" MultiWidth="0px">
+            <JGDataGrid Code="JGDataGrid4" LabelText="列表" Width="866" Height="370" PercentHeight="370%" PercentWidth="433%" Top="69" Left="4" TabIndex="4" PageInfo="{&quot;PageList&quot;:[10,20,30,40,50,5],&quot;DefaultPageSize&quot;:5}" OnSelectionChanged="JGDataGrid1_OnSelectionChanged" TableName="bo_akl_EM_EIChecklist" ReadOnly="True" ChooseMode="3" MultiHeight="0px" MultiWidth="0px">
+              <JGTextBoxColumn Code="JGTextBoxColumn1_3" ColumnName="pointCheckContent" LabelText="点检内容" TableName="bo_akl_EM_EIChecklist" Width="199" />
+              <JGTextBoxColumn Code="JGTextBoxColumn2_3" ColumnName="pointCheckMethod" LabelText="点检方法" TableName="bo_akl_EM_EIChecklist" Width="185" />
+              <JGTextBoxColumn Code="JGTextBoxColumn3_1" ColumnName="inspectionStandard" LabelText="检查标准" TableName="bo_akl_EM_EIChecklist" Width="189" />
+              <JGComboBoxColumn Code="JGComboBoxColumn1_2" ColumnName="pointCheckCycle" DropDownSource="{&quot;DataSourceSetting&quot;:{&quot;DataConfig&quot;:{&quot;DefaultSaveColumn&quot;:null,&quot;DefaultShowColumn&quot;:null,&quot;SourceType&quot;:null,&quot;SourceID&quot;:null,&quot;SourceName&quot;:null,&quot;MapTable&quot;:null,&quot;SaveColumn&quot;:null,&quot;ShowColumn&quot;:null,&quot;SortField&quot;:null,&quot;SortType&quot;:null,&quot;MaxRecCount&quot;:0,&quot;QueryField&quot;:null,&quot;QueryMethod&quot;:null,&quot;IsPickListFields&quot;:false,&quot;ConstData&quot;:[{&quot;id&quot;:&quot;每天&quot;,&quot;text&quot;:&quot;每天&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;每周&quot;,&quot;text&quot;:&quot;每周&quot;,&quot;selected&quot;:&quot;False&quot;}],&quot;SqlQueryConstData&quot;:null,&quot;EntityConstData&quot;:null,&quot;Condition&quot;:null,&quot;QueryParam&quot;:null,&quot;PickListFields&quot;:null},&quot;DataSourceType&quot;:&quot;CustomConst&quot;}}" IDColumnName="pointCheckCycle" LabelText="点检周期" TableName="bo_akl_EM_EIChecklist" />
+            </JGDataGrid>
+            <JGButton Code="JGButton13" LabelText="修改" PercentHeight="26%" PercentWidth="26%" Top="37" Left="61" TabIndex="2" OnClick="JGButton13_OnClick" MultiHeight="0px" MultiWidth="0px" />
+            <JGButton Code="JGButton14" LabelText="删除" PercentHeight="26%" PercentWidth="26%" Top="37" Left="119" TabIndex="3" Visible="False" BackColor="255, 0, 0" OnClick="deletePointCheckButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+            <JGButton Code="JGButton15" LabelText="新增" PercentHeight="26%" PercentWidth="26%" Top="37" Left="3" TabIndex="1" OnClick="newPointCheckButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+          </JGTabPage>
+          <JGTabPage Code="JGTabPage12" LabelText="载具检查项" TabIndex="127" MultiHeight="0px" MultiWidth="0px">
+            <JGDataGrid Code="JGDataGrid5" LabelText="列表" Width="863" Height="371" PercentHeight="371%" PercentWidth="431.5%" Top="74" Left="4" TabIndex="130" TableName="bo_akl_EM_carrierCheckItem" ReadOnly="True" MultiHeight="0px" MultiWidth="0px">
+              <JGTextBoxColumn Code="JGTextBoxColumn7" ColumnName="checkItem" LabelText="检查项目" TableName="bo_akl_EM_carrierCheckItem" Width="200" />
+              <JGTextBoxColumn Code="JGTextBoxColumn9" ColumnName="checkTool" LabelText="检查工具" TableName="bo_akl_EM_carrierCheckItem" />
+              <JGTextBoxColumn Code="JGTextBoxColumn11" ColumnName="testNum" LabelText="标准值" TableName="bo_akl_EM_carrierCheckItem" />
+              <JGTextBoxColumn Code="JGTextBoxColumn12" ColumnName="testMin" LabelText="最小值" TableName="bo_akl_EM_carrierCheckItem" />
+              <JGTextBoxColumn Code="JGTextBoxColumn13" ColumnName="testMax" LabelText="最大值" TableName="bo_akl_EM_carrierCheckItem" />
+            </JGDataGrid>
+            <JGButton Code="JGButton19" LabelText="修改" PercentHeight="26%" PercentWidth="26%" Top="41" Left="61" TabIndex="129" OnClick="JGButton18_OnClick" MultiHeight="0px" MultiWidth="0px" />
+            <JGButton Code="JGButton18" LabelText="新建" PercentHeight="26%" PercentWidth="26%" Top="41" Left="3" TabIndex="128" OnClick="JGButton18_OnClick" MultiHeight="0px" MultiWidth="0px" />
+          </JGTabPage>
+        </JGTabControl>
+        <JGButton Code="saveButton" LabelText="保存" Width="95" PercentHeight="4.4%" PercentWidth="10.3%" Top="12" Left="401" TabIndex="200" OnClick="saveButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+      </JGTabPage>
+      <JGTabPage Code="JGTabPage3" LabelText="载具" TabIndex="3" MultiHeight="0px" MultiWidth="0px">
+        <JGTabControl Code="JGTabControl5" Height="302" Width="887" PercentHeight="51%" PercentWidth="96.6%" Top="290" Left="15" TabIndex="146" MultiHeight="0px" MultiWidth="0px">
+          <JGTabPage Code="JGTabPage15" LabelText="设备维保计划" TabIndex="147" MultiHeight="0px" MultiWidth="0px">
+            <JGDataGrid Code="JGDataGrid8" LabelText="列表" Width="866" Height="217" PercentHeight="217%" PercentWidth="433%" Top="42" Left="9" TabIndex="4" PageInfo="{&quot;PageList&quot;:[10,20,30,40,50,5],&quot;DefaultPageSize&quot;:5}" OnSelectionChanged="repairPlanDataGrid_OnSelectionChanged" TableName="bo_akl_EM_EIMaintenancePlan" ReadOnly="True" ChooseMode="3" MultiHeight="0px" MultiWidth="0px">
+              <JGTextBoxColumn AllowSort="True" Code="JGTextBoxColumn10" ColumnName="inspectionProject" LabelText="检查项目" TableName="bo_akl_EM_EIMaintenancePlan" Width="173" />
+              <JGTextBoxColumn Code="JGTextBoxColumn14" ColumnName="maintenanceContent" LabelText="维护保养内容" TableName="bo_akl_EM_EIMaintenancePlan" Width="282" />
+              <JGComboBoxColumn Code="JGComboBoxColumn2" ColumnName="cycle" DropDownSource="{&quot;DataSourceSetting&quot;:{&quot;DataConfig&quot;:{&quot;DefaultSaveColumn&quot;:null,&quot;DefaultShowColumn&quot;:null,&quot;SourceType&quot;:null,&quot;SourceID&quot;:null,&quot;SourceName&quot;:null,&quot;MapTable&quot;:null,&quot;SaveColumn&quot;:null,&quot;ShowColumn&quot;:null,&quot;SortField&quot;:null,&quot;SortType&quot;:null,&quot;MaxRecCount&quot;:0,&quot;QueryField&quot;:null,&quot;QueryMethod&quot;:null,&quot;IsPickListFields&quot;:false,&quot;ConstData&quot;:[{&quot;id&quot;:&quot;每年&quot;,&quot;text&quot;:&quot;每年&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;每半年&quot;,&quot;text&quot;:&quot;每半年&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;每季度&quot;,&quot;text&quot;:&quot;每季度&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;每月&quot;,&quot;text&quot;:&quot;每月&quot;,&quot;selected&quot;:&quot;False&quot;}],&quot;SqlQueryConstData&quot;:null,&quot;EntityConstData&quot;:null,&quot;Condition&quot;:null,&quot;QueryParam&quot;:null,&quot;PickListFields&quot;:null},&quot;DataSourceType&quot;:&quot;CustomConst&quot;}}" IDColumnName="cycle" LabelText="周期" TableName="bo_akl_EM_EIMaintenancePlan" Width="192" />
+            </JGDataGrid>
+            <JGButton Code="JGButton25" LabelText="删除" PercentHeight="26%" PercentWidth="26%" Top="10" Left="125" TabIndex="3" Visible="False" BackColor="255, 0, 0" OnClick="deleteRepairPlanButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+            <JGButton Code="JGButton24" LabelText="修改" PercentHeight="26%" PercentWidth="26%" Top="10" Left="67" TabIndex="2" OnClick="changeButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+            <JGButton Code="JGButton23" LabelText="新增" PercentHeight="26%" PercentWidth="26%" Top="10" Left="9" TabIndex="1" OnClick="newRepairPlanButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+          </JGTabPage>
+        </JGTabControl>
+        <JGComboBox Code="JGComboBox1" LabelText="是否报废" Width="286" PercentHeight="4.4%" PercentWidth="31.2%" Top="157" Left="616" TabIndex="126" TableName="bo_akl_EM_EquipmentInformation" IDColumnName="isScrap" ColumnName="isScrap" DropDownSource="{&quot;DataSourceSetting&quot;:{&quot;DataConfig&quot;:{&quot;DefaultSaveColumn&quot;:null,&quot;DefaultShowColumn&quot;:null,&quot;SourceType&quot;:null,&quot;SourceID&quot;:null,&quot;SourceName&quot;:null,&quot;MapTable&quot;:null,&quot;SaveColumn&quot;:null,&quot;ShowColumn&quot;:null,&quot;SortField&quot;:null,&quot;SortType&quot;:null,&quot;MaxRecCount&quot;:0,&quot;QueryField&quot;:null,&quot;QueryMethod&quot;:null,&quot;IsPickListFields&quot;:false,&quot;ConstData&quot;:[{&quot;id&quot;:&quot;是&quot;,&quot;text&quot;:&quot;是&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;否&quot;,&quot;text&quot;:&quot;否&quot;,&quot;selected&quot;:&quot;False&quot;}],&quot;SqlQueryConstData&quot;:null,&quot;EntityConstData&quot;:null,&quot;Condition&quot;:null,&quot;QueryParam&quot;:null,&quot;PickListFields&quot;:null},&quot;DataSourceType&quot;:&quot;CustomConst&quot;}}" MultiHeight="0px" MultiWidth="0px" />
+        <JGBaseDictBox Code="JGBaseDictBox3" LabelText="产线设备编号" Width="277" PercentHeight="4.4%" PercentWidth="30.2%" Top="158" Left="11" TabIndex="79" OpenModuleAction="JGBaseDictBox3_OpenModuleAction" TableName="bo_akl_EM_EquipmentInformation" IDColumnName="productionLineEquipmentNo" ColumnName="productionLineEquipmentNo" IsMust="True" MultiHeight="0px" MultiWidth="0px" />
+        <JGTextBox Code="JGTextBox13" LabelText="产线设备名称" Width="290" PercentHeight="4.4%" PercentWidth="31.6%" Top="158" Left="307" TabIndex="80" TableName="bo_akl_EM_EquipmentInformation" ColumnName="productionLineEquipmentName" ReadOnly="True" MultiHeight="0px" MultiWidth="0px" />
+        <JGButton Code="JGButton1" LabelText="保存" Width="95" PercentHeight="4.4%" PercentWidth="10.3%" Top="210" Left="115" TabIndex="311" OnClick="saveButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+        <JGLabel Code="JGLabel3" LabelText="校准计划" Width="103" PercentHeight="4.1%" PercentWidth="11.2%" Top="210" Left="27" TabIndex="307" FontStyle="微软雅黑, 12pt, style=Bold" MultiHeight="0px" MultiWidth="0px" />
+        <JGDateTimePicker Code="JGDateTimePicker7" LabelText="上次校准日期" Width="275" PercentHeight="4.4%" PercentWidth="30%" Top="252" Left="15" TabIndex="308" OnValueChanged="JGDateTimePicker7_OnValueChanged" TableName="bo_akl_EM_EquipmentInformation" ColumnName="formCheckDate" DefaultValue="Null()" IsMust="True" MultiHeight="0px" MultiWidth="0px" />
+        <JGDateTimePicker Code="JGDateTimePicker6" LabelText="下次校准日期" Width="248" PercentHeight="4.4%" PercentWidth="27%" Top="252" Left="561" TabIndex="310" TableName="bo_akl_EM_EquipmentInformation" ColumnName="nextCheckDate" DefaultValue="Null()" ReadOnly="True" MultiHeight="0px" MultiWidth="0px" />
+        <JGIntegerBox Code="JGIntegerBox2" LabelText="校准间隔" PercentHeight="4.4%" PercentWidth="25.6%" Top="252" Left="307" TabIndex="309" OnValueChanged="JGDateTimePicker7_OnValueChanged" TableName="bo_akl_EM_EquipmentInformation" ColumnName="howLongTocheck" DefaultValue="365" IsMust="True" Value="0" MultiHeight="0px" MultiWidth="0px" />
+        <JGTextBox Code="JGTextBox14" LabelText="载具图纸编号" Width="277" PercentHeight="4.4%" PercentWidth="30.2%" Top="17" Left="11" TabIndex="300" TableName="bo_akl_EM_EquipmentInformation" ColumnName="toolingDrawingNumber" MultiHeight="0px" MultiWidth="0px" />
+        <JGTextBox Code="JGTextBox15" LabelText="载具适用产品编号" Width="595" PercentHeight="4.4%" PercentWidth="64.8%" Top="17" Left="307" TabIndex="301" LabelWidth="110" TableName="bo_akl_EM_EquipmentInformation" ColumnName="toolingApplicableProductNumber" MultiHeight="0px" MultiWidth="0px" />
+        <JGTextBox Code="JGTextBox16" LabelText="载具适用产品类型" Width="595" PercentHeight="4.4%" PercentWidth="64.8%" Top="63" Left="307" TabIndex="303" LabelWidth="110" TableName="bo_akl_EM_EquipmentInformation" ColumnName="toolingApplicableProductType" MultiHeight="0px" MultiWidth="0px" />
+        <JGTextBox Code="JGTextBox17" LabelText="载具状态" Width="277" PercentHeight="4.4%" PercentWidth="30.2%" Top="63" Left="11" TabIndex="302" TableName="bo_akl_EM_EquipmentInformation" ColumnName="toolingState" MultiHeight="0px" MultiWidth="0px" />
+        <JGDateTimePicker Code="JGDateTimePicker5" LabelText="载具购入日期" Width="278" PercentHeight="4.4%" PercentWidth="30.3%" Top="111" Left="11" TabIndex="304" TableName="bo_akl_EM_EquipmentInformation" ColumnName="toolingPurchaseDate" MultiHeight="0px" MultiWidth="0px" />
+        <JGTextBox Code="JGTextBox18" LabelText="载具图纸版号" Width="286" PercentHeight="4.4%" PercentWidth="31.2%" Top="111" Left="616" TabIndex="306" TableName="bo_akl_EM_EquipmentInformation" ColumnName="toolingDrawingVersionNumber" MultiHeight="0px" MultiWidth="0px" />
+        <JGTextBox Code="JGTextBox19" LabelText="载具适用工序" Width="290" PercentHeight="4.4%" PercentWidth="31.6%" Top="111" Left="307" TabIndex="305" TableName="bo_akl_EM_EquipmentInformation" ColumnName="toolingApplicableProcess" MultiHeight="0px" MultiWidth="0px" />
+      </JGTabPage>
+      <JGTabPage Code="JGTabPage4" LabelText="注塑模具" TabIndex="4" MultiHeight="0px" MultiWidth="0px">
+        <JGIntegerBox Code="JGIntegerBox10" LabelText="保养间隔数" PercentHeight="4.4%" PercentWidth="25.6%" Top="233" Left="348" TabIndex="70" OnValueChanged="JGIntegerBox10_OnValueChanged" TableName="bo_akl_EM_EquipmentInformation" ColumnName="upkeepInterval" IsMust="True" Value="0" MultiHeight="0px" MultiWidth="0px" />
+        <JGIntegerBox Code="JGIntegerBox9" LabelText="寿命警报范围" PercentHeight="4.4%" PercentWidth="25.6%" Top="134" TabIndex="70" TableName="bo_akl_EM_EquipmentInformation" ColumnName="lifeAlarmRange" ToolTip="&quot;月&quot;" IsMust="True" Value="0" MultiHeight="0px" MultiWidth="0px" />
+        <JGFloatBox Code="JGFloatBox1" LabelText="模具重量" PercentHeight="4.4%" PercentWidth="25.6%" Top="11" Left="348" TabIndex="80" TableName="bo_akl_EM_EquipmentInformation" ColumnName="mouldWeight" IsMust="True" MultiHeight="0px" MultiWidth="0px" />
+        <JGLabel Code="JGLabel2" LabelText="保养计划" Width="103" PercentHeight="4.1%" PercentWidth="11.2%" Top="196" TabIndex="307" FontStyle="微软雅黑, 12pt, style=Bold" MultiHeight="0px" MultiWidth="0px" />
+        <JGIntegerBox Code="JGIntegerBox8" LabelText="上次保养数" PercentHeight="4.4%" PercentWidth="25.6%" Top="235" TabIndex="70" TableName="bo_akl_EM_EquipmentInformation" ColumnName="lastUpkeepNum" ReadOnly="True" Value="0" MultiHeight="0px" MultiWidth="0px" />
+        <JGTextBox Code="JGTextBox20" LabelText="模具尺寸" PercentHeight="4.4%" PercentWidth="25.6%" Top="11" TabIndex="64" TableName="bo_akl_EM_EquipmentInformation" ColumnName="mouldSize" IsMust="True" MultiHeight="0px" MultiWidth="0px" />
+        <JGDateTimePicker Code="JGDateTimePicker4" LabelText="制造日期" PercentHeight="4.4%" PercentWidth="25.6%" Top="11" Left="680" TabIndex="66" TableName="bo_akl_EM_EquipmentInformation" ColumnName="manufactureDate" IsMust="True" MultiHeight="0px" MultiWidth="0px" />
+        <JGIntegerBox Code="JGIntegerBox7" LabelText="寿命" PercentHeight="4.4%" PercentWidth="25.6%" Top="52" Left="348" TabIndex="69" OnValueChanged="JGIntegerBox7_OnValueChanged" TableName="bo_akl_EM_EquipmentInformation" ColumnName="lifetime" IsMust="True" Value="0" MultiHeight="0px" MultiWidth="0px" />
+        <JGIntegerBox Code="JGIntegerBox6" LabelText="穴数" PercentHeight="4.4%" PercentWidth="25.6%" Top="52" TabIndex="70" OnValueChanged="JGIntegerBox7_OnValueChanged" TableName="bo_akl_EM_EquipmentInformation" ColumnName="hillNum" IsMust="True" Value="0" MultiHeight="0px" MultiWidth="0px" />
+        <JGIntegerBox Code="JGIntegerBox5" LabelText="已生产数" PercentHeight="4.4%" PercentWidth="25.6%" Top="52" Left="680" TabIndex="70" OnValueChanged="JGIntegerBox7_OnValueChanged" TableName="bo_akl_EM_EquipmentInformation" ColumnName="hasProducedNum" DefaultValue="0" IsMust="True" Value="0" MultiHeight="0px" MultiWidth="0px" />
+        <JGIntegerBox Code="JGIntegerBox4" LabelText="剩余数" PercentHeight="4.4%" PercentWidth="25.6%" Top="93" TabIndex="70" TableName="bo_akl_EM_EquipmentInformation" ColumnName="residueNum" ReadOnly="True" Value="0" MultiHeight="0px" MultiWidth="0px" />
+        <JGBaseDictBox Code="JGBaseDictBox1" LabelText="客户" PercentHeight="4.4%" PercentWidth="25.6%" Top="93" Left="348" TabIndex="67" OpenModuleAction="JGBaseDictBox1_OpenModuleAction" TableName="bo_akl_EM_EquipmentInformation" IDColumnName="clientName" ColumnName="clientName" IsMust="True" MultiHeight="0px" MultiWidth="0px" />
+        <JGTextBox Code="JGTextBox2" LabelText="客户资产" PercentHeight="4.4%" PercentWidth="25.6%" Top="93" Left="680" TabIndex="65" TableName="bo_akl_EM_EquipmentInformation" ColumnName="clientAsset" IsMust="True" MultiHeight="0px" MultiWidth="0px" />
+        <JGIntegerBox Code="JGIntegerBox3" LabelText="下次保养数" PercentHeight="4.4%" PercentWidth="25.6%" Top="235" Left="680" TabIndex="70" TableName="bo_akl_EM_EquipmentInformation" ColumnName="nextUpkeepNum" ReadOnly="True" Value="0" MultiHeight="0px" MultiWidth="0px" />
+        <JGButton Code="JGButton2" LabelText="保存" Width="95" PercentHeight="4.4%" PercentWidth="10.3%" Top="300" Left="401" TabIndex="400" OnClick="saveButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+      </JGTabPage>
+      <JGTabPage Code="JGTabPage5" LabelText="公共设备" TabIndex="80" MultiHeight="0px" MultiWidth="0px">
+        <JGTabControl Code="JGTabControl4" Height="467" Width="910" PercentHeight="78.9%" PercentWidth="99.1%" Top="114" Left="8" TabIndex="136" MultiHeight="0px" MultiWidth="0px">
+          <JGTabPage Code="JGTabPage13" LabelText="设备维保计划" TabIndex="137" MultiHeight="0px" MultiWidth="0px">
+            <JGDataGrid Code="JGDataGrid7" LabelText="列表" Width="866" Height="384" PercentHeight="384%" PercentWidth="433%" Top="56" Left="16" TabIndex="85" TableName="bo_akl_EM_EIMaintenancePlan" ReadOnly="True" ChooseMode="3" MultiHeight="0px" MultiWidth="0px">
+              <JGTextBoxColumn Code="JGTextBoxColumn10_1" ColumnName="inspectionProject" LabelText="检查项目" TableName="bo_akl_EM_EIMaintenancePlan" Width="302" />
+              <JGTextBoxColumn Code="JGTextBoxColumn14_1" ColumnName="maintenanceContent" LabelText="维护保养内容" TableName="bo_akl_EM_EIMaintenancePlan" Width="306" />
+              <JGTextBoxColumn Code="JGTextBoxColumn15_1" ColumnName="cycle" LabelText="周期" TableName="bo_akl_EM_EIMaintenancePlan" Width="173" />
+            </JGDataGrid>
+            <JGButton Code="JGButton22" LabelText="删除" PercentHeight="26%" PercentWidth="26%" Top="24" Left="132" TabIndex="88" BackColor="255, 0, 0" OnClick="deleteRepairPlanButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+            <JGButton Code="JGButton21" LabelText="修改" Width="51" PercentHeight="26%" PercentWidth="25.5%" Top="24" Left="75" TabIndex="87" OnClick="changeButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+            <JGButton Code="JGButton20" LabelText="新增" Width="53" PercentHeight="26%" PercentWidth="26.5%" Top="24" Left="16" TabIndex="86" OnClick="newRepairPlanButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+          </JGTabPage>
+          <JGTabPage Code="JGTabPage14" LabelText="设备信息_点检" TabIndex="138" MultiHeight="0px" MultiWidth="0px">
+            <JGDataGrid Code="JGDataGrid2" LabelText="列表" Width="866" Height="370" PercentHeight="370%" PercentWidth="433%" Top="54" Left="16" TabIndex="4" PageInfo="{&quot;PageList&quot;:[10,20,30,40,50,5],&quot;DefaultPageSize&quot;:5}" OnSelectionChanged="JGDataGrid1_OnSelectionChanged" TableName="bo_akl_EM_EIChecklist" ReadOnly="True" ChooseMode="3" MultiHeight="0px" MultiWidth="0px">
+              <JGTextBoxColumn Code="JGTextBoxColumn4" ColumnName="pointCheckContent" LabelText="点检内容" TableName="bo_akl_EM_EIChecklist" Width="199" />
+              <JGTextBoxColumn Code="JGTextBoxColumn5" ColumnName="pointCheckMethod" LabelText="点检方法" TableName="bo_akl_EM_EIChecklist" Width="185" />
+              <JGTextBoxColumn Code="JGTextBoxColumn6" ColumnName="inspectionStandard" LabelText="检查标准" TableName="bo_akl_EM_EIChecklist" Width="189" />
+              <JGComboBoxColumn Code="JGComboBoxColumn1" ColumnName="pointCheckCycle" DropDownSource="{&quot;DataSourceSetting&quot;:{&quot;DataConfig&quot;:{&quot;DefaultSaveColumn&quot;:null,&quot;DefaultShowColumn&quot;:null,&quot;SourceType&quot;:null,&quot;SourceID&quot;:null,&quot;SourceName&quot;:null,&quot;MapTable&quot;:null,&quot;SaveColumn&quot;:null,&quot;ShowColumn&quot;:null,&quot;SortField&quot;:null,&quot;SortType&quot;:null,&quot;MaxRecCount&quot;:0,&quot;QueryField&quot;:null,&quot;QueryMethod&quot;:null,&quot;IsPickListFields&quot;:false,&quot;ConstData&quot;:[{&quot;id&quot;:&quot;每天&quot;,&quot;text&quot;:&quot;每天&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;每周&quot;,&quot;text&quot;:&quot;每周&quot;,&quot;selected&quot;:&quot;False&quot;}],&quot;SqlQueryConstData&quot;:null,&quot;EntityConstData&quot;:null,&quot;Condition&quot;:null,&quot;QueryParam&quot;:null,&quot;PickListFields&quot;:null},&quot;DataSourceType&quot;:&quot;CustomConst&quot;}}" IDColumnName="pointCheckCycle" LabelText="点检周期" TableName="bo_akl_EM_EIChecklist" Width="130" />
+            </JGDataGrid>
+            <JGButton Code="JGButton5" LabelText="删除" PercentHeight="26%" PercentWidth="26%" Top="22" Left="131" TabIndex="3" Visible="False" BackColor="255, 0, 0" OnClick="deletePointCheckButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+            <JGButton Code="JGButton4" LabelText="修改" PercentHeight="26%" PercentWidth="26%" Top="22" Left="73" TabIndex="2" OnClick="JGButton13_OnClick" MultiHeight="0px" MultiWidth="0px" />
+            <JGButton Code="JGButton3" LabelText="新增" PercentHeight="26%" PercentWidth="26%" Top="22" Left="15" TabIndex="1" OnClick="newPointCheckButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+          </JGTabPage>
+        </JGTabControl>
+        <JGButton Code="JGButton6" LabelText="保存" Width="95" PercentHeight="4.4%" PercentWidth="10.3%" Top="73" Left="401" TabIndex="400" OnClick="saveButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+        <JGTextBox Code="JGTextBox21" LabelText="使用时间" Width="452" PercentHeight="4.4%" PercentWidth="49.2%" Top="3" Left="466" TabIndex="83" TableName="bo_akl_EM_EquipmentInformation" ColumnName="useTime" MultiHeight="0px" MultiWidth="0px" />
+        <JGTextBox Code="JGTextBox12" LabelText="设备型号" Width="433" PercentHeight="4.4%" PercentWidth="47.2%" Top="3" TabIndex="82" TableName="bo_akl_EM_EquipmentInformation" ColumnName="equModel" MultiHeight="0px" MultiWidth="0px" />
+      </JGTabPage>
+      <JGTabPage Code="JGTabPage6" LabelText="信息设备" TabIndex="81" MultiHeight="0px" MultiWidth="0px">
+        <JGButton Code="JGButton16" LabelText="保存" Width="95" PercentHeight="4.4%" PercentWidth="10.3%" Top="181" Left="401" TabIndex="400" OnClick="saveButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+        <JGTabControl Code="JGTabControl3" Height="150" Width="915" PercentHeight="25.3%" PercentWidth="99.7%" Top="4" TabIndex="102" MultiHeight="0px" MultiWidth="0px">
+          <JGTabPage Code="JGTabPage11" LabelText="基础信息" TabIndex="105" MultiHeight="0px" MultiWidth="0px">
+            <JGTextBox Code="JGTextBox22" LabelText="用户" PercentHeight="26%" PercentWidth="117.5%" Top="5" Left="5" TabIndex="0" TableName="bo_akl_EM_EquipmentInformation" ColumnName="equUser" MultiHeight="0px" MultiWidth="0px" />
+            <JGTextBox Code="JGTextBox23" LabelText="部门" PercentHeight="26%" PercentWidth="117.5%" Top="5" Left="342" TabIndex="0" TableName="bo_akl_EM_EquipmentInformation" ColumnName="equDepartment" MultiHeight="0px" MultiWidth="0px" />
+            <JGTextBox Code="JGTextBox24" LabelText="设备型号" PercentHeight="26%" PercentWidth="117.5%" Top="5" Left="664" TabIndex="0" TableName="bo_akl_EM_EquipmentInformation" ColumnName="equModel" MultiHeight="0px" MultiWidth="0px" />
+            <JGTextBox Code="JGTextBox25" LabelText="设备类型" PercentHeight="26%" PercentWidth="117.5%" Top="36" Left="5" TabIndex="0" TableName="bo_akl_EM_EquipmentInformation" ColumnName="equType" MultiHeight="0px" MultiWidth="0px" />
+            <JGTextBox Code="JGTextBox26" LabelText="Status" PercentHeight="26%" PercentWidth="117.5%" Top="36" Left="342" TabIndex="0" TableName="bo_akl_EM_EquipmentInformation" ColumnName="equStatus" MultiHeight="0px" MultiWidth="0px" />
+            <JGTextBox Code="JGTextBox27" LabelText="使用时间" PercentHeight="26%" PercentWidth="117.5%" Top="36" Left="664" TabIndex="0" TableName="bo_akl_EM_EquipmentInformation" ColumnName="useTime" MultiHeight="0px" MultiWidth="0px" />
+          </JGTabPage>
+          <JGTabPage Code="JGTabPage9" LabelText="软件信息" TabIndex="103" MultiHeight="0px" MultiWidth="0px">
+            <JGTextBox Code="JGTextBox28" LabelText="OS" PercentHeight="26%" PercentWidth="117.5%" Top="5" Left="5" TabIndex="0" TableName="bo_akl_EM_EquipmentInformation" ColumnName="oS" MultiHeight="0px" MultiWidth="0px" />
+            <JGTextBox Code="JGTextBox29" LabelText="Spiceworks" PercentHeight="26%" PercentWidth="117.5%" Top="5" Left="339" TabIndex="0" TableName="bo_akl_EM_EquipmentInformation" ColumnName="spiceworks" MultiHeight="0px" MultiWidth="0px" />
+            <JGTextBox Code="JGTextBox30" LabelText="McAfee" PercentHeight="26%" PercentWidth="117.5%" Top="5" Left="663" TabIndex="0" TableName="bo_akl_EM_EquipmentInformation" ColumnName="mcAfee" MultiHeight="0px" MultiWidth="0px" />
+            <JGTextBox Code="JGTextBox31" LabelText="Teamviewer" PercentHeight="26%" PercentWidth="117.5%" Top="36" Left="5" TabIndex="0" TableName="bo_akl_EM_EquipmentInformation" ColumnName="teamviewer" MultiHeight="0px" MultiWidth="0px" />
+            <JGTextBox Code="JGTextBox32" LabelText="Office" PercentHeight="26%" PercentWidth="117.5%" Top="37" Left="339" TabIndex="0" TableName="bo_akl_EM_EquipmentInformation" ColumnName="office" MultiHeight="0px" MultiWidth="0px" />
+            <JGTextBox Code="JGTextBox33" LabelText="Citrix" PercentHeight="26%" PercentWidth="117.5%" Top="35" Left="663" TabIndex="0" TableName="bo_akl_EM_EquipmentInformation" ColumnName="citrix" MultiHeight="0px" MultiWidth="0px" />
+            <JGTextBox Code="JGTextBox34" LabelText="Solidwork" PercentHeight="26%" PercentWidth="117.5%" Top="67" Left="5" TabIndex="0" TableName="bo_akl_EM_EquipmentInformation" ColumnName="solidwork" MultiHeight="0px" MultiWidth="0px" />
+            <JGTextBox Code="JGTextBox35" LabelText="Project" PercentHeight="26%" PercentWidth="117.5%" Top="67" Left="339" TabIndex="0" TableName="bo_akl_EM_EquipmentInformation" ColumnName="project" MultiHeight="0px" MultiWidth="0px" />
+            <JGTextBox Code="JGTextBox36" LabelText="Visio" PercentHeight="26%" PercentWidth="117.5%" Top="67" Left="663" TabIndex="0" TableName="bo_akl_EM_EquipmentInformation" ColumnName="visio" MultiHeight="0px" MultiWidth="0px" />
+          </JGTabPage>
+          <JGTabPage Code="JGTabPage10" LabelText="硬件信息" TabIndex="104" MultiHeight="0px" MultiWidth="0px">
+            <JGTextBox Code="JGTextBox37" LabelText="CPU" PercentHeight="26%" PercentWidth="117.5%" Top="5" Left="5" TabIndex="0" TableName="bo_akl_EM_EquipmentInformation" ColumnName="cPU" MultiHeight="0px" MultiWidth="0px" />
+            <JGTextBox Code="JGTextBox38" LabelText="Memory" PercentHeight="26%" PercentWidth="117.5%" Top="5" Left="333" TabIndex="0" TableName="bo_akl_EM_EquipmentInformation" ColumnName="memory" MultiHeight="0px" MultiWidth="0px" />
+            <JGTextBox Code="JGTextBox39" LabelText="Hard disk" PercentHeight="26%" PercentWidth="117.5%" Top="5" Left="661" TabIndex="0" TableName="bo_akl_EM_EquipmentInformation" ColumnName="hardDisk" MultiHeight="0px" MultiWidth="0px" />
+            <JGTextBox Code="JGTextBox40" LabelText="Video card" PercentHeight="26%" PercentWidth="117.5%" Top="36" Left="5" TabIndex="0" TableName="bo_akl_EM_EquipmentInformation" ColumnName="videoCard" MultiHeight="0px" MultiWidth="0px" />
+          </JGTabPage>
+        </JGTabControl>
+        <JGDataGrid Code="JGDataGrid3" LabelText="列表" Width="911" Height="288" PercentHeight="48.6%" PercentWidth="99.2%" Top="301" Left="3" TabIndex="85" TableName="bo_akl_EM_EIMaintenancePlan" ReadOnly="True" ChooseMode="3" MultiHeight="0px" MultiWidth="0px">
+          <JGTextBoxColumn Code="JGTextBoxColumn1" ColumnName="inspectionProject" LabelText="检查项目" TableName="bo_akl_EM_EIMaintenancePlan" Width="329" />
+          <JGTextBoxColumn Code="JGTextBoxColumn2" ColumnName="maintenanceContent" LabelText="维护保养内容" TableName="bo_akl_EM_EIMaintenancePlan" Width="359" />
+          <JGTextBoxColumn Code="JGTextBoxColumn3" ColumnName="cycle" LabelText="周期" TableName="bo_akl_EM_EIMaintenancePlan" Width="173" />
+        </JGDataGrid>
+        <JGButton Code="JGButton10" LabelText="删除" PercentHeight="4.4%" PercentWidth="5.7%" Top="268" Left="121" TabIndex="88" BackColor="255, 0, 0" OnClick="deleteRepairPlanButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+        <JGButton Code="JGButton8" LabelText="修改" PercentHeight="4.4%" PercentWidth="5.7%" Top="268" Left="62" TabIndex="87" OnClick="changeButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+        <JGButton Code="JGButton7" LabelText="新增" PercentHeight="4.4%" PercentWidth="5.7%" Top="268" Left="3" TabIndex="86" OnClick="newRepairPlanButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+        <JGLabel Code="JGLabel4" LabelText="设备维保计划" Height="39" Width="111" PercentHeight="6.6%" PercentWidth="12.1%" Top="224" Left="3" TabIndex="84" FontStyle="微软雅黑, 11.25pt, style=Bold" MultiHeight="0px" MultiWidth="0px" />
+      </JGTabPage>
+    </JGTabControl>
+    <JGTextBox Code="equipNoTextBox" LabelText="设备编号" Width="302" PercentHeight="2.9%" PercentWidth="31.5%" Top="108" Left="16" TabIndex="3" TableName="bo_akl_EM_EquipmentInformation" ColumnName="equipNo" IsMust="True" MultiHeight="0px" MultiWidth="0px" />
+    <JGLabel Code="newEquipLabel" LabelText="设备信息" Height="33" Width="95" PercentHeight="3.7%" PercentWidth="9.9%" Top="14" Left="417" TabIndex="1" FontStyle="微软雅黑, 15pt, style=Bold" MultiHeight="0px" MultiWidth="0px" />
+    <JGRadioGroup Code="typeRadioGroup" LabelText="设备性质" Width="594" PercentHeight="2.9%" PercentWidth="61.9%" Top="63" Left="16" TabIndex="2" OnValueChanged="JGRadioGroup1_OnValueChanged" TableName="bo_akl_EM_EquipmentInformation" IDColumnName="type" ColumnName="type" DropDownSource="{&quot;DataSourceSetting&quot;:{&quot;DataConfig&quot;:{&quot;DefaultSaveColumn&quot;:null,&quot;DefaultShowColumn&quot;:null,&quot;SourceType&quot;:null,&quot;SourceID&quot;:null,&quot;SourceName&quot;:null,&quot;MapTable&quot;:null,&quot;SaveColumn&quot;:null,&quot;ShowColumn&quot;:null,&quot;SortField&quot;:null,&quot;SortType&quot;:null,&quot;MaxRecCount&quot;:0,&quot;QueryField&quot;:null,&quot;QueryMethod&quot;:null,&quot;IsPickListFields&quot;:false,&quot;ConstData&quot;:[{&quot;id&quot;:&quot;量检具&quot;,&quot;text&quot;:&quot;量检具&quot;,&quot;selected&quot;:&quot;True&quot;},{&quot;id&quot;:&quot;产线设备&quot;,&quot;text&quot;:&quot;产线设备&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;载具&quot;,&quot;text&quot;:&quot;载具&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;注塑模具&quot;,&quot;text&quot;:&quot;注塑模具&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;公共设备&quot;,&quot;text&quot;:&quot;公共设备&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;信息设备&quot;,&quot;text&quot;:&quot;信息设备&quot;,&quot;selected&quot;:&quot;False&quot;}],&quot;SqlQueryConstData&quot;:null,&quot;EntityConstData&quot;:null,&quot;Condition&quot;:null,&quot;QueryParam&quot;:null,&quot;PickListFields&quot;:null},&quot;DataSourceType&quot;:&quot;CustomConst&quot;}}" IsMust="True" MultiHeight="0px" MultiWidth="0px" />
+  </controls>
+  <outputs>
+    <variable code="sbxx" name="" fieldType="entity" defaultValue="" description="" isRestore="false">
+      <entity>
+        <field code="id" name="" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="type" name="设备性质" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="equipNo" name="设备编号" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="equipName" name="设备名称" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="instrumentType" name="量检具类别" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="instrumentClassification" name="量检具分类" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="instrumentManufacturer" name="量检具制造商" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="instrumentModel" name="量检具型号" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="instrumentFactoryNumber" name="量检具出厂编号" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="instrumentMeasuringRange" name="量检具测量范围" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="instrumentDrawingNumber" name="量检具图纸编号" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="instrumentResolution" name="量检具分辨力" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="instrumentUseDepartment" name="量检具使用部门" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="instrumentPlaceOfUse" name="量检具使用地点" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="instrumentCustodian" name="量检具保管人" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="instrumentDateOfProcurement" name="量检具采购日期" fieldType="date" defaultValue="" isRestore="false" />
+        <field code="instrumentRemarks" name="量检具备注" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="toolingDrawingNumber" name="工装图纸编号" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="toolingDrawingVersionNumber" name="工装图纸版号" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="toolingApplicableProductNumber" name="工装适用产品编号" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="toolingApplicableProductType" name="工装适用产品类型" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="toolingApplicableProcess" name="工装适用工序" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="toolingState" name="工装状态" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="toolingPurchaseDate" name="工装购入日期" fieldType="date" defaultValue="" isRestore="false" />
+        <field code="productlinesVaultAssetsNum" name="产线拱顶资产编号/客户资产编号" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="productlinesChineseName" name="产线名称(中文)" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="productlinesEnglishName" name="产线名称(英文)" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="productlinesReleaseDate" name="产线批准时间" fieldType="date" defaultValue="" isRestore="false" />
+        <field code="formCheckDate" name="上次校准时间" fieldType="date" defaultValue="" isRestore="false" />
+        <field code="howLongTocheck" name="校准间隔" fieldType="integer" defaultValue="" isRestore="false" />
+        <field code="nextCheckDate" name="下次校准时间" fieldType="date" defaultValue="" isRestore="false" />
+      </entity>
+    </variable>
+  </outputs>
+  <inputs>
+    <variable code="isSaveFlag" name="设备信息是否保存" fieldType="boolean" defaultValue="false" description="" isRestore="false" isPrivate="true">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+    <variable code="equipInfoId" name="上一个窗体闯进来的设备信息Id" fieldType="char" defaultValue="0" description="" isRestore="false" isPrivate="false">
+      <EnumValue><![CDATA[]]></EnumValue>
+    </variable>
+  </inputs>
+  <remark><![CDATA[]]></remark>
+</form>

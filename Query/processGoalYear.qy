@@ -1,0 +1,132 @@
+﻿<Query id="b753022655ec47eda0218b8ad21e9eb3" code="processGoalYear" name="过程指标(年)" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-09-06 17:26:53]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-09-10 10:36:45]]></ModificationTime>
+  <VSql><![CDATA[select lss.pNo,
+CASE WHEN lss.pType=1 or lss.pType is null then SUM(lss.pcount) else 0 end as zzallPcount,--组装总数
+CASE WHEN lss.pType=1 or lss.pType is null then SUM(lss.blpcbadNum)+SUM(lss.glcbadNum)  else 0 end as zzallbpl,--组装不良品数
+CASE WHEN lss.pType=1 or lss.pType is null then SUM(lss.blpcbadNum) else 0 end as zzallgl,--组装报废数量
+CASE WHEN lss.pType=1 or lss.pType is null then ROUND((SUM(lss.blpcbadNum)+SUM(lss.glcbadNum))/SUM(lss.pcount),2)*100 else 0 end as zzblpRate,--组装不良品率
+CASE WHEN lss.pType=1 or lss.pType is null then ROUND(SUM(lss.blpcbadNum)/sum(lss.pcount),2)*100 else 0 end as zzbfRate,--组装报废率
+CASE WHEN lss.pType=2 then SUM(lss.pcount) else 0 end as hjallPcount,--焊接总数
+CASE WHEN lss.pType=2 then SUM(lss.blpcbadNum)+SUM(lss.glcbadNum)  else 0 end as hjallbpl,--焊接不良品数
+CASE WHEN lss.pType=2 then SUM(lss.blpcbadNum) else 0 end as hjallgl,--焊接报废数量
+CASE WHEN lss.pType=2 then ROUND((SUM(lss.blpcbadNum)+SUM(lss.glcbadNum))/SUM(lss.pcount),2)*100 else 0 end as hjblpRate,--焊接不良品率
+CASE WHEN lss.pType=2 then ROUND(SUM(lss.blpcbadNum)/sum(lss.pcount),2)*100 else 0 end as hjbfRate--焊接报废率
+from(
+select
+prod.pType,
+(count(pl.materialNo)*cs.boxPartsNum)as pcount,--总数
+cs.blpcbadNum, --不良品数量
+cs.glcbadNum, --隔离数量
+cs.pNo  --产线编号
+from(
+	select 
+	bn.boxPartsNum,
+	bn.materialNo,
+	bn.blpcbadNum,
+	bn.glcbadNum,
+	bn.materialType,
+	bn.pNo
+	from
+		(select mat.materialNo,
+				SUM(ins.blpc) as blpcbadNum,
+				SUM(ins.wsc) as glcbadNum,
+
+				ep.boxPartsNum as boxPartsNum,
+				mat.materialType as materialType,
+				pdl.pNo as pNo
+				from (select case 
+						when st.stockType='不良品仓'  THEN sto.inStockNum 
+						else 0 end as blpc,
+						case 
+						when st.stockType='隔离仓'  THEN sto.inStockNum 
+						else 0 end as wsc,
+						sto.*
+						from bo_akl_MM_inStockInfo as sto 
+						left join bo_akl_MM_stockType st on st.id=sto.stockTypeId
+						where YEAR(sto.operateTime)=:inputYear 
+					)
+				    as ins 
+				    left join bo_akl_MM_materialInfo as mat on ins.materialId=mat.id
+				    left join bo_akl_EM_productInfo as ep on mat.materialNo=ep.prNo
+					left join bo_akl_base_productlines as pdl on ep.prLine=pdl.pNo 
+					where  mat.materialType!='原材料'
+				    group by mat.materialNo,ep.boxPartsNum,mat.materialType,pdl.pNo
+		)as bn
+	where  bn.materialNo is not null) cs 
+left join bo_akl_LM_printProductLabel as pl on cs.materialNo=pl.materialNo 
+left join bo_akl_line_start as  lis on lis.id=pl.lineStartId
+left join bo_akl_base_productlines as  prod on prod.id=lis.prolineId 
+group by pl.materialNo,cs.blpcbadNum,cs.glcbadNum,cs.pNo,prod.pType,cs.boxPartsNum) as lss group by lss.pNo,lss.pType
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="pNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="zzallPcount" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="zzallbpl" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="zzallgl" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="zzblpRate" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="zzbfRate" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="hjallPcount" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="hjallbpl" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_8" code="hjallgl" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_9" code="hjblpRate" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_10" code="hjbfRate" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="inputYear" name="" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="647" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="693" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="713" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="733,841" />
+    <DataItem type="Table" key="bo_akl_LM_printProductLabel" tokenIndexes="801" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="821" />
+    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="657" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pType" tokenIndexes="451,879" />
+    <DataItem type="TableField" key="bo_akl_LM_printProductLabel.materialNo" tokenIndexes="459,815,863" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="529,723,763" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.boxPartsNum" tokenIndexes="558,767" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialType" tokenIndexes="567,753,771" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="576,747,775" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.inStockNum" tokenIndexes="601,628" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.stockTypeId" tokenIndexes="669" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.operateTime" tokenIndexes="677" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="707" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="727" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prLine" tokenIndexes="743" />
+    <DataItem type="TableField" key="bo_akl_line_start.id" tokenIndexes="831" />
+    <DataItem type="TableField" key="bo_akl_LM_printProductLabel.lineStartId" tokenIndexes="835" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="851" />
+    <DataItem type="TableField" key="bo_akl_line_start.prolineId" tokenIndexes="855" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="681" />
+  </DataItems>
+</Query>

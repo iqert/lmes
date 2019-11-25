@@ -1,0 +1,50 @@
+﻿<Query id="42b8f82b5b874945a75fff4c5a6ef0cd" code="toolEquUpkeepRec" name="载具设备保养记录" type="VSql">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-08-17 11:45:05]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-08-17 13:59:06]]></ModificationTime>
+  <VSql><![CDATA[SELECT ie.*, equ.equipName , equ.equipNo 
+FROM bo_akl_EM_toolEquUpkeepRec as ie
+left join bo_akl_EM_EquipmentInformation as equ on ie.equipId = equ.id
+order by ie.isOp]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="equipName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="equipNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="id" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="equipId" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="upkeepDate" name="" dataType="date" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="operatorId" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="operatorName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="isOp" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_8" code="cycle" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_EM_toolEquUpkeepRec" tokenIndexes="19" />
+    <DataItem type="Table" key="bo_akl_EM_EquipmentInformation" tokenIndexes="29" />
+    <DataItem type="TableField" key="bo_akl_EM_EquipmentInformation.equipName" tokenIndexes="9" />
+    <DataItem type="TableField" key="bo_akl_EM_EquipmentInformation.equipNo" tokenIndexes="15" />
+    <DataItem type="TableField" key="bo_akl_EM_toolEquUpkeepRec.equipId" tokenIndexes="39" />
+    <DataItem type="TableField" key="bo_akl_EM_EquipmentInformation.id" tokenIndexes="45" />
+    <DataItem type="TableField" key="bo_akl_EM_toolEquUpkeepRec.isOp" tokenIndexes="53" />
+  </DataItems>
+</Query>
