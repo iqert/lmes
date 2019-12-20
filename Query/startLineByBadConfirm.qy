@@ -3,10 +3,10 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-11-21 23:24:04]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-11-21 23:45:34]]></ModificationTime>
+  <ModificationTime><![CDATA[2019-11-28 09:42:49]]></ModificationTime>
   <VSql><![CDATA[select al.* from bo_akl_line_start as al 
 left join bo_akl_base_productlines as pd on al.prolineId=pd.id 
-where (pd.isBadConfirm='是'  or pd.isBadConfirm is null)
+where (pd.isBadConfirm='是'  or pd.isBadConfirm is null)  order by al.startTime DESC
 ]]></VSql>
   <Columns>
     <Column id="Column_0" code="id" name="" dataType="char" length="" precision="">
@@ -146,5 +146,6 @@ where (pd.isBadConfirm='是'  or pd.isBadConfirm is null)
     <DataItem type="TableField" key="bo_akl_line_start.prolineId" tokenIndexes="28" />
     <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="32" />
     <DataItem type="TableField" key="bo_akl_base_productlines.isBadConfirm" tokenIndexes="39,47" />
+    <DataItem type="TableField" key="bo_akl_line_start.startTime" tokenIndexes="60" />
   </DataItems>
 </Query>

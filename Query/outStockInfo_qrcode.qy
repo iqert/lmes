@@ -1,14 +1,18 @@
-﻿<Query id="5f3f8f881b55452795bf8e0467b70cbd" code="outStockInfo_qrcode" name="出库_二维码信息" type="VSql">
+﻿<Query id="5f3f8f881b55452795bf8e0467b70cbd" code="outStockInfo_qrcode" name="出库_二维码信息" type="VSql" APICode="">
   <Remark><![CDATA[]]></Remark>
   <Creator><![CDATA[liub]]></Creator>
   <CreationTime><![CDATA[2019-04-08 14:28:12]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-07-12 10:33:42]]></ModificationTime>
+  <ModificationTime><![CDATA[2019-12-13 10:48:19]]></ModificationTime>
   <VSql><![CDATA[select mi.materialNo,mi.unit,
 st1.stockType,osi.outstocknum,osi.batchNo,osi.operatorName,osi.operateTime,osi.remark,qq.qrCodeInfo from bo_akl_MM_outStockInfo_QRCode qq
 left join bo_akl_MM_outStockInfo as osi on qq.outStockInfoId=osi.id
 left join bo_akl_MM_materialInfo as mi on osi.materialId=mi.id
 left join bo_akl_MM_stockType as st1 on osi.stockTypeId=st1.id
+where
+osi.operateTime>:startTime and 
+osi.operateTime<:endTime and 
+CHARINDEX(mi.projectNo,:projectName,1)
 order by osi.operateTime desc]]></VSql>
   <Columns>
     <Column id="Column_0" code="materialNo" name="" dataType="char" length="" precision="">
@@ -39,7 +43,20 @@ order by osi.operateTime desc]]></VSql>
       <Remark></Remark>
     </Column>
   </Columns>
-  <Params />
+  <Params>
+    <Param code="startTime" name="" dataType="date">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="endTime" name="" dataType="date">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="projectName" name="项目名称" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
   <DataItems>
     <DataItem type="Table" key="bo_akl_MM_outStockInfo" tokenIndexes="49" />
     <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="69" />
@@ -51,12 +68,16 @@ order by osi.operateTime desc]]></VSql>
     <DataItem type="TableField" key="bo_akl_MM_outStockInfo.outstocknum" tokenIndexes="17" />
     <DataItem type="TableField" key="bo_akl_MM_outStockInfo.batchNo" tokenIndexes="21" />
     <DataItem type="TableField" key="bo_akl_MM_outStockInfo.operatorName" tokenIndexes="25" />
-    <DataItem type="TableField" key="bo_akl_MM_outStockInfo.operateTime" tokenIndexes="29,111" />
+    <DataItem type="TableField" key="bo_akl_MM_outStockInfo.operateTime" tokenIndexes="29,109,118,143" />
     <DataItem type="TableField" key="bo_akl_MM_outStockInfo.remark" tokenIndexes="33" />
     <DataItem type="TableField" key="bo_akl_MM_outStockInfo.id" tokenIndexes="63" />
     <DataItem type="TableField" key="bo_akl_MM_outStockInfo.materialId" tokenIndexes="79" />
     <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="83" />
     <DataItem type="TableField" key="bo_akl_MM_outStockInfo.stockTypeId" tokenIndexes="99" />
     <DataItem type="TableField" key="bo_akl_MM_stockType.id" tokenIndexes="103" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.projectNo" tokenIndexes="129" />
+    <DataItem type="QueryParam" key="startTime" tokenIndexes="112" />
+    <DataItem type="QueryParam" key="endTime" tokenIndexes="121" />
+    <DataItem type="QueryParam" key="projectName" tokenIndexes="132" />
   </DataItems>
 </Query>

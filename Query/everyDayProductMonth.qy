@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-10-21 15:45:36]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-11-20 23:26:12]]></ModificationTime>
+  <ModificationTime><![CDATA[2019-12-19 08:52:49]]></ModificationTime>
   <VSql><![CDATA[	select 
 	md.tmonth, --月份
 	edp.cpc  --产量
@@ -11,8 +11,7 @@
 	left join(
 		SELECT 
 		MONTH(sto.operateTime) as optime,
-		sum(sto.inStockNum)  AS cpc,
-		mat.materialNo
+		sum(sto.inStockNum)  AS cpc
 		FROM bo_akl_MM_inStockInfo AS sto
 		LEFT JOIN bo_akl_MM_stockType AS st ON st.id = sto.stockTypeId
 		LEFT join bo_akl_MM_materialInfo AS mat ON sto.materialId = mat.id
@@ -58,23 +57,23 @@
   </Params>
   <DataItems>
     <DataItem type="Table" key="baseMonth" tokenIndexes="18" />
-    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="115" />
-    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="135" />
-    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="157" />
-    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="61" />
-    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="71" />
-    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="93" />
-    <DataItem type="TableField" key="baseMonth.tmonth" tokenIndexes="5,253,261" />
-    <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="125" />
-    <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="145" />
-    <DataItem type="TableField" key="bo_akl_EM_productInfo.pid" tokenIndexes="149" />
-    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="167" />
-    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="171" />
-    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="177" />
-    <DataItem type="TableField" key="bo_akl_base_projectInfo.pName" tokenIndexes="188" />
-    <DataItem type="QueryParam" key="prLineNo" tokenIndexes="180" />
-    <DataItem type="QueryParam" key="projectName" tokenIndexes="191" />
-    <DataItem type="QueryParam" key="pNo" tokenIndexes="214" />
-    <DataItem type="QueryParam" key="inputYear" tokenIndexes="226" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="110" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="130" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="152" />
+    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="56" />
+    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="66" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="88" />
+    <DataItem type="TableField" key="baseMonth.tmonth" tokenIndexes="5,248,256" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="120" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="140" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.pid" tokenIndexes="144" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="162" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="166" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="172" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.pName" tokenIndexes="183" />
+    <DataItem type="QueryParam" key="prLineNo" tokenIndexes="175" />
+    <DataItem type="QueryParam" key="projectName" tokenIndexes="186" />
+    <DataItem type="QueryParam" key="pNo" tokenIndexes="209" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="221" />
   </DataItems>
 </Query>

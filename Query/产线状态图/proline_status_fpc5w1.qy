@@ -1,9 +1,9 @@
-﻿<Query id="2c6e9baed1ce4768974add5ed18ce1c9" code="proline_status_fpc5w1" name="fpc5w1" type="VSql">
+﻿<Query id="2c6e9baed1ce4768974add5ed18ce1c9" code="proline_status_fpc5w1" name="fpc5w1" type="VSql" APICode="">
   <Remark><![CDATA[]]></Remark>
   <Creator><![CDATA[liub]]></Creator>
   <CreationTime><![CDATA[2019-05-16 13:28:29]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-08-22 10:06:25]]></ModificationTime>
+  <ModificationTime><![CDATA[2019-12-02 22:49:55]]></ModificationTime>
   <VSql><![CDATA[select
 proLineName,
 proEquName,
@@ -18,7 +18,8 @@ CASE WHEN startTime = null THEN '未生产'
 round(CAST(acceptNum,'Decimal',10,4)/CAST(acceptNum+badNum-checkNumber+1,'Decimal',10,4),4) AS passRate, --合格率合格的数量于最终生产的数量的比例
 userNumber,
 ROUND(CAST(acceptNum,'Decimal',10,4)*standardWorkingHours/(DATEDIFF(startTime, NOW(),'Second')),4) as ratio,--效率 = 合格数量*标准工时（秒）/总工时
-ROUND(CAST(acceptNum,'Integer',10,4)/(ROUND(DATEDIFF(startTime, NOW(),'Second')/3600.00,4)*userNumber),0) as productivity,--生产力= 合格数/总工时
+case when userNumber=0 then 0 
+else ROUND(CAST(acceptNum,'Integer',10,4)/(ROUND(DATEDIFF(startTime, NOW(),'Second')/3600.00,4)*userNumber),0) end as productivity,--生产力= 合格数/总工时
 ROUND(dayHour,2) as productionTime,
 startTime,
 standardProductivity
@@ -133,7 +134,7 @@ WHERE NAME = 'FPC5W1.Status'
     <Column id="Column_10" code="ratio" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_11" code="productivity" name="" dataType="integer" length="" precision="">
+    <Column id="Column_11" code="productivity" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
     <Column id="Column_12" code="productionTime" name="" dataType="number" length="" precision="">
@@ -148,14 +149,14 @@ WHERE NAME = 'FPC5W1.Status'
   </Columns>
   <Params />
   <DataItems>
-    <DataItem type="Table" key="Exchange" tokenIndexes="231,262,292,383,940" />
-    <DataItem type="Table" key="bo_akl_line_start_user" tokenIndexes="414" />
-    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="430,509,587,659,765,849" />
-    <DataItem type="Table" key="bo_akl_line_sample" tokenIndexes="493" />
-    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="571,643" />
-    <DataItem type="Table" key="bo_akl_base_productiontime" tokenIndexes="747" />
-    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="773" />
-    <DataItem type="Table" key="bo_akl_line_operation" tokenIndexes="866" />
-    <DataItem type="Query" key="a" tokenIndexes="951" />
+    <DataItem type="Table" key="Exchange" tokenIndexes="247,278,308,399,956" />
+    <DataItem type="Table" key="bo_akl_line_start_user" tokenIndexes="430" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="446,525,603,675,781,865" />
+    <DataItem type="Table" key="bo_akl_line_sample" tokenIndexes="509" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="587,659" />
+    <DataItem type="Table" key="bo_akl_base_productiontime" tokenIndexes="763" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="789" />
+    <DataItem type="Table" key="bo_akl_line_operation" tokenIndexes="882" />
+    <DataItem type="Query" key="a" tokenIndexes="967" />
   </DataItems>
 </Query>

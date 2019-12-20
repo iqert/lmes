@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-09-05 14:30:28]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-09-10 10:26:26]]></ModificationTime>
+  <ModificationTime><![CDATA[2019-12-18 18:00:09]]></ModificationTime>
   <VSql><![CDATA[
 select  
 		uvst.bsTime,
@@ -46,7 +46,7 @@ from (
 		from bo_akl_line_materialBadProNum  as pn
 		left join bo_akl_line_start as st 
 		on pn.startId=st.id
-		where MONTH(pn.bsTime)=:inputMonth and YEAR(pn.bsTime)=:inputYear
+		where pn.bsTime!='' and MONTH(pn.bsTime)=:inputMonth and YEAR(pn.bsTime)=:inputYear
 					and DAYOFMONTH(pn.bsTime)=:inputDay
 		)
 union all(
@@ -59,7 +59,7 @@ select 	bn.bsTime,
 		al.inspectorName,--巡检员名称
 		bn.stationName,
 		bn.remark as remark,--不良现象
-		bn.badProNum,--不良品数量
+		bn.inputBadProNum as badProNum,--不良品数量
 		case 
 		when bn.remark='原材料'  THEN '√'
 		else '' end as ycl,
@@ -75,7 +75,7 @@ select 	bn.bsTime,
 		from bo_akl_line_stationBadProNum  as bn
 		left join bo_akl_line_start as al 
 		on bn.startId=al.id
-		where MONTH(bn.bsTime)=:inputMonth and YEAR(bn.bsTime)=:inputYear
+		where bn.bsTime!='' and MONTH(bn.bsTime)=:inputMonth and YEAR(bn.bsTime)=:inputYear
 				and DAYOFMONTH(bn.bsTime)=:inputDay
 		)
 		) as uvst]]></VSql>
@@ -139,27 +139,27 @@ select 	bn.bsTime,
   </Params>
   <DataItems>
     <DataItem type="Table" key="bo_akl_line_materialBadProNum" tokenIndexes="259" />
-    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="269,511" />
-    <DataItem type="Table" key="bo_akl_line_stationBadProNum" tokenIndexes="501" />
-    <DataItem type="TableField" key="bo_akl_line_materialBadProNum.bsTime" tokenIndexes="91,291,303,315" />
-    <DataItem type="TableField" key="bo_akl_line_start.classes" tokenIndexes="96,337" />
-    <DataItem type="TableField" key="bo_akl_line_start.prolineName" tokenIndexes="102,344" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="269,523" />
+    <DataItem type="Table" key="bo_akl_line_stationBadProNum" tokenIndexes="513" />
+    <DataItem type="TableField" key="bo_akl_line_materialBadProNum.bsTime" tokenIndexes="91,289,299,311,323" />
+    <DataItem type="TableField" key="bo_akl_line_start.classes" tokenIndexes="96,345" />
+    <DataItem type="TableField" key="bo_akl_line_start.prolineName" tokenIndexes="102,352" />
     <DataItem type="TableField" key="bo_akl_line_materialBadProNum.materialNo" tokenIndexes="108" />
-    <DataItem type="TableField" key="bo_akl_line_start.planCode" tokenIndexes="115,357" />
+    <DataItem type="TableField" key="bo_akl_line_start.planCode" tokenIndexes="115,365" />
     <DataItem type="TableField" key="bo_akl_line_materialBadProNum.remark" tokenIndexes="122,144,164,189,214,239" />
-    <DataItem type="TableField" key="bo_akl_line_start.inspectorName" tokenIndexes="133,375" />
+    <DataItem type="TableField" key="bo_akl_line_start.inspectorName" tokenIndexes="133,383" />
     <DataItem type="TableField" key="bo_akl_line_materialBadProNum.stationName" tokenIndexes="139" />
     <DataItem type="TableField" key="bo_akl_line_materialBadProNum.badProNum" tokenIndexes="154" />
     <DataItem type="TableField" key="bo_akl_line_materialBadProNum.startId" tokenIndexes="279" />
-    <DataItem type="TableField" key="bo_akl_line_start.id" tokenIndexes="283,525" />
-    <DataItem type="TableField" key="bo_akl_line_stationBadProNum.bsTime" tokenIndexes="332,533,545,557" />
-    <DataItem type="TableField" key="bo_akl_line_stationBadProNum.materialNo" tokenIndexes="350" />
-    <DataItem type="TableField" key="bo_akl_line_stationBadProNum.remark" tokenIndexes="364,386,406,431,456,481" />
-    <DataItem type="TableField" key="bo_akl_line_stationBadProNum.stationName" tokenIndexes="381" />
-    <DataItem type="TableField" key="bo_akl_line_stationBadProNum.badProNum" tokenIndexes="396" />
-    <DataItem type="TableField" key="bo_akl_line_stationBadProNum.startId" tokenIndexes="521" />
-    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="295,537" />
-    <DataItem type="QueryParam" key="inputYear" tokenIndexes="307,549" />
-    <DataItem type="QueryParam" key="inputDay" tokenIndexes="319,561" />
+    <DataItem type="TableField" key="bo_akl_line_start.id" tokenIndexes="283,537" />
+    <DataItem type="TableField" key="bo_akl_line_stationBadProNum.bsTime" tokenIndexes="340,543,553,565,577" />
+    <DataItem type="TableField" key="bo_akl_line_stationBadProNum.materialNo" tokenIndexes="358" />
+    <DataItem type="TableField" key="bo_akl_line_stationBadProNum.remark" tokenIndexes="372,394,418,443,468,493" />
+    <DataItem type="TableField" key="bo_akl_line_stationBadProNum.stationName" tokenIndexes="389" />
+    <DataItem type="TableField" key="bo_akl_line_stationBadProNum.inputBadProNum" tokenIndexes="404" />
+    <DataItem type="TableField" key="bo_akl_line_stationBadProNum.startId" tokenIndexes="533" />
+    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="303,557" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="315,569" />
+    <DataItem type="QueryParam" key="inputDay" tokenIndexes="327,581" />
   </DataItems>
 </Query>

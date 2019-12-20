@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-09-06 22:06:50]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-09-10 10:10:20]]></ModificationTime>
+  <ModificationTime><![CDATA[2019-12-18 23:29:43]]></ModificationTime>
   <VSql><![CDATA[select 
  		mbn.optime,
 		ROUND((SUM(mbn.blpsl)/SUM(mbn.prcount)*1000000),2) as blprate,--周不良品率
@@ -56,9 +56,9 @@
 								 as ins 
 							    left join bo_akl_MM_materialInfo as mat on ins.materialId=mat.id
 							    left join bo_akl_EM_productInfo as ep on mat.materialNo=ep.prNo
-								left join bo_akl_base_productlines as pdl on ep.prLine=pdl.pNo 
-								left join bo_akl_base_projectInfo as pro on pro.id=pdl.belongProject
-								where pro.pNo=:pNo
+								--left join bo_akl_base_productlines as pdl on ep.prLine=pdl.pNo 
+								--left join bo_akl_base_projectInfo as pro on pro.id=pdl.belongProject
+								where mat.projectNo=:pNo
 								group by ins.optime,mat.materialNo,ep.boxPartsNum
 						) as bn where bn.materialNo is not null
 				) cs 
@@ -100,24 +100,18 @@
     <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="345" />
     <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="391" />
     <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="411" />
-    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="431" />
-    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="451" />
-    <DataItem type="Table" key="bo_akl_LM_printProductLabel" tokenIndexes="518" />
+    <DataItem type="Table" key="bo_akl_LM_printProductLabel" tokenIndexes="482" />
     <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="355" />
-    <DataItem type="TableField" key="bo_akl_LM_printProductLabel.materialNo" tokenIndexes="125,532" />
-    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="225,421,486" />
-    <DataItem type="TableField" key="bo_akl_EM_productInfo.boxPartsNum" tokenIndexes="257,490" />
+    <DataItem type="TableField" key="bo_akl_LM_printProductLabel.materialNo" tokenIndexes="125,496" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="225,421,450" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.boxPartsNum" tokenIndexes="257,454" />
     <DataItem type="TableField" key="bo_akl_MM_inStockInfo.inStockNum" tokenIndexes="287,314" />
     <DataItem type="TableField" key="bo_akl_MM_inStockInfo.operateTime" tokenIndexes="331,375" />
     <DataItem type="TableField" key="bo_akl_MM_inStockInfo.stockTypeId" tokenIndexes="367" />
     <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="405" />
     <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="425" />
-    <DataItem type="TableField" key="bo_akl_EM_productInfo.prLine" tokenIndexes="441" />
-    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="445" />
-    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="461" />
-    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="465" />
-    <DataItem type="TableField" key="bo_akl_base_projectInfo.pNo" tokenIndexes="471" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.projectNo" tokenIndexes="435" />
     <DataItem type="QueryParam" key="inputYear" tokenIndexes="379" />
-    <DataItem type="QueryParam" key="pNo" tokenIndexes="474" />
+    <DataItem type="QueryParam" key="pNo" tokenIndexes="438" />
   </DataItems>
 </Query>

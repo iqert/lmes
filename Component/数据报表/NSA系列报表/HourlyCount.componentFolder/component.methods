@@ -8,7 +8,7 @@
   <evaluateRule code="BR_DataBaseDataToReport1" />
 ]]></MethodChain>
     <RuleInstances>
-      <RuleInstance ruleCode="DataBaseDataToReport" ruleName="从数据库或实体获取数据到报表" instanceCode="BR_DataBaseDataToReport1" instanceName="从数据库或实体获取数据到报表" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-10-19 15:10:20">
+      <RuleInstance ruleCode="DataBaseDataToReport" ruleName="从数据库或实体获取数据到报表" instanceCode="BR_DataBaseDataToReport1" instanceName="从数据库或实体获取数据到报表" isNeedLog="False" isEnabled="False" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
@@ -24,7 +24,7 @@
   <if isEnabled="True" isDebug="False" code="IfCode1">
     <define>
       <expression>IsNullOrEmpty(CC.JGDateTimePicker1.Value,1)==1</expression>
-      <remark />
+      <remark></remark>
     </define>
     <sequence>
       <evaluateRule code="BR_ShowMessage1" />
@@ -32,20 +32,43 @@
   </if>
   <else isEnabled="True" isDebug="False">
     <define>
-      <remark />
+      <remark></remark>
     </define>
     <sequence>
-      <evaluateRule code="BR_DataBaseDataToReport1" />
+      <if isEnabled="True" isDebug="False" code="IfCode2">
+        <define>
+          <expression>IsEmpty(CC.JGTextBox1.Value)</expression>
+          <remark />
+        </define>
+        <sequence>
+          <evaluateRule code="BR_ShowMessage1_1" />
+        </sequence>
+      </if>
+      <else isEnabled="True" isDebug="False">
+        <define>
+          <remark />
+        </define>
+        <sequence>
+          <evaluateRule code="BR_DataBaseDataToReport1" />
+        </sequence>
+      </else>
     </sequence>
   </else>
 ]]></MethodChain>
     <RuleInstances>
-      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-10-22 15:53:14">
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
         <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"日期不能为空\"","type":"1"}}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"日期不能为空"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1_1" instanceName="显示设置的提示信息_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-12-19 00:45:19">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"产品型号不能为空\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"产品型号不能为空"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
       <RuleInstance ruleCode="DataBaseDataToReport" ruleName="从数据库或实体获取数据到报表" instanceCode="BR_DataBaseDataToReport1" instanceName="从数据库或实体获取数据到报表" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>

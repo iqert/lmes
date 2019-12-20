@@ -1,11 +1,12 @@
 ﻿<form type="1002" code="form_stockInfo" IsLocked="False">
   <propertys>
-    <property name="Width"><![CDATA[960]]></property>
-    <property name="Height"><![CDATA[450]]></property>
+    <property name="Width"><![CDATA[1090]]></property>
+    <property name="Height"><![CDATA[503]]></property>
     <property name="HeightSet"><![CDATA[StaticHeight]]></property>
     <property name="LayoutType"><![CDATA[None]]></property>
     <property name="TableName"><![CDATA[]]></property>
     <property name="FormLoadAction"><![CDATA[form_stockInfo_FormLoadAction]]></property>
+    <property name="ResizeAction"><![CDATA[]]></property>
     <property name="FormCloseAction"><![CDATA[]]></property>
     <property name="FormClosingAction"><![CDATA[]]></property>
     <property name="BackColor"><![CDATA[]]></property>
@@ -15,12 +16,15 @@
     <property name="WindowState"><![CDATA[Normal]]></property>
     <property name="MaximizeBox"><![CDATA[True]]></property>
     <property name="RefResources"><![CDATA[]]></property>
+    <property name="ControlDocInfo"><![CDATA[]]></property>
+    <property name="IsWindowReport"><![CDATA[]]></property>
+    <property name="ThemeVar"><![CDATA[]]></property>
   </propertys>
   <controls>
-    <JGPanel BorderStyle="None" Code="JGPanel_Fill" Dock="Fill" Height="450" LayoutType="BorderLayout" Left="10" PercentHeight="100%" PercentWidth="97.5%" TabIndex="1" Width="936">
-      <JGPanel BorderStyle="None" Code="JGPanel_Center" Dock="Fill" Height="426" LayoutType="BorderLayout" PercentHeight="94.7%" PercentWidth="100%" TabIndex="5" Top="10" Width="936">
-        <JGPanel BorderStyle="None" Code="JGPanel2" Dock="Fill" Height="388" LayoutType="BorderLayout" Left="200" PercentHeight="91.1%" PercentWidth="78.6%" TabIndex="24" Top="38" Width="736">
-          <JGDataGrid Code="JGDataGrid1" Dock="Fill" FetchMode="paged" Height="388" LabelText="列表" OnDoubleClick="JGButton5_OnClick" PageInfo="{&quot;PageList&quot;:[10,20,30,40,50,100],&quot;DefaultPageSize&quot;:50}" PercentHeight="100%" PercentWidth="100%" ReadOnly="True" TabIndex="9" TableName="stockInfo_sum" Width="736">
+    <JGPanel Code="JGPanel_Fill" Height="503" Width="1066" PercentHeight="100%" PercentWidth="97.8%" Left="10" TabIndex="1" Dock="Fill" BorderStyle="None" LayoutType="BorderLayout" MultiHeight="0px" MultiWidth="0px">
+      <JGPanel Code="JGPanel_Center" Height="479" Width="1066" PercentHeight="95.2%" PercentWidth="100%" Top="10" TabIndex="5" Dock="Fill" BorderStyle="None" LayoutType="BorderLayout" MultiHeight="0px" MultiWidth="0px">
+        <JGPanel Code="JGPanel2" Height="441" Width="866" PercentHeight="92.1%" PercentWidth="81.2%" Top="38" Left="200" TabIndex="24" Dock="Fill" BorderStyle="None" LayoutType="BorderLayout" MultiHeight="0px" MultiWidth="0px">
+          <JGDataGrid Code="JGDataGrid1" LabelText="列表" Width="866" Height="441" PercentHeight="100%" PercentWidth="100%" TabIndex="9" Dock="Fill" FetchMode="paged" PageInfo="{&quot;PageList&quot;:[10,20,30,40,50,100],&quot;DefaultPageSize&quot;:50}" OnDoubleClick="JGButton5_OnClick" TableName="stockInfo_sum" ReadOnly="True" ChooseMode="3" MultiHeight="0px" MultiWidth="0px">
             <JGTextBoxColumn Code="JGTextBoxColumn3" ColumnName="materialNo" LabelText="物料型号" TableName="stockInfo_sum" Width="150" />
             <JGTextBoxColumn Code="JGTextBoxColumn1" ColumnName="materialName" LabelText="物料名称" TableName="stockInfo_sum" Width="120" />
             <JGTextBoxColumn Code="JGTextBoxColumn2" ColumnName="materialType" LabelText="物料类型" TableName="stockInfo_sum" />
@@ -29,23 +33,28 @@
             <JGTextBoxColumn Code="JGTextBoxColumn7" ColumnName="unit" LabelText="单位" TableName="stockInfo_sum" Width="100" />
           </JGDataGrid>
         </JGPanel>
-        <JGPanel BorderStyle="None" Code="JGPanel1" Dock="Left" Height="388" LayoutType="BorderLayout" PercentHeight="91.1%" PercentWidth="21.4%" TabIndex="22" Top="38">
-          <JGTreeView Code="JGTreeView1" Dock="Fill" Height="388" LabelText="仓库" OnSelectIndexChanged="JGTreeView1_OnSelectIndexChanged" PercentHeight="100%" PercentWidth="100%" ReadOnly="True" TabIndex="23" TableName="bo_akl_MM_stockType" TreeColumnName="stockType" Width="200" />
+        <JGPanel Code="JGPanel1" Height="441" PercentHeight="92.1%" PercentWidth="18.8%" Top="38" TabIndex="22" Dock="Left" BorderStyle="None" LayoutType="BorderLayout" MultiHeight="0px" MultiWidth="0px">
+          <JGTreeView Code="JGTreeView1" LabelText="仓库" Width="200" Height="441" PercentHeight="100%" PercentWidth="100%" TabIndex="23" Dock="Fill" OnSelectIndexChanged="JGTreeView1_OnSelectIndexChanged" TableName="bo_akl_MM_stockType" ReadOnly="True" TreeColumnName="stockType" MultiHeight="0px" MultiWidth="0px" />
         </JGPanel>
-        <JGPanel BorderStyle="None" Code="JGPanel_ToolBar" Dock="Top" Height="38" LayoutType="BorderLayout" PercentHeight="8.9%" PercentWidth="100%" TabIndex="6" Width="936">
-          <JGFlowLayoutPanel BorderStyle="None" Code="JGFlowLayoutPanel1" Dock="Fill" Height="38" ItemMargin="0, 0, 12, 0" PercentHeight="100%" PercentWidth="100%" TabIndex="10" Width="936">
-            <JGButton Code="JGButton5" LabelText="查看库存批次" OnClick="JGButton5_OnClick" PercentHeight="72.2%" PercentWidth="10.9%" TabIndex="28" Width="102" />
-            <JGLocateBox Code="JGLocateBox1" Left="114" OnClick="JGLocateBox1_OnClick" PercentHeight="77.8%" PercentWidth="23.6%" TabIndex="36" />
-            <JGButton Code="JGButton2" LabelText="导出出入库信息" Left="682" OnClick="JGButton2_OnClick" PercentHeight="72.2%" PercentWidth="12.2%" TabIndex="22" Width="114" />
-            <JGButton Code="JGButton1" LabelText="出库" Left="472" OnClick="JGButton5_OnClick_1" PercentHeight="72.2%" PercentWidth="5.6%" TabIndex="21" />
+        <JGPanel Code="JGPanel_ToolBar" Height="38" Width="1066" PercentHeight="7.9%" PercentWidth="100%" TabIndex="6" Dock="Top" BorderStyle="None" LayoutType="BorderLayout" MultiHeight="0px" MultiWidth="0px">
+          <JGFlowLayoutPanel Code="JGFlowLayoutPanel1" Height="38" Width="1066" PercentHeight="100%" PercentWidth="100%" TabIndex="10" Dock="Fill" ItemMargin="0, 0, 12, 0" BorderStyle="None" MultiHeight="0px" MultiWidth="0px">
+            <JGButton Code="JGButton5" LabelText="查看库存批次" Width="102" PercentHeight="72.2%" PercentWidth="9.6%" TabIndex="28" OnClick="JGButton5_OnClick" MultiHeight="0px" MultiWidth="0px" />
+            <JGLocateBox Code="JGLocateBox1" PercentHeight="77.8%" PercentWidth="20.7%" Left="114" TabIndex="36" OnClick="JGLocateBox1_OnClick" MultiHeight="0px" MultiWidth="0px" />
+            <JGButton Code="JGButton2" LabelText="导出出入库信息" Width="114" PercentHeight="72.2%" PercentWidth="10.7%" Left="682" TabIndex="22" OnClick="JGButton2_OnClick" MultiHeight="0px" MultiWidth="0px" />
+            <JGButton Code="JGButton1" LabelText="出库" PercentHeight="72.2%" PercentWidth="4.9%" Left="472" TabIndex="21" OnClick="JGButton5_OnClick_1" MultiHeight="0px" MultiWidth="0px" />
+            <JGButton Code="JGButton3" LabelText="删除" Width="59" PercentHeight="72.2%" PercentWidth="5.5%" Left="536" TabIndex="22" BackColor="255, 0, 0" OnClick="JGButton3_OnClick" MultiHeight="26px" MultiWidth="52px" ThemeVar="null" />
+            <JGButton Code="JGButton4" LabelText="库存批次明细" Width="102" PercentHeight="72.2%" PercentWidth="9.6%" Left="607" TabIndex="23" OnClick="JGButton4_OnClick" MultiHeight="26px" MultiWidth="52px" />
+            <JGButton Code="JGButton6" LabelText="库存明细" Width="77" PercentHeight="72.2%" PercentWidth="7.2%" Left="721" TabIndex="24" OnClick="JGButton6_OnClick" MultiHeight="26px" MultiWidth="52px" />
+            <JGButton Code="JGButton7" LabelText="库存原材料总数量" Width="126" PercentHeight="72.2%" PercentWidth="11.8%" Left="810" TabIndex="25" OnClick="JGButton7_OnClick" MultiHeight="26px" MultiWidth="52px" />
+            <JGButton Code="JGButton8" LabelText="扫码物料导出" Width="102" PercentHeight="72.2%" PercentWidth="9.6%" Left="948" TabIndex="26" OnClick="JGButton8_OnClick" MultiHeight="26px" MultiWidth="52px" />
           </JGFlowLayoutPanel>
         </JGPanel>
       </JGPanel>
-      <JGPanel BorderStyle="None" Code="JGPanel_Top" Dock="Top" Height="12" LayoutType="BorderLayout" PercentHeight="2.7%" PercentWidth="100%" TabIndex="1" Width="936" />
-      <JGPanel BorderStyle="None" Code="JGPanel_Bottom" Dock="Bottom" Height="12" LayoutType="BorderLayout" PercentHeight="2.7%" PercentWidth="100%" TabIndex="1" Top="438" Width="936" />
+      <JGPanel Code="JGPanel_Top" Height="12" Width="1066" PercentHeight="2.4%" PercentWidth="100%" TabIndex="1" Dock="Top" BorderStyle="None" LayoutType="BorderLayout" MultiHeight="0px" MultiWidth="0px" />
+      <JGPanel Code="JGPanel_Bottom" Height="12" Width="1066" PercentHeight="2.4%" PercentWidth="100%" Top="473" TabIndex="1" Dock="Bottom" BorderStyle="None" LayoutType="BorderLayout" MultiHeight="0px" MultiWidth="0px" />
     </JGPanel>
-    <JGPanel BorderStyle="None" Code="JGPanel_Right" Dock="Right" Height="450" LayoutType="BorderLayout" Left="948" PercentHeight="100%" PercentWidth="1.2%" TabIndex="1" Width="12" />
-    <JGPanel BorderStyle="None" Code="JGPanel_Left" Dock="Left" Height="450" LayoutType="BorderLayout" PercentHeight="100%" PercentWidth="1.2%" TabIndex="1" Width="12" />
+    <JGPanel Code="JGPanel_Right" Height="503" Width="12" PercentHeight="100%" PercentWidth="1.1%" Left="1078" TabIndex="1" Dock="Right" BorderStyle="None" LayoutType="BorderLayout" MultiHeight="0px" MultiWidth="0px" />
+    <JGPanel Code="JGPanel_Left" Height="503" Width="12" PercentHeight="100%" PercentWidth="1.1%" TabIndex="1" Dock="Left" BorderStyle="None" LayoutType="BorderLayout" MultiHeight="0px" MultiWidth="0px" />
   </controls>
   <outputs />
   <inputs />
