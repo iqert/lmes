@@ -3,11 +3,11 @@
   <Creator><![CDATA[liub]]></Creator>
   <CreationTime><![CDATA[2019-04-12 09:14:47]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-11-21 23:19:01]]></ModificationTime>
+  <ModificationTime><![CDATA[2019-12-07 13:56:34]]></ModificationTime>
   <VSql><![CDATA[select 
 A.*,B.workCName
 from bo_akl_line_start_user A
-left join bo_akl_base_productInfo_ws B on A.workStationId=B.id
+left join bo_akl_base_productInfo_ws B on A.workStationId=B.id  order by A.workStation asc
 
 ]]></VSql>
   <Columns>
@@ -44,15 +44,19 @@ left join bo_akl_base_productInfo_ws B on A.workStationId=B.id
     <Column id="Column_10" code="sName" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
+    <Column id="Column_11" code="pieceAndTime" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
   </Columns>
   <Params />
   <DataItems>
     <DataItem type="Table" key="bo_akl_line_start_user" tokenIndexes="12" />
     <DataItem type="Table" key="bo_akl_base_productInfo_ws" tokenIndexes="20" />
     <DataItem type="Query" key="B" tokenIndexes="6,22,30" />
-    <DataItem type="Query" key="A" tokenIndexes="14,26" />
+    <DataItem type="Query" key="A" tokenIndexes="14,26,38" />
     <DataItem type="QueryField" key="B.workCName" tokenIndexes="8" />
     <DataItem type="QueryField" key="A.workStationId" tokenIndexes="28" />
     <DataItem type="QueryField" key="B.id" tokenIndexes="32" />
+    <DataItem type="QueryField" key="A.workStation" tokenIndexes="40" />
   </DataItems>
 </Query>

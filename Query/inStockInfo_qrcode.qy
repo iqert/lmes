@@ -1,15 +1,19 @@
-﻿<Query id="ba8691cc61e34cd68287dd648238f0ad" code="inStockInfo_qrcode" name="入库_二维码信息" type="VSql">
+﻿<Query id="ba8691cc61e34cd68287dd648238f0ad" code="inStockInfo_qrcode" name="入库_二维码信息" type="VSql" APICode="">
   <Remark><![CDATA[]]></Remark>
   <Creator><![CDATA[liub]]></Creator>
   <CreationTime><![CDATA[2019-04-08 14:32:25]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-07-12 10:33:41]]></ModificationTime>
+  <ModificationTime><![CDATA[2019-12-13 10:48:17]]></ModificationTime>
   <VSql><![CDATA[SELECT mi.materialNo, mi.unit, st1.stockType, 
 isi.inStockNum, isi.batchNo, isi.operatorName, isi.operateTime, isi.remark, qq.qrCodeInfo
 FROM bo_akl_MM_inStockInfo_QRCode qq
 LEFT JOIN bo_akl_MM_inStockInfo AS isi ON qq.inStockInfoId = isi.id
 LEFT JOIN bo_akl_MM_materialInfo AS mi ON isi.materialId = mi.id
 LEFT JOIN bo_akl_MM_stockType AS st1 ON isi.stockTypeId = st1.id
+where
+isi.operateTime>:startTime and 
+isi.operateTime<:endTime and 
+CHARINDEX(mi.projectNo,:projectName,1)
 ORDER BY isi.operateTime DESC
 ]]></VSql>
   <Columns>
@@ -41,11 +45,27 @@ ORDER BY isi.operateTime DESC
       <Remark></Remark>
     </Column>
   </Columns>
-  <Params />
+  <Params>
+    <Param code="startTime" name="" dataType="date">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="endTime" name="" dataType="date">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="projectName" name="项目名称" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
   <DataItems>
     <DataItem type="Table" key="bo_akl_MM_inStockInfo_QRCode" tokenIndexes="48" />
     <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="56" />
     <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="78" />
     <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="100" />
+    <DataItem type="QueryParam" key="startTime" tokenIndexes="125" />
+    <DataItem type="QueryParam" key="endTime" tokenIndexes="134" />
+    <DataItem type="QueryParam" key="projectName" tokenIndexes="145" />
   </DataItems>
 </Query>

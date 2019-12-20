@@ -1,14 +1,15 @@
-﻿<Query id="0e1abee605a14e20a04ae49d9ca4d75d" code="getBadData" name="不良品确认显示工站名称" type="VSql">
+﻿<Query id="0e1abee605a14e20a04ae49d9ca4d75d" code="getBadData" name="不良品确认显示工站名称" type="VSql" APICode="">
   <Remark><![CDATA[]]></Remark>
   <Creator><![CDATA[liub]]></Creator>
   <CreationTime><![CDATA[2019-04-24 17:02:42]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-07-30 16:52:55]]></ModificationTime>
+  <ModificationTime><![CDATA[2019-12-09 17:08:19]]></ModificationTime>
   <VSql><![CDATA[select 
 A.*,C.workCName
 from bo_akl_line_stationBadProNum A
 left join bo_akl_line_start B on A.startId=B.id
 left join bo_akl_base_productInfo_ws C on B.equId=C.pNo and A.stationName=C.wsNo
+order by A.stationName Asc
 
 ]]></VSql>
   <Columns>
@@ -45,6 +46,15 @@ left join bo_akl_base_productInfo_ws C on B.equId=C.pNo and A.stationName=C.wsNo
     <Column id="Column_10" code="remark" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
+    <Column id="Column_11" code="materialNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_12" code="bsTime" name="" dataType="date" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_13" code="cName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
   </Columns>
   <Params />
   <DataItems>
@@ -52,14 +62,14 @@ left join bo_akl_base_productInfo_ws C on B.equId=C.pNo and A.stationName=C.wsNo
     <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="20" />
     <DataItem type="Table" key="bo_akl_base_productInfo_ws" tokenIndexes="38" />
     <DataItem type="Query" key="C" tokenIndexes="6,40,48,58" />
-    <DataItem type="Query" key="A" tokenIndexes="14,26,54" />
+    <DataItem type="Query" key="A" tokenIndexes="14,26,54,66" />
     <DataItem type="Query" key="B" tokenIndexes="22,30,44" />
     <DataItem type="QueryField" key="C.workCName" tokenIndexes="8" />
     <DataItem type="QueryField" key="A.startId" tokenIndexes="28" />
     <DataItem type="QueryField" key="B.id" tokenIndexes="32" />
     <DataItem type="QueryField" key="B.equId" tokenIndexes="46" />
     <DataItem type="QueryField" key="C.pNo" tokenIndexes="50" />
-    <DataItem type="QueryField" key="A.stationName" tokenIndexes="56" />
+    <DataItem type="QueryField" key="A.stationName" tokenIndexes="56,68" />
     <DataItem type="QueryField" key="C.wsNo" tokenIndexes="60" />
   </DataItems>
 </Query>

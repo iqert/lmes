@@ -1,12 +1,12 @@
-﻿<Query id="7b4444f3503d40fcb44d6d52a8571ef3" code="getLine_user" name="获取线长对应产线数据" type="VSql">
+﻿<Query id="7b4444f3503d40fcb44d6d52a8571ef3" code="getLine_user" name="获取线长对应产线数据" type="VSql" APICode="">
   <Remark><![CDATA[]]></Remark>
   <Creator><![CDATA[liub]]></Creator>
   <CreationTime><![CDATA[2018-07-04 14:40:55]]></CreationTime>
-  <Modifier><![CDATA[liub]]></Modifier>
-  <ModificationTime><![CDATA[2019-04-02 10:44:14]]></ModificationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-11-28 11:05:09]]></ModificationTime>
   <VSql><![CDATA[
-select sNo,sName,tLine,vwsNature,pNo,equipName from (
-SELECT eb.sNo, eb.sName, eb.tLine, pw.vwsNature, pw.pNo,pw.equipName
+select sNo,sName,vwsNature,pNo,equipName from (
+SELECT eb.sNo, eb.sName,pw.vwsNature, pw.pNo,pw.equipName
 FROM bo_akl_base_examRecordLB eb
 LEFT JOIN (
 	SELECT a1.vwsNature,a2.pNo,a1.wsNo,a3.equipName
@@ -16,9 +16,9 @@ LEFT JOIN (
 	WHERE vwsNature = '线长'
 	) pw ON CHARINDEX(pw.wsNo, eb.tLine, 1) > 0
 WHERE eb.assResult = '合格'
-	AND eb.userPower != ''
+	
 	AND pw.vwsNature != ''
---GROUP BY eb.sNo
+GROUP BY eb.sNo, eb.sName, pw.vwsNature, pw.pNo,pw.equipName
 )a
 
 
@@ -31,25 +31,22 @@ WHERE eb.assResult = '合格'
     <Column id="Column_1" code="sName" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_2" code="tLine" name="" dataType="text" length="" precision="">
+    <Column id="Column_2" code="vwsNature" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_3" code="vwsNature" name="" dataType="char" length="" precision="">
+    <Column id="Column_3" code="pNo" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_4" code="pNo" name="" dataType="char" length="" precision="">
-      <Remark></Remark>
-    </Column>
-    <Column id="Column_5" code="equipName" name="" dataType="char" length="" precision="">
+    <Column id="Column_4" code="equipName" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
   </Columns>
   <Params />
   <DataItems>
-    <DataItem type="Table" key="bo_akl_base_examRecordLB" tokenIndexes="51" />
-    <DataItem type="Table" key="bo_akl_base_productling_ws" tokenIndexes="81" />
-    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="89" />
-    <DataItem type="Table" key="bo_akl_EM_EquipmentInformation" tokenIndexes="107" />
-    <DataItem type="Query" key="a" tokenIndexes="188" />
+    <DataItem type="Table" key="bo_akl_base_examRecordLB" tokenIndexes="43" />
+    <DataItem type="Table" key="bo_akl_base_productling_ws" tokenIndexes="73" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="81" />
+    <DataItem type="Table" key="bo_akl_EM_EquipmentInformation" tokenIndexes="99" />
+    <DataItem type="Query" key="a" tokenIndexes="196" />
   </DataItems>
 </Query>

@@ -1,11 +1,12 @@
 ﻿<form type="1002" code="changeTending" IsLocked="False">
   <propertys>
     <property name="Width"><![CDATA[931]]></property>
-    <property name="Height"><![CDATA[466]]></property>
+    <property name="Height"><![CDATA[545]]></property>
     <property name="HeightSet"><![CDATA[StaticHeight]]></property>
     <property name="LayoutType"><![CDATA[None]]></property>
     <property name="TableName"><![CDATA[]]></property>
     <property name="FormLoadAction"><![CDATA[newTending_FormLoadAction]]></property>
+    <property name="ResizeAction"><![CDATA[]]></property>
     <property name="FormCloseAction"><![CDATA[]]></property>
     <property name="FormClosingAction"><![CDATA[]]></property>
     <property name="BackColor"><![CDATA[]]></property>
@@ -15,11 +16,14 @@
     <property name="WindowState"><![CDATA[Normal]]></property>
     <property name="MaximizeBox"><![CDATA[True]]></property>
     <property name="RefResources"><![CDATA[]]></property>
+    <property name="ControlDocInfo"><![CDATA[]]></property>
+    <property name="IsWindowReport"><![CDATA[]]></property>
+    <property name="ThemeVar"><![CDATA[]]></property>
   </propertys>
   <controls>
-    <JGButton Code="newButton" LabelText="新增" Left="17" OnClick="newButton_OnClick" PercentHeight="5.6%" PercentWidth="5.6%" TabIndex="7" Top="130" />
-    <JGButton Code="saveButton" LabelText="保存" Left="410" OnClick="saveButton_OnClick" PercentHeight="5.6%" PercentWidth="14.3%" TabIndex="10" Top="428" Width="133" />
-    <JGDataGrid ChooseMode="3" Code="JGDataGrid1" EditTrigger="click" Height="247" LabelText="列表" Left="17" OnSelectionChanged="JGDataGrid1_OnSelectionChanged" PageInfo="{&quot;PageList&quot;:[10,20,30,40,50,5],&quot;DefaultPageSize&quot;:5}" PercentHeight="53%" PercentWidth="96.2%" TabIndex="9" TableName="bo_akl_base_tendingInfo" Top="162" Width="896">
+    <JGButton Code="newButton" LabelText="新增" PercentHeight="4.8%" PercentWidth="5.6%" Top="172" Left="17" TabIndex="7" OnClick="newButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+    <JGButton Code="saveButton" LabelText="保存" Width="133" PercentHeight="4.8%" PercentWidth="14.3%" Top="467" Left="410" TabIndex="10" OnClick="saveButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+    <JGDataGrid Code="JGDataGrid1" LabelText="列表" Width="896" Height="247" PercentHeight="45.3%" PercentWidth="96.2%" Top="204" Left="17" TabIndex="9" PageInfo="{&quot;PageList&quot;:[10,20,30,40,50,5],&quot;DefaultPageSize&quot;:5}" OnSelectionChanged="JGDataGrid1_OnSelectionChanged" TableName="bo_akl_base_tendingInfo" ChooseMode="3" EditTrigger="click" MultiHeight="0px" MultiWidth="0px">
       <JGTextBoxColumn Code="JGTextBoxColumn1" ColumnName="checkProject" LabelText="检查项目" TableName="bo_akl_base_tendingInfo" TextLength="128" Width="141" />
       <JGTextBoxColumn Code="JGTextBoxColumn2" ColumnName="tContent" LabelText="维护保养内容" TableName="bo_akl_base_tendingInfo" TextLength="128" Width="170" />
       <JGTextBoxColumn Code="JGTextBoxColumn3" ColumnName="tRecord" LabelText="维护保养记录" TableName="bo_akl_base_tendingInfo" TextLength="128" Width="144" />
@@ -27,13 +31,15 @@
       <JGTextBoxColumn Code="JGTextBoxColumn5" ColumnName="picture" LabelText="图片" OnClick="changeTending_OnClick_1" ReadOnly="True" TableName="bo_akl_base_tendingInfo" Width="101" />
       <JGTextBoxColumn Code="JGTextBoxColumn6" ColumnName="upload" LabelText="操作" OnClick="changeTending_OnClick" ReadOnly="True" TableName="bo_akl_base_tendingInfo" Width="114" />
     </JGDataGrid>
-    <JGButton BackColor="255, 0, 0" Code="deleteButton" LabelText="删除" Left="75" OnClick="deleteButton_OnClick" PercentHeight="5.6%" PercentWidth="5.6%" TabIndex="8" Top="130" Visible="False" />
-    <JGComboBox Code="cycleComboBox" ColumnName="cycle" DropDownSource="{&quot;DataSourceSetting&quot;:{&quot;DataConfig&quot;:{&quot;DefaultSaveColumn&quot;:null,&quot;DefaultShowColumn&quot;:null,&quot;SourceType&quot;:null,&quot;SourceID&quot;:null,&quot;SourceName&quot;:null,&quot;MapTable&quot;:null,&quot;SaveColumn&quot;:null,&quot;ShowColumn&quot;:null,&quot;SortField&quot;:null,&quot;SortType&quot;:null,&quot;MaxRecCount&quot;:0,&quot;QueryField&quot;:null,&quot;QueryMethod&quot;:null,&quot;IsPickListFields&quot;:false,&quot;ConstData&quot;:[{&quot;id&quot;:&quot;每月&quot;,&quot;text&quot;:&quot;每月&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;每季度&quot;,&quot;text&quot;:&quot;每季度&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;每半年&quot;,&quot;text&quot;:&quot;每半年&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;每年&quot;,&quot;text&quot;:&quot;每年&quot;,&quot;selected&quot;:&quot;False&quot;}],&quot;SqlQueryConstData&quot;:null,&quot;EntityConstData&quot;:null,&quot;Condition&quot;:null,&quot;QueryParam&quot;:null,&quot;PickListFields&quot;:null},&quot;DataSourceType&quot;:&quot;CustomConst&quot;}}" IDColumnName="cycle" LabelText="周期" Left="17" PercentHeight="5.6%" PercentWidth="31.4%" TabIndex="4" TableName="bo_akl_base_tending" Top="88" Width="292" />
-    <JGDateTimePicker Code="tendingDateTimePicker" ColumnName="tDate" LabelText="维护保养日期" Left="315" PercentHeight="5.6%" PercentWidth="32.2%" TabIndex="5" TableName="bo_akl_base_tending" Top="88" Width="300" />
-    <JGLabel Code="JGLabel1" FontStyle="微软雅黑, 15pt, style=Bold" Height="39" LabelText="维修保养记录" Left="410" PercentHeight="8.4%" PercentWidth="14.3%" TabIndex="1" Top="3" Width="133" />
-    <JGBaseDictBox Code="equipNameBaseDictBox" ColumnName="eqName" IDColumnName="eqName" IsMust="True" LabelText="设备名称" Left="489" OpenModuleAction="equipNoBaseDictBox_OpenModuleAction" PercentHeight="5.6%" PercentWidth="46.4%" TabIndex="3" TableName="bo_akl_base_tending" Top="47" Width="432" />
-    <JGBaseDictBox Code="equipNoBaseDictBox" ColumnName="eqNo" IDColumnName="eqNo" IsMust="True" LabelText="设备编号" Left="17" OpenModuleAction="equipNoBaseDictBox_OpenModuleAction" PercentHeight="5.6%" PercentWidth="46.4%" TabIndex="2" TableName="bo_akl_base_tending" Top="47" Width="432" />
-    <JGTextBox Code="JGTextBox1" ColumnName="operator" IsMust="True" LabelText="操作人" Left="621" PercentHeight="5.6%" PercentWidth="32.2%" ReadOnly="True" TabIndex="6" TableName="bo_akl_base_tending" Top="88" Width="300" />
+    <JGButton Code="deleteButton" LabelText="删除" PercentHeight="4.8%" PercentWidth="5.6%" Top="172" Left="75" TabIndex="8" Visible="False" BackColor="255, 0, 0" OnClick="deleteButton_OnClick" MultiHeight="0px" MultiWidth="0px" />
+    <JGComboBox Code="cycleComboBox" LabelText="周期" Width="292" PercentHeight="4.8%" PercentWidth="31.4%" Top="48" Left="621" TabIndex="4" TableName="bo_akl_base_tending" IDColumnName="cycle" ColumnName="cycle" DropDownSource="{&quot;DataSourceSetting&quot;:{&quot;DataConfig&quot;:{&quot;DefaultSaveColumn&quot;:null,&quot;DefaultShowColumn&quot;:null,&quot;SourceType&quot;:null,&quot;SourceID&quot;:null,&quot;SourceName&quot;:null,&quot;MapTable&quot;:null,&quot;SaveColumn&quot;:null,&quot;ShowColumn&quot;:null,&quot;SortField&quot;:null,&quot;SortType&quot;:null,&quot;MaxRecCount&quot;:0,&quot;QueryField&quot;:null,&quot;QueryMethod&quot;:null,&quot;IsPickListFields&quot;:false,&quot;ConstData&quot;:[{&quot;id&quot;:&quot;每月&quot;,&quot;text&quot;:&quot;每月&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;每季度&quot;,&quot;text&quot;:&quot;每季度&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;每半年&quot;,&quot;text&quot;:&quot;每半年&quot;,&quot;selected&quot;:&quot;False&quot;},{&quot;id&quot;:&quot;每年&quot;,&quot;text&quot;:&quot;每年&quot;,&quot;selected&quot;:&quot;False&quot;}],&quot;SqlQueryConstData&quot;:null,&quot;EntityConstData&quot;:null,&quot;Condition&quot;:null,&quot;QueryParam&quot;:null,&quot;PickListFields&quot;:null},&quot;DataSourceType&quot;:&quot;CustomConst&quot;}}" MultiHeight="0px" MultiWidth="0px" />
+    <JGDateTimePicker Code="tendingDateTimePicker" LabelText="维护保养日期" Width="292" PercentHeight="4.8%" PercentWidth="31.4%" Top="88" Left="17" TabIndex="5" TableName="bo_akl_base_tending" ColumnName="tDate" MultiHeight="0px" MultiWidth="0px" />
+    <JGLabel Code="JGLabel1" LabelText="维修保养记录" Height="39" Width="133" PercentHeight="7.2%" PercentWidth="14.3%" Top="3" Left="410" TabIndex="1" FontStyle="微软雅黑, 15pt, style=Bold" MultiHeight="0px" MultiWidth="0px" />
+    <JGBaseDictBox Code="equipNameBaseDictBox" LabelText="设备名称" Width="300" PercentHeight="4.8%" PercentWidth="32.2%" Top="48" Left="315" TabIndex="3" OpenModuleAction="equipNoBaseDictBox_OpenModuleAction" TableName="bo_akl_base_tending" IDColumnName="eqName" ColumnName="eqName" IsMust="True" MultiHeight="0px" MultiWidth="0px" />
+    <JGBaseDictBox Code="equipNoBaseDictBox" LabelText="设备编号" Width="292" PercentHeight="4.8%" PercentWidth="31.4%" Top="47" Left="17" TabIndex="2" OpenModuleAction="equipNoBaseDictBox_OpenModuleAction" TableName="bo_akl_base_tending" IDColumnName="eqNo" ColumnName="eqNo" IsMust="True" MultiHeight="0px" MultiWidth="0px" />
+    <JGTextBox Code="JGTextBox1" LabelText="操作人" Width="300" PercentHeight="4.8%" PercentWidth="32.2%" Top="88" Left="315" TabIndex="6" TableName="bo_akl_base_tending" ColumnName="operator" ReadOnly="True" IsMust="True" MultiHeight="0px" MultiWidth="0px" />
+    <JGLongDateTimePicker Code="JGLongDateTimePicker1" LabelText="实际开始时间" Width="292" PercentHeight="4.8%" PercentWidth="31.4%" Top="130" Left="17" TabIndex="0" TableName="bo_akl_base_tending" ColumnName="realStartTime" MultiHeight="0px" MultiWidth="0px" />
+    <JGLongDateTimePicker Code="JGLongDateTimePicker2" LabelText="实际结束时间" Width="300" PercentHeight="4.8%" PercentWidth="32.2%" Top="130" Left="315" TabIndex="0" TableName="bo_akl_base_tending" ColumnName="realEndTime" MultiHeight="0px" MultiWidth="0px" />
   </controls>
   <outputs>
     <variable code="wxbyjl" name="" fieldType="entity" defaultValue="" description="" isRestore="false">

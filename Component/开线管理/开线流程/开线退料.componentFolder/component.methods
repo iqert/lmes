@@ -109,6 +109,55 @@
         <RuleConfig><![CDATA[{"showType":"3","time":null,"simpleChinesePrompt":{"msgnote":"\"是否已选完需退料的物料？\"","type":"1"}}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>3</MsgType><SimpleChinese>"是否已选完需退料的物料？"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage2" instanceName="显示设置的提示信息_2" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"3","time":null,"simpleChinesePrompt":{"msgnote":"ConcatStr(\"物料：\",LV.mc.materialNo,\",包装数量必须大于0\")","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>3</MsgType><SimpleChinese>ConcatStr("物料：",LV.mc.materialNo,",包装数量必须大于0")</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AbortRule" ruleName="中断规则" instanceCode="BR_AbortRule1" instanceName="中断规则" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"abortType":"CURRENT","msgnote":""}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>CURRENT</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="CopyEntityRecord" ruleName="实体间复制记录" instanceCode="BR_CopyEntityRecord1" instanceName="实体间复制记录_退料" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"checkitems":null,"condition":"","copyType":"1","destName":"materialConfirm","items":[{"destName":"materialConfirm.materialId","sourceName":"materialConfirm.materialId","type":"entityField"},{"destName":"materialConfirm.batchNo","sourceName":"materialConfirm.batchNo","type":"entityField"},{"destName":"materialConfirm.startId","sourceName":"materialConfirm.startId","type":"entityField"},{"destName":"materialConfirm.materialNo","sourceName":"materialConfirm.materialNo","type":"entityField"},{"destName":"materialConfirm.residueNum","sourceName":"materialConfirm.residueNum","type":"entityField"},{"destName":"materialConfirm.materialName","sourceName":"materialConfirm.materialName","type":"entityField"},{"destName":"materialConfirm.materialType","sourceName":"materialConfirm.materialType","type":"entityField"},{"destName":"materialConfirm.packNum","sourceName":"materialConfirm.packNum","type":"entityField"},{"destName":"materialConfirm.returnNum","sourceName":"materialConfirm.returnNum","type":"entityField"},{"destName":"materialConfirm.id","sourceName":"materialConfirm.id","type":"entityField"}],"mageitems":null,"sourceName":"materialConfirm","type":"1","isAddRecord":true,"jsonVersion":"1.0","destType":"ruleSetVar","sourceType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtInfo><destName>materialConfirm</destName><destType>ruleSetVar</destType><sourceName>materialConfirm</sourceName><sourceType>window</sourceType><type>1</type><isAddRecord>True</isAddRecord><copyType>1</copyType><condition /><jsonVersion>1.0</jsonVersion></dtInfo><dtMaster><DestName>materialConfirm.materialId</DestName><SourceType>entityField</SourceType><SourceName>materialConfirm.materialId</SourceName></dtMaster><dtMaster><DestName>materialConfirm.batchNo</DestName><SourceType>entityField</SourceType><SourceName>materialConfirm.batchNo</SourceName></dtMaster><dtMaster><DestName>materialConfirm.startId</DestName><SourceType>entityField</SourceType><SourceName>materialConfirm.startId</SourceName></dtMaster><dtMaster><DestName>materialConfirm.materialNo</DestName><SourceType>entityField</SourceType><SourceName>materialConfirm.materialNo</SourceName></dtMaster><dtMaster><DestName>materialConfirm.residueNum</DestName><SourceType>entityField</SourceType><SourceName>materialConfirm.residueNum</SourceName></dtMaster><dtMaster><DestName>materialConfirm.materialName</DestName><SourceType>entityField</SourceType><SourceName>materialConfirm.materialName</SourceName></dtMaster><dtMaster><DestName>materialConfirm.materialType</DestName><SourceType>entityField</SourceType><SourceName>materialConfirm.materialType</SourceName></dtMaster><dtMaster><DestName>materialConfirm.packNum</DestName><SourceType>entityField</SourceType><SourceName>materialConfirm.packNum</SourceName></dtMaster><dtMaster><DestName>materialConfirm.returnNum</DestName><SourceType>entityField</SourceType><SourceName>materialConfirm.returnNum</SourceName></dtMaster><dtMaster><DestName>materialConfirm.id</DestName><SourceType>entityField</SourceType><SourceName>materialConfirm.id</SourceName></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请选择需退料的物料！\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请选择需退料的物料！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage2_1_1" instanceName="显示设置的提示信息_2_1_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"3","time":null,"simpleChinesePrompt":{"msgnote":"ConcatStr(\"物料：\",LV.mc.materialNo,\",退料数必须大于0\")","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>3</MsgType><SimpleChinese>ConcatStr("物料：",LV.mc.materialNo,",退料数必须大于0")</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AbortRule" ruleName="中断规则" instanceCode="BR_AbortRule1_1_1" instanceName="中断规则_1_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"abortType":"CURRENT","msgnote":""}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>CURRENT</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
       <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage2_1" instanceName="显示设置的提示信息_2_1" isNeedLog="False" isEnabled="False" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
@@ -123,14 +172,35 @@
         <RuleConfig><![CDATA[{"abortType":"CURRENT","msgnote":""}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>CURRENT</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage2" instanceName="显示设置的提示信息_2" isNeedLog="False" isEnabled="True" isDebug="False">
+      <RuleInstance ruleCode="ModifyDataBaseRecord" ruleName="修改数据库中的记录" instanceCode="BR_ModifyDataBaseRecord2_1" instanceName="修改数据库中的记录_更新已退数量_1" isNeedLog="False" isEnabled="False" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"showType":"3","time":null,"simpleChinesePrompt":{"msgnote":"ConcatStr(\"物料：\",LV.mc.materialNo,\",包装数量必须大于0\")","type":"1"}}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>3</MsgType><SimpleChinese>ConcatStr("物料：",LV.mc.materialNo,",包装数量必须大于0")</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype></dtMaster></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"dataSourcesMapping":[{"condition":[{"columnType":"1","field":"bo_akl_MM_inheritMateriral.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"LV.mc2.id","valueType":"9"}],"dataMap":[{"colName":"bo_akl_MM_inheritMateriral.returnNum","colValue":"LV.mc2.returnNum","valueType":"expression"},{"colName":"bo_akl_MM_inheritMateriral.startId","colValue":"@newlId","valueType":"expression"},{"colName":"bo_akl_MM_inheritMateriral.num","colValue":"LV.mc2.packNum-LV.mc2.returnNum","valueType":"expression"}],"dataSource":"bo_akl_MM_inheritMateriral","opperType":"update"}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><orderNo>1</orderNo><destTableName>bo_akl_MM_inheritMateriral</destTableName><opperType>update</opperType><condition><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_MM_inheritMateriral.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>LV.mc2.id</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></condition><dtField><![CDATA[<NewDataSet><dtField><destField>bo_akl_MM_inheritMateriral.returnNum</destField><sourceType>expression</sourceType><sourceField>LV.mc2.returnNum</sourceField></dtField><dtField><destField>bo_akl_MM_inheritMateriral.startId</destField><sourceType>expression</sourceType><sourceField>@newlId</sourceField></dtField><dtField><destField>bo_akl_MM_inheritMateriral.num</destField><sourceType>expression</sourceType><sourceField>LV.mc2.packNum-LV.mc2.returnNum</sourceField></dtField></NewDataSet>]]]]><![CDATA[></dtField></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="AbortRule" ruleName="中断规则" instanceCode="BR_AbortRule1" instanceName="中断规则" isNeedLog="False" isEnabled="True" isDebug="False">
+      <RuleInstance ruleCode="ModifyDataBaseRecord" ruleName="修改数据库中的记录" instanceCode="BR_ModifyDataBaseRecord2" instanceName="修改数据库中的记录_更新已退数量" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-12-04 14:11:10">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourcesMapping":[{"condition":[{"columnType":"1","field":"bo_akl_line_materialConfirm.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"LV.mc2.id","valueType":"9"}],"dataMap":[{"colName":"bo_akl_line_materialConfirm.returnNum","colValue":"LV.mc2.returnNum","valueType":"expression"}],"dataSource":"bo_akl_line_materialConfirm","opperType":"update"}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><orderNo>1</orderNo><destTableName>bo_akl_line_materialConfirm</destTableName><opperType>update</opperType><condition><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_line_materialConfirm.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>LV.mc2.id</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></condition><dtField><![CDATA[<NewDataSet><dtField><destField>bo_akl_line_materialConfirm.returnNum</destField><sourceType>expression</sourceType><sourceField>LV.mc2.returnNum</sourceField></dtField></NewDataSet>]]]]><![CDATA[></dtField></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_createReturnMaterialLabel(生成退料标签)" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"createReturnMaterialLabel","isParallelism":"False"},"invokeParams":[{"paramCode":"sum","paramType":"expression","paramValue":"LV.mc2.returnNum","paramSource":"","dataFilterType":"","paramFieldMapping":null},{"paramCode":"packNum","paramType":"expression","paramValue":"LV.mc2.packNum","paramSource":"","dataFilterType":"","paramFieldMapping":null},{"paramCode":"lId","paramType":"expression","paramValue":"LV.mc2.startId","paramSource":"","dataFilterType":"","paramFieldMapping":null},{"paramCode":"materialNo","paramType":"expression","paramValue":"LV.mc2.materialNo","paramSource":"","dataFilterType":"","paramFieldMapping":null},{"paramCode":"materialName","paramType":"expression","paramValue":"LV.mc2.materialName","paramSource":"","dataFilterType":"","paramFieldMapping":null},{"paramCode":"batch","paramType":"expression","paramValue":"LV.mc2.batchNo","paramSource":"","dataFilterType":"","paramFieldMapping":null},{"paramCode":"materialId","paramType":"expression","paramValue":"LV.mc2.materialId","paramSource":"","dataFilterType":"","paramFieldMapping":null},{"paramCode":"projectNo","paramType":"expression","paramValue":"BR_VAR_PARENT.[getProjectNo].[pNo]","paramSource":"","dataFilterType":"","paramFieldMapping":null}],"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>createReturnMaterialLabel</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>sum</paramCode><paramType>expression</paramType><paramValue>LV.mc2.returnNum</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtInvokeParams><paramCode>packNum</paramCode><paramType>expression</paramType><paramValue>LV.mc2.packNum</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtInvokeParams><paramCode>lId</paramCode><paramType>expression</paramType><paramValue>LV.mc2.startId</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtInvokeParams><paramCode>materialNo</paramCode><paramType>expression</paramType><paramValue>LV.mc2.materialNo</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtInvokeParams><paramCode>materialName</paramCode><paramType>expression</paramType><paramValue>LV.mc2.materialName</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtInvokeParams><paramCode>batch</paramCode><paramType>expression</paramType><paramValue>LV.mc2.batchNo</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtInvokeParams><paramCode>materialId</paramCode><paramType>expression</paramType><paramValue>LV.mc2.materialId</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtInvokeParams><paramCode>projectNo</paramCode><paramType>expression</paramType><paramValue>BR_VAR_PARENT.[getProjectNo].[pNo]</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage4" instanceName="显示设置的提示信息_4" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"已退数量不得大于等于报装数量\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"已退数量不得大于等于报装数量"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AbortRule" ruleName="中断规则" instanceCode="BR_AbortRule2" instanceName="中断规则_2" isNeedLog="False" isEnabled="False" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
@@ -171,76 +241,6 @@
         <DebugCondition><![CDATA[]]></DebugCondition>
         <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"6","Target":"isOk","SourceType":"expression","SourceEntityType":"","Source":"\"OK\"","entityFieldMapping":null}]}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>6</TargetType><Target>isOk</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"OK"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息_1" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"请选择需退料的物料！\"","type":"1"}}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"请选择需退料的物料！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="ModifyDataBaseRecord" ruleName="修改数据库中的记录" instanceCode="BR_ModifyDataBaseRecord2_1" instanceName="修改数据库中的记录_更新已退数量_1" isNeedLog="False" isEnabled="False" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"dataSourcesMapping":[{"condition":[{"columnType":"1","field":"bo_akl_MM_inheritMateriral.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"LV.mc2.id","valueType":"9"}],"dataMap":[{"colName":"bo_akl_MM_inheritMateriral.returnNum","colValue":"LV.mc2.returnNum","valueType":"expression"},{"colName":"bo_akl_MM_inheritMateriral.startId","colValue":"@newlId","valueType":"expression"},{"colName":"bo_akl_MM_inheritMateriral.num","colValue":"LV.mc2.packNum-LV.mc2.returnNum","valueType":"expression"}],"dataSource":"bo_akl_MM_inheritMateriral","opperType":"update"}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><orderNo>1</orderNo><destTableName>bo_akl_MM_inheritMateriral</destTableName><opperType>update</opperType><condition><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_MM_inheritMateriral.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>LV.mc2.id</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></condition><dtField><![CDATA[<NewDataSet><dtField><destField>bo_akl_MM_inheritMateriral.returnNum</destField><sourceType>expression</sourceType><sourceField>LV.mc2.returnNum</sourceField></dtField><dtField><destField>bo_akl_MM_inheritMateriral.startId</destField><sourceType>expression</sourceType><sourceField>@newlId</sourceField></dtField><dtField><destField>bo_akl_MM_inheritMateriral.num</destField><sourceType>expression</sourceType><sourceField>LV.mc2.packNum-LV.mc2.returnNum</sourceField></dtField></NewDataSet>]]]]><![CDATA[></dtField></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="ModifyDataBaseRecord" ruleName="修改数据库中的记录" instanceCode="BR_ModifyDataBaseRecord2" instanceName="修改数据库中的记录_更新已退数量" isNeedLog="False" isEnabled="False" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"dataSourcesMapping":[{"condition":[{"columnType":"1","field":"bo_akl_line_materialConfirm.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"LV.mc2.id","valueType":"9"}],"dataMap":[{"colName":"bo_akl_line_materialConfirm.returnNum","colValue":"LV.mc2.returnNum","valueType":"expression"},{"colName":"bo_akl_line_materialConfirm.startId","colValue":"@newlId","valueType":"expression"},{"colName":"bo_akl_line_materialConfirm.num","colValue":"LV.mc2.residueNum-LV.mc2.returnNum","valueType":"expression"}],"dataSource":"bo_akl_line_materialConfirm","opperType":"update"}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><orderNo>1</orderNo><destTableName>bo_akl_line_materialConfirm</destTableName><opperType>update</opperType><condition><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_line_materialConfirm.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>LV.mc2.id</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></condition><dtField><![CDATA[<NewDataSet><dtField><destField>bo_akl_line_materialConfirm.returnNum</destField><sourceType>expression</sourceType><sourceField>LV.mc2.returnNum</sourceField></dtField><dtField><destField>bo_akl_line_materialConfirm.startId</destField><sourceType>expression</sourceType><sourceField>@newlId</sourceField></dtField><dtField><destField>bo_akl_line_materialConfirm.num</destField><sourceType>expression</sourceType><sourceField>LV.mc2.residueNum-LV.mc2.returnNum</sourceField></dtField></NewDataSet>]]]]><![CDATA[></dtField></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_createReturnMaterialLabel(生成退料标签)" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-23 17:23:38">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"createReturnMaterialLabel","isParallelism":"False"},"invokeParams":[{"paramCode":"sum","paramType":"expression","paramValue":"LV.mc2.returnNum","paramSource":"","dataFilterType":"","paramFieldMapping":null},{"paramCode":"packNum","paramType":"expression","paramValue":"LV.mc2.packNum","paramSource":"","dataFilterType":"","paramFieldMapping":null},{"paramCode":"lId","paramType":"expression","paramValue":"LV.mc2.startId","paramSource":"","dataFilterType":"","paramFieldMapping":null},{"paramCode":"materialNo","paramType":"expression","paramValue":"LV.mc2.materialNo","paramSource":"","dataFilterType":"","paramFieldMapping":null},{"paramCode":"materialName","paramType":"expression","paramValue":"LV.mc2.materialName","paramSource":"","dataFilterType":"","paramFieldMapping":null},{"paramCode":"batch","paramType":"expression","paramValue":"LV.mc2.batchNo","paramSource":"","dataFilterType":"","paramFieldMapping":null},{"paramCode":"materialId","paramType":"expression","paramValue":"LV.mc2.materialId","paramSource":"","dataFilterType":"","paramFieldMapping":null},{"paramCode":"projectNo","paramType":"expression","paramValue":"BR_VAR_PARENT.[getProjectNo].[pNo]","paramSource":"","dataFilterType":"","paramFieldMapping":null}],"returnMapping":null}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>createReturnMaterialLabel</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>sum</paramCode><paramType>expression</paramType><paramValue>LV.mc2.returnNum</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtInvokeParams><paramCode>packNum</paramCode><paramType>expression</paramType><paramValue>LV.mc2.packNum</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtInvokeParams><paramCode>lId</paramCode><paramType>expression</paramType><paramValue>LV.mc2.startId</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtInvokeParams><paramCode>materialNo</paramCode><paramType>expression</paramType><paramValue>LV.mc2.materialNo</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtInvokeParams><paramCode>materialName</paramCode><paramType>expression</paramType><paramValue>LV.mc2.materialName</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtInvokeParams><paramCode>batch</paramCode><paramType>expression</paramType><paramValue>LV.mc2.batchNo</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtInvokeParams><paramCode>materialId</paramCode><paramType>expression</paramType><paramValue>LV.mc2.materialId</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtInvokeParams><paramCode>projectNo</paramCode><paramType>expression</paramType><paramValue>BR_VAR_PARENT.[getProjectNo].[pNo]</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage2_1_1" instanceName="显示设置的提示信息_2_1_1" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"showType":"3","time":null,"simpleChinesePrompt":{"msgnote":"ConcatStr(\"物料：\",LV.mc.materialNo,\",退料数必须大于0\")","type":"1"}}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>3</MsgType><SimpleChinese>ConcatStr("物料：",LV.mc.materialNo,",退料数必须大于0")</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="AbortRule" ruleName="中断规则" instanceCode="BR_AbortRule1_1_1" instanceName="中断规则_1_1" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"abortType":"CURRENT","msgnote":""}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>CURRENT</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="CopyEntityRecord" ruleName="实体间复制记录" instanceCode="BR_CopyEntityRecord1" instanceName="实体间复制记录_退料" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"checkitems":null,"condition":"","copyType":"1","destName":"materialConfirm","items":[{"destName":"materialConfirm.materialId","sourceName":"materialConfirm.materialId","type":"entityField"},{"destName":"materialConfirm.batchNo","sourceName":"materialConfirm.batchNo","type":"entityField"},{"destName":"materialConfirm.startId","sourceName":"materialConfirm.startId","type":"entityField"},{"destName":"materialConfirm.materialNo","sourceName":"materialConfirm.materialNo","type":"entityField"},{"destName":"materialConfirm.residueNum","sourceName":"materialConfirm.residueNum","type":"entityField"},{"destName":"materialConfirm.materialName","sourceName":"materialConfirm.materialName","type":"entityField"},{"destName":"materialConfirm.materialType","sourceName":"materialConfirm.materialType","type":"entityField"},{"destName":"materialConfirm.packNum","sourceName":"materialConfirm.packNum","type":"entityField"},{"destName":"materialConfirm.returnNum","sourceName":"materialConfirm.returnNum","type":"entityField"},{"destName":"materialConfirm.id","sourceName":"materialConfirm.id","type":"entityField"}],"mageitems":null,"sourceName":"materialConfirm","type":"1","isAddRecord":true,"jsonVersion":"1.0","destType":"ruleSetVar","sourceType":"window"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtInfo><destName>materialConfirm</destName><destType>ruleSetVar</destType><sourceName>materialConfirm</sourceName><sourceType>window</sourceType><type>1</type><isAddRecord>True</isAddRecord><copyType>1</copyType><condition /><jsonVersion>1.0</jsonVersion></dtInfo><dtMaster><DestName>materialConfirm.materialId</DestName><SourceType>entityField</SourceType><SourceName>materialConfirm.materialId</SourceName></dtMaster><dtMaster><DestName>materialConfirm.batchNo</DestName><SourceType>entityField</SourceType><SourceName>materialConfirm.batchNo</SourceName></dtMaster><dtMaster><DestName>materialConfirm.startId</DestName><SourceType>entityField</SourceType><SourceName>materialConfirm.startId</SourceName></dtMaster><dtMaster><DestName>materialConfirm.materialNo</DestName><SourceType>entityField</SourceType><SourceName>materialConfirm.materialNo</SourceName></dtMaster><dtMaster><DestName>materialConfirm.residueNum</DestName><SourceType>entityField</SourceType><SourceName>materialConfirm.residueNum</SourceName></dtMaster><dtMaster><DestName>materialConfirm.materialName</DestName><SourceType>entityField</SourceType><SourceName>materialConfirm.materialName</SourceName></dtMaster><dtMaster><DestName>materialConfirm.materialType</DestName><SourceType>entityField</SourceType><SourceName>materialConfirm.materialType</SourceName></dtMaster><dtMaster><DestName>materialConfirm.packNum</DestName><SourceType>entityField</SourceType><SourceName>materialConfirm.packNum</SourceName></dtMaster><dtMaster><DestName>materialConfirm.returnNum</DestName><SourceType>entityField</SourceType><SourceName>materialConfirm.returnNum</SourceName></dtMaster><dtMaster><DestName>materialConfirm.id</DestName><SourceType>entityField</SourceType><SourceName>materialConfirm.id</SourceName></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage4" instanceName="显示设置的提示信息_4" isNeedLog="False" isEnabled="False" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"已退数量不得大于等于报装数量\"","type":"1"}}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"已退数量不得大于等于报装数量"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="AbortRule" ruleName="中断规则" instanceCode="BR_AbortRule2" instanceName="中断规则_2" isNeedLog="False" isEnabled="False" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"abortType":"CURRENT","msgnote":""}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>CURRENT</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
     </RuleInstances>
     <Variables>

@@ -3,24 +3,137 @@
   <Creator><![CDATA[liub]]></Creator>
   <CreationTime><![CDATA[2018-08-21 17:16:39]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-11-21 19:12:42]]></ModificationTime>
+  <ModificationTime><![CDATA[2019-12-17 20:34:15]]></ModificationTime>
   <VSql><![CDATA[select 
-startTime,equCode,dayShift,nightShift,workTime,
-dayOutput,nightOutput,actualTotal,
-CASE WHEN dayShift <> 0 THEN 100*ROUND((dayOutput*0.09525)/(dayShift*60),4) ELSE '0'  END  as dayProductivity,
-CASE WHEN nightShift <> 0 THEN 100*ROUND((nightOutput*0.09525)/(nightShift*60),4) ELSE '0'  END  as nightProductivity,
-'' as unTime,'' as pullTest,'' as repairTime,'' as changeTime,'' as reworked,'' as clean5s,'' as assemblyTime,'' as fpg2,'' as otherTime
+standardWorkingHours,--标准工时
+startTime, --开线时间
+equCode, --产品型号
+dayManss,--白班人数
+nightManss, --晚班人数
+totalMans,--总人数
+dayShift, --白班生产时间
+nightShift, --晚班生产时间
+workTime, --总工时
+dayOutput, --白班生产产量
+nightOutput, --晚班生产产量	
+actualTotal, --每日产量实际
+dailyEfficiency,--每日目标效率
+ROUND(actProductivity,2) as actProductivity, --每日实际生产力
+dayProductivity, --白班时间效率
+nightProductivity, --晚班实际效率
+unTime,pullTest,
+repairTimeday, --白天维修
+repairTimenight,
+changeTimeday, --白天换型
+changeTimenight,
+reworked,
+clean5sday, --白天清洁
+clean5snight,
+assemblyTime,fpg2,
+otherTimeday, --白天其他
+otherTimenight,
+(repairTimeday+repairTimenight) as repairTimeAll,
+(changeTimeday+changeTimenight) as changeTimeAll,
+(clean5sday+clean5snight) as clean5sAll,
+(otherTimeday+otherTimenight) as otherTimeAll,
+dayNostands, --白班效率不达标分析
+nightNostans, --晚班效率不达标分析
+dayUnproductTime, --白班非正常生产时间/分钟
+nightUnproductTime, ---晚班非正常生产时间/分钟
+(dayUnproductTime+nightUnproductTime) as unproductTimeAll,
+dayShiftHour, --白班总工时
+nightShiftHour, --晚班总工时
+outputDayshiftGoal,  --白班目标产量
+productivityDayGoal, --白班目标生产力
+outputNightshiftGoal,  --晚班班目标产量
+outputDayshiftGoal+outputNightshiftGoal as totalOutputGoal, --每日目标总产量
+productivityNightGoal,  --晚班目标生产力
+dayActProductivity, --白班实际生产力
+nightActProductivity, --白班实际生产力
+case when  (totalMans>0 and standardWorkingHours>0) then actualTotal/(workTime*60*totalMans)/standardWorkingHours  else 0 end as actualEfficiency, --实际效率/每日*产品
+(dayOutput+nightOutput)/workTime as actualEfficiencyLine, --每日实际效率（根据产线）
+(outputDayshiftGoal+outputNightshiftGoal)/workTime as goalProductivity --目标生产力
+from (
+select 
+standardWorkingHours,
+startTime, --开线时间
+equCode, --产品型号
+dayManss,--白班人数
+nightManss, --晚班人数
+dayManss+nightManss as totalMans,--总人数
+dayShift, --白班生产时间
+nightShift, --晚班生产时间
+workTime, --总工时
+dayOutput, --白班生产产量
+nightOutput, --晚班生产产量	
+actualTotal, --每日时间产量实际
+'100%' as dailyEfficiency,--每日目标效率
+CASE WHEN workTime>0 THEN actualTotal/workTime ELSE 0 END as actProductivity, --每日实际生产力
+CASE WHEN dayShift <> 0 THEN 100*ROUND((dayOutput*0.09525)/(dayShift*60),4) ELSE '0'  END  as dayProductivity, --白班时间效率
+CASE WHEN nightShift <> 0 THEN 100*ROUND((nightOutput*0.09525)/(nightShift*60),4) ELSE '0'  END  as nightProductivity, --晚班实际效率
+'' as unTime,
+'' as pullTest,
+repairTimeday, --白班维修
+repairTimenight, --晚班维修
+changeTimeday, --白班换型
+changeTimenight, --晚班换型
+'' as reworked,
+clean5sday, --白班清洁
+clean5snight, --晚班清洁
+'' as assemblyTime,
+'' as fpg2,
+otherTimeday, --白其他
+otherTimenight, --晚其他
+'' as dayNostands, --白班效率不达标分析
+'' as nightNostans, --晚班效率不达标分析
+repairTimeday+changeTimeday+clean5sday+otherTimeday as dayUnproductTime,--白班非正常生产时间/分钟
+repairTimenight+changeTimenight+clean5snight+otherTimenight as nightUnproductTime, ---晚班非正常生产时间/分钟
+dayManss*dayShift as dayShiftHour, --白班总工时
+nightManss*nightShift as nightShiftHour, --晚班总工时
+case when standardWorkingHours>0 then dayManss*dayShift*60/standardWorkingHours else 0 end as outputDayshiftGoal,  --白班目标产量
+case when standardWorkingHours>0 and dayManss*dayShift>0 then (dayManss*dayShift*60/standardWorkingHours)/(dayManss*dayShift) else 0 end as productivityDayGoal, --白班目标生产力
+case when standardWorkingHours>0 then nightManss*nightShift*60/standardWorkingHours else 0 end as outputNightshiftGoal,  --晚班班目标产量
+case when standardWorkingHours>0 and nightManss*nightShift>0 then (nightManss*nightShift*60/standardWorkingHours)/(nightManss*nightShift) else 0 end as productivityNightGoal,  --晚班目标生产力
+ case when dayManss*dayShift>0 then dayOutput/(dayManss*dayShift) else 0 end as dayActProductivity, --白班实际生产力
+ case when nightManss*nightShift>0 then nightOutput/(nightManss*nightShift) else 0 end as nightActProductivity --白班实际生产力
 from 
 (
-select startTime,equCode,
-SUM(dayShift) as dayShift,SUM(nightShift) as nightShift,SUM(dayShift)+SUM(nightShift) as workTime,
-SUM(dayOutput) as dayOutput,SUM(nightOutput) as nightOutput,SUM(dayOutput) + SUM(nightOutput) as actualTotal,
+select 
+startTime,
+equCode,
+standardWorkingHours,
+SUM(dayMans) as dayManss,--白班人数
+SUM(nightMans) as nightManss, --晚班人数
+SUM(dayShift) as dayShift,
+SUM(nightShift) as nightShift,
+SUM(dayShift)+SUM(nightShift) as workTime,
+SUM(dayOutput) as dayOutput,SUM(nightOutput) as nightOutput,
+SUM(dayOutput) + SUM(nightOutput) as actualTotal,
 0 as dayProductivity,
 0 as nightProductivity,
-'' as unTime,'' as pullTest,'' as repairTime,'' as changeTime,'' as reworked,'' as clean5s,'' as assemblyTime,'' as fpg2,'' as otherTime
+'' as unTime,
+'' as pullTest,
+SUM(repairTimeday) as repairTimeday, --维修时间
+SUM(repairTimenight) as repairTimenight, --维修时间
+
+case when SUM(dayShift)>0 then 24-SUM(dayShift) else 0 end as changeTimeday,--实际换型时间
+case when SUM(nightShift)>0 then 24-SUM(nightShift) else 0 end as changeTimenight,--实际换型时间
+
+'' as reworked,
+SUM(clean5sday) as clean5sday, --clean5清洁
+SUM(clean5snight) as clean5snight, --clean5清洁
+--'' as clean5s,
+'' as assemblyTime,
+'' as fpg2,
+SUM(otherTimeday) as otherTimeday, --其他
+SUM(otherTimenight) as otherTimenight --其他
+--'' as otherTime
 from 
 (
-SELECT a.lineCode, a.equCode, FORMATDATE(a.startTime, 'yyyy-mm-dd') AS startTime, DAYNAME(a.startTime) AS weekName, a.outputNum,a.clesses,
+SELECT a.lineCode,
+a.equCode,
+FORMATDATE(a.startTime, 'yyyy-mm-dd') AS startTime,
+DAYNAME(a.startTime) AS weekName, a.outputNum,a.clesses,
 b.standardWorkingHours,
 CASE WHEN a.clesses = '白班' THEN ROUND(CAST(DATEDIFF(a.startTime,a.closeTime,'Minute'),'Decimal',10,4)/60,2) ELSE '0'  END as dayShift,
 CASE WHEN a.clesses = '晚班' THEN ROUND(CAST(DATEDIFF(a.startTime,a.closeTime,'Minute'),'Decimal',10,4)/60,2) ELSE '0'  END as nightShift,
@@ -29,76 +142,183 @@ CASE WHEN a.clesses = '晚班' THEN a.outputNum ELSE '0'  END as nightOutput,
 --效率 = 合格数量*标准工时（秒）/总工时
 CASE WHEN a.clesses = '白班' THEN ROUND(CAST(a.outputNum,'Decimal',10,4)*standardWorkingHours/CAST(DATEDIFF(a.startTime,a.closeTime,'Second'),'Decimal',10,4)/100,2) ELSE '0'  END as dayProductivity,
 CASE WHEN a.clesses = '晚班' THEN ROUND(CAST(a.outputNum,'Decimal',10,4)*standardWorkingHours/CAST(DATEDIFF(a.startTime,a.closeTime,'Second'),'Decimal',10,4)/100,2) ELSE '0'  END as nightProductivity,
+CASE WHEN a.clesses = '白班' THEN sus.mens ELSE '0'  END as dayMans,--白班人数
+CASE WHEN a.clesses = '晚班' THEN sus.mens ELSE '0'  END as nightMans, --晚班人数
+
+case when  sop.classes='白班' then sop.repairTime else 0 end as repairTimeday, --白班维修时间
+case when  sop.classes='晚班' then sop.repairTime else 0 end as repairTimenight, --晚班维修时间
 '' as testTime,
 '' as machineTime,
-'' as changeTime,
+case when  sop.classes='白班' then sop.actualCoTime else 0 end as changeTimeday, --白班实际换型时间
+case when  sop.classes='晚班' then sop.actualCoTime else 0 end as changeTimenight, --晚班实际换型时间
 '' as backTime,
-'' as clean5s,
+case when  sop.classes='白班' then sop.cleans else 0 end as clean5sday, --白班清洁5s
+case when  sop.classes='晚班' then sop.cleans else 0 end as clean5snight, --晚班清洁5s
 '' as aline,
 '' as bline,
-'' as otherTime
+case when  sop.classes='白班' then sop.otherOL else 0 end as otherTimeday, --白班其他
+case when  sop.classes='晚班' then sop.otherOL else 0 end as otherTimenight --晚班其他
 FROM Line_output a 
-left join (select * from bo_akl_EM_productInfo where prLine = :prlineCode) b on a.equCode = b.prNo
-WHERE a.lineCode = :prlineCode 
+left join bo_akl_base_productlines as pli on pli.pNo=a.lineCode
+left join bo_akl_base_projectInfo as pjNo on pjNo.id=pli.belongProject
+left join bo_akl_base_productlines as pdl on a.lineCode=pdl.pNo
+left join ( select COUNT(*)as mens,su.lid from bo_akl_line_start_user as su group by su.lid) as sus
+on sus.lid=a.lineDataId
+left join stopLineStartInput as sop on sop.lineStartId=sus.lid --停机输入
+left join (select * from bo_akl_EM_productInfo where prLine =:prlineCode) b on a.equCode = b.prNo
+WHERE a.lineCode = :prlineCode and pjNo.pName=:productName and pdl.pType=:lineType
 )aa 
-group by startTime,equCode order by startTime desc
-)a]]></VSql>
+group by startTime,equCode,standardWorkingHours order by startTime desc
+)a) res]]></VSql>
   <Columns>
-    <Column id="Column_0" code="startTime" name="" dataType="char" length="" precision="">
+    <Column id="Column_0" code="standardWorkingHours" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_1" code="equCode" name="" dataType="char" length="" precision="">
+    <Column id="Column_1" code="startTime" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_2" code="dayShift" name="" dataType="number" length="" precision="">
+    <Column id="Column_2" code="equCode" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_3" code="nightShift" name="" dataType="number" length="" precision="">
+    <Column id="Column_3" code="dayManss" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_4" code="workTime" name="" dataType="number" length="" precision="">
+    <Column id="Column_4" code="nightManss" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_5" code="dayOutput" name="" dataType="integer" length="" precision="">
+    <Column id="Column_5" code="totalMans" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_6" code="nightOutput" name="" dataType="integer" length="" precision="">
+    <Column id="Column_6" code="dayShift" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_7" code="actualTotal" name="" dataType="integer" length="" precision="">
+    <Column id="Column_7" code="nightShift" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_8" code="dayProductivity" name="" dataType="number" length="" precision="">
+    <Column id="Column_8" code="workTime" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_9" code="nightProductivity" name="" dataType="number" length="" precision="">
+    <Column id="Column_9" code="dayOutput" name="" dataType="integer" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_10" code="unTime" name="" dataType="char" length="" precision="">
+    <Column id="Column_10" code="nightOutput" name="" dataType="integer" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_11" code="pullTest" name="" dataType="char" length="" precision="">
+    <Column id="Column_11" code="actualTotal" name="" dataType="integer" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_12" code="repairTime" name="" dataType="char" length="" precision="">
+    <Column id="Column_12" code="dailyEfficiency" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_13" code="changeTime" name="" dataType="char" length="" precision="">
+    <Column id="Column_13" code="actProductivity" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_14" code="reworked" name="" dataType="char" length="" precision="">
+    <Column id="Column_14" code="dayProductivity" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_15" code="clean5s" name="" dataType="char" length="" precision="">
+    <Column id="Column_15" code="nightProductivity" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_16" code="assemblyTime" name="" dataType="char" length="" precision="">
+    <Column id="Column_16" code="unTime" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_17" code="fpg2" name="" dataType="char" length="" precision="">
+    <Column id="Column_17" code="pullTest" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_18" code="otherTime" name="" dataType="char" length="" precision="">
+    <Column id="Column_18" code="repairTimeday" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_19" code="repairTimenight" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_20" code="changeTimeday" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_21" code="changeTimenight" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_22" code="reworked" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_23" code="clean5sday" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_24" code="clean5snight" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_25" code="assemblyTime" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_26" code="fpg2" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_27" code="otherTimeday" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_28" code="otherTimenight" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_29" code="repairTimeAll" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_30" code="changeTimeAll" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_31" code="clean5sAll" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_32" code="otherTimeAll" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_33" code="dayNostands" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_34" code="nightNostans" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_35" code="dayUnproductTime" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_36" code="nightUnproductTime" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_37" code="unproductTimeAll" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_38" code="dayShiftHour" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_39" code="nightShiftHour" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_40" code="outputDayshiftGoal" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_41" code="productivityDayGoal" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_42" code="outputNightshiftGoal" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_43" code="totalOutputGoal" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_44" code="productivityNightGoal" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_45" code="dayActProductivity" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_46" code="nightActProductivity" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_47" code="actualEfficiency" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_48" code="actualEfficiencyLine" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_49" code="goalProductivity" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
   </Columns>
@@ -107,20 +327,47 @@ group by startTime,equCode order by startTime desc
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
+    <Param code="productName" name="项目名称" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="lineType" name="产线类别" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
   </Params>
   <DataItems>
-    <DataItem type="Table" key="Line_output" tokenIndexes="724" />
-    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="739" />
-    <DataItem type="Query" key="a" tokenIndexes="311,316,323,338,348,352,366,382,386,420,436,440,474,484,503,513,533,547,564,568,602,616,633,637,726,755,767,796" />
-    <DataItem type="Query" key="b" tokenIndexes="357,751,761" />
-    <DataItem type="QueryField" key="a.lineCode" tokenIndexes="313,769" />
-    <DataItem type="QueryField" key="a.equCode" tokenIndexes="318,757" />
-    <DataItem type="QueryField" key="a.startTime" tokenIndexes="325,340,384,438,566,635" />
-    <DataItem type="QueryField" key="a.outputNum" tokenIndexes="350,486,515,549,618" />
-    <DataItem type="QueryField" key="a.clesses" tokenIndexes="354,368,422,476,505,535,604" />
-    <DataItem type="QueryField" key="b.standardWorkingHours" tokenIndexes="359" />
-    <DataItem type="QueryField" key="a.closeTime" tokenIndexes="388,442,570,639" />
-    <DataItem type="QueryField" key="b.prNo" tokenIndexes="763" />
-    <DataItem type="QueryParam" key="prlineCode" tokenIndexes="748,774" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="1794,1834" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="1814" />
+    <DataItem type="Table" key="bo_akl_line_start_user" tokenIndexes="1872" />
+    <DataItem type="Table" key="stopLineStartInput" tokenIndexes="1905" />
+    <DataItem type="Table" key="Line_output" tokenIndexes="1786" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="1933" />
+    <DataItem type="TableField" key="stopLineStartInput.classes" tokenIndexes="1532,1560,1602,1630,1665,1693,1735,1763" />
+    <DataItem type="TableField" key="stopLineStartInput.repairTime" tokenIndexes="1540,1568" />
+    <DataItem type="TableField" key="stopLineStartInput.actualCoTime" tokenIndexes="1610,1638" />
+    <DataItem type="TableField" key="stopLineStartInput.cleans" tokenIndexes="1673,1701" />
+    <DataItem type="TableField" key="stopLineStartInput.otherOL" tokenIndexes="1743,1771" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="1804,1848" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="1824" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="1828" />
+    <DataItem type="TableField" key="bo_akl_line_start_user.lid" tokenIndexes="1868,1884" />
+    <DataItem type="TableField" key="stopLineStartInput.lineStartId" tokenIndexes="1915" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.pName" tokenIndexes="1973" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pType" tokenIndexes="1982" />
+    <DataItem type="Query" key="a" tokenIndexes="1110,1115,1122,1137,1147,1151,1165,1181,1185,1219,1235,1239,1273,1283,1302,1312,1332,1346,1363,1367,1401,1415,1432,1436,1470,1499,1788,1806,1842,1897,1948,1960,2009" />
+    <DataItem type="Query" key="b" tokenIndexes="1156,1944,1954" />
+    <DataItem type="QueryField" key="a.lineCode" tokenIndexes="1112,1808,1844,1962" />
+    <DataItem type="QueryField" key="a.equCode" tokenIndexes="1117,1950" />
+    <DataItem type="QueryField" key="a.startTime" tokenIndexes="1124,1139,1183,1237,1365,1434" />
+    <DataItem type="QueryField" key="a.outputNum" tokenIndexes="1149,1285,1314,1348,1417" />
+    <DataItem type="QueryField" key="a.clesses" tokenIndexes="1153,1167,1221,1275,1304,1334,1403,1472,1501" />
+    <DataItem type="QueryField" key="b.standardWorkingHours" tokenIndexes="1158" />
+    <DataItem type="QueryField" key="a.closeTime" tokenIndexes="1187,1241,1369,1438" />
+    <DataItem type="QueryField" key="a.lineDataId" tokenIndexes="1899" />
+    <DataItem type="QueryField" key="b.prNo" tokenIndexes="1956" />
+    <DataItem type="QueryParam" key="prlineCode" tokenIndexes="1941,1967" />
+    <DataItem type="QueryParam" key="productName" tokenIndexes="1976" />
+    <DataItem type="QueryParam" key="lineType" tokenIndexes="1985" />
   </DataItems>
 </Query>
