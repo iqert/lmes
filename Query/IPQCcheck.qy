@@ -3,123 +3,115 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-09-05 14:30:28]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-12-18 18:00:09]]></ModificationTime>
-  <VSql><![CDATA[
-select  
-		uvst.bsTime,
-		uvst.classes,--班次
-		uvst.prolineName,
-		uvst.materialNo, --产品编号
-		uvst.planCode, --计划单号
-		uvst.reason, --原因
-		uvst.inspectorName,--巡检员名称
-		uvst.stationName,
-		uvst.remark,--不良现象
-		uvst.badProNum,--不良品数量
-		uvst.ycl,
-		uvst.ry,
-		uvst.sb,
-		uvst.qt
-from (
-	(select 	pn.bsTime,
-		st.classes,--班次
-		st.prolineName,--产线名称
-		pn.materialNo, --产品编号
-		st.planCode, --计划单号
-		pn.remark as reason, --原因
-		st.inspectorName,--巡检员名称
-		pn.stationName,
-		pn.remark as remark,--不良现象
-		pn.badProNum,--不良品数量
-		case 
-		when pn.remark='原材料'  THEN '√'
-		else '' end as ycl,
-		case 
-		when pn.remark='人员'  THEN '√'
-		else '' end as ry,
-		case 
-		when pn.remark='设备'  THEN '√'
-		else '' end as sb,
-		case 
-		when pn.remark='其他'  THEN '√'
-		else '' end as qt
-		from bo_akl_line_materialBadProNum  as pn
-		left join bo_akl_line_start as st 
-		on pn.startId=st.id
-		where pn.bsTime!='' and MONTH(pn.bsTime)=:inputMonth and YEAR(pn.bsTime)=:inputYear
-					and DAYOFMONTH(pn.bsTime)=:inputDay
+  <ModificationTime><![CDATA[2019-12-28 14:51:56]]></ModificationTime>
+  <VSql><![CDATA[SELECT jcy,czy,uvst.cName,--作用内容
+uvst.bsTime, uvst.classes, --班次
+	uvst.prolineName, uvst.materialNo, --产品编号
+	uvst.planCode, --计划单号
+	uvst.reason, --原因
+	uvst.inspectorName, --巡检员名称
+	uvst.stationName, uvst.remark, --不良现象
+	uvst.badProNum, --不良品数量
+	uvst.ycl, uvst.ry, uvst.sb, uvst.qt
+FROM (
+	(
+		SELECT 
+		case when pw.pNatureName='检查类关键岗位' then sus.workerName end as jcy,
+		case when pw.pNatureName!='检查类关键岗位' then sus.workerName end as czy,
+		
+		
+		bn.cName,bn.bsTime, al.classes, --班次
+			al.prolineName, --产线名称
+			bn.materialNo, --产品编号
+			al.planCode, --计划单号
+			bn.remark AS reason, --原因
+			al.inspectorName, --巡检员名称
+			bn.stationName, bn.remark AS remark, --不良现象
+			bn.inputBadProNum AS badProNum, --不良品数量
+			CASE WHEN bn.remark = '原材料' THEN '√' ELSE '' END AS ycl, CASE WHEN bn.remark = '人员' THEN '√' ELSE '' END AS ry, CASE WHEN bn.remark = '设备' THEN '√' ELSE '' END AS sb, CASE WHEN bn.remark = '其他' THEN '√' ELSE '' END AS qt
+		FROM bo_akl_line_stationBadProNum AS bn
+		LEFT JOIN bo_akl_line_start AS al ON bn.startId = al.id
+		left join bo_akl_line_start_user As sus on sus.lid=al.id and sus.workStation=bn.stationName
+		left join bo_akl_base_productling_ws as pw on pw.wsNo=bn.stationName
+		WHERE bn.bsTime != ''
+			AND MONTH(bn.bsTime) = :inputMonth
+			AND YEAR(bn.bsTime) = :inputYear
+			AND DAYOFMONTH(bn.bsTime) = :inputDay
 		)
-union all(
-select 	bn.bsTime,
-		al.classes, --班次
-		al.prolineName,--产线名称
-		bn.materialNo, --产品编号
-		al.planCode, --计划单号
-		bn.remark as reason, --原因
-		al.inspectorName,--巡检员名称
-		bn.stationName,
-		bn.remark as remark,--不良现象
-		bn.inputBadProNum as badProNum,--不良品数量
-		case 
-		when bn.remark='原材料'  THEN '√'
-		else '' end as ycl,
-		case 
-		when bn.remark='人员'  THEN '√'
-		else '' end as ry,
-		case 
-		when bn.remark='设备'  THEN '√'
-		else '' end as sb,
-		case 
-		when bn.remark='其他'  THEN '√'
-		else '' end as qt
-		from bo_akl_line_stationBadProNum  as bn
-		left join bo_akl_line_start as al 
-		on bn.startId=al.id
-		where bn.bsTime!='' and MONTH(bn.bsTime)=:inputMonth and YEAR(bn.bsTime)=:inputYear
-				and DAYOFMONTH(bn.bsTime)=:inputDay
+	UNION ALL
+	(
+		SELECT 
+		'' as jcy,
+		'' as czy,
+		'' as cName,  --作业内容
+		pn.bsTime, st.classes, --班次
+			st.prolineName, --产线名称
+			pn.materialNo, --产品编号
+			st.planCode, --计划单号
+			pn.remark AS reason, --原因
+			st.inspectorName, --巡检员名称
+			pn.stationName, pn.remark AS remark, --不良现象
+			pn.badProNum, --不良品数量
+			CASE WHEN pn.remark = '原材料' THEN '√' ELSE '' END AS ycl, CASE WHEN pn.remark = '人员' THEN '√' ELSE '' END AS ry, CASE WHEN pn.remark = '设备' THEN '√' ELSE '' END AS sb, CASE WHEN pn.remark = '其他' THEN '√' ELSE '' END AS qt
+		FROM bo_akl_line_materialBadProNum AS pn
+		LEFT JOIN bo_akl_line_start AS st ON pn.startId = st.id
+		WHERE pn.bsTime != ''
+			AND MONTH(pn.bsTime) = :inputMonth
+			AND YEAR(pn.bsTime) = :inputYear
+			AND DAYOFMONTH(pn.bsTime) = :inputDay
 		)
-		) as uvst]]></VSql>
+	) AS uvst where badProNum>0
+]]></VSql>
   <Columns>
-    <Column id="Column_0" code="bsTime" name="" dataType="date" length="" precision="">
+    <Column id="Column_0" code="jcy" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_1" code="classes" name="" dataType="char" length="" precision="">
+    <Column id="Column_1" code="czy" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_2" code="prolineName" name="" dataType="char" length="" precision="">
+    <Column id="Column_2" code="cName" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_3" code="materialNo" name="" dataType="char" length="" precision="">
+    <Column id="Column_3" code="bsTime" name="" dataType="date" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_4" code="planCode" name="" dataType="char" length="" precision="">
+    <Column id="Column_4" code="classes" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_5" code="reason" name="" dataType="char" length="" precision="">
+    <Column id="Column_5" code="prolineName" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_6" code="inspectorName" name="" dataType="char" length="" precision="">
+    <Column id="Column_6" code="materialNo" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_7" code="stationName" name="" dataType="char" length="" precision="">
+    <Column id="Column_7" code="planCode" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_8" code="remark" name="" dataType="char" length="" precision="">
+    <Column id="Column_8" code="reason" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_9" code="badProNum" name="" dataType="integer" length="" precision="">
+    <Column id="Column_9" code="inspectorName" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_10" code="ycl" name="" dataType="char" length="" precision="">
+    <Column id="Column_10" code="stationName" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_11" code="ry" name="" dataType="char" length="" precision="">
+    <Column id="Column_11" code="remark" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_12" code="sb" name="" dataType="char" length="" precision="">
+    <Column id="Column_12" code="badProNum" name="" dataType="integer" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_13" code="qt" name="" dataType="char" length="" precision="">
+    <Column id="Column_13" code="ycl" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_14" code="ry" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_15" code="sb" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_16" code="qt" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
   </Columns>
@@ -138,28 +130,15 @@ select 	bn.bsTime,
     </Param>
   </Params>
   <DataItems>
-    <DataItem type="Table" key="bo_akl_line_materialBadProNum" tokenIndexes="259" />
-    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="269,523" />
-    <DataItem type="Table" key="bo_akl_line_stationBadProNum" tokenIndexes="513" />
-    <DataItem type="TableField" key="bo_akl_line_materialBadProNum.bsTime" tokenIndexes="91,289,299,311,323" />
-    <DataItem type="TableField" key="bo_akl_line_start.classes" tokenIndexes="96,345" />
-    <DataItem type="TableField" key="bo_akl_line_start.prolineName" tokenIndexes="102,352" />
-    <DataItem type="TableField" key="bo_akl_line_materialBadProNum.materialNo" tokenIndexes="108" />
-    <DataItem type="TableField" key="bo_akl_line_start.planCode" tokenIndexes="115,365" />
-    <DataItem type="TableField" key="bo_akl_line_materialBadProNum.remark" tokenIndexes="122,144,164,189,214,239" />
-    <DataItem type="TableField" key="bo_akl_line_start.inspectorName" tokenIndexes="133,383" />
-    <DataItem type="TableField" key="bo_akl_line_materialBadProNum.stationName" tokenIndexes="139" />
-    <DataItem type="TableField" key="bo_akl_line_materialBadProNum.badProNum" tokenIndexes="154" />
-    <DataItem type="TableField" key="bo_akl_line_materialBadProNum.startId" tokenIndexes="279" />
-    <DataItem type="TableField" key="bo_akl_line_start.id" tokenIndexes="283,537" />
-    <DataItem type="TableField" key="bo_akl_line_stationBadProNum.bsTime" tokenIndexes="340,543,553,565,577" />
-    <DataItem type="TableField" key="bo_akl_line_stationBadProNum.materialNo" tokenIndexes="358" />
-    <DataItem type="TableField" key="bo_akl_line_stationBadProNum.remark" tokenIndexes="372,394,418,443,468,493" />
-    <DataItem type="TableField" key="bo_akl_line_stationBadProNum.stationName" tokenIndexes="389" />
-    <DataItem type="TableField" key="bo_akl_line_stationBadProNum.inputBadProNum" tokenIndexes="404" />
-    <DataItem type="TableField" key="bo_akl_line_stationBadProNum.startId" tokenIndexes="533" />
-    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="303,557" />
-    <DataItem type="QueryParam" key="inputYear" tokenIndexes="315,569" />
-    <DataItem type="QueryParam" key="inputDay" tokenIndexes="327,581" />
+    <DataItem type="Table" key="bo_akl_base_productling_ws" tokenIndexes="401" />
+    <DataItem type="Table" key="bo_akl_line_stationBadProNum" tokenIndexes="339" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="349,695" />
+    <DataItem type="Table" key="bo_akl_line_start_user" tokenIndexes="371" />
+    <DataItem type="Table" key="bo_akl_line_materialBadProNum" tokenIndexes="685" />
+    <DataItem type="TableField" key="bo_akl_base_productling_ws.pNatureName" tokenIndexes="108,131" />
+    <DataItem type="TableField" key="bo_akl_base_productling_ws.wsNo" tokenIndexes="411" />
+    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="439,735" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="453,749" />
+    <DataItem type="QueryParam" key="inputDay" tokenIndexes="467,763" />
   </DataItems>
 </Query>

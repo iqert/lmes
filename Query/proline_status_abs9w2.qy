@@ -3,7 +3,7 @@
   <Creator><![CDATA[liub]]></Creator>
   <CreationTime><![CDATA[2018-08-18 14:45:14]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-12-02 22:51:18]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-01-16 00:07:39]]></ModificationTime>
   <VSql><![CDATA[select
 proLineName,
 proEquName,
@@ -33,6 +33,24 @@ SELECT
 (SELECT SUM(Value) AS AA
 FROM Exchange
 WHERE NAME IN (
+		'ABS9W2.ST01_Alarm_count',
+		'ABS9W2.ST02_Alarm_count',
+		'ABS9W2.ST25_Alarm_count',
+		'ABS9W2.ST26_Alarm_count',
+		'ABS9W2.ST27_Alarm_count',
+		'ABS9W2.ST28_Alarm_count',
+		'ABS9W2.ST29_Alarm_count',
+		'ABS9W2.ST30_Alarm_count',
+		'ABS9W2.ST31_Alarm_count',
+		'ABS9W2.ST32_Alarm_count',
+		'ABS9W2.ST33_Alarm_count',
+		'ABS9W2.ST34_Alarm_count',
+		'ABS9W2.ST35_Alarm_count',
+		'ABS9W2.ST36_Alarm_count',
+		'ABS9W2.ST37_Alarm_count',
+		'ABS9W2.ST38_Alarm_count',
+		'ABS9W2.ST39_Alarm_count',
+		'ABS9W2.ST40_Alarm_count',
 		'ABS9W2.ST10_Alarm_count',
 		'ABS9W2.ST11_Alarm_count',
 		'ABS9W2.ST12_Alarm_count',
@@ -48,13 +66,13 @@ WHERE NAME IN (
 		'ABS9W2.ST22_Alarm_count',
 		'ABS9W2.ST23_Alarm_count',
 		'ABS9W2.ST24_Alarm_count',
-		'ABS9W2.ST3_Alarm_count',
-		'ABS9W2.ST4_Alarm_count',
-		'ABS9W2.ST5_Alarm_count',
-		'ABS9W2.ST6_Alarm_count',
-		'ABS9W2.ST7_Alarm_count',
-		'ABS9W2.ST8_Alarm_count',
-		'ABS9W2.ST9_Alarm_count'
+		'ABS9W2.ST03_Alarm_count',
+		'ABS9W2.ST04_Alarm_count',
+		'ABS9W2.ST05_Alarm_count',
+		'ABS9W2.ST06_Alarm_count',
+		'ABS9W2.ST07_Alarm_count',
+		'ABS9W2.ST08_Alarm_count',
+		'ABS9W2.ST09_Alarm_count'
 		)) AS badNum, --不良数
 (SELECT value FROM Exchange WHERE NAME = 'ABS9W2.Status' ) AS proLineStatus,
 (select COUNT(id) as userNumber from bo_akl_line_start_user 
@@ -135,7 +153,7 @@ WHERE NAME = 'ABS9W2.Status'
     <Column id="Column_10" code="ratio" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_11" code="productivity" name="" dataType="integer" length="" precision="">
+    <Column id="Column_11" code="productivity" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
     <Column id="Column_12" code="productionTime" name="" dataType="number" length="" precision="">
@@ -150,14 +168,14 @@ WHERE NAME = 'ABS9W2.Status'
   </Columns>
   <Params />
   <DataItems>
-    <DataItem type="Table" key="Exchange" tokenIndexes="247,278,308,399,956" />
-    <DataItem type="Table" key="bo_akl_line_start_user" tokenIndexes="430" />
-    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="446,525,603,675,781,865" />
-    <DataItem type="Table" key="bo_akl_line_sample" tokenIndexes="509" />
-    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="587,659" />
-    <DataItem type="Table" key="bo_akl_base_productiontime" tokenIndexes="763" />
-    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="789" />
-    <DataItem type="Table" key="bo_akl_line_operation" tokenIndexes="882" />
-    <DataItem type="Query" key="a" tokenIndexes="967" />
+    <DataItem type="Table" key="Exchange" tokenIndexes="247,278,308,453,1010" />
+    <DataItem type="Table" key="bo_akl_line_start_user" tokenIndexes="484" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="500,579,657,729,835,919" />
+    <DataItem type="Table" key="bo_akl_line_sample" tokenIndexes="563" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="641,713" />
+    <DataItem type="Table" key="bo_akl_base_productiontime" tokenIndexes="817" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="843" />
+    <DataItem type="Table" key="bo_akl_line_operation" tokenIndexes="936" />
+    <DataItem type="Query" key="a" tokenIndexes="1021" />
   </DataItems>
 </Query>

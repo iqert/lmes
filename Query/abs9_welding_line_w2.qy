@@ -3,7 +3,7 @@
   <Creator><![CDATA[liub]]></Creator>
   <CreationTime><![CDATA[2018-09-07 09:47:37]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-12-18 00:07:11]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-01-02 20:51:55]]></ModificationTime>
   <VSql><![CDATA[select
 planCode,--计划单号
 standardWorkingHours,--标准工时
@@ -20,8 +20,8 @@ nightOutput, --晚班生产产量
 actualTotal, --每日产量实际
 dailyEfficiency,--每日目标效率
 ROUND(actProductivity,2) as actProductivity, --每日实际生产力
-dayProductivity, --白班时间效率
-nightProductivity, --晚班实际效率
+CONCAT(dayProductivity,'%') as dayProductivity, --白班时间效率
+CONCAT(nightProductivity,'%') as nightProductivity, --晚班实际效率
 unTime,pullTest,repairTime,changeTime,reworked,clean5s,assemblyTime,fpg2,otherTime, --其他
 dayNostands, --白班效率不达标分析
 nightNostans, --晚班效率不达标分析
@@ -179,10 +179,10 @@ group by startTime,lineCode,standardWorkingHours,planCode order by startTime des
     <Column id="Column_14" code="actProductivity" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_15" code="dayProductivity" name="" dataType="number" length="" precision="">
+    <Column id="Column_15" code="dayProductivity" name="" dataType="longDate" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_16" code="nightProductivity" name="" dataType="number" length="" precision="">
+    <Column id="Column_16" code="nightProductivity" name="" dataType="longDate" length="" precision="">
       <Remark></Remark>
     </Column>
     <Column id="Column_17" code="unTime" name="" dataType="char" length="" precision="">
@@ -276,27 +276,27 @@ group by startTime,lineCode,standardWorkingHours,planCode order by startTime des
     </Param>
   </Params>
   <DataItems>
-    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="1417" />
-    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="1437" />
-    <DataItem type="Table" key="bo_akl_line_start_user" tokenIndexes="1475" />
-    <DataItem type="Table" key="Line_output" tokenIndexes="1409" />
-    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="1515" />
-    <DataItem type="TableField" key="bo_akl_line_start.planCode" tokenIndexes="943" />
-    <DataItem type="TableField" key="bo_akl_line_start.id" tokenIndexes="1431" />
-    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="1451" />
-    <DataItem type="TableField" key="bo_akl_line_start_user.lid" tokenIndexes="1471,1487" />
-    <DataItem type="TableField" key="bo_akl_base_productlines.pType" tokenIndexes="1555" />
-    <DataItem type="Query" key="a" tokenIndexes="931,936,948,963,973,977,991,1007,1011,1045,1061,1065,1099,1109,1128,1138,1158,1172,1189,1193,1227,1241,1258,1262,1296,1325,1411,1425,1445,1500,1531,1543,1583" />
-    <DataItem type="Query" key="b" tokenIndexes="982,1527,1537" />
-    <DataItem type="QueryField" key="a.lineCode" tokenIndexes="933,1447" />
-    <DataItem type="QueryField" key="a.equCode" tokenIndexes="938,1533,1545" />
-    <DataItem type="QueryField" key="a.startTime" tokenIndexes="950,965,1009,1063,1191,1260" />
-    <DataItem type="QueryField" key="a.outputNum" tokenIndexes="975,1111,1140,1174,1243" />
-    <DataItem type="QueryField" key="a.clesses" tokenIndexes="979,993,1047,1101,1130,1160,1229,1298,1327" />
-    <DataItem type="QueryField" key="b.standardWorkingHours" tokenIndexes="984" />
-    <DataItem type="QueryField" key="a.closeTime" tokenIndexes="1013,1067,1195,1264" />
-    <DataItem type="QueryField" key="a.lineDataId" tokenIndexes="1427,1502" />
-    <DataItem type="QueryField" key="b.prNo" tokenIndexes="1539" />
-    <DataItem type="QueryParam" key="prNo" tokenIndexes="1524,1549" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="1435" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="1455" />
+    <DataItem type="Table" key="bo_akl_line_start_user" tokenIndexes="1493" />
+    <DataItem type="Table" key="Line_output" tokenIndexes="1427" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="1533" />
+    <DataItem type="TableField" key="bo_akl_line_start.planCode" tokenIndexes="961" />
+    <DataItem type="TableField" key="bo_akl_line_start.id" tokenIndexes="1449" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="1469" />
+    <DataItem type="TableField" key="bo_akl_line_start_user.lid" tokenIndexes="1489,1505" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pType" tokenIndexes="1573" />
+    <DataItem type="Query" key="a" tokenIndexes="949,954,966,981,991,995,1009,1025,1029,1063,1079,1083,1117,1127,1146,1156,1176,1190,1207,1211,1245,1259,1276,1280,1314,1343,1429,1443,1463,1518,1549,1561,1601" />
+    <DataItem type="Query" key="b" tokenIndexes="1000,1545,1555" />
+    <DataItem type="QueryField" key="a.lineCode" tokenIndexes="951,1465" />
+    <DataItem type="QueryField" key="a.equCode" tokenIndexes="956,1551,1563" />
+    <DataItem type="QueryField" key="a.startTime" tokenIndexes="968,983,1027,1081,1209,1278" />
+    <DataItem type="QueryField" key="a.outputNum" tokenIndexes="993,1129,1158,1192,1261" />
+    <DataItem type="QueryField" key="a.clesses" tokenIndexes="997,1011,1065,1119,1148,1178,1247,1316,1345" />
+    <DataItem type="QueryField" key="b.standardWorkingHours" tokenIndexes="1002" />
+    <DataItem type="QueryField" key="a.closeTime" tokenIndexes="1031,1085,1213,1282" />
+    <DataItem type="QueryField" key="a.lineDataId" tokenIndexes="1445,1520" />
+    <DataItem type="QueryField" key="b.prNo" tokenIndexes="1557" />
+    <DataItem type="QueryParam" key="prNo" tokenIndexes="1542,1567" />
   </DataItems>
 </Query>

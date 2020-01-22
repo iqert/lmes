@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-11-24 10:21:36]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-11-24 17:29:52]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-01-16 14:28:44]]></ModificationTime>
   <VSql><![CDATA[select 
 lu.workerName, --姓名
 lu.workerId, --工号
@@ -37,6 +37,7 @@ left join (select op.lid,DATEDIFF(min(op.opTime),max(op.opTime),'hour') as phour
 where YEAR(op.opTime)=:inyear and MONTH(op.opTime)=:inmonth
 group by op.lid) as proHour
 on proHour.lid=lu.lid  --输入时间
+where YEAR(stLine.startTime)=:inyear and MONTH(stLine.startTime)=:inmonth
 order by lu.sName]]></VSql>
   <Columns>
     <Column id="Column_0" code="workerName" name="" dataType="char" length="" precision="">
@@ -104,7 +105,7 @@ order by lu.sName]]></VSql>
     <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="16" />
     <DataItem type="TableField" key="bo_akl_line_start.planCode" tokenIndexes="21" />
     <DataItem type="TableField" key="bo_akl_line_start.classes" tokenIndexes="27" />
-    <DataItem type="TableField" key="bo_akl_line_start.startTime" tokenIndexes="32" />
+    <DataItem type="TableField" key="bo_akl_line_start.startTime" tokenIndexes="32,414,426" />
     <DataItem type="TableField" key="bo_akl_line_start.equName" tokenIndexes="37,233" />
     <DataItem type="TableField" key="bo_akl_base_productlines.pType" tokenIndexes="47,59,71,83" />
     <DataItem type="TableField" key="bo_akl_line_start_user.workStation" tokenIndexes="105" />
@@ -120,8 +121,8 @@ order by lu.sName]]></VSql>
     <DataItem type="TableField" key="bo_akl_LM_printProductLabel.printTime" tokenIndexes="276,288" />
     <DataItem type="TableField" key="bo_akl_line_operation.lid" tokenIndexes="327,390" />
     <DataItem type="TableField" key="bo_akl_line_operation.opTime" tokenIndexes="335,342,366,378" />
-    <DataItem type="TableField" key="bo_akl_line_start_user.sName" tokenIndexes="414" />
-    <DataItem type="QueryParam" key="inyear" tokenIndexes="280,370" />
-    <DataItem type="QueryParam" key="inmonth" tokenIndexes="292,382" />
+    <DataItem type="TableField" key="bo_akl_line_start_user.sName" tokenIndexes="438" />
+    <DataItem type="QueryParam" key="inyear" tokenIndexes="280,370,418" />
+    <DataItem type="QueryParam" key="inmonth" tokenIndexes="292,382,430" />
   </DataItems>
 </Query>
