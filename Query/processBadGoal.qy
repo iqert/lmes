@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-09-06 09:12:53]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-12-18 18:33:51]]></ModificationTime>
+  <ModificationTime><![CDATA[2019-12-27 21:19:02]]></ModificationTime>
   <VSql><![CDATA[select 
 mat.materialType,
 mat.materialNo,
@@ -88,7 +88,7 @@ select 	case
 		)as ins 
 		left join bo_akl_MM_materialInfo as mat on ins.materialId=mat.id
 		left join bo_akl_EM_productInfo as ep on mat.materialNo=ep.prNo
-		group by mat.materialNo,ep.badGoal]]></VSql>
+		group by mat.materialNo,ep.badGoal,mat.materialType]]></VSql>
   <Columns>
     <Column id="Column_0" code="materialType" name="" dataType="char" length="" precision="">
       <Remark></Remark>
@@ -187,7 +187,7 @@ select 	case
     <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="984" />
     <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="1004" />
     <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="949" />
-    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialType" tokenIndexes="4" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialType" tokenIndexes="4,1034" />
     <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="9,1014,1026" />
     <DataItem type="TableField" key="bo_akl_EM_productInfo.badGoal" tokenIndexes="14,38,76,114,152,190,228,266,304,342,380,418,456,1030" />
     <DataItem type="TableField" key="bo_akl_MM_inStockInfo.operateTime" tokenIndexes="493,531,569,607,645,683,721,759,797,835,873,911,969" />

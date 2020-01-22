@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-09-03 15:56:17]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-12-18 11:39:55]]></ModificationTime>
+  <ModificationTime><![CDATA[2019-12-27 11:37:41]]></ModificationTime>
   <VSql><![CDATA[select
 case when COUNT(pp.id)>0 then'生产'
 else '未生产' end as proStatus,
@@ -52,7 +52,7 @@ SUM(pp.ycheck) as djcNum  from
 				--DAYOFMONTH(prl.printTime)=:inputDay and prl.labelType is not null
 			)as pp on pp.lineStartId=ba.id
 			--pp.prodDate,
-			where  YEAR(ba.startTime)=:inputYear and MONTH(ba.startTime)=:inputMonth and DAYOFMONTH(ba.startTime)=:inputDay
+			where  prol.pType=4 AND YEAR(ba.startTime)=:inputYear and MONTH(ba.startTime)=:inputMonth and DAYOFMONTH(ba.startTime)=:inputDay
 			group by FORMATDATE(ba.startTime,'yyyy-mm-dd'),pp.lineStartId,ba.prolineName,ba.equName,ba.batchNum]]></VSql>
   <Columns>
     <Column id="Column_0" code="proStatus" name="" dataType="char" length="" precision="">
@@ -99,6 +99,14 @@ SUM(pp.ycheck) as djcNum  from
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
+    <Param code="projectName" name="项目名称" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="weekInput" name="当前周" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
   </Params>
   <DataItems>
     <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="154" />
@@ -106,10 +114,10 @@ SUM(pp.ycheck) as djcNum  from
     <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="274" />
     <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="284" />
     <DataItem type="Table" key="bo_akl_LM_printProductLabel" tokenIndexes="380" />
-    <DataItem type="TableField" key="bo_akl_line_start.startTime" tokenIndexes="80,415,427,439,453" />
-    <DataItem type="TableField" key="bo_akl_line_start.prolineName" tokenIndexes="116,464" />
-    <DataItem type="TableField" key="bo_akl_line_start.equName" tokenIndexes="121,468" />
-    <DataItem type="TableField" key="bo_akl_line_start.batchNum" tokenIndexes="126,338,472" />
+    <DataItem type="TableField" key="bo_akl_line_start.startTime" tokenIndexes="80,423,435,447,461" />
+    <DataItem type="TableField" key="bo_akl_line_start.prolineName" tokenIndexes="116,472" />
+    <DataItem type="TableField" key="bo_akl_line_start.equName" tokenIndexes="121,476" />
+    <DataItem type="TableField" key="bo_akl_line_start.batchNum" tokenIndexes="126,338,480" />
     <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="174" />
     <DataItem type="TableField" key="bo_akl_line_start.prolineId" tokenIndexes="178" />
     <DataItem type="TableField" key="bo_akl_MM_stockType.stockType" tokenIndexes="221,248" />
@@ -118,8 +126,9 @@ SUM(pp.ycheck) as djcNum  from
     <DataItem type="TableField" key="bo_akl_MM_stockType.id" tokenIndexes="298" />
     <DataItem type="TableField" key="bo_akl_LM_printProductLabel.labelType" tokenIndexes="353" />
     <DataItem type="TableField" key="bo_akl_line_start.id" tokenIndexes="405" />
-    <DataItem type="QueryParam" key="inputYear" tokenIndexes="419" />
-    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="431" />
-    <DataItem type="QueryParam" key="inputDay" tokenIndexes="443" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pType" tokenIndexes="413" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="427" />
+    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="439" />
+    <DataItem type="QueryParam" key="inputDay" tokenIndexes="451" />
   </DataItems>
 </Query>

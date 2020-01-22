@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-09-07 15:34:30]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-12-18 21:25:35]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-01-02 10:00:44]]></ModificationTime>
   <VSql><![CDATA[select nyrbb.materialNo,nyrbb.pNo,nyrbb.sucost,nyrbb.price,nyrbb.sublpsl from (
 select  
 mat.materialNo, --物料编号
@@ -36,7 +36,7 @@ left join bo_akl_EM_productInfo as ep on mat.materialNo=ep.prNo
 left join bo_akl_base_productlines as pdl on ep.prLine=pdl.pNo 
 --where pro.pNo=:pNo
 group by mat.materialNo,ep.boxPartsNum,mat.mPrice,mat.projectNo
-) as nyrbb where nyrbb.sucost>0 order by nyrbb.pNo asc]]></VSql>
+) as nyrbb where nyrbb.sublpsl>0 order by nyrbb.pNo asc]]></VSql>
   <Columns>
     <Column id="Column_0" code="materialNo" name="" dataType="char" length="" precision="">
       <Remark></Remark>

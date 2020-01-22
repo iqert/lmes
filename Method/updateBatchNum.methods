@@ -20,33 +20,49 @@
       <evaluateRule code="BR_SetEntityVarControlValue2_1" />
       <evaluateRule code="BR_SetEntityVarControlValue2_1_1" />
       <evaluateRule code="BR_SetEntityVarControlValue2_1_1_1" />
-      <if isEnabled="True" isDebug="False" code="IfCode1">
+      <if isEnabled="True" isDebug="False" code="IfCode34">
         <define>
-          <expression>BR_VAR_PARENT.month=="10"</expression>
-          <remark></remark>
+          <expression>(BR_VAR_PARENT.month=="10") || (BR_VAR_PARENT.month=="11") || (BR_VAR_PARENT.month=="12")</expression>
+          <remark />
         </define>
         <sequence>
-          <evaluateRule code="BR_SetEntityVarControlValue3" />
+          <if isEnabled="True" isDebug="False" code="IfCode1">
+            <define>
+              <expression>BR_VAR_PARENT.month=="10"</expression>
+              <remark></remark>
+            </define>
+            <sequence>
+              <evaluateRule code="BR_SetEntityVarControlValue3" />
+            </sequence>
+          </if>
+          <if isEnabled="True" isDebug="False" code="IfCode2">
+            <define>
+              <expression>BR_VAR_PARENT.month=="11"</expression>
+              <remark></remark>
+            </define>
+            <sequence>
+              <evaluateRule code="BR_SetEntityVarControlValue3_1" />
+            </sequence>
+          </if>
+          <if isEnabled="True" isDebug="False" code="IfCode3">
+            <define>
+              <expression>BR_VAR_PARENT.month=="12"</expression>
+              <remark></remark>
+            </define>
+            <sequence>
+              <evaluateRule code="BR_SetEntityVarControlValue3_1_1" />
+            </sequence>
+          </if>
         </sequence>
       </if>
-      <if isEnabled="True" isDebug="False" code="IfCode2">
+      <else isEnabled="True" isDebug="False">
         <define>
-          <expression>BR_VAR_PARENT.month=="11"</expression>
-          <remark></remark>
+          <remark />
         </define>
         <sequence>
-          <evaluateRule code="BR_SetEntityVarControlValue3_1" />
+          <evaluateRule code="BR_SetEntityVarControlValue3_1_1_2" />
         </sequence>
-      </if>
-      <if isEnabled="True" isDebug="False" code="IfCode3">
-        <define>
-          <expression>BR_VAR_PARENT.month=="12"</expression>
-          <remark></remark>
-        </define>
-        <sequence>
-          <evaluateRule code="BR_SetEntityVarControlValue3_1_1" />
-        </sequence>
-      </if>
+      </else>
       <if isEnabled="True" isDebug="False" code="IfCode13">
         <define>
           <expression>BR_VAR_PARENT.yearAll=="2018"</expression>
@@ -330,168 +346,21 @@
         <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_line_start.lineStartType","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"\"\"","valueType":"9"},{"columnType":"1","field":"bo_akl_line_start.state","fieldType":"char","leftBracket":"(","logicOperation":"and","operation":"not like","rightBracket":")","value":"\"停机\"","valueType":"9"}],"entityType":"ruleSetVar","entityName":"startLine","isFieldAutoMapping":false,"itemqueryparam":null,"items":[{"destName":"startLine.batchNum","sourceName":"bo_akl_line_start.batchNum","type":"entityField"},{"destName":"startLine.id","sourceName":"bo_akl_line_start.id","type":"entityField"},{"destName":"startLine.prolineId","sourceName":"bo_akl_line_start.prolineId","type":"entityField"},{"destName":"startLine.equName","sourceName":"bo_akl_line_start.equName","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_line_start","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>ruleSetVar</EntityType><EntityName>startLine</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_line_start</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_line_start.lineStartType</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>""</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_line_start.state</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>and</logicOperation><operation>not like</operation><rightBracket>)</rightBracket><value>"停机"</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>39afd35218d644e4aec444c2fca91534</ID><DataLoad /><IsFieldAutoMapping>False</IsFieldAutoMapping></dtEntityRelation><dtEntityColumnRelation><MasterID>39afd35218d644e4aec444c2fca91534</MasterID><DestName>startLine.batchNum</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.batchNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>39afd35218d644e4aec444c2fca91534</MasterID><DestName>startLine.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>39afd35218d644e4aec444c2fca91534</MasterID><DestName>startLine.prolineId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.prolineId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>39afd35218d644e4aec444c2fca91534</MasterID><DestName>startLine.equName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.equName</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>39afd35218d644e4aec444c2fca91534</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>39afd35218d644e4aec444c2fca91534</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1_4_1" instanceName="给界面实体/控件/变量赋值_d2_4_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-26 00:03:05">
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1_2" instanceName="给界面实体/控件/变量赋值_d2_2" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"V\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"V"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"E\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"E"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1_2_2" instanceName="给界面实体/控件/变量赋值_d2_2_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-26 00:02:47">
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity2" instanceName="从数据库获取数据到实体_产线_产品" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2020-01-19 14:54:19">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"T\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"T"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_base_productlines.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"LV.sl.prolineId","valueType":"9"}],"entityType":"ruleSetVar","entityName":"productlines","isFieldAutoMapping":false,"itemqueryparam":null,"items":[{"destName":"productlines.belongProject","sourceName":"bo_akl_base_productlines.belongProject","type":"entityField"},{"destName":"productlines.id","sourceName":"bo_akl_base_productlines.id","type":"entityField"},{"destName":"productlines.pNo","sourceName":"bo_akl_base_productlines.pNo","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_base_productlines","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]},{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_EM_productInfo.prNo","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"LV.sl.equName","valueType":"9"}],"entityType":"ruleSetVar","entityName":"productInfo","isFieldAutoMapping":false,"itemqueryparam":null,"items":[{"destName":"productInfo.boxPartsNum","sourceName":"bo_akl_EM_productInfo.boxPartsNum","type":"entityField"},{"destName":"productInfo.id","sourceName":"bo_akl_EM_productInfo.id","type":"entityField"},{"destName":"productInfo.pid","sourceName":"bo_akl_EM_productInfo.pid","type":"entityField"},{"destName":"productInfo.prLine","sourceName":"bo_akl_EM_productInfo.prLine","type":"entityField"},{"destName":"productInfo.prName","sourceName":"bo_akl_EM_productInfo.prName","type":"entityField"},{"destName":"productInfo.prNameb","sourceName":"bo_akl_EM_productInfo.prNameb","type":"entityField"},{"destName":"productInfo.prNamec","sourceName":"bo_akl_EM_productInfo.prNamec","type":"entityField"},{"destName":"productInfo.prNamed","sourceName":"bo_akl_EM_productInfo.prNamed","type":"entityField"},{"destName":"productInfo.prNo","sourceName":"bo_akl_EM_productInfo.prNo","type":"entityField"},{"destName":"productInfo.prNoFor","sourceName":"bo_akl_EM_productInfo.prNoFor","type":"entityField"},{"destName":"productInfo.remark","sourceName":"bo_akl_EM_productInfo.remark","type":"entityField"},{"destName":"productInfo.standardWorkingHours","sourceName":"bo_akl_EM_productInfo.standardWorkingHours","type":"entityField"},{"destName":"productInfo.testInterval","sourceName":"bo_akl_EM_productInfo.testInterval","type":"entityField"},{"destName":"productInfo.testNum","sourceName":"bo_akl_EM_productInfo.testNum","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_EM_productInfo","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>ruleSetVar</EntityType><EntityName>productlines</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_base_productlines</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_base_productlines.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>LV.sl.prolineId</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>37a7886d4df14093948bbd9ec30195e3</ID><DataLoad /><IsFieldAutoMapping>False</IsFieldAutoMapping></dtEntityRelation><dtEntityRelation><EntityType>ruleSetVar</EntityType><EntityName>productInfo</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_EM_productInfo</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_EM_productInfo.prNo</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>LV.sl.equName</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>5653c0f76cfb45f8aef4b13ca9274526</ID><DataLoad /><IsFieldAutoMapping>False</IsFieldAutoMapping></dtEntityRelation><dtEntityColumnRelation><MasterID>37a7886d4df14093948bbd9ec30195e3</MasterID><DestName>productlines.belongProject</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productlines.belongProject</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>37a7886d4df14093948bbd9ec30195e3</MasterID><DestName>productlines.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productlines.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>5653c0f76cfb45f8aef4b13ca9274526</MasterID><DestName>productInfo.boxPartsNum</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_productInfo.boxPartsNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>5653c0f76cfb45f8aef4b13ca9274526</MasterID><DestName>productInfo.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_productInfo.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>5653c0f76cfb45f8aef4b13ca9274526</MasterID><DestName>productInfo.pid</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_productInfo.pid</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>5653c0f76cfb45f8aef4b13ca9274526</MasterID><DestName>productInfo.prLine</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_productInfo.prLine</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>5653c0f76cfb45f8aef4b13ca9274526</MasterID><DestName>productInfo.prName</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_productInfo.prName</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>5653c0f76cfb45f8aef4b13ca9274526</MasterID><DestName>productInfo.prNameb</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_productInfo.prNameb</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>5653c0f76cfb45f8aef4b13ca9274526</MasterID><DestName>productInfo.prNamec</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_productInfo.prNamec</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>5653c0f76cfb45f8aef4b13ca9274526</MasterID><DestName>productInfo.prNamed</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_productInfo.prNamed</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>5653c0f76cfb45f8aef4b13ca9274526</MasterID><DestName>productInfo.prNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_productInfo.prNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>5653c0f76cfb45f8aef4b13ca9274526</MasterID><DestName>productInfo.prNoFor</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_productInfo.prNoFor</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>5653c0f76cfb45f8aef4b13ca9274526</MasterID><DestName>productInfo.remark</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_productInfo.remark</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>5653c0f76cfb45f8aef4b13ca9274526</MasterID><DestName>productInfo.standardWorkingHours</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_productInfo.standardWorkingHours</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>5653c0f76cfb45f8aef4b13ca9274526</MasterID><DestName>productInfo.testInterval</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_productInfo.testInterval</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>5653c0f76cfb45f8aef4b13ca9274526</MasterID><DestName>productInfo.testNum</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_productInfo.testNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>37a7886d4df14093948bbd9ec30195e3</MasterID><DestName>productlines.pNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productlines.pNo</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>5653c0f76cfb45f8aef4b13ca9274526</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtPager><PagerMasterID>37a7886d4df14093948bbd9ec30195e3</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>5653c0f76cfb45f8aef4b13ca9274526</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave><dtTotalRecordSave><TotalRecordSaveMasterID>37a7886d4df14093948bbd9ec30195e3</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1_1" instanceName="给界面实体/控件/变量赋值_d2_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-26 00:00:33">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"B\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"B"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_4_1" instanceName="给界面实体/控件/变量赋值_d1_3_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-26 00:01:44">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"M\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"M"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1_4" instanceName="给界面实体/控件/变量赋值_d2_4" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-26 00:02:59">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"U\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"U"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_1" instanceName="给界面实体/控件/变量赋值_2_1_1_1_1" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"year","SourceType":"expression","SourceEntityType":"","Source":"\"B\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>year</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"B"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_2" instanceName="给界面实体/控件/变量赋值_2_1_1_1_2_2" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"year","SourceType":"expression","SourceEntityType":"","Source":"\"D\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>year</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"D"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1" instanceName="给界面实体/控件/变量赋值_d1" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"A\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"A"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3" instanceName="给界面实体/控件/变量赋值_2" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"month","SourceType":"expression","SourceEntityType":"","Source":"\"A\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>month</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"A"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1_1_1" instanceName="给界面实体/控件/变量赋值_d2_1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-26 00:01:29">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"K\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"K"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1" instanceName="给界面实体/控件/变量赋值_2_1_1" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"month","SourceType":"expression","SourceEntityType":"","Source":"\"C\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>month</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"C"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_3_2" instanceName="给界面实体/控件/变量赋值_2_1_1_1_3_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-25 23:56:15">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"year","SourceType":"expression","SourceEntityType":"","Source":"\"9\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>year</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"9"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1" instanceName="给界面实体/控件/变量赋值_d2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-26 00:00:45">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"D\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"D"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_2" instanceName="给界面实体/控件/变量赋值_d1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-26 00:00:39">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"C\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"C"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1_3" instanceName="给界面实体/控件/变量赋值_d2_3" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-26 00:01:15">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"I\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"I"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_3_1_1" instanceName="给界面实体/控件/变量赋值_d1_2_1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-26 00:02:30">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"R\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"R"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_4" instanceName="给界面实体/控件/变量赋值_d1_3" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-26 00:01:36">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"L\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"L"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_1" instanceName="给界面实体/控件/变量赋值_2_1_1_1_2_1" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"year","SourceType":"expression","SourceEntityType":"","Source":"\"C\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>year</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"C"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1_2_1_1" instanceName="给界面实体/控件/变量赋值_d2_2_1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-26 00:02:22">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"Q\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"Q"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1" instanceName="给界面实体/控件/变量赋值_2_1" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"month","SourceType":"expression","SourceEntityType":"","Source":"\"B\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>month</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"B"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1_2_1" instanceName="给界面实体/控件/变量赋值_d2_2_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-26 00:01:08">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"H\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"H"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_3_1" instanceName="给界面实体/控件/变量赋值_2_1_1_1_3_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-25 23:56:08">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"year","SourceType":"expression","SourceEntityType":"","Source":"\"8\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>year</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"8"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity2" instanceName="从数据库获取数据到实体_产线" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_base_productlines.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"LV.sl.prolineId","valueType":"9"}],"entityType":"ruleSetVar","entityName":"productlines","isFieldAutoMapping":false,"itemqueryparam":null,"items":[{"destName":"productlines.belongProject","sourceName":"bo_akl_base_productlines.belongProject","type":"entityField"},{"destName":"productlines.id","sourceName":"bo_akl_base_productlines.id","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_base_productlines","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>ruleSetVar</EntityType><EntityName>productlines</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_base_productlines</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_base_productlines.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>LV.sl.prolineId</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>37a7886d4df14093948bbd9ec30195e3</ID><DataLoad /><IsFieldAutoMapping>False</IsFieldAutoMapping></dtEntityRelation><dtEntityColumnRelation><MasterID>37a7886d4df14093948bbd9ec30195e3</MasterID><DestName>productlines.belongProject</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productlines.belongProject</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>37a7886d4df14093948bbd9ec30195e3</MasterID><DestName>productlines.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_base_productlines.id</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>37a7886d4df14093948bbd9ec30195e3</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>37a7886d4df14093948bbd9ec30195e3</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity3" instanceName="从数据库获取数据到实体_隶属项目下的产线" isNeedLog="False" isEnabled="True" isDebug="False">
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity3" instanceName="从数据库获取数据到实体_隶属项目下的产线" isNeedLog="False" isEnabled="False" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
@@ -533,12 +402,12 @@
         <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"hour","SourceType":"expression","SourceEntityType":"","Source":"GetDateSection(DateTimeNow(),4)","entityFieldMapping":null}]}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>hour</Target><SourceType>expression</SourceType><SourceEntityType /><Source>GetDateSection(DateTimeNow(),4)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4" instanceName="拼接批次号" isNeedLog="False" isEnabled="True" isDebug="False">
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4" instanceName="拼接批次号" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2020-01-19 15:13:50">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"bunch","SourceType":"expression","SourceEntityType":"","Source":"Format(\"{0}{1}{2}{3}{4}{5}\",GetEntityRowCountFunc(\"BR_VAR_PARENT.productlinesOfProject\"),BR_VAR_PARENT.year,BR_VAR_PARENT.month,BR_VAR_PARENT.day,BR_VAR_PARENT.hour,Substring(LV.sl.equName,GetLength(LV.sl.equName)-4,4))","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>bunch</Target><SourceType>expression</SourceType><SourceEntityType /><Source>Format("{0}{1}{2}{3}{4}{5}",GetEntityRowCountFunc("BR_VAR_PARENT.productlinesOfProject"),BR_VAR_PARENT.year,BR_VAR_PARENT.month,BR_VAR_PARENT.day,BR_VAR_PARENT.hour,Substring(LV.sl.equName,GetLength(LV.sl.equName)-4,4))</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"bunch","SourceType":"expression","SourceEntityType":"","Source":"Format(\"{0}{1}{2}{3}{4}{5}\",Substring(BR_VAR_PARENT.[productlines].[pNo],GetLength(BR_VAR_PARENT.[productlines].[pNo])-2,2),BR_VAR_PARENT.year,BR_VAR_PARENT.month,BR_VAR_PARENT.day,BR_VAR_PARENT.hour,BR_VAR_PARENT.[productInfo].[prNoFor])","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>bunch</Target><SourceType>expression</SourceType><SourceEntityType /><Source>Format("{0}{1}{2}{3}{4}{5}",Substring(BR_VAR_PARENT.[productlines].[pNo],GetLength(BR_VAR_PARENT.[productlines].[pNo])-2,2),BR_VAR_PARENT.year,BR_VAR_PARENT.month,BR_VAR_PARENT.day,BR_VAR_PARENT.hour,BR_VAR_PARENT.[productInfo].[prNoFor])</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
       <RuleInstance ruleCode="ModifyDataBaseRecord" ruleName="修改数据库中的记录" instanceCode="BR_ModifyDataBaseRecord1" instanceName="修改数据库中的记录" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
@@ -547,40 +416,47 @@
         <RuleConfig><![CDATA[{"dataSourcesMapping":[{"condition":[{"columnType":"1","field":"bo_akl_line_start.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"LV.sl.id","valueType":"9"}],"dataMap":[{"colName":"bo_akl_line_start.batchNum","colValue":"BR_VAR_PARENT.bunch","valueType":"expression"}],"dataSource":"bo_akl_line_start","opperType":"update"}]}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><orderNo>1</orderNo><destTableName>bo_akl_line_start</destTableName><opperType>update</opperType><condition><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_line_start.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>LV.sl.id</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></condition><dtField><![CDATA[<NewDataSet><dtField><destField>bo_akl_line_start.batchNum</destField><sourceType>expression</sourceType><sourceField>BR_VAR_PARENT.bunch</sourceField></dtField></NewDataSet>]]]]><![CDATA[></dtField></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_2_1_1" instanceName="给界面实体/控件/变量赋值_d1_1_1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-26 00:02:07">
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_2" instanceName="给界面实体/控件/变量赋值_2_1_1_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2020-01-19 15:12:15">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"month","SourceType":"expression","SourceEntityType":"","Source":"Substring(BR_VAR_PARENT.month,1,1)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>month</Target><SourceType>expression</SourceType><SourceEntityType /><Source>Substring(BR_VAR_PARENT.month,1,1)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1_3" instanceName="给界面实体/控件/变量赋值_d2_3" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"I\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"I"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1" instanceName="给界面实体/控件/变量赋值_2_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"month","SourceType":"expression","SourceEntityType":"","Source":"\"B\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>month</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"B"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_2_1_1" instanceName="给界面实体/控件/变量赋值_d1_1_1_1" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
         <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"O\"","entityFieldMapping":null}]}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"O"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1_1_1_1" instanceName="给界面实体/控件/变量赋值_d2_1_1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-26 00:01:52">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"N\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"N"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_2_1" instanceName="给界面实体/控件/变量赋值_d1_1_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-26 00:01:22">
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_2_1" instanceName="给界面实体/控件/变量赋值_d1_1_1" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
         <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"J\"","entityFieldMapping":null}]}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"J"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_3_1" instanceName="给界面实体/控件/变量赋值_d1_2_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-26 00:01:03">
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_3_2" instanceName="给界面实体/控件/变量赋值_d1_2_2" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"G\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"G"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1_2" instanceName="给界面实体/控件/变量赋值_d2_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-26 00:00:50">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"E\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"E"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"S\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"S"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
       <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3" instanceName="给界面实体/控件/变量赋值_2_1_1_1_2_3" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
@@ -589,19 +465,82 @@
         <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"year","SourceType":"expression","SourceEntityType":"","Source":"\"E\"","entityFieldMapping":null}]}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>year</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"E"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_3" instanceName="给界面实体/控件/变量赋值_d1_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-26 00:00:57">
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1_1" instanceName="给界面实体/控件/变量赋值_d2_1" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"F\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"F"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"B\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"B"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1" instanceName="给界面实体/控件/变量赋值_2_1_1_1" isNeedLog="False" isEnabled="True" isDebug="False">
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1_4_1" instanceName="给界面实体/控件/变量赋值_d2_4_1" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"year","SourceType":"expression","SourceEntityType":"","Source":"\"A\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>year</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"A"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"V\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"V"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_1" instanceName="给界面实体/控件/变量赋值_2_1_1_1_2_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"year","SourceType":"expression","SourceEntityType":"","Source":"\"C\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>year</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"C"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1" instanceName="给界面实体/控件/变量赋值_d2" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"D\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"D"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_2" instanceName="给界面实体/控件/变量赋值_d1_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"C\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"C"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_3_2" instanceName="给界面实体/控件/变量赋值_2_1_1_1_3_2" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"year","SourceType":"expression","SourceEntityType":"","Source":"\"9\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>year</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"9"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1_1_1_1" instanceName="给界面实体/控件/变量赋值_d2_1_1_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"N\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"N"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1_3_1" instanceName="给界面实体/控件/变量赋值_d2_3_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"P\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"P"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1_2_1" instanceName="给界面实体/控件/变量赋值_d2_2_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"H\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"H"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_3_1" instanceName="给界面实体/控件/变量赋值_d1_2_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"G\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"G"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1_4" instanceName="给界面实体/控件/变量赋值_d2_4" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"U\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"U"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
       <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2" instanceName="给界面实体/控件/变量赋值_2_1_1_1_2" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
@@ -610,19 +549,103 @@
         <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"year","SourceType":"expression","SourceEntityType":"","Source":"\"C\"","entityFieldMapping":null}]}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>year</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"C"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_3_2" instanceName="给界面实体/控件/变量赋值_d1_2_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-26 00:02:37">
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1_2_2" instanceName="给界面实体/控件/变量赋值_d2_2_2" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"S\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"S"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"T\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"T"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1_3_1" instanceName="给界面实体/控件/变量赋值_d2_3_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-11-26 00:02:14">
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_1" instanceName="给界面实体/控件/变量赋值_2_1_1_1_1" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"P\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"P"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"year","SourceType":"expression","SourceEntityType":"","Source":"\"B\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>year</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"B"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1" instanceName="给界面实体/控件/变量赋值_2_1_1_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"year","SourceType":"expression","SourceEntityType":"","Source":"\"A\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>year</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"A"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3" instanceName="给界面实体/控件/变量赋值_2" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"month","SourceType":"expression","SourceEntityType":"","Source":"\"A\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>month</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"A"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_3" instanceName="给界面实体/控件/变量赋值_d1_2" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"F\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"F"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_3_1" instanceName="给界面实体/控件/变量赋值_2_1_1_1_3_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"year","SourceType":"expression","SourceEntityType":"","Source":"\"8\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>year</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"8"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_4_1" instanceName="给界面实体/控件/变量赋值_d1_3_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"M\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"M"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1_2_1_1" instanceName="给界面实体/控件/变量赋值_d2_2_1_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"Q\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"Q"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_2" instanceName="给界面实体/控件/变量赋值_2_1_1_1_2_2" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"year","SourceType":"expression","SourceEntityType":"","Source":"\"D\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>year</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"D"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1" instanceName="给界面实体/控件/变量赋值_d1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"A\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"A"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_1_1_1" instanceName="给界面实体/控件/变量赋值_d2_1_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"K\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"K"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_3_1_1" instanceName="给界面实体/控件/变量赋值_d1_2_1_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"R\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"R"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1" instanceName="给界面实体/控件/变量赋值_2_1_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"month","SourceType":"expression","SourceEntityType":"","Source":"\"C\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>month</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"C"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1_2_3_1_4" instanceName="给界面实体/控件/变量赋值_d1_3" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"day","SourceType":"expression","SourceEntityType":"","Source":"\"L\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>day</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"L"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
     </RuleInstances>
     <Variables>
@@ -657,11 +680,60 @@
           <Field code="belongProject" name="隶属项目" fieldType="char" length="128" accuracy="">
             <description><![CDATA[]]></description>
           </Field>
+          <Field code="pNo" name="产线编号" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
         </Entity>
       </Variable>
       <Variable code="productlinesOfProject" name="同项目下的产线" fieldType="entity" initValue="" isMust="false" desc="">
         <Entity>
           <Field code="id" name="" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="productInfo" name="产品" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="prName" name="产品名称" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="prLine" name="所属产线" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="pid" name="产线id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="prNo" name="产品型号" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="prNoFor" name="型号简称" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="remark" name="备注" fieldType="text" length="1000" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="prNameb" name="产品名称2" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="prNamec" name="产品名称3" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="prNamed" name="产品名称4" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="testNum" name="数量要求" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="testInterval" name="测试间隔" fieldType="number" length="50" accuracy="1">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="boxPartsNum" name="每箱零件数" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="standardWorkingHours" name="标准工时" fieldType="number" length="50" accuracy="4">
             <description><![CDATA[]]></description>
           </Field>
         </Entity>

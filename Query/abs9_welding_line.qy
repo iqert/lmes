@@ -3,7 +3,7 @@
   <Creator><![CDATA[liub]]></Creator>
   <CreationTime><![CDATA[2018-08-21 17:16:39]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-12-17 20:34:15]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-01-09 09:38:42]]></ModificationTime>
   <VSql><![CDATA[select 
 standardWorkingHours,--标准工时
 startTime, --开线时间
@@ -19,8 +19,8 @@ nightOutput, --晚班生产产量
 actualTotal, --每日产量实际
 dailyEfficiency,--每日目标效率
 ROUND(actProductivity,2) as actProductivity, --每日实际生产力
-dayProductivity, --白班时间效率
-nightProductivity, --晚班实际效率
+dayProductivity as dayProductivity, --白班时间效率
+nightProductivity as nightProductivity, --晚班实际效率
 unTime,pullTest,
 repairTimeday, --白天维修
 repairTimenight,
@@ -43,16 +43,18 @@ nightUnproductTime, ---晚班非正常生产时间/分钟
 (dayUnproductTime+nightUnproductTime) as unproductTimeAll,
 dayShiftHour, --白班总工时
 nightShiftHour, --晚班总工时
+(dayShiftHour+nightShiftHour) as  allShiftHour, --一天总工时
 outputDayshiftGoal,  --白班目标产量
 productivityDayGoal, --白班目标生产力
 outputNightshiftGoal,  --晚班班目标产量
 outputDayshiftGoal+outputNightshiftGoal as totalOutputGoal, --每日目标总产量
 productivityNightGoal,  --晚班目标生产力
-dayActProductivity, --白班实际生产力
-nightActProductivity, --白班实际生产力
-case when  (totalMans>0 and standardWorkingHours>0) then actualTotal/(workTime*60*totalMans)/standardWorkingHours  else 0 end as actualEfficiency, --实际效率/每日*产品
+ROUND(dayActProductivity,0) as dayActProductivity, --白班实际生产力
+ROUND(nightActProductivity,0) as nightActProductivity, --白班实际生产力
+case when  (totalMans>0 and standardWorkingHours>0) then ROUND((actualTotal/(workTime*60*totalMans)/standardWorkingHours)*100,2)  else 0 end as actualEfficiency, --实际效率/每日*产品
 (dayOutput+nightOutput)/workTime as actualEfficiencyLine, --每日实际效率（根据产线）
-(outputDayshiftGoal+outputNightshiftGoal)/workTime as goalProductivity --目标生产力
+(outputDayshiftGoal+outputNightshiftGoal)/workTime as goalProductivity, --目标生产力
+outputDayshiftGoal+outputNightshiftGoal as goalProduct --目标总产量
 from (
 select 
 standardWorkingHours,
@@ -291,34 +293,40 @@ group by startTime,equCode,standardWorkingHours order by startTime desc
     <Column id="Column_39" code="nightShiftHour" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_40" code="outputDayshiftGoal" name="" dataType="number" length="" precision="">
+    <Column id="Column_40" code="allShiftHour" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_41" code="productivityDayGoal" name="" dataType="number" length="" precision="">
+    <Column id="Column_41" code="outputDayshiftGoal" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_42" code="outputNightshiftGoal" name="" dataType="number" length="" precision="">
+    <Column id="Column_42" code="productivityDayGoal" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_43" code="totalOutputGoal" name="" dataType="number" length="" precision="">
+    <Column id="Column_43" code="outputNightshiftGoal" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_44" code="productivityNightGoal" name="" dataType="number" length="" precision="">
+    <Column id="Column_44" code="totalOutputGoal" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_45" code="dayActProductivity" name="" dataType="number" length="" precision="">
+    <Column id="Column_45" code="productivityNightGoal" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_46" code="nightActProductivity" name="" dataType="number" length="" precision="">
+    <Column id="Column_46" code="dayActProductivity" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_47" code="actualEfficiency" name="" dataType="number" length="" precision="">
+    <Column id="Column_47" code="nightActProductivity" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_48" code="actualEfficiencyLine" name="" dataType="number" length="" precision="">
+    <Column id="Column_48" code="actualEfficiency" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_49" code="goalProductivity" name="" dataType="number" length="" precision="">
+    <Column id="Column_49" code="actualEfficiencyLine" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_50" code="goalProductivity" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_51" code="goalProduct" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
   </Columns>
@@ -337,37 +345,37 @@ group by startTime,equCode,standardWorkingHours order by startTime desc
     </Param>
   </Params>
   <DataItems>
-    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="1794,1834" />
-    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="1814" />
-    <DataItem type="Table" key="bo_akl_line_start_user" tokenIndexes="1872" />
-    <DataItem type="Table" key="stopLineStartInput" tokenIndexes="1905" />
-    <DataItem type="Table" key="Line_output" tokenIndexes="1786" />
-    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="1933" />
-    <DataItem type="TableField" key="stopLineStartInput.classes" tokenIndexes="1532,1560,1602,1630,1665,1693,1735,1763" />
-    <DataItem type="TableField" key="stopLineStartInput.repairTime" tokenIndexes="1540,1568" />
-    <DataItem type="TableField" key="stopLineStartInput.actualCoTime" tokenIndexes="1610,1638" />
-    <DataItem type="TableField" key="stopLineStartInput.cleans" tokenIndexes="1673,1701" />
-    <DataItem type="TableField" key="stopLineStartInput.otherOL" tokenIndexes="1743,1771" />
-    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="1804,1848" />
-    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="1824" />
-    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="1828" />
-    <DataItem type="TableField" key="bo_akl_line_start_user.lid" tokenIndexes="1868,1884" />
-    <DataItem type="TableField" key="stopLineStartInput.lineStartId" tokenIndexes="1915" />
-    <DataItem type="TableField" key="bo_akl_base_projectInfo.pName" tokenIndexes="1973" />
-    <DataItem type="TableField" key="bo_akl_base_productlines.pType" tokenIndexes="1982" />
-    <DataItem type="Query" key="a" tokenIndexes="1110,1115,1122,1137,1147,1151,1165,1181,1185,1219,1235,1239,1273,1283,1302,1312,1332,1346,1363,1367,1401,1415,1432,1436,1470,1499,1788,1806,1842,1897,1948,1960,2009" />
-    <DataItem type="Query" key="b" tokenIndexes="1156,1944,1954" />
-    <DataItem type="QueryField" key="a.lineCode" tokenIndexes="1112,1808,1844,1962" />
-    <DataItem type="QueryField" key="a.equCode" tokenIndexes="1117,1950" />
-    <DataItem type="QueryField" key="a.startTime" tokenIndexes="1124,1139,1183,1237,1365,1434" />
-    <DataItem type="QueryField" key="a.outputNum" tokenIndexes="1149,1285,1314,1348,1417" />
-    <DataItem type="QueryField" key="a.clesses" tokenIndexes="1153,1167,1221,1275,1304,1334,1403,1472,1501" />
-    <DataItem type="QueryField" key="b.standardWorkingHours" tokenIndexes="1158" />
-    <DataItem type="QueryField" key="a.closeTime" tokenIndexes="1187,1241,1369,1438" />
-    <DataItem type="QueryField" key="a.lineDataId" tokenIndexes="1899" />
-    <DataItem type="QueryField" key="b.prNo" tokenIndexes="1956" />
-    <DataItem type="QueryParam" key="prlineCode" tokenIndexes="1941,1967" />
-    <DataItem type="QueryParam" key="productName" tokenIndexes="1976" />
-    <DataItem type="QueryParam" key="lineType" tokenIndexes="1985" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="1851,1891" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="1871" />
+    <DataItem type="Table" key="bo_akl_line_start_user" tokenIndexes="1929" />
+    <DataItem type="Table" key="stopLineStartInput" tokenIndexes="1962" />
+    <DataItem type="Table" key="Line_output" tokenIndexes="1843" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="1990" />
+    <DataItem type="TableField" key="stopLineStartInput.classes" tokenIndexes="1589,1617,1659,1687,1722,1750,1792,1820" />
+    <DataItem type="TableField" key="stopLineStartInput.repairTime" tokenIndexes="1597,1625" />
+    <DataItem type="TableField" key="stopLineStartInput.actualCoTime" tokenIndexes="1667,1695" />
+    <DataItem type="TableField" key="stopLineStartInput.cleans" tokenIndexes="1730,1758" />
+    <DataItem type="TableField" key="stopLineStartInput.otherOL" tokenIndexes="1800,1828" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="1861,1905" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="1881" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="1885" />
+    <DataItem type="TableField" key="bo_akl_line_start_user.lid" tokenIndexes="1925,1941" />
+    <DataItem type="TableField" key="stopLineStartInput.lineStartId" tokenIndexes="1972" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.pName" tokenIndexes="2030" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pType" tokenIndexes="2039" />
+    <DataItem type="Query" key="a" tokenIndexes="1167,1172,1179,1194,1204,1208,1222,1238,1242,1276,1292,1296,1330,1340,1359,1369,1389,1403,1420,1424,1458,1472,1489,1493,1527,1556,1845,1863,1899,1954,2005,2017,2066" />
+    <DataItem type="Query" key="b" tokenIndexes="1213,2001,2011" />
+    <DataItem type="QueryField" key="a.lineCode" tokenIndexes="1169,1865,1901,2019" />
+    <DataItem type="QueryField" key="a.equCode" tokenIndexes="1174,2007" />
+    <DataItem type="QueryField" key="a.startTime" tokenIndexes="1181,1196,1240,1294,1422,1491" />
+    <DataItem type="QueryField" key="a.outputNum" tokenIndexes="1206,1342,1371,1405,1474" />
+    <DataItem type="QueryField" key="a.clesses" tokenIndexes="1210,1224,1278,1332,1361,1391,1460,1529,1558" />
+    <DataItem type="QueryField" key="b.standardWorkingHours" tokenIndexes="1215" />
+    <DataItem type="QueryField" key="a.closeTime" tokenIndexes="1244,1298,1426,1495" />
+    <DataItem type="QueryField" key="a.lineDataId" tokenIndexes="1956" />
+    <DataItem type="QueryField" key="b.prNo" tokenIndexes="2013" />
+    <DataItem type="QueryParam" key="prlineCode" tokenIndexes="1998,2024" />
+    <DataItem type="QueryParam" key="productName" tokenIndexes="2033" />
+    <DataItem type="QueryParam" key="lineType" tokenIndexes="2042" />
   </DataItems>
 </Query>

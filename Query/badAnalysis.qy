@@ -3,30 +3,23 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-08-29 16:55:18]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-12-16 17:19:39]]></ModificationTime>
-  <VSql><![CDATA[select bn.materialNo,
-bn.badNum,
-bn.price,
-bn.prName,
-(bn.price*bn.badNum) as priceSum,
-bn.materialType
-from
-(select mat.materialNo,
-SUM(ins.inStockNum) as badNum,
-mat.mPrice as price,
---ep.prName as prName,
-mat.materialName as prName,
-mat.materialType as materialType
-from bo_akl_MM_inStockInfo  as ins 
-left join bo_akl_MM_materialInfo as mat on ins.materialId=mat.id
---left join bo_akl_EM_productInfo as ep on mat.materialNo=ep.prNo  
-where MONTH(ins.operateTime)=:inputMonth and YEAR(ins.operateTime)=:inputYear and ins.remark='确认不良品入库'
-group by mat.materialNo,
-mat.mPrice,
-mat.materialName,
-mat.materialType)
-as bn 
-where bn.materialType=:materialType and bn.materialNo is not null
+  <ModificationTime><![CDATA[2020-01-02 18:31:17]]></ModificationTime>
+  <VSql><![CDATA[SELECT bn.materialNo, bn.badNum, bn.price, bn.prName, (bn.price * bn.badNum) AS priceSum, bn.materialType
+FROM (
+	SELECT mat.materialNo, SUM(ins.inStockNum) AS badNum, mat.mPrice AS price,
+		--ep.prName as prName,
+		mat.materialName AS prName, mat.materialType AS materialType
+	FROM bo_akl_MM_inStockInfo AS ins
+	LEFT JOIN bo_akl_MM_materialInfo AS mat ON ins.materialId = mat.id
+	--left join bo_akl_EM_productInfo as ep on mat.materialNo=ep.prNo  
+	WHERE 
+	MONTH(ins.operateTime) = :inputMonth AND
+		 YEAR(ins.operateTime) = :inputYear AND
+		 ins.remark = '确认不良品入库'
+	GROUP BY mat.materialNo, mat.mPrice, mat.materialName, mat.materialType
+	) AS bn
+WHERE bn.materialType = :materialType AND
+	 bn.materialNo IS NOT NULL
 ]]></VSql>
   <Columns>
     <Column id="Column_0" code="materialNo" name="" dataType="char" length="" precision="">
@@ -63,19 +56,10 @@ where bn.materialType=:materialType and bn.materialNo is not null
     </Param>
   </Params>
   <DataItems>
-    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="92" />
-    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="102" />
-    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="48,157" />
-    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.inStockNum" tokenIndexes="55" />
-    <DataItem type="TableField" key="bo_akl_MM_materialInfo.mPrice" tokenIndexes="65,162" />
-    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialName" tokenIndexes="75,167" />
-    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialType" tokenIndexes="84,172" />
-    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.materialId" tokenIndexes="112" />
-    <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="116" />
-    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.operateTime" tokenIndexes="125,137" />
-    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.remark" tokenIndexes="147" />
-    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="129" />
-    <DataItem type="QueryParam" key="inputYear" tokenIndexes="141" />
-    <DataItem type="QueryParam" key="materialType" tokenIndexes="186" />
+    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="96" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="106" />
+    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="138" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="152" />
+    <DataItem type="QueryParam" key="materialType" tokenIndexes="202" />
   </DataItems>
 </Query>

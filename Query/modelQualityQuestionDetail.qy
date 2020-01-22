@@ -3,177 +3,193 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-11-24 17:30:58]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-12-18 16:49:20]]></ModificationTime>
-  <VSql><![CDATA[select mmk.prLine,
-mmk.materialNo,mmk.stationName,mmk.blpcbadNum,mmk.badNums,mmk.rate,mmk.badRate from(
-	select 
-	fko.prLine, --产线
-	fko.stationName, --工站
-	fko.rate as rate,--周不良品率
-	fko.prcount as prcount,--周产品数量
-	fko.materialNo, --产品编号
-	fko.blpcbadNum, --不良品数量
-	fko.prName, --产品名称
-	sdww.sums,	--产品总数
-	sdww.badNums, --不良品总数
-	case when sdww.badNums>0 then ROUND(fko.blpcbadNum/sdww.badNums,2)*100
-	else 0 end as badRate,
-	--ROUND(fko.blpcbadNum/sdww.badNums,2)*100 as badRate, --不良占比
-	fko.ycls,
-	fko.rys,
-	fko.sbs,
-	fko.qts
-	FROM(
-		select  
-				ROUND((cs.blpcbadNum/(count(pl.materialNo)*cs.boxPartsNum)*1000000),2) as rate,--周不良品率
-				(count(pl.materialNo)*cs.boxPartsNum)as prcount,--周产品数量
-				cs.materialNo, --产品编号
-				cs.blpcbadNum, --不良品数量
-				cs.prName, --产品名称
-				cs.ycls,
-				cs.rys,
-				cs.sbs,
-				cs.prLine,
-				cs.stationName,
-				cs.qts
-				from(
-					select 
-					bn.prLine,
-					bn.boxPartsNum,bn.materialNo,bn.prName,bn.blpcbadNum,bn.ycls,bn.stationName,
-							bn.rys,
-							bn.sbs,
-							bn.qts
-					  from (
-							select  mat.materialNo,--物料编号
-								ep.prLine,
-								SUM(ins.blpc) as blpcbadNum,--不良品数量
-								ep.prName as prName,--产品名称
-								ep.boxPartsNum as boxPartsNum,--每箱多少个
-								sta.ycls,
-								sta.stationName,
-								sta.rys,
-								sta.sbs,
-								sta.qts
-								from (select case 
-									when st.stockType='不良品仓'  THEN sto.inStockNum 
-									else 0 end as blpc,
-									sto.*
-									from bo_akl_MM_inStockInfo as sto 
-									left join bo_akl_MM_stockType st on st.id=sto.stockTypeId
-									where 
-									YEAR(sto.operateTime)=:inputYear
-									and Month(sto.operateTime)=:inputMonth
-									and DAYOFMONTH(sto.operateTime)=:inputDay
-									)
-								    as ins 
-							    left join bo_akl_MM_materialInfo as mat on ins.materialId=mat.id
-							    left join bo_akl_EM_productInfo as ep on mat.materialNo=ep.prNo
-								left join bo_akl_base_productlines as pline on pline.id=ep.pid
-								left join (select pns.materialNo,pns.stationName,
-											SUM(ycl) as ycls,SUM(ry) as rys,SUM(sb) as sbs,SUM(qt) as qts
-											from (select case 
-													when pn.remark='原材料'  THEN 1
-													else 0 end as ycl,
-													case 
-													when pn.remark='人员'  THEN 1
-													else 0 end as ry,
-													case 
-													when pn.remark='设备'  THEN 1
-													else 0 end as sb,
-													case 
-													when pn.remark='其他'  THEN 1
-													else 0 end as qt,pn.*
-													from  bo_akl_line_stationBadProNum as pn
-													where 
-													YEAR(pn.bsTime)=:inputYear
-													and Month(pn.bsTime)=:inputMonth
-													and DAYOFMONTH(pn.bsTime)=:inputDay
-													) as pns group by pns.materialNo,pns.stationName
-											) as sta on sta.materialNo=mat.materialNo
-								where  pline.pType=4 and  mat.materialType='成品' and mat.projectNo=:porjectName
-								--and proIn.pName=:porjectName
-							    group by mat.materialNo,
-								ep.prLine,
-								sta.stationName,
-								sta.ycls,
-								sta.rys,
-								sta.sbs,
-								sta.qts,
-								ep.prName,
-								ep.boxPartsNum
-							) as bn
-							where  bn.materialNo is not null
-					) cs 
-					left join bo_akl_LM_printProductLabel as pl on cs.materialNo=pl.materialNo 
-					group by cs.materialNo,
-							cs.prLine,
-							cs.blpcbadNum, --不良品数量
-							cs.prName, --产品名称
-							cs.boxPartsNum,
-							cs.ycls,
-							cs.rys,
-							cs.sbs,
-							cs.stationName,
-							cs.qts
-	) as fko 
-	left join 
-	(select 	
-		SUM(og.prcount) as sums,SUM(og.blpcbadNum) as badNums
-	from (
-		select 
-				(count(pl.materialNo)*cs.boxPartsNum)as prcount,--产品数量
-				cs.materialNo, --产品编号
-				cs.blpcbadNum --不良品数量
-				from(
-					select bn.boxPartsNum,bn.materialNo,bn.prName,bn.blpcbadNum
-					from (
-						select  mat.materialNo,--物料编号
-							SUM(ins.blpc) as blpcbadNum,--不良品数量
-							ep.prName as prName,--产品名称
-							ep.boxPartsNum as boxPartsNum--每箱多少个
-							from (select case 
-								when st.stockType='不良品仓'  THEN sto.inStockNum 
-								else 0 end as blpc,
-								sto.*
-								from bo_akl_MM_inStockInfo as sto 
-								left join bo_akl_MM_stockType st on st.id=sto.stockTypeId
-								where YEAR(sto.operateTime)=:inputYear
-								and Month(sto.operateTime)=:inputMonth
-								and DAYOFMONTH(sto.operateTime)=:inputDay
-								)
-							    as ins 
-						    left join bo_akl_MM_materialInfo as mat on ins.materialId=mat.id
-						    left join bo_akl_EM_productInfo as ep on mat.materialNo=ep.prNo
-							where  mat.materialType='成品' and mat.projectNo=:porjectName
-						    group by mat.materialNo,ep.prName,ep.boxPartsNum) as bn
-							where  bn.materialNo is not null
-					) cs 
-					left join bo_akl_LM_printProductLabel as pl on cs.materialNo=pl.materialNo group by 
-					cs.materialNo,
-					cs.blpcbadNum,cs.boxPartsNum) 
-					as og) as sdww
-		on 1=1 order by fko.blpcbadNum desc
-		) as mmk group by mmk.prLine,mmk.materialNo,mmk.stationName,mmk.blpcbadNum,mmk.badNums,mmk.rate,mmk.badRate]]></VSql>
+  <ModificationTime><![CDATA[2020-01-02 18:13:30]]></ModificationTime>
+  <VSql><![CDATA[--bo_akl_MM_inStockInfo 入库信息
+--bo_akl_MM_stockType 仓库类型
+--bo_akl_MM_materialInfo 物料名称
+--bo_akl_EM_productInfo 产品
+--bo_akl_base_productlines 产线
+--bo_akl_line_stationBadProNum 开线工站不良品数
+--bo_akl_LM_printProductLabel 产品标签
+select lpl.cName,lpl.blType, lpl.materialNo, lpl.prolineName, lpl.stationName, lpl.fcNum, lpl.blNum, lpl.allbead, lpl.badrate, lpl.badZb,lpl.remark,mif.mPrice*lpl.blNum as bfprice from 
+(
+SELECT cName,blType, materialNo, prolineName, stationName, fcNum, blNum, allbead, badrate, badZb,remark
+FROM (
+	SELECT badI.cName,'成品' AS blType, badI.materialNo, badI.prolineName, badI.stationName, badI.fcNum, --复测前不良品数
+		badI.blNum, --不良数量
+		koe.allbead, --不良总数
+		ROUND(CAST(badI.blNum, 'Decimal', 10, 4) / prom.proBadNum * 1000000, 2) AS badrate, --不良品率
+		ROUND(CAST(badI.blNum, 'Decimal', 10, 4) / koe.allbead * 100, 2) AS badZb, --不良占比
+		badI.remark --不良原因
+		--badI.blNum/prom.proBadNum as feee			
+	--prom.proBadNum --生产总数
+	FROM (
+		SELECT sb.materialNo, --产品编号
+			lis.prolineName, --产线名称
+			sb.stationName, --工站
+			SUM(sb.badProNum) AS fcNum, --复测前不良品数
+			SUM(sb.inputBadProNum) AS blNum, --不良数量
+			sb.remark,
+			sb.cName
+		FROM bo_akl_line_stationBadProNum AS sb
+		LEFT JOIN bo_akl_line_start AS lis ON lis.id = sb.startId
+		where YEAR(sb.bsTime)=:inputYear
+				and Month(sb.bsTime)=:inputMonth
+				and DAYOFMONTH(sb.bsTime)=:inputDay 
+				and sb.inputBadProNum>0
+		GROUP BY lis.prolineName, sb.materialNo, sb.stationName, sb.remark
+		) AS badI
+	LEFT JOIN (
+		SELECT bp.materialNo, SUM(bp.boxPartsNum) AS proBadNum
+		FROM bo_akl_LM_printProductLabel AS bp
+		WHERE YEAR(bp.prodDate)=:inputYear
+				and Month(bp.prodDate)=:inputMonth
+				and DAYOFMONTH(bp.prodDate)=:inputDay 
+			AND bp.labelType = '成品'
+		GROUP BY bp.materialNo
+		) AS prom ON prom.materialNo = badI.materialNo
+	LEFT JOIN (
+		SELECT SUM(inputBadProNum) AS allbead
+		FROM bo_akl_line_stationBadProNum
+		WHERE  YEAR(bsTime)=:inputYear
+				and Month(bsTime)=:inputMonth
+				and DAYOFMONTH(bsTime)=:inputDay 
+		) AS koe ON 1 = 1
+	
+	UNION ALL
+	
+	SELECT 
+	'' as cName,
+	'半成品' AS blType,
+	   mas.materialNo AS materialNo, --产品编号
+		mas.prolineName AS prolineName, --产线		
+		'' AS stationName, --工站
+		0 AS fcNum, --复测前
+		mas.badN AS blNum, --不良品数量
+		--buls.proBadNum, --生产数量
+		koe.allbead, --不良品总数
+		ROUND(CAST(mas.badN, 'Decimal', 10, 4) / buls.proBadNum * 1000000, 2) AS badrate, --不良品率
+		ROUND(CAST(mas.badN, 'Decimal', 10, 4) / koe.allbead * 100, 2) AS badZb, --不良占比
+		mas.remark --原因
+	FROM (
+		SELECT lis.prolineName, --产线
+			sp.materialNo, --物料编号
+			sp.remark, --不良原因
+			--buls.proBadNum,--产品总数
+			SUM(sp.badProNum) AS badN --不良数量
+		FROM bo_akl_line_materialBadProNum AS sp
+		LEFT JOIN bo_akl_line_start AS lis ON lis.id = sp.startId
+		LEFT JOIN bo_akl_MM_materialInfo AS mti ON sp.materialNo = mti.materialNo
+		WHERE   YEAR(sp.bsTime)=:inputYear
+				and Month(sp.bsTime)=:inputMonth
+				and DAYOFMONTH(sp.bsTime)=:inputDay and mti.materialType = '半成品'
+				and sp.badProNum>0
+		GROUP BY lis.prolineName, sp.materialNo, sp.remark
+		) AS mas
+	LEFT JOIN (
+		SELECT bp.materialNo, SUM(bp.boxPartsNum) AS proBadNum
+		FROM bo_akl_LM_printProductLabel AS bp
+		WHERE YEAR(bp.prodDate)=:inputYear
+				and Month(bp.prodDate)=:inputMonth
+				and DAYOFMONTH(bp.prodDate)=:inputDay 
+			AND bp.labelType = '半成品'
+		GROUP BY bp.materialNo
+		) AS buls ON buls.materialNo = mas.materialNo
+	LEFT JOIN (
+		SELECT SUM(badProNum) AS allbead
+		FROM bo_akl_line_materialBadProNum AS mbp
+		LEFT JOIN bo_akl_MM_materialInfo AS mti ON mbp.materialNo = mti.materialNo
+		WHERE mti.materialType = '半成品' and
+				YEAR(bsTime)=:inputYear
+				and Month(bsTime)=:inputMonth
+				and DAYOFMONTH(bsTime)=:inputDay 
+		) AS koe ON 1 = 1
+	UNION ALL 
+	SELECT 
+		'' as cName,
+		'原材料' AS blType,
+		mas.materialNo, --产品编号
+		mas.prolineName, --产线
+		'' AS stationName, --工站
+		0 AS fcNum, --复测前
+		mas.badN AS blNum, --不良品数量
+		--buls.smu, --生产数量
+		koe.allbead, --不良品总数
+		ROUND(CAST(mas.badN, 'Decimal', 10, 4) / buls.smu * 1000000, 2) AS badrate, --不良品率
+		ROUND(CAST(mas.badN, 'Decimal', 10, 4) / koe.allbead * 100, 2) AS badZb, --不良占比
+		mas.remark --原因
+	FROM (
+		SELECT lis.prolineName, --产线
+			sp.materialNo, --物料编号
+			sp.remark, --不良原因
+			--buls.proBadNum,--产品总数
+			SUM(sp.badProNum) AS badN --不良数量
+		FROM bo_akl_line_materialBadProNum AS sp
+		LEFT JOIN bo_akl_line_start AS lis ON lis.id = sp.startId
+		LEFT JOIN bo_akl_MM_materialInfo AS mti ON sp.materialNo = mti.materialNo
+		WHERE YEAR(sp.bsTime)=:inputYear
+				and Month(sp.bsTime)=:inputMonth
+				and DAYOFMONTH(sp.bsTime)=:inputDay and mti.materialType = '原材料'
+				and sp.badProNum>0
+		GROUP BY lis.prolineName, sp.materialNo, sp.remark
+		) AS mas
+	LEFT JOIN (
+		SELECT bam.materialNo, SUM(mc.num) AS smu
+		FROM bo_akl_line_materialConfirm AS mc
+		LEFT JOIN bo_akl_MM_materialInfo AS bam ON bam.id = mc.materialId
+		WHERE YEAR(mc.operateTime)=:inputYear
+				and Month(mc.operateTime)=:inputMonth
+				and DAYOFMONTH(mc.operateTime)=:inputDay and bam.materialType = '原材料'
+		GROUP BY bam.materialNo
+		) AS buls ON buls.materialNo = mas.materialNo
+	LEFT JOIN (
+		SELECT SUM(badProNum) AS allbead
+		FROM bo_akl_line_materialBadProNum AS mbp
+		LEFT JOIN bo_akl_MM_materialInfo AS mti ON mbp.materialNo = mti.materialNo
+		WHERE YEAR(bsTime)=:inputYear
+				and Month(bsTime)=:inputMonth
+				and DAYOFMONTH(bsTime)=:inputDay and mti.materialType = '原材料'
+		) AS koe ON 1 = 1
+	) asf
+) as lpl left join bo_akl_MM_materialInfo as mif on mif.materialNo=lpl.materialNo
+		left join bo_akl_EM_productInfo as ep on mif.materialNo=ep.prNo
+		left join bo_akl_base_productlines as pline on pline.id=ep.pid
+where mif.projectNo=:projectName and pline.pType=4]]></VSql>
   <Columns>
-    <Column id="Column_0" code="prLine" name="" dataType="char" length="" precision="">
+    <Column id="Column_0" code="cName" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_1" code="materialNo" name="" dataType="char" length="" precision="">
+    <Column id="Column_1" code="blType" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_2" code="stationName" name="" dataType="char" length="" precision="">
+    <Column id="Column_2" code="materialNo" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_3" code="blpcbadNum" name="" dataType="number" length="" precision="">
+    <Column id="Column_3" code="prolineName" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_4" code="badNums" name="" dataType="number" length="" precision="">
+    <Column id="Column_4" code="stationName" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_5" code="rate" name="" dataType="number" length="" precision="">
+    <Column id="Column_5" code="fcNum" name="" dataType="integer" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_6" code="badRate" name="" dataType="number" length="" precision="">
+    <Column id="Column_6" code="blNum" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="allbead" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_8" code="badrate" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_9" code="badZb" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_10" code="remark" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_11" code="bfprice" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
   </Columns>
@@ -194,39 +210,26 @@ mmk.materialNo,mmk.stationName,mmk.blpcbadNum,mmk.badNums,mmk.rate,mmk.badRate f
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
-    <Param code="porjectName" name="" dataType="char">
-      <InitValue><![CDATA[]]></InitValue>
-      <Remark><![CDATA[]]></Remark>
-    </Param>
   </Params>
   <DataItems>
-    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="430,1143" />
-    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="500,1213" />
-    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="520,1233" />
-    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="540" />
-    <DataItem type="Table" key="bo_akl_line_stationBadProNum" tokenIndexes="718" />
-    <DataItem type="Table" key="bo_akl_LM_printProductLabel" tokenIndexes="895,1307" />
-    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="440,1153" />
-    <DataItem type="TableField" key="bo_akl_LM_printProductLabel.materialNo" tokenIndexes="181,206,909,1014,1321" />
-    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="326,530,792,827,1069,1243,1272" />
-    <DataItem type="TableField" key="bo_akl_EM_productInfo.prLine" tokenIndexes="332,832" />
-    <DataItem type="TableField" key="bo_akl_EM_productInfo.prName" tokenIndexes="350,862,1088,1276" />
-    <DataItem type="TableField" key="bo_akl_EM_productInfo.boxPartsNum" tokenIndexes="360,867,1098,1280" />
-    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.inStockNum" tokenIndexes="411,1124" />
-    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.stockTypeId" tokenIndexes="452,1165" />
-    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.operateTime" tokenIndexes="460,472,484,1173,1185,1197" />
-    <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="514,1227" />
-    <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="534,1247" />
-    <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="550" />
-    <DataItem type="TableField" key="bo_akl_EM_productInfo.pid" tokenIndexes="554" />
-    <DataItem type="TableField" key="bo_akl_line_stationBadProNum.remark" tokenIndexes="619,644,669,694" />
-    <DataItem type="TableField" key="bo_akl_line_stationBadProNum.bsTime" tokenIndexes="730,742,754" />
-    <DataItem type="TableField" key="bo_akl_base_productlines.pType" tokenIndexes="798" />
-    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialType" tokenIndexes="806,1253" />
-    <DataItem type="TableField" key="bo_akl_MM_materialInfo.projectNo" tokenIndexes="814,1261" />
-    <DataItem type="QueryParam" key="inputYear" tokenIndexes="464,734,1177" />
-    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="476,746,1189" />
-    <DataItem type="QueryParam" key="inputDay" tokenIndexes="488,758,1201" />
-    <DataItem type="QueryParam" key="porjectName" tokenIndexes="817,1264" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="826,1055,1359,1491,1610,1696" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="1716" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="1736" />
+    <DataItem type="Table" key="bo_akl_line_stationBadProNum" tokenIndexes="316,540" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="326,804,1337" />
+    <DataItem type="Table" key="bo_akl_LM_printProductLabel" tokenIndexes="443,948" />
+    <DataItem type="Table" key="bo_akl_line_materialBadProNum" tokenIndexes="794,1045,1327,1600" />
+    <DataItem type="Table" key="bo_akl_line_materialConfirm" tokenIndexes="1481" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.mPrice" tokenIndexes="63" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="1706,1726" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="1730" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="1746" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.pid" tokenIndexes="1750" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.projectNo" tokenIndexes="1756" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pType" tokenIndexes="1765" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="354,459,550,854,964,1091,1387,1519,1636" />
+    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="366,471,560,866,976,1101,1399,1531,1646" />
+    <DataItem type="QueryParam" key="inputDay" tokenIndexes="378,483,570,878,988,1111,1411,1543,1656" />
+    <DataItem type="QueryParam" key="projectName" tokenIndexes="1759" />
   </DataItems>
 </Query>
