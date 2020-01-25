@@ -1,0 +1,40 @@
+﻿<Query id="1001224792a84d70bf3464bd28acb337" code="getMaterialConGb_1" name="分组物料确认" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-12-09 17:48:07]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-12-09 17:52:59]]></ModificationTime>
+  <VSql><![CDATA[select f.materialId,mainf.materialNo,SUM(num) as snum from bo_akl_line_materialConfirm as f 
+left join bo_akl_MM_materialInfo as mainf on mainf.id=f.materialId
+where f.isInsulate is null 
+and f.startId=:startId  
+group by f.materialId,mainf.materialNo]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="materialId" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="materialNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="snum" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="startId" name="开线id" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_line_materialConfirm" tokenIndexes="21" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="31" />
+    <DataItem type="TableField" key="bo_akl_line_materialConfirm.materialId" tokenIndexes="4,45,72" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="8,76" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="41" />
+    <DataItem type="TableField" key="bo_akl_line_materialConfirm.isInsulate" tokenIndexes="51" />
+    <DataItem type="TableField" key="bo_akl_line_materialConfirm.startId" tokenIndexes="61" />
+    <DataItem type="Query" key="f" tokenIndexes="25" />
+    <DataItem type="QueryParam" key="startId" tokenIndexes="64" />
+  </DataItems>
+</Query>

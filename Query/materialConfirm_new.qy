@@ -1,0 +1,163 @@
+﻿<Query id="85fa2de626c04796836a9c868d25c3ab" code="materialConfirm_new" name="扫码物料导出(新)" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2020-01-13 20:12:29]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2020-01-19 17:30:40]]></ModificationTime>
+  <VSql><![CDATA[SELECT 
+feq.infoType,
+feq.printTime,
+	feq.startClasses,
+   feq.materialName,
+	feq.materialNo,
+	feq.materialType,
+	feq.num, --使用数量（扫码数量）
+	feq.operateTime, --扫码时间
+	feq.batchNo, --批次
+	feq.returnNum, --退料数量
+	feq.stum, --隔离数量
+	feq.unit,
+	feq.projectNo,
+	feq.useNums --使用数量 from 
+	(SELECT 
+	'扫码' as infoType,
+	'' as printTime, --退料时间
+		startClasses, materialName, materialNo, materialType, num, --使用数量（扫码数量）
+		operateTime, --扫码时间
+		batchNo, --批次
+		returnNum, --退料数量
+		stum, --隔离数量
+		unit, projectNo, 
+		(num - returnNum) AS useNums --使用数量
+		FROM (
+		SELECT 
+		sta.startClasses,
+		mai.materialName,
+		mai.materialNo,
+		mai.materialType,
+		comfir.num, --使用数量（扫码数量）
+			comfir.operateTime, --扫码时间
+			comfir.batchNo, --批次
+			0 AS returnNum, --退料数量
+			0 AS removeNum, --转移数量
+			0 AS stum, --隔离数量
+			mai.unit, mai.projectNo
+		--(comfir.num-comfir.returnNum-comfir.removeNum) as useNums --使用数量	
+		FROM bo_akl_line_materialConfirm AS comfir
+		LEFT JOIN bo_akl_MM_materialInfo AS mai ON comfir.materialId = mai.id
+		LEFT JOIN bo_akl_line_start AS sta ON comfir.startId = sta.id
+		WHERE comfir.materialId != '' and comfir.removeNum=''
+			AND CHARINDEX(mai.projectNo, :projectName, 1) > 0
+			AND comfir.operateTime > :startTime
+			AND comfir.operateTime < :endTime
+		) AS resall
+	
+	UNION ALL
+		
+		SELECT 
+		'退料' as infoType,
+		printTime, --退料时间
+		startClasses,
+		materialName,
+		materialNo,
+		materialType,
+		num, --使用数量（扫码数量）
+		operateTime, --扫码时间
+		batchNo, --批次
+		returnNum, --退料数量
+		stum, --隔离数量
+		unit,
+		projectNo,
+		(num - returnNum) AS useNums --使用数量
+		FROM (
+		SELECT lab.printTime,
+		sta.startClasses, 
+		mai.materialName,
+		mai.materialNo,
+		mai.materialType,
+		0 as num, --使用数量（扫码数量）
+			'' as operateTime, --扫码时间
+			sta.batchNum as batchNo,
+			--comfir.batchNo, --批次
+			CASE WHEN lab.boxPartsNum > 0 THEN lab.boxPartsNum ELSE 0 END AS returnNum, --退料数量
+			0 as removeNum, --转移数量
+			0 AS stum, --隔离数量
+			mai.unit,
+			mai.projectNo
+		FROM bo_akl_LM_returnMaterialLabel AS lab
+		LEFT JOIN bo_akl_line_start AS sta ON lab.lineStartId = sta.id
+		LEFT JOIN bo_akl_MM_materialInfo AS mai ON lab.materialNo=mai.materialNo
+		WHERE 
+			CHARINDEX(mai.projectNo,:projectName, 1) > 0
+			AND lab.printTime >:startTime
+			AND lab.printTime <:endTime
+		) AS resalls) feq
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="infoType" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="printTime" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="startClasses" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="materialName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="materialNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="materialType" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="num" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="operateTime" name="" dataType="longDate" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_8" code="batchNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_9" code="returnNum" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_10" code="stum" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_11" code="unit" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_12" code="projectNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_13" code="useNums" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="projectName" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="startTime" name="" dataType="date">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="endTime" name="" dataType="date">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_line_materialConfirm" tokenIndexes="246" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="256,589" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="278,567" />
+    <DataItem type="Table" key="bo_akl_LM_returnMaterialLabel" tokenIndexes="557" />
+    <DataItem type="QueryParam" key="projectName" tokenIndexes="324,614" />
+    <DataItem type="QueryParam" key="startTime" tokenIndexes="343,632" />
+    <DataItem type="QueryParam" key="endTime" tokenIndexes="354,642" />
+  </DataItems>
+</Query>

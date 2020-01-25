@@ -1,0 +1,117 @@
+﻿<Query id="775c41e9e8554bd3b16ef2a3854fcb6c" code="newBadAnalysis" name="新报废成本分析" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-12-27 10:44:46]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2020-01-02 17:45:39]]></ModificationTime>
+  <VSql><![CDATA[select bfType,materialNo,blNum,mPrice,amount,remark FROM(
+		select 
+		1 as mtt,
+		'成品' as bfType, --报废类型
+		mkr.materialNo, --产品型号
+		mkr.blNum, --报废数量
+		mti.mPrice,--单价
+		mkr.blNum*mti.mPrice as amount,--报废金额
+		mkr.remark -- 不良品原因
+		from (
+		SELECT sb.materialNo, --产品编号
+		SUM(sb.inputBadProNum) AS blNum, --不良数量
+		sb.remark --不良原因
+		FROM bo_akl_line_stationBadProNum AS sb
+		where YEAR(sb.bsTime)=:inputYear
+				and Month(sb.bsTime)=:inputMonth
+				and sb.materialNo is not null 
+				and sb.inputBadProNum>0
+				--and DAYOFMONTH(sb.bsTime)=:inputDay 
+		GROUP BY sb.materialNo,sb.remark
+		) as mkr  
+		LEFT JOIN bo_akl_MM_materialInfo AS mti ON mkr.materialNo = mti.materialNo
+	
+	union all 
+	select 
+	2 as mtt,
+	'半成品' as bfType, --报废类型
+	blps.materialNo,
+	blps.blNum,
+	inf.mPrice,
+	inf.mPrice*blps.blNum as amount,
+	blps.remark from 
+	(
+	SELECT sp.materialNo, --物料编号
+		sp.remark, --不良原因
+		SUM(sp.badProNum) AS blNum --不良数量
+	FROM bo_akl_line_materialBadProNum AS sp
+	LEFT JOIN bo_akl_MM_materialInfo AS mti ON sp.materialNo = mti.materialNo
+	WHERE YEAR(sp.bsTime) = :inputYear
+		AND Month(sp.bsTime) = :inputMonth
+		AND mti.materialType = '半成品'
+		and sp.materialNo is not null 
+		and sp.badProNum>0
+	GROUP BY sp.materialNo, sp.remark
+	) as blps 
+	left join bo_akl_MM_materialInfo AS inf ON blps.materialNo = inf.materialNo
+	
+	union all 
+	
+	select 
+	3 as mtt,
+	'原材料' as bfType, --报废类型
+	jku.materialNo,
+	jku.blNum,
+	inf.mPrice,
+	inf.mPrice*jku.blNum as amount,
+	jku.remark from 
+	(
+	SELECT sp.materialNo, --物料编号
+		sp.remark, --不良原因
+		SUM(sp.badProNum) AS blNum --不良数量
+	FROM bo_akl_line_materialBadProNum AS sp
+	LEFT JOIN bo_akl_MM_materialInfo AS mti ON sp.materialNo = mti.materialNo
+	WHERE 
+	YEAR(sp.bsTime) = :inputYear
+		AND Month(sp.bsTime) = :inputMonth AND
+		 mti.materialType = '原材料'
+		and sp.materialNo is not null 
+		and sp.badProNum>0
+	GROUP BY sp.materialNo, sp.remark
+	) as jku 
+	left join bo_akl_MM_materialInfo AS inf ON jku.materialNo = inf.materialNo		
+)bf	order by bf.mtt asc,amount asc]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="bfType" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="materialNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="blNum" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="mPrice" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="amount" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="remark" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="inputYear" name="" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="inputMonth" name="" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_line_stationBadProNum" tokenIndexes="110" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="184,301,400,517,616" />
+    <DataItem type="Table" key="bo_akl_line_materialBadProNum" tokenIndexes="291,507" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="126,331,547" />
+    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="138,345,561" />
+  </DataItems>
+</Query>

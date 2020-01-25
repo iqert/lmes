@@ -1,0 +1,200 @@
+﻿<Query id="2b91eec4986644c3bc063ef327714520" code="newWeekQuaQuestion" name="新周质量问题一览" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-12-27 23:00:14]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-12-27 23:38:31]]></ModificationTime>
+  <VSql><![CDATA[--bo_akl_MM_inStockInfo 入库信息
+--bo_akl_MM_stockType 仓库类型
+--bo_akl_MM_materialInfo 物料名称
+--bo_akl_EM_productInfo 产品
+--bo_akl_base_productlines 产线
+--bo_akl_line_stationBadProNum 开线工站不良品数
+--bo_akl_LM_printProductLabel 产品标签
+select mif.projectNo,lpl.blType, lpl.materialNo,lpl.fcNum, lpl.blNum, lpl.allbead, lpl.badrate, lpl.badZb,lpl.remark,mif.mPrice*lpl.blNum as bfprice from 
+(
+SELECT wtp,blType, materialNo,fcNum, blNum, allbead, badrate, badZb,remark
+FROM (
+	SELECT 1 as wtp,'成品' AS blType, badI.materialNo,badI.fcNum, --复测前不良品数
+		badI.blNum, --不良数量
+		koe.allbead, --不良总数
+		ROUND(CAST(badI.blNum, 'Decimal', 10, 4) / prom.proBadNum * 1000000, 2) AS badrate, --不良品率
+		ROUND(CAST(badI.blNum, 'Decimal', 10, 4) / koe.allbead * 100, 2) AS badZb, --不良占比
+		badI.remark --不良原因
+		--badI.blNum/prom.proBadNum as feee			
+	--prom.proBadNum --生产总数
+	FROM (
+		SELECT sb.materialNo, --产品编号
+			SUM(sb.badProNum) AS fcNum, --复测前不良品数
+			SUM(sb.inputBadProNum) AS blNum, --不良数量
+			sb.remark
+		FROM bo_akl_line_stationBadProNum AS sb
+		where YEAR(sb.bsTime)=:inputYear
+				and week(sb.bsTime)=:inputWeek
+				
+		GROUP BY  sb.materialNo,sb.remark
+		) AS badI
+	LEFT JOIN (
+		SELECT bp.materialNo, SUM(bp.boxPartsNum) AS proBadNum
+		FROM bo_akl_LM_printProductLabel AS bp
+		WHERE YEAR(bp.prodDate)=:inputYear				
+				and week(bp.prodDate)=:inputWeek
+			AND bp.labelType = '成品'
+		GROUP BY bp.materialNo
+		) AS prom ON prom.materialNo = badI.materialNo
+	LEFT JOIN (
+		SELECT SUM(inputBadProNum) AS allbead
+		FROM bo_akl_line_stationBadProNum
+		WHERE  YEAR(bsTime)=:inputYear
+		and week(bsTime)=:inputWeek
+				
+				
+		) AS koe ON 1 = 1
+	
+	UNION ALL
+	
+	SELECT 2 as wtp,'半成品' AS blType,
+	   mas.materialNo AS materialNo, --产品编号			
+		0 AS fcNum, --复测前
+		mas.badN AS blNum, --不良品数量
+		--buls.proBadNum, --生产数量
+		koe.allbead, --不良品总数
+		ROUND(CAST(mas.badN, 'Decimal', 10, 4) / buls.proBadNum * 1000000, 2) AS badrate, --不良品率
+		ROUND(CAST(mas.badN, 'Decimal', 10, 4) / koe.allbead * 100, 2) AS badZb, --不良占比
+		mas.remark --原因
+	FROM (
+		SELECT 
+			sp.materialNo, --物料编号
+			sp.remark, --不良原因
+			SUM(sp.badProNum) AS badN --不良数量
+		FROM bo_akl_line_materialBadProNum AS sp
+		LEFT JOIN bo_akl_MM_materialInfo AS mti ON sp.materialNo = mti.materialNo
+		WHERE   YEAR(sp.bsTime)=:inputYear
+		        and week(sp.bsTime)=:inputWeek
+				and mti.materialType = '半成品'
+		GROUP BY sp.materialNo, sp.remark
+		) AS mas
+	LEFT JOIN (
+		SELECT bp.materialNo, SUM(bp.boxPartsNum) AS proBadNum
+		FROM bo_akl_LM_printProductLabel AS bp
+		WHERE YEAR(bp.prodDate)=:inputYear
+			and week(bp.prodDate)=:inputWeek								
+			AND bp.labelType = '半成品'
+		GROUP BY bp.materialNo
+		) AS buls ON buls.materialNo = mas.materialNo
+	LEFT JOIN (
+		SELECT SUM(badProNum) AS allbead
+		FROM bo_akl_line_materialBadProNum AS mbp
+		LEFT JOIN bo_akl_MM_materialInfo AS mti ON mbp.materialNo = mti.materialNo
+		WHERE mti.materialType = '半成品' and
+				YEAR(bsTime)=:inputYear
+				and week(bsTime)=:inputWeek			
+		) AS koe ON 1 = 1
+	UNION ALL 
+	SELECT 
+		3 as wtp,
+		'原材料' AS blType,
+		mas.materialNo, --产品编号
+		0 AS fcNum, --复测前
+		mas.badN AS blNum, --不良品数量
+		--buls.smu, --生产数量
+		koe.allbead, --不良品总数
+		ROUND(CAST(mas.badN, 'Decimal', 10, 4) / buls.smu * 1000000, 2) AS badrate, --不良品率
+		ROUND(CAST(mas.badN, 'Decimal', 10, 4) / koe.allbead * 100, 2) AS badZb, --不良占比
+		mas.remark --原因
+	FROM (
+		SELECT 
+			sp.materialNo, --物料编号
+			sp.remark, --不良原因
+			--buls.proBadNum,--产品总数
+			SUM(sp.badProNum) AS badN --不良数量
+		FROM bo_akl_line_materialBadProNum AS sp
+		LEFT JOIN bo_akl_MM_materialInfo AS mti ON sp.materialNo = mti.materialNo
+		WHERE YEAR(sp.bsTime)=:inputYear
+				and week(sp.bsTime)=:inputWeek	
+				and  mti.materialType = '原材料'
+		GROUP BY sp.materialNo, sp.remark
+		) AS mas
+	LEFT JOIN (
+		SELECT bam.materialNo, SUM(mc.num) AS smu
+		FROM bo_akl_line_materialConfirm AS mc
+		LEFT JOIN bo_akl_MM_materialInfo AS bam ON bam.id = mc.materialId
+		WHERE YEAR(mc.operateTime)=:inputYear
+		and week(mc.operateTime)=:inputWeek					
+				and  bam.materialType = '原材料'
+		GROUP BY bam.materialNo
+		) AS buls ON buls.materialNo = mas.materialNo
+	LEFT JOIN (
+		SELECT SUM(badProNum) AS allbead
+		FROM bo_akl_line_materialBadProNum AS mbp
+		LEFT JOIN bo_akl_MM_materialInfo AS mti ON mbp.materialNo = mti.materialNo
+		WHERE YEAR(bsTime)=:inputYear
+				and week(bsTime)=:inputWeek		
+				and  mti.materialType = '原材料'
+		) AS koe ON 1 = 1
+	) asf
+) as lpl left join bo_akl_MM_materialInfo as mif on mif.materialNo=lpl.materialNo
+		left join bo_akl_EM_productInfo as ep on mif.materialNo=ep.prNo
+		left join bo_akl_base_productlines as pline on pline.id=ep.pid
+		order by lpl.wtp asc,mif.projectNo asc
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="projectNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="blType" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="materialNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="fcNum" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="blNum" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="allbead" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="badrate" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="badZb" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_8" code="remark" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_9" code="bfprice" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="inputYear" name="" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="inputWeek" name="周次" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="653,845,1094,1201,1308,1384" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="1404" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="1424" />
+    <DataItem type="Table" key="bo_akl_line_stationBadProNum" tokenIndexes="270,429" />
+    <DataItem type="Table" key="bo_akl_LM_printProductLabel" tokenIndexes="344,750" />
+    <DataItem type="Table" key="bo_akl_line_materialBadProNum" tokenIndexes="643,835,1084,1298" />
+    <DataItem type="Table" key="bo_akl_line_materialConfirm" tokenIndexes="1191" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.projectNo" tokenIndexes="11,1452" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.mPrice" tokenIndexes="52" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="1394,1414" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="1418" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="1434" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.pid" tokenIndexes="1438" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="286,360,439,681,766,881,1122,1229,1334" />
+    <DataItem type="QueryParam" key="inputWeek" tokenIndexes="298,372,449,693,778,891,1134,1241,1344" />
+  </DataItems>
+</Query>

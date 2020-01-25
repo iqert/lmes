@@ -1,0 +1,190 @@
+﻿<Query id="f08abf8cd78540dab8b2df2082ce54b2" code="processBadGoal_bcp" name="过程不良报废指标_半成品" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-12-18 18:25:20]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-12-18 18:25:45]]></ModificationTime>
+  <VSql><![CDATA[select mat.materialNo,
+ep.badGoal,
+SUM(blpc1) as sumblpc11,
+CASE WHEN SUM(blpc1)<ep.badGoal then 'Y'
+else 'N' end as flag1,
+SUM(blpc2) as sumblpc12,
+CASE WHEN SUM(blpc2)<ep.badGoal then 'Y'
+else 'N' end as flag2,
+SUM(blpc3) as sumblpc13,
+CASE WHEN SUM(blpc3)<ep.badGoal then 'Y'
+else 'N' end as flag3,
+SUM(blpc4) as sumblpc14,
+CASE WHEN SUM(blpc4)<ep.badGoal then 'Y'
+else 'N' end as flag4,
+SUM(blpc5) as sumblpc15,
+CASE WHEN SUM(blpc5)<ep.badGoal then 'Y'
+else 'N' end as flag5,
+SUM(blpc6) as sumblpc16,
+CASE WHEN SUM(blpc6)<ep.badGoal then 'Y'
+else 'N' end as flag6,
+SUM(blpc7) as sumblpc17,
+CASE WHEN SUM(blpc7)<ep.badGoal then 'Y'
+else 'N' end as flag7,
+SUM(blpc8) as sumblpc18,
+CASE WHEN SUM(blpc8)<ep.badGoal then 'Y'
+else 'N' end as flag8,
+SUM(blpc9) as sumblpc19,
+CASE WHEN SUM(blpc9)<ep.badGoal then 'Y'
+else 'N' end as flag9,
+SUM(blpc10) as sumblpc110,
+CASE WHEN SUM(blpc10)<ep.badGoal then 'Y'
+else 'N' end as flag110,
+SUM(blpc11) as sumblpc111,
+CASE WHEN SUM(blpc11)<ep.badGoal then 'Y'
+else 'N' end as flag111,
+SUM(blpc12) as sumblpc112,
+CASE WHEN SUM(blpc12)<ep.badGoal then 'Y'
+else 'N' end as flag112
+FROM(
+select 	case 
+		when st.stockType='不良品仓' and MONTH(sto.operateTime)=1  THEN sto.inStockNum 
+		else 0 end as blpc1,
+		case 
+		when st.stockType='不良品仓' and MONTH(sto.operateTime)=2  THEN sto.inStockNum 
+		else 0 end as blpc2,
+		case 
+		when st.stockType='不良品仓' and MONTH(sto.operateTime)=3  THEN sto.inStockNum 
+		else 0 end as blpc3,
+		case 
+		when st.stockType='不良品仓' and MONTH(sto.operateTime)=4  THEN sto.inStockNum 
+		else 0 end as blpc4,
+		case 
+		when st.stockType='不良品仓' and MONTH(sto.operateTime)=5  THEN sto.inStockNum 
+		else 0 end as blpc5,
+		case 
+		when st.stockType='不良品仓' and MONTH(sto.operateTime)=6  THEN sto.inStockNum 
+		else 0 end as blpc6,
+		case 
+		when st.stockType='不良品仓' and MONTH(sto.operateTime)=7  THEN sto.inStockNum 
+		else 0 end as blpc7,
+		case 
+		when st.stockType='不良品仓' and MONTH(sto.operateTime)=8  THEN sto.inStockNum 
+		else 0 end as blpc8,
+		case 
+		when st.stockType='不良品仓' and MONTH(sto.operateTime)=9  THEN sto.inStockNum 
+		else 0 end as blpc9,
+		case 
+		when st.stockType='不良品仓' and MONTH(sto.operateTime)=10  THEN sto.inStockNum 
+		else 0 end as blpc10,
+		case
+		when st.stockType='不良品仓' and MONTH(sto.operateTime)=11  THEN sto.inStockNum 
+		else 0 end as blpc11,
+		case
+		when st.stockType='不良品仓' and MONTH(sto.operateTime)=12  THEN sto.inStockNum 
+		else 0 end as blpc12,
+		sto.*
+		from bo_akl_MM_inStockInfo as sto 
+		left join bo_akl_MM_stockType st on st.id=sto.stockTypeId
+		where YEAR(sto.operateTime)=:inputYear
+		)as ins 
+		left join bo_akl_MM_materialInfo as mat on ins.materialId=mat.id
+		left join bo_akl_EM_productInfo as ep on mat.materialNo=ep.prNo
+		group by mat.materialNo,ep.badGoal]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="materialNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="badGoal" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="sumblpc11" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="flag1" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="sumblpc12" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="flag2" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="sumblpc13" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="flag3" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_8" code="sumblpc14" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_9" code="flag4" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_10" code="sumblpc15" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_11" code="flag5" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_12" code="sumblpc16" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_13" code="flag6" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_14" code="sumblpc17" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_15" code="flag7" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_16" code="sumblpc18" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_17" code="flag8" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_18" code="sumblpc19" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_19" code="flag9" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_20" code="sumblpc110" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_21" code="flag110" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_22" code="sumblpc111" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_23" code="flag111" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_24" code="sumblpc112" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_25" code="flag112" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="inputYear" name="" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="934" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="979" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="999" />
+    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="944" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="4,1009,1021" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.badGoal" tokenIndexes="9,33,71,109,147,185,223,261,299,337,375,413,451,1025" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.operateTime" tokenIndexes="488,526,564,602,640,678,716,754,792,830,868,906,964" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.inStockNum" tokenIndexes="497,535,573,611,649,687,725,763,801,839,877,915" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.stockTypeId" tokenIndexes="956" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="993" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="1013" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="968" />
+  </DataItems>
+</Query>

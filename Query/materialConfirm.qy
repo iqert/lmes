@@ -1,0 +1,107 @@
+﻿<Query id="2f4f0e1e27814da792aa186f21d17c45" code="materialConfirm" name="扫码物料导出" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-12-08 23:16:14]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2020-01-13 23:52:32]]></ModificationTime>
+  <VSql><![CDATA[SELECT 
+startClasses,
+materialName,
+materialNo,
+materialType,
+num, --使用数量（扫码数量）
+operateTime, --扫码时间
+batchNo, --批次
+returnNum, --退料数量
+removeNum, --转移数量
+stum, --隔离数量
+unit,
+projectNo,
+(num-returnNum-removeNum) as useNums --使用数量
+FROM (
+	SELECT sta.startClasses,
+	mai.materialName,
+	mai.materialNo,
+	mai.materialType,
+	comfir.num, --使用数量（扫码数量）
+		comfir.operateTime, --扫码时间
+		comfir.batchNo, --批次
+		CASE WHEN comfir.returnNum > 0 THEN comfir.returnNum ELSE 0 END AS returnNum, --退料数量
+		CASE WHEN comfir.removeNum > 0 THEN comfir.removeNum ELSE 0 END AS removeNum, --转移数量
+		0 AS stum, --隔离数量
+		mai.unit,
+		mai.projectNo
+	--(comfir.num-comfir.returnNum-comfir.removeNum) as useNums --使用数量	
+	FROM bo_akl_line_materialConfirm AS comfir
+	LEFT JOIN bo_akl_MM_materialInfo AS mai ON comfir.materialId = mai.id
+	LEFT JOIN bo_akl_line_start AS sta ON comfir.startId = sta.id
+	
+	WHERE comfir.materialId != ''
+		and CHARINDEX(mai.projectNo,:projectName,1)>0
+		 and comfir.operateTime>:startTime and comfir.operateTime<:endTime
+	) AS resall
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="startClasses" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="materialName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="materialNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="materialType" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="num" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="operateTime" name="" dataType="longDate" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="batchNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="returnNum" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_8" code="removeNum" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_9" code="stum" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_10" code="unit" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_11" code="projectNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_12" code="useNums" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="projectName" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="startTime" name="" dataType="date">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="endTime" name="" dataType="date">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_line_materialConfirm" tokenIndexes="188" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="198" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="220" />
+    <DataItem type="QueryParam" key="projectName" tokenIndexes="257" />
+    <DataItem type="QueryParam" key="startTime" tokenIndexes="271" />
+    <DataItem type="QueryParam" key="endTime" tokenIndexes="280" />
+  </DataItems>
+</Query>

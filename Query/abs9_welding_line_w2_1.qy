@@ -1,0 +1,140 @@
+﻿<Query id="2dccf970cec94197bb37ea422cb99193" code="abs9_welding_line_w2_1" name="abs9_welding_line_w2" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-12-05 18:40:55]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-12-17 11:43:02]]></ModificationTime>
+  <VSql><![CDATA[select
+startTime,equCode,dayShift,nightShift,workTime,
+dayOutput,nightOutput,actualTotal,
+CASE WHEN dayShift <> 0 THEN 100*ROUND((dayOutput*0.09525)/(dayShift*60),4) ELSE '0'  END  as dayProductivity,
+CASE WHEN nightShift <> 0 THEN 100*ROUND((nightOutput*0.09525)/(nightShift*60),4) ELSE '0'  END  as nightProductivity,
+'' as unTime,'' as pullTest,'' as repairTime,'' as changeTime,'' as reworked,'' as clean5s,'' as assemblyTime,'' as fpg2,'' as otherTime
+from 
+(
+select startTime,equCode,
+SUM(dayShift) as dayShift,SUM(nightShift) as nightShift,SUM(dayShift)+SUM(nightShift) as workTime,
+SUM(dayOutput) as dayOutput,SUM(nightOutput) as nightOutput,SUM(dayOutput) + SUM(nightOutput) as actualTotal,
+SUM(dayProductivity) as dayProductivity,SUM(nightProductivity) as nightProductivity,
+'' as unTime,'' as pullTest,'' as repairTime,'' as changeTime,'' as reworked,'' as clean5s,'' as assemblyTime,'' as fpg2,'' as otherTime
+from 
+(
+SELECT a.lineCode, a.equCode, FORMATDATE(a.startTime, 'yyyy-mm-dd') AS startTime, DAYNAME(a.startTime) AS weekName, a.outputNum,a.clesses,
+b.standardWorkingHours,
+CASE WHEN a.clesses = '白班' THEN ROUND(CAST(DATEDIFF(a.startTime,a.closeTime,'Minute'),'Decimal',10,4)/60,2) ELSE '0'  END as dayShift,
+CASE WHEN a.clesses = '晚班' THEN ROUND(CAST(DATEDIFF(a.startTime,a.closeTime,'Minute'),'Decimal',10,4)/60,2) ELSE '0'  END as nightShift,
+CASE WHEN a.clesses = '白班' THEN a.outputNum ELSE '0'  END as dayOutput,
+CASE WHEN a.clesses = '晚班' THEN a.outputNum ELSE '0'  END as nightOutput,
+--效率 = 合格数量*标准工时（秒）/总工时
+CASE WHEN a.clesses = '白班' THEN ROUND(CAST(a.outputNum,'Decimal',10,4)*standardWorkingHours/CAST(DATEDIFF(a.startTime,a.closeTime,'Second'),'Decimal',10,4)/100,2) ELSE '0'  END as dayProductivity,
+CASE WHEN a.clesses = '晚班' THEN ROUND(CAST(a.outputNum,'Decimal',10,4)*standardWorkingHours/CAST(DATEDIFF(a.startTime,a.closeTime,'Second'),'Decimal',10,4)/100,2) ELSE '0'  END as nightProductivity,
+'' as testTime,
+'' as machineTime,
+'' as changeTime,
+'' as backTime,
+'' as clean5s,
+'' as aline,
+'' as bline,
+'' as otherTime
+FROM Line_output a 
+left join bo_akl_base_productlines as pli on pli.pNo=a.lineCode
+left join bo_akl_base_projectInfo as pjNo on pjNo.id=pli.belongProject
+left join (select * from bo_akl_EM_productInfo where prLine = :prlineCode) b on a.equCode = b.prNo
+WHERE a.lineCode =:prlineCode and pjNo.pName=:productName
+)aa 
+group by startTime,equCode order by startTime desc
+
+
+)a]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="startTime" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="equCode" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="dayShift" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="nightShift" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="workTime" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="dayOutput" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="nightOutput" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="actualTotal" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_8" code="dayProductivity" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_9" code="nightProductivity" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_10" code="unTime" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_11" code="pullTest" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_12" code="repairTime" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_13" code="changeTime" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_14" code="reworked" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_15" code="clean5s" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_16" code="assemblyTime" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_17" code="fpg2" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_18" code="otherTime" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="prlineCode" name="产线编号" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="productName" name="项目名称" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="737" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="757" />
+    <DataItem type="Table" key="Line_output" tokenIndexes="729" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="784" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="747" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="767" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="771" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.pName" tokenIndexes="824" />
+    <DataItem type="Query" key="a" tokenIndexes="316,321,328,343,353,357,371,387,391,425,441,445,479,489,508,518,538,552,569,573,607,621,638,642,731,749,800,812,849" />
+    <DataItem type="Query" key="b" tokenIndexes="362,796,806" />
+    <DataItem type="QueryField" key="a.lineCode" tokenIndexes="318,751,814" />
+    <DataItem type="QueryField" key="a.equCode" tokenIndexes="323,802" />
+    <DataItem type="QueryField" key="a.startTime" tokenIndexes="330,345,389,443,571,640" />
+    <DataItem type="QueryField" key="a.outputNum" tokenIndexes="355,491,520,554,623" />
+    <DataItem type="QueryField" key="a.clesses" tokenIndexes="359,373,427,481,510,540,609" />
+    <DataItem type="QueryField" key="b.standardWorkingHours" tokenIndexes="364" />
+    <DataItem type="QueryField" key="a.closeTime" tokenIndexes="393,447,575,644" />
+    <DataItem type="QueryField" key="b.prNo" tokenIndexes="808" />
+    <DataItem type="QueryParam" key="prlineCode" tokenIndexes="793,818" />
+    <DataItem type="QueryParam" key="productName" tokenIndexes="827" />
+  </DataItems>
+</Query>

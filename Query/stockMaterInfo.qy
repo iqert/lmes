@@ -1,0 +1,108 @@
+﻿<Query id="f0fac51d25e940eebbe3ed36f3738aaf" code="stockMaterInfo" name="库存原材料总数量" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-12-08 19:41:15]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-12-11 16:51:42]]></ModificationTime>
+  <VSql><![CDATA[select stockType,materialNo,materialName,materialType,stockNum,unit,projectNo FROM
+(
+select 
+'半成品仓' as stockType,
+mif.materialNo,
+mif.materialName,
+mif.materialType,
+bomst.useNum*bomst.snum as stockNum, --数量
+mif.unit,
+mif.projectNo --所属项目
+from 
+(
+select bod.materialNo,bod.useNum,pds.snum from 
+	(
+	select 
+	atos.materialId,mif.materialNo,atos.snum,bom.id as bid
+	from
+	(select 
+	ins.materialId,
+	SUM(ins.stockNum) as snum--数量
+	from bo_akl_MM_stockInfo as ins 
+	left join bo_akl_MM_stockType as ato on ato.id=ins.stockTypeId
+	where  ato.stockType='半成品仓' and ins.stockNum>0  
+	 group by ins.materialId) as atos 
+	 left join bo_akl_MM_materialInfo as mif on mif.id=atos.materialId
+	 left join bo_akl_MM_bomInfo as bom on bom.materialNo=mif.materialNo 
+	 where  bom.PID='' 
+	 ) as pds
+	 left join bo_akl_MM_bomInfo as bod on bod.PID=pds.bid
+) as bomst 
+left join bo_akl_MM_materialInfo as mif on mif.materialNo=bomst.materialNo
+
+union all 
+
+select 
+ato.stockType,
+mif.materialNo,
+mif.materialName,
+mif.materialType,
+sum(ins.stockNum) as stockNum,--数量
+mif.unit,
+mif.projectNo
+from bo_akl_MM_stockInfo as ins 
+left join bo_akl_MM_stockType as ato on ato.id=ins.stockTypeId
+left join bo_akl_MM_materialInfo as mif on mif.id=ins.materialId
+where
+ins.stockNum>0 and 
+ ato.stockType in ('尾料仓','隔离仓')
+group by ato.stockType,mif.materialNo,mif.materialType,mif.materialName,mif.unit,mif.projectNo
+) bg where CHARINDEX(bg.projectNo,:projName,1)>0  ]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="stockType" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="materialNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="materialName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="materialType" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="stockNum" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="unit" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="projectNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="projName" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_MM_stockInfo" tokenIndexes="136,340" />
+    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="146,350" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="195,275,370" />
+    <DataItem type="Table" key="bo_akl_MM_bomInfo" tokenIndexes="215,249" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="31,98,229,285,304,418" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialName" tokenIndexes="36,309,426" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialType" tokenIndexes="41,314,422" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.unit" tokenIndexes="60,331,430" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.projectNo" tokenIndexes="65,336,434" />
+    <DataItem type="TableField" key="bo_akl_MM_bomInfo.materialNo" tokenIndexes="76,225" />
+    <DataItem type="TableField" key="bo_akl_MM_bomInfo.useNum" tokenIndexes="80" />
+    <DataItem type="TableField" key="bo_akl_MM_bomInfo.id" tokenIndexes="106" />
+    <DataItem type="TableField" key="bo_akl_MM_stockInfo.materialId" tokenIndexes="119,184,384" />
+    <DataItem type="TableField" key="bo_akl_MM_stockInfo.stockNum" tokenIndexes="126,174,321,390" />
+    <DataItem type="TableField" key="bo_akl_MM_stockType.id" tokenIndexes="156,360" />
+    <DataItem type="TableField" key="bo_akl_MM_stockInfo.stockTypeId" tokenIndexes="160,364" />
+    <DataItem type="TableField" key="bo_akl_MM_stockType.stockType" tokenIndexes="166,299,398,414" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="205,380" />
+    <DataItem type="TableField" key="bo_akl_MM_bomInfo.PID" tokenIndexes="235,259" />
+    <DataItem type="QueryParam" key="projName" tokenIndexes="449" />
+  </DataItems>
+</Query>
