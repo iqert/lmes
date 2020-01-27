@@ -42,5 +42,5 @@
   <FileReference code="Fileno_27" Filename="维保人信息.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="9.42" FileFullname="维保人信息.xlsx" Updator="user_20190304004" UpdateFileDate="07/04/2019 11:34:29" />
   <FileReference code="Fileno_28" Filename="生产需求导入模板.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="226.66" FileFullname="生产需求导入模板.xlsx" Updator="user_20190304004" UpdateFileDate="07/09/2019 17:34:53" />
   <FileReference code="Fileno_29" Filename="ERP系统库存模板.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="226.72" FileFullname="ERP系统库存模板.xlsx" Updator="user_20190304004" UpdateFileDate="08/08/2019 19:27:38" />
-  <FileReference code="Fileno_30" Filename="不良品原因.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="8.83" FileFullname="不良品原因.xlsx" Updator="user_20190304004" UpdateFileDate="10/17/2019 17:08:01" />
+  <FileReference code="Fileno_30" Filename="不良品原因.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="8.83" FileFullname="不良品原因.xlsx" Updator="user_20180612007" UpdateFileDate="10/17/2019 17:08:01" />
 </FileReferences>
