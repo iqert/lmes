@@ -1,0 +1,198 @@
+﻿<Query id="3db30f7c95204ce7bbfb94753fbf62fe" code="equipLog" name="设备总日志" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-12-09 00:11:53]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2020-01-11 15:23:52]]></ModificationTime>
+  <VSql><![CDATA[select 
+	equNo,--设备编号
+	proNo, --产线编号
+	equName,--产线名称
+	NewValue, --新值
+	OldValue,--旧值
+	rec,--记录
+	timeP --记录时间
+FROM
+(select 
+	equNo,--设备编号
+	proNo, --产线编号
+	equName,--产线名称
+	NewValue, --新值
+	OldValue,--旧值
+	rec,--记录
+	timeP --记录时间
+from (
+	select 
+	'' as equNo,--设备编号
+	mej.Name1 as proNo, --产线编号
+	mej.Name2 as equName,--产线名称
+	CAST(mej.NewValue,'VARCHAR') as NewValue, --新值
+	CAST(mej.OldValue,'VARCHAR')as OldValue, --旧值
+	mej.Record as rec,--记录
+	mej.Timepoint as timeP --记录时间
+	from MyExchange_Journal as mej
+	left join bo_akl_base_productlines as proline on proline.pNo=mej.Name1
+	left join bo_akl_base_projectInfo as pji on proline.belongProject=pji.id 
+	where mej.Timepoint>:startTime and mej.Timepoint<:endTime  and pji.pName=:projectName
+union all 
+	select 
+	eqm.equipNo as equNo,
+	proline.pNo as proNo,
+	eqm.equipName as equName,
+	'' as NewValue,
+	'' as OldValue,
+	case when isOp=1 then '完成模具寿命保养要求' else '推送了模具寿命保养要求' end as rec,
+	emf.upkeepDate as timeP
+	 from bo_akl_EM_mouldLifeUpkeepRec as emf 
+	left join bo_akl_EM_EquipmentInformation as eqm on eqm.id=emf.equipId
+	left join bo_akl_base_productlines as proline on proline.equNo=eqm.equipNo
+	left join bo_akl_base_projectInfo as pji on proline.belongProject=pji.id 
+	where emf.upkeepDate>:startTime and emf.upkeepDate<:endTime and pji.pName=:projectName
+union all 
+	select 
+	eqm.equipNo as equNo,
+	proline.pNo as proNo,
+	eqm.equipName as equName,
+	'' as NewValue,
+	'' as OldValue,
+	case when isOp=1 then '完成模具日常保养要求' else '推送了模具日常保养要求' end as rec,
+	emf.upkeepDate as timeP
+	 from bo_akl_EM_mouldDayUpkeepRec as emf 
+	left join bo_akl_EM_EquipmentInformation as eqm on eqm.id=emf.equipId
+	left join bo_akl_base_productlines as proline on proline.equNo=eqm.equipNo
+	left join bo_akl_base_projectInfo as pji on proline.belongProject=pji.id 
+	where emf.upkeepDate>:startTime and emf.upkeepDate<:endTime and pji.pName=:projectName
+union all
+	select 
+	eqm.equipNo as equNo,
+	proline.pNo as proNo,
+	eqm.equipName as equName,
+	'' as NewValue,
+	'' as OldValue,
+	case when isOp=1 then '完成公共设备保养要求' else '推送了公共设备保养要求' end as rec,
+	emf.upkeepDate as timeP
+	 from bo_akl_EM_publicEquUpkeepRec as emf 
+	left join bo_akl_EM_EquipmentInformation as eqm on eqm.id=emf.equipId
+	left join bo_akl_base_productlines as proline on proline.equNo=eqm.equipNo
+	left join bo_akl_base_projectInfo as pji on proline.belongProject=pji.id 
+	where emf.upkeepDate>:startTime and emf.upkeepDate<:endTime and pji.pName=:projectName
+union all
+	select 
+	eqm.equipNo as equNo,
+	proline.pNo as proNo,
+	eqm.equipName as equName,--设备名称
+	'' as NewValue,
+	'' as OldValue,
+	case when isOp=1 then '完成信息设备保养要求' else '推送了信息设备保养要求' end as rec,
+	emf.upkeepDate as timeP
+	 from bo_akl_EM_infoEquUpkeepRec as emf 
+	left join bo_akl_EM_EquipmentInformation as eqm on eqm.id=emf.equipId
+	left join bo_akl_base_productlines as proline on proline.equNo=eqm.equipNo
+	left join bo_akl_base_projectInfo as pji on proline.belongProject=pji.id 
+	where emf.upkeepDate>:startTime and emf.upkeepDate<:endTime  and pji.pName=:projectName
+union all
+	select 
+	eqm.equipNo as equNo,
+	proline.pNo as proNo,
+	eqm.equipName as equName,--设备名称
+	'' as NewValue,
+	'' as OldValue,
+	case when isOp=1 then '完成载具设备保养要求' else '推送了载具设备保养要求' end as rec,
+	emf.upkeepDate as timeP
+	 from bo_akl_EM_toolequUpkeepRec as emf 
+	left join bo_akl_EM_EquipmentInformation as eqm on eqm.id=emf.equipId
+	left join bo_akl_base_productlines as proline on proline.equNo=eqm.equipNo
+	left join bo_akl_base_projectInfo as pji on proline.belongProject=pji.id 
+	where emf.upkeepDate>:startTime and emf.upkeepDate<:endTime and pji.pName=:projectName
+union all 
+	select 
+	mainRe.equipCode as equNo,
+	mainRe.pNo as proNo,
+	eqm.equipName as equName,
+	'' as NewValue,
+	'' as OldValue,
+	case 
+	when mainRe.repairType='产线维修' then '完成了产线维修' 
+	when mainRe.repairType='设备维修' then '完成了设备维修'
+	else '' end as rec,
+	mainRe.startDate as timeP
+	from bo_akl_EM_maintainRecord as mainRe 
+	left join bo_akl_EM_EquipmentInformation as eqm on eqm.equipNo=mainRe.equipCode
+	left join bo_akl_base_productlines as prl on prl.pNo=mainRe.pNo
+	left join bo_akl_base_projectInfo as pji on prl.belongProject=pji.id 
+	where mainRe.startDate>:startTime and mainRe.startDate<:endTime and pji.pName=:projectName
+) scs 
+) as ar order by ar.timeP desc]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="equNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="proNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="equName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="NewValue" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="OldValue" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="rec" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="timeP" name="" dataType="longDate" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="startTime" name="" dataType="date">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="endTime" name="" dataType="date">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="projectName" name="项目名称" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="MyExchange_Journal" tokenIndexes="153" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="163,336,509,682,856,1030,1217" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="183,356,529,702,876,1050,1237" />
+    <DataItem type="Table" key="bo_akl_EM_mouldLifeUpkeepRec" tokenIndexes="306" />
+    <DataItem type="Table" key="bo_akl_EM_EquipmentInformation" tokenIndexes="316,489,662,836,1010,1197" />
+    <DataItem type="Table" key="bo_akl_EM_mouldDayUpkeepRec" tokenIndexes="479" />
+    <DataItem type="Table" key="bo_akl_EM_publicEquUpkeepRec" tokenIndexes="652" />
+    <DataItem type="Table" key="bo_akl_EM_infoEquUpkeepRec" tokenIndexes="826" />
+    <DataItem type="Table" key="bo_akl_EM_toolequUpkeepRec" tokenIndexes="1000" />
+    <DataItem type="Table" key="bo_akl_EM_maintainRecord" tokenIndexes="1187" />
+    <DataItem type="TableField" key="MyExchange_Journal.Name1" tokenIndexes="81,177" />
+    <DataItem type="TableField" key="MyExchange_Journal.Name2" tokenIndexes="92" />
+    <DataItem type="TableField" key="MyExchange_Journal.NewValue" tokenIndexes="104" />
+    <DataItem type="TableField" key="MyExchange_Journal.OldValue" tokenIndexes="120" />
+    <DataItem type="TableField" key="MyExchange_Journal.Record" tokenIndexes="133" />
+    <DataItem type="TableField" key="MyExchange_Journal.Timepoint" tokenIndexes="143,203,212" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="173,243,416,589,762,936,1227" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="193,366,539,712,886,1060,1247" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="197,370,543,716,890,1064,1251" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.pName" tokenIndexes="221,394,567,740,914,1088,1275" />
+    <DataItem type="TableField" key="bo_akl_EM_EquipmentInformation.equipNo" tokenIndexes="234,350,407,523,580,696,753,870,927,1044,1207" />
+    <DataItem type="TableField" key="bo_akl_EM_EquipmentInformation.equipName" tokenIndexes="252,425,598,771,945,1119" />
+    <DataItem type="TableField" key="bo_akl_EM_mouldLifeUpkeepRec.upkeepDate" tokenIndexes="298,376,385,471,549,558,644,722,731,818,896,905,992,1070,1079" />
+    <DataItem type="TableField" key="bo_akl_EM_EquipmentInformation.id" tokenIndexes="326,499,672,846,1020" />
+    <DataItem type="TableField" key="bo_akl_EM_mouldLifeUpkeepRec.equipId" tokenIndexes="330,503,676,850,1024" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.equNo" tokenIndexes="346,519,692,866,1040" />
+    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.equipCode" tokenIndexes="1101,1211" />
+    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.pNo" tokenIndexes="1110,1231" />
+    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.repairType" tokenIndexes="1146,1158" />
+    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.startDate" tokenIndexes="1179,1257,1266" />
+    <DataItem type="QueryParam" key="startTime" tokenIndexes="206,379,552,725,899,1073,1260" />
+    <DataItem type="QueryParam" key="endTime" tokenIndexes="215,388,561,734,908,1082,1269" />
+    <DataItem type="QueryParam" key="projectName" tokenIndexes="224,397,570,743,917,1091,1278" />
+  </DataItems>
+</Query>

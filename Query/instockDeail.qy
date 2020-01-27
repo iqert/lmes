@@ -1,0 +1,79 @@
+﻿<Query id="92638a6efef646eea3e0dbb17a24d4a8" code="instockDeail" name="库存明细表" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-12-08 18:56:16]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-12-12 17:23:29]]></ModificationTime>
+  <VSql><![CDATA[select 
+ato.stockType,
+mif.materialNo,
+mif.materialName,
+mif.materialType,
+SUM(ins.stockNum) as stockNum,--数量
+mif.unit,
+mif.projectNo --所属项目
+from bo_akl_MM_stockInfo as ins 
+left join bo_akl_MM_stockType as ato on ato.id=ins.stockTypeId
+left join bo_akl_MM_materialInfo as mif on mif.id=ins.materialId
+where
+CHARINDEX(mif.projectNo,:projName,1)>0  and
+ins.stockNum>0 and
+CHARINDEX(ato.stockType,:stoType,1)>0 
+group by ato.stockType,
+mif.materialNo,
+mif.materialName,
+mif.materialType,
+mif.unit,
+mif.projectNo --所属项目]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="stockType" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="materialNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="materialName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="materialType" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="stockNum" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="unit" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="projectNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="projName" name="项目名称" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="stoType" name="仓库类型" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_MM_stockInfo" tokenIndexes="46" />
+    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="56" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="76" />
+    <DataItem type="TableField" key="bo_akl_MM_stockType.stockType" tokenIndexes="4,122,138" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="9,143" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialName" tokenIndexes="14,148" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialType" tokenIndexes="19,153" />
+    <DataItem type="TableField" key="bo_akl_MM_stockInfo.stockNum" tokenIndexes="26,112" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.unit" tokenIndexes="36,158" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.projectNo" tokenIndexes="41,98,163" />
+    <DataItem type="TableField" key="bo_akl_MM_stockType.id" tokenIndexes="66" />
+    <DataItem type="TableField" key="bo_akl_MM_stockInfo.stockTypeId" tokenIndexes="70" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="86" />
+    <DataItem type="TableField" key="bo_akl_MM_stockInfo.materialId" tokenIndexes="90" />
+    <DataItem type="QueryParam" key="projName" tokenIndexes="101" />
+    <DataItem type="QueryParam" key="stoType" tokenIndexes="125" />
+  </DataItems>
+</Query>

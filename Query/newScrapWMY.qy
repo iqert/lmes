@@ -1,0 +1,130 @@
+﻿<Query id="46686e655b7948e9bdb8db8ae1e881ae" code="newScrapWMY" name="新报废周月年报表" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-12-27 21:38:32]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2020-01-16 00:11:09]]></ModificationTime>
+  <VSql><![CDATA[select projectNo,bfType,materialNo,blNum,mPrice,amount,remark FROM(
+		select 
+		1 as mtt,
+		mti.projectNo,
+		'成品' as bfType, --报废类型
+		mkr.materialNo, --产品型号
+		mkr.blNum, --报废数量
+		mti.mPrice,--单价
+		mkr.blNum*mti.mPrice as amount,--报废金额
+		mkr.remark -- 不良品原因
+		from (
+			SELECT sb.materialNo, --产品编号
+			SUM(sb.inputBadProNum) AS blNum, --不良数量
+			sb.remark --不良原因
+			FROM bo_akl_line_stationBadProNum AS sb
+			left join bo_akl_MM_materialInfo as mti on mti.materialNo=sb.materialNo
+			where YEAR(sb.bsTime)=:inputYear
+					and Month(sb.bsTime)=:inputMonth
+					and week(sb.bsTime)=:inputWeek 
+			GROUP BY sb.materialNo,sb.remark
+		) as mkr  
+		LEFT JOIN bo_akl_MM_materialInfo AS mti ON mkr.materialNo = mti.materialNo
+	
+	union all 
+	select 
+	2 as mtt,
+	inf.projectNo,
+	'半成品' as bfType, --报废类型
+	blps.materialNo,
+	blps.blNum,
+	inf.mPrice,
+	inf.mPrice*blps.blNum as amount,
+	blps.remark from 
+	(
+	SELECT sp.materialNo, --物料编号
+		sp.remark, --不良原因
+		SUM(sp.badProNum) AS blNum --不良数量
+	FROM bo_akl_line_materialBadProNum AS sp
+	LEFT JOIN bo_akl_MM_materialInfo AS mti ON sp.materialNo = mti.materialNo
+	WHERE YEAR(sp.bsTime) = :inputYear
+		AND Month(sp.bsTime) = :inputMonth
+		and week(sp.bsTime)=:inputWeek
+		AND mti.materialType = '半成品'
+	GROUP BY sp.materialNo, sp.remark
+	) as blps 
+	left join bo_akl_MM_materialInfo AS inf ON blps.materialNo = inf.materialNo
+	where blps.blNum>0
+	union all 
+	
+	select 
+	3 as mtt,
+	inf.projectNo,
+	'原材料' as bfType, --报废类型
+	jku.materialNo,
+	jku.blNum,
+	inf.mPrice,
+	inf.mPrice*jku.blNum as amount,
+	jku.remark from 
+	(
+	SELECT sp.materialNo, --物料编号
+		sp.remark, --不良原因
+		SUM(sp.badProNum) AS blNum --不良数量
+	FROM bo_akl_line_materialBadProNum AS sp
+	LEFT JOIN bo_akl_MM_materialInfo AS mti ON sp.materialNo = mti.materialNo
+	WHERE 
+	week(sp.bsTime)=:inputWeek and
+	YEAR(sp.bsTime) = :inputYear AND
+	 Month(sp.bsTime) = :inputMonth AND
+		 mti.materialType = '原材料'
+	GROUP BY sp.materialNo, sp.remark
+	) as jku 
+	left join bo_akl_MM_materialInfo AS inf ON jku.materialNo = inf.materialNo	
+	where jku.blNum>0
+)bf	order by bf.mtt asc,amount asc]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="projectNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="bfType" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="materialNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="blNum" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="mPrice" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="amount" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="remark" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="inputMonth" name="" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="inputWeek" name="" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="inputYear" name="" dataType="integer">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="127,201,323,414,544,635" />
+    <DataItem type="Table" key="bo_akl_line_stationBadProNum" tokenIndexes="117" />
+    <DataItem type="Table" key="bo_akl_line_materialBadProNum" tokenIndexes="313,534" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.projectNo" tokenIndexes="30" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.mPrice" tokenIndexes="58,68" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="137,217,339,560" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialType" tokenIndexes="385,606" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="153,353,586" />
+    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="165,367,600" />
+    <DataItem type="QueryParam" key="inputWeek" tokenIndexes="177,379,572" />
+  </DataItems>
+</Query>

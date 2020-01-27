@@ -1,0 +1,92 @@
+﻿<Query id="768f11b2ae00426ca75bafc2e9f66f33" code="stocBatchDetail" name="库存批次明细表" type="VSql" APICode="">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[user_20190304004]]></Creator>
+  <CreationTime><![CDATA[2019-12-08 14:51:35]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-12-11 16:52:28]]></ModificationTime>
+  <VSql><![CDATA[select 
+ato.stockType,
+mif.materialNo,
+mif.materialName,
+mif.materialType,
+SUM(ins.stockNum) as inStockNum,--数量
+ins.batchNo, --批次
+mif.unit,
+'' as qrCodeInfo, --二维码信息
+mif.projectNo --所属项目
+from bo_akl_MM_stockInfo as ins 
+left join bo_akl_MM_stockType as ato on ato.id=ins.stockTypeId
+left join bo_akl_MM_materialInfo as mif on mif.id=ins.materialId
+where 
+CHARINDEX(mif.projectNo,:proName,1)>0 and
+ins.stockNum>0 and
+CHARINDEX(ato.stockType,:stoType,1)>0  
+group by
+ato.stockType,
+mif.materialNo,
+mif.materialName,
+mif.materialType,
+ins.batchNo,
+mif.unit,
+mif.projectNo
+
+]]></VSql>
+  <Columns>
+    <Column id="Column_0" code="stockType" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_1" code="materialNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_2" code="materialName" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_3" code="materialType" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_4" code="inStockNum" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_5" code="batchNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_6" code="unit" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_7" code="qrCodeInfo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_8" code="projectNo" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+  </Columns>
+  <Params>
+    <Param code="proName" name="项目名称" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="stoType" name="仓库类型" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
+  <DataItems>
+    <DataItem type="Table" key="bo_akl_MM_stockInfo" tokenIndexes="60" />
+    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="70" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="90" />
+    <DataItem type="TableField" key="bo_akl_MM_stockType.stockType" tokenIndexes="4,136,152" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="9,157" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialName" tokenIndexes="14,162" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialType" tokenIndexes="19,167" />
+    <DataItem type="TableField" key="bo_akl_MM_stockInfo.stockNum" tokenIndexes="26,126" />
+    <DataItem type="TableField" key="bo_akl_MM_stockInfo.batchNo" tokenIndexes="36,172" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.unit" tokenIndexes="42,177" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.projectNo" tokenIndexes="55,112,182" />
+    <DataItem type="TableField" key="bo_akl_MM_stockType.id" tokenIndexes="80" />
+    <DataItem type="TableField" key="bo_akl_MM_stockInfo.stockTypeId" tokenIndexes="84" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="100" />
+    <DataItem type="TableField" key="bo_akl_MM_stockInfo.materialId" tokenIndexes="104" />
+    <DataItem type="QueryParam" key="proName" tokenIndexes="115" />
+    <DataItem type="QueryParam" key="stoType" tokenIndexes="139" />
+  </DataItems>
+</Query>
