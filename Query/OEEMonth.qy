@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-10-25 15:44:22]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-12-06 09:26:12]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-02-02 19:44:50]]></ModificationTime>
   <VSql><![CDATA[select 
 	md.tmonth, --天数
 	oees.OEE, --oee
@@ -44,8 +44,7 @@ from baseMonth as md
 		right join bo_akl_line_start as lineSt on lineSt.id=opert.lid
 		left join stopLineStartInput as sls on sls.lineStartId=lineSt.id
 		left join bo_akl_EM_productInfo as prod on lineSt.equName=prod.prNo
-		where 
-		YEAR(opert.opTime)=:inputYear and 
+		where opert.opTime>=:startTime and opert.opTime<=:endTime and 
 		lineSt.prolineName=:prlineNo
 		group by opert.lid,prod.OEE,prod.standardWorkingHours,sls.powerOff,sls.clearElectrode,sls.repairTime
 		)as opema group by opema.tmonth,opema.OEE,opema.standardWorkingHours
@@ -73,8 +72,7 @@ from baseMonth as md
 				MONTH(sto.operateTime) as tmonth
 				from bo_akl_MM_inStockInfo as sto 
 				left join bo_akl_MM_stockType st on st.id=sto.stockTypeId
-				where 
-				year(sto.operateTime)=:inputYear
+				where sto.operateTime>=:startTime and sto.operateTime<=:endTime 	
 			) as stt
 			left join bo_akl_MM_materialInfo as mat on stt.materialId=mat.id
 			left join bo_akl_EM_productInfo as ep on mat.materialNo=ep.prNo
@@ -82,7 +80,7 @@ from baseMonth as md
 			left join bo_akl_base_projectInfo as pj on pj.id=pli.belongProject
 			where
 			ep.prLine=:prlineNo
-			--pj.pName='小项目'
+			and pj.pName=:projectName
 			--where YEAR(sto.operateTime)=:inputYear and week(sto.operateTime)=:inputWeek
 			group by stt.tmonth
 		) as std on std.tmonth=md.tmonth) as pros on pros.tmonth=md.tmonth order by md.tmonth asc]]></VSql>
@@ -125,50 +123,61 @@ from baseMonth as md
     </Column>
   </Columns>
   <Params>
-    <Param code="inputYear" name="年" dataType="integer">
+    <Param code="prlineNo" name="产线名称" dataType="char">
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
-    <Param code="prlineNo" name="产线名称" dataType="char">
+    <Param code="projectName" name="项目名称" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="startTime" name="开始时间" dataType="date">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="endTime" name="结束时间" dataType="date">
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
   </Params>
   <DataItems>
-    <DataItem type="Table" key="baseMonth" tokenIndexes="268,720" />
+    <DataItem type="Table" key="baseMonth" tokenIndexes="268,726" />
     <DataItem type="Table" key="bo_akl_line_operation" tokenIndexes="544" />
     <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="554" />
     <DataItem type="Table" key="stopLineStartInput" tokenIndexes="574" />
-    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="594,935" />
-    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="869" />
-    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="915" />
-    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="955" />
-    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="975" />
-    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="879" />
-    <DataItem type="TableField" key="baseMonth.tmonth" tokenIndexes="4,694,706,1026,1041,1049" />
-    <DataItem type="TableField" key="bo_akl_line_operation.opTime" tokenIndexes="462,469,503,616" />
-    <DataItem type="TableField" key="bo_akl_line_operation.lid" tokenIndexes="494,568,637" />
-    <DataItem type="TableField" key="stopLineStartInput.repairTime" tokenIndexes="514,657" />
-    <DataItem type="TableField" key="stopLineStartInput.clearElectrode" tokenIndexes="521,653" />
-    <DataItem type="TableField" key="stopLineStartInput.powerOff" tokenIndexes="528,649" />
-    <DataItem type="TableField" key="bo_akl_EM_productInfo.OEE" tokenIndexes="535,641" />
-    <DataItem type="TableField" key="bo_akl_EM_productInfo.standardWorkingHours" tokenIndexes="540,645" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="594,947" />
+    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="875" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="927" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="967" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="987" />
+    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="885" />
+    <DataItem type="TableField" key="baseMonth.tmonth" tokenIndexes="4,700,712,1045,1060,1068" />
+    <DataItem type="TableField" key="bo_akl_line_operation.opTime" tokenIndexes="462,469,503,614,623" />
+    <DataItem type="TableField" key="bo_akl_line_operation.lid" tokenIndexes="494,568,643" />
+    <DataItem type="TableField" key="stopLineStartInput.repairTime" tokenIndexes="514,663" />
+    <DataItem type="TableField" key="stopLineStartInput.clearElectrode" tokenIndexes="521,659" />
+    <DataItem type="TableField" key="stopLineStartInput.powerOff" tokenIndexes="528,655" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.OEE" tokenIndexes="535,647" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.standardWorkingHours" tokenIndexes="540,651" />
     <DataItem type="TableField" key="bo_akl_line_start.id" tokenIndexes="564,588" />
     <DataItem type="TableField" key="stopLineStartInput.lineStartId" tokenIndexes="584" />
     <DataItem type="TableField" key="bo_akl_line_start.equName" tokenIndexes="604" />
-    <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="608,949" />
-    <DataItem type="TableField" key="bo_akl_line_start.prolineName" tokenIndexes="626" />
-    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.inStockNum" tokenIndexes="784,811,838" />
-    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.materialId" tokenIndexes="853" />
-    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.operateTime" tokenIndexes="860,899" />
-    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.stockTypeId" tokenIndexes="891" />
-    <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="929" />
-    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="945" />
-    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="965" />
-    <DataItem type="TableField" key="bo_akl_EM_productInfo.prLine" tokenIndexes="969,995" />
-    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="985" />
-    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="989" />
-    <DataItem type="QueryParam" key="inputYear" tokenIndexes="620,903" />
-    <DataItem type="QueryParam" key="prlineNo" tokenIndexes="629,998" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="608,961" />
+    <DataItem type="TableField" key="bo_akl_line_start.prolineName" tokenIndexes="632" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.inStockNum" tokenIndexes="790,817,844" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.materialId" tokenIndexes="859" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.operateTime" tokenIndexes="866,903,912" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.stockTypeId" tokenIndexes="897" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="941" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="957" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="977" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prLine" tokenIndexes="981,1007" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="997" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="1001" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.pName" tokenIndexes="1016" />
+    <DataItem type="QueryParam" key="startTime" tokenIndexes="617,906" />
+    <DataItem type="QueryParam" key="endTime" tokenIndexes="626,915" />
+    <DataItem type="QueryParam" key="prlineNo" tokenIndexes="635,1010" />
+    <DataItem type="QueryParam" key="projectName" tokenIndexes="1019" />
   </DataItems>
 </Query>

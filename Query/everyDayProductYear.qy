@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-10-21 15:45:02]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-12-19 08:52:45]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-02-02 19:08:56]]></ModificationTime>
   <VSql><![CDATA[	select md.tyear,edp.cpc from baseYear as md
 	left join(
 		SELECT 
@@ -20,7 +20,7 @@
 	pjinfo.pName=:projectName and --产品编号
 	st.stockType = '成品仓'  and mat.materialNo = :pNo 
 	group by YEAR(sto.operateTime)) as edp
-	on edp.optime=md.tyear
+	on edp.optime=md.tyear order by md.tyear asc
 	
 ]]></VSql>
   <Columns>
@@ -53,7 +53,7 @@
     <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="51" />
     <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="61" />
     <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="83" />
-    <DataItem type="TableField" key="baseYear.tyear" tokenIndexes="5,230" />
+    <DataItem type="TableField" key="baseYear.tyear" tokenIndexes="5,230,238" />
     <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="115" />
     <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="135" />
     <DataItem type="TableField" key="bo_akl_EM_productInfo.pid" tokenIndexes="139" />

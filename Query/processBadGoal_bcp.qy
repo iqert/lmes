@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-12-18 18:25:20]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-12-18 18:25:45]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-02-01 11:05:29]]></ModificationTime>
   <VSql><![CDATA[select mat.materialNo,
 ep.badGoal,
 SUM(blpc1) as sumblpc11,
@@ -81,8 +81,9 @@ select 	case
 		else 0 end as blpc12,
 		sto.*
 		from bo_akl_MM_inStockInfo as sto 
-		left join bo_akl_MM_stockType st on st.id=sto.stockTypeId
-		where YEAR(sto.operateTime)=:inputYear
+		left join bo_akl_MM_stockType as st on st.id=sto.stockTypeId
+		left join bo_akl_line_start as lis on lis.batchNum=sto.batchNo
+		where YEAR(lis.startTime)=:inputYear
 		)as ins 
 		left join bo_akl_MM_materialInfo as mat on ins.materialId=mat.id
 		left join bo_akl_EM_productInfo as ep on mat.materialNo=ep.prNo
@@ -175,16 +176,22 @@ select 	case
   </Params>
   <DataItems>
     <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="934" />
-    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="979" />
-    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="999" />
     <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="944" />
-    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="4,1009,1021" />
-    <DataItem type="TableField" key="bo_akl_EM_productInfo.badGoal" tokenIndexes="9,33,71,109,147,185,223,261,299,337,375,413,451,1025" />
-    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.operateTime" tokenIndexes="488,526,564,602,640,678,716,754,792,830,868,906,964" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="964" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="1001" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="1021" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="4,1031,1043" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.badGoal" tokenIndexes="9,33,71,109,147,185,223,261,299,337,375,413,451,1047" />
+    <DataItem type="TableField" key="bo_akl_MM_stockType.stockType" tokenIndexes="478,516,554,592,630,668,706,744,782,820,858,896" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.operateTime" tokenIndexes="488,526,564,602,640,678,716,754,792,830,868,906" />
     <DataItem type="TableField" key="bo_akl_MM_inStockInfo.inStockNum" tokenIndexes="497,535,573,611,649,687,725,763,801,839,877,915" />
-    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.stockTypeId" tokenIndexes="956" />
-    <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="993" />
-    <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="1013" />
-    <DataItem type="QueryParam" key="inputYear" tokenIndexes="968" />
+    <DataItem type="TableField" key="bo_akl_MM_stockType.id" tokenIndexes="954" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.stockTypeId" tokenIndexes="958" />
+    <DataItem type="TableField" key="bo_akl_line_start.batchNum" tokenIndexes="974" />
+    <DataItem type="TableField" key="bo_akl_MM_inStockInfo.batchNo" tokenIndexes="978" />
+    <DataItem type="TableField" key="bo_akl_line_start.startTime" tokenIndexes="986" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="1015" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="1035" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="990" />
   </DataItems>
 </Query>

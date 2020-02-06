@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-10-22 19:20:31]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-10-23 09:30:34]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-02-02 19:31:31]]></ModificationTime>
   <VSql><![CDATA[select mad.tyear,
 ROUND(CAST(rep.rhour*60,'DECIMAL',10,2)/365,2) as rhour
 from baseYear as mad 
@@ -12,11 +12,14 @@ left join (
 		YEAR(rd.startDate) as tyear,-- 日期 day
 		SUM(rd.repairTime) as rhour  -- 维修时长
 		from bo_akl_EM_maintainRecord as rd 
+		left join bo_akl_base_productlines as pline on pline.pNo=rd.pNo
+		left join bo_akl_base_projectInfo as poj on poj.id=pline.belongProject
 		where  
 		rd.equipCode=:equNo AND
-		rd.pNo= :prNo
+		rd.pNo= :prNo and poj.pName=:projectName
 		group by YEAR(rd.startDate) 
-	)as rep on rep.tyear=mad.tyear]]></VSql>
+	)as rep on rep.tyear=mad.tyear
+	order by mad.tyear asc]]></VSql>
   <Columns>
     <Column id="Column_0" code="tyear" name="" dataType="integer" length="" precision="">
       <Remark></Remark>
@@ -34,16 +37,27 @@ left join (
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
+    <Param code="projectName" name="项目名称" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
   </Params>
   <DataItems>
     <DataItem type="Table" key="baseYear" tokenIndexes="35" />
     <DataItem type="Table" key="bo_akl_EM_maintainRecord" tokenIndexes="77" />
-    <DataItem type="TableField" key="baseYear.tyear" tokenIndexes="4,126" />
-    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.startDate" tokenIndexes="53,110" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="87" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="107" />
+    <DataItem type="TableField" key="baseYear.tyear" tokenIndexes="4,175,183" />
+    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.startDate" tokenIndexes="53,159" />
     <DataItem type="TableField" key="bo_akl_EM_maintainRecord.repairTime" tokenIndexes="66" />
-    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.equipCode" tokenIndexes="87" />
-    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.pNo" tokenIndexes="96" />
-    <DataItem type="QueryParam" key="equNo" tokenIndexes="90" />
-    <DataItem type="QueryParam" key="prNo" tokenIndexes="100" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="97" />
+    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.pNo" tokenIndexes="101,136" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="117" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="121" />
+    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.equipCode" tokenIndexes="127" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.pName" tokenIndexes="146" />
+    <DataItem type="QueryParam" key="equNo" tokenIndexes="130" />
+    <DataItem type="QueryParam" key="prNo" tokenIndexes="140" />
+    <DataItem type="QueryParam" key="projectName" tokenIndexes="149" />
   </DataItems>
 </Query>

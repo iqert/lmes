@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-10-23 23:12:53]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-10-23 23:15:46]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-02-02 19:38:03]]></ModificationTime>
   <VSql><![CDATA[
 select 
 ide.blps,--不良品数量
@@ -43,7 +43,7 @@ md.tyear from baseYear as md
 		ep.prLine=:plNo and 
 		pj.pName=:prName 
 		group by stt.tyear
-	) as ide on ide.tyear=md.tyear
+	) as ide on ide.tyear=md.tyear order by md.tyear asc
 								]]></VSql>
   <Columns>
     <Column id="Column_0" code="blps" name="" dataType="number" length="" precision="">
@@ -75,10 +75,6 @@ md.tyear from baseYear as md
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
-    <Param code="inputYear" name="" dataType="integer">
-      <InitValue><![CDATA[]]></InitValue>
-      <Remark><![CDATA[]]></Remark>
-    </Param>
   </Params>
   <DataItems>
     <DataItem type="Table" key="baseYear" tokenIndexes="95" />
@@ -88,7 +84,7 @@ md.tyear from baseYear as md
     <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="336" />
     <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="356" />
     <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="272" />
-    <DataItem type="TableField" key="baseYear.tyear" tokenIndexes="91,412" />
+    <DataItem type="TableField" key="baseYear.tyear" tokenIndexes="91,412,420" />
     <DataItem type="TableField" key="bo_akl_MM_inStockInfo.inStockNum" tokenIndexes="177,204,231" />
     <DataItem type="TableField" key="bo_akl_MM_inStockInfo.materialId" tokenIndexes="246" />
     <DataItem type="TableField" key="bo_akl_MM_inStockInfo.operateTime" tokenIndexes="253" />

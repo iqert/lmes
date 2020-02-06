@@ -3,14 +3,19 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-08-24 17:22:12]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-12-28 14:48:56]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-02-02 11:00:01]]></ModificationTime>
   <VSql><![CDATA[select r.id,r.repairType,r.equipCode,r.pNo,r.wsNo,r.startDate,r.endDate,r.phenomenon,
 r.repaircontent,
 r.repairMan,
 r.repairNo,
 r.repairTimeHour as diffHour, --确认耗时
 r.engineerTimeHour as egHour --工程师确认耗时
-from bo_akl_EM_maintainRecord as r order by r.startDate asc]]></VSql>
+from bo_akl_EM_maintainRecord as r
+left join bo_akl_base_productlines as pli on pli.pNo=r.pNo
+left join bo_akl_base_projectInfo as pin on pin.id=pli.belongProject
+where r.repairType='产线维修' and CHARINDEX(pin.pName,:proName,1)>0
+and r.startDate>:startTime and r.startDate<=:endTime
+order by r.startDate asc]]></VSql>
   <Columns>
     <Column id="Column_0" code="id" name="" dataType="char" length="" precision="">
       <Remark></Remark>
@@ -52,15 +57,30 @@ from bo_akl_EM_maintainRecord as r order by r.startDate asc]]></VSql>
       <Remark></Remark>
     </Column>
   </Columns>
-  <Params />
+  <Params>
+    <Param code="startTime" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="endTime" name="" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="proName" name="项目名称" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+  </Params>
   <DataItems>
     <DataItem type="Table" key="bo_akl_EM_maintainRecord" tokenIndexes="71" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="81" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="101" />
     <DataItem type="TableField" key="bo_akl_EM_maintainRecord.id" tokenIndexes="4" />
-    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.repairType" tokenIndexes="8" />
+    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.repairType" tokenIndexes="8,121" />
     <DataItem type="TableField" key="bo_akl_EM_maintainRecord.equipCode" tokenIndexes="12" />
-    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.pNo" tokenIndexes="16" />
+    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.pNo" tokenIndexes="16,95" />
     <DataItem type="TableField" key="bo_akl_EM_maintainRecord.wsNo" tokenIndexes="20" />
-    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.startDate" tokenIndexes="24,83" />
+    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.startDate" tokenIndexes="24,145,154,165" />
     <DataItem type="TableField" key="bo_akl_EM_maintainRecord.endDate" tokenIndexes="28" />
     <DataItem type="TableField" key="bo_akl_EM_maintainRecord.phenomenon" tokenIndexes="32" />
     <DataItem type="TableField" key="bo_akl_EM_maintainRecord.repaircontent" tokenIndexes="37" />
@@ -68,5 +88,12 @@ from bo_akl_EM_maintainRecord as r order by r.startDate asc]]></VSql>
     <DataItem type="TableField" key="bo_akl_EM_maintainRecord.repairNo" tokenIndexes="47" />
     <DataItem type="TableField" key="bo_akl_EM_maintainRecord.repairTimeHour" tokenIndexes="52" />
     <DataItem type="TableField" key="bo_akl_EM_maintainRecord.engineerTimeHour" tokenIndexes="62" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="91" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="111" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="115" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.pName" tokenIndexes="131" />
+    <DataItem type="QueryParam" key="proName" tokenIndexes="134" />
+    <DataItem type="QueryParam" key="startTime" tokenIndexes="148" />
+    <DataItem type="QueryParam" key="endTime" tokenIndexes="157" />
   </DataItems>
 </Query>
