@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-09-05 14:30:28]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2020-02-01 19:05:58]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-03-04 18:29:28]]></ModificationTime>
   <VSql><![CDATA[select uvsr.czy,
 uvsr.cName,--作用内容
 uvsr.bsTime, uvsr.classes, --班次
@@ -48,7 +48,7 @@ FROM (
 		left join bo_akl_line_start_user As sus on sus.lid=al.id and sus.workStation=bn.stationName
 		left join bo_akl_base_productling_ws as pw on pw.wsNo=bn.stationName
 		WHERE bn.bsTime != ''
-			AND al.startTime >= :startTime and al.startTime<=:endTime
+			AND al.startClassesTime >= :startTime and al.startClassesTime<=:endTime
 			
 		)
 	UNION ALL
@@ -69,7 +69,7 @@ FROM (
 		FROM bo_akl_line_materialBadProNum AS pn
 		LEFT JOIN bo_akl_line_start AS st ON pn.startId = st.id
 		WHERE pn.bsTime != '' 
-			and st.startTime>=:startTime and st.startTime<=:endTime
+			and st.startClassesTime>=:startTime and st.startClassesTime<=:endTime
 		)
 	) AS uvst 
 	where badProNum>0 

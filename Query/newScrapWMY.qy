@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-12-27 21:38:32]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2020-02-01 11:27:57]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-03-04 18:41:53]]></ModificationTime>
   <VSql><![CDATA[select projectNo,bfType,materialNo,blNum,mPrice,amount,remark FROM(
 		select 
 		1 as mtt,
@@ -21,9 +21,9 @@
 			FROM bo_akl_line_stationBadProNum AS sb
 			left join bo_akl_line_start as lis on lis.id=sb.startId
 			left join bo_akl_MM_materialInfo as mti on mti.materialNo=sb.materialNo
-			where YEAR(lis.startTime)=:inputYear
-					and Month(lis.startTime)=:inputMonth
-					and week(lis.startTime)=:inputWeek 
+			where YEAR(lis.startClassesTime)=:inputYear
+					and Month(lis.startClassesTime)=:inputMonth
+					and week(lis.startClassesTime)=:inputWeek 
 			GROUP BY sb.materialNo,sb.remark
 		) as mkr  
 		LEFT JOIN bo_akl_MM_materialInfo AS mti ON mkr.materialNo = mti.materialNo
@@ -45,9 +45,9 @@
 	FROM bo_akl_line_materialBadProNum AS sp
 	left join bo_akl_line_start as lis on lis.id=sp.startId
 	LEFT JOIN bo_akl_MM_materialInfo AS mti ON sp.materialNo = mti.materialNo
-	WHERE YEAR(lis.startTime) = :inputYear
-		AND Month(lis.startTime) = :inputMonth
-		and week(lis.startTime)=:inputWeek
+	WHERE YEAR(lis.startClassesTime) = :inputYear
+		AND Month(lis.startClassesTime) = :inputMonth
+		and week(lis.startClassesTime)=:inputWeek
 		AND mti.materialType = '半成品'
 	GROUP BY sp.materialNo, sp.remark
 	) as blps 
@@ -72,9 +72,9 @@
 	left join bo_akl_line_start as lis on lis.id=sp.startId
 	LEFT JOIN bo_akl_MM_materialInfo AS mti ON sp.materialNo = mti.materialNo
 	WHERE 
-	week(lis.startTime)=:inputWeek and
-	YEAR(lis.startTime) = :inputYear AND
-	 Month(lis.startTime) = :inputMonth AND
+	week(lis.startClassesTime)=:inputWeek and
+	YEAR(lis.startClassesTime) = :inputYear AND
+	 Month(lis.startClassesTime) = :inputMonth AND
 		 mti.materialType = '原材料'
 	GROUP BY sp.materialNo, sp.remark
 	) as jku 
@@ -126,7 +126,7 @@
     <DataItem type="TableField" key="bo_akl_MM_materialInfo.mPrice" tokenIndexes="58,68" />
     <DataItem type="TableField" key="bo_akl_line_start.id" tokenIndexes="137,353,594" />
     <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="157,237,379,620" />
-    <DataItem type="TableField" key="bo_akl_line_start.startTime" tokenIndexes="169,181,193,387,401,415,628,640,654" />
+    <DataItem type="TableField" key="bo_akl_line_start.startClassesTime" tokenIndexes="169,181,193,387,401,415,628,640,654" />
     <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialType" tokenIndexes="425,666" />
     <DataItem type="QueryParam" key="inputYear" tokenIndexes="173,393,646" />
     <DataItem type="QueryParam" key="inputMonth" tokenIndexes="185,407,660" />

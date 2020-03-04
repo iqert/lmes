@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-08-30 16:22:04]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2020-02-01 15:31:48]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-03-04 18:04:34]]></ModificationTime>
   <VSql><![CDATA[SELECT ROUND((cs.blpcbadNum / (count(cs.materialNo) * cs.boxPartsNum) * 1000000), 2) AS rate,
 cs.badGoal,
 cs.badGoal2,
@@ -54,7 +54,7 @@ FROM (
 			FROM bo_akl_MM_inStockInfo   AS sto
 			left join bo_akl_line_start as lis on lis.batchNum=sto.batchNo
 			LEFT JOIN bo_akl_MM_stockType st ON st.id = sto.stockTypeId
-			where lis.startTime>=:startTime and lis.startTime<=:endTime
+			where YEAR(lis.startClassesTime)=:inputYear and MONTH(lis.startClassesTime)=:inputMonth and DAYOFMONTH(lis.startClassesTime)=:inputDay
 			) AS ins
 		LEFT JOIN bo_akl_MM_materialInfo AS mat ON ins.materialId = mat.id
 		LEFT JOIN bo_akl_EM_productInfo AS ep ON mat.materialNo = ep.prNo
@@ -151,28 +151,20 @@ GROUP BY cs.badGoal,cs.badGoal2,cs.badGoal3,cs.badGoal4, cs.weekPriceSum, cs.mon
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
-    <Param code="startTime" name="开始时间" dataType="char">
-      <InitValue><![CDATA[]]></InitValue>
-      <Remark><![CDATA[]]></Remark>
-    </Param>
-    <Param code="endTime" name="结束时间" dataType="char">
-      <InitValue><![CDATA[]]></InitValue>
-      <Remark><![CDATA[]]></Remark>
-    </Param>
   </Params>
   <DataItems>
     <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="567" />
     <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="557" />
     <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="587" />
-    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="631" />
-    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="653" />
-    <DataItem type="Table" key="bo_akl_LM_printProductLabel" tokenIndexes="764" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="649" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="671" />
+    <DataItem type="Table" key="bo_akl_LM_printProductLabel" tokenIndexes="782" />
     <DataItem type="TableField" key="bo_akl_line_start.batchNum" tokenIndexes="577" />
-    <DataItem type="TableField" key="bo_akl_line_start.startTime" tokenIndexes="607,616" />
+    <DataItem type="TableField" key="bo_akl_line_start.startClassesTime" tokenIndexes="609,621,633" />
     <DataItem type="QueryParam" key="weekInput" tokenIndexes="479" />
-    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="522" />
-    <DataItem type="QueryParam" key="startTime" tokenIndexes="610" />
-    <DataItem type="QueryParam" key="endTime" tokenIndexes="619" />
-    <DataItem type="QueryParam" key="projectName" tokenIndexes="688" />
+    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="522,625" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="613" />
+    <DataItem type="QueryParam" key="inputDay" tokenIndexes="637" />
+    <DataItem type="QueryParam" key="projectName" tokenIndexes="706" />
   </DataItems>
 </Query>

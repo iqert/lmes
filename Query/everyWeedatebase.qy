@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-09-06 22:06:50]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2020-02-02 11:39:20]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-03-04 18:45:04]]></ModificationTime>
   <VSql><![CDATA[select 
  		mbn.optime,
 		ROUND((SUM(mbn.blpsl)/SUM(mbn.prcount)*1000000),2) as blprate,--周不良品率
@@ -49,7 +49,7 @@
 										left join bo_akl_line_start as lis on lis.batchNum=sto.batchNo
 										left join bo_akl_MM_materialInfo as mat on sto.materialId=mat.id
 										left join bo_akl_MM_stockType st on st.id=sto.stockTypeId
-										where YEAR(lis.startTime)=:inputYear and  mat.materialType='成品' 
+										where YEAR(lis.startClassesTime)=:inputYear and  mat.materialType='成品' 
 									)
 								 as ins 
 							    left join bo_akl_MM_materialInfo as mat on ins.materialId=mat.id
@@ -111,7 +111,7 @@
     <DataItem type="TableField" key="bo_akl_MM_inStockInfo.materialId" tokenIndexes="377" />
     <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="381,445" />
     <DataItem type="TableField" key="bo_akl_MM_inStockInfo.stockTypeId" tokenIndexes="399" />
-    <DataItem type="TableField" key="bo_akl_line_start.startTime" tokenIndexes="407" />
+    <DataItem type="TableField" key="bo_akl_line_start.startClassesTime" tokenIndexes="407" />
     <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialType" tokenIndexes="417" />
     <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="465" />
     <DataItem type="TableField" key="bo_akl_MM_materialInfo.projectNo" tokenIndexes="475" />

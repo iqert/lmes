@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-12-27 10:44:46]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2020-02-01 17:24:40]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-03-04 18:18:58]]></ModificationTime>
   <VSql><![CDATA[select bfType,materialNo,blNum,mPrice,amount,remark FROM(
 		select 
 		1 as mtt,
@@ -19,8 +19,8 @@
 		sb.remark --不良原因
 		FROM bo_akl_line_stationBadProNum AS sb
 		LEFT JOIN bo_akl_line_start AS lis ON lis.id = sb.startId
-		where YEAR(lis.startTime)=2019
-				and Month(lis.startTime)=12
+		where YEAR(lis.startClassesTime)=:inputYear 
+				and MONTH(lis.startClassesTime)=:inputMonth
 				and sb.materialNo is not null 
 				and sb.inputBadProNum>0
 				--and DAYOFMONTH(sb.bsTime)=:inputDay 
@@ -44,8 +44,8 @@
 	FROM bo_akl_line_materialBadProNum AS sp
 	LEFT JOIN bo_akl_line_start AS lis ON lis.id = sp.startId
 	LEFT JOIN bo_akl_MM_materialInfo AS mti ON sp.materialNo = mti.materialNo
-	WHERE YEAR(lis.startTime) = 2019
-		AND Month(lis.startTime) =12
+	WHERE YEAR(lis.startClassesTime) =:inputYear
+		AND Month(lis.startClassesTime) =:inputMonth
 		AND mti.materialType = '半成品'
 		and sp.materialNo is not null 
 		and sp.badProNum>0
@@ -71,8 +71,8 @@
 	LEFT JOIN bo_akl_line_start AS lis ON lis.id = sp.startId
 	LEFT JOIN bo_akl_MM_materialInfo AS mti ON sp.materialNo = mti.materialNo
 	WHERE 
-	YEAR(lis.startTime) =2019
-		AND Month(lis.startTime) = 12 AND
+	YEAR(lis.startClassesTime) =:inputYear
+		AND Month(lis.startClassesTime) = :inputMonth AND
 		 mti.materialType = '原材料'
 		and sp.materialNo is not null 
 		and sp.badProNum>0
@@ -112,8 +112,10 @@
   </Params>
   <DataItems>
     <DataItem type="Table" key="bo_akl_line_stationBadProNum" tokenIndexes="110" />
-    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="120,321,556" />
-    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="204,343,439,578,674" />
-    <DataItem type="Table" key="bo_akl_line_materialBadProNum" tokenIndexes="311,546" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="120,323,559" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="206,345,442,581,679" />
+    <DataItem type="Table" key="bo_akl_line_materialBadProNum" tokenIndexes="313,549" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="148,374,610" />
+    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="160,387,624" />
   </DataItems>
 </Query>

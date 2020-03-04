@@ -519,18 +519,26 @@
     <Description><![CDATA[]]></Description>
     <Remark><![CDATA[]]></Remark>
     <MethodChain><![CDATA[
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
   <evaluateRule code="BR_OpenComponentReturnData1" />
   <evaluateRule code="BR_SetEntityVarControlValue1" />
 ]]></MethodChain>
     <RuleInstances>
-      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-10-10 11:48:55">
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体_获取产线编号" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2020-03-04 17:08:59">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"form64","windowName":"不良品原因选择","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"\"不良品原因选择\"","browerWindowFlag":"","isDynamicContainer":false,"windowContainer":"","heightExp":"","widthExp":"","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":null,"returnMapping":[{"destType":"ruleSetVariant","dest":"remark","srcType":"returnValue","src":"remark","updateDestEntityMethod":"","isCleanDestEntityData":false,"destFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>form64</WindowCode><WindowName>不良品原因选择</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle>"不良品原因选择"</BrowerWindowTitle><IsDynamicContainer>False</IsDynamicContainer><IsChooseLanguage>False</IsChooseLanguage><HeightExp /><WidthExp /><IsAsyn>False</IsAsyn></dtMaster><dtReturnValue><TargetType>ruleSetVariant</TargetType><Target>remark</Target><SourceType>returnValue</SourceType><Source>remark</Source></dtReturnValue></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_line_start.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"@lId","valueType":"9"}],"entityType":"ruleSetVar","entityName":"lineCode","isFieldAutoMapping":false,"itemqueryparam":null,"items":[{"destName":"lineCode.lineCode","sourceName":"bo_akl_line_start.prolineName","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_line_start","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>ruleSetVar</EntityType><EntityName>lineCode</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_line_start</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_line_start.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>@lId</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>b768f67eb1f84310b2bceb8a2afef17e</ID><DataLoad /><IsFieldAutoMapping>False</IsFieldAutoMapping></dtEntityRelation><dtEntityColumnRelation><MasterID>b768f67eb1f84310b2bceb8a2afef17e</MasterID><DestName>lineCode.lineCode</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_start.prolineName</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>b768f67eb1f84310b2bceb8a2afef17e</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>b768f67eb1f84310b2bceb8a2afef17e</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-10-10 11:49:24">
+      <RuleInstance ruleCode="OpenComponentReturnData" ruleName="打开窗体并返回数据" instanceCode="BR_OpenComponentReturnData1" instanceName="打开窗体并返回数据" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2020-03-04 17:09:30">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"openType":"appoint","windowCode":"form64","windowName":"不良品原因选择","languageType":"","languageCode":"","windowNumSource":"","targetContainerType":"dialogWindow","browerWindowTitle":"\"不良品原因选择\"","browerWindowFlag":"","isDynamicContainer":false,"windowContainer":"","heightExp":"","widthExp":"","isAsyn":false,"divCode":"","openLocation":"","dialogType":"","dialogFlag":"","heightType":"","heightUnit":"","widthType":"","widthUnit":"","isPushMainWindow":false,"inputParams":[{"paramName":"lineCodes","paramType":"expression","paramValue":"BR_VAR_PARENT.[lineCode].[lineCode]","paramEntityType":"","entityFieldMapping":null}],"returnMapping":[{"destType":"ruleSetVariant","dest":"remark","srcType":"returnValue","src":"remark","updateDestEntityMethod":"","isCleanDestEntityData":false,"destFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><OpenType>appoint</OpenType><WindowCode>form64</WindowCode><WindowName>不良品原因选择</WindowName><TargetContainerType>dialogWindow</TargetContainerType><BrowerWindowTitle>"不良品原因选择"</BrowerWindowTitle><IsDynamicContainer>False</IsDynamicContainer><IsChooseLanguage>False</IsChooseLanguage><HeightExp /><WidthExp /><IsAsyn>False</IsAsyn></dtMaster><dtReturnValue><TargetType>ruleSetVariant</TargetType><Target>remark</Target><SourceType>returnValue</SourceType><Source>remark</Source></dtReturnValue><dtParam><WindowVariant>lineCodes</WindowVariant><SourceType>expression</SourceType><SourceTypeDisplayText>表达式</SourceTypeDisplayText><SourceValue>BR_VAR_PARENT.[lineCode].[lineCode]</SourceValue></dtParam></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
@@ -540,6 +548,13 @@
     </RuleInstances>
     <Variables>
       <Variable code="remark" name="" fieldType="char" initValue="" isMust="false" desc="" />
+      <Variable code="lineCode" name="" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="lineCode" name="产线编号" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
     </Variables>
   </Method>
 </Methods>

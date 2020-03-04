@@ -3,14 +3,15 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-08-19 14:08:12]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-10-18 10:16:11]]></ModificationTime>
-  <VSql><![CDATA[select b.*,m.bomUnit,m.projectNo,stm.snum
+  <ModificationTime><![CDATA[2020-02-10 13:16:55]]></ModificationTime>
+  <VSql><![CDATA[select b.*,m.bomUnit,m.projectNo,m.materialName,m.materialType,stm.snum
 from bo_akl_MM_bomInfo as b 
 left join bo_akl_MM_materialInfo as m on b.materialNo=m.materialNo 
 left join(
 select m.materialNo,SUM(si.stockNum)as snum from bo_akl_MM_stockInfo as si 
 left join bo_akl_MM_materialInfo m on m.id=si.materialId  where si.stockNum>0.0
 group by m.materialNo) as stm on stm.materialNo=m.materialNo 
+order by b.InnerCode,b.materialNo
 ]]></VSql>
   <Columns>
     <Column id="Column_0" code="bomUnit" name="" dataType="char" length="" precision="">
@@ -19,46 +20,55 @@ group by m.materialNo) as stm on stm.materialNo=m.materialNo
     <Column id="Column_1" code="projectNo" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_2" code="snum" name="" dataType="number" length="" precision="">
+    <Column id="Column_2" code="materialName" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_3" code="id" name="" dataType="char" length="" precision="">
+    <Column id="Column_3" code="materialType" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_4" code="materialNo" name="" dataType="char" length="" precision="">
+    <Column id="Column_4" code="snum" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_5" code="useNum" name="" dataType="number" length="" precision="">
+    <Column id="Column_5" code="id" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_6" code="remark" name="" dataType="char" length="" precision="">
+    <Column id="Column_6" code="materialNo" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_7" code="PID" name="" dataType="char" length="" precision="">
+    <Column id="Column_7" code="useNum" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_8" code="OrderNo" name="" dataType="integer" length="" precision="">
+    <Column id="Column_8" code="remark" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_9" code="InnerCode" name="" dataType="char" length="" precision="">
+    <Column id="Column_9" code="PID" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_10" code="IsLeaf" name="" dataType="boolean" length="" precision="">
+    <Column id="Column_10" code="OrderNo" name="" dataType="integer" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_11" code="InnerCode" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_12" code="IsLeaf" name="" dataType="boolean" length="" precision="">
       <Remark></Remark>
     </Column>
   </Columns>
   <Params />
   <DataItems>
-    <DataItem type="Table" key="bo_akl_MM_bomInfo" tokenIndexes="20" />
-    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="30,79" />
-    <DataItem type="Table" key="bo_akl_MM_stockInfo" tokenIndexes="69" />
+    <DataItem type="Table" key="bo_akl_MM_bomInfo" tokenIndexes="28" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="38,87" />
+    <DataItem type="Table" key="bo_akl_MM_stockInfo" tokenIndexes="77" />
     <DataItem type="TableField" key="bo_akl_MM_materialInfo.bomUnit" tokenIndexes="8" />
     <DataItem type="TableField" key="bo_akl_MM_materialInfo.projectNo" tokenIndexes="12" />
-    <DataItem type="TableField" key="bo_akl_MM_bomInfo.materialNo" tokenIndexes="40" />
-    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="44,55,107,122" />
-    <DataItem type="TableField" key="bo_akl_MM_stockInfo.stockNum" tokenIndexes="61,97" />
-    <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="87" />
-    <DataItem type="TableField" key="bo_akl_MM_stockInfo.materialId" tokenIndexes="91" />
-    <DataItem type="Query" key="b" tokenIndexes="24" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialName" tokenIndexes="16" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialType" tokenIndexes="20" />
+    <DataItem type="TableField" key="bo_akl_MM_bomInfo.materialNo" tokenIndexes="48,142" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="52,63,115,130" />
+    <DataItem type="TableField" key="bo_akl_MM_stockInfo.stockNum" tokenIndexes="69,105" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.id" tokenIndexes="95" />
+    <DataItem type="TableField" key="bo_akl_MM_stockInfo.materialId" tokenIndexes="99" />
+    <DataItem type="TableField" key="bo_akl_MM_bomInfo.InnerCode" tokenIndexes="138" />
+    <DataItem type="Query" key="b" tokenIndexes="32" />
   </DataItems>
 </Query>

@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-12-26 13:42:52]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2020-02-01 15:40:37]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-03-04 18:02:46]]></ModificationTime>
   <VSql><![CDATA[--bo_akl_MM_inStockInfo 入库信息
 --bo_akl_MM_stockType 仓库类型
 --bo_akl_MM_materialInfo 物料名称
@@ -34,8 +34,9 @@ FROM (
 			sb.cName --作用内容
 		FROM bo_akl_line_stationBadProNum AS sb
 		LEFT JOIN bo_akl_line_start AS lis ON lis.id = sb.startId
-		where lis.startTime>=:startTime 
-		and lis.startTime<=:endTime  
+		where YEAR(lis.startClassesTime)=:inputYear 
+				and MONTH(lis.startClassesTime)=:inputMonth
+				and DAYOFMONTH(lis.startClassesTime)=:inputDay  
 				and sb.inputBadProNum>0
 		GROUP BY lis.prolineName, sb.materialNo, sb.stationName,sb.cName,sb.remark
 		) AS badI
@@ -43,8 +44,9 @@ FROM (
 		SELECT bp.materialNo, SUM(bp.boxPartsNum) AS proBadNum
 		FROM bo_akl_LM_printProductLabel AS bp
 		LEFT JOIN bo_akl_line_start AS lis ON lis.id = bp.lineStartId
-		WHERE lis.startTime>=:startTime 
-			and lis.startTime<=:endTime  
+		WHERE YEAR(lis.startClassesTime)=:inputYear 
+				and MONTH(lis.startClassesTime)=:inputMonth
+				and DAYOFMONTH(lis.startClassesTime)=:inputDay   
 			AND bp.labelType = '成品'
 		GROUP BY bp.materialNo
 		) AS prom ON prom.materialNo = badI.materialNo
@@ -52,8 +54,9 @@ FROM (
 		SELECT SUM(inputBadProNum) AS allbead
 		FROM bo_akl_line_stationBadProNum as pn
 		LEFT JOIN bo_akl_line_start AS lis ON lis.id = pn.startId
-		WHERE  lis.startTime>=:startTime 
-			and lis.startTime<=:endTime 
+		where  YEAR(lis.startClassesTime)=:inputYear 
+				and MONTH(lis.startClassesTime)=:inputMonth
+				and DAYOFMONTH(lis.startClassesTime)=:inputDay  
 		) AS koe ON 1 = 1
 	
 	UNION ALL
@@ -78,8 +81,9 @@ FROM (
 		FROM bo_akl_line_materialBadProNum AS sp
 		LEFT JOIN bo_akl_line_start AS lis ON lis.id = sp.startId
 		LEFT JOIN bo_akl_MM_materialInfo AS mti ON sp.materialNo = mti.materialNo
-		WHERE  lis.startTime>=:startTime 
-			and lis.startTime<=:endTime  
+		WHERE  YEAR(lis.startClassesTime)=:inputYear 
+				and MONTH(lis.startClassesTime)=:inputMonth
+				and DAYOFMONTH(lis.startClassesTime)=:inputDay   
 			and mti.materialType = '半成品'
 				and sp.badProNum>0
 		GROUP BY lis.prolineName, sp.materialNo, sp.remark
@@ -88,8 +92,9 @@ FROM (
 		SELECT bp.materialNo, SUM(bp.boxPartsNum) AS proBadNum
 		FROM bo_akl_LM_printProductLabel AS bp
 		LEFT JOIN bo_akl_line_start AS lis ON lis.id = bp.lineStartId
-		WHERE lis.startTime>=:startTime 
-			and lis.startTime<=:endTime
+		WHERE YEAR(lis.startClassesTime)=:inputYear 
+				and MONTH(lis.startClassesTime)=:inputMonth
+				and DAYOFMONTH(lis.startClassesTime)=:inputDay  
 			AND bp.labelType = '半成品'
 		GROUP BY bp.materialNo
 		) AS buls ON buls.materialNo = mas.materialNo
@@ -99,8 +104,9 @@ FROM (
 		LEFT JOIN bo_akl_line_start AS lis ON lis.id = mbp.startId
 		LEFT JOIN bo_akl_MM_materialInfo AS mti ON mbp.materialNo = mti.materialNo
 		WHERE mti.materialType = '半成品' and
-				lis.startTime>=:startTime and
-			 lis.startTime<=:endTime
+				YEAR(lis.startClassesTime)=:inputYear 
+				and MONTH(lis.startClassesTime)=:inputMonth
+				and DAYOFMONTH(lis.startClassesTime)=:inputDay  
 		) AS koe ON 1 = 1
 	UNION ALL 
 	SELECT 
@@ -125,8 +131,9 @@ FROM (
 		FROM bo_akl_line_materialBadProNum AS sp
 		LEFT JOIN bo_akl_line_start AS lis ON lis.id = sp.startId
 		LEFT JOIN bo_akl_MM_materialInfo AS mti ON sp.materialNo = mti.materialNo
-		WHERE lis.startTime>=:startTime and
-			 lis.startTime<=:endTime and mti.materialType = '原材料'
+		WHERE YEAR(lis.startClassesTime)=:inputYear 
+				and MONTH(lis.startClassesTime)=:inputMonth
+				and DAYOFMONTH(lis.startClassesTime)=:inputDay   and mti.materialType = '原材料'
 				and sp.badProNum>0
 		GROUP BY lis.prolineName, sp.materialNo, sp.remark
 		) AS mas
@@ -144,8 +151,9 @@ FROM (
 		FROM bo_akl_line_materialBadProNum AS mbp
 		LEFT JOIN bo_akl_line_start AS lis ON lis.id = mbp.startId
 		LEFT JOIN bo_akl_MM_materialInfo AS mti ON mbp.materialNo = mti.materialNo
-		WHERE lis.startTime>=:startTime and
-			 lis.startTime<=:endTime and mti.materialType = '原材料'
+		WHERE YEAR(lis.startClassesTime)=:inputYear 
+				and MONTH(lis.startClassesTime)=:inputMonth
+				and DAYOFMONTH(lis.startClassesTime)=:inputDay   and mti.materialType = '原材料'
 		) AS koe ON 1 = 1
 	) asf
 ) as lpl left join bo_akl_MM_materialInfo as mif on mif.materialNo=lpl.materialNo
@@ -195,49 +203,39 @@ where (lpl.fcNum>0 or lpl.blNum>0) and mif.projectNo=:proName and pline.pType!=4
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
-    <Param code="startTime" name="开始时间" dataType="char">
+    <Param code="inputYear" name="" dataType="integer">
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
-    <Param code="endTime" name="结束时间" dataType="char">
+    <Param code="inputMonth" name="" dataType="integer">
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
-    <Param code="inputYear" name="" dataType="char">
-      <InitValue><![CDATA[]]></InitValue>
-      <Remark><![CDATA[]]></Remark>
-    </Param>
-    <Param code="inputMonth" name="" dataType="char">
-      <InitValue><![CDATA[]]></InitValue>
-      <Remark><![CDATA[]]></Remark>
-    </Param>
-    <Param code="inputDay" name="" dataType="char">
+    <Param code="inputDay" name="" dataType="integer">
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
   </Params>
   <DataItems>
-    <DataItem type="Table" key="bo_akl_line_stationBadProNum" tokenIndexes="318,531" />
-    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="830,1067,1359,1473,1614,1688" />
-    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="1708" />
-    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="1728" />
-    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="328,440,541,808,944,1045,1337,1592" />
-    <DataItem type="Table" key="bo_akl_LM_printProductLabel" tokenIndexes="430,934" />
-    <DataItem type="Table" key="bo_akl_line_materialBadProNum" tokenIndexes="798,1035,1327,1582" />
-    <DataItem type="Table" key="bo_akl_line_materialConfirm" tokenIndexes="1463" />
+    <DataItem type="Table" key="bo_akl_line_stationBadProNum" tokenIndexes="318,567" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="884,1157,1467,1599,1740,1832" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="1852" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="1872" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="328,458,577,862,1016,1135,1445,1718" />
+    <DataItem type="Table" key="bo_akl_LM_printProductLabel" tokenIndexes="448,1006" />
+    <DataItem type="Table" key="bo_akl_line_materialBadProNum" tokenIndexes="852,1125,1435,1708" />
+    <DataItem type="Table" key="bo_akl_line_materialConfirm" tokenIndexes="1589" />
     <DataItem type="TableField" key="bo_akl_MM_materialInfo.mPrice" tokenIndexes="63" />
-    <DataItem type="TableField" key="bo_akl_line_stationBadProNum.startId" tokenIndexes="557" />
-    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="1698,1718" />
-    <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="1722" />
-    <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="1738" />
-    <DataItem type="TableField" key="bo_akl_EM_productInfo.pid" tokenIndexes="1742" />
-    <DataItem type="TableField" key="bo_akl_MM_materialInfo.projectNo" tokenIndexes="1766" />
-    <DataItem type="TableField" key="bo_akl_base_productlines.pType" tokenIndexes="1775" />
-    <DataItem type="QueryParam" key="startTime" tokenIndexes="353,465,566,855,969,1102,1384,1639" />
-    <DataItem type="QueryParam" key="endTime" tokenIndexes="362,474,575,864,978,1111,1393,1648" />
-    <DataItem type="QueryParam" key="inputYear" tokenIndexes="1501" />
-    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="1513" />
-    <DataItem type="QueryParam" key="inputDay" tokenIndexes="1525" />
-    <DataItem type="QueryParam" key="proName" tokenIndexes="1769" />
+    <DataItem type="TableField" key="bo_akl_line_stationBadProNum.startId" tokenIndexes="593" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.materialNo" tokenIndexes="1842,1862" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="1866" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="1882" />
+    <DataItem type="TableField" key="bo_akl_EM_productInfo.pid" tokenIndexes="1886" />
+    <DataItem type="TableField" key="bo_akl_MM_materialInfo.projectNo" tokenIndexes="1910" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pType" tokenIndexes="1919" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="356,486,605,912,1044,1195,1495,1627,1768" />
+    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="368,498,617,924,1056,1207,1507,1639,1780" />
+    <DataItem type="QueryParam" key="inputDay" tokenIndexes="380,510,629,936,1068,1219,1519,1651,1792" />
+    <DataItem type="QueryParam" key="proName" tokenIndexes="1913" />
   </DataItems>
 </Query>

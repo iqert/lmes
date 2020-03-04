@@ -1,13 +1,13 @@
-﻿<Query id="a8a0d49fedba46f697feeb860df7f985" code="F" name="查询考核员工信息" type="VSql">
+﻿<Query id="a8a0d49fedba46f697feeb860df7f985" code="F" name="查询考核员工信息" type="VSql" APICode="">
   <Remark><![CDATA[]]></Remark>
   <Creator><![CDATA[100466]]></Creator>
   <CreationTime><![CDATA[2018-06-23 18:09:24]]></CreationTime>
-  <Modifier><![CDATA[100466]]></Modifier>
-  <ModificationTime><![CDATA[2018-07-20 17:26:09]]></ModificationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2020-02-10 12:08:43]]></ModificationTime>
   <VSql><![CDATA[SELECT a.id, b.sNo, b.sName, a.enclosureName, a.enclosure, a.STATE, b.sStatus
 FROM bo_akl_base_examEmployee AS a
 LEFT JOIN bo_akl_base_staffInfo AS b ON a.teId = b.id
-ORDER BY b.sNo
+where b.sNo!='' ORDER BY b.sNo 
 ]]></VSql>
   <Columns>
     <Column id="Column_0" code="id" name="" dataType="char" length="" precision="">
@@ -37,9 +37,9 @@ ORDER BY b.sNo
     <DataItem type="Table" key="bo_akl_base_examEmployee" tokenIndexes="38" />
     <DataItem type="Table" key="bo_akl_base_staffInfo" tokenIndexes="48" />
     <DataItem type="Query" key="a" tokenIndexes="2,17,22,27,42,56" />
-    <DataItem type="Query" key="b" tokenIndexes="7,12,32,52,62,70" />
+    <DataItem type="Query" key="b" tokenIndexes="7,12,32,52,62,68,78" />
     <DataItem type="QueryField" key="a.id" tokenIndexes="4" />
-    <DataItem type="QueryField" key="b.sNo" tokenIndexes="9,72" />
+    <DataItem type="QueryField" key="b.sNo" tokenIndexes="9,70,80" />
     <DataItem type="QueryField" key="b.sName" tokenIndexes="14" />
     <DataItem type="QueryField" key="a.enclosureName" tokenIndexes="19" />
     <DataItem type="QueryField" key="a.enclosure" tokenIndexes="24" />
