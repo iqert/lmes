@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-10-21 15:45:36]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-12-19 08:52:49]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-02-02 19:11:32]]></ModificationTime>
   <VSql><![CDATA[	select 
 	md.tmonth, --月份
 	edp.cpc  --产量
@@ -22,8 +22,8 @@
 		plines.pNo=:prLineNo AND --产线编号
 		pjinfo.pName=:projectName and --产品编号
 		st.stockType = '成品仓'
-		and mat.materialNo = :pNo 
-	    and YEAR(sto.operateTime)=:inputYear 
+		and mat.materialNo = :pNo and sto.operateTime>=:startTime and sto.operateTime<=:endTime
+	   -- and YEAR(sto.operateTime)=:inputYear 
 		group by MONTH(sto.operateTime)
 	) as edp
 	on edp.optime=md.tmonth
@@ -42,15 +42,19 @@
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
-    <Param code="inputYear" name="" dataType="integer">
-      <InitValue><![CDATA[]]></InitValue>
-      <Remark><![CDATA[]]></Remark>
-    </Param>
     <Param code="prLineNo" name="产线编号" dataType="char">
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
     <Param code="projectName" name="项目名称" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="startTime" name="开始时间" dataType="date">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="endTime" name="结束时间" dataType="date">
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
@@ -63,7 +67,7 @@
     <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="56" />
     <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="66" />
     <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="88" />
-    <DataItem type="TableField" key="baseMonth.tmonth" tokenIndexes="5,248,256" />
+    <DataItem type="TableField" key="baseMonth.tmonth" tokenIndexes="5,256,264" />
     <DataItem type="TableField" key="bo_akl_EM_productInfo.prNo" tokenIndexes="120" />
     <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="140" />
     <DataItem type="TableField" key="bo_akl_EM_productInfo.pid" tokenIndexes="144" />
@@ -74,6 +78,7 @@
     <DataItem type="QueryParam" key="prLineNo" tokenIndexes="175" />
     <DataItem type="QueryParam" key="projectName" tokenIndexes="186" />
     <DataItem type="QueryParam" key="pNo" tokenIndexes="209" />
-    <DataItem type="QueryParam" key="inputYear" tokenIndexes="221" />
+    <DataItem type="QueryParam" key="startTime" tokenIndexes="218" />
+    <DataItem type="QueryParam" key="endTime" tokenIndexes="227" />
   </DataItems>
 </Query>

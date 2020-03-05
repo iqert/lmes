@@ -3,10 +3,35 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-08-30 16:22:04]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2020-01-02 09:22:07]]></ModificationTime>
-  <VSql><![CDATA[SELECT ROUND((cs.blpcbadNum / (count(cs.materialNo) * cs.boxPartsNum) * 1000000), 2) AS rate, cs.badGoal, (count(cs.materialNo) * cs.boxPartsNum) AS pcount, cs.weekPriceSum, cs.monthPriceSum, cs.materialNo, cs.blpcbadNum, cs.price, cs.prName, (cs.price * cs.blpcbadNum) AS priceSum, cs.monthInput, cs.weekInput, cs.glcbadNum, cs.materialType, 1 AS pullTest
+  <ModificationTime><![CDATA[2020-03-04 18:04:34]]></ModificationTime>
+  <VSql><![CDATA[SELECT ROUND((cs.blpcbadNum / (count(cs.materialNo) * cs.boxPartsNum) * 1000000), 2) AS rate,
+cs.badGoal,
+cs.badGoal2,
+cs.badGoal3,
+cs.badGoal4,
+(count(cs.materialNo) * cs.boxPartsNum) AS pcount,
+cs.weekPriceSum, cs.monthPriceSum, cs.materialNo, cs.blpcbadNum,
+cs.price, cs.prName, (cs.price * cs.blpcbadNum) AS priceSum,
+cs.monthInput,
+cs.weekInput,
+cs.glcbadNum,
+cs.materialType,
+1 AS pullTest
 FROM (
-	SELECT bn.badGoal, bn.boxPartsNum, bn.materialNo, bn.blpcbadNum, bn.price, bn.prName, (bn.price * bn.blpcbadNum) AS priceSum, (bn.price * bn.weekInput) AS weekPriceSum, (bn.price * bn.monthInput) AS monthPriceSum, bn.monthInput, bn.weekInput, bn.glcbadNum, bn.materialType
+	SELECT 
+	bn.badGoal,bn.badGoal2,bn.badGoal3,bn.badGoal4,
+	bn.boxPartsNum,
+	bn.materialNo,
+	bn.blpcbadNum,
+	bn.price,
+	bn.prName,
+	(bn.price * bn.blpcbadNum) AS priceSum,
+	(bn.price * bn.weekInput) AS weekPriceSum,
+	(bn.price * bn.monthInput) AS monthPriceSum,
+	bn.monthInput,
+	bn.weekInput,
+	bn.glcbadNum,
+	bn.materialType
 	FROM (
 		SELECT mat.materialNo,
 		SUM(ins.blpc) AS blpcbadNum,
@@ -15,31 +40,39 @@ FROM (
 		SUM(ins.monthInput) AS monthInput,
 		mat.mPrice AS price,
 			ep.prName AS prName,
-			ep.boxPartsNum AS boxPartsNum, ep.badGoal AS badGoal, mat.materialType AS materialType
+			ep.boxPartsNum AS boxPartsNum,
+			ep.badGoal AS badGoal,
+			ep.badGoal2 as badGoal2,
+			ep.badGoal3 as badGoal3,
+			ep.badGoal4 as badGoal4,
+			mat.materialType AS materialType
 		FROM (
-			SELECT CASE WHEN st.stockType = '不良品仓' THEN sto.inStockNum ELSE 0 END AS blpc, CASE WHEN st.stockType = '隔离仓' THEN sto.inStockNum ELSE 0 END AS wsc, CASE WHEN week(sto.operateTime) = :weekInput
-						AND st.stockType = '不良品仓' THEN sto.inStockNum ELSE 0 END AS weekInput, CASE WHEN MONTH(sto.operateTime) = :inputMonth
-						AND st.stockType = '不良品仓' THEN sto.inStockNum ELSE 0 END AS monthInput, sto.*
+			SELECT CASE WHEN st.stockType = '不良品仓' THEN sto.inStockNum ELSE 0 END AS blpc,
+					CASE WHEN st.stockType = '隔离仓' THEN sto.inStockNum ELSE 0 END AS wsc,
+					CASE WHEN week(sto.operateTime) = :weekInput AND st.stockType = '不良品仓' THEN sto.inStockNum ELSE 0 END AS weekInput,
+					CASE WHEN MONTH(sto.operateTime) = :inputMonth AND st.stockType = '不良品仓' THEN sto.inStockNum ELSE 0 END AS monthInput, sto.*
 			FROM bo_akl_MM_inStockInfo   AS sto
+			left join bo_akl_line_start as lis on lis.batchNum=sto.batchNo
 			LEFT JOIN bo_akl_MM_stockType st ON st.id = sto.stockTypeId
+			where YEAR(lis.startClassesTime)=:inputYear and MONTH(lis.startClassesTime)=:inputMonth and DAYOFMONTH(lis.startClassesTime)=:inputDay
 			) AS ins
 		LEFT JOIN bo_akl_MM_materialInfo AS mat ON ins.materialId = mat.id
 		LEFT JOIN bo_akl_EM_productInfo AS ep ON mat.materialNo = ep.prNo
-		WHERE MONTH(ins.operateTime) = :inputMonth
-			AND YEAR(ins.operateTime) =:inputYear
-			AND DAYOFMONTH(ins.operateTime) = :inputDay
-			AND mat.materialType = '成品' and mat.projectNo=:projectName
+		WHERE  mat.materialType = '成品' and mat.projectNo=:projectName
 		GROUP BY mat.materialNo,
 		mat.mPrice,
 		ep.prName,
 		ep.boxPartsNum,
 		ep.badGoal,
+		ep.badGoal2,
+		ep.badGoal3,
+		ep.badGoal4,
 		mat.materialType
 		) AS bn
 	WHERE bn.materialNo IS NOT NULL
 	) cs
 LEFT JOIN bo_akl_LM_printProductLabel AS pl ON cs.materialNo = pl.materialNo
-GROUP BY cs.badGoal, cs.weekPriceSum, cs.monthPriceSum, cs.materialNo, cs.blpcbadNum, cs.price, cs.prName, cs.monthInput, cs.weekInput, cs.glcbadNum, cs.materialType, cs.boxPartsNum
+GROUP BY cs.badGoal,cs.badGoal2,cs.badGoal3,cs.badGoal4, cs.weekPriceSum, cs.monthPriceSum, cs.materialNo, cs.blpcbadNum, cs.price, cs.prName, cs.monthInput, cs.weekInput, cs.glcbadNum, cs.materialType, cs.boxPartsNum
 ]]></VSql>
   <Columns>
     <Column id="Column_0" code="rate" name="" dataType="number" length="" precision="">
@@ -48,43 +81,52 @@ GROUP BY cs.badGoal, cs.weekPriceSum, cs.monthPriceSum, cs.materialNo, cs.blpcba
     <Column id="Column_1" code="badGoal" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_2" code="pcount" name="" dataType="integer" length="" precision="">
+    <Column id="Column_2" code="badGoal2" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_3" code="weekPriceSum" name="" dataType="number" length="" precision="">
+    <Column id="Column_3" code="badGoal3" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_4" code="monthPriceSum" name="" dataType="number" length="" precision="">
+    <Column id="Column_4" code="badGoal4" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_5" code="materialNo" name="" dataType="char" length="" precision="">
+    <Column id="Column_5" code="pcount" name="" dataType="integer" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_6" code="blpcbadNum" name="" dataType="number" length="" precision="">
+    <Column id="Column_6" code="weekPriceSum" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_7" code="price" name="" dataType="number" length="" precision="">
+    <Column id="Column_7" code="monthPriceSum" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_8" code="prName" name="" dataType="char" length="" precision="">
+    <Column id="Column_8" code="materialNo" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_9" code="priceSum" name="" dataType="number" length="" precision="">
+    <Column id="Column_9" code="blpcbadNum" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_10" code="monthInput" name="" dataType="number" length="" precision="">
+    <Column id="Column_10" code="price" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_11" code="weekInput" name="" dataType="number" length="" precision="">
+    <Column id="Column_11" code="prName" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_12" code="glcbadNum" name="" dataType="number" length="" precision="">
+    <Column id="Column_12" code="priceSum" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_13" code="materialType" name="" dataType="char" length="" precision="">
+    <Column id="Column_13" code="monthInput" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_14" code="pullTest" name="" dataType="integer" length="" precision="">
+    <Column id="Column_14" code="weekInput" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_15" code="glcbadNum" name="" dataType="number" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_16" code="materialType" name="" dataType="char" length="" precision="">
+      <Remark></Remark>
+    </Column>
+    <Column id="Column_17" code="pullTest" name="" dataType="integer" length="" precision="">
       <Remark></Remark>
     </Column>
   </Columns>
@@ -111,15 +153,18 @@ GROUP BY cs.badGoal, cs.weekPriceSum, cs.monthPriceSum, cs.materialNo, cs.blpcba
     </Param>
   </Params>
   <DataItems>
-    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="503" />
-    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="513" />
-    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="539" />
-    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="561" />
-    <DataItem type="Table" key="bo_akl_LM_printProductLabel" tokenIndexes="698" />
-    <DataItem type="QueryParam" key="weekInput" tokenIndexes="425" />
-    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="468,591" />
-    <DataItem type="QueryParam" key="inputYear" tokenIndexes="604" />
-    <DataItem type="QueryParam" key="inputDay" tokenIndexes="618" />
-    <DataItem type="QueryParam" key="projectName" tokenIndexes="637" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="567" />
+    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="557" />
+    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="587" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="649" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="671" />
+    <DataItem type="Table" key="bo_akl_LM_printProductLabel" tokenIndexes="782" />
+    <DataItem type="TableField" key="bo_akl_line_start.batchNum" tokenIndexes="577" />
+    <DataItem type="TableField" key="bo_akl_line_start.startClassesTime" tokenIndexes="609,621,633" />
+    <DataItem type="QueryParam" key="weekInput" tokenIndexes="479" />
+    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="522,625" />
+    <DataItem type="QueryParam" key="inputYear" tokenIndexes="613" />
+    <DataItem type="QueryParam" key="inputDay" tokenIndexes="637" />
+    <DataItem type="QueryParam" key="projectName" tokenIndexes="706" />
   </DataItems>
 </Query>

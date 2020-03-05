@@ -3,48 +3,49 @@
   <Creator><![CDATA[liub]]></Creator>
   <CreationTime><![CDATA[2019-04-03 09:49:10]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-12-04 15:16:22]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-03-04 15:14:57]]></ModificationTime>
   <VSql><![CDATA[SELECT A.*, B.materialNo
 FROM bo_akl_line_materialConfirm A
-LEFT JOIN bo_akl_MM_materialInfo B ON A.materialId = b.id]]></VSql>
+LEFT JOIN bo_akl_MM_materialInfo B ON A.materialId = b.id
+order by B.materialNo asc ,A.operateTime desc]]></VSql>
   <Columns>
     <Column id="Column_0" code="materialNo" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_1" code="removeNum" name="" dataType="integer" length="" precision="">
+    <Column id="Column_1" code="id" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_2" code="id" name="" dataType="char" length="" precision="">
+    <Column id="Column_2" code="materialId" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_3" code="materialId" name="" dataType="char" length="" precision="">
+    <Column id="Column_3" code="stockTypeId" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_4" code="stockTypeId" name="" dataType="char" length="" precision="">
+    <Column id="Column_4" code="num" name="" dataType="number" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_5" code="num" name="" dataType="number" length="" precision="">
+    <Column id="Column_5" code="batchNo" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_6" code="batchNo" name="" dataType="char" length="" precision="">
+    <Column id="Column_6" code="operateTime" name="" dataType="longDate" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_7" code="operateTime" name="" dataType="longDate" length="" precision="">
+    <Column id="Column_7" code="regionId" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_8" code="regionId" name="" dataType="char" length="" precision="">
+    <Column id="Column_8" code="startId" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_9" code="startId" name="" dataType="char" length="" precision="">
+    <Column id="Column_9" code="qrCodeInfo" name="" dataType="char" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_10" code="qrCodeInfo" name="" dataType="char" length="" precision="">
+    <Column id="Column_10" code="isInsulate" name="" dataType="integer" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_11" code="isInsulate" name="" dataType="integer" length="" precision="">
+    <Column id="Column_11" code="returnNum" name="" dataType="integer" length="" precision="">
       <Remark></Remark>
     </Column>
-    <Column id="Column_12" code="returnNum" name="" dataType="integer" length="" precision="">
+    <Column id="Column_12" code="removeNum" name="" dataType="integer" length="" precision="">
       <Remark></Remark>
     </Column>
   </Columns>
@@ -52,11 +53,12 @@ LEFT JOIN bo_akl_MM_materialInfo B ON A.materialId = b.id]]></VSql>
   <DataItems>
     <DataItem type="Table" key="bo_akl_line_materialConfirm" tokenIndexes="13" />
     <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="21" />
-    <DataItem type="Query" key="B" tokenIndexes="7,23" />
-    <DataItem type="Query" key="A" tokenIndexes="15,27" />
+    <DataItem type="Query" key="B" tokenIndexes="7,23,41" />
+    <DataItem type="Query" key="A" tokenIndexes="15,27,48" />
     <DataItem type="Query" key="b" tokenIndexes="33" />
-    <DataItem type="QueryField" key="B.materialNo" tokenIndexes="9" />
+    <DataItem type="QueryField" key="B.materialNo" tokenIndexes="9,43" />
     <DataItem type="QueryField" key="A.materialId" tokenIndexes="29" />
     <DataItem type="QueryField" key="b.id" tokenIndexes="35" />
+    <DataItem type="QueryField" key="A.operateTime" tokenIndexes="50" />
   </DataItems>
 </Query>

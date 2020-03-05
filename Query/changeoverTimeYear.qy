@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-10-23 11:44:30]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-10-23 14:02:29]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-02-02 19:35:45]]></ModificationTime>
   <VSql><![CDATA[
 select md.tyear, --年份
 ROUND(cha.opdiff*60/31/12,2) as opdiff --换型时间(分钟/天)
@@ -20,10 +20,13 @@ left join (
 					24 as hours
 					from bo_akl_line_operation as opert 
 					right join bo_akl_line_start as lineSt on lineSt.id=opert.lid
+					left join bo_akl_base_productlines as pline on pline.id=lineSt.prolineId
+					left join bo_akl_base_projectInfo as poj on poj.id=pline.belongProject
 					where 
-					lineSt.prolineName=:prNo
+					lineSt.prolineName=:prNo and poj.pName=:projectName
 					group by opert.lid
-			)as opema group by opema.tyear) as cha on md.tyear=cha.tyear]]></VSql>
+			)as opema group by opema.tyear) as cha on md.tyear=cha.tyear
+			order by md.tyear asc]]></VSql>
   <Columns>
     <Column id="Column_0" code="tyear" name="" dataType="integer" length="" precision="">
       <Remark></Remark>
@@ -37,16 +40,28 @@ left join (
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
+    <Param code="projectName" name="项目名称" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
   </Params>
   <DataItems>
     <DataItem type="Table" key="baseYear" tokenIndexes="31" />
     <DataItem type="Table" key="bo_akl_line_operation" tokenIndexes="176" />
     <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="186" />
-    <DataItem type="TableField" key="baseYear.tyear" tokenIndexes="5,241" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="206" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="226" />
+    <DataItem type="TableField" key="baseYear.tyear" tokenIndexes="5,290,302" />
     <DataItem type="TableField" key="bo_akl_line_operation.opTime" tokenIndexes="116,124,160" />
-    <DataItem type="TableField" key="bo_akl_line_operation.lid" tokenIndexes="151,200,217" />
+    <DataItem type="TableField" key="bo_akl_line_operation.lid" tokenIndexes="151,200,266" />
     <DataItem type="TableField" key="bo_akl_line_start.id" tokenIndexes="196" />
-    <DataItem type="TableField" key="bo_akl_line_start.prolineName" tokenIndexes="206" />
-    <DataItem type="QueryParam" key="prNo" tokenIndexes="209" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="216" />
+    <DataItem type="TableField" key="bo_akl_line_start.prolineId" tokenIndexes="220" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="236" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="240" />
+    <DataItem type="TableField" key="bo_akl_line_start.prolineName" tokenIndexes="246" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.pName" tokenIndexes="255" />
+    <DataItem type="QueryParam" key="prNo" tokenIndexes="249" />
+    <DataItem type="QueryParam" key="projectName" tokenIndexes="258" />
   </DataItems>
 </Query>

@@ -3,20 +3,23 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-10-22 17:15:21]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-10-23 09:30:50]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-02-02 19:29:52]]></ModificationTime>
   <VSql><![CDATA[select mad.tday,rep.rhour*60 as rhour from monthDay as mad 
 left join (
 		select 
 		DAYOFMONTH(rd.startDate) as tday,-- 日期 day
 		SUM(rd.repairTime) as rhour  -- 维修时长
 		from bo_akl_EM_maintainRecord as rd 
-		where 
-		YEAR(rd.startDate)=:inputYear and 
-		MONTH(rd.startDate)= :inputMonth AND
+		left join bo_akl_base_productlines as pline on pline.pNo=rd.pNo
+		left join bo_akl_base_projectInfo as poj on poj.id=pline.belongProject
+		where rd.startDate>=:startTime and rd.startDate<=:endTime and poj.pName=:projectName
+		--YEAR(rd.startDate)=:inputYear and 
+		--MONTH(rd.startDate)= :inputMonth AND
 		rd.equipCode=:equNo AND
 		rd.pNo= :prNo
 		group by DAYOFMONTH(rd.startDate) 
-	)as rep on rep.tday=mad.tday]]></VSql>
+	)as rep on rep.tday=mad.tday
+	order by mad.tday asc ]]></VSql>
   <Columns>
     <Column id="Column_0" code="tday" name="" dataType="integer" length="" precision="">
       <Remark></Remark>
@@ -26,14 +29,6 @@ left join (
     </Column>
   </Columns>
   <Params>
-    <Param code="inputYear" name="" dataType="integer">
-      <InitValue><![CDATA[]]></InitValue>
-      <Remark><![CDATA[]]></Remark>
-    </Param>
-    <Param code="inputMonth" name="" dataType="integer">
-      <InitValue><![CDATA[]]></InitValue>
-      <Remark><![CDATA[]]></Remark>
-    </Param>
     <Param code="equNo" name="设备编号" dataType="char">
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
@@ -42,18 +37,37 @@ left join (
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
+    <Param code="startTime" name="开始时间" dataType="date">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="endTime" name="结束时间" dataType="date">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="projectName" name="项目名称" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
   </Params>
   <DataItems>
     <DataItem type="Table" key="monthDay" tokenIndexes="18" />
     <DataItem type="Table" key="bo_akl_EM_maintainRecord" tokenIndexes="60" />
-    <DataItem type="TableField" key="monthDay.tday" tokenIndexes="4,134" />
-    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.startDate" tokenIndexes="36,72,84,118" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="70" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="90" />
+    <DataItem type="TableField" key="monthDay.tday" tokenIndexes="4,178,186" />
+    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.startDate" tokenIndexes="36,110,119,162" />
     <DataItem type="TableField" key="bo_akl_EM_maintainRecord.repairTime" tokenIndexes="49" />
-    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.equipCode" tokenIndexes="95" />
-    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.pNo" tokenIndexes="104" />
-    <DataItem type="QueryParam" key="inputYear" tokenIndexes="76" />
-    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="89" />
-    <DataItem type="QueryParam" key="equNo" tokenIndexes="98" />
-    <DataItem type="QueryParam" key="prNo" tokenIndexes="108" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="80" />
+    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.pNo" tokenIndexes="84,148" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="100" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="104" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.pName" tokenIndexes="128" />
+    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.equipCode" tokenIndexes="139" />
+    <DataItem type="QueryParam" key="startTime" tokenIndexes="113" />
+    <DataItem type="QueryParam" key="endTime" tokenIndexes="122" />
+    <DataItem type="QueryParam" key="projectName" tokenIndexes="131" />
+    <DataItem type="QueryParam" key="equNo" tokenIndexes="142" />
+    <DataItem type="QueryParam" key="prNo" tokenIndexes="152" />
   </DataItems>
 </Query>

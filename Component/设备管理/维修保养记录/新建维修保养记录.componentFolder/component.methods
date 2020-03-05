@@ -254,7 +254,7 @@
   <evaluateRule code="BR_CheckUnique1" />
   <if isEnabled="True" isDebug="False" code="IfCode1">
     <define>
-      <expression>BR_OUT.BR_CheckUnique1.isUnique==True</expression>
+      <expression>True</expression>
       <remark></remark>
     </define>
     <sequence>
@@ -283,21 +283,28 @@
   </else>
 ]]></MethodChain>
     <RuleInstances>
-      <RuleInstance ruleCode="CheckUnique" ruleName="前后台唯一性检查" instanceCode="BR_CheckUnique1" instanceName="前后台唯一性检查" isNeedLog="False" isEnabled="True" isDebug="False">
+      <RuleInstance ruleCode="CheckUnique" ruleName="前后台唯一性检查" instanceCode="BR_CheckUnique1" instanceName="前后台唯一性检查" isNeedLog="False" isEnabled="False" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
         <RuleConfig><![CDATA[{"isBackgroudCheck":true,"entityName":"bo_akl_base_tending","tableName":"bo_akl_base_tending","isAutoSelectRepeatRow":false,"checkFields":[{"entityFiled":"bo_akl_base_tending.eqNo","tableField":"bo_akl_base_tending.eqNo"}],"dsWhere":null}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><IsBackgroudCheck>true</IsBackgroudCheck><EntityName>bo_akl_base_tending</EntityName><TableName>bo_akl_base_tending</TableName><IsAutoSelectRepeatRow>false</IsAutoSelectRepeatRow><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition></dtMaster><dtCheckFields><EntityField>bo_akl_base_tending.eqNo</EntityField><TableField>bo_akl_base_tending.eqNo</TableField></dtCheckFields></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-12-16 14:46:10">
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage2" instanceName="显示设置的提示信息_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"已存在相同的设备编号\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"已存在相同的设备编号"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
         <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_base_tending.cycle","colValue":"bo_akl_base_tending.cycle","valueType":"entityField"},{"colName":"bo_akl_base_tending.eqName","colValue":"bo_akl_base_tending.eqName","valueType":"entityField"},{"colName":"bo_akl_base_tending.eqNo","colValue":"bo_akl_base_tending.eqNo","valueType":"entityField"},{"colName":"bo_akl_base_tending.equipId","colValue":"bo_akl_base_tending.equipId","valueType":"entityField"},{"colName":"bo_akl_base_tending.id","colValue":"bo_akl_base_tending.id","valueType":"entityField"},{"colName":"bo_akl_base_tending.tDate","colValue":"bo_akl_base_tending.tDate","valueType":"entityField"},{"colName":"bo_akl_base_tending.operator","colValue":"bo_akl_base_tending.operator","valueType":"entityField"},{"colName":"bo_akl_base_tending.operatorCode","colValue":"bo_akl_base_tending.operatorCode","valueType":"entityField"},{"colName":"bo_akl_base_tending.realEndTime","colValue":"bo_akl_base_tending.realEndTime","valueType":"entityField"},{"colName":"bo_akl_base_tending.realStartTime","colValue":"bo_akl_base_tending.realStartTime","valueType":"entityField"}],"dataSource":"bo_akl_base_tending","dataSourceType":"window","destTab":"bo_akl_base_tending","isSaveAll":false,"isFieldAutoMapping":false},{"dataMap":[{"colName":"bo_akl_base_tendingInfo.checkProject","colValue":"bo_akl_base_tendingInfo.checkProject","valueType":"entityField"},{"colName":"bo_akl_base_tendingInfo.employeeId","colValue":"bo_akl_base_tendingInfo.employeeId","valueType":"entityField"},{"colName":"bo_akl_base_tendingInfo.id","colValue":"bo_akl_base_tendingInfo.id","valueType":"entityField"},{"colName":"bo_akl_base_tendingInfo.planId","colValue":"bo_akl_base_tendingInfo.planId","valueType":"entityField"},{"colName":"bo_akl_base_tendingInfo.tContent","colValue":"bo_akl_base_tendingInfo.tContent","valueType":"entityField"},{"colName":"bo_akl_base_tendingInfo.tendingMainId","colValue":"bo_akl_base_tendingInfo.tendingMainId","valueType":"entityField"},{"colName":"bo_akl_base_tendingInfo.tRecord","colValue":"bo_akl_base_tendingInfo.tRecord","valueType":"entityField"},{"colName":"bo_akl_base_tendingInfo.tStatus","colValue":"bo_akl_base_tendingInfo.tStatus","valueType":"entityField"},{"colName":"bo_akl_base_tendingInfo.useMen","colValue":"bo_akl_base_tendingInfo.useMen","valueType":"entityField"}],"dataSource":"bo_akl_base_tendingInfo","dataSourceType":"window","destTab":"bo_akl_base_tendingInfo","isSaveAll":false,"isFieldAutoMapping":false}],"treeStruct":null}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>ea5f127fc9a04e58bc0b86e6b9ba1044</ID><SourceName>bo_akl_base_tending</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_base_tending(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_base_tending</TableName></dtMaster><dtMaster><ID>9ec62ba513a4489ba49c1e44a26cf1a9</ID><SourceName>bo_akl_base_tendingInfo</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_base_tendingInfo(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_base_tendingInfo</TableName></dtMaster><dtDetails><PID>ea5f127fc9a04e58bc0b86e6b9ba1044</PID><SourceField>bo_akl_base_tending.cycle</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_tending.cycle</Value></dtDetails><dtDetails><PID>ea5f127fc9a04e58bc0b86e6b9ba1044</PID><SourceField>bo_akl_base_tending.eqName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_tending.eqName</Value></dtDetails><dtDetails><PID>ea5f127fc9a04e58bc0b86e6b9ba1044</PID><SourceField>bo_akl_base_tending.eqNo</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_tending.eqNo</Value></dtDetails><dtDetails><PID>ea5f127fc9a04e58bc0b86e6b9ba1044</PID><SourceField>bo_akl_base_tending.equipId</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_tending.equipId</Value></dtDetails><dtDetails><PID>ea5f127fc9a04e58bc0b86e6b9ba1044</PID><SourceField>bo_akl_base_tending.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_tending.id</Value></dtDetails><dtDetails><PID>ea5f127fc9a04e58bc0b86e6b9ba1044</PID><SourceField>bo_akl_base_tending.tDate</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_tending.tDate</Value></dtDetails><dtDetails><PID>9ec62ba513a4489ba49c1e44a26cf1a9</PID><SourceField>bo_akl_base_tendingInfo.checkProject</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_tendingInfo.checkProject</Value></dtDetails><dtDetails><PID>9ec62ba513a4489ba49c1e44a26cf1a9</PID><SourceField>bo_akl_base_tendingInfo.employeeId</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_tendingInfo.employeeId</Value></dtDetails><dtDetails><PID>9ec62ba513a4489ba49c1e44a26cf1a9</PID><SourceField>bo_akl_base_tendingInfo.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_tendingInfo.id</Value></dtDetails><dtDetails><PID>9ec62ba513a4489ba49c1e44a26cf1a9</PID><SourceField>bo_akl_base_tendingInfo.planId</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_tendingInfo.planId</Value></dtDetails><dtDetails><PID>9ec62ba513a4489ba49c1e44a26cf1a9</PID><SourceField>bo_akl_base_tendingInfo.tContent</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_tendingInfo.tContent</Value></dtDetails><dtDetails><PID>9ec62ba513a4489ba49c1e44a26cf1a9</PID><SourceField>bo_akl_base_tendingInfo.tendingMainId</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_tendingInfo.tendingMainId</Value></dtDetails><dtDetails><PID>9ec62ba513a4489ba49c1e44a26cf1a9</PID><SourceField>bo_akl_base_tendingInfo.tRecord</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_tendingInfo.tRecord</Value></dtDetails><dtDetails><PID>9ec62ba513a4489ba49c1e44a26cf1a9</PID><SourceField>bo_akl_base_tendingInfo.tStatus</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_tendingInfo.tStatus</Value></dtDetails><dtDetails><PID>9ec62ba513a4489ba49c1e44a26cf1a9</PID><SourceField>bo_akl_base_tendingInfo.useMen</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_tendingInfo.useMen</Value></dtDetails><dtDetails><PID>ea5f127fc9a04e58bc0b86e6b9ba1044</PID><SourceField>bo_akl_base_tending.operator</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_tending.operator</Value></dtDetails><dtDetails><PID>ea5f127fc9a04e58bc0b86e6b9ba1044</PID><SourceField>bo_akl_base_tending.operatorCode</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_tending.operatorCode</Value></dtDetails><dtDetails><PID>ea5f127fc9a04e58bc0b86e6b9ba1044</PID><SourceField>bo_akl_base_tending.realEndTime</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_tending.realEndTime</Value></dtDetails><dtDetails><PID>ea5f127fc9a04e58bc0b86e6b9ba1044</PID><SourceField>bo_akl_base_tending.realStartTime</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_tending.realStartTime</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="False" isDebug="False">
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
@@ -324,13 +331,6 @@
         <DebugCondition><![CDATA[]]></DebugCondition>
         <RuleConfig><![CDATA[{"fieldList":[{"field":"bo_akl_base_tending.eqNo","fieldName":"设备编号"},{"field":"bo_akl_base_tending.eqName","fieldName":"设备名称"},{"field":"bo_akl_base_tending.operator","fieldName":"操作人"}],"type":"0"}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtColumn><Code>bo_akl_base_tending.eqNo</Code><Name>设备编号</Name></dtColumn><dtColumn><Code>bo_akl_base_tending.eqName</Code><Name>设备名称</Name></dtColumn><dtColumn><Code>bo_akl_base_tending.operator</Code><Name>操作人</Name></dtColumn><dtType><Type>0</Type></dtType></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage2" instanceName="显示设置的提示信息_1" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"已存在相同的设备编号\"","type":"1"}}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"已存在相同的设备编号"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
     </RuleInstances>
   </Method>
@@ -405,19 +405,19 @@
         <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"newTending_FormLoadAction","isParallelism":"False"},"invokeParams":null,"returnMapping":null}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>newTending_FormLoadAction</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage2" instanceName="显示设置的提示信息_1" isNeedLog="False" isEnabled="False" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"已存在相同的设备编号\"","type":"1"}}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"已存在相同的设备编号"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
       <RuleInstance ruleCode="CheckRequired" ruleName="必填项检查" instanceCode="BR_CheckRequired1" instanceName="必填项检查" isNeedLog="False" isEnabled="False" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
         <RuleConfig><![CDATA[{"fieldList":[{"field":"bo_akl_base_tending.eqNo","fieldName":"设备编号"},{"field":"bo_akl_base_tending.eqName","fieldName":"设备名称"}],"type":"0"}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtColumn><Code>bo_akl_base_tending.eqNo</Code><Name>设备编号</Name></dtColumn><dtColumn><Code>bo_akl_base_tending.eqName</Code><Name>设备名称</Name></dtColumn><dtType><Type>0</Type></dtType></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage2" instanceName="显示设置的提示信息_1" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"已存在相同的设备编号\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"已存在相同的设备编号"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
     </RuleInstances>
   </Method>
@@ -474,6 +474,48 @@
         <DebugCondition><![CDATA[]]></DebugCondition>
         <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"newTending_FormLoadAction","isParallelism":"False"},"invokeParams":null,"returnMapping":null}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>newTending_FormLoadAction</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+  </Method>
+  <Method Code="cycleComboBox_OnValueChanged" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DeleteListSelectRow1" />
+  <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
+  <foreach isEnabled="True" isDebug="False" code="ForeachCode1">
+    <define>
+      <varCode>i</varCode>
+      <entityType>window</entityType>
+      <entityCode>bo_akl_EM_EIMaintenancePlan</entityCode>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_AddTableRecord1" />
+    </sequence>
+  </foreach>
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow1" instanceName="删除实体记录" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2020-03-04 16:27:27">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"True","deleteType":"1","TableName":"bo_akl_base_tendingInfo","EntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition>True</Condition><DeleteType>1</DeleteType><TableName>bo_akl_base_tendingInfo</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2020-03-04 16:35:16">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_EM_EIMaintenancePlan.equipInfoId","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"@equipId","valueType":"9"},{"columnType":"1","field":"bo_akl_EM_EIMaintenancePlan.cycle","fieldType":"char","leftBracket":"(","logicOperation":"and","operation":"=","rightBracket":")","value":"CC.cycleComboBox.Value","valueType":"9"}],"entityType":"window","entityName":"bo_akl_EM_EIMaintenancePlan","isFieldAutoMapping":false,"itemqueryparam":null,"items":[{"destName":"bo_akl_EM_EIMaintenancePlan.cycle","sourceName":"bo_akl_EM_EIMaintenancePlan.cycle","type":"entityField"},{"destName":"bo_akl_EM_EIMaintenancePlan.equipInfoId","sourceName":"bo_akl_EM_EIMaintenancePlan.equipInfoId","type":"entityField"},{"destName":"bo_akl_EM_EIMaintenancePlan.id","sourceName":"bo_akl_EM_EIMaintenancePlan.id","type":"entityField"},{"destName":"bo_akl_EM_EIMaintenancePlan.inspectionProject","sourceName":"bo_akl_EM_EIMaintenancePlan.inspectionProject","type":"entityField"},{"destName":"bo_akl_EM_EIMaintenancePlan.maintenanceContent","sourceName":"bo_akl_EM_EIMaintenancePlan.maintenanceContent","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_EM_EIMaintenancePlan","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_EM_EIMaintenancePlan</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_EM_EIMaintenancePlan</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_EM_EIMaintenancePlan.equipInfoId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>@equipId</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_EM_EIMaintenancePlan.cycle</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>and</logicOperation><operation>=</operation><rightBracket>)</rightBracket><value>CC.cycleComboBox.Value</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>6a69f612e4a443379ea076beea8c8219</ID><DataLoad /><IsFieldAutoMapping>False</IsFieldAutoMapping></dtEntityRelation><dtEntityColumnRelation><MasterID>6a69f612e4a443379ea076beea8c8219</MasterID><DestName>bo_akl_EM_EIMaintenancePlan.cycle</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EIMaintenancePlan.cycle</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>6a69f612e4a443379ea076beea8c8219</MasterID><DestName>bo_akl_EM_EIMaintenancePlan.equipInfoId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EIMaintenancePlan.equipInfoId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>6a69f612e4a443379ea076beea8c8219</MasterID><DestName>bo_akl_EM_EIMaintenancePlan.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EIMaintenancePlan.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>6a69f612e4a443379ea076beea8c8219</MasterID><DestName>bo_akl_EM_EIMaintenancePlan.inspectionProject</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EIMaintenancePlan.inspectionProject</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>6a69f612e4a443379ea076beea8c8219</MasterID><DestName>bo_akl_EM_EIMaintenancePlan.maintenanceContent</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_EIMaintenancePlan.maintenanceContent</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>6a69f612e4a443379ea076beea8c8219</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>6a69f612e4a443379ea076beea8c8219</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1" instanceName="新增实体记录" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2020-03-04 16:27:35">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"3","Mappings":[{"destField":"bo_akl_base_tendingInfo.planId","fieldtype":"expression","srcField":"LV.i.id"},{"destField":"bo_akl_base_tendingInfo.checkProject","fieldtype":"expression","srcField":"LV.i.inspectionProject"},{"destField":"bo_akl_base_tendingInfo.tContent","fieldtype":"expression","srcField":"LV.i.maintenanceContent"},{"destField":"bo_akl_base_tendingInfo.useMen","fieldtype":"expression","srcField":"\"未分配\""},{"destField":"bo_akl_base_tendingInfo.tendingMainId","fieldtype":"expression","srcField":"[bo_akl_base_tending].[id]"}],"TableType":"window","TableName":"bo_akl_base_tendingInfo","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><Location>3</Location><EntityType>window</EntityType><EntityName>bo_akl_base_tendingInfo</EntityName></dtMaster><dtEntityColumns><DestName>bo_akl_base_tendingInfo.planId</DestName><SourceType>expression</SourceType><SourceName>LV.i.id</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_base_tendingInfo.checkProject</DestName><SourceType>expression</SourceType><SourceName>LV.i.inspectionProject</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_base_tendingInfo.tContent</DestName><SourceType>expression</SourceType><SourceName>LV.i.maintenanceContent</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_base_tendingInfo.useMen</DestName><SourceType>expression</SourceType><SourceName>"未分配"</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_base_tendingInfo.tendingMainId</DestName><SourceType>expression</SourceType><SourceName>[bo_akl_base_tending].[id]</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
     </RuleInstances>
   </Method>

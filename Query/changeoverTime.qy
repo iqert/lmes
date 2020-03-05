@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-10-23 09:46:28]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-10-23 14:02:12]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-02-02 19:35:51]]></ModificationTime>
   <VSql><![CDATA[select md.tday,--天数
 cha.opdiff*60 as opdiff --换型时间（分钟/天）
 from monthDay as md
@@ -16,12 +16,13 @@ left join (
 					opert.lid,DAYOFMONTH(MIN(opert.opTime))as tday
 					from bo_akl_line_operation as opert 
 					right join bo_akl_line_start as lineSt on lineSt.id=opert.lid
-					where 
-					YEAR(opert.opTime)=:inputYear and 
-					MONTH(opert.opTime)=:inputMonth and
-					lineSt.prolineName=:prNo
+					left join bo_akl_base_productlines as pline on pline.id=lineSt.prolineId
+					left join bo_akl_base_projectInfo as poj on poj.id=pline.belongProject
+					where opert.opTime<=:startTime and opert.opTime<=:endTime and
+					lineSt.prolineName=:prNo and poj.pName=:projectName
 					group by opert.lid
-			)as opema group by opema.tday) as cha on md.tday=cha.tday]]></VSql>
+			)as opema group by opema.tday) as cha on md.tday=cha.tday
+			order by md.tday asc]]></VSql>
   <Columns>
     <Column id="Column_0" code="tday" name="" dataType="integer" length="" precision="">
       <Remark></Remark>
@@ -31,15 +32,19 @@ left join (
     </Column>
   </Columns>
   <Params>
-    <Param code="inputYear" name="" dataType="integer">
-      <InitValue><![CDATA[]]></InitValue>
-      <Remark><![CDATA[]]></Remark>
-    </Param>
-    <Param code="inputMonth" name="" dataType="integer">
-      <InitValue><![CDATA[]]></InitValue>
-      <Remark><![CDATA[]]></Remark>
-    </Param>
     <Param code="prNo" name="产线编号" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="startTime" name="开始时间" dataType="date">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="endTime" name="结束时间" dataType="date">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="projectName" name="项目名称" dataType="char">
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
@@ -48,13 +53,21 @@ left join (
     <DataItem type="Table" key="monthDay" tokenIndexes="20" />
     <DataItem type="Table" key="bo_akl_line_operation" tokenIndexes="144" />
     <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="154" />
-    <DataItem type="TableField" key="monthDay.tday" tokenIndexes="4,233" />
-    <DataItem type="TableField" key="bo_akl_line_operation.opTime" tokenIndexes="95,102,135,176,188" />
-    <DataItem type="TableField" key="bo_akl_line_operation.lid" tokenIndexes="127,168,209" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="174" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="194" />
+    <DataItem type="TableField" key="monthDay.tday" tokenIndexes="4,276,288" />
+    <DataItem type="TableField" key="bo_akl_line_operation.opTime" tokenIndexes="95,102,135,214,223" />
+    <DataItem type="TableField" key="bo_akl_line_operation.lid" tokenIndexes="127,168,252" />
     <DataItem type="TableField" key="bo_akl_line_start.id" tokenIndexes="164" />
-    <DataItem type="TableField" key="bo_akl_line_start.prolineName" tokenIndexes="198" />
-    <DataItem type="QueryParam" key="inputYear" tokenIndexes="180" />
-    <DataItem type="QueryParam" key="inputMonth" tokenIndexes="192" />
-    <DataItem type="QueryParam" key="prNo" tokenIndexes="201" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="184" />
+    <DataItem type="TableField" key="bo_akl_line_start.prolineId" tokenIndexes="188" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="204" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="208" />
+    <DataItem type="TableField" key="bo_akl_line_start.prolineName" tokenIndexes="232" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.pName" tokenIndexes="241" />
+    <DataItem type="QueryParam" key="startTime" tokenIndexes="217" />
+    <DataItem type="QueryParam" key="endTime" tokenIndexes="226" />
+    <DataItem type="QueryParam" key="prNo" tokenIndexes="235" />
+    <DataItem type="QueryParam" key="projectName" tokenIndexes="244" />
   </DataItems>
 </Query>

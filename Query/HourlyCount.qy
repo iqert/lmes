@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-10-19 10:37:56]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-12-19 00:41:19]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-02-02 20:01:24]]></ModificationTime>
   <VSql><![CDATA[SELECT lpl.materialNo, --产品名称
 	ep.standardWorkingHours, --节拍时间(秒)
 	case when ep.OEE>0 and ep.OEE<=100  then ROUND(lpl.csps*100/ep.OEE,0) else 0 end as oeeP, --计划产量oee为100
@@ -21,9 +21,11 @@ FROM (
 			HOUR(sto.operateTime) as thour
 			FROM bo_akl_MM_inStockInfo AS sto
 			LEFT JOIN bo_akl_MM_stockType AS st ON st.id = sto.stockTypeId
+			left join bo_akl_line_start as lis on lis.batchNum=sto.batchNo
+			left join bo_akl_base_productlines as pd on pd.id=lis.prolineId
 			left JOIN bo_akl_MM_materialInfo AS mat ON sto.materialId = mat.id
 			where st.stockType = '成品仓' 
-			and mat.materialNo = :pNo
+			and pd.pNo=:plineNo
 			and YEAR(sto.operateTime)=:inputyear 
 			and MONTH(sto.operateTime)=:inputmonth 
 			and DAYOFMONTH(sto.operateTime)=:inputday
@@ -34,12 +36,14 @@ LEFT JOIN bo_akl_EM_productInfo AS ep ON lpl.materialNo = ep.prNo
 LEFT JOIN (
 	SELECT SUM(stoo.cpc) AS allcsps
 	FROM (
-		SELECT CASE WHEN st.stockType = '成品仓' THEN sto.inStockNum ELSE 0 END AS cpc, sto.materialId
+		SELECT CASE WHEN st.stockType = '成品仓' THEN sto.inStockNum ELSE 0 END AS cpc, sto.batchNo,sto.materialId
 		FROM bo_akl_MM_inStockInfo AS sto
 		LEFT JOIN bo_akl_MM_stockType AS st ON st.id = sto.stockTypeId
 		) AS stoo
+	left join bo_akl_line_start as lis on lis.batchNum=stoo.batchNo
+	left join bo_akl_base_productlines as pd on pd.id=lis.prolineId
 	RIGHT JOIN bo_akl_MM_materialInfo AS mat ON stoo.materialId = mat.id
-	WHERE mat.materialNo = :pNo
+	WHERE pd.pNo=:plineNo
 	GROUP BY mat.materialNo
 	) AS cassum ON 1 = 1
 ]]></VSql>
@@ -76,21 +80,27 @@ LEFT JOIN (
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
-    <Param code="pNo" name="产品名称" dataType="char">
+    <Param code="plineNo" name="产线编号" dataType="char">
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
   </Params>
   <DataItems>
     <DataItem type="Table" key="baseHour" tokenIndexes="146" />
-    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="190,416" />
-    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="200,426" />
-    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="222,454" />
-    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="338" />
-    <DataItem type="TableField" key="baseHour.thour" tokenIndexes="326" />
-    <DataItem type="QueryParam" key="pNo" tokenIndexes="259,481" />
-    <DataItem type="QueryParam" key="inputyear" tokenIndexes="271" />
-    <DataItem type="QueryParam" key="inputmonth" tokenIndexes="283" />
-    <DataItem type="QueryParam" key="inputday" tokenIndexes="295" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="222,496" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="242,516" />
+    <DataItem type="Table" key="bo_akl_MM_inStockInfo" tokenIndexes="190,458" />
+    <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="200,468" />
+    <DataItem type="Table" key="bo_akl_MM_materialInfo" tokenIndexes="262,536" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="376" />
+    <DataItem type="TableField" key="bo_akl_line_start.batchNum" tokenIndexes="232,506" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="252,526" />
+    <DataItem type="TableField" key="bo_akl_line_start.prolineId" tokenIndexes="256,530" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="294,558" />
+    <DataItem type="TableField" key="baseHour.thour" tokenIndexes="364" />
+    <DataItem type="QueryParam" key="plineNo" tokenIndexes="297,561" />
+    <DataItem type="QueryParam" key="inputyear" tokenIndexes="309" />
+    <DataItem type="QueryParam" key="inputmonth" tokenIndexes="321" />
+    <DataItem type="QueryParam" key="inputday" tokenIndexes="333" />
   </DataItems>
 </Query>

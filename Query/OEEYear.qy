@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-10-25 15:56:16]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-12-06 09:26:12]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-02-02 19:45:14]]></ModificationTime>
   <VSql><![CDATA[select 
 	md.tyear, --天数
 	oees.OEE, --oee
@@ -78,10 +78,11 @@ from baseYear as md
 			left join bo_akl_base_projectInfo as pj on pj.id=pli.belongProject
 			where
 			ep.prLine=:prlineNo
-			--pj.pName='小项目'
+			and pj.pName=:projectName
 			--where YEAR(sto.operateTime)=:inputYear and week(sto.operateTime)=:inputWeek
 			group by stt.tyear
-		) as std on std.tyear=md.tyear) as pros on pros.tyear=md.tyear]]></VSql>
+		) as std on std.tyear=md.tyear) as pros on pros.tyear=md.tyear
+		order by md.tyear asc ]]></VSql>
   <Columns>
     <Column id="Column_0" code="tyear" name="" dataType="integer" length="" precision="">
       <Remark></Remark>
@@ -125,6 +126,10 @@ from baseYear as md
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
+    <Param code="projectName" name="项目名称" dataType="char">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
   </Params>
   <DataItems>
     <DataItem type="Table" key="baseYear" tokenIndexes="267,707" />
@@ -137,7 +142,7 @@ from baseYear as md
     <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="930" />
     <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="950" />
     <DataItem type="Table" key="bo_akl_MM_stockType" tokenIndexes="866" />
-    <DataItem type="TableField" key="baseYear.tyear" tokenIndexes="4,681,693,1001,1016" />
+    <DataItem type="TableField" key="baseYear.tyear" tokenIndexes="4,681,693,1008,1023,1031" />
     <DataItem type="TableField" key="bo_akl_line_operation.opTime" tokenIndexes="461,468,502" />
     <DataItem type="TableField" key="bo_akl_line_operation.lid" tokenIndexes="493,567,624" />
     <DataItem type="TableField" key="stopLineStartInput.repairTime" tokenIndexes="513,644" />
@@ -160,6 +165,8 @@ from baseYear as md
     <DataItem type="TableField" key="bo_akl_EM_productInfo.prLine" tokenIndexes="944,970" />
     <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="960" />
     <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="964" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.pName" tokenIndexes="979" />
     <DataItem type="QueryParam" key="prlineNo" tokenIndexes="616,973" />
+    <DataItem type="QueryParam" key="projectName" tokenIndexes="982" />
   </DataItems>
 </Query>

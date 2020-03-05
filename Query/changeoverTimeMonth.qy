@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-10-23 11:08:14]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-10-23 14:02:19]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-02-02 19:35:05]]></ModificationTime>
   <VSql><![CDATA[select md.tmonth, --维修时间(分钟/天)
 ROUND(cha.opdiff*60/31,2) as opdiff --换型时间(分钟/天)
 from baseMonth as md
@@ -18,11 +18,14 @@ left join (
 					24 as hours
 					from bo_akl_line_operation as opert 
 					right join bo_akl_line_start as lineSt on lineSt.id=opert.lid
-					where 
-					YEAR(opert.opTime)=:inputYear and 
-					lineSt.prolineName=:prNo
+					left join bo_akl_base_productlines as pline on pline.id=lineSt.prolineId
+					left join bo_akl_base_projectInfo as poj on poj.id=pline.belongProject
+					where  opert.opTime<=:startTime and opert.opTime<=:endTime and
+					--YEAR(opert.opTime)=:inputYear and 
+					lineSt.prolineName=:prNo and poj.pName=:projectName
 					group by opert.lid
-			)as opema group by opema.tmonth) as cha on md.tmonth=cha.tmonth]]></VSql>
+			)as opema group by opema.tmonth) as cha on md.tmonth=cha.tmonth
+			order by md.tmonth asc]]></VSql>
   <Columns>
     <Column id="Column_0" code="tmonth" name="" dataType="integer" length="" precision="">
       <Remark></Remark>
@@ -36,7 +39,15 @@ left join (
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
-    <Param code="inputYear" name="" dataType="integer">
+    <Param code="startTime" name="开始时间" dataType="date">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="endTime" name="结束时间" dataType="date">
+      <InitValue><![CDATA[]]></InitValue>
+      <Remark><![CDATA[]]></Remark>
+    </Param>
+    <Param code="projectName" name="项目名称" dataType="char">
       <InitValue><![CDATA[]]></InitValue>
       <Remark><![CDATA[]]></Remark>
     </Param>
@@ -45,12 +56,21 @@ left join (
     <DataItem type="Table" key="baseMonth" tokenIndexes="28" />
     <DataItem type="Table" key="bo_akl_line_operation" tokenIndexes="170" />
     <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="180" />
-    <DataItem type="TableField" key="baseMonth.tmonth" tokenIndexes="4,247" />
-    <DataItem type="TableField" key="bo_akl_line_operation.opTime" tokenIndexes="113,121,154,202" />
-    <DataItem type="TableField" key="bo_akl_line_operation.lid" tokenIndexes="146,194,223" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="200" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="220" />
+    <DataItem type="TableField" key="baseMonth.tmonth" tokenIndexes="4,304,316" />
+    <DataItem type="TableField" key="bo_akl_line_operation.opTime" tokenIndexes="113,121,154,240,249" />
+    <DataItem type="TableField" key="bo_akl_line_operation.lid" tokenIndexes="146,194,280" />
     <DataItem type="TableField" key="bo_akl_line_start.id" tokenIndexes="190" />
-    <DataItem type="TableField" key="bo_akl_line_start.prolineName" tokenIndexes="212" />
-    <DataItem type="QueryParam" key="inputYear" tokenIndexes="206" />
-    <DataItem type="QueryParam" key="prNo" tokenIndexes="215" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="210" />
+    <DataItem type="TableField" key="bo_akl_line_start.prolineId" tokenIndexes="214" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="230" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="234" />
+    <DataItem type="TableField" key="bo_akl_line_start.prolineName" tokenIndexes="260" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.pName" tokenIndexes="269" />
+    <DataItem type="QueryParam" key="startTime" tokenIndexes="243" />
+    <DataItem type="QueryParam" key="endTime" tokenIndexes="252" />
+    <DataItem type="QueryParam" key="prNo" tokenIndexes="263" />
+    <DataItem type="QueryParam" key="projectName" tokenIndexes="272" />
   </DataItems>
 </Query>
