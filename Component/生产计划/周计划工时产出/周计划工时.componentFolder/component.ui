@@ -3,9 +3,10 @@
     <property name="Width"><![CDATA[960]]></property>
     <property name="Height"><![CDATA[450]]></property>
     <property name="HeightSet"><![CDATA[StaticHeight]]></property>
-    <property name="LayoutType"><![CDATA[None]]></property>
+    <property name="LayoutType"><![CDATA[BorderLayout]]></property>
     <property name="TableName"><![CDATA[]]></property>
     <property name="FormLoadAction"><![CDATA[form21_FormLoadAction]]></property>
+    <property name="ResizeAction"><![CDATA[]]></property>
     <property name="FormCloseAction"><![CDATA[]]></property>
     <property name="FormClosingAction"><![CDATA[]]></property>
     <property name="BackColor"><![CDATA[]]></property>
@@ -15,22 +16,28 @@
     <property name="WindowState"><![CDATA[Normal]]></property>
     <property name="MaximizeBox"><![CDATA[True]]></property>
     <property name="RefResources"><![CDATA[]]></property>
+    <property name="ControlDocInfo"><![CDATA[]]></property>
+    <property name="ThemeVar"><![CDATA[]]></property>
   </propertys>
   <controls>
-    <JGButton Code="JGButton1" LabelText="查询" Left="514" OnClick="JGButton1_OnClick" PercentHeight="5.8%" PercentWidth="8.3%" TabIndex="12" Top="29" Width="80" />
-    <JGDateTimePicker Code="JGDateTimePicker1" ColumnName="firstDate" LabelText="第一周第一天" Left="10" PercentHeight="5.8%" PercentWidth="24.5%" TabIndex="12" TableName="firstWeekOfYear" Top="29" />
-    <JGIntegerBox Code="JGIntegerBox1" LabelText="周次" Left="260" PercentHeight="5.8%" PercentWidth="24.5%" TabIndex="10" Top="29" Value="0" />
-    <JGDataGrid Code="JGDataGrid1" FetchMode="paged" Height="367" LabelText="列表" Left="10" PercentHeight="81.6%" PercentWidth="97.7%" TabIndex="0" TableName="bo_akl_MM_workingHourOutput" Top="70" Width="938">
-      <JGTextBoxColumn Code="JGTextBoxColumn1" ColumnName="day1_mode" LabelText="第一天生产模式" TableName="bo_akl_MM_workingHourOutput" />
-      <JGTextBoxColumn Code="JGTextBoxColumn2" ColumnName="day2_mode" LabelText="第二天生产模式" TableName="bo_akl_MM_workingHourOutput" />
-      <JGTextBoxColumn Code="JGTextBoxColumn3" ColumnName="day3_mode" LabelText="第三天生产模式" TableName="bo_akl_MM_workingHourOutput" />
-      <JGTextBoxColumn Code="JGTextBoxColumn4" ColumnName="day4_mode" LabelText="第四天生产模式" TableName="bo_akl_MM_workingHourOutput" />
-      <JGTextBoxColumn Code="JGTextBoxColumn5" ColumnName="day5_mode" LabelText="第五天生产模式" TableName="bo_akl_MM_workingHourOutput" />
-      <JGTextBoxColumn Code="JGTextBoxColumn6" ColumnName="day6_mode" LabelText="第六天生产模式" TableName="bo_akl_MM_workingHourOutput" />
-      <JGTextBoxColumn Code="JGTextBoxColumn7" ColumnName="day7_mode" LabelText="第七天生产模式" TableName="bo_akl_MM_workingHourOutput" />
-      <JGFloatBoxColumn Code="JGFloatBoxColumn1" ColumnName="summary_mode" LabelText="汇总/H" TableName="bo_akl_MM_workingHourOutput" />
-      <JGFloatBoxColumn Code="JGFloatBoxColumn2" ColumnName="goal_mode" LabelText="目标需求工时/H" TableName="bo_akl_MM_workingHourOutput" />
-    </JGDataGrid>
+    <JGPanel Code="JGPanel2" Height="410" Width="960" PercentHeight="91.1%" PercentWidth="100%" Top="40" TabIndex="14" Dock="Fill" LayoutType="BorderLayout" MultiHeight="100px" MultiWidth="200px">
+      <JGDataGrid Code="JGDataGrid1" LabelText="列表" Width="960" Height="410" PercentHeight="100%" PercentWidth="100%" TabIndex="0" Dock="Fill" FetchMode="paged" RowWidthMode="PercentWidth" TableName="bo_akl_MM_workingHourOutput" MultiHeight="0px" MultiWidth="0px">
+        <JGTextBoxColumn Code="JGTextBoxColumn1" ColumnName="day1_mode" LabelText="第一天生产模式" TableName="bo_akl_MM_workingHourOutput" />
+        <JGTextBoxColumn Code="JGTextBoxColumn2" ColumnName="day2_mode" LabelText="第二天生产模式" TableName="bo_akl_MM_workingHourOutput" />
+        <JGTextBoxColumn Code="JGTextBoxColumn3" ColumnName="day3_mode" LabelText="第三天生产模式" TableName="bo_akl_MM_workingHourOutput" />
+        <JGTextBoxColumn Code="JGTextBoxColumn4" ColumnName="day4_mode" LabelText="第四天生产模式" TableName="bo_akl_MM_workingHourOutput" />
+        <JGTextBoxColumn Code="JGTextBoxColumn5" ColumnName="day5_mode" LabelText="第五天生产模式" TableName="bo_akl_MM_workingHourOutput" />
+        <JGTextBoxColumn Code="JGTextBoxColumn6" ColumnName="day6_mode" LabelText="第六天生产模式" TableName="bo_akl_MM_workingHourOutput" />
+        <JGTextBoxColumn Code="JGTextBoxColumn7" ColumnName="day7_mode" LabelText="第七天生产模式" TableName="bo_akl_MM_workingHourOutput" />
+        <JGFloatBoxColumn Code="JGFloatBoxColumn1" ColumnName="summary_mode" LabelText="汇总/H" TableName="bo_akl_MM_workingHourOutput" />
+        <JGFloatBoxColumn Code="JGFloatBoxColumn2" ColumnName="goal_mode" LabelText="目标需求工时/H" TableName="bo_akl_MM_workingHourOutput" />
+      </JGDataGrid>
+    </JGPanel>
+    <JGPanel Code="JGPanel1" Height="40" Width="960" PercentHeight="8.9%" PercentWidth="100%" TabIndex="13" Dock="Top" LayoutType="BorderLayout" MultiHeight="100px" MultiWidth="200px">
+      <JGIntegerBox Code="JGIntegerBox1" LabelText="周次" PercentHeight="65%" PercentWidth="24.5%" Top="10" Left="260" TabIndex="10" Value="0" MultiHeight="0px" MultiWidth="0px" />
+      <JGDateTimePicker Code="JGDateTimePicker1" LabelText="第一周第一天" PercentHeight="65%" PercentWidth="24.5%" Top="10" Left="10" TabIndex="12" TableName="firstWeekOfYear" ColumnName="firstDate" MultiHeight="0px" MultiWidth="0px" />
+      <JGButton Code="JGButton1" LabelText="查询" Width="80" PercentHeight="65%" PercentWidth="8.3%" Top="10" Left="514" TabIndex="12" OnClick="JGButton1_OnClick" MultiHeight="0px" MultiWidth="0px" />
+    </JGPanel>
   </controls>
   <outputs />
   <inputs />
