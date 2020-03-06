@@ -3,7 +3,7 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-12-09 00:11:53]]></CreationTime>
   <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2020-01-11 15:23:52]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-03-05 11:19:23]]></ModificationTime>
   <VSql><![CDATA[select 
 	equNo,--设备编号
 	proNo, --产线编号
@@ -62,6 +62,20 @@ union all
 	left join bo_akl_base_productlines as proline on proline.equNo=eqm.equipNo
 	left join bo_akl_base_projectInfo as pji on proline.belongProject=pji.id 
 	where emf.upkeepDate>:startTime and emf.upkeepDate<:endTime and pji.pName=:projectName
+union all
+select 
+	eqm.equipNo as equNo,
+	proline.pNo as proNo,
+	eqm.equipName as equName,
+	'' as NewValue,
+	'' as OldValue,
+	case when isOp=1 then '完成维修保养要求' else '推送了维修保养要求' end as rec,
+	emf.tDate as timeP
+	 from bo_akl_base_tending as emf 
+	left join bo_akl_EM_EquipmentInformation as eqm on eqm.id=emf.equipId
+	left join bo_akl_base_productlines as proline on proline.equNo=eqm.equipNo
+	left join bo_akl_base_projectInfo as pji on proline.belongProject=pji.id 
+	where emf.tDate>:startTime and emf.tDate<:endTime and pji.pName=:projectName
 union all
 	select 
 	eqm.equipNo as equNo,
@@ -162,37 +176,39 @@ union all
   </Params>
   <DataItems>
     <DataItem type="Table" key="MyExchange_Journal" tokenIndexes="153" />
-    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="163,336,509,682,856,1030,1217" />
-    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="183,356,529,702,876,1050,1237" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="163,336,509,682,855,1029,1203,1390" />
+    <DataItem type="Table" key="bo_akl_base_projectInfo" tokenIndexes="183,356,529,702,875,1049,1223,1410" />
     <DataItem type="Table" key="bo_akl_EM_mouldLifeUpkeepRec" tokenIndexes="306" />
-    <DataItem type="Table" key="bo_akl_EM_EquipmentInformation" tokenIndexes="316,489,662,836,1010,1197" />
+    <DataItem type="Table" key="bo_akl_EM_EquipmentInformation" tokenIndexes="316,489,662,835,1009,1183,1370" />
     <DataItem type="Table" key="bo_akl_EM_mouldDayUpkeepRec" tokenIndexes="479" />
-    <DataItem type="Table" key="bo_akl_EM_publicEquUpkeepRec" tokenIndexes="652" />
-    <DataItem type="Table" key="bo_akl_EM_infoEquUpkeepRec" tokenIndexes="826" />
-    <DataItem type="Table" key="bo_akl_EM_toolequUpkeepRec" tokenIndexes="1000" />
-    <DataItem type="Table" key="bo_akl_EM_maintainRecord" tokenIndexes="1187" />
+    <DataItem type="Table" key="bo_akl_base_tending" tokenIndexes="652" />
+    <DataItem type="Table" key="bo_akl_EM_publicEquUpkeepRec" tokenIndexes="825" />
+    <DataItem type="Table" key="bo_akl_EM_infoEquUpkeepRec" tokenIndexes="999" />
+    <DataItem type="Table" key="bo_akl_EM_toolequUpkeepRec" tokenIndexes="1173" />
+    <DataItem type="Table" key="bo_akl_EM_maintainRecord" tokenIndexes="1360" />
     <DataItem type="TableField" key="MyExchange_Journal.Name1" tokenIndexes="81,177" />
     <DataItem type="TableField" key="MyExchange_Journal.Name2" tokenIndexes="92" />
     <DataItem type="TableField" key="MyExchange_Journal.NewValue" tokenIndexes="104" />
     <DataItem type="TableField" key="MyExchange_Journal.OldValue" tokenIndexes="120" />
     <DataItem type="TableField" key="MyExchange_Journal.Record" tokenIndexes="133" />
     <DataItem type="TableField" key="MyExchange_Journal.Timepoint" tokenIndexes="143,203,212" />
-    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="173,243,416,589,762,936,1227" />
-    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="193,366,539,712,886,1060,1247" />
-    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="197,370,543,716,890,1064,1251" />
-    <DataItem type="TableField" key="bo_akl_base_projectInfo.pName" tokenIndexes="221,394,567,740,914,1088,1275" />
-    <DataItem type="TableField" key="bo_akl_EM_EquipmentInformation.equipNo" tokenIndexes="234,350,407,523,580,696,753,870,927,1044,1207" />
-    <DataItem type="TableField" key="bo_akl_EM_EquipmentInformation.equipName" tokenIndexes="252,425,598,771,945,1119" />
-    <DataItem type="TableField" key="bo_akl_EM_mouldLifeUpkeepRec.upkeepDate" tokenIndexes="298,376,385,471,549,558,644,722,731,818,896,905,992,1070,1079" />
-    <DataItem type="TableField" key="bo_akl_EM_EquipmentInformation.id" tokenIndexes="326,499,672,846,1020" />
-    <DataItem type="TableField" key="bo_akl_EM_mouldLifeUpkeepRec.equipId" tokenIndexes="330,503,676,850,1024" />
-    <DataItem type="TableField" key="bo_akl_base_productlines.equNo" tokenIndexes="346,519,692,866,1040" />
-    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.equipCode" tokenIndexes="1101,1211" />
-    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.pNo" tokenIndexes="1110,1231" />
-    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.repairType" tokenIndexes="1146,1158" />
-    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.startDate" tokenIndexes="1179,1257,1266" />
-    <DataItem type="QueryParam" key="startTime" tokenIndexes="206,379,552,725,899,1073,1260" />
-    <DataItem type="QueryParam" key="endTime" tokenIndexes="215,388,561,734,908,1082,1269" />
-    <DataItem type="QueryParam" key="projectName" tokenIndexes="224,397,570,743,917,1091,1278" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.pNo" tokenIndexes="173,243,416,589,762,935,1109,1400" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.belongProject" tokenIndexes="193,366,539,712,885,1059,1233,1420" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.id" tokenIndexes="197,370,543,716,889,1063,1237,1424" />
+    <DataItem type="TableField" key="bo_akl_base_projectInfo.pName" tokenIndexes="221,394,567,740,913,1087,1261,1448" />
+    <DataItem type="TableField" key="bo_akl_EM_EquipmentInformation.equipNo" tokenIndexes="234,350,407,523,580,696,753,869,926,1043,1100,1217,1380" />
+    <DataItem type="TableField" key="bo_akl_EM_EquipmentInformation.equipName" tokenIndexes="252,425,598,771,944,1118,1292" />
+    <DataItem type="TableField" key="bo_akl_EM_mouldLifeUpkeepRec.upkeepDate" tokenIndexes="298,376,385,471,549,558,817,895,904,991,1069,1078,1165,1243,1252" />
+    <DataItem type="TableField" key="bo_akl_EM_EquipmentInformation.id" tokenIndexes="326,499,672,845,1019,1193" />
+    <DataItem type="TableField" key="bo_akl_EM_mouldLifeUpkeepRec.equipId" tokenIndexes="330,503,676,849,1023,1197" />
+    <DataItem type="TableField" key="bo_akl_base_productlines.equNo" tokenIndexes="346,519,692,865,1039,1213" />
+    <DataItem type="TableField" key="bo_akl_EM_mouldLifeUpkeepRec.tDate" tokenIndexes="644,722,731" />
+    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.equipCode" tokenIndexes="1274,1384" />
+    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.pNo" tokenIndexes="1283,1404" />
+    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.repairType" tokenIndexes="1319,1331" />
+    <DataItem type="TableField" key="bo_akl_EM_maintainRecord.startDate" tokenIndexes="1352,1430,1439" />
+    <DataItem type="QueryParam" key="startTime" tokenIndexes="206,379,552,725,898,1072,1246,1433" />
+    <DataItem type="QueryParam" key="endTime" tokenIndexes="215,388,561,734,907,1081,1255,1442" />
+    <DataItem type="QueryParam" key="projectName" tokenIndexes="224,397,570,743,916,1090,1264,1451" />
   </DataItems>
 </Query>
