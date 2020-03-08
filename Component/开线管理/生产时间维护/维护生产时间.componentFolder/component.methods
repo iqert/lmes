@@ -19,6 +19,8 @@
           <remark></remark>
         </define>
         <sequence>
+          <evaluateRule code="BR_SetEntityVarControlValue3" />
+          <evaluateRule code="BR_SetEntityVarControlValue4" />
           <evaluateRule code="BR_UpdateRecord1" />
           <evaluateRule code="BR_SetEntityVarControlValue2" />
           <evaluateRule code="BR_SetEntityVarControlValue1" />
@@ -44,14 +46,40 @@
         <RuleConfig><![CDATA[{"isBackgroudCheck":true,"entityName":"bo_akl_base_productiontime","tableName":"bo_akl_base_productiontime","isAutoSelectRepeatRow":false,"checkFields":[{"entityFiled":"bo_akl_base_productiontime.title","tableField":"bo_akl_base_productiontime.title"}],"dsWhere":null}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><IsBackgroudCheck>true</IsBackgroudCheck><EntityName>bo_akl_base_productiontime</EntityName><TableName>bo_akl_base_productiontime</TableName><IsAutoSelectRepeatRow>false</IsAutoSelectRepeatRow><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition></dtMaster><dtCheckFields><EntityField>bo_akl_base_productiontime.title</EntityField><TableField>bo_akl_base_productiontime.title</TableField></dtCheckFields></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="CheckRequired" ruleName="必填项检查" instanceCode="BR_CheckRequired1" instanceName="必填项检查" isNeedLog="False" isEnabled="True" isDebug="False">
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"fieldList":[{"field":"bo_akl_base_productiontime.title","fieldName":"bo_akl_base_productiontime.title"},{"field":"bo_akl_base_productiontime.dayEndH","fieldName":"bo_akl_base_productiontime.dayEndH"},{"field":"bo_akl_base_productiontime.dayEndM","fieldName":"bo_akl_base_productiontime.dayEndM"},{"field":"bo_akl_base_productiontime.dayHour","fieldName":"bo_akl_base_productiontime.dayHour"},{"field":"bo_akl_base_productiontime.nightBeginH","fieldName":"bo_akl_base_productiontime.nightBeginH"},{"field":"bo_akl_base_productiontime.nightBeginM","fieldName":"bo_akl_base_productiontime.nightBeginM"},{"field":"bo_akl_base_productiontime.nightEndH","fieldName":"bo_akl_base_productiontime.nightEndH"},{"field":"bo_akl_base_productiontime.nightEndM","fieldName":"bo_akl_base_productiontime.nightEndM"},{"field":"bo_akl_base_productiontime.nightHour","fieldName":"bo_akl_base_productiontime.nightHour"},{"field":"bo_akl_base_productiontime.dayBeginH","fieldName":"bo_akl_base_productiontime.dayBeginH"}],"type":"0"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtColumn><Code>bo_akl_base_productiontime.title</Code><Name>bo_akl_base_productiontime.title</Name></dtColumn><dtColumn><Code>bo_akl_base_productiontime.dayEndH</Code><Name>bo_akl_base_productiontime.dayEndH</Name></dtColumn><dtColumn><Code>bo_akl_base_productiontime.dayEndM</Code><Name>bo_akl_base_productiontime.dayEndM</Name></dtColumn><dtColumn><Code>bo_akl_base_productiontime.dayHour</Code><Name>bo_akl_base_productiontime.dayHour</Name></dtColumn><dtColumn><Code>bo_akl_base_productiontime.nightBeginH</Code><Name>bo_akl_base_productiontime.nightBeginH</Name></dtColumn><dtColumn><Code>bo_akl_base_productiontime.nightBeginM</Code><Name>bo_akl_base_productiontime.nightBeginM</Name></dtColumn><dtColumn><Code>bo_akl_base_productiontime.nightEndH</Code><Name>bo_akl_base_productiontime.nightEndH</Name></dtColumn><dtColumn><Code>bo_akl_base_productiontime.nightEndM</Code><Name>bo_akl_base_productiontime.nightEndM</Name></dtColumn><dtColumn><Code>bo_akl_base_productiontime.nightHour</Code><Name>bo_akl_base_productiontime.nightHour</Name></dtColumn><dtColumn><Code>bo_akl_base_productiontime.dayBeginH</Code><Name>bo_akl_base_productiontime.dayBeginH</Name></dtColumn><dtType><Type>0</Type></dtType></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"已存在相同的生产时间标题\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"已存在相同的生产时间标题"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180828002" lastModifiedTime="2018-11-28 14:17:33">
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3" instanceName="给界面实体/控件/变量赋值_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"otherH","SourceType":"expression","SourceEntityType":"","Source":"([bo_akl_base_productiontime].[dayTime1H_1]-[bo_akl_base_productiontime].[dayTime1H])+\r\n([bo_akl_base_productiontime].[dayTime2H_1]-[bo_akl_base_productiontime].[dayTime2H])+\r\n([bo_akl_base_productiontime].[dayTime3H_1]-[bo_akl_base_productiontime].[dayTime3H])+\r\n([bo_akl_base_productiontime].[dayTime4H_1]-[bo_akl_base_productiontime].[dayTime4H])","entityFieldMapping":null},{"TargetType":"4","Target":"otherM","SourceType":"expression","SourceEntityType":"","Source":"([bo_akl_base_productiontime].[dayTime1M_1]-[bo_akl_base_productiontime].[dayTime1M])+\r\n([bo_akl_base_productiontime].[dayTime2M_1]-[bo_akl_base_productiontime].[dayTime2M])+\r\n([bo_akl_base_productiontime].[dayTime3M_1]-[bo_akl_base_productiontime].[dayTime3M])+\r\n([bo_akl_base_productiontime].[dayTime4M_1]-[bo_akl_base_productiontime].[dayTime4M])","entityFieldMapping":null},{"TargetType":"4","Target":"otherH_n","SourceType":"expression","SourceEntityType":"","Source":"([bo_akl_base_productiontime].[nightTime1H_1]-[bo_akl_base_productiontime].[nightTime1H])+\r\n([bo_akl_base_productiontime].[nightTime2H_1]-[bo_akl_base_productiontime].[nightTime2H])+\r\n([bo_akl_base_productiontime].[nightTime3H_1]-[bo_akl_base_productiontime].[nightTime3H])+\r\n([bo_akl_base_productiontime].[nightTime4H_1]-[bo_akl_base_productiontime].[nightTime4H])","entityFieldMapping":null},{"TargetType":"4","Target":"otherM_n","SourceType":"expression","SourceEntityType":"","Source":"([bo_akl_base_productiontime].[nightTime1M_1]-[bo_akl_base_productiontime].[nightTime1M])+\r\n([bo_akl_base_productiontime].[nightTime2M_1]-[bo_akl_base_productiontime].[nightTime2M])+\r\n([bo_akl_base_productiontime].[nightTime3M_1]-[bo_akl_base_productiontime].[nightTime3M])+\r\n([bo_akl_base_productiontime].[nightTime4M_1]-[bo_akl_base_productiontime].[nightTime4M])","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>otherH</Target><SourceType>expression</SourceType><SourceEntityType /><Source>([bo_akl_base_productiontime].[dayTime1H_1]-[bo_akl_base_productiontime].[dayTime1H])+
+([bo_akl_base_productiontime].[dayTime2H_1]-[bo_akl_base_productiontime].[dayTime2H])+
+([bo_akl_base_productiontime].[dayTime3H_1]-[bo_akl_base_productiontime].[dayTime3H])+
+([bo_akl_base_productiontime].[dayTime4H_1]-[bo_akl_base_productiontime].[dayTime4H])</Source></dtFieldMap><dtFieldMap><TargetType>4</TargetType><Target>otherM</Target><SourceType>expression</SourceType><SourceEntityType /><Source>([bo_akl_base_productiontime].[dayTime1M_1]-[bo_akl_base_productiontime].[dayTime1M])+
+([bo_akl_base_productiontime].[dayTime2M_1]-[bo_akl_base_productiontime].[dayTime2M])+
+([bo_akl_base_productiontime].[dayTime3M_1]-[bo_akl_base_productiontime].[dayTime3M])+
+([bo_akl_base_productiontime].[dayTime4M_1]-[bo_akl_base_productiontime].[dayTime4M])</Source></dtFieldMap><dtFieldMap><TargetType>4</TargetType><Target>otherH_n</Target><SourceType>expression</SourceType><SourceEntityType /><Source>([bo_akl_base_productiontime].[nightTime1H_1]-[bo_akl_base_productiontime].[nightTime1H])+
+([bo_akl_base_productiontime].[nightTime2H_1]-[bo_akl_base_productiontime].[nightTime2H])+
+([bo_akl_base_productiontime].[nightTime3H_1]-[bo_akl_base_productiontime].[nightTime3H])+
+([bo_akl_base_productiontime].[nightTime4H_1]-[bo_akl_base_productiontime].[nightTime4H])</Source></dtFieldMap><dtFieldMap><TargetType>4</TargetType><Target>otherM_n</Target><SourceType>expression</SourceType><SourceEntityType /><Source>([bo_akl_base_productiontime].[nightTime1M_1]-[bo_akl_base_productiontime].[nightTime1M])+
+([bo_akl_base_productiontime].[nightTime2M_1]-[bo_akl_base_productiontime].[nightTime2M])+
+([bo_akl_base_productiontime].[nightTime3M_1]-[bo_akl_base_productiontime].[nightTime3M])+
+([bo_akl_base_productiontime].[nightTime4M_1]-[bo_akl_base_productiontime].[nightTime4M])</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4" instanceName="给界面实体/控件/变量赋值_2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2020-03-06 19:51:29">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_base_productiontime.dayHour","SourceType":"expression","SourceEntityType":"","Source":"12-(BR_VAR_PARENT.otherH+Round(BR_VAR_PARENT.otherM/60,2))","entityFieldMapping":null},{"TargetType":"3","Target":"bo_akl_base_productiontime.nightHour","SourceType":"expression","SourceEntityType":"","Source":"12-(BR_VAR_PARENT.otherH_n+Round(BR_VAR_PARENT.otherM_n/60,2))","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_base_productiontime.dayHour</Target><SourceType>expression</SourceType><SourceEntityType /><Source>12-(BR_VAR_PARENT.otherH+Round(BR_VAR_PARENT.otherM/60,2))</Source></dtFieldMap><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_base_productiontime.nightHour</Target><SourceType>expression</SourceType><SourceEntityType /><Source>12-(BR_VAR_PARENT.otherH_n+Round(BR_VAR_PARENT.otherM_n/60,2))</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
@@ -79,14 +107,20 @@
         <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
+      <RuleInstance ruleCode="CheckRequired" ruleName="必填项检查" instanceCode="BR_CheckRequired1" instanceName="必填项检查" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"已存在相同的生产时间标题\"","type":"1"}}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"已存在相同的生产时间标题"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"fieldList":[{"field":"bo_akl_base_productiontime.title","fieldName":"bo_akl_base_productiontime.title"},{"field":"bo_akl_base_productiontime.dayEndH","fieldName":"bo_akl_base_productiontime.dayEndH"},{"field":"bo_akl_base_productiontime.dayEndM","fieldName":"bo_akl_base_productiontime.dayEndM"},{"field":"bo_akl_base_productiontime.dayHour","fieldName":"bo_akl_base_productiontime.dayHour"},{"field":"bo_akl_base_productiontime.nightBeginH","fieldName":"bo_akl_base_productiontime.nightBeginH"},{"field":"bo_akl_base_productiontime.nightBeginM","fieldName":"bo_akl_base_productiontime.nightBeginM"},{"field":"bo_akl_base_productiontime.nightEndH","fieldName":"bo_akl_base_productiontime.nightEndH"},{"field":"bo_akl_base_productiontime.nightEndM","fieldName":"bo_akl_base_productiontime.nightEndM"},{"field":"bo_akl_base_productiontime.nightHour","fieldName":"bo_akl_base_productiontime.nightHour"},{"field":"bo_akl_base_productiontime.dayBeginH","fieldName":"bo_akl_base_productiontime.dayBeginH"}],"type":"0"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtColumn><Code>bo_akl_base_productiontime.title</Code><Name>bo_akl_base_productiontime.title</Name></dtColumn><dtColumn><Code>bo_akl_base_productiontime.dayEndH</Code><Name>bo_akl_base_productiontime.dayEndH</Name></dtColumn><dtColumn><Code>bo_akl_base_productiontime.dayEndM</Code><Name>bo_akl_base_productiontime.dayEndM</Name></dtColumn><dtColumn><Code>bo_akl_base_productiontime.dayHour</Code><Name>bo_akl_base_productiontime.dayHour</Name></dtColumn><dtColumn><Code>bo_akl_base_productiontime.nightBeginH</Code><Name>bo_akl_base_productiontime.nightBeginH</Name></dtColumn><dtColumn><Code>bo_akl_base_productiontime.nightBeginM</Code><Name>bo_akl_base_productiontime.nightBeginM</Name></dtColumn><dtColumn><Code>bo_akl_base_productiontime.nightEndH</Code><Name>bo_akl_base_productiontime.nightEndH</Name></dtColumn><dtColumn><Code>bo_akl_base_productiontime.nightEndM</Code><Name>bo_akl_base_productiontime.nightEndM</Name></dtColumn><dtColumn><Code>bo_akl_base_productiontime.nightHour</Code><Name>bo_akl_base_productiontime.nightHour</Name></dtColumn><dtColumn><Code>bo_akl_base_productiontime.dayBeginH</Code><Name>bo_akl_base_productiontime.dayBeginH</Name></dtColumn><dtType><Type>0</Type></dtType></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
     </RuleInstances>
+    <Variables>
+      <Variable code="otherH" name="休息时长-白" fieldType="integer" initValue="" isMust="false" desc="" />
+      <Variable code="otherM" name="休息分长-白" fieldType="integer" initValue="" isMust="false" desc="" />
+      <Variable code="otherH_n" name="休息时长-晚" fieldType="integer" initValue="" isMust="false" desc="" />
+      <Variable code="otherM_n" name="休息分长-晚" fieldType="integer" initValue="" isMust="false" desc="" />
+    </Variables>
   </Method>
   <Method Code="productionTimeForm_FormLoadAction" Type="Client" InterfaceType="Local" RestrictType="Private">
     <Description><![CDATA[]]></Description>
