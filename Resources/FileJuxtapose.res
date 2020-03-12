@@ -15,7 +15,7 @@
   <FileReference code="DefaultActivityState_HumanActivityTemplate_Start" Filename="DefaultActivityState_HumanActivityTemplate_Start.gif" ParentDirFullName="ActivityPanel" Desc="" Dimension="64×64" FileSize="2.25" FileFullname="ActivityPanel\DefaultActivityState_HumanActivityTemplate_Start.gif" Updator="liub" UpdateFileDate="06/25/2018 14:42:41" />
   <FileReference code="Fileno_1" Filename="员工信息.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="9.06" FileFullname="员工信息.xlsx" Updator="liub" UpdateFileDate="07/03/2018 16:05:59" />
   <FileReference code="Fileno_2" Filename="产线工站信息.xls" ParentDirFullName="" Desc="" Dimension="" FileSize="30.50" FileFullname="产线工站信息.xls" Updator="liub" UpdateFileDate="07/03/2018 16:22:10" />
-  <FileReference code="Fileno_3" Filename="作业指导书.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="8.98" FileFullname="作业指导书.xlsx" Updator="liub" UpdateFileDate="07/06/2018 13:46:42" />
+  <FileReference code="Fileno_3" Filename="作业指导书.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="8.98" FileFullname="作业指导书.xlsx" Updator="user_20180612007" UpdateFileDate="07/06/2018 13:46:42" />
   <FileReference code="Fileno_4" Filename="通用培训记录.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="8.78" FileFullname="通用培训记录.xlsx" Updator="100466" UpdateFileDate="07/09/2018 14:36:36" />
   <FileReference code="Fileno_5" Filename="样品点检信息.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="8.75" FileFullname="样品点检信息.xlsx" Updator="100466" UpdateFileDate="07/12/2018 09:32:15" />
   <FileReference code="Fileno_6" Filename="开机检测项信息.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="8.72" FileFullname="开机检测项信息.xlsx" Updator="100466" UpdateFileDate="07/12/2018 10:22:19" />
