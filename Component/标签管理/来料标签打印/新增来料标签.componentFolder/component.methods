@@ -21,6 +21,7 @@
     <Description><![CDATA[]]></Description>
     <Remark><![CDATA[]]></Remark>
     <MethodChain><![CDATA[
+  <evaluateRule code="BR_Progress1" />
   <evaluateRule code="BR_CheckRequired1" />
   <if isEnabled="True" isDebug="False" code="IfCode1">
     <define>
@@ -91,17 +92,103 @@
           <evaluateRule code="BR_AddDataBaseRecord1" />
         </sequence>
       </else>
+      <evaluateRule code="BR_Progress2" />
+      <evaluateRule code="BR_ShowMessage2" />
       <evaluateRule code="BR_SelectionConfirm1" />
     </sequence>
   </if>
 ]]></MethodChain>
     <RuleInstances>
+      <RuleInstance ruleCode="Progress" ruleName="进度条显示/隐藏" instanceCode="BR_Progress1" instanceName="进度条显示/隐藏" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"displaytype":"global","display":true,"msgnote":"\"标签正在生成，请稍后\""}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><displaytype>global</displaytype><display>True</display><msgnote>"标签正在生成，请稍后"</msgnote></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
       <RuleInstance ruleCode="CheckRequired" ruleName="必填项检查" instanceCode="BR_CheckRequired1" instanceName="必填项检查" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
         <RuleConfig><![CDATA[{"fieldList":[{"field":"inMaterialLabelInfo.insideBatch","fieldName":"内部批次"},{"field":"inMaterialLabelInfo.materialName","fieldName":"材料名称"},{"field":"inMaterialLabelInfo.materialNo","fieldName":"材料编号"},{"field":"inMaterialLabelInfo.supplierBatch","fieldName":"供应商批次"},{"field":"inMaterialLabelInfo.inSum","fieldName":"总数"},{"field":"inMaterialLabelInfo.num","fieldName":"包装量"}],"type":"0"}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtColumn><Code>inMaterialLabelInfo.insideBatch</Code><Name>内部批次</Name></dtColumn><dtColumn><Code>inMaterialLabelInfo.materialName</Code><Name>材料名称</Name></dtColumn><dtColumn><Code>inMaterialLabelInfo.materialNo</Code><Name>材料编号</Name></dtColumn><dtColumn><Code>inMaterialLabelInfo.supplierBatch</Code><Name>供应商批次</Name></dtColumn><dtColumn><Code>inMaterialLabelInfo.inSum</Code><Name>总数</Name></dtColumn><dtColumn><Code>inMaterialLabelInfo.num</Code><Name>包装量</Name></dtColumn><dtType><Type>0</Type></dtType></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1_2_1" instanceName="新增实体记录_来料子表尾料" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"3","Mappings":[{"destField":"bo_akl_LM_inMaterialLabelSub.deliveryNo","fieldtype":"expression","srcField":"[inMaterialLabelInfo].[deliveryNo]"},{"destField":"bo_akl_LM_inMaterialLabelSub.insideBatch","fieldtype":"expression","srcField":"[inMaterialLabelInfo].[insideBatch]"},{"destField":"bo_akl_LM_inMaterialLabelSub.invoiceNo","fieldtype":"expression","srcField":"[inMaterialLabelInfo].[invoiceNo]"},{"destField":"bo_akl_LM_inMaterialLabelSub.materialName","fieldtype":"expression","srcField":"[inMaterialLabelInfo].[materialName]"},{"destField":"bo_akl_LM_inMaterialLabelSub.materialNo","fieldtype":"expression","srcField":"[inMaterialLabelInfo].[materialNo]"},{"destField":"bo_akl_LM_inMaterialLabelSub.num","fieldtype":"expression","srcField":"BR_VAR_PARENT.surplus"},{"destField":"bo_akl_LM_inMaterialLabelSub.stockType","fieldtype":"expression","srcField":"BR_VAR_PARENT.[bo_akl_MM_stockType].[stockType]"},{"destField":"bo_akl_LM_inMaterialLabelSub.stockTypeId","fieldtype":"expression","srcField":"BR_VAR_PARENT.[bo_akl_MM_stockType].[id]"},{"destField":"bo_akl_LM_inMaterialLabelSub.supplierBatch","fieldtype":"expression","srcField":"[inMaterialLabelInfo].[supplierBatch]"}],"TableType":"window","TableName":"bo_akl_LM_inMaterialLabelSub","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><Location>3</Location><EntityType>window</EntityType><EntityName>bo_akl_LM_inMaterialLabelSub</EntityName></dtMaster><dtEntityColumns><DestName>bo_akl_LM_inMaterialLabelSub.deliveryNo</DestName><SourceType>expression</SourceType><SourceName>[inMaterialLabelInfo].[deliveryNo]</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_LM_inMaterialLabelSub.insideBatch</DestName><SourceType>expression</SourceType><SourceName>[inMaterialLabelInfo].[insideBatch]</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_LM_inMaterialLabelSub.invoiceNo</DestName><SourceType>expression</SourceType><SourceName>[inMaterialLabelInfo].[invoiceNo]</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_LM_inMaterialLabelSub.materialName</DestName><SourceType>expression</SourceType><SourceName>[inMaterialLabelInfo].[materialName]</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_LM_inMaterialLabelSub.materialNo</DestName><SourceType>expression</SourceType><SourceName>[inMaterialLabelInfo].[materialNo]</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_LM_inMaterialLabelSub.num</DestName><SourceType>expression</SourceType><SourceName>BR_VAR_PARENT.surplus</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_LM_inMaterialLabelSub.stockType</DestName><SourceType>expression</SourceType><SourceName>BR_VAR_PARENT.[bo_akl_MM_stockType].[stockType]</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_LM_inMaterialLabelSub.stockTypeId</DestName><SourceType>expression</SourceType><SourceName>BR_VAR_PARENT.[bo_akl_MM_stockType].[id]</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_LM_inMaterialLabelSub.supplierBatch</DestName><SourceType>expression</SourceType><SourceName>[inMaterialLabelInfo].[supplierBatch]</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="GenerateBillCode" ruleName="单据编号生成" instanceCode="BR_GenerateBillCode1_2_1" instanceName="单据编号生成_2_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"content":[{"order":"1","type":"expression","value":"[bo_akl_LM_inMaterialLabelSub].[materialNo]","isReGenerate":true},{"order":"2","type":"expression","value":"\"&\"","isReGenerate":false},{"order":"3","type":"expression","value":"[bo_akl_LM_inMaterialLabelSub].[num]","isReGenerate":false},{"order":"4","type":"expression","value":"\"&\"","isReGenerate":false},{"order":"5","type":"expression","value":"[bo_akl_LM_inMaterialLabelSub].[insideBatch]","isReGenerate":true},{"order":"6","type":"expression","value":"\"&\"","isReGenerate":false},{"order":"7","type":"serialNumber","value":"","isReGenerate":false}],"coverLetter":"0","dataSource":"bo_akl_LM_inMaterialLabelSub","dsColumn":"qrCodeInfo","length":"3","range":"2","isReuseSerialNumber":false,"relationTable":"","relationTableColumn":""}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><EntityTable>bo_akl_LM_inMaterialLabelSub</EntityTable><EntityColumn>qrCodeInfo</EntityColumn><GenerateRange>2</GenerateRange><SerialNumberLength>3</SerialNumberLength><SerialNumberCoverLetter>0</SerialNumberCoverLetter><IsReuseSerialNumber>False</IsReuseSerialNumber></dtMaster><dtDetails><Order>1</Order><SourceType>expression</SourceType><SourceValue>[bo_akl_LM_inMaterialLabelSub].[materialNo]</SourceValue><IsReGenerate>True</IsReGenerate></dtDetails><dtDetails><Order>2</Order><SourceType>expression</SourceType><SourceValue>"&amp;"</SourceValue><IsReGenerate>False</IsReGenerate></dtDetails><dtDetails><Order>3</Order><SourceType>expression</SourceType><SourceValue>[bo_akl_LM_inMaterialLabelSub].[num]</SourceValue><IsReGenerate>False</IsReGenerate></dtDetails><dtDetails><Order>4</Order><SourceType>expression</SourceType><SourceValue>"&amp;"</SourceValue><IsReGenerate>False</IsReGenerate></dtDetails><dtDetails><Order>5</Order><SourceType>expression</SourceType><SourceValue>[bo_akl_LM_inMaterialLabelSub].[insideBatch]</SourceValue><IsReGenerate>True</IsReGenerate></dtDetails><dtDetails><Order>6</Order><SourceType>expression</SourceType><SourceValue>"&amp;"</SourceValue><IsReGenerate>False</IsReGenerate></dtDetails><dtDetails><Order>7</Order><SourceType>serialNumber</SourceType><IsReGenerate>False</IsReGenerate></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ModifyDataBaseRecord" ruleName="修改数据库中的记录" instanceCode="BR_ModifyDataBaseRecord1" instanceName="修改数据库中的记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourcesMapping":[{"condition":[{"columnType":"1","field":"bo_akl_MM_stockInfo.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"[bo_akl_MM_stockInfo].[id]","valueType":"9"}],"dataMap":[{"colName":"bo_akl_MM_stockInfo.stockNum","colValue":"[bo_akl_MM_stockInfo].[stockNum]+[bo_akl_MM_inStockInfo].[inStockNum]","valueType":"expression"}],"dataSource":"bo_akl_MM_stockInfo","opperType":"update"}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><orderNo>1</orderNo><destTableName>bo_akl_MM_stockInfo</destTableName><opperType>update</opperType><condition><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_MM_stockInfo.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>[bo_akl_MM_stockInfo].[id]</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></condition><dtField><![CDATA[<NewDataSet><dtField><destField>bo_akl_MM_stockInfo.stockNum</destField><sourceType>expression</sourceType><sourceField>[bo_akl_MM_stockInfo].[stockNum]+[bo_akl_MM_inStockInfo].[inStockNum]</sourceField></dtField></NewDataSet>]]]]><![CDATA[></dtField></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ClearInterfaceEntityData" ruleName="清除界面实体中的数据" instanceCode="BR_ClearInterfaceEntityData2" instanceName="清除界面实体中的数据_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceNames":[{"name":"bo_akl_MM_stockInfo"}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtColumn><Code>bo_akl_MM_stockInfo</Code></dtColumn></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetLoopVariant" ruleName="给循环变量赋值" instanceCode="BR_SetLoopVariant1_1" instanceName="给循环变量赋值_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Fields":[{"Source":"ConcatStr(LV.pml.qrCodeInfo,\"@\")","SourceType":"expression","LoopVarField":"qrCodeInfo"}],"LoopVar":"pml","LoopEntity":"bo_akl_LM_inMaterialLabelSub","LoopEntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtLoopVar><LoopVar>pml</LoopVar><LoopEntity>bo_akl_LM_inMaterialLabelSub</LoopEntity><LoopEntityType>window</LoopEntityType></dtLoopVar><dtField><LoopVarField>qrCodeInfo</LoopVarField><SourceType>expression</SourceType><Source>ConcatStr(LV.pml.qrCodeInfo,"@")</Source></dtField></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_createQRCode(生成二维码图片)" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"local","ruleLocation":"component","componentCode":"","windowCode":"","ruleSetCode":"createQRCode","isParallelism":"False"},"invokeParams":[{"paramCode":"qrCodeInfo","paramType":"expression","paramValue":"LV.pml.qrCodeInfo","paramSource":"","dataFilterType":"","paramFieldMapping":null}],"returnMapping":[{"destType":"ruleSetVariant","dest":"qrCodeSign","srcType":"returnValue","src":"qrCodeSign","updateDestEntityMethod":"","isCleanDestEntityData":false,"destFieldMapping":null,"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>component</ruleLocation><componentCode /><windowCode /><ruleSetCode>createQRCode</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>qrCodeInfo</paramCode><paramType>expression</paramType><paramValue>LV.pml.qrCodeInfo</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtReturnMapping><destType>ruleSetVariant</destType><dest>qrCodeSign</dest><srcType>returnValue</srcType><src>qrCodeSign</src></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetLoopVariant" ruleName="给循环变量赋值" instanceCode="BR_SetLoopVariant1" instanceName="给循环变量赋值" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Fields":[{"Source":"BR_VAR_PARENT.qrCodeSign","SourceType":"expression","LoopVarField":"qrCodeSign"}],"LoopVar":"pml","LoopEntity":"bo_akl_LM_inMaterialLabelSub","LoopEntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtLoopVar><LoopVar>pml</LoopVar><LoopEntity>bo_akl_LM_inMaterialLabelSub</LoopEntity><LoopEntityType>window</LoopEntityType></dtLoopVar><dtField><LoopVarField>qrCodeSign</LoopVarField><SourceType>expression</SourceType><Source>BR_VAR_PARENT.qrCodeSign</Source></dtField></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"qrCodeSign","SourceType":"expression","SourceEntityType":"","Source":"\"\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>qrCodeSign</Target><SourceType>expression</SourceType><SourceEntityType /><Source>""</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddDataBaseRecord" ruleName="新增数据库记录" instanceCode="BR_AddDataBaseRecord1" instanceName="新增库存信息数据库记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourcesMapping":[{"dataMap":[{"colName":"bo_akl_MM_stockInfo.batchNo","colValue":"[bo_akl_MM_inStockInfo].[batchNo]","valueType":"expression"},{"colName":"bo_akl_MM_stockInfo.materialId","colValue":"[bo_akl_MM_inStockInfo].[materialId]","valueType":"expression"},{"colName":"bo_akl_MM_stockInfo.stockNum","colValue":"[bo_akl_MM_inStockInfo].[inStockNum]","valueType":"expression"},{"colName":"bo_akl_MM_stockInfo.stockTypeId","colValue":"[bo_akl_MM_inStockInfo].[stockTypeId]","valueType":"expression"}],"dataSource":"bo_akl_MM_stockInfo"}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><TableName>bo_akl_MM_stockInfo</TableName><ID>4a940643-dbaa-46d7-b1ec-3ed5565ae976</ID></dtMaster><dtTableColumns><MasterID>4a940643-dbaa-46d7-b1ec-3ed5565ae976</MasterID><TargetField>bo_akl_MM_stockInfo.batchNo</TargetField><ValueType>expression</ValueType><ValueField>[bo_akl_MM_inStockInfo].[batchNo]</ValueField></dtTableColumns><dtTableColumns><MasterID>4a940643-dbaa-46d7-b1ec-3ed5565ae976</MasterID><TargetField>bo_akl_MM_stockInfo.materialId</TargetField><ValueType>expression</ValueType><ValueField>[bo_akl_MM_inStockInfo].[materialId]</ValueField></dtTableColumns><dtTableColumns><MasterID>4a940643-dbaa-46d7-b1ec-3ed5565ae976</MasterID><TargetField>bo_akl_MM_stockInfo.stockNum</TargetField><ValueType>expression</ValueType><ValueField>[bo_akl_MM_inStockInfo].[inStockNum]</ValueField></dtTableColumns><dtTableColumns><MasterID>4a940643-dbaa-46d7-b1ec-3ed5565ae976</MasterID><TargetField>bo_akl_MM_stockInfo.stockTypeId</TargetField><ValueType>expression</ValueType><ValueField>[bo_akl_MM_inStockInfo].[stockTypeId]</ValueField></dtTableColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"3","time":null,"simpleChinesePrompt":{"msgnote":"ConcatStr(\"无此仓库类型：\",[inMaterialLabelInfo].[materialType],\"仓\")","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>3</MsgType><SimpleChinese>ConcatStr("无此仓库类型：",[inMaterialLabelInfo].[materialType],"仓")</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AbortRule" ruleName="中断规则" instanceCode="BR_AbortRule1" instanceName="中断规则" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"abortType":"CURRENT","msgnote":""}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>CURRENT</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
       <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体_仓库类型" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
@@ -180,89 +267,26 @@
         <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":[{"columnType":"1","field":"bo_akl_MM_stockInfo.materialId","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"[bo_akl_MM_inStockInfo].[materialId]","valueType":"9"},{"columnType":"1","field":"bo_akl_MM_stockInfo.stockTypeId","fieldType":"char","leftBracket":"(","logicOperation":"and","operation":"=","rightBracket":")","value":"[bo_akl_MM_inStockInfo].[stockTypeId]","valueType":"9"},{"columnType":"1","field":"bo_akl_MM_stockInfo.batchNo","fieldType":"char","leftBracket":"(","logicOperation":"and","operation":"=","rightBracket":")","value":"[bo_akl_MM_inStockInfo].[batchNo]","valueType":"9"}],"entityType":"window","entityName":"bo_akl_MM_stockInfo","itemqueryparam":null,"items":[{"destName":"bo_akl_MM_stockInfo.batchNo","sourceName":"bo_akl_MM_stockInfo.batchNo","type":"entityField"},{"destName":"bo_akl_MM_stockInfo.id","sourceName":"bo_akl_MM_stockInfo.id","type":"entityField"},{"destName":"bo_akl_MM_stockInfo.materialId","sourceName":"bo_akl_MM_stockInfo.materialId","type":"entityField"},{"destName":"bo_akl_MM_stockInfo.stockNum","sourceName":"bo_akl_MM_stockInfo.stockNum","type":"entityField"},{"destName":"bo_akl_MM_stockInfo.stockTypeId","sourceName":"bo_akl_MM_stockInfo.stockTypeId","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_MM_stockInfo","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_MM_stockInfo</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_MM_stockInfo</SourceName><dsWhere><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_MM_stockInfo.materialId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>[bo_akl_MM_inStockInfo].[materialId]</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_MM_stockInfo.stockTypeId</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>and</logicOperation><operation>=</operation><rightBracket>)</rightBracket><value>[bo_akl_MM_inStockInfo].[stockTypeId]</value><valueType>9</valueType></dtWhere><dtWhere><columnType>1</columnType><field>bo_akl_MM_stockInfo.batchNo</field><fieldType>char</fieldType><leftBracket>(</leftBracket><logicOperation>and</logicOperation><operation>=</operation><rightBracket>)</rightBracket><value>[bo_akl_MM_inStockInfo].[batchNo]</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>2628c9be21454f159e93de0878550f49</ID><DataLoad /></dtEntityRelation><dtEntityColumnRelation><MasterID>2628c9be21454f159e93de0878550f49</MasterID><DestName>bo_akl_MM_stockInfo.batchNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_stockInfo.batchNo</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>2628c9be21454f159e93de0878550f49</MasterID><DestName>bo_akl_MM_stockInfo.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_stockInfo.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>2628c9be21454f159e93de0878550f49</MasterID><DestName>bo_akl_MM_stockInfo.materialId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_stockInfo.materialId</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>2628c9be21454f159e93de0878550f49</MasterID><DestName>bo_akl_MM_stockInfo.stockNum</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_stockInfo.stockNum</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>2628c9be21454f159e93de0878550f49</MasterID><DestName>bo_akl_MM_stockInfo.stockTypeId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_MM_stockInfo.stockTypeId</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>2628c9be21454f159e93de0878550f49</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>2628c9be21454f159e93de0878550f49</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
+      <RuleInstance ruleCode="Progress" ruleName="进度条显示/隐藏" instanceCode="BR_Progress2" instanceName="隐藏进度条" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-03-17 11:03:18">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"displaytype":"global","display":false,"msgnote":""}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><displaytype>global</displaytype><display>False</display><msgnote /></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage2" instanceName="显示设置的提示信息_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-03-17 11:02:56">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"1","simpleChinesePrompt":{"msgnote":"\"标签生成成功\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"标签生成成功"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>1</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
       <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
         <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="AddDataBaseRecord" ruleName="新增数据库记录" instanceCode="BR_AddDataBaseRecord1" instanceName="新增库存信息数据库记录" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"dataSourcesMapping":[{"dataMap":[{"colName":"bo_akl_MM_stockInfo.batchNo","colValue":"[bo_akl_MM_inStockInfo].[batchNo]","valueType":"expression"},{"colName":"bo_akl_MM_stockInfo.materialId","colValue":"[bo_akl_MM_inStockInfo].[materialId]","valueType":"expression"},{"colName":"bo_akl_MM_stockInfo.stockNum","colValue":"[bo_akl_MM_inStockInfo].[inStockNum]","valueType":"expression"},{"colName":"bo_akl_MM_stockInfo.stockTypeId","colValue":"[bo_akl_MM_inStockInfo].[stockTypeId]","valueType":"expression"}],"dataSource":"bo_akl_MM_stockInfo"}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><TableName>bo_akl_MM_stockInfo</TableName><ID>4a940643-dbaa-46d7-b1ec-3ed5565ae976</ID></dtMaster><dtTableColumns><MasterID>4a940643-dbaa-46d7-b1ec-3ed5565ae976</MasterID><TargetField>bo_akl_MM_stockInfo.batchNo</TargetField><ValueType>expression</ValueType><ValueField>[bo_akl_MM_inStockInfo].[batchNo]</ValueField></dtTableColumns><dtTableColumns><MasterID>4a940643-dbaa-46d7-b1ec-3ed5565ae976</MasterID><TargetField>bo_akl_MM_stockInfo.materialId</TargetField><ValueType>expression</ValueType><ValueField>[bo_akl_MM_inStockInfo].[materialId]</ValueField></dtTableColumns><dtTableColumns><MasterID>4a940643-dbaa-46d7-b1ec-3ed5565ae976</MasterID><TargetField>bo_akl_MM_stockInfo.stockNum</TargetField><ValueType>expression</ValueType><ValueField>[bo_akl_MM_inStockInfo].[inStockNum]</ValueField></dtTableColumns><dtTableColumns><MasterID>4a940643-dbaa-46d7-b1ec-3ed5565ae976</MasterID><TargetField>bo_akl_MM_stockInfo.stockTypeId</TargetField><ValueType>expression</ValueType><ValueField>[bo_akl_MM_inStockInfo].[stockTypeId]</ValueField></dtTableColumns></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetLoopVariant" ruleName="给循环变量赋值" instanceCode="BR_SetLoopVariant1_1" instanceName="给循环变量赋值_1" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"Fields":[{"Source":"ConcatStr(LV.pml.qrCodeInfo,\"@\")","SourceType":"expression","LoopVarField":"qrCodeInfo"}],"LoopVar":"pml","LoopEntity":"bo_akl_LM_inMaterialLabelSub","LoopEntityType":"window"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtLoopVar><LoopVar>pml</LoopVar><LoopEntity>bo_akl_LM_inMaterialLabelSub</LoopEntity><LoopEntityType>window</LoopEntityType></dtLoopVar><dtField><LoopVarField>qrCodeInfo</LoopVarField><SourceType>expression</SourceType><Source>ConcatStr(LV.pml.qrCodeInfo,"@")</Source></dtField></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_createQRCode(生成二维码图片)" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"local","ruleLocation":"component","componentCode":"","windowCode":"","ruleSetCode":"createQRCode","isParallelism":"False"},"invokeParams":[{"paramCode":"qrCodeInfo","paramType":"expression","paramValue":"LV.pml.qrCodeInfo","paramSource":"","dataFilterType":"","paramFieldMapping":null}],"returnMapping":[{"destType":"ruleSetVariant","dest":"qrCodeSign","srcType":"returnValue","src":"qrCodeSign","updateDestEntityMethod":"","isCleanDestEntityData":false,"destFieldMapping":null,"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>component</ruleLocation><componentCode /><windowCode /><ruleSetCode>createQRCode</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>qrCodeInfo</paramCode><paramType>expression</paramType><paramValue>LV.pml.qrCodeInfo</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtReturnMapping><destType>ruleSetVariant</destType><dest>qrCodeSign</dest><srcType>returnValue</srcType><src>qrCodeSign</src></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetLoopVariant" ruleName="给循环变量赋值" instanceCode="BR_SetLoopVariant1" instanceName="给循环变量赋值" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"Fields":[{"Source":"BR_VAR_PARENT.qrCodeSign","SourceType":"expression","LoopVarField":"qrCodeSign"}],"LoopVar":"pml","LoopEntity":"bo_akl_LM_inMaterialLabelSub","LoopEntityType":"window"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtLoopVar><LoopVar>pml</LoopVar><LoopEntity>bo_akl_LM_inMaterialLabelSub</LoopEntity><LoopEntityType>window</LoopEntityType></dtLoopVar><dtField><LoopVarField>qrCodeSign</LoopVarField><SourceType>expression</SourceType><Source>BR_VAR_PARENT.qrCodeSign</Source></dtField></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"qrCodeSign","SourceType":"expression","SourceEntityType":"","Source":"\"\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>qrCodeSign</Target><SourceType>expression</SourceType><SourceEntityType /><Source>""</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1_2_1" instanceName="新增实体记录_来料子表尾料" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"AddLocation":"3","Mappings":[{"destField":"bo_akl_LM_inMaterialLabelSub.deliveryNo","fieldtype":"expression","srcField":"[inMaterialLabelInfo].[deliveryNo]"},{"destField":"bo_akl_LM_inMaterialLabelSub.insideBatch","fieldtype":"expression","srcField":"[inMaterialLabelInfo].[insideBatch]"},{"destField":"bo_akl_LM_inMaterialLabelSub.invoiceNo","fieldtype":"expression","srcField":"[inMaterialLabelInfo].[invoiceNo]"},{"destField":"bo_akl_LM_inMaterialLabelSub.materialName","fieldtype":"expression","srcField":"[inMaterialLabelInfo].[materialName]"},{"destField":"bo_akl_LM_inMaterialLabelSub.materialNo","fieldtype":"expression","srcField":"[inMaterialLabelInfo].[materialNo]"},{"destField":"bo_akl_LM_inMaterialLabelSub.num","fieldtype":"expression","srcField":"BR_VAR_PARENT.surplus"},{"destField":"bo_akl_LM_inMaterialLabelSub.stockType","fieldtype":"expression","srcField":"BR_VAR_PARENT.[bo_akl_MM_stockType].[stockType]"},{"destField":"bo_akl_LM_inMaterialLabelSub.stockTypeId","fieldtype":"expression","srcField":"BR_VAR_PARENT.[bo_akl_MM_stockType].[id]"},{"destField":"bo_akl_LM_inMaterialLabelSub.supplierBatch","fieldtype":"expression","srcField":"[inMaterialLabelInfo].[supplierBatch]"}],"TableType":"window","TableName":"bo_akl_LM_inMaterialLabelSub","NumCount":"1"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><Location>3</Location><EntityType>window</EntityType><EntityName>bo_akl_LM_inMaterialLabelSub</EntityName></dtMaster><dtEntityColumns><DestName>bo_akl_LM_inMaterialLabelSub.deliveryNo</DestName><SourceType>expression</SourceType><SourceName>[inMaterialLabelInfo].[deliveryNo]</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_LM_inMaterialLabelSub.insideBatch</DestName><SourceType>expression</SourceType><SourceName>[inMaterialLabelInfo].[insideBatch]</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_LM_inMaterialLabelSub.invoiceNo</DestName><SourceType>expression</SourceType><SourceName>[inMaterialLabelInfo].[invoiceNo]</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_LM_inMaterialLabelSub.materialName</DestName><SourceType>expression</SourceType><SourceName>[inMaterialLabelInfo].[materialName]</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_LM_inMaterialLabelSub.materialNo</DestName><SourceType>expression</SourceType><SourceName>[inMaterialLabelInfo].[materialNo]</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_LM_inMaterialLabelSub.num</DestName><SourceType>expression</SourceType><SourceName>BR_VAR_PARENT.surplus</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_LM_inMaterialLabelSub.stockType</DestName><SourceType>expression</SourceType><SourceName>BR_VAR_PARENT.[bo_akl_MM_stockType].[stockType]</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_LM_inMaterialLabelSub.stockTypeId</DestName><SourceType>expression</SourceType><SourceName>BR_VAR_PARENT.[bo_akl_MM_stockType].[id]</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_LM_inMaterialLabelSub.supplierBatch</DestName><SourceType>expression</SourceType><SourceName>[inMaterialLabelInfo].[supplierBatch]</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="GenerateBillCode" ruleName="单据编号生成" instanceCode="BR_GenerateBillCode1_2_1" instanceName="单据编号生成_2_1" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"content":[{"order":"1","type":"expression","value":"[bo_akl_LM_inMaterialLabelSub].[materialNo]","isReGenerate":true},{"order":"2","type":"expression","value":"\"&\"","isReGenerate":false},{"order":"3","type":"expression","value":"[bo_akl_LM_inMaterialLabelSub].[num]","isReGenerate":false},{"order":"4","type":"expression","value":"\"&\"","isReGenerate":false},{"order":"5","type":"expression","value":"[bo_akl_LM_inMaterialLabelSub].[insideBatch]","isReGenerate":true},{"order":"6","type":"expression","value":"\"&\"","isReGenerate":false},{"order":"7","type":"serialNumber","value":"","isReGenerate":false}],"coverLetter":"0","dataSource":"bo_akl_LM_inMaterialLabelSub","dsColumn":"qrCodeInfo","length":"3","range":"2","isReuseSerialNumber":false,"relationTable":"","relationTableColumn":""}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><EntityTable>bo_akl_LM_inMaterialLabelSub</EntityTable><EntityColumn>qrCodeInfo</EntityColumn><GenerateRange>2</GenerateRange><SerialNumberLength>3</SerialNumberLength><SerialNumberCoverLetter>0</SerialNumberCoverLetter><IsReuseSerialNumber>False</IsReuseSerialNumber></dtMaster><dtDetails><Order>1</Order><SourceType>expression</SourceType><SourceValue>[bo_akl_LM_inMaterialLabelSub].[materialNo]</SourceValue><IsReGenerate>True</IsReGenerate></dtDetails><dtDetails><Order>2</Order><SourceType>expression</SourceType><SourceValue>"&amp;"</SourceValue><IsReGenerate>False</IsReGenerate></dtDetails><dtDetails><Order>3</Order><SourceType>expression</SourceType><SourceValue>[bo_akl_LM_inMaterialLabelSub].[num]</SourceValue><IsReGenerate>False</IsReGenerate></dtDetails><dtDetails><Order>4</Order><SourceType>expression</SourceType><SourceValue>"&amp;"</SourceValue><IsReGenerate>False</IsReGenerate></dtDetails><dtDetails><Order>5</Order><SourceType>expression</SourceType><SourceValue>[bo_akl_LM_inMaterialLabelSub].[insideBatch]</SourceValue><IsReGenerate>True</IsReGenerate></dtDetails><dtDetails><Order>6</Order><SourceType>expression</SourceType><SourceValue>"&amp;"</SourceValue><IsReGenerate>False</IsReGenerate></dtDetails><dtDetails><Order>7</Order><SourceType>serialNumber</SourceType><IsReGenerate>False</IsReGenerate></dtDetails></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="ModifyDataBaseRecord" ruleName="修改数据库中的记录" instanceCode="BR_ModifyDataBaseRecord1" instanceName="修改数据库中的记录" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"dataSourcesMapping":[{"condition":[{"columnType":"1","field":"bo_akl_MM_stockInfo.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"[bo_akl_MM_stockInfo].[id]","valueType":"9"}],"dataMap":[{"colName":"bo_akl_MM_stockInfo.stockNum","colValue":"[bo_akl_MM_stockInfo].[stockNum]+[bo_akl_MM_inStockInfo].[inStockNum]","valueType":"expression"}],"dataSource":"bo_akl_MM_stockInfo","opperType":"update"}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><orderNo>1</orderNo><destTableName>bo_akl_MM_stockInfo</destTableName><opperType>update</opperType><condition><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_MM_stockInfo.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>[bo_akl_MM_stockInfo].[id]</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></condition><dtField><![CDATA[<NewDataSet><dtField><destField>bo_akl_MM_stockInfo.stockNum</destField><sourceType>expression</sourceType><sourceField>[bo_akl_MM_stockInfo].[stockNum]+[bo_akl_MM_inStockInfo].[inStockNum]</sourceField></dtField></NewDataSet>]]]]><![CDATA[></dtField></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="ClearInterfaceEntityData" ruleName="清除界面实体中的数据" instanceCode="BR_ClearInterfaceEntityData2" instanceName="清除界面实体中的数据_1" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"dataSourceNames":[{"name":"bo_akl_MM_stockInfo"}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtColumn><Code>bo_akl_MM_stockInfo</Code></dtColumn></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"showType":"3","time":null,"simpleChinesePrompt":{"msgnote":"ConcatStr(\"无此仓库类型：\",[inMaterialLabelInfo].[materialType],\"仓\")","type":"1"}}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>3</MsgType><SimpleChinese>ConcatStr("无此仓库类型：",[inMaterialLabelInfo].[materialType],"仓")</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="AbortRule" ruleName="中断规则" instanceCode="BR_AbortRule1" instanceName="中断规则" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"abortType":"CURRENT","msgnote":""}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>CURRENT</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
     </RuleInstances>
     <Variables>
