@@ -1,14 +1,13 @@
-﻿<Query id="eeead57d8152473fb364e919b0460214" code="C" name="查询培训员工信息" type="VSql">
+﻿<Query id="eeead57d8152473fb364e919b0460214" code="C" name="查询培训员工信息" type="VSql" APICode="">
   <Remark><![CDATA[]]></Remark>
   <Creator><![CDATA[100466]]></Creator>
   <CreationTime><![CDATA[2018-06-21 21:06:32]]></CreationTime>
-  <Modifier><![CDATA[100466]]></Modifier>
-  <ModificationTime><![CDATA[2018-07-20 17:25:47]]></ModificationTime>
+  <Modifier><![CDATA[user_20180612007]]></Modifier>
+  <ModificationTime><![CDATA[2020-03-19 12:08:04]]></ModificationTime>
   <VSql><![CDATA[SELECT a.id, b.sNo, b.sName, a.enclosureName, a.enclosure, b.sStatus
 FROM bo_akl_base_trainEmployee AS a
 LEFT JOIN bo_akl_base_staffInfo AS b ON a.teId = b.id
-ORDER BY b.sNo
-]]></VSql>
+ORDER BY b.sStatus|DESC,b.sNo|ASC]]></VSql>
   <Columns>
     <Column id="Column_0" code="id" name="" dataType="char" length="" precision="">
       <Remark></Remark>
@@ -34,13 +33,13 @@ ORDER BY b.sNo
     <DataItem type="Table" key="bo_akl_base_trainEmployee" tokenIndexes="33" />
     <DataItem type="Table" key="bo_akl_base_staffInfo" tokenIndexes="43" />
     <DataItem type="Query" key="a" tokenIndexes="2,17,22,37,51" />
-    <DataItem type="Query" key="b" tokenIndexes="7,12,27,47,57,65" />
+    <DataItem type="Query" key="b" tokenIndexes="7,12,27,47,57,65,71" />
     <DataItem type="QueryField" key="a.id" tokenIndexes="4" />
-    <DataItem type="QueryField" key="b.sNo" tokenIndexes="9,67" />
+    <DataItem type="QueryField" key="b.sNo" tokenIndexes="9,73" />
     <DataItem type="QueryField" key="b.sName" tokenIndexes="14" />
     <DataItem type="QueryField" key="a.enclosureName" tokenIndexes="19" />
     <DataItem type="QueryField" key="a.enclosure" tokenIndexes="24" />
-    <DataItem type="QueryField" key="b.sStatus" tokenIndexes="29" />
+    <DataItem type="QueryField" key="b.sStatus" tokenIndexes="29,67" />
     <DataItem type="QueryField" key="a.teId" tokenIndexes="53" />
     <DataItem type="QueryField" key="b.id" tokenIndexes="59" />
   </DataItems>
