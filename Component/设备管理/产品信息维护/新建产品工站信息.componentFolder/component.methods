@@ -148,7 +148,7 @@
     <Remark><![CDATA[]]></Remark>
     <MethodChain><![CDATA[
   <evaluateRule code="BR_CheckUnique1" />
-  <if isEnabled="True" isDebug="False" code="IfCode1">
+  <if isEnabled="False" isDebug="False" code="IfCode1">
     <define>
       <expression>BR_OUT.BR_CheckUnique1.isUnique==False</expression>
       <remark></remark>
@@ -157,54 +157,53 @@
       <evaluateRule code="BR_ShowMessage1" />
     </sequence>
   </if>
-  <else isEnabled="True" isDebug="False">
+  <else isEnabled="False" isDebug="False">
     <define>
       <remark></remark>
     </define>
+    <sequence />
+  </else>
+  <evaluateRule code="BR_CheckRequired1" />
+  <if isEnabled="True" isDebug="False" code="IfCode2">
+    <define>
+      <expression>BR_OUT.BR_CheckRequired1.isCheckRequiredOK==True</expression>
+      <remark></remark>
+    </define>
     <sequence>
-      <evaluateRule code="BR_CheckRequired1" />
-      <if isEnabled="True" isDebug="False" code="IfCode2">
+      <if isEnabled="True" isDebug="False" code="IfCode3">
         <define>
-          <expression>BR_OUT.BR_CheckRequired1.isCheckRequiredOK==True</expression>
+          <expression>CC.JGComboBox2.Value=="是"</expression>
           <remark></remark>
         </define>
         <sequence>
-          <if isEnabled="True" isDebug="False" code="IfCode3">
+          <evaluateRule code="BR_CheckRequired2" />
+          <if isEnabled="True" isDebug="False" code="IfCode4">
             <define>
-              <expression>CC.JGComboBox2.Value=="是"</expression>
+              <expression>BR_OUT.BR_CheckRequired2.isCheckRequiredOK==True</expression>
               <remark></remark>
             </define>
             <sequence>
-              <evaluateRule code="BR_CheckRequired2" />
-              <if isEnabled="True" isDebug="False" code="IfCode4">
-                <define>
-                  <expression>BR_OUT.BR_CheckRequired2.isCheckRequiredOK==True</expression>
-                  <remark></remark>
-                </define>
-                <sequence>
-                  <evaluateRule code="BR_UpdateRecord1_1" />
-                  <evaluateRule code="BR_ShowMessage2_1" />
-                  <evaluateRule code="BR_SetEntityVarControlValue1_1" />
-                  <evaluateRule code="BR_SelectionConfirm1_1" />
-                </sequence>
-              </if>
+              <evaluateRule code="BR_UpdateRecord1_1" />
+              <evaluateRule code="BR_ShowMessage2_1" />
+              <evaluateRule code="BR_SetEntityVarControlValue1_1" />
+              <evaluateRule code="BR_SelectionConfirm1_1" />
             </sequence>
           </if>
-          <else isEnabled="True" isDebug="False">
-            <define>
-              <remark></remark>
-            </define>
-            <sequence>
-              <evaluateRule code="BR_UpdateRecord1" />
-              <evaluateRule code="BR_ShowMessage2" />
-              <evaluateRule code="BR_SetEntityVarControlValue1" />
-              <evaluateRule code="BR_SelectionConfirm1" />
-            </sequence>
-          </else>
         </sequence>
       </if>
+      <else isEnabled="True" isDebug="False">
+        <define>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_UpdateRecord1" />
+          <evaluateRule code="BR_ShowMessage2" />
+          <evaluateRule code="BR_SetEntityVarControlValue1" />
+          <evaluateRule code="BR_SelectionConfirm1" />
+        </sequence>
+      </else>
     </sequence>
-  </else>
+  </if>
 ]]></MethodChain>
     <RuleInstances>
       <RuleInstance ruleCode="CheckUnique" ruleName="前后台唯一性检查" instanceCode="BR_CheckUnique1" instanceName="前后台唯一性检查" isNeedLog="False" isEnabled="True" isDebug="False">
@@ -214,14 +213,35 @@
         <RuleConfig><![CDATA[{"isBackgroudCheck":true,"entityName":"bo_akl_base_productInfo_ws","tableName":"bo_akl_base_productInfo_ws","isAutoSelectRepeatRow":false,"checkFields":[{"entityFiled":"bo_akl_base_productInfo_ws.wsNo","tableField":"bo_akl_base_productInfo_ws.wsNo"}],"dsWhere":null}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><IsBackgroudCheck>true</IsBackgroudCheck><EntityName>bo_akl_base_productInfo_ws</EntityName><TableName>bo_akl_base_productInfo_ws</TableName><IsAutoSelectRepeatRow>false</IsAutoSelectRepeatRow><Condition><![CDATA[<NewDataSet />]]]]><![CDATA[></Condition></dtMaster><dtCheckFields><EntityField>bo_akl_base_productInfo_ws.wsNo</EntityField><TableField>bo_akl_base_productInfo_ws.wsNo</TableField></dtCheckFields></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-03-12 14:31:10">
+      <RuleInstance ruleCode="CheckRequired" ruleName="必填项检查" instanceCode="BR_CheckRequired1" instanceName="必填项检查" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"fieldList":[{"field":"bo_akl_base_productInfo_ws.wsNo","fieldName":"工站编号"},{"field":"bo_akl_base_productInfo_ws.pNatureName","fieldName":"岗位性质"}],"type":"0"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtColumn><Code>bo_akl_base_productInfo_ws.wsNo</Code><Name>工站编号</Name></dtColumn><dtColumn><Code>bo_akl_base_productInfo_ws.pNatureName</Code><Name>岗位性质</Name></dtColumn><dtType><Type>0</Type></dtType></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="False" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"已存在相同的工站编号！\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"已存在相同的工站编号！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="CheckRequired" ruleName="必填项检查" instanceCode="BR_CheckRequired2" instanceName="必填项检查_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"fieldList":[{"field":"bo_akl_base_productInfo_ws.vwsNature","fieldName":"虚拟工站性质"}],"type":"0"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtColumn><Code>bo_akl_base_productInfo_ws.vwsNature</Code><Name>虚拟工站性质</Name></dtColumn><dtType><Type>0</Type></dtType></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
         <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_base_productInfo_ws.bookName","colValue":"bo_akl_base_productInfo_ws.bookName","valueType":"entityField"},{"colName":"bo_akl_base_productInfo_ws.bookVersion","colValue":"bo_akl_base_productInfo_ws.bookVersion","valueType":"entityField"},{"colName":"bo_akl_base_productInfo_ws.id","colValue":"bo_akl_base_productInfo_ws.id","valueType":"entityField"},{"colName":"bo_akl_base_productInfo_ws.isAutomatic","colValue":"bo_akl_base_productInfo_ws.isAutomatic","valueType":"entityField"},{"colName":"bo_akl_base_productInfo_ws.isReal","colValue":"bo_akl_base_productInfo_ws.isReal","valueType":"entityField"},{"colName":"bo_akl_base_productInfo_ws.pName","colValue":"bo_akl_base_productInfo_ws.pName","valueType":"entityField"},{"colName":"bo_akl_base_productInfo_ws.pNature","colValue":"bo_akl_base_productInfo_ws.pNature","valueType":"entityField"},{"colName":"bo_akl_base_productInfo_ws.pNatureName","colValue":"CC.JGComboBox1.Text","valueType":"expression"},{"colName":"bo_akl_base_productInfo_ws.pNo","colValue":"@pid","valueType":"expression"},{"colName":"bo_akl_base_productInfo_ws.vwsNature","colValue":"bo_akl_base_productInfo_ws.vwsNature","valueType":"entityField"},{"colName":"bo_akl_base_productInfo_ws.workCName","colValue":"bo_akl_base_productInfo_ws.workCName","valueType":"entityField"},{"colName":"bo_akl_base_productInfo_ws.workEName","colValue":"bo_akl_base_productInfo_ws.workEName","valueType":"entityField"},{"colName":"bo_akl_base_productInfo_ws.wsNo","colValue":"bo_akl_base_productInfo_ws.wsNo","valueType":"entityField"}],"dataSource":"bo_akl_base_productInfo_ws","dataSourceType":"window","destTab":"bo_akl_base_productInfo_ws","isSaveAll":false}],"treeStruct":null}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>f912aecc7385458c91818c368e7df7f4</ID><SourceName>bo_akl_base_productInfo_ws</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_base_productInfo_ws(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_base_productInfo_ws</TableName></dtMaster><dtDetails><PID>f912aecc7385458c91818c368e7df7f4</PID><SourceField>bo_akl_base_productInfo_ws.bookName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_productInfo_ws.bookName</Value></dtDetails><dtDetails><PID>f912aecc7385458c91818c368e7df7f4</PID><SourceField>bo_akl_base_productInfo_ws.bookVersion</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_productInfo_ws.bookVersion</Value></dtDetails><dtDetails><PID>f912aecc7385458c91818c368e7df7f4</PID><SourceField>bo_akl_base_productInfo_ws.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_productInfo_ws.id</Value></dtDetails><dtDetails><PID>f912aecc7385458c91818c368e7df7f4</PID><SourceField>bo_akl_base_productInfo_ws.isAutomatic</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_productInfo_ws.isAutomatic</Value></dtDetails><dtDetails><PID>f912aecc7385458c91818c368e7df7f4</PID><SourceField>bo_akl_base_productInfo_ws.isReal</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_productInfo_ws.isReal</Value></dtDetails><dtDetails><PID>f912aecc7385458c91818c368e7df7f4</PID><SourceField>bo_akl_base_productInfo_ws.pName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_productInfo_ws.pName</Value></dtDetails><dtDetails><PID>f912aecc7385458c91818c368e7df7f4</PID><SourceField>bo_akl_base_productInfo_ws.pNature</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_productInfo_ws.pNature</Value></dtDetails><dtDetails><PID>f912aecc7385458c91818c368e7df7f4</PID><SourceField>bo_akl_base_productInfo_ws.pNatureName</SourceField><DataFrom>expression</DataFrom><Value>CC.JGComboBox1.Text</Value></dtDetails><dtDetails><PID>f912aecc7385458c91818c368e7df7f4</PID><SourceField>bo_akl_base_productInfo_ws.pNo</SourceField><DataFrom>expression</DataFrom><Value>@pid</Value></dtDetails><dtDetails><PID>f912aecc7385458c91818c368e7df7f4</PID><SourceField>bo_akl_base_productInfo_ws.vwsNature</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_productInfo_ws.vwsNature</Value></dtDetails><dtDetails><PID>f912aecc7385458c91818c368e7df7f4</PID><SourceField>bo_akl_base_productInfo_ws.workCName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_productInfo_ws.workCName</Value></dtDetails><dtDetails><PID>f912aecc7385458c91818c368e7df7f4</PID><SourceField>bo_akl_base_productInfo_ws.workEName</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_productInfo_ws.workEName</Value></dtDetails><dtDetails><PID>f912aecc7385458c91818c368e7df7f4</PID><SourceField>bo_akl_base_productInfo_ws.wsNo</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_base_productInfo_ws.wsNo</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage2" instanceName="显示设置的提示信息_1" isNeedLog="False" isEnabled="False" isDebug="False">
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage2" instanceName="显示设置的提示信息_1" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
@@ -242,14 +262,7 @@
         <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"已存在相同的工站编号！\"","type":"1"}}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"已存在相同的工站编号！"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1_1" instanceName="保存实体到数据库_1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-03-12 14:31:20">
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1_1" instanceName="保存实体到数据库_1" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
@@ -276,20 +289,6 @@
         <DebugCondition><![CDATA[]]></DebugCondition>
         <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="CheckRequired" ruleName="必填项检查" instanceCode="BR_CheckRequired1" instanceName="必填项检查" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"fieldList":[{"field":"bo_akl_base_productInfo_ws.wsNo","fieldName":"工站编号"},{"field":"bo_akl_base_productInfo_ws.pNatureName","fieldName":"岗位性质"}],"type":"0"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtColumn><Code>bo_akl_base_productInfo_ws.wsNo</Code><Name>工站编号</Name></dtColumn><dtColumn><Code>bo_akl_base_productInfo_ws.pNatureName</Code><Name>岗位性质</Name></dtColumn><dtType><Type>0</Type></dtType></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="CheckRequired" ruleName="必填项检查" instanceCode="BR_CheckRequired2" instanceName="必填项检查_1" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"fieldList":[{"field":"bo_akl_base_productInfo_ws.vwsNature","fieldName":"虚拟工站性质"}],"type":"0"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtColumn><Code>bo_akl_base_productInfo_ws.vwsNature</Code><Name>虚拟工站性质</Name></dtColumn><dtType><Type>0</Type></dtType></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
     </RuleInstances>
   </Method>
