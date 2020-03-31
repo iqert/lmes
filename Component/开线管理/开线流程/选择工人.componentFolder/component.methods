@@ -161,7 +161,7 @@
         <RuleConfig><![CDATA[{"checkitems":["bo_akl_base_staffInfo.sNo"],"condition":"","copyType":"2","destName":"bo_akl_base_staffInfo","items":[{"destName":"bo_akl_base_staffInfo.sName","sourceName":"V.sName","type":"entityField"},{"destName":"bo_akl_base_staffInfo.sNo","sourceName":"V.sNo","type":"entityField"},{"destName":"bo_akl_base_staffInfo.tLine","sourceName":"V.tLine","type":"entityField"},{"destName":"bo_akl_base_staffInfo.classes","sourceName":"V.classes","type":"entityField"}],"mageitems":null,"sourceName":"V","type":"2","isAddRecord":true,"jsonVersion":"1.0","destType":"window","sourceType":"ruleSetVar"}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtInfo><destName>bo_akl_base_staffInfo</destName><destType>window</destType><sourceName>V</sourceName><sourceType>ruleSetVar</sourceType><type>2</type><isAddRecord>True</isAddRecord><copyType>2</copyType><condition /><jsonVersion>1.0</jsonVersion></dtInfo><dtMaster><DestName>bo_akl_base_staffInfo.sName</DestName><SourceType>entityField</SourceType><SourceName>V.sName</SourceName></dtMaster><dtMaster><DestName>bo_akl_base_staffInfo.sNo</DestName><SourceType>entityField</SourceType><SourceName>V.sNo</SourceName></dtMaster><dtMaster><DestName>bo_akl_base_staffInfo.tLine</DestName><SourceType>entityField</SourceType><SourceName>V.tLine</SourceName></dtMaster><dtMaster><DestName>bo_akl_base_staffInfo.classes</DestName><SourceType>entityField</SourceType><SourceName>V.classes</SourceName></dtMaster><dtCheck><Name>bo_akl_base_staffInfo.sNo</Name></dtCheck></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow3" instanceName="删除实体记录_去掉不属于这个班次的工人" isNeedLog="False" isEnabled="True" isDebug="False">
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow3" instanceName="删除实体记录_去掉不属于这个班次的工人" isNeedLog="False" isEnabled="False" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
@@ -182,7 +182,7 @@
         <RuleConfig><![CDATA[{"Condition":"!Contains([bo_akl_base_staffInfo].[tLine],@workStation)","deleteType":"1","TableName":"bo_akl_base_staffInfo","EntityType":"window"}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition>!Contains([bo_akl_base_staffInfo].[tLine],@workStation)</Condition><DeleteType>1</DeleteType><TableName>bo_akl_base_staffInfo</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2" instanceName="给界面实体/控件/变量赋值_获取可选的员工数量" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-08-20 19:36:02">
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2" instanceName="给界面实体/控件/变量赋值_获取可选的员工数量" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
@@ -196,13 +196,6 @@
         <RuleConfig><![CDATA[{"Condition":"[bo_akl_base_staffInfo].[sNo]==LV.k.sNo","deleteType":"1","TableName":"bo_akl_base_staffInfo","EntityType":"window"}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition>[bo_akl_base_staffInfo].[sNo]==LV.k.sNo</Condition><DeleteType>1</DeleteType><TableName>bo_akl_base_staffInfo</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow1" instanceName="删除实体记录_去掉已经被选择了的工人" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"Condition":"[bo_akl_base_staffInfo].[sNo]==LV.i.workerId","deleteType":"1","TableName":"bo_akl_base_staffInfo","EntityType":"window"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition>[bo_akl_base_staffInfo].[sNo]==LV.i.workerId</Condition><DeleteType>1</DeleteType><TableName>bo_akl_base_staffInfo</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
       <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1" instanceName="新增实体记录_若没有则将线长添加进去" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
@@ -210,12 +203,12 @@
         <RuleConfig><![CDATA[{"AddLocation":"3","Mappings":[{"destField":"bo_akl_base_staffInfo.sNo","fieldtype":"expression","srcField":"@lineUserCode"},{"destField":"bo_akl_base_staffInfo.sName","fieldtype":"expression","srcField":"@lineUserName"},{"destField":"bo_akl_base_staffInfo.classes","fieldtype":"expression","srcField":"@classes"}],"TableType":"window","TableName":"bo_akl_base_staffInfo","NumCount":"1"}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><Location>3</Location><EntityType>window</EntityType><EntityName>bo_akl_base_staffInfo</EntityName></dtMaster><dtEntityColumns><DestName>bo_akl_base_staffInfo.sNo</DestName><SourceType>expression</SourceType><SourceName>@lineUserCode</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_base_staffInfo.sName</DestName><SourceType>expression</SourceType><SourceName>@lineUserName</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_base_staffInfo.classes</DestName><SourceType>expression</SourceType><SourceName>@classes</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值_赋值Have判断线长是否已经包含在里面" isNeedLog="False" isEnabled="True" isDebug="False">
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow1" instanceName="删除实体记录_去掉已经被选择了的工人" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"Have","SourceType":"expression","SourceEntityType":"","Source":"1","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>Have</Target><SourceType>expression</SourceType><SourceEntityType /><Source>1</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"Condition":"[bo_akl_base_staffInfo].[sNo]==LV.i.workerId","deleteType":"1","TableName":"bo_akl_base_staffInfo","EntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition>[bo_akl_base_staffInfo].[sNo]==LV.i.workerId</Condition><DeleteType>1</DeleteType><TableName>bo_akl_base_staffInfo</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
       <RuleInstance ruleCode="SetLoopVariant" ruleName="给循环变量赋值" instanceCode="BR_SetLoopVariant1" instanceName="给循环变量赋值_将考核记录中产线工站按人员分组拼凑起来" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
@@ -223,6 +216,13 @@
         <DebugCondition><![CDATA[]]></DebugCondition>
         <RuleConfig><![CDATA[{"Fields":[{"Source":"ConcatStr(LV.A.tLine,\",\",LV.B.tLine)","SourceType":"expression","LoopVarField":"tLine"}],"LoopVar":"B","LoopEntity":"V","LoopEntityType":"ruleSetVar"}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtLoopVar><LoopVar>B</LoopVar><LoopEntity>V</LoopEntity><LoopEntityType>ruleSetVar</LoopEntityType></dtLoopVar><dtField><LoopVarField>tLine</LoopVarField><SourceType>expression</SourceType><Source>ConcatStr(LV.A.tLine,",",LV.B.tLine)</Source></dtField></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="给界面实体/控件/变量赋值_赋值Have判断线长是否已经包含在里面" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"Have","SourceType":"expression","SourceEntityType":"","Source":"1","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>Have</Target><SourceType>expression</SourceType><SourceEntityType /><Source>1</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
     </RuleInstances>
     <Variables>

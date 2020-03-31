@@ -452,9 +452,9 @@
     <sequence>
       <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
       <evaluateRule code="BR_ModifyDataBaseRecord1" />
+      <evaluateRule code="BR_Progress2" />
     </sequence>
   </foreach>
-  <evaluateRule code="BR_Progress2" />
   <evaluateRule code="BR_ShowMessage1" />
   <evaluateRule code="BR_ExecuteRuleSet1" />
 ]]></MethodChain>
@@ -480,7 +480,7 @@
         <RuleConfig><![CDATA[{"dataSourceNames":[{"name":"bo_akl_base_productlines"}]}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtColumn><Code>bo_akl_base_productlines</Code></dtColumn></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="ImportExcelToDB" ruleName="Excel导入到数据库表" instanceCode="BR_ImportExcelToDB1" instanceName="Excel导入到数据库表" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-03-29 03:04:29">
+      <RuleInstance ruleCode="ImportExcelToDB" ruleName="Excel导入到数据库表" instanceCode="BR_ImportExcelToDB1" instanceName="Excel导入到数据库表" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
@@ -493,13 +493,6 @@
         <DebugCondition><![CDATA[]]></DebugCondition>
         <RuleConfig><![CDATA[{"isAsyn":false,"itemsConfig":[{"Istype":"Table","dsWhere":null,"entityType":"window","entityName":"bo_akl_EM_lineinfo_clone","isFieldAutoMapping":false,"itemqueryparam":null,"items":[{"destName":"bo_akl_EM_lineinfo_clone.id","sourceName":"bo_akl_EM_lineinfo_clone.id","type":"entityField"},{"destName":"bo_akl_EM_lineinfo_clone.linecode","sourceName":"bo_akl_EM_lineinfo_clone.linecode","type":"entityField"},{"destName":"bo_akl_EM_lineinfo_clone.linename","sourceName":"bo_akl_EM_lineinfo_clone.linename","type":"entityField"}],"orderBy":null,"sourceName":"bo_akl_EM_lineinfo_clone","dataLoad":"","pager":[{"isPaging":false,"pageSize":"","pageNo":"","totalRecordSave":[{"isSaveTotalRecord":false,"targetType":"methodVariant","target":""}]}]}],"treeStruct":null}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtEntityRelation><EntityType>window</EntityType><EntityName>bo_akl_EM_lineinfo_clone</EntityName><SourceType>Table</SourceType><SourceName>bo_akl_EM_lineinfo_clone</SourceName><dsWhere><![CDATA[<NewDataSet />]]]]><![CDATA[></dsWhere><dsSort><![CDATA[<dsSort />]]]]><![CDATA[></dsSort><ID>e6556af1a6f34fc3b9e7dc814ee27910</ID><DataLoad /><IsFieldAutoMapping>False</IsFieldAutoMapping></dtEntityRelation><dtEntityColumnRelation><MasterID>e6556af1a6f34fc3b9e7dc814ee27910</MasterID><DestName>bo_akl_EM_lineinfo_clone.id</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_lineinfo_clone.id</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>e6556af1a6f34fc3b9e7dc814ee27910</MasterID><DestName>bo_akl_EM_lineinfo_clone.linecode</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_lineinfo_clone.linecode</SourceName></dtEntityColumnRelation><dtEntityColumnRelation><MasterID>e6556af1a6f34fc3b9e7dc814ee27910</MasterID><DestName>bo_akl_EM_lineinfo_clone.linename</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_EM_lineinfo_clone.linename</SourceName></dtEntityColumnRelation><dtIsAsyn><isAsyn>False</isAsyn></dtIsAsyn><dtPager><PagerMasterID>e6556af1a6f34fc3b9e7dc814ee27910</PagerMasterID><isPaging>False</isPaging><pageNo /><pageSize /></dtPager><dtTotalRecordSave><TotalRecordSaveMasterID>e6556af1a6f34fc3b9e7dc814ee27910</TotalRecordSaveMasterID><isSaveTotalRecord>False</isSaveTotalRecord><targetType>methodVariant</targetType></dtTotalRecordSave></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="Progress" ruleName="进度条显示/隐藏" instanceCode="BR_Progress2" instanceName="隐藏进度条" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"displaytype":"global","display":false,"msgnote":""}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><displaytype>global</displaytype><display>False</display><msgnote /></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
       <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
@@ -528,6 +521,13 @@
         <DebugCondition><![CDATA[]]></DebugCondition>
         <RuleConfig><![CDATA[{"dataSourcesMapping":[{"condition":[{"columnType":"1","field":"bo_akl_base_productlines.id","fieldType":"char","leftBracket":"(","logicOperation":null,"operation":"=","rightBracket":")","value":"[bo_akl_base_productlines].[id]","valueType":"9"}],"dataMap":[{"colName":"bo_akl_base_productlines.pCName","colValue":"LV.i.linename","valueType":"expression"}],"dataSource":"bo_akl_base_productlines","opperType":"update"}]}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><orderNo>1</orderNo><destTableName>bo_akl_base_productlines</destTableName><opperType>update</opperType><condition><![CDATA[<NewDataSet><dtWhere><columnType>1</columnType><field>bo_akl_base_productlines.id</field><fieldType>char</fieldType><leftBracket>(</leftBracket><operation>=</operation><rightBracket>)</rightBracket><value>[bo_akl_base_productlines].[id]</value><valueType>9</valueType></dtWhere></NewDataSet>]]]]><![CDATA[></condition><dtField><![CDATA[<NewDataSet><dtField><destField>bo_akl_base_productlines.pCName</destField><sourceType>expression</sourceType><sourceField>LV.i.linename</sourceField></dtField></NewDataSet>]]]]><![CDATA[></dtField></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="Progress" ruleName="进度条显示/隐藏" instanceCode="BR_Progress2" instanceName="隐藏进度条" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"displaytype":"global","display":false,"msgnote":""}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><displaytype>global</displaytype><display>False</display><msgnote /></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
     </RuleInstances>
   </Method>
