@@ -28,7 +28,7 @@
   <FileReference code="Fileno_16" Filename="产线设备-点检.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="8.92" FileFullname="产线设备-点检.xlsx" Updator="100466" UpdateFileDate="07/30/2018 19:15:18" />
   <FileReference code="Fileno_14" Filename="设备信息-载具.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="9.58" FileFullname="设备信息-载具.xlsx" Updator="user_20180828002" UpdateFileDate="11/02/2018 10:58:03" />
   <FileReference code="Fileno_8" Filename="拉力测试项信息.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="9.34" FileFullname="拉力测试项信息.xlsx" Updator="user_20180828002" UpdateFileDate="11/07/2018 11:23:18" />
-  <FileReference code="Fileno_9" Filename="产品信息.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="9.67" FileFullname="产品信息.xlsx" Updator="user_20180828002" UpdateFileDate="11/08/2018 15:33:52" />
+  <FileReference code="Fileno_9" Filename="产品信息.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="9.67" FileFullname="产品信息.xlsx" Updator="user_20180612007" UpdateFileDate="11/08/2018 15:33:52" />
   <FileReference code="Fileno_18" Filename="物料信息.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="9.40" FileFullname="物料信息.xlsx" Updator="user_20180828002" UpdateFileDate="11/13/2018 14:16:02" />
   <FileReference code="Fileno_19" Filename="BOM信息.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="9.21" FileFullname="BOM信息.xlsx" Updator="user_20180828002" UpdateFileDate="11/14/2018 09:55:20" />
   <FileReference code="Fileno_17" Filename="设备信息-注塑模具.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="10.48" FileFullname="设备信息-注塑模具.xlsx" Updator="user_20180828002" UpdateFileDate="11/26/2018 11:27:45" />
@@ -45,4 +45,5 @@
   <FileReference code="Fileno_30" Filename="不良品原因.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="8.83" FileFullname="不良品原因.xlsx" Updator="user_20180612007" UpdateFileDate="10/17/2019 17:08:01" />
   <FileReference code="Fileno_26" Filename="工序工时.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="9.21" FileFullname="工序工时.xlsx" Updator="user_20190304004" UpdateFileDate="01/31/2020 10:28:53" />
   <FileReference code="Fileno_32" Filename="1f6b2dc0-27a8-4620-8f43-52c48006f010.Bmp" ParentDirFullName="FromClipboard\guiBookInfo" Desc="" Dimension="1166×700" FileSize="282.64" FileFullname="FromClipboard\guiBookInfo\1f6b2dc0-27a8-4620-8f43-52c48006f010.Bmp" Updator="user_20180612007" UpdateFileDate="03/19/2020 21:13:56" />
+  <FileReference code="Fileno_31" Filename="~$产品信息.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="0.16" FileFullname="~$产品信息.xlsx" Updator="user_20180612007" UpdateFileDate="04/03/2020 18:17:20" />
 </FileReferences>
