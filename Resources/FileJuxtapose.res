@@ -45,5 +45,4 @@
   <FileReference code="Fileno_30" Filename="不良品原因.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="8.83" FileFullname="不良品原因.xlsx" Updator="user_20180612007" UpdateFileDate="10/17/2019 17:08:01" />
   <FileReference code="Fileno_26" Filename="工序工时.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="9.21" FileFullname="工序工时.xlsx" Updator="user_20190304004" UpdateFileDate="01/31/2020 10:28:53" />
   <FileReference code="Fileno_32" Filename="1f6b2dc0-27a8-4620-8f43-52c48006f010.Bmp" ParentDirFullName="FromClipboard\guiBookInfo" Desc="" Dimension="1166×700" FileSize="282.64" FileFullname="FromClipboard\guiBookInfo\1f6b2dc0-27a8-4620-8f43-52c48006f010.Bmp" Updator="user_20180612007" UpdateFileDate="03/19/2020 21:13:56" />
-  <FileReference code="Fileno_31" Filename="~$产品信息.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="0.16" FileFullname="~$产品信息.xlsx" Updator="user_20180612007" UpdateFileDate="04/03/2020 18:17:20" />
 </FileReferences>
