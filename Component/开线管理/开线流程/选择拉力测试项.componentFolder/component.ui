@@ -1,11 +1,14 @@
 ﻿<form type="1002" code="selectPullTestInfo" IsLocked="False">
   <propertys>
-    <property name="Width"><![CDATA[610]]></property>
-    <property name="Height"><![CDATA[497]]></property>
+    <property name="Height"><![CDATA[449]]></property>
+    <property name="Width"><![CDATA[598]]></property>
+    <property name="MultiHeight"><![CDATA[space]]></property>
+    <property name="MultiWidth"><![CDATA[space]]></property>
     <property name="HeightSet"><![CDATA[StaticHeight]]></property>
     <property name="LayoutType"><![CDATA[None]]></property>
     <property name="TableName"><![CDATA[]]></property>
     <property name="FormLoadAction"><![CDATA[selectPullTestInfo_FormLoadAction]]></property>
+    <property name="ResizeAction"><![CDATA[]]></property>
     <property name="FormCloseAction"><![CDATA[]]></property>
     <property name="FormClosingAction"><![CDATA[]]></property>
     <property name="BackColor"><![CDATA[]]></property>
@@ -15,26 +18,48 @@
     <property name="WindowState"><![CDATA[Normal]]></property>
     <property name="MaximizeBox"><![CDATA[True]]></property>
     <property name="RefResources"><![CDATA[]]></property>
+    <property name="ControlDocInfo"><![CDATA[]]></property>
+    <property name="IsWindowReport"><![CDATA[]]></property>
+    <property name="ThemeVar"><![CDATA[]]></property>
   </propertys>
   <controls>
-    <JGButton Code="JGButton2" LabelText="确定" Left="300" OnClick="JGButton2_OnClick" PercentHeight="5.2%" PercentWidth="8.5%" TabIndex="3" Top="19" />
-    <JGButton Code="JGButton1" LabelText="重置" Left="242" OnClick="JGButton1_OnClick" PercentHeight="5.2%" PercentWidth="8.5%" TabIndex="2" Top="19" />
-    <JGLocateBox Code="JGLocateBox1" Left="16" OnClick="JGLocateBox1_OnClick" PercentHeight="5.6%" PercentWidth="36.1%" TabIndex="1" Top="17" />
-    <JGDataGrid Code="JGDataGrid1" FetchMode="paged" Height="381" LabelText="列表" Left="17" OnDoubleClick="JGButton2_OnClick" PageInfo="{&quot;PageList&quot;:[10,20,30,40,50,100],&quot;DefaultPageSize&quot;:50}" PercentHeight="76.7%" PercentWidth="93.6%" ReadOnly="True" TabIndex="4" TableName="bo_akl_line_pullTestInfo" Top="51" Width="571">
+    <JGButton Code="JGButton2" LabelText="确定" PercentHeight="5.8%" PercentWidth="8.7%" Top="19" Left="300" TabIndex="3" OnClick="JGButton2_OnClick" MultiHeight="0px" MultiWidth="0px" />
+    <JGButton Code="JGButton1" LabelText="重置" PercentHeight="5.8%" PercentWidth="8.7%" Top="19" Left="242" TabIndex="2" OnClick="JGButton1_OnClick" MultiHeight="0px" MultiWidth="0px" />
+    <JGLocateBox Code="JGLocateBox1" PercentHeight="6.2%" PercentWidth="36.8%" Top="17" Left="16" TabIndex="1" OnClick="JGLocateBox1_OnClick" MultiHeight="0px" MultiWidth="0px" />
+    <JGDataGrid Code="JGDataGrid1" LabelText="列表" Width="571" Height="381" PercentHeight="84.9%" PercentWidth="95.5%" Top="51" Left="17" TabIndex="4" FetchMode="paged" PageInfo="{&quot;PageList&quot;:[10,20,30,40,50,100],&quot;DefaultPageSize&quot;:50}" OnDoubleClick="JGButton2_OnClick" TableName="bo_akl_line_pullTestInfo" ReadOnly="True" ChooseMode="3" MultiHeight="0px" MultiWidth="0px">
       <JGTextBoxColumn AllowSort="True" Code="JGTextBoxColumn1" ColumnName="checkInfo" LabelText="测试项" TableName="bo_akl_line_pullTestInfo" Width="151" />
       <JGTextBoxColumn AllowSort="True" Code="JGTextBoxColumn3" ColumnName="product" LabelText="产品名称" TableName="bo_akl_line_pullTestInfo" Width="187" />
       <JGTextBoxColumn AllowSort="True" Code="JGTextBoxColumn2" ColumnName="productLineNo" LabelText="所属产线" TableName="bo_akl_line_pullTestInfo" Width="197" />
     </JGDataGrid>
   </controls>
   <outputs>
-    <variable code="pullId" name="拉力测试项id" fieldType="char" defaultValue="0" description="" isRestore="false" />
+    <variable code="pulltestinfo" name="" fieldType="entity" defaultValue="" description="" isRestore="false">
+      <entity>
+        <field code="id" name="" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="checkInfo" name="测试规格" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="productLineNo" name="产线编号" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="productLineId" name="产线id" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="product" name="成品" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="productNo" name="产品型号" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="productId" name="成品id" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="remark" name="备注" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="testMin" name="最小值" fieldType="number" defaultValue="" isRestore="false" />
+        <field code="testMax" name="最大值" fieldType="number" defaultValue="" isRestore="false" />
+        <field code="unit" name="单位" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="testMethod" name="检验方法" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="testFrequency" name="检验频次" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="checkType" name="检验类型" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="uniqueCode" name="唯一编号" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="testqty" name="检验数量" fieldType="integer" defaultValue="" isRestore="false" />
+        <field code="relatestation" name="关联工站" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="others1" name="备用1" fieldType="char" defaultValue="" isRestore="false" />
+        <field code="others2" name="备用2" fieldType="char" defaultValue="" isRestore="false" />
+      </entity>
+    </variable>
   </outputs>
   <inputs>
-    <variable code="prId" name="成品id" fieldType="char" defaultValue="" description="" isRestore="false" isPrivate="false">
-      <EnumValue><![CDATA[]]></EnumValue>
-    </variable>
+    <variable code="prId" name="成品id" fieldType="char" defaultValue="" description="" isRestore="false" isPrivate="false" />
     <variable code="V" name="" fieldType="entity" defaultValue="" description="" isRestore="false" isPrivate="false">
-      <EnumValue><![CDATA[]]></EnumValue>
       <entity>
         <field code="checkInfo" name="测试项" fieldType="char" defaultValue="" isRestore="false" />
         <field code="checkInfoId" name="测试项id" fieldType="char" defaultValue="" isRestore="false" />
