@@ -2,8 +2,8 @@
   <Remark><![CDATA[]]></Remark>
   <Creator><![CDATA[liub]]></Creator>
   <CreationTime><![CDATA[2018-08-21 17:16:39]]></CreationTime>
-  <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2020-01-09 09:38:42]]></ModificationTime>
+  <Modifier><![CDATA[user_20180612007]]></Modifier>
+  <ModificationTime><![CDATA[2020-04-09 11:04:02]]></ModificationTime>
   <VSql><![CDATA[select 
 standardWorkingHours,--标准工时
 startTime, --开线时间
@@ -118,8 +118,8 @@ SUM(dayOutput) + SUM(nightOutput) as actualTotal,
 SUM(repairTimeday) as repairTimeday, --维修时间
 SUM(repairTimenight) as repairTimenight, --维修时间
 
-case when SUM(dayShift)>0 then 24-SUM(dayShift) else 0 end as changeTimeday,--实际换型时间
-case when SUM(nightShift)>0 then 24-SUM(nightShift) else 0 end as changeTimenight,--实际换型时间
+case when SUM(dayShift)>0 then 12-SUM(dayShift) else 0 end as changeTimeday,--实际换型时间
+case when SUM(nightShift)>0 then 12-SUM(nightShift) else 0 end as changeTimenight,--实际换型时间
 
 '' as reworked,
 SUM(clean5sday) as clean5sday, --clean5清洁
