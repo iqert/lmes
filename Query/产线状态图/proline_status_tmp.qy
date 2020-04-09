@@ -1,0 +1,98 @@
+﻿<Query id="7ce5c45e04f94320bcf2f21af1b29830" code="proline_status_tmp" name="产线状态图备份" type="VSql">
+  <Remark><![CDATA[]]></Remark>
+  <Creator><![CDATA[liub]]></Creator>
+  <CreationTime><![CDATA[2018-07-18 10:27:08]]></CreationTime>
+  <Modifier><![CDATA[user_20190304004]]></Modifier>
+  <ModificationTime><![CDATA[2019-07-30 16:53:02]]></ModificationTime>
+  <VSql><![CDATA[select
+proLineName,
+proEquName,
+productionNum,acceptNum,badNum,
+CASE WHEN proLineStatus='1' THEN '生产中'  ELSE '停机'  END as proLineStatus,
+'0' AS achievingRate, --达成率 最终生产数量与投料数的比例
+round(CAST(acceptNum,'Decimal',10,4)/CAST(acceptNum+badNum,'Decimal',10,4),4) AS passRate, --合格率合格的数量于最终生产的数量的比例
+userNumber,
+checkNumber,
+ROUND(CAST(acceptNum,'Decimal',10,4)*standardWorkingHours/60/60/dayHour,4) as ratio,--效率 = 合格数量*标准工时（秒）/总工时
+ROUND(CAST(acceptNum,'Decimal',10,4)/dayHour,4) as productivity,--生产力= 合格数/总工时
+ROUND(dayHour,2) as productionTime
+from (
+SELECT 
+'ABS9W1' AS proLineName,
+(SELECT value FROM Exchange WHERE NAME = 'ABS9.PD_Number') AS proEquName,
+'0' AS productionNum, --投产数
+(SELECT value FROM Exchange WHERE NAME = 'ABS9.Product_count') AS acceptNum,--合格数
+(SELECT SUM(Value) AS AA
+FROM Exchange
+WHERE NAME IN (
+		'ABS9.ST10_Alarm_count',
+		'ABS9.ST11_Alarm_count',
+		'ABS9.ST12_Alarm_count',
+		'ABS9.ST13_Alarm_count',
+		'ABS9.ST14_Alarm_count',
+		'ABS9.ST15_Alarm_count',
+		'ABS9.ST16_Alarm_count',
+		'ABS9.ST17_Alarm_count',
+		'ABS9.ST18_Alarm_count',
+		'ABS9.ST19_Alarm_count',
+		'ABS9.ST20_Alarm_count',
+		'ABS9.ST21_Alarm_count',
+		'ABS9.ST23_Alarm_count',
+		'ABS9.ST3_Alarm_count',
+		'ABS9.ST4_Alarm_count',
+		'ABS9.ST5_Alarm_count',
+		'ABS9.ST6_Alarm_count',
+		'ABS9.ST7_Alarm_count',
+		'ABS9.ST8_Alarm_count',
+		'ABS9.ST9_Alarm_count'
+		)) AS badNum, --不良数
+(SELECT value FROM Exchange WHERE NAME = 'ABS9.Status1' ) AS proLineStatus,
+(select COUNT(id) as userNumber from bo_akl_line_start_user 
+where  lid = (
+SELECT id FROM bo_akl_line_start
+WHERE CHARINDEX(TODAY(), startTime, 1) > 0 
+and proLineName='ABS9W1' order by startTime asc limit 1,1
+)) as userNumber,
+(select COUNT(id) as checkNumber from bo_akl_line_sample 
+where  lid = (
+SELECT id FROM bo_akl_line_start
+WHERE CHARINDEX(TODAY(), startTime, 1) > 0 
+and proLineName='ABS9W1' order by startTime asc limit 1,1
+)) as checkNumber,
+(select standardWorkingHours from bo_akl_EM_productInfo 
+where  id = (
+SELECT equId FROM bo_akl_line_start
+WHERE CHARINDEX(TODAY(), startTime, 1) > 0 
+and proLineName='ABS9W1' order by startTime asc limit 1,1
+)) as standardWorkingHours,
+(SELECT
+CASE
+  WHEN CURTIME()>= '8:00:00' and CURTIME()>= '20:00:00' THEN dayHour
+  ELSE nightHour  END as dayHour
+FROM bo_akl_base_productiontime 
+where id = (
+SELECT sb.productionId FROM bo_akl_line_start sa
+left join bo_akl_base_productlines sb on sa.prolineId=sb.id
+WHERE CHARINDEX(TODAY(), sa.startTime, 1) > 0 
+and sa.proLineName='ABS9W1' order by sa.startTime asc limit 1,1
+)) as dayHour
+
+FROM Exchange
+WHERE NAME = 'ABS9.Control'
+)a
+
+
+]]></VSql>
+  <Columns />
+  <Params />
+  <DataItems>
+    <DataItem type="Table" key="Exchange" tokenIndexes="170,201,231,316,696" />
+    <DataItem type="Table" key="bo_akl_line_start_user" tokenIndexes="347" />
+    <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="363,442,514,620" />
+    <DataItem type="Table" key="bo_akl_line_sample" tokenIndexes="426" />
+    <DataItem type="Table" key="bo_akl_EM_productInfo" tokenIndexes="498" />
+    <DataItem type="Table" key="bo_akl_base_productiontime" tokenIndexes="602" />
+    <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="628" />
+    <DataItem type="Query" key="a" tokenIndexes="707" />
+  </DataItems>
+</Query>
