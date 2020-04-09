@@ -565,4 +565,116 @@
       </Variable>
     </Variables>
   </Method>
+  <Method Code="JGButton1_OnClick_delete" Type="Client" InterfaceType="Local" RestrictType="Private" IsExtendable="false" IsRuleChainVisible="false">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_DeleteListSelectRow1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow1" instanceName="删除实体记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"","deleteType":"0","TableName":"bo_akl_line_materialBadProNum","EntityType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition /><DeleteType>0</DeleteType><TableName>bo_akl_line_materialBadProNum</TableName><EntityType>window</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Variables>
+      <Variable code="halfmatreialsbadpart" name="" fieldType="entity" initValue="" isMust="false" desc="实体复制暂存">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="startId" name="开线id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="materialNo" name="物料型号" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="badProNum" name="不良品数" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="remark" name="不良原因" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="batch" name="批次号" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="createTime" name="创建时间" fieldType="longDate" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="descriptionOne" name="描述一" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="descriptionTwo" name="描述二" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="bsTime" name="标识时间" fieldType="date" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+    </Variables>
+  </Method>
+  <Method Code="JGButton1_OnClick_newadd" Type="Client" InterfaceType="Local" RestrictType="Private" IsExtendable="false" IsRuleChainVisible="false">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
+    <MethodChain><![CDATA[
+  <evaluateRule code="BR_CopyEntityRecord1" />
+  <evaluateRule code="BR_AddTableRecord1" />
+]]></MethodChain>
+    <RuleInstances>
+      <RuleInstance ruleCode="CopyEntityRecord" ruleName="实体间复制记录" instanceCode="BR_CopyEntityRecord1" instanceName="实体间复制记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"checkitems":null,"condition":"","copyType":"1","destName":"halfmatreialsbadpart","items":[{"destName":"halfmatreialsbadpart.badProNum","sourceName":"bo_akl_line_materialBadProNum.badProNum","type":"entityField"},{"destName":"halfmatreialsbadpart.batch","sourceName":"bo_akl_line_materialBadProNum.batch","type":"entityField"},{"destName":"halfmatreialsbadpart.bsTime","sourceName":"bo_akl_line_materialBadProNum.bsTime","type":"entityField"},{"destName":"halfmatreialsbadpart.createTime","sourceName":"bo_akl_line_materialBadProNum.createTime","type":"entityField"},{"destName":"halfmatreialsbadpart.descriptionOne","sourceName":"bo_akl_line_materialBadProNum.descriptionOne","type":"entityField"},{"destName":"halfmatreialsbadpart.descriptionTwo","sourceName":"bo_akl_line_materialBadProNum.descriptionTwo","type":"entityField"},{"destName":"halfmatreialsbadpart.materialNo","sourceName":"bo_akl_line_materialBadProNum.materialNo","type":"entityField"},{"destName":"halfmatreialsbadpart.remark","sourceName":"bo_akl_line_materialBadProNum.remark","type":"entityField"},{"destName":"halfmatreialsbadpart.startId","sourceName":"bo_akl_line_materialBadProNum.startId","type":"entityField"}],"mageitems":null,"sourceName":"bo_akl_line_materialBadProNum","type":"1","isAddRecord":true,"jsonVersion":"1.0","destType":"ruleSetVar","sourceType":"window"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtInfo><destName>halfmatreialsbadpart</destName><destType>ruleSetVar</destType><sourceName>bo_akl_line_materialBadProNum</sourceName><sourceType>window</sourceType><type>1</type><isAddRecord>True</isAddRecord><copyType>1</copyType><condition /><jsonVersion>1.0</jsonVersion></dtInfo><dtMaster><DestName>halfmatreialsbadpart.badProNum</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_materialBadProNum.badProNum</SourceName></dtMaster><dtMaster><DestName>halfmatreialsbadpart.batch</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_materialBadProNum.batch</SourceName></dtMaster><dtMaster><DestName>halfmatreialsbadpart.bsTime</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_materialBadProNum.bsTime</SourceName></dtMaster><dtMaster><DestName>halfmatreialsbadpart.createTime</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_materialBadProNum.createTime</SourceName></dtMaster><dtMaster><DestName>halfmatreialsbadpart.descriptionOne</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_materialBadProNum.descriptionOne</SourceName></dtMaster><dtMaster><DestName>halfmatreialsbadpart.descriptionTwo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_materialBadProNum.descriptionTwo</SourceName></dtMaster><dtMaster><DestName>halfmatreialsbadpart.materialNo</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_materialBadProNum.materialNo</SourceName></dtMaster><dtMaster><DestName>halfmatreialsbadpart.remark</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_materialBadProNum.remark</SourceName></dtMaster><dtMaster><DestName>halfmatreialsbadpart.startId</DestName><SourceType>entityField</SourceType><SourceName>bo_akl_line_materialBadProNum.startId</SourceName></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord1" instanceName="新增实体记录" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"3","Mappings":[{"destField":"bo_akl_line_materialBadProNum.badProNum","fieldtype":"expression","srcField":"BR_VAR_PARENT.[halfmatreialsbadpart].[badProNum]"},{"destField":"bo_akl_line_materialBadProNum.batch","fieldtype":"expression","srcField":"BR_VAR_PARENT.[halfmatreialsbadpart].[batch]"},{"destField":"bo_akl_line_materialBadProNum.bsTime","fieldtype":"expression","srcField":"BR_VAR_PARENT.[halfmatreialsbadpart].[bsTime]"},{"destField":"bo_akl_line_materialBadProNum.createTime","fieldtype":"expression","srcField":"BR_VAR_PARENT.[halfmatreialsbadpart].[bsTime]"},{"destField":"bo_akl_line_materialBadProNum.descriptionOne","fieldtype":"expression","srcField":"BR_VAR_PARENT.[halfmatreialsbadpart].[descriptionOne]"},{"destField":"bo_akl_line_materialBadProNum.descriptionTwo","fieldtype":"expression","srcField":"BR_VAR_PARENT.[halfmatreialsbadpart].[descriptionTwo]"},{"destField":"bo_akl_line_materialBadProNum.materialNo","fieldtype":"expression","srcField":"BR_VAR_PARENT.[halfmatreialsbadpart].[materialNo]"},{"destField":"bo_akl_line_materialBadProNum.remark","fieldtype":"expression","srcField":"BR_VAR_PARENT.[halfmatreialsbadpart].[remark]"},{"destField":"bo_akl_line_materialBadProNum.startId","fieldtype":"expression","srcField":"BR_VAR_PARENT.[halfmatreialsbadpart].[startId]"}],"TableType":"window","TableName":"bo_akl_line_materialBadProNum","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><Location>3</Location><EntityType>window</EntityType><EntityName>bo_akl_line_materialBadProNum</EntityName></dtMaster><dtEntityColumns><DestName>bo_akl_line_materialBadProNum.badProNum</DestName><SourceType>expression</SourceType><SourceName>BR_VAR_PARENT.[halfmatreialsbadpart].[badProNum]</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_line_materialBadProNum.batch</DestName><SourceType>expression</SourceType><SourceName>BR_VAR_PARENT.[halfmatreialsbadpart].[batch]</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_line_materialBadProNum.bsTime</DestName><SourceType>expression</SourceType><SourceName>BR_VAR_PARENT.[halfmatreialsbadpart].[bsTime]</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_line_materialBadProNum.createTime</DestName><SourceType>expression</SourceType><SourceName>BR_VAR_PARENT.[halfmatreialsbadpart].[bsTime]</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_line_materialBadProNum.descriptionOne</DestName><SourceType>expression</SourceType><SourceName>BR_VAR_PARENT.[halfmatreialsbadpart].[descriptionOne]</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_line_materialBadProNum.descriptionTwo</DestName><SourceType>expression</SourceType><SourceName>BR_VAR_PARENT.[halfmatreialsbadpart].[descriptionTwo]</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_line_materialBadProNum.materialNo</DestName><SourceType>expression</SourceType><SourceName>BR_VAR_PARENT.[halfmatreialsbadpart].[materialNo]</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_line_materialBadProNum.remark</DestName><SourceType>expression</SourceType><SourceName>BR_VAR_PARENT.[halfmatreialsbadpart].[remark]</SourceName></dtEntityColumns><dtEntityColumns><DestName>bo_akl_line_materialBadProNum.startId</DestName><SourceType>expression</SourceType><SourceName>BR_VAR_PARENT.[halfmatreialsbadpart].[startId]</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+    </RuleInstances>
+    <Variables>
+      <Variable code="halfmatreialsbadpart" name="" fieldType="entity" initValue="" isMust="false" desc="实体复制暂存">
+        <Entity>
+          <Field code="id" name="" fieldType="char" length="128" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="startId" name="开线id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="materialNo" name="物料型号" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="badProNum" name="不良品数" fieldType="integer" length="50" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="remark" name="不良原因" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="batch" name="批次号" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="createTime" name="创建时间" fieldType="longDate" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="descriptionOne" name="描述一" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="descriptionTwo" name="描述二" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="bsTime" name="标识时间" fieldType="date" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+    </Variables>
+  </Method>
 </Methods>
