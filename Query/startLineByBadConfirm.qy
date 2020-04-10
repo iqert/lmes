@@ -1,13 +1,18 @@
-﻿<Query id="dfedbb1f39ab4bb7b76a89034b965c61" code="startLineByBadConfirm" name="获取不需要过滤不良品的产线" type="VSql" APICode="">
+﻿<Query id="dfedbb1f39ab4bb7b76a89034b965c61" code="startLineByBadConfirm" name="获取需要不良品确认的产线" type="VSql" APICode="">
   <Remark><![CDATA[]]></Remark>
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-11-21 23:24:04]]></CreationTime>
-  <Modifier><![CDATA[user_20190304004]]></Modifier>
-  <ModificationTime><![CDATA[2019-11-28 09:42:49]]></ModificationTime>
-  <VSql><![CDATA[select al.* from bo_akl_line_start as al 
-left join bo_akl_base_productlines as pd on al.prolineId=pd.id 
-where (pd.isBadConfirm='是'  or pd.isBadConfirm is null)  order by al.startTime DESC
-]]></VSql>
+  <Modifier><![CDATA[user_20180612007]]></Modifier>
+  <ModificationTime><![CDATA[2020-04-10 09:49:12]]></ModificationTime>
+  <VSql><![CDATA[SELECT al.*
+FROM bo_akl_line_start AS al
+LEFT JOIN bo_akl_base_productlines AS pd ON al.prolineId = pd.id
+WHERE (
+		pd.isBadConfirm = '是'
+		OR pd.isBadConfirm IS NULL
+		)
+ORDER BY al.startTime DESC
+-- 查询开线记录（需要不良品确认的成品开线记录）]]></VSql>
   <Columns>
     <Column id="Column_0" code="id" name="" dataType="char" length="" precision="">
       <Remark></Remark>
@@ -143,9 +148,5 @@ where (pd.isBadConfirm='是'  or pd.isBadConfirm is null)  order by al.startTime
   <DataItems>
     <DataItem type="Table" key="bo_akl_line_start" tokenIndexes="8" />
     <DataItem type="Table" key="bo_akl_base_productlines" tokenIndexes="18" />
-    <DataItem type="TableField" key="bo_akl_line_start.prolineId" tokenIndexes="28" />
-    <DataItem type="TableField" key="bo_akl_base_productlines.id" tokenIndexes="32" />
-    <DataItem type="TableField" key="bo_akl_base_productlines.isBadConfirm" tokenIndexes="39,47" />
-    <DataItem type="TableField" key="bo_akl_line_start.startTime" tokenIndexes="60" />
   </DataItems>
 </Query>
