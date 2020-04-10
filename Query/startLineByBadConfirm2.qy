@@ -3,13 +3,13 @@
   <Creator><![CDATA[user_20190304004]]></Creator>
   <CreationTime><![CDATA[2019-11-21 23:51:30]]></CreationTime>
   <Modifier><![CDATA[user_20180612007]]></Modifier>
-  <ModificationTime><![CDATA[2020-04-10 11:31:04]]></ModificationTime>
+  <ModificationTime><![CDATA[2020-04-10 13:38:53]]></ModificationTime>
   <VSql><![CDATA[SELECT al.*
 FROM bo_akl_line_start AS al
 LEFT JOIN bo_akl_base_productlines AS pd ON al.prolineId = pd.id
 WHERE (
 		pd.isBadConfirm = '否'
-		OR al.confirmBadProductState = 1
+		OR al.confirmBadProductState = '1'
 		)
 ORDER BY al.startTime DESC 
 -- 查询开线记录（不需要不良品确认预加工开线记录以及不良品已确认的成品开线记录]]></VSql>

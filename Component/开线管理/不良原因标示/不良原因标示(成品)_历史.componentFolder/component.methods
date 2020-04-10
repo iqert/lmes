@@ -109,11 +109,19 @@
     <Description><![CDATA[]]></Description>
     <Remark><![CDATA[]]></Remark>
     <MethodChain><![CDATA[
+  <evaluateRule code="BR_DeleteListSelectRow1" />
   <evaluateRule code="BR_DataBaseDataToInterfaceEntity1" />
   <evaluateRule code="BR_OpenComponentReturnData1" />
   <evaluateRule code="BR_SetEntityVarControlValue1" />
 ]]></MethodChain>
     <RuleInstances>
+      <RuleInstance ruleCode="DeleteListSelectRow" ruleName="删除实体记录" instanceCode="BR_DeleteListSelectRow1" instanceName="删除实体记录" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-10 15:27:12">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"Condition":"!IsEmpty(BR_VAR_PARENT.[lineCode].[lineCode])","deleteType":"1","TableName":"lineCode","EntityType":"ruleSetVar"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><Condition>!IsEmpty(BR_VAR_PARENT.[lineCode].[lineCode])</Condition><DeleteType>1</DeleteType><TableName>lineCode</TableName><EntityType>ruleSetVar</EntityType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
       <RuleInstance ruleCode="DataBaseDataToInterfaceEntity" ruleName="从数据库获取数据到实体" instanceCode="BR_DataBaseDataToInterfaceEntity1" instanceName="从数据库获取数据到实体_获取产线编号" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
@@ -132,8 +140,8 @@
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_line_materialBadProNum.remark","SourceType":"expression","SourceEntityType":"","Source":"BR_VAR_PARENT.remark","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_line_materialBadProNum.remark</Target><SourceType>expression</SourceType><SourceEntityType /><Source>BR_VAR_PARENT.remark</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"3","Target":"bo_akl_line_stationBadProNum.remark","SourceType":"expression","SourceEntityType":"","Source":"BR_VAR_PARENT.remark","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>3</TargetType><Target>bo_akl_line_stationBadProNum.remark</Target><SourceType>expression</SourceType><SourceEntityType /><Source>BR_VAR_PARENT.remark</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
     </RuleInstances>
     <Variables>
