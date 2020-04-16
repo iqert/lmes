@@ -46,4 +46,5 @@
   <FileReference code="Fileno_26" Filename="工序工时.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="9.21" FileFullname="工序工时.xlsx" Updator="user_20190304004" UpdateFileDate="01/31/2020 10:28:53" />
   <FileReference code="Fileno_32" Filename="1f6b2dc0-27a8-4620-8f43-52c48006f010.Bmp" ParentDirFullName="FromClipboard\guiBookInfo" Desc="" Dimension="1166×700" FileSize="282.64" FileFullname="FromClipboard\guiBookInfo\1f6b2dc0-27a8-4620-8f43-52c48006f010.Bmp" Updator="user_20180612007" UpdateFileDate="03/19/2020 21:13:56" />
   <FileReference code="Fileno_33" Filename="职员培训记录导入模板.xlsx" ParentDirFullName="" Desc="" Dimension="" FileSize="8.53" FileFullname="职员培训记录导入模板.xlsx" Updator="user_20180612007" UpdateFileDate="04/13/2020 14:51:33" />
+  <FileReference code="Fileno_34" Filename="281b6574-4581-42c8-ab3c-90ff23e57295.Bmp" ParentDirFullName="FromClipboard\form_badCauseMarkPage" Desc="" Dimension="1687×89" FileSize="15.06" FileFullname="FromClipboard\form_badCauseMarkPage\281b6574-4581-42c8-ab3c-90ff23e57295.Bmp" Updator="user_20180612007" UpdateFileDate="04/16/2020 15:41:27" />
 </FileReferences>
