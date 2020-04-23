@@ -400,7 +400,23 @@
                           <remark></remark>
                         </define>
                         <sequence>
-                          <evaluateRule code="BR_AddTableRecord3_1_1_1_3" />
+                          <if isEnabled="True" isDebug="False" code="IfCode33">
+                            <define>
+                              <expression>LV.va.Value==0</expression>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_AddTableRecord3_1_1_1_3" />
+                            </sequence>
+                          </if>
+                          <else isEnabled="True" isDebug="False">
+                            <define>
+                              <remark />
+                            </define>
+                            <sequence>
+                              <evaluateRule code="BR_AddTableRecord3_1_1_1_3_1" />
+                            </sequence>
+                          </else>
                           <evaluateRule code="BR_AbortLoop2_2_2" />
                         </sequence>
                       </if>
@@ -440,40 +456,194 @@
         <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"ABS9W2\"","entityFieldMapping":null}]}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"ABS9W2"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2" instanceName="给界面实体/控件/变量赋值_清空myName1" isNeedLog="False" isEnabled="True" isDebug="False">
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4_1_2_1_1_1_1_1" instanceName="给界面实体/控件/变量赋值_M34W1" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>""</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"M34W1\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"M34W1"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="定位Name中'.'的下标和总长度" isNeedLog="False" isEnabled="True" isDebug="False">
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4_1_2_1_1_1_1_1_1_1_1_1_1" instanceName="给界面实体/控件/变量赋值_EBC460W1" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"IndexOf","SourceType":"expression","SourceEntityType":"","Source":"IndexOf(LV.i.Name,\".\",0)","entityFieldMapping":null},{"TargetType":"4","Target":"Length","SourceType":"expression","SourceEntityType":"","Source":"GetLength(LV.i.Name)","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>IndexOf</Target><SourceType>expression</SourceType><SourceEntityType /><Source>IndexOf(LV.i.Name,".",0)</Source></dtFieldMap><dtFieldMap><TargetType>4</TargetType><Target>Length</Target><SourceType>expression</SourceType><SourceEntityType /><Source>GetLength(LV.i.Name)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"EBC460W1\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"EBC460W1"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord2" instanceName="将lineDate实体转化为MyLineDate实体(将Name拆分成左右两部分)" isNeedLog="False" isEnabled="True" isDebug="False">
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4_1_2_1_1_1" instanceName="给界面实体/控件/变量赋值_NSAW1" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"MylineData.Name1","fieldtype":"expression","srcField":"BR_VAR_PARENT.MyName1"},{"destField":"MylineData.Name2","fieldtype":"expression","srcField":"Substring(LV.i.Name,BR_VAR_PARENT.IndexOf+1,BR_VAR_PARENT.Length-1)"},{"destField":"MylineData.Value","fieldtype":"expression","srcField":"LV.i.Value"},{"destField":"MylineData.Timepoint","fieldtype":"expression","srcField":"LV.i.Timepoint"}],"TableType":"ruleSetVar","TableName":"MylineData","NumCount":"1"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>MylineData</EntityName></dtMaster><dtEntityColumns><DestName>MylineData.Name1</DestName><SourceType>expression</SourceType><SourceName>BR_VAR_PARENT.MyName1</SourceName></dtEntityColumns><dtEntityColumns><DestName>MylineData.Name2</DestName><SourceType>expression</SourceType><SourceName>Substring(LV.i.Name,BR_VAR_PARENT.IndexOf+1,BR_VAR_PARENT.Length-1)</SourceName></dtEntityColumns><dtEntityColumns><DestName>MylineData.Value</DestName><SourceType>expression</SourceType><SourceName>LV.i.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>MylineData.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.i.Timepoint</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"NSAW1\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"NSAW1"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord3_2_1_1_2" instanceName="找到对应的WT_Lower,记录哪条产线哪个工站什么时候水温过低" isNeedLog="False" isEnabled="True" isDebug="False">
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1" instanceName="记录第一个下划线的位置_1" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"Journal.Name1","fieldtype":"expression","srcField":"LV.va.Name1"},{"destField":"Journal.Name2","fieldtype":"expression","srcField":"LV.va.Name2"},{"destField":"Journal.OldValue","fieldtype":"expression","srcField":"LV.vb.Value"},{"destField":"Journal.NewValue","fieldtype":"expression","srcField":"LV.va.Value"},{"destField":"Journal.Timepoint","fieldtype":"expression","srcField":"LV.va.Timepoint"},{"destField":"Journal.ts","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"Journal.Record","fieldtype":"expression","srcField":"ConcatStr(LV.va.Name1,\"-\",Substring(LV.va.Name2,2,BR_VAR_PARENT.Location-2),\",水温过低\")"}],"TableType":"ruleSetVar","TableName":"Journal","NumCount":"1"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>Journal</EntityName></dtMaster><dtEntityColumns><DestName>Journal.Name1</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name1</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Name2</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name2</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.OldValue</DestName><SourceType>expression</SourceType><SourceName>LV.vb.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.NewValue</DestName><SourceType>expression</SourceType><SourceName>LV.va.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.va.Timepoint</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Record</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(LV.va.Name1,"-",Substring(LV.va.Name2,2,BR_VAR_PARENT.Location-2),",水温过低")</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"Location","SourceType":"expression","SourceEntityType":"","Source":"IndexOf(LV.va.Name2,\"_\",0)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>Location</Target><SourceType>expression</SourceType><SourceEntityType /><Source>IndexOf(LV.va.Name2,"_",0)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord3_2_1_1_1_1" instanceName="找到Product_count,记录哪条产线什么时候停机前产量" isNeedLog="False" isEnabled="True" isDebug="False">
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord3_1_1_1_2" instanceName="发现某个工站的Ecd_UC变动,记录哪条产线哪个工站什么时候更换电极" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-23 15:55:42">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"Journal.Name1","fieldtype":"expression","srcField":"LV.vc.Name1"},{"destField":"Journal.Name2","fieldtype":"expression","srcField":"LV.vc.Name2"},{"destField":"Journal.OldValue","fieldtype":"expression","srcField":"LV.vc.Value"},{"destField":"Journal.NewValue","fieldtype":"expression","srcField":"LV.vc.Value"},{"destField":"Journal.Timepoint","fieldtype":"expression","srcField":"LV.vc.Timepoint"},{"destField":"Journal.ts","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"Journal.Record","fieldtype":"expression","srcField":"ConcatStr(LV.vc.Name1,\",停机前产量为\",ConvertFunc(LV.vc.Value,2))"}],"TableType":"ruleSetVar","TableName":"Journal","NumCount":"1"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>Journal</EntityName></dtMaster><dtEntityColumns><DestName>Journal.Name1</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Name1</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Name2</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Name2</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.OldValue</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.NewValue</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Timepoint</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Record</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(LV.vc.Name1,",停机前产量为",ConvertFunc(LV.vc.Value,2))</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"Journal.Name1","fieldtype":"expression","srcField":"LV.va.Name1"},{"destField":"Journal.Name2","fieldtype":"expression","srcField":"LV.va.Name2"},{"destField":"Journal.OldValue","fieldtype":"expression","srcField":"LV.vb.Value"},{"destField":"Journal.NewValue","fieldtype":"expression","srcField":"LV.va.Value"},{"destField":"Journal.Timepoint","fieldtype":"expression","srcField":"LV.va.Timepoint"},{"destField":"Journal.ts","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"Journal.Record","fieldtype":"expression","srcField":"ConcatStr(LV.va.Name1,\"-\",Substring(LV.va.Name2,2,BR_VAR_PARENT.Location-2),\",更换电极/Change Electrode\")"}],"TableType":"ruleSetVar","TableName":"Journal","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>Journal</EntityName></dtMaster><dtEntityColumns><DestName>Journal.Name1</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name1</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Name2</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name2</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.OldValue</DestName><SourceType>expression</SourceType><SourceName>LV.vb.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.NewValue</DestName><SourceType>expression</SourceType><SourceName>LV.va.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.va.Timepoint</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Record</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(LV.va.Name1,"-",Substring(LV.va.Name2,2,BR_VAR_PARENT.Location-2),",更换电极/Change Electrode")</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop2_3" instanceName="中断循环_进入下一次循环_3" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"abortType":"continue"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>continue</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="CopyRecordBetweenEntity" ruleName="实体间复制记录" instanceCode="BR_CopyRecordBetweenEntity1_1" instanceName="复制实时表数据到记录表实体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"sourceName":"MylineData","sourceType":"ruleSetVar","destName":"saveMylineData","destType":"ruleSetVar","copyType":"2","operType":"1","isAddRecord":true,"condition":null,"items":[{"destName":"saveMylineData.Name1","sourceName":"MylineData.Name1","sourceType":"entityField"},{"destName":"saveMylineData.Name2","sourceName":"MylineData.Name2","sourceType":"entityField"},{"destName":"saveMylineData.Value","sourceName":"MylineData.Value","sourceType":"entityField"},{"destName":"saveMylineData.Timepoint","sourceName":"MylineData.Timepoint","sourceType":"entityField"},{"destName":"saveMylineData.ts","sourceName":"DateTimeNow()","sourceType":"expression"}],"checkitems":null,"mergeitems":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtInfo><destName>saveMylineData</destName><destType>ruleSetVar</destType><sourceName>MylineData</sourceName><sourceType>ruleSetVar</sourceType><type>1</type><isAddRecord>True</isAddRecord><copyType>2</copyType><condition><![CDATA[<NewDataSet />]]]]><![CDATA[></condition></dtInfo><dtMaster><DestName>saveMylineData.Name1</DestName><SourceType>entityField</SourceType><SourceName>MylineData.Name1</SourceName></dtMaster><dtMaster><DestName>saveMylineData.Name2</DestName><SourceType>entityField</SourceType><SourceName>MylineData.Name2</SourceName></dtMaster><dtMaster><DestName>saveMylineData.Value</DestName><SourceType>entityField</SourceType><SourceName>MylineData.Value</SourceName></dtMaster><dtMaster><DestName>saveMylineData.Timepoint</DestName><SourceType>entityField</SourceType><SourceName>MylineData.Timepoint</SourceName></dtMaster><dtMaster><DestName>saveMylineData.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1_1" instanceName="保存实体到数据库_第一次表中没有数据,将新数据存入表中" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"MyExchange_old.id","colValue":"saveMylineData.id","valueType":"entityField"},{"colName":"MyExchange_old.Name1","colValue":"saveMylineData.Name1","valueType":"entityField"},{"colName":"MyExchange_old.Name2","colValue":"saveMylineData.Name2","valueType":"entityField"},{"colName":"MyExchange_old.Timepoint","colValue":"saveMylineData.Timepoint","valueType":"entityField"},{"colName":"MyExchange_old.ts","colValue":"saveMylineData.ts","valueType":"entityField"},{"colName":"MyExchange_old.Value","colValue":"saveMylineData.Value","valueType":"entityField"}],"dataSource":"saveMylineData","dataSourceType":"ruleSetVar","destTab":"MyExchange_old","isSaveAll":true}],"treeStruct":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>30f4545f07224740bf37893130ec73bb</ID><SourceName>saveMylineData</SourceName><SourceType>ruleSetVar</SourceType><SourceNameType>saveMylineData(方法变量)</SourceNameType><IsSaveAll>True</IsSaveAll><TableName>MyExchange_old</TableName></dtMaster><dtDetails><PID>30f4545f07224740bf37893130ec73bb</PID><SourceField>MyExchange_old.id</SourceField><DataFrom>entityField</DataFrom><Value>saveMylineData.id</Value></dtDetails><dtDetails><PID>30f4545f07224740bf37893130ec73bb</PID><SourceField>MyExchange_old.Name1</SourceField><DataFrom>entityField</DataFrom><Value>saveMylineData.Name1</Value></dtDetails><dtDetails><PID>30f4545f07224740bf37893130ec73bb</PID><SourceField>MyExchange_old.Name2</SourceField><DataFrom>entityField</DataFrom><Value>saveMylineData.Name2</Value></dtDetails><dtDetails><PID>30f4545f07224740bf37893130ec73bb</PID><SourceField>MyExchange_old.Timepoint</SourceField><DataFrom>entityField</DataFrom><Value>saveMylineData.Timepoint</Value></dtDetails><dtDetails><PID>30f4545f07224740bf37893130ec73bb</PID><SourceField>MyExchange_old.ts</SourceField><DataFrom>entityField</DataFrom><Value>saveMylineData.ts</Value></dtDetails><dtDetails><PID>30f4545f07224740bf37893130ec73bb</PID><SourceField>MyExchange_old.Value</SourceField><DataFrom>entityField</DataFrom><Value>saveMylineData.Value</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord3_2_1_1_2_1" instanceName="找到相应的WT_Upper,记录哪条产线哪个工站什么时候水温过高" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-23 15:41:10">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"Journal.Name1","fieldtype":"expression","srcField":"LV.va.Name1"},{"destField":"Journal.Name2","fieldtype":"expression","srcField":"LV.va.Name2"},{"destField":"Journal.OldValue","fieldtype":"expression","srcField":"LV.vb.Value"},{"destField":"Journal.NewValue","fieldtype":"expression","srcField":"LV.va.Value"},{"destField":"Journal.Timepoint","fieldtype":"expression","srcField":"LV.va.Timepoint"},{"destField":"Journal.ts","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"Journal.Record","fieldtype":"expression","srcField":"ConcatStr(LV.va.Name1,\"-\",Substring(LV.va.Name2,2,BR_VAR_PARENT.Location-2),\",水温过高/High Water Temperature\")"}],"TableType":"ruleSetVar","TableName":"Journal","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>Journal</EntityName></dtMaster><dtEntityColumns><DestName>Journal.Name1</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name1</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Name2</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name2</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.OldValue</DestName><SourceType>expression</SourceType><SourceName>LV.vb.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.NewValue</DestName><SourceType>expression</SourceType><SourceName>LV.va.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.va.Timepoint</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Record</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(LV.va.Name1,"-",Substring(LV.va.Name2,2,BR_VAR_PARENT.Location-2),",水温过高/High Water Temperature")</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4_1_2_1_1_1_1" instanceName="给界面实体/控件/变量赋值_FPG2W1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"FPG2W1\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"FPG2W1"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord3_2_1_1_1" instanceName="找到PD_Number,记录哪条产线什么时候停机前的型号" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-23 15:57:43">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"Journal.Name1","fieldtype":"expression","srcField":"LV.vc.Name1"},{"destField":"Journal.Name2","fieldtype":"expression","srcField":"LV.vc.Name2"},{"destField":"Journal.OldValue","fieldtype":"expression","srcField":"LV.vc.Value"},{"destField":"Journal.NewValue","fieldtype":"expression","srcField":"LV.vc.Value"},{"destField":"Journal.Timepoint","fieldtype":"expression","srcField":"LV.vc.Timepoint"},{"destField":"Journal.ts","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"Journal.Record","fieldtype":"expression","srcField":"ConcatStr(LV.vc.Name1,\",停机前型号/Prodct Type Before STOP\",ConvertFunc(LV.vc.Value,2))"}],"TableType":"ruleSetVar","TableName":"Journal","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>Journal</EntityName></dtMaster><dtEntityColumns><DestName>Journal.Name1</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Name1</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Name2</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Name2</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.OldValue</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.NewValue</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Timepoint</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Record</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(LV.vc.Name1,",停机前型号/Prodct Type Before STOP",ConvertFunc(LV.vc.Value,2))</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop1_1_1_1_1_2" instanceName="中断循环_找到对应的PD_Number后跳出循环体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"abortType":"break"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>break</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord3_1_1_1_3" instanceName="发现Status1变动,记录哪条产线什么时候故障" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-23 15:39:01">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"Journal.Name1","fieldtype":"expression","srcField":"LV.va.Name1"},{"destField":"Journal.Name2","fieldtype":"expression","srcField":"LV.va.Name2"},{"destField":"Journal.OldValue","fieldtype":"expression","srcField":"LV.vb.Value"},{"destField":"Journal.NewValue","fieldtype":"expression","srcField":"LV.va.Value"},{"destField":"Journal.Timepoint","fieldtype":"expression","srcField":"LV.va.Timepoint"},{"destField":"Journal.ts","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"Journal.Record","fieldtype":"expression","srcField":"ConcatStr(LV.va.Name1,\",产线发生故障/Line has Error\")"}],"TableType":"ruleSetVar","TableName":"Journal","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>Journal</EntityName></dtMaster><dtEntityColumns><DestName>Journal.Name1</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name1</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Name2</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name2</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.OldValue</DestName><SourceType>expression</SourceType><SourceName>LV.vb.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.NewValue</DestName><SourceType>expression</SourceType><SourceName>LV.va.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.va.Timepoint</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Record</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(LV.va.Name1,",产线发生故障/Line has Error")</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord3_1_1_1_3_1" instanceName="发现Status1变动,记录哪条产线什么时候恢复" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-23 15:39:52">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"Journal.Name1","fieldtype":"expression","srcField":"LV.va.Name1"},{"destField":"Journal.Name2","fieldtype":"expression","srcField":"LV.va.Name2"},{"destField":"Journal.OldValue","fieldtype":"expression","srcField":"LV.vb.Value"},{"destField":"Journal.NewValue","fieldtype":"expression","srcField":"LV.va.Value"},{"destField":"Journal.Timepoint","fieldtype":"expression","srcField":"LV.va.Timepoint"},{"destField":"Journal.ts","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"Journal.Record","fieldtype":"expression","srcField":"ConcatStr(LV.va.Name1,\",产线故障解除/Line Recover\")"}],"TableType":"ruleSetVar","TableName":"Journal","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>Journal</EntityName></dtMaster><dtEntityColumns><DestName>Journal.Name1</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name1</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Name2</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name2</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.OldValue</DestName><SourceType>expression</SourceType><SourceName>LV.vb.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.NewValue</DestName><SourceType>expression</SourceType><SourceName>LV.va.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.va.Timepoint</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Record</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(LV.va.Name1,",产线故障解除/Line Recover")</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord3_1_1" instanceName="发现PD_Number变动,记录哪条产线什么时候更换什么型号" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-23 15:56:55">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"Journal.Name1","fieldtype":"expression","srcField":"LV.va.Name1"},{"destField":"Journal.Name2","fieldtype":"expression","srcField":"LV.va.Name2"},{"destField":"Journal.OldValue","fieldtype":"expression","srcField":"LV.vb.Value"},{"destField":"Journal.NewValue","fieldtype":"expression","srcField":"LV.va.Value"},{"destField":"Journal.Timepoint","fieldtype":"expression","srcField":"LV.va.Timepoint"},{"destField":"Journal.ts","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"Journal.Record","fieldtype":"expression","srcField":"ConcatStr(LV.va.Name1,\",更换/Change\",ConvertFunc(LV.va.Value,2),\"型号/Product Type\")"}],"TableType":"ruleSetVar","TableName":"Journal","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>Journal</EntityName></dtMaster><dtEntityColumns><DestName>Journal.Name1</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name1</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Name2</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name2</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.OldValue</DestName><SourceType>expression</SourceType><SourceName>LV.vb.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.NewValue</DestName><SourceType>expression</SourceType><SourceName>LV.va.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.va.Timepoint</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Record</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(LV.va.Name1,",更换/Change",ConvertFunc(LV.va.Value,2),"型号/Product Type")</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop2" instanceName="中断循环_进入下一次循环_1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"abortType":"continue"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>continue</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4_1_2_1_1_1_1_1_1_1_1_1" instanceName="给界面实体/控件/变量赋值_ECSW1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"ECSW1\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"ECSW1"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop1_1_1_1_1_4" instanceName="中断循环_找到对应的WT_Upper后跳出该循环体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"abortType":"break"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>break</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4_1_2" instanceName="给界面实体/控件/变量赋值_FPG2EVOW1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"FPG2EVOW1\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"FPG2EVOW1"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4_1_2_1" instanceName="给界面实体/控件/变量赋值_FPC5W1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"FPC5W1\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"FPC5W1"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1" instanceName="记录第一个下划线的位置_2" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"Location","SourceType":"expression","SourceEntityType":"","Source":"IndexOf(LV.va.Name2,\"_\",0)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>Location</Target><SourceType>expression</SourceType><SourceEntityType /><Source>IndexOf(LV.va.Name2,"_",0)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord3_1_1_1_2_1" instanceName="发现某个工站的Alarm_count变动,记录哪条产线哪个工站什么时候不良数发生了变更" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-23 15:55:27">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"Journal.Name1","fieldtype":"expression","srcField":"LV.va.Name1"},{"destField":"Journal.Name2","fieldtype":"expression","srcField":"LV.va.Name2"},{"destField":"Journal.OldValue","fieldtype":"expression","srcField":"LV.vb.Value"},{"destField":"Journal.NewValue","fieldtype":"expression","srcField":"LV.va.Value"},{"destField":"Journal.Timepoint","fieldtype":"expression","srcField":"LV.va.Timepoint"},{"destField":"Journal.ts","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"Journal.Record","fieldtype":"expression","srcField":"ConcatStr(LV.va.Name1,\"-\",Substring(LV.va.Name2,2,BR_VAR_PARENT.Location-2),\",产生不良/detect failure part\")"}],"TableType":"ruleSetVar","TableName":"Journal","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>Journal</EntityName></dtMaster><dtEntityColumns><DestName>Journal.Name1</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name1</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Name2</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name2</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.OldValue</DestName><SourceType>expression</SourceType><SourceName>LV.vb.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.NewValue</DestName><SourceType>expression</SourceType><SourceName>LV.va.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.va.Timepoint</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Record</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(LV.va.Name1,"-",Substring(LV.va.Name2,2,BR_VAR_PARENT.Location-2),",产生不良/detect failure part")</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop2_4" instanceName="中断循环_进入下一次循环_4" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"abortType":"continue"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>continue</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4_1_2_1_1_1_1_1_1" instanceName="给界面实体/控件/变量赋值_WSM3W1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"WSM3W1\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"WSM3W1"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop1" instanceName="中断循环_遍历下一条数据" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"abortType":"continue"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>continue</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4_1_2_1_1_1_1_1_1_1" instanceName="给界面实体/控件/变量赋值_NSAW2" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"NSAW2\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"NSAW2"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord3_2_1_1_1_1" instanceName="找到Product_count,记录哪条产线什么时候停机前产量" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-23 15:57:25">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"Journal.Name1","fieldtype":"expression","srcField":"LV.vc.Name1"},{"destField":"Journal.Name2","fieldtype":"expression","srcField":"LV.vc.Name2"},{"destField":"Journal.OldValue","fieldtype":"expression","srcField":"LV.vc.Value"},{"destField":"Journal.NewValue","fieldtype":"expression","srcField":"LV.vc.Value"},{"destField":"Journal.Timepoint","fieldtype":"expression","srcField":"LV.vc.Timepoint"},{"destField":"Journal.ts","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"Journal.Record","fieldtype":"expression","srcField":"ConcatStr(LV.vc.Name1,\",停机前产量为/OUTPUT Before STOP\",ConvertFunc(LV.vc.Value,2))"}],"TableType":"ruleSetVar","TableName":"Journal","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>Journal</EntityName></dtMaster><dtEntityColumns><DestName>Journal.Name1</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Name1</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Name2</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Name2</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.OldValue</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.NewValue</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Timepoint</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Record</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(LV.vc.Name1,",停机前产量为/OUTPUT Before STOP",ConvertFunc(LV.vc.Value,2))</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
       <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop1_1_1_1_1_2_1" instanceName="中断循环_找到对应的Product_count后跳出该循环体" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
@@ -482,12 +652,26 @@
         <RuleConfig><![CDATA[{"abortType":"break"}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>break</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop1_1_1_1_1_1" instanceName="中断循环_跳过Product_count" isNeedLog="False" isEnabled="True" isDebug="False">
+      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop1_1_1_1_1_3" instanceName="中断循环_找到对应的WT_Lower后跳出该循环体" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"abortType":"continue"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>continue</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"abortType":"break"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>break</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3" instanceName="记录第一个下划线的位置" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"Location","SourceType":"expression","SourceEntityType":"","Source":"IndexOf(LV.va.Name2,\"_\",0)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>Location</Target><SourceType>expression</SourceType><SourceEntityType /><Source>IndexOf(LV.va.Name2,"_",0)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord3_1_1_1" instanceName="发现某个工站的Ecd_CUC变动,记录哪条产线哪个工站什么时候清洗电极" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-23 15:56:01">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"Journal.Name1","fieldtype":"expression","srcField":"LV.va.Name1"},{"destField":"Journal.Name2","fieldtype":"expression","srcField":"LV.va.Name2"},{"destField":"Journal.OldValue","fieldtype":"expression","srcField":"LV.vb.Value"},{"destField":"Journal.NewValue","fieldtype":"expression","srcField":"LV.va.Value"},{"destField":"Journal.Timepoint","fieldtype":"expression","srcField":"LV.va.Timepoint"},{"destField":"Journal.ts","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"Journal.Record","fieldtype":"expression","srcField":"ConcatStr(LV.va.Name1,\"-\",Substring(LV.va.Name2,2,BR_VAR_PARENT.Location-2),\",清洁电极/Clean Electrodes\")"}],"TableType":"ruleSetVar","TableName":"Journal","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>Journal</EntityName></dtMaster><dtEntityColumns><DestName>Journal.Name1</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name1</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Name2</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name2</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.OldValue</DestName><SourceType>expression</SourceType><SourceName>LV.vb.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.NewValue</DestName><SourceType>expression</SourceType><SourceName>LV.va.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.va.Timepoint</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Record</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(LV.va.Name1,"-",Substring(LV.va.Name2,2,BR_VAR_PARENT.Location-2),",清洁电极/Clean Electrodes")</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
       <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
@@ -510,49 +694,14 @@
         <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"MyExchange_old.id","colValue":"MylineData.id","valueType":"entityField"},{"colName":"MyExchange_old.Name1","colValue":"MylineData.Name1","valueType":"entityField"},{"colName":"MyExchange_old.Name2","colValue":"MylineData.Name2","valueType":"entityField"},{"colName":"MyExchange_old.Timepoint","colValue":"MylineData.Timepoint","valueType":"entityField"},{"colName":"MyExchange_old.ts","colValue":"DateTimeNow()","valueType":"expression"},{"colName":"MyExchange_old.Value","colValue":"MylineData.Value","valueType":"entityField"}],"dataSource":"MylineData","dataSourceType":"ruleSetVar","destTab":"MyExchange_old","isSaveAll":true}],"treeStruct":null}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>bc160ba541d54cbb8a1a354225019937</ID><SourceName>MylineData</SourceName><SourceType>ruleSetVar</SourceType><SourceNameType>MylineData(方法变量)</SourceNameType><IsSaveAll>True</IsSaveAll><TableName>MyExchange_old</TableName></dtMaster><dtDetails><PID>bc160ba541d54cbb8a1a354225019937</PID><SourceField>MyExchange_old.id</SourceField><DataFrom>entityField</DataFrom><Value>MylineData.id</Value></dtDetails><dtDetails><PID>bc160ba541d54cbb8a1a354225019937</PID><SourceField>MyExchange_old.Name1</SourceField><DataFrom>entityField</DataFrom><Value>MylineData.Name1</Value></dtDetails><dtDetails><PID>bc160ba541d54cbb8a1a354225019937</PID><SourceField>MyExchange_old.Name2</SourceField><DataFrom>entityField</DataFrom><Value>MylineData.Name2</Value></dtDetails><dtDetails><PID>bc160ba541d54cbb8a1a354225019937</PID><SourceField>MyExchange_old.Timepoint</SourceField><DataFrom>entityField</DataFrom><Value>MylineData.Timepoint</Value></dtDetails><dtDetails><PID>bc160ba541d54cbb8a1a354225019937</PID><SourceField>MyExchange_old.ts</SourceField><DataFrom>expression</DataFrom><Value>DateTimeNow()</Value></dtDetails><dtDetails><PID>bc160ba541d54cbb8a1a354225019937</PID><SourceField>MyExchange_old.Value</SourceField><DataFrom>entityField</DataFrom><Value>MylineData.Value</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1" instanceName="记录第一个下划线的位置_1" isNeedLog="False" isEnabled="True" isDebug="False">
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1" instanceName="发现某个工站的WT_Current变动,记录第一个下划线的位置_3" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
         <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"Location","SourceType":"expression","SourceEntityType":"","Source":"IndexOf(LV.va.Name2,\"_\",0)","entityFieldMapping":null}]}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>Location</Target><SourceType>expression</SourceType><SourceEntityType /><Source>IndexOf(LV.va.Name2,"_",0)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord3_1_1_1_2" instanceName="发现某个工站的Ecd_UC变动,记录哪条产线哪个工站什么时候更换电极" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"Journal.Name1","fieldtype":"expression","srcField":"LV.va.Name1"},{"destField":"Journal.Name2","fieldtype":"expression","srcField":"LV.va.Name2"},{"destField":"Journal.OldValue","fieldtype":"expression","srcField":"LV.vb.Value"},{"destField":"Journal.NewValue","fieldtype":"expression","srcField":"LV.va.Value"},{"destField":"Journal.Timepoint","fieldtype":"expression","srcField":"LV.va.Timepoint"},{"destField":"Journal.ts","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"Journal.Record","fieldtype":"expression","srcField":"ConcatStr(LV.va.Name1,\"-\",Substring(LV.va.Name2,2,BR_VAR_PARENT.Location-2),\",更换电极\")"}],"TableType":"ruleSetVar","TableName":"Journal","NumCount":"1"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>Journal</EntityName></dtMaster><dtEntityColumns><DestName>Journal.Name1</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name1</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Name2</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name2</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.OldValue</DestName><SourceType>expression</SourceType><SourceName>LV.vb.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.NewValue</DestName><SourceType>expression</SourceType><SourceName>LV.va.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.va.Timepoint</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Record</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(LV.va.Name1,"-",Substring(LV.va.Name2,2,BR_VAR_PARENT.Location-2),",更换电极")</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop2_3" instanceName="中断循环_进入下一次循环_3" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"abortType":"continue"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>continue</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop1_1_1_1_1_4" instanceName="中断循环_找到对应的WT_Upper后跳出该循环体" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"abortType":"break"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>break</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1" instanceName="记录第一个下划线的位置_2" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"Location","SourceType":"expression","SourceEntityType":"","Source":"IndexOf(LV.va.Name2,\"_\",0)","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>Location</Target><SourceType>expression</SourceType><SourceEntityType /><Source>IndexOf(LV.va.Name2,"_",0)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord3_1_1_1_2_1" instanceName="发现某个工站的Alarm_count变动,记录哪条产线哪个工站什么时候不良数发生了变更" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"Journal.Name1","fieldtype":"expression","srcField":"LV.va.Name1"},{"destField":"Journal.Name2","fieldtype":"expression","srcField":"LV.va.Name2"},{"destField":"Journal.OldValue","fieldtype":"expression","srcField":"LV.vb.Value"},{"destField":"Journal.NewValue","fieldtype":"expression","srcField":"LV.va.Value"},{"destField":"Journal.Timepoint","fieldtype":"expression","srcField":"LV.va.Timepoint"},{"destField":"Journal.ts","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"Journal.Record","fieldtype":"expression","srcField":"ConcatStr(LV.va.Name1,\"-\",Substring(LV.va.Name2,2,BR_VAR_PARENT.Location-2),\",产生不良\")"}],"TableType":"ruleSetVar","TableName":"Journal","NumCount":"1"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>Journal</EntityName></dtMaster><dtEntityColumns><DestName>Journal.Name1</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name1</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Name2</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name2</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.OldValue</DestName><SourceType>expression</SourceType><SourceName>LV.vb.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.NewValue</DestName><SourceType>expression</SourceType><SourceName>LV.va.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.va.Timepoint</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Record</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(LV.va.Name1,"-",Substring(LV.va.Name2,2,BR_VAR_PARENT.Location-2),",产生不良")</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop2_4" instanceName="中断循环_进入下一次循环_4" isNeedLog="False" isEnabled="True" isDebug="False">
+      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop2_5" instanceName="中断循环_进入下一次循环_5" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
@@ -587,194 +736,12 @@
         <RuleConfig><![CDATA[{"abortType":"continue"}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>continue</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord3_2_1_1_1" instanceName="找到PD_Number,记录哪条产线什么时候停机前的型号" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"Journal.Name1","fieldtype":"expression","srcField":"LV.vc.Name1"},{"destField":"Journal.Name2","fieldtype":"expression","srcField":"LV.vc.Name2"},{"destField":"Journal.OldValue","fieldtype":"expression","srcField":"LV.vc.Value"},{"destField":"Journal.NewValue","fieldtype":"expression","srcField":"LV.vc.Value"},{"destField":"Journal.Timepoint","fieldtype":"expression","srcField":"LV.vc.Timepoint"},{"destField":"Journal.ts","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"Journal.Record","fieldtype":"expression","srcField":"ConcatStr(LV.vc.Name1,\",停机前型号\",ConvertFunc(LV.vc.Value,2))"}],"TableType":"ruleSetVar","TableName":"Journal","NumCount":"1"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>Journal</EntityName></dtMaster><dtEntityColumns><DestName>Journal.Name1</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Name1</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Name2</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Name2</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.OldValue</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.NewValue</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Timepoint</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Record</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(LV.vc.Name1,",停机前型号",ConvertFunc(LV.vc.Value,2))</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop1_1_1_1_1_2" instanceName="中断循环_找到对应的PD_Number后跳出循环体" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"abortType":"break"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>break</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4_1_2_1_1" instanceName="给界面实体/控件/变量赋值_GBMW1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="liub" lastModifiedTime="2019-04-24 16:04:13">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"GBMW1\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"GBMW1"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3_1_1_1" instanceName="发现某个工站的WT_Current变动,记录第一个下划线的位置_3" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"Location","SourceType":"expression","SourceEntityType":"","Source":"IndexOf(LV.va.Name2,\"_\",0)","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>Location</Target><SourceType>expression</SourceType><SourceEntityType /><Source>IndexOf(LV.va.Name2,"_",0)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop2_5" instanceName="中断循环_进入下一次循环_5" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"abortType":"continue"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>continue</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord3_2_1_1_2_1" instanceName="找到相应的WT_Upper,记录哪条产线哪个工站什么时候水温过高" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"Journal.Name1","fieldtype":"expression","srcField":"LV.va.Name1"},{"destField":"Journal.Name2","fieldtype":"expression","srcField":"LV.va.Name2"},{"destField":"Journal.OldValue","fieldtype":"expression","srcField":"LV.vb.Value"},{"destField":"Journal.NewValue","fieldtype":"expression","srcField":"LV.va.Value"},{"destField":"Journal.Timepoint","fieldtype":"expression","srcField":"LV.va.Timepoint"},{"destField":"Journal.ts","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"Journal.Record","fieldtype":"expression","srcField":"ConcatStr(LV.va.Name1,\"-\",Substring(LV.va.Name2,2,BR_VAR_PARENT.Location-2),\",水温过高\")"}],"TableType":"ruleSetVar","TableName":"Journal","NumCount":"1"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>Journal</EntityName></dtMaster><dtEntityColumns><DestName>Journal.Name1</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name1</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Name2</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name2</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.OldValue</DestName><SourceType>expression</SourceType><SourceName>LV.vb.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.NewValue</DestName><SourceType>expression</SourceType><SourceName>LV.va.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.va.Timepoint</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Record</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(LV.va.Name1,"-",Substring(LV.va.Name2,2,BR_VAR_PARENT.Location-2),",水温过高")</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue3" instanceName="记录第一个下划线的位置" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"Location","SourceType":"expression","SourceEntityType":"","Source":"IndexOf(LV.va.Name2,\"_\",0)","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>Location</Target><SourceType>expression</SourceType><SourceEntityType /><Source>IndexOf(LV.va.Name2,"_",0)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord3_1_1_1" instanceName="发现某个工站的Ecd_CUC变动,记录哪条产线哪个工站什么时候清洗电极" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"Journal.Name1","fieldtype":"expression","srcField":"LV.va.Name1"},{"destField":"Journal.Name2","fieldtype":"expression","srcField":"LV.va.Name2"},{"destField":"Journal.OldValue","fieldtype":"expression","srcField":"LV.vb.Value"},{"destField":"Journal.NewValue","fieldtype":"expression","srcField":"LV.va.Value"},{"destField":"Journal.Timepoint","fieldtype":"expression","srcField":"LV.va.Timepoint"},{"destField":"Journal.ts","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"Journal.Record","fieldtype":"expression","srcField":"ConcatStr(LV.va.Name1,\"-\",Substring(LV.va.Name2,2,BR_VAR_PARENT.Location-2),\",清洁电极\")"}],"TableType":"ruleSetVar","TableName":"Journal","NumCount":"1"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>Journal</EntityName></dtMaster><dtEntityColumns><DestName>Journal.Name1</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name1</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Name2</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name2</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.OldValue</DestName><SourceType>expression</SourceType><SourceName>LV.vb.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.NewValue</DestName><SourceType>expression</SourceType><SourceName>LV.va.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.va.Timepoint</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Record</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(LV.va.Name1,"-",Substring(LV.va.Name2,2,BR_VAR_PARENT.Location-2),",清洁电极")</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4_1_2_1_1_1_1_1_1_1_1_1_1" instanceName="给界面实体/控件/变量赋值_EBC460W1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="liub" lastModifiedTime="2019-04-24 16:07:22">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"EBC460W1\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"EBC460W1"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="CopyRecordBetweenEntity" ruleName="实体间复制记录" instanceCode="BR_CopyRecordBetweenEntity1_1" instanceName="复制实时表数据到记录表实体" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"sourceName":"MylineData","sourceType":"ruleSetVar","destName":"saveMylineData","destType":"ruleSetVar","copyType":"2","operType":"1","isAddRecord":true,"condition":null,"items":[{"destName":"saveMylineData.Name1","sourceName":"MylineData.Name1","sourceType":"entityField"},{"destName":"saveMylineData.Name2","sourceName":"MylineData.Name2","sourceType":"entityField"},{"destName":"saveMylineData.Value","sourceName":"MylineData.Value","sourceType":"entityField"},{"destName":"saveMylineData.Timepoint","sourceName":"MylineData.Timepoint","sourceType":"entityField"},{"destName":"saveMylineData.ts","sourceName":"DateTimeNow()","sourceType":"expression"}],"checkitems":null,"mergeitems":null}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtInfo><destName>saveMylineData</destName><destType>ruleSetVar</destType><sourceName>MylineData</sourceName><sourceType>ruleSetVar</sourceType><type>1</type><isAddRecord>True</isAddRecord><copyType>2</copyType><condition><![CDATA[<NewDataSet />]]]]><![CDATA[></condition></dtInfo><dtMaster><DestName>saveMylineData.Name1</DestName><SourceType>entityField</SourceType><SourceName>MylineData.Name1</SourceName></dtMaster><dtMaster><DestName>saveMylineData.Name2</DestName><SourceType>entityField</SourceType><SourceName>MylineData.Name2</SourceName></dtMaster><dtMaster><DestName>saveMylineData.Value</DestName><SourceType>entityField</SourceType><SourceName>MylineData.Value</SourceName></dtMaster><dtMaster><DestName>saveMylineData.Timepoint</DestName><SourceType>entityField</SourceType><SourceName>MylineData.Timepoint</SourceName></dtMaster><dtMaster><DestName>saveMylineData.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1_1" instanceName="保存实体到数据库_第一次表中没有数据,将新数据存入表中" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"MyExchange_old.id","colValue":"saveMylineData.id","valueType":"entityField"},{"colName":"MyExchange_old.Name1","colValue":"saveMylineData.Name1","valueType":"entityField"},{"colName":"MyExchange_old.Name2","colValue":"saveMylineData.Name2","valueType":"entityField"},{"colName":"MyExchange_old.Timepoint","colValue":"saveMylineData.Timepoint","valueType":"entityField"},{"colName":"MyExchange_old.ts","colValue":"saveMylineData.ts","valueType":"entityField"},{"colName":"MyExchange_old.Value","colValue":"saveMylineData.Value","valueType":"entityField"}],"dataSource":"saveMylineData","dataSourceType":"ruleSetVar","destTab":"MyExchange_old","isSaveAll":true}],"treeStruct":null}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>30f4545f07224740bf37893130ec73bb</ID><SourceName>saveMylineData</SourceName><SourceType>ruleSetVar</SourceType><SourceNameType>saveMylineData(方法变量)</SourceNameType><IsSaveAll>True</IsSaveAll><TableName>MyExchange_old</TableName></dtMaster><dtDetails><PID>30f4545f07224740bf37893130ec73bb</PID><SourceField>MyExchange_old.id</SourceField><DataFrom>entityField</DataFrom><Value>saveMylineData.id</Value></dtDetails><dtDetails><PID>30f4545f07224740bf37893130ec73bb</PID><SourceField>MyExchange_old.Name1</SourceField><DataFrom>entityField</DataFrom><Value>saveMylineData.Name1</Value></dtDetails><dtDetails><PID>30f4545f07224740bf37893130ec73bb</PID><SourceField>MyExchange_old.Name2</SourceField><DataFrom>entityField</DataFrom><Value>saveMylineData.Name2</Value></dtDetails><dtDetails><PID>30f4545f07224740bf37893130ec73bb</PID><SourceField>MyExchange_old.Timepoint</SourceField><DataFrom>entityField</DataFrom><Value>saveMylineData.Timepoint</Value></dtDetails><dtDetails><PID>30f4545f07224740bf37893130ec73bb</PID><SourceField>MyExchange_old.ts</SourceField><DataFrom>entityField</DataFrom><Value>saveMylineData.ts</Value></dtDetails><dtDetails><PID>30f4545f07224740bf37893130ec73bb</PID><SourceField>MyExchange_old.Value</SourceField><DataFrom>entityField</DataFrom><Value>saveMylineData.Value</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop1" instanceName="中断循环_遍历下一条数据" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"abortType":"continue"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>continue</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4_1_2_1_1_1_1_1_1_1_1" instanceName="给界面实体/控件/变量赋值_AHCW1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="liub" lastModifiedTime="2019-04-24 16:06:32">
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4_1_2_1_1_1_1_1_1_1_1" instanceName="给界面实体/控件/变量赋值_AHCW1" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
         <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"AHCW1\"","entityFieldMapping":null}]}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"AHCW1"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord3_2_1_1" instanceName="找到Product_count,记录哪条产线什么时候更换型号前,上个型号的总产量" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"Journal.Name1","fieldtype":"expression","srcField":"LV.vc.Name1"},{"destField":"Journal.Name2","fieldtype":"expression","srcField":"LV.vc.Name2"},{"destField":"Journal.OldValue","fieldtype":"expression","srcField":"LV.vc.Value"},{"destField":"Journal.NewValue","fieldtype":"expression","srcField":"0"},{"destField":"Journal.Timepoint","fieldtype":"expression","srcField":"LV.vc.Timepoint"},{"destField":"Journal.ts","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"Journal.Record","fieldtype":"expression","srcField":"ConcatStr(LV.vc.Name1,\",\",ConvertFunc(LV.vb.Value,2),\"型号总产量为\",ConvertFunc(LV.vc.Value,2))"}],"TableType":"ruleSetVar","TableName":"Journal","NumCount":"1"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>Journal</EntityName></dtMaster><dtEntityColumns><DestName>Journal.Name1</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Name1</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Name2</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Name2</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.OldValue</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.NewValue</DestName><SourceType>expression</SourceType><SourceName>0</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Timepoint</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Record</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(LV.vc.Name1,",",ConvertFunc(LV.vb.Value,2),"型号总产量为",ConvertFunc(LV.vc.Value,2))</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop1_1_1_1_1" instanceName="中断循环_找到Product_count后跳出该循环体" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"abortType":"break"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>break</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop1_1_1_1_1_3" instanceName="中断循环_找到对应的WT_Lower后跳出该循环体" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"abortType":"break"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>break</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4_1_2_1_1_1_1_1_1_1_1_1" instanceName="给界面实体/控件/变量赋值_ECSW1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="liub" lastModifiedTime="2019-04-24 16:06:54">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"ECSW1\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"ECSW1"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4" instanceName="给界面实体/控件/变量赋值_ABS9W1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="liub" lastModifiedTime="2019-04-24 15:59:26">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"ABS9W1\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"ABS9W1"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4_1_2_1_1_1_1_1_1_1" instanceName="给界面实体/控件/变量赋值_NSAW2" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="liub" lastModifiedTime="2019-04-24 16:06:04">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"NSAW2\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"NSAW2"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4_1_2_1_1_1_1_1_1" instanceName="给界面实体/控件/变量赋值_WSM3W1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="liub" lastModifiedTime="2019-04-24 16:05:40">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"WSM3W1\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"WSM3W1"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop2_2" instanceName="中断循环_进入下一次循环_2" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"abortType":"continue"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>continue</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4_1_2_1_1_1_1_1" instanceName="给界面实体/控件/变量赋值_M34W1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="liub" lastModifiedTime="2019-04-24 16:05:21">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"M34W1\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"M34W1"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4_1_2" instanceName="给界面实体/控件/变量赋值_FPG2EVOW1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="liub" lastModifiedTime="2019-04-24 16:02:14">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"FPG2EVOW1\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"FPG2EVOW1"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord3_1_1" instanceName="发现PD_Number变动,记录哪条产线什么时候更换什么型号" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"Journal.Name1","fieldtype":"expression","srcField":"LV.va.Name1"},{"destField":"Journal.Name2","fieldtype":"expression","srcField":"LV.va.Name2"},{"destField":"Journal.OldValue","fieldtype":"expression","srcField":"LV.vb.Value"},{"destField":"Journal.NewValue","fieldtype":"expression","srcField":"LV.va.Value"},{"destField":"Journal.Timepoint","fieldtype":"expression","srcField":"LV.va.Timepoint"},{"destField":"Journal.ts","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"Journal.Record","fieldtype":"expression","srcField":"ConcatStr(LV.va.Name1,\",更换\",ConvertFunc(LV.va.Value,2),\"型号\")"}],"TableType":"ruleSetVar","TableName":"Journal","NumCount":"1"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>Journal</EntityName></dtMaster><dtEntityColumns><DestName>Journal.Name1</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name1</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Name2</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name2</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.OldValue</DestName><SourceType>expression</SourceType><SourceName>LV.vb.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.NewValue</DestName><SourceType>expression</SourceType><SourceName>LV.va.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.va.Timepoint</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Record</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(LV.va.Name1,",更换",ConvertFunc(LV.va.Value,2),"型号")</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop2" instanceName="中断循环_进入下一次循环_1" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"abortType":"continue"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>continue</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4_1_2_1" instanceName="给界面实体/控件/变量赋值_FPC5W1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="liub" lastModifiedTime="2019-04-24 16:03:46">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"FPC5W1\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"FPC5W1"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
-      </RuleInstance>
-      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord3_1_1_1_3" instanceName="发现Status1变动,记录哪条产线什么时候停机;启动" isNeedLog="False" isEnabled="True" isDebug="False">
-        <Remark><![CDATA[]]></Remark>
-        <Condition><![CDATA[]]></Condition>
-        <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"Journal.Name1","fieldtype":"expression","srcField":"LV.va.Name1"},{"destField":"Journal.Name2","fieldtype":"expression","srcField":"LV.va.Name2"},{"destField":"Journal.OldValue","fieldtype":"expression","srcField":"LV.vb.Value"},{"destField":"Journal.NewValue","fieldtype":"expression","srcField":"LV.va.Value"},{"destField":"Journal.Timepoint","fieldtype":"expression","srcField":"LV.va.Timepoint"},{"destField":"Journal.ts","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"Journal.Record","fieldtype":"expression","srcField":"ConcatStr(LV.va.Name1,\",产线故障解除\")"}],"TableType":"ruleSetVar","TableName":"Journal","NumCount":"1"}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>Journal</EntityName></dtMaster><dtEntityColumns><DestName>Journal.Name1</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name1</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Name2</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name2</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.OldValue</DestName><SourceType>expression</SourceType><SourceName>LV.vb.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.NewValue</DestName><SourceType>expression</SourceType><SourceName>LV.va.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.va.Timepoint</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Record</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(LV.va.Name1,",产线故障解除")</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
       <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop2_2_2" instanceName="中断循环_进入下一次循环_6" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
@@ -783,19 +750,75 @@
         <RuleConfig><![CDATA[{"abortType":"continue"}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>continue</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4_1_2_1_1_1_1" instanceName="给界面实体/控件/变量赋值_FPG2W1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="liub" lastModifiedTime="2019-04-24 16:04:55">
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue2" instanceName="给界面实体/控件/变量赋值_清空myName1" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"FPG2W1\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"FPG2W1"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>""</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4_1_2_1_1_1" instanceName="给界面实体/控件/变量赋值_NSAW1" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="liub" lastModifiedTime="2019-04-24 16:04:34">
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue1" instanceName="定位Name中'.'的下标和总长度" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"NSAW1\"","entityFieldMapping":null}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"NSAW1"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"IndexOf","SourceType":"expression","SourceEntityType":"","Source":"IndexOf(LV.i.Name,\".\",0)","entityFieldMapping":null},{"TargetType":"4","Target":"Length","SourceType":"expression","SourceEntityType":"","Source":"GetLength(LV.i.Name)","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>IndexOf</Target><SourceType>expression</SourceType><SourceEntityType /><Source>IndexOf(LV.i.Name,".",0)</Source></dtFieldMap><dtFieldMap><TargetType>4</TargetType><Target>Length</Target><SourceType>expression</SourceType><SourceEntityType /><Source>GetLength(LV.i.Name)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord2" instanceName="将lineDate实体转化为MyLineDate实体(将Name拆分成左右两部分)" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"MylineData.Name1","fieldtype":"expression","srcField":"BR_VAR_PARENT.MyName1"},{"destField":"MylineData.Name2","fieldtype":"expression","srcField":"Substring(LV.i.Name,BR_VAR_PARENT.IndexOf+1,BR_VAR_PARENT.Length-1)"},{"destField":"MylineData.Value","fieldtype":"expression","srcField":"LV.i.Value"},{"destField":"MylineData.Timepoint","fieldtype":"expression","srcField":"LV.i.Timepoint"}],"TableType":"ruleSetVar","TableName":"MylineData","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>MylineData</EntityName></dtMaster><dtEntityColumns><DestName>MylineData.Name1</DestName><SourceType>expression</SourceType><SourceName>BR_VAR_PARENT.MyName1</SourceName></dtEntityColumns><dtEntityColumns><DestName>MylineData.Name2</DestName><SourceType>expression</SourceType><SourceName>Substring(LV.i.Name,BR_VAR_PARENT.IndexOf+1,BR_VAR_PARENT.Length-1)</SourceName></dtEntityColumns><dtEntityColumns><DestName>MylineData.Value</DestName><SourceType>expression</SourceType><SourceName>LV.i.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>MylineData.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.i.Timepoint</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop1_1_1_1_1_1" instanceName="中断循环_跳过Product_count" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"abortType":"continue"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>continue</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop2_2" instanceName="中断循环_进入下一次循环_2" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"abortType":"continue"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>continue</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord3_2_1_1" instanceName="找到Product_count,记录哪条产线什么时候更换型号前,上个型号的总产量" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-23 15:56:33">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"Journal.Name1","fieldtype":"expression","srcField":"LV.vc.Name1"},{"destField":"Journal.Name2","fieldtype":"expression","srcField":"LV.vc.Name2"},{"destField":"Journal.OldValue","fieldtype":"expression","srcField":"LV.vc.Value"},{"destField":"Journal.NewValue","fieldtype":"expression","srcField":"0"},{"destField":"Journal.Timepoint","fieldtype":"expression","srcField":"LV.vc.Timepoint"},{"destField":"Journal.ts","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"Journal.Record","fieldtype":"expression","srcField":"ConcatStr(LV.vc.Name1,\",\",ConvertFunc(LV.vb.Value,2),\"型号总产量为/This Part Produce QTY\",ConvertFunc(LV.vc.Value,2))"}],"TableType":"ruleSetVar","TableName":"Journal","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>Journal</EntityName></dtMaster><dtEntityColumns><DestName>Journal.Name1</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Name1</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Name2</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Name2</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.OldValue</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.NewValue</DestName><SourceType>expression</SourceType><SourceName>0</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.vc.Timepoint</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Record</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(LV.vc.Name1,",",ConvertFunc(LV.vb.Value,2),"型号总产量为/This Part Produce QTY",ConvertFunc(LV.vc.Value,2))</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AbortLoop" ruleName="中断循环" instanceCode="BR_AbortLoop1_1_1_1_1" instanceName="中断循环_找到Product_count后跳出该循环体" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"abortType":"break"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><AbortType>break</AbortType></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4_1_2_1_1" instanceName="给界面实体/控件/变量赋值_GBMW1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"GBMW1\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"GBMW1"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="AddTableRecord" ruleName="新增实体记录" instanceCode="BR_AddTableRecord3_2_1_1_2" instanceName="找到对应的WT_Lower,记录哪条产线哪个工站什么时候水温过低" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-23 15:54:36">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"AddLocation":"","Mappings":[{"destField":"Journal.Name1","fieldtype":"expression","srcField":"LV.va.Name1"},{"destField":"Journal.Name2","fieldtype":"expression","srcField":"LV.va.Name2"},{"destField":"Journal.OldValue","fieldtype":"expression","srcField":"LV.vb.Value"},{"destField":"Journal.NewValue","fieldtype":"expression","srcField":"LV.va.Value"},{"destField":"Journal.Timepoint","fieldtype":"expression","srcField":"LV.va.Timepoint"},{"destField":"Journal.ts","fieldtype":"expression","srcField":"DateTimeNow()"},{"destField":"Journal.Record","fieldtype":"expression","srcField":"ConcatStr(LV.va.Name1,\"-\",Substring(LV.va.Name2,2,BR_VAR_PARENT.Location-2),\",水温过低/Lower water temperature\")"}],"TableType":"ruleSetVar","TableName":"Journal","NumCount":"1"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><RangCount>1</RangCount><EntityType>ruleSetVar</EntityType><EntityName>Journal</EntityName></dtMaster><dtEntityColumns><DestName>Journal.Name1</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name1</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Name2</DestName><SourceType>expression</SourceType><SourceName>LV.va.Name2</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.OldValue</DestName><SourceType>expression</SourceType><SourceName>LV.vb.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.NewValue</DestName><SourceType>expression</SourceType><SourceName>LV.va.Value</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Timepoint</DestName><SourceType>expression</SourceType><SourceName>LV.va.Timepoint</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.ts</DestName><SourceType>expression</SourceType><SourceName>DateTimeNow()</SourceName></dtEntityColumns><dtEntityColumns><DestName>Journal.Record</DestName><SourceType>expression</SourceType><SourceName>ConcatStr(LV.va.Name1,"-",Substring(LV.va.Name2,2,BR_VAR_PARENT.Location-2),",水温过低/Lower water temperature")</SourceName></dtEntityColumns></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SetEntityVarControlValue" ruleName="给界面实体/控件/变量赋值" instanceCode="BR_SetEntityVarControlValue4" instanceName="给界面实体/控件/变量赋值_ABS9W1" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"MyName1","SourceType":"expression","SourceEntityType":"","Source":"\"ABS9W1\"","entityFieldMapping":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>MyName1</Target><SourceType>expression</SourceType><SourceEntityType /><Source>"ABS9W1"</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
     </RuleInstances>
     <Variables>
