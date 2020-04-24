@@ -8,12 +8,12 @@
   <evaluateRule code="BR_I18nOperation1" />
 ]]></MethodChain>
     <RuleInstances>
-      <RuleInstance ruleCode="I18nOperation" ruleName="多语言操作" instanceCode="BR_I18nOperation1" instanceName="多语言操作" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-22 15:10:56">
+      <RuleInstance ruleCode="I18nOperation" ruleName="多语言操作" instanceCode="BR_I18nOperation1" instanceName="多语言操作" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-23 17:44:53">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
         <RuleConfig><![CDATA[{"languageOperation":"getLanguages","languageType":"","language":"","returnMapping":[{"destType":"entity","dest":"language","srcType":"returnValue","src":"已设置","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":false,"destFieldMapping":[{"destField":"language.languageicon","srcValueType":"field","srcValue":"Icon"},{"destField":"language.languageid","srcValueType":"field","srcValue":"Code"},{"destField":"language.languagename","srcValueType":"field","srcValue":"Name"}]}]}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><LanguageOperation>getLanguages</LanguageOperation></dtMaster><dtReturnValue><TargetType>entity</TargetType><Target>language</Target><SourceType>returnValue</SourceType><Source>已设置</Source><UpdateWay>insertOrUpdateBySameId</UpdateWay><IsClearData>False</IsClearData><SourceMapping><![CDATA[<dsSourceMapping><dtSourceMapping><TargetField>language.languageicon</TargetField><SourceType>field</SourceType><Source>Icon</Source></dtSourceMapping><dtSourceMapping><TargetField>language.languageid</TargetField><SourceType>field</SourceType><Source>Code</Source></dtSourceMapping><dtSourceMapping><TargetField>language.languagename</TargetField><SourceType>field</SourceType><Source>Name</Source></dtSourceMapping></dsSourceMapping>]]]]><![CDATA[></SourceMapping></dtReturnValue></dsConfig>]]></XmlRuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><LanguageOperation>getLanguages</LanguageOperation><LanguageType /><Language /></dtMaster><dtReturnValue><TargetType>entity</TargetType><Target>language</Target><SourceType>returnValue</SourceType><Source>已设置</Source><UpdateWay>insertOrUpdateBySameId</UpdateWay><IsClearData>False</IsClearData><SourceMapping><![CDATA[<dsSourceMapping><dtSourceMapping><TargetField>language.languageicon</TargetField><SourceType>field</SourceType><Source>Icon</Source></dtSourceMapping><dtSourceMapping><TargetField>language.languageid</TargetField><SourceType>field</SourceType><Source>Code</Source></dtSourceMapping><dtSourceMapping><TargetField>language.languagename</TargetField><SourceType>field</SourceType><Source>Name</Source></dtSourceMapping></dsSourceMapping>]]]]><![CDATA[></SourceMapping></dtReturnValue></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
     </RuleInstances>
   </Method>
@@ -21,18 +21,41 @@
     <Description><![CDATA[]]></Description>
     <Remark><![CDATA[]]></Remark>
     <MethodChain><![CDATA[
-  <evaluateRule code="BR_I18nOperation1" />
-  <evaluateRule code="BR_SelectionConfirm1" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>!IsEmpty([language].[languageid])</expression>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_I18nOperation1" />
+      <evaluateRule code="BR_SelectionConfirm1" />
+    </sequence>
+  </if>
+  <else isEnabled="True" isDebug="False">
+    <define>
+      <remark />
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ShowMessage1" />
+    </sequence>
+  </else>
 ]]></MethodChain>
     <RuleInstances>
-      <RuleInstance ruleCode="I18nOperation" ruleName="多语言操作" instanceCode="BR_I18nOperation1" instanceName="多语言操作" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-22 15:13:44">
+      <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-23 17:47:14">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
-        <RuleConfig><![CDATA[{"languageOperation":"setCurLanguage","languageType":"dynamic","language":"CC.JGComboBox1.Value","returnMapping":null}]]></RuleConfig>
-        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><LanguageOperation>setCurLanguage</LanguageOperation><LanguageType>dynamic</LanguageType><Language>CC.JGComboBox1.Value</Language></dtMaster></dsConfig>]]></XmlRuleConfig>
+        <RuleConfig><![CDATA[{"showType":"0","time":"3","simpleChinesePrompt":{"msgnote":"\"Pls choose a language\"","type":"1"}}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><MsgType>0</MsgType><SimpleChinese>"Pls choose a language"</SimpleChinese><SimpleChinesetype>1</SimpleChinesetype><ShowTime>3</ShowTime></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
-      <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-22 15:14:13">
+      <RuleInstance ruleCode="I18nOperation" ruleName="多语言操作" instanceCode="BR_I18nOperation1" instanceName="多语言操作" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-23 17:45:07">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"languageOperation":"setCurLanguage","languageType":"dynamic","language":"[language].[languageid]","returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><LanguageOperation>setCurLanguage</LanguageOperation><LanguageType>dynamic</LanguageType><Language>[language].[languageid]</Language></dtMaster></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>

@@ -180,15 +180,55 @@
     <Remark><![CDATA[]]></Remark>
     <MethodChain><![CDATA[
   <evaluateRule code="BR_UpdateRecord1" />
+  <evaluateRule code="BR_ExecuteRuleSet4" />
+  <if isEnabled="True" isDebug="False" code="IfCode1">
+    <define>
+      <expression>GetEntityRowCount("BR_VAR_PARENT.resultEntity")==1</expression>
+      <remark></remark>
+    </define>
+    <sequence>
+      <evaluateRule code="BR_ExecuteRuleSet5" />
+      <foreach isEnabled="True" isDebug="False" code="ForeachCode1">
+        <define>
+          <varCode>i</varCode>
+          <entityType>ruleSetVar</entityType>
+          <entityCode>resultUserEntity</entityCode>
+          <remark></remark>
+        </define>
+        <sequence>
+          <evaluateRule code="BR_ExecuteRuleSet2" />
+          <evaluateRule code="BR_CopyEntityRecord1" />
+        </sequence>
+      </foreach>
+      <foreach isEnabled="True" isDebug="False" code="ForeachCode2">
+        <define>
+          <varCode>j</varCode>
+          <entityType>window</entityType>
+          <entityCode>userEntity</entityCode>
+          <remark />
+        </define>
+        <sequence>
+          <evaluateRule code="BR_ExecuteRuleSet1" />
+        </sequence>
+      </foreach>
+    </sequence>
+  </if>
   <evaluateRule code="BR_SelectionConfirm1" />
 ]]></MethodChain>
     <RuleInstances>
-      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20190304004" lastModifiedTime="2019-12-16 16:51:43">
+      <RuleInstance ruleCode="UpdateRecord" ruleName="保存实体到数据库" instanceCode="BR_UpdateRecord1" instanceName="保存实体到数据库" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
         <Condition><![CDATA[]]></Condition>
         <DebugCondition><![CDATA[]]></DebugCondition>
         <RuleConfig><![CDATA[{"dataSourceMap":[{"dataMap":[{"colName":"bo_akl_EM_maintainRecord.endDate","colValue":"bo_akl_EM_maintainRecord.endDate","valueType":"entityField"},{"colName":"bo_akl_EM_maintainRecord.equipCode","colValue":"bo_akl_EM_maintainRecord.equipCode","valueType":"entityField"},{"colName":"bo_akl_EM_maintainRecord.id","colValue":"bo_akl_EM_maintainRecord.id","valueType":"entityField"},{"colName":"bo_akl_EM_maintainRecord.phenomenon","colValue":"bo_akl_EM_maintainRecord.phenomenon","valueType":"entityField"},{"colName":"bo_akl_EM_maintainRecord.pNo","colValue":"bo_akl_EM_maintainRecord.pNo","valueType":"entityField"},{"colName":"bo_akl_EM_maintainRecord.repaircontent","colValue":"bo_akl_EM_maintainRecord.repaircontent","valueType":"entityField"},{"colName":"bo_akl_EM_maintainRecord.repairMan","colValue":"bo_akl_EM_maintainRecord.repairMan","valueType":"entityField"},{"colName":"bo_akl_EM_maintainRecord.repairType","colValue":"bo_akl_EM_maintainRecord.repairType","valueType":"entityField"},{"colName":"bo_akl_EM_maintainRecord.startDate","colValue":"bo_akl_EM_maintainRecord.startDate","valueType":"entityField"},{"colName":"bo_akl_EM_maintainRecord.wsNo","colValue":"bo_akl_EM_maintainRecord.wsNo","valueType":"entityField"},{"colName":"bo_akl_EM_maintainRecord.repairNo","colValue":"bo_akl_EM_maintainRecord.repairNo","valueType":"entityField"},{"colName":"bo_akl_EM_maintainRecord.repairTime","colValue":"bo_akl_EM_maintainRecord.repairTime","valueType":"entityField"},{"colName":"bo_akl_EM_maintainRecord.repairTimeHour","colValue":"bo_akl_EM_maintainRecord.repairTimeHour","valueType":"entityField"},{"colName":"bo_akl_EM_maintainRecord.engineerTimeHour","colValue":"bo_akl_EM_maintainRecord.engineerTimeHour","valueType":"entityField"}],"dataSource":"bo_akl_EM_maintainRecord","dataSourceType":"window","destTab":"bo_akl_EM_maintainRecord","isSaveAll":false,"isFieldAutoMapping":false}],"treeStruct":null}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><ID>4315d20af59c4a4f8de6e38e2723adc4</ID><SourceName>bo_akl_EM_maintainRecord</SourceName><SourceType>window</SourceType><SourceNameType>bo_akl_EM_maintainRecord(界面实体)</SourceNameType><IsSaveAll>False</IsSaveAll><TableName>bo_akl_EM_maintainRecord</TableName></dtMaster><dtDetails><PID>4315d20af59c4a4f8de6e38e2723adc4</PID><SourceField>bo_akl_EM_maintainRecord.endDate</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_maintainRecord.endDate</Value></dtDetails><dtDetails><PID>4315d20af59c4a4f8de6e38e2723adc4</PID><SourceField>bo_akl_EM_maintainRecord.equipCode</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_maintainRecord.equipCode</Value></dtDetails><dtDetails><PID>4315d20af59c4a4f8de6e38e2723adc4</PID><SourceField>bo_akl_EM_maintainRecord.id</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_maintainRecord.id</Value></dtDetails><dtDetails><PID>4315d20af59c4a4f8de6e38e2723adc4</PID><SourceField>bo_akl_EM_maintainRecord.phenomenon</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_maintainRecord.phenomenon</Value></dtDetails><dtDetails><PID>4315d20af59c4a4f8de6e38e2723adc4</PID><SourceField>bo_akl_EM_maintainRecord.pNo</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_maintainRecord.pNo</Value></dtDetails><dtDetails><PID>4315d20af59c4a4f8de6e38e2723adc4</PID><SourceField>bo_akl_EM_maintainRecord.repaircontent</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_maintainRecord.repaircontent</Value></dtDetails><dtDetails><PID>4315d20af59c4a4f8de6e38e2723adc4</PID><SourceField>bo_akl_EM_maintainRecord.repairMan</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_maintainRecord.repairMan</Value></dtDetails><dtDetails><PID>4315d20af59c4a4f8de6e38e2723adc4</PID><SourceField>bo_akl_EM_maintainRecord.repairType</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_maintainRecord.repairType</Value></dtDetails><dtDetails><PID>4315d20af59c4a4f8de6e38e2723adc4</PID><SourceField>bo_akl_EM_maintainRecord.startDate</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_maintainRecord.startDate</Value></dtDetails><dtDetails><PID>4315d20af59c4a4f8de6e38e2723adc4</PID><SourceField>bo_akl_EM_maintainRecord.wsNo</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_maintainRecord.wsNo</Value></dtDetails><dtDetails><PID>4315d20af59c4a4f8de6e38e2723adc4</PID><SourceField>bo_akl_EM_maintainRecord.repairNo</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_maintainRecord.repairNo</Value></dtDetails><dtDetails><PID>4315d20af59c4a4f8de6e38e2723adc4</PID><SourceField>bo_akl_EM_maintainRecord.repairTime</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_maintainRecord.repairTime</Value></dtDetails><dtDetails><PID>4315d20af59c4a4f8de6e38e2723adc4</PID><SourceField>bo_akl_EM_maintainRecord.repairTimeHour</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_maintainRecord.repairTimeHour</Value></dtDetails><dtDetails><PID>4315d20af59c4a4f8de6e38e2723adc4</PID><SourceField>bo_akl_EM_maintainRecord.engineerTimeHour</SourceField><DataFrom>entityField</DataFrom><Value>bo_akl_EM_maintainRecord.engineerTimeHour</Value></dtDetails></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet4" instanceName="执行方法_PermQueryRole(权限-查询角色)_工艺工程师" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-24 14:11:16">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_permission","windowCode":"","ruleSetCode":"PermQueryRole","isParallelism":"False","invokeScope":""},"epConditionParam":null,"invokeParams":[{"paramCode":"roleNameLike","paramType":"expression","paramValue":"\"工艺工程师\"","paramSource":"","dataFilterType":"","paramFieldMapping":null}],"returnMapping":[{"destType":"ruleSetVariant","dest":"resultEntity","srcType":"returnValue","src":"resultEntity","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":true,"destFieldMapping":[{"destField":"id","destType":"char","srcValueType":"field","srcValue":"id"},{"destField":"roleCode","destType":"char","srcValueType":"field","srcValue":"roleCode"},{"destField":"roleName","destType":"char","srcValueType":"field","srcValue":"roleName"},{"destField":"remark","destType":"char","srcValueType":"field","srcValue":"remark"}],"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><componentCode>vbase_permission</componentCode><windowCode /><ruleSetCode>PermQueryRole</ruleSetCode><isParallelism>False</isParallelism><isRelevanceQueryConditionPanel>False</isRelevanceQueryConditionPanel></dtInvokeTarget><dtInvokeParams><paramCode>roleNameLike</paramCode><paramType>expression</paramType><paramValue>"工艺工程师"</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtReturnMapping><destType>ruleSetVariant</destType><dest>resultEntity</dest><srcType>returnValue</srcType><src>resultEntity</src><updateDestEntityMethod>insertOrUpdateBySameId</updateDestEntityMethod><isCleanDestEntityData>True</isCleanDestEntityData><destFieldMapping><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>id</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>id</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>roleCode</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>roleCode</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>roleName</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>roleName</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>remark</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>remark</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></destFieldMapping><dsFilterCondition>&lt;NewDataSet /&gt;</dsFilterCondition><dsSort>&lt;dsSort /&gt;</dsSort></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
       <RuleInstance ruleCode="SelectionConfirm" ruleName="退出窗体" instanceCode="BR_SelectionConfirm1" instanceName="退出窗体" isNeedLog="False" isEnabled="True" isDebug="False">
         <Remark><![CDATA[]]></Remark>
@@ -197,7 +237,121 @@
         <RuleConfig><![CDATA[{"SelectionConfirm":"1"}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtMaster><SelectionConfirm>1</SelectionConfirm></dtMaster></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet2" instanceName="执行方法_OrgQueryUser(用户单表数据查询)" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-24 14:24:35">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_organization","windowCode":"","ruleSetCode":"OrgQueryUser","isParallelism":"False","invokeScope":""},"epConditionParam":null,"invokeParams":[{"paramCode":"userIds","paramType":"expression","paramValue":"LV.i.userId","paramSource":"","dataFilterType":"","paramFieldMapping":null}],"returnMapping":[{"destType":"ruleSetVariant","dest":"userEntity","srcType":"returnValue","src":"userEntity","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":false,"destFieldMapping":[{"destField":"address","destType":"char","srcValueType":"field","srcValue":"address"},{"destField":"birthday","destType":"date","srcValueType":"field","srcValue":"birthday"},{"destField":"bloodType","destType":"char","srcValueType":"field","srcValue":"bloodType"},{"destField":"duties","destType":"char","srcValueType":"field","srcValue":"duties"},{"destField":"email","destType":"char","srcValueType":"field","srcValue":"email"},{"destField":"enableFlag","destType":"boolean","srcValueType":"field","srcValue":"enableFlag"},{"destField":"face","destType":"char","srcValueType":"field","srcValue":"face"},{"destField":"fax","destType":"char","srcValueType":"field","srcValue":"fax"},{"destField":"id","destType":"char","srcValueType":"field","srcValue":"id"},{"destField":"isFire","destType":"boolean","srcValueType":"field","srcValue":"isFire"},{"destField":"mobile","destType":"char","srcValueType":"field","srcValue":"mobile"},{"destField":"postCode","destType":"char","srcValueType":"field","srcValue":"postCode"},{"destField":"qq","destType":"char","srcValueType":"field","srcValue":"qq"},{"destField":"remark","destType":"char","srcValueType":"field","srcValue":"remark"},{"destField":"sex","destType":"char","srcValueType":"field","srcValue":"sex"},{"destField":"telephone","destType":"char","srcValueType":"field","srcValue":"telephone"},{"destField":"userName","destType":"char","srcValueType":"field","srcValue":"userName"},{"destField":"userNo","destType":"char","srcValueType":"field","srcValue":"userNo"}],"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><componentCode>vbase_organization</componentCode><windowCode /><ruleSetCode>OrgQueryUser</ruleSetCode><isParallelism>False</isParallelism><isRelevanceQueryConditionPanel>False</isRelevanceQueryConditionPanel></dtInvokeTarget><dtInvokeParams><paramCode>userIds</paramCode><paramType>expression</paramType><paramValue>LV.i.userId</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtReturnMapping><destType>ruleSetVariant</destType><dest>userEntity</dest><srcType>returnValue</srcType><src>userEntity</src><updateDestEntityMethod>insertOrUpdateBySameId</updateDestEntityMethod><isCleanDestEntityData>False</isCleanDestEntityData><destFieldMapping><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>address</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>address</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>birthday</destField><destType>date</destType><srcValueType>field</srcValueType><srcValue>birthday</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>bloodType</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>bloodType</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>duties</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>duties</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>email</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>email</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>enableFlag</destField><destType>boolean</destType><srcValueType>field</srcValueType><srcValue>enableFlag</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>face</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>face</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>fax</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>fax</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>id</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>id</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>isFire</destField><destType>boolean</destType><srcValueType>field</srcValueType><srcValue>isFire</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>mobile</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>mobile</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>postCode</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>postCode</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>qq</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>qq</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>remark</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>remark</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>sex</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>sex</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>telephone</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>telephone</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>userName</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>userName</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>userNo</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>userNo</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></destFieldMapping><dsFilterCondition>&lt;NewDataSet /&gt;</dsFilterCondition><dsSort>&lt;dsSort /&gt;</dsSort></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="CopyEntityRecord" ruleName="实体间复制记录" instanceCode="BR_CopyEntityRecord1" instanceName="实体间复制记录" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-24 14:25:31">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"checkitems":["userEntity.userNo"],"condition":"","copyType":"2","destName":"userEntity","items":[{"destName":"userEntity.address","sourceName":"userEntity.address","type":"entityField"},{"destName":"userEntity.birthday","sourceName":"userEntity.birthday","type":"entityField"},{"destName":"userEntity.bloodType","sourceName":"userEntity.bloodType","type":"entityField"},{"destName":"userEntity.duties","sourceName":"userEntity.duties","type":"entityField"},{"destName":"userEntity.email","sourceName":"userEntity.email","type":"entityField"},{"destName":"userEntity.enableFlag","sourceName":"userEntity.enableFlag","type":"entityField"},{"destName":"userEntity.face","sourceName":"userEntity.face","type":"entityField"},{"destName":"userEntity.fax","sourceName":"userEntity.fax","type":"entityField"},{"destName":"userEntity.id","sourceName":"userEntity.id","type":"entityField"},{"destName":"userEntity.isFire","sourceName":"userEntity.isFire","type":"entityField"},{"destName":"userEntity.mobile","sourceName":"userEntity.mobile","type":"entityField"},{"destName":"userEntity.postCode","sourceName":"userEntity.postCode","type":"entityField"},{"destName":"userEntity.qq","sourceName":"userEntity.qq","type":"entityField"},{"destName":"userEntity.remark","sourceName":"userEntity.remark","type":"entityField"},{"destName":"userEntity.sex","sourceName":"userEntity.sex","type":"entityField"},{"destName":"userEntity.telephone","sourceName":"userEntity.telephone","type":"entityField"},{"destName":"userEntity.userName","sourceName":"userEntity.userName","type":"entityField"},{"destName":"userEntity.userNo","sourceName":"userEntity.userNo","type":"entityField"}],"mageitems":null,"sourceName":"userEntity","type":"2","isAddRecord":true,"jsonVersion":"1.0","destType":"window","sourceType":"ruleSetVar"}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtInfo><destName>userEntity</destName><destType>window</destType><sourceName>userEntity</sourceName><sourceType>ruleSetVar</sourceType><type>2</type><isAddRecord>True</isAddRecord><copyType>2</copyType><condition /><jsonVersion>1.0</jsonVersion></dtInfo><dtMaster><DestName>userEntity.address</DestName><SourceType>entityField</SourceType><SourceName>userEntity.address</SourceName></dtMaster><dtMaster><DestName>userEntity.birthday</DestName><SourceType>entityField</SourceType><SourceName>userEntity.birthday</SourceName></dtMaster><dtMaster><DestName>userEntity.bloodType</DestName><SourceType>entityField</SourceType><SourceName>userEntity.bloodType</SourceName></dtMaster><dtMaster><DestName>userEntity.duties</DestName><SourceType>entityField</SourceType><SourceName>userEntity.duties</SourceName></dtMaster><dtMaster><DestName>userEntity.email</DestName><SourceType>entityField</SourceType><SourceName>userEntity.email</SourceName></dtMaster><dtMaster><DestName>userEntity.enableFlag</DestName><SourceType>entityField</SourceType><SourceName>userEntity.enableFlag</SourceName></dtMaster><dtMaster><DestName>userEntity.face</DestName><SourceType>entityField</SourceType><SourceName>userEntity.face</SourceName></dtMaster><dtMaster><DestName>userEntity.fax</DestName><SourceType>entityField</SourceType><SourceName>userEntity.fax</SourceName></dtMaster><dtMaster><DestName>userEntity.id</DestName><SourceType>entityField</SourceType><SourceName>userEntity.id</SourceName></dtMaster><dtMaster><DestName>userEntity.isFire</DestName><SourceType>entityField</SourceType><SourceName>userEntity.isFire</SourceName></dtMaster><dtMaster><DestName>userEntity.mobile</DestName><SourceType>entityField</SourceType><SourceName>userEntity.mobile</SourceName></dtMaster><dtMaster><DestName>userEntity.postCode</DestName><SourceType>entityField</SourceType><SourceName>userEntity.postCode</SourceName></dtMaster><dtMaster><DestName>userEntity.qq</DestName><SourceType>entityField</SourceType><SourceName>userEntity.qq</SourceName></dtMaster><dtMaster><DestName>userEntity.remark</DestName><SourceType>entityField</SourceType><SourceName>userEntity.remark</SourceName></dtMaster><dtMaster><DestName>userEntity.sex</DestName><SourceType>entityField</SourceType><SourceName>userEntity.sex</SourceName></dtMaster><dtMaster><DestName>userEntity.telephone</DestName><SourceType>entityField</SourceType><SourceName>userEntity.telephone</SourceName></dtMaster><dtMaster><DestName>userEntity.userName</DestName><SourceType>entityField</SourceType><SourceName>userEntity.userName</SourceName></dtMaster><dtMaster><DestName>userEntity.userNo</DestName><SourceType>entityField</SourceType><SourceName>userEntity.userNo</SourceName></dtMaster><dtCheck><Name>userEntity.userNo</Name></dtCheck></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet5" instanceName="执行方法_API_Biz_QueryUserByRoleId(根据角色Id获取授予该角色权限的人员)" isNeedLog="False" isEnabled="True" isDebug="False">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_org_permission_rela","windowCode":"","ruleSetCode":"API_Biz_QueryUserByRoleId","isParallelism":"False"},"invokeParams":[{"paramCode":"roleId","paramType":"expression","paramValue":"BR_VAR_PARENT.[resultEntity].[id]","paramSource":"","dataFilterType":"","paramFieldMapping":null}],"returnMapping":[{"destType":"ruleSetVariant","dest":"resultUserEntity","srcType":"returnValue","src":"resultEntity","updateDestEntityMethod":"insertOrUpdateBySameId","isCleanDestEntityData":false,"destFieldMapping":[{"destField":"userId","destType":"char","srcValueType":"field","srcValue":"userId"},{"destField":"userName","destType":"char","srcValueType":"field","srcValue":"userName"}],"filterCondition":null,"orderBy":null}]}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><componentCode>vbase_org_permission_rela</componentCode><windowCode /><ruleSetCode>API_Biz_QueryUserByRoleId</ruleSetCode><isParallelism>False</isParallelism></dtInvokeTarget><dtInvokeParams><paramCode>roleId</paramCode><paramType>expression</paramType><paramValue>BR_VAR_PARENT.[resultEntity].[id]</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtReturnMapping><destType>ruleSetVariant</destType><dest>resultUserEntity</dest><srcType>returnValue</srcType><src>resultEntity</src><updateDestEntityMethod>insertOrUpdateBySameId</updateDestEntityMethod><isCleanDestEntityData>False</isCleanDestEntityData><destFieldMapping><![CDATA[<dsDestFieldMapping><dtDestFieldMapping><destField>userId</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>userId</srcValue></dtDestFieldMapping><dtDestFieldMapping><destField>userName</destField><destType>char</destType><srcValueType>field</srcValueType><srcValue>userName</srcValue></dtDestFieldMapping></dsDestFieldMapping>]]]]><![CDATA[></destFieldMapping><dsFilterCondition>&lt;NewDataSet /&gt;</dsFilterCondition><dsSort>&lt;dsSort /&gt;</dsSort></dtReturnMapping></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet1" instanceName="执行方法_API_SendMail(发送邮件)" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-24 16:18:32">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"server-ruleSet","invokeType":"api","ruleLocation":"out","componentCode":"vbase_email","windowCode":"","ruleSetCode":"API_SendMail","isParallelism":"False","invokeScope":""},"epConditionParam":null,"invokeParams":[{"paramCode":"recipients","paramType":"expression","paramValue":"LV.j.email","paramSource":"","dataFilterType":"","paramFieldMapping":null},{"paramCode":"content","paramType":"expression","paramValue":"ConcatStr(\"Machine No.\", \"   \", [bo_akl_EM_maintainRecord].[equipCode], \"Line No.Station\", \"   \", [bo_akl_EM_maintainRecord].[pNo], [bo_akl_EM_maintainRecord].[wsNo], \"Has Problem of\", [bo_akl_EM_maintainRecord].[phenomenon], \"Pls finished the repair record\")","paramSource":"","dataFilterType":"","paramFieldMapping":null},{"paramCode":"businessCode","paramType":"expression","paramValue":"\"aklEmail\"","paramSource":"","dataFilterType":"","paramFieldMapping":null},{"paramCode":"subject","paramType":"expression","paramValue":"\"设备维修工单通知/Machine Stop Notice\"","paramSource":"","dataFilterType":"","paramFieldMapping":null}],"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>server-ruleSet</sourceType><invokeType>api</invokeType><ruleLocation>out</ruleLocation><componentCode>vbase_email</componentCode><windowCode /><ruleSetCode>API_SendMail</ruleSetCode><isParallelism>False</isParallelism><isRelevanceQueryConditionPanel>False</isRelevanceQueryConditionPanel></dtInvokeTarget><dtInvokeParams><paramCode>recipients</paramCode><paramType>expression</paramType><paramValue>LV.j.email</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtInvokeParams><paramCode>content</paramCode><paramType>expression</paramType><paramValue>ConcatStr("Machine No.", "   ", [bo_akl_EM_maintainRecord].[equipCode], "Line No.Station", "   ", [bo_akl_EM_maintainRecord].[pNo], [bo_akl_EM_maintainRecord].[wsNo], "Has Problem of", [bo_akl_EM_maintainRecord].[phenomenon], "Pls finished the repair record")</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtInvokeParams><paramCode>businessCode</paramCode><paramType>expression</paramType><paramValue>"aklEmail"</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams><dtInvokeParams><paramCode>subject</paramCode><paramType>expression</paramType><paramValue>"设备维修工单通知/Machine Stop Notice"</paramValue><paramSource /><paramSourceDisplayText>表达式</paramSourceDisplayText></dtInvokeParams></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
     </RuleInstances>
+    <Variables>
+      <Variable code="resultEntity" name="角色实体" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="角色id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="roleCode" name="角色编码" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="roleName" name="角色名称" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="remark" name="备注" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="resultUserEntity" name="角色用户实体" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="userId" name="用户Id" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="userName" name="用户名" fieldType="char" length="255" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+      <Variable code="userEntity" name="用户数据" fieldType="entity" initValue="" isMust="false" desc="">
+        <Entity>
+          <Field code="id" name="id" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="remark" name="备注" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="enableFlag" name="是否启用" fieldType="boolean" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="mobile" name="手机号码" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="email" name="邮箱地址" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="userNo" name="工号" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="duties" name="职务" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="userName" name="姓名" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="telephone" name="办公电话" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="sex" name="性别" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="face" name="头像" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="birthday" name="生日" fieldType="date" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="bloodType" name="血型" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="fax" name="传真号码" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="address" name="地址" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="postCode" name="邮编号码" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="qq" name="QQ号码" fieldType="char" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+          <Field code="isFire" name="是否已离职" fieldType="boolean" length="" accuracy="">
+            <description><![CDATA[]]></description>
+          </Field>
+        </Entity>
+      </Variable>
+    </Variables>
   </Method>
   <Method Code="JGBaseDictBox4_OpenModuleAction" Type="Client" InterfaceType="Local" RestrictType="Private">
     <Description><![CDATA[]]></Description>
