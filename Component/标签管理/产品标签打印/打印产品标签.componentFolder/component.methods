@@ -3226,6 +3226,7 @@
   <evaluateRule code="BR_SetEntityVarControlValue1" />
   <evaluateRule code="BR_ExecuteRuleSet2" />
   <evaluateRule code="BR_SetEntityVarControlValue2" />
+  <evaluateRule code="BR_ExecuteRuleSet3" />
   <evaluateRule code="BR_ShowMessage1" />
   <if isEnabled="True" isDebug="False" code="IfCode1">
     <define>
@@ -3258,6 +3259,13 @@
         <DebugCondition><![CDATA[]]></DebugCondition>
         <RuleConfig><![CDATA[{"FieldMap":[{"TargetType":"4","Target":"num","SourceType":"expression","SourceEntityType":"","Source":"Add(BR_VAR_PARENT.num,1)","entityFieldMapping":null}]}]]></RuleConfig>
         <XmlRuleConfig><![CDATA[<dsConfig><dtFieldMap><TargetType>4</TargetType><Target>num</Target><SourceType>expression</SourceType><SourceEntityType /><Source>Add(BR_VAR_PARENT.num,1)</Source></dtFieldMap></dsConfig>]]></XmlRuleConfig>
+      </RuleInstance>
+      <RuleInstance ruleCode="ExecuteRuleSet" ruleName="执行方法" instanceCode="BR_ExecuteRuleSet3" instanceName="执行方法_JGTimer2_TimerEvent(JGTimer2_定时事件)" isNeedLog="False" isEnabled="True" isDebug="False" lastModifiedUser="user_20180612007" lastModifiedTime="2020-04-26 15:03:07">
+        <Remark><![CDATA[]]></Remark>
+        <Condition><![CDATA[]]></Condition>
+        <DebugCondition><![CDATA[]]></DebugCondition>
+        <RuleConfig><![CDATA[{"filter":{"windowInstanceCode":""},"invokeTarget":{"sourceType":"client-ruleSet","invokeType":"local","ruleLocation":"window","componentCode":"","windowCode":"","ruleSetCode":"JGTimer2_TimerEvent","isParallelism":"False","invokeScope":""},"epConditionParam":null,"invokeParams":null,"returnMapping":null}]]></RuleConfig>
+        <XmlRuleConfig><![CDATA[<dsConfig><dtFilter><windowInstanceCode /></dtFilter><dtInvokeTarget><sourceType>client-ruleSet</sourceType><invokeType>local</invokeType><ruleLocation>window</ruleLocation><componentCode /><windowCode /><ruleSetCode>JGTimer2_TimerEvent</ruleSetCode><isParallelism>False</isParallelism><isRelevanceQueryConditionPanel>False</isRelevanceQueryConditionPanel></dtInvokeTarget></dsConfig>]]></XmlRuleConfig>
       </RuleInstance>
       <RuleInstance ruleCode="ShowMessage" ruleName="显示设置的提示信息" instanceCode="BR_ShowMessage1" instanceName="显示设置的提示信息" isNeedLog="False" isEnabled="False" isDebug="False">
         <Remark><![CDATA[]]></Remark>
@@ -6954,5 +6962,9 @@
       <Variable code="productNum" name="产出产品数量" fieldType="integer" initValue="" isMust="false" desc="" />
       <Variable code="usedNum" name="已经使用数量" fieldType="integer" initValue="" isMust="false" desc="" />
     </Variables>
+  </Method>
+  <Method Code="JGTimer2_TimerEvent" Type="Client" InterfaceType="Local" RestrictType="Private">
+    <Description><![CDATA[]]></Description>
+    <Remark><![CDATA[]]></Remark>
   </Method>
 </Methods>

@@ -24,8 +24,8 @@
   </propertys>
   <controls>
     <JGPanel Code="Pnl_Center" Height="485" Width="771" PercentHeight="90.7%" PercentWidth="74.4%" Top="50" TabIndex="5" Dock="Fill" BorderStyle="None" MultiHeight="485px" MultiWidth="771px">
-      <JGDataGrid Code="JGDataGrid1" LabelText="列表" Width="771" Height="485" PercentHeight="100%" PercentWidth="100%" TabIndex="9" Dock="Fill" RowWidthMode="PercentWidth" OnValueLoaded="Materialsincludeornot" TableName="materialConfirm" ReadOnly="True" MultiHeight="485px" MultiWidth="771px">
-        <JGTextBoxColumn Code="JGTextBoxColumn2" ColumnName="materialNo" LabelText="物料型号" TableName="materialConfirm" Width="158" />
+      <JGDataGrid Code="JGDataGrid1" LabelText="列表" Width="771" Height="485" PercentHeight="100%" PercentWidth="100%" TabIndex="9" Dock="Fill" RowWidthMode="PercentWidth" OnValueLoaded="Materialsincludeornot" OnDataChanged="Materialsincludeornot" TableName="materialConfirm" ReadOnly="True" MultiHeight="485px" MultiWidth="771px">
+        <JGTextBoxColumn Code="JGTextBoxColumn2" ColumnName="materialNo" LabelText="物料型号" OnValueChanged="Materialsincludeornot" TableName="materialConfirm" Width="158" />
         <JGFloatBoxColumn Code="JGFloatBoxColumn1" ColumnName="num" LabelText="数量" TableName="materialConfirm" Width="76" />
         <JGTextBoxColumn Code="JGTextBoxColumn5" ColumnName="batchNo" LabelText="批次号" TableName="materialConfirm" Width="92" />
         <JGTextBoxColumn Code="JGTextBoxColumn6" ColumnName="qrCodeInfo" LabelText="二维码信息" TableName="materialConfirm" Width="228" />
@@ -34,9 +34,9 @@
       </JGDataGrid>
     </JGPanel>
     <JGPanel Code="JGPanel1" Height="485" Width="265" PercentHeight="90.7%" PercentWidth="25.6%" Top="50" Left="771" TabIndex="18" Dock="Right" MultiHeight="485px" MultiWidth="265px">
-      <JGDataGrid Code="JGDataGrid2" LabelText="列表" Width="265" Height="485" PercentHeight="100%" PercentWidth="100%" TabIndex="19" Dock="Fill" CriteriaStyle="[{&quot;Criteria&quot;:&quot;[bo_akl_MM_bomInfo].[remark]==\&quot;\&quot;&quot;,&quot;ValueForeColor&quot;:&quot;255,0,0&quot;,&quot;ValueBackColor&quot;:null,&quot;ValueFontStyle&quot;:null,&quot;Columns&quot;:[&quot;JGTextBoxColumn1&quot;]}]" TableName="bo_akl_MM_bomInfo" ReadOnly="True" MultiHeight="485px" MultiWidth="265px">
-        <JGTextBoxColumn Code="JGTextBoxColumn1" ColumnName="materialNo" LabelText="物料型号" TableName="bo_akl_MM_bomInfo" ThemeVar="null" ValueForeColor="0, 0, 0" Width="164" />
-        <JGTextBoxColumn Code="JGTextBoxColumn4" ColumnName="remark" LabelText="备注" TableName="bo_akl_MM_bomInfo" Width="64" />
+      <JGDataGrid Code="JGDataGrid2" LabelText="列表" Width="265" Height="485" PercentHeight="100%" PercentWidth="100%" TabIndex="19" Dock="Fill" CriteriaStyle="[{&quot;Criteria&quot;:&quot;IsNullOrEmpty([bo_akl_MM_bomInfo].[remark],000)&lt;&gt;000&quot;,&quot;ValueForeColor&quot;:&quot;0,0,0&quot;,&quot;ValueBackColor&quot;:null,&quot;ValueFontStyle&quot;:null,&quot;Columns&quot;:[&quot;JGTextBoxColumn1&quot;,&quot;JGTextBoxColumn4&quot;]}]" TableName="bo_akl_MM_bomInfo" MultiHeight="485px" MultiWidth="265px">
+        <JGTextBoxColumn Code="JGTextBoxColumn1" ColumnName="materialNo" LabelText="物料型号" TableName="bo_akl_MM_bomInfo" ThemeVar="null" ValueForeColor="255, 0, 0" Width="174" />
+        <JGTextBoxColumn Code="JGTextBoxColumn4" ColumnName="remark" LabelText="备注" TableName="bo_akl_MM_bomInfo" ThemeVar="null" ValueForeColor="255, 0, 0" Width="45" />
       </JGDataGrid>
     </JGPanel>
     <JGPanel Code="Pnl_Top" Height="50" Width="1036" PercentHeight="9.3%" PercentWidth="100%" TabIndex="1" Dock="Top" BorderStyle="None" LayoutType="BorderLayout" MultiHeight="50px" MultiWidth="1036px">
